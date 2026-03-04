@@ -44,7 +44,7 @@ namespace {
 	GLint colorI = 0;
 	GLint scaleI = 0;
 	GLint glyphSizeI = 0;
-	GLint glyphI = 0;
+	GLint uvRectI = 0;
 	GLint aspectI = 0;
 	GLint positionI = 0;
 
@@ -169,7 +169,8 @@ void Font::DrawAliased(const string &str, double x, double y, const Color &color
 			continue;
 		}
 
-		glUniform1i(glyphI, glyph);
+		GLfloat uv_rect[4] = { static_cast<float>(glyph) / GLYPHS, 0.f, 1.f / GLYPHS, 1.f };
+		glUniform4fv(uvRectI, 1, uv_rect);
 		glUniform1f(aspectI, 1.f);
 
 		textPos[0] += advance[previous * GLYPHS + glyph] + KERN;
@@ -179,7 +180,8 @@ void Font::DrawAliased(const string &str, double x, double y, const Color &color
 
 		if(underlineChar)
 		{
-			glUniform1i(glyphI, underscoreGlyph);
+			GLfloat underline_uv_rect[4] = { static_cast<float>(underscoreGlyph) / GLYPHS, 0.f, 1.f / GLYPHS, 1.f };
+			glUniform4fv(uvRectI, 1, underline_uv_rect);
 			glUniform1f(aspectI, static_cast<float>(advance[glyph * GLYPHS] + KERN)
 				/ (advance[underscoreGlyph * GLYPHS] + KERN));
 
@@ -377,7 +379,7 @@ void Font::SetUpShader(float glyphW, float glyphH)
 		colorI = shader->Uniform("color");
 		scaleI = shader->Uniform("scale");
 		glyphSizeI = shader->Uniform("glyphSize");
-		glyphI = shader->Uniform("glyph");
+		uvRectI = shader->Uniform("uv_rect");
 		aspectI = shader->Uniform("aspect");
 		positionI = shader->Uniform("position");
 	}

@@ -19,6 +19,7 @@
 					"name": "glew",
 					"platform": "!osx"
 				},
+				"freetype",
 				"libavif",
 				"libpng",
 				"libjpeg-turbo",
