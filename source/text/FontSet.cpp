@@ -3,7 +3,8 @@ Copyright (c) 2014-2020 by Michael Zahniser
 
 Endless Sky is free software: you can redistribute it and/or modify it under the
 terms of the GNU General Public License as published by the Free Software
-Foundation, either version 3 of the License, or (at your option) any later version.
+Foundation, either version 3 of the License, or (at your option) any later
+version.
 
 Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
 WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
@@ -22,20 +23,12 @@ this program. If not, see <https://www.gnu.org/licenses/>.
 using namespace std;
 
 namespace {
-	map<int, Font> fonts;
+map<int, Font> fonts;
 }
 
-
-
-void FontSet::Add(const filesystem::path &path, int size)
-{
-	if(!fonts.contains(size))
-		fonts[size].Load(path);
+void FontSet::Add(const std::vector<std::filesystem::path> &paths, int size) {
+  if (!fonts.contains(size))
+    fonts[size].Load(paths, size);
 }
 
-
-
-const Font &FontSet::Get(int size)
-{
-	return fonts[size];
-}
+const Font &FontSet::Get(int size) { return fonts[size]; }

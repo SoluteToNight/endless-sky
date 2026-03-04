@@ -456,6 +456,8 @@ target_sources(EndlessSkyLib PRIVATE
 	text/Format.cpp
 	text/Format.h
 	text/Layout.h
+	text/TextureAtlas.cpp
+	text/TextureAtlas.h
 	text/Table.cpp
 	text/Table.h
 	text/Truncate.h
