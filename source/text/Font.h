@@ -27,6 +27,7 @@ this program. If not, see <https://www.gnu.org/licenses/>.
 #include <functional>
 #include <memory>
 #include <string>
+#include <string_view>
 #include <unordered_map>
 #include <vector>
 
@@ -61,13 +62,13 @@ public:
                    const Color &color) const;
   // Draw the given text string, e.g. post-formatting (or without regard to
   // formatting).
-  void Draw(const std::string &str, const Point &point,
-            const Color &color) const;
-  void DrawAliased(const std::string &str, double x, double y,
+  void Draw(std::string_view str, const Point &point, const Color &color) const;
+  void DrawAliased(std::string_view str, double x, double y,
                    const Color &color) const;
 
   // Determine the string's width, without considering formatting.
   int Width(const std::string &str, char after = ' ') const;
+  int Width(const std::string &str, size_t len, char after = ' ') const;
   // Get the width of the text while accounting for the desired layout and
   // truncation strategy.
   int FormattedWidth(const DisplayText &text, char after = ' ') const;
@@ -85,6 +86,8 @@ private:
   void SetUpShader();
 
   int WidthRawString(const char *str, char after = ' ') const noexcept;
+  int WidthRawString(const char *str, size_t len,
+                     char after = ' ') const noexcept;
 
   std::string TruncateText(const DisplayText &text, int &width) const;
   std::string TruncateBack(const std::string &str, int &width) const;

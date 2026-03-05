@@ -1,0 +1,4 @@
+[1/2] Linking CXX executable "Release\Endless Sky.exe"
+lto-wrapper.exe: warning: using serial compilation of 76 LTRANS jobs
+lto-wrapper.exe: note: see the '-flto' option documentation for more information
+[2/2] Discover every integration test

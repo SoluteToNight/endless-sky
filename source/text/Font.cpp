@@ -31,6 +31,7 @@ this program. If not, see <https://www.gnu.org/licenses/>.
 #include <cstdlib>
 #include <cstring>
 #include <iostream>
+#include <string_view>
 
 using namespace std;
 
@@ -43,22 +44,18 @@ GLuint vbo = 0;
 
 GLint colorI = 0;
 GLint scaleI = 0;
-GLint glyphSizeI = 0;
-GLint uvRectI = 0;
-GLint aspectI = 0;
-GLint positionI = 0;
 
 GLint vertI;
-GLint cornerI;
+GLint texCoordI;
 
 void EnableAttribArrays() {
-  // Connect the xy to the "vert" attribute of the vertex shader.
+  // Connect the xy and uv to the attributes.
   constexpr auto stride = 4 * sizeof(GLfloat);
   glEnableVertexAttribArray(vertI);
   glVertexAttribPointer(vertI, 2, GL_FLOAT, GL_FALSE, stride, nullptr);
 
-  glEnableVertexAttribArray(cornerI);
-  glVertexAttribPointer(cornerI, 2, GL_FLOAT, GL_FALSE, stride,
+  glEnableVertexAttribArray(texCoordI);
+  glVertexAttribPointer(texCoordI, 2, GL_FLOAT, GL_FALSE, stride,
                         reinterpret_cast<const GLvoid *>(2 * sizeof(GLfloat)));
 }
 
@@ -141,12 +138,12 @@ void Font::DrawAliased(const DisplayText &text, double x, double y,
   DrawAliased(truncText, x, y, color);
 }
 
-void Font::Draw(const string &str, const Point &point,
+void Font::Draw(std::string_view str, const Point &point,
                 const Color &color) const {
   DrawAliased(str, round(point.X()), round(point.Y()), color);
 }
 
-void Font::DrawAliased(const string &str, double x, double y,
+void Font::DrawAliased(std::string_view str, double x, double y,
                        const Color &color) const {
   if (!atlas)
     return;
@@ -156,10 +153,11 @@ void Font::DrawAliased(const string &str, double x, double y,
 
   if (OpenGL::HasVaoSupport())
     glBindVertexArray(vao);
-  else {
-    glBindBuffer(GL_ARRAY_BUFFER, vbo);
+
+  glBindBuffer(GL_ARRAY_BUFFER, vbo);
+
+  if (!OpenGL::HasVaoSupport())
     EnableAttribArrays();
-  }
 
   glUniform4fv(colorI, 1, color.Get());
 
@@ -177,15 +175,18 @@ void Font::DrawAliased(const string &str, double x, double y,
   bool underlineChar = false;
   const GlyphInfo &underscoreGlyph = GetGlyph('_');
 
+  vector<GLfloat> vertexData;
+  // Pre-allocate enough space for a typical string.
+  // 6 vertices per glyph, 4 floats per vertex (x,y,u,v).
+  vertexData.reserve(str.length() * 24);
+
   size_t pos = 0;
   while (pos < str.length()) {
     char32_t codepoint = Utf8::DecodeCodePoint(str, pos);
 
-    // Handle explicit custom underlines, maybe legacy specific logic?
     if (codepoint == '_') {
       underlineChar = showUnderlines;
-      continue; // In legacy, it skipped the original underline and drew a
-                // longer one.
+      continue;
     }
 
     if (codepoint == 0 || codepoint == static_cast<char32_t>(-1))
@@ -194,57 +195,70 @@ void Font::DrawAliased(const string &str, double x, double y,
     const GlyphInfo &info = GetGlyph(codepoint);
 
     if (!info.isWhitespace && info.bitmapW > 0 && info.bitmapH > 0) {
-      // Use logical (scaled-down) dimensions for the screen quad size.
-      // The UV rect still samples the full hi-res bitmap for quality.
-      glUniform2f(glyphSizeI, static_cast<float>(info.width),
-                  static_cast<float>(info.height));
-      glUniform4fv(uvRectI, 1, info.uvRect);
-      glUniform1f(aspectI, 1.f);
+      float px = textPos[0] + info.bearingX;
+      float py = textPos[1] + (ascender - info.bearingY);
+      float pw = static_cast<float>(info.width);
+      float ph = static_cast<float>(info.height);
+      float u = info.uvRect[0];
+      float v = info.uvRect[1];
+      float uw = info.uvRect[2];
+      float vh = info.uvRect[3];
 
-      // Position: X = pen + bearingX, Y = pen + (ascender - bearingY)
-      // ascender is the distance from text top to baseline.
-      // bearingY is the distance from baseline to glyph top.
-      GLfloat drawPos[2] = {textPos[0] + info.bearingX,
-                            textPos[1] + (ascender - info.bearingY)};
-      glUniform2fv(positionI, 1, drawPos);
-
-      glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+      vertexData.insert(vertexData.end(),
+                        {// Triangle 1
+                         px, py, u, v, px, py + ph, u, v + vh, px + pw, py,
+                         u + uw, v,
+                         // Triangle 2
+                         px + pw, py, u + uw, v, px, py + ph, u, v + vh,
+                         px + pw, py + ph, u + uw, v + vh});
     }
 
     textPos[0] += info.advance;
 
     if (underlineChar) {
       if (underscoreGlyph.bitmapW > 0 && underscoreGlyph.bitmapH > 0) {
-        glUniform2f(glyphSizeI, static_cast<float>(underscoreGlyph.width),
-                    static_cast<float>(underscoreGlyph.height));
-        glUniform4fv(uvRectI, 1, underscoreGlyph.uvRect);
-        // Make the underscore stretch over the previous character's advance
         float aspect = info.advance / max(underscoreGlyph.advance, 1.f);
-        glUniform1f(aspectI, aspect);
 
-        GLfloat underPos[2] = {
-            textPos[0] - info.advance + underscoreGlyph.bearingX,
-            textPos[1] + (ascender - underscoreGlyph.bearingY)};
-        glUniform2fv(positionI, 1, underPos);
+        float px = textPos[0] - info.advance + underscoreGlyph.bearingX;
+        float py = textPos[1] + (ascender - underscoreGlyph.bearingY);
+        float pw = static_cast<float>(underscoreGlyph.width) * aspect;
+        float ph = static_cast<float>(underscoreGlyph.height);
+        float u = underscoreGlyph.uvRect[0];
+        float v = underscoreGlyph.uvRect[1];
+        float uw = underscoreGlyph.uvRect[2];
+        float vh = underscoreGlyph.uvRect[3];
 
-        glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+        vertexData.insert(vertexData.end(),
+                          {px,      py,     u,       v,       px,     py + ph,
+                           u,       v + vh, px + pw, py,      u + uw, v,
+                           px + pw, py,     u + uw,  v,       px,     py + ph,
+                           u,       v + vh, px + pw, py + ph, u + uw, v + vh});
       }
       underlineChar = false;
     }
+  }
+
+  if (!vertexData.empty()) {
+    glBufferData(GL_ARRAY_BUFFER, vertexData.size() * sizeof(GLfloat),
+                 vertexData.data(), GL_STREAM_DRAW);
+    glDrawArrays(GL_TRIANGLES, 0, vertexData.size() / 4);
   }
 
   if (OpenGL::HasVaoSupport())
     glBindVertexArray(0);
   else {
     glDisableVertexAttribArray(vertI);
-    glDisableVertexAttribArray(cornerI);
-    glBindBuffer(GL_ARRAY_BUFFER, vbo);
+    glDisableVertexAttribArray(texCoordI);
   }
+  glBindBuffer(GL_ARRAY_BUFFER, 0);
   glUseProgram(0);
 }
 
 int Font::Width(const string &str, char after) const {
-  return WidthRawString(str.c_str(), after);
+  return WidthRawString(str.c_str(), string::npos, after);
+}
+int Font::Width(const string &str, size_t len, char after) const {
+  return WidthRawString(str.c_str(), len, after);
 }
 
 int Font::FormattedWidth(const DisplayText &text, char after) const {
@@ -327,7 +341,7 @@ void Font::SetUpShader() {
   // Initialize the shared parameters only once
   if (!vbo) {
     vertI = shader->Attrib("vert");
-    cornerI = shader->Attrib("corner");
+    texCoordI = shader->Attrib("texCoordIn");
 
     glUseProgram(shader->Object());
     glUniform1i(shader->Uniform("tex"), 0);
@@ -342,10 +356,6 @@ void Font::SetUpShader() {
     glGenBuffers(1, &vbo);
     glBindBuffer(GL_ARRAY_BUFFER, vbo);
 
-    GLfloat vertices[] = {0.f, 0.f, 0.f, 0.f, 0.f, 1.f, 0.f, 1.f,
-                          1.f, 0.f, 1.f, 0.f, 1.f, 1.f, 1.f, 1.f};
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-
     if (OpenGL::HasVaoSupport())
       EnableAttribArrays();
 
@@ -355,10 +365,6 @@ void Font::SetUpShader() {
 
     colorI = shader->Uniform("color");
     scaleI = shader->Uniform("scale");
-    glyphSizeI = shader->Uniform("glyphSize");
-    uvRectI = shader->Uniform("uv_rect");
-    aspectI = shader->Uniform("aspect");
-    positionI = shader->Uniform("position");
   }
 
   // We must update the screen size next time we draw.
@@ -367,15 +373,23 @@ void Font::SetUpShader() {
 }
 
 int Font::WidthRawString(const char *str, char after) const noexcept {
+  return WidthRawString(str, string::npos, after);
+}
+
+int Font::WidthRawString(const char *str, size_t len,
+                         char after) const noexcept {
   float width = 0.f;
 
-  // Create a string so we can use Utf8::DecodeCodePoint nicely,
-  // though creating string each time is an allocation. In Endless Sky
-  // WidthRawString is mostly called for layout which is cached.
-  string s(str);
+  string_view s(str, (len == string::npos) ? strlen(str) : len);
   size_t pos = 0;
-  while (pos < s.length()) {
-    char32_t codepoint = Utf8::DecodeCodePoint(s, pos);
+  // DecodeCodePoint takes std::string, so let's use a loop over bytes if we
+  // must, or construct a temporary string to avoid changing
+  // Utf8::DecodeCodePoint signature. Given Endless Sky's Utf8::DecodeCodePoint
+  // takes `const string&`, we have to create a string for now, but we only copy
+  // `len` characters.
+  string s_copy(s);
+  while (pos < s_copy.length()) {
+    char32_t codepoint = Utf8::DecodeCodePoint(s_copy, pos);
     if (codepoint == '_')
       continue;
     const GlyphInfo &info = GetGlyph(codepoint);

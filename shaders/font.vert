@@ -15,25 +15,15 @@ this program. If not, see <https://www.gnu.org/licenses/>.
 
 // scale maps pixel coordinates to GL coordinates (-1 to 1).
 uniform vec2 scale;
-// The (x, y) coordinates of the top left corner of the glyph.
-uniform vec2 position;
-// The glyph's UV map in the texture: (x, y, w, h)
-uniform vec4 uv_rect;
-// Aspect ratio of rendered glyph (unity by default).
-uniform float aspect;
-// Glyph size (in pixels).
-uniform vec2 glyphSize;
 
 // Inputs from the VBO.
 in vec2 vert;
-in vec2 corner;
+in vec2 texCoordIn;
 
 // Output to the fragment shader.
 out vec2 texCoord;
 
-// Pick the proper glyph out of the texture.
 void main() {
-	texCoord = vec2(uv_rect.x + corner.x * uv_rect.z, uv_rect.y + corner.y * uv_rect.w);
-	vec2 pos = vert * glyphSize;
-	gl_Position = vec4((aspect * pos.x + position.x) * scale.x, (pos.y + position.y) * scale.y, 0.f, 1.f);
+	gl_Position = vec4(vert * scale, 0.0, 1.0);
+	texCoord = texCoordIn;
 }
