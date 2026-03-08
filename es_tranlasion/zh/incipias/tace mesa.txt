@@ -1,0 +1,109 @@
+# Copyright (c) 2023 by RisingLeaf (https://github.com/RisingLeaf)
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program. If not, see <https://www.gnu.org/licenses/>.
+
+outfit "Strange Ray"
+	mass 25
+	"outfit space" -20
+	"gun ports" -1
+	weapon
+		sprite "projectile/strange ray"
+			"frame rate" 60
+			"no repeat"
+		"inaccuracy" 20
+		"velocity" 6
+		"lifetime" 10
+		"fade out" 2
+		"reload" 1
+		"firing energy" 8
+		"firing heat" 4
+		"shield damage" 50
+		"hull damage" 43
+		"minable damage" 64
+	description "有机生物应该不可能将气体加热到这种程度，但这个器官似乎是个例外。"
+
+outfit "Internal Plasma Exhaust"
+	"mass" 25
+	"outfit space" -25
+	"engine capacity" -25
+	"thrust" 36
+	"turn" 1500
+	"flare sprite" "effect/plasma exhaust"
+		"frame rate" 16
+	description "塔斯梅萨通过从身体末端排出血浆来移动。"
+
+ship "Tace Mesa"
+	sprite "ship/silent harvester"
+	swizzle 0
+	"never disabled"
+	attributes
+		category "Unclassified"
+		cost 500000
+		"mass" 525
+		"outfit space" 45
+		"weapon capacity" 20
+		"engine capacity" 25
+		"cargo space" 500
+		"hull" 1500
+		"solar collection" 200
+		"fuel capacity" 200
+
+		"inscrutable" 1
+		"heat dissipation" 0.47
+		"energy capacity" 1000
+
+		"required crew" 1
+		"drag" 20
+		"bunks" 40
+	outfits
+		"Strange Ray"
+		"Internal Plasma Exhaust"
+	gun 0 -64 "Strange Ray"
+	engine 0 0
+	explode "huge explosion" 10
+	explode "large explosion" 40
+	explode "medium explosion" 50
+	"final explode" "final explosion large"
+	description "塔斯台地生物的起源和内部运作方式尚待了解。它们已经存在了几千年，并且可能会继续存在很长一段时间。有传言称，在星系边缘更远的地方还存在着更大的生物。"
+
+mission "The Silent Ones"
+	invisible
+	non-blocking
+	entering
+	repeat
+	source
+		system "Il'le"
+	destination "Earth"
+	to offer
+		not "The Silent Ones: active"
+	to complete
+		never
+	npc save
+		government "Silent Ones"
+		personality harvests mining mute timid
+		system "Il'le"
+		ship "Tace Mesa" ""
+	npc save
+		government "Silent Ones"
+		personality harvests mining mute timid
+		system "Il'le"
+		ship "Tace Mesa" ""
+	npc save
+		government "Silent Ones"
+		personality harvests mining mute timid
+		system "Il'le"
+		ship "Tace Mesa" ""
+	npc save
+		government "Silent Ones"
+		personality harvests mining mute timid
+		system "Il'le"
+		ship "Tace Mesa" ""

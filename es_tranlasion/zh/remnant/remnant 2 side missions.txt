@@ -1,0 +1,775 @@
+# Copyright (c) 2022 by Zitchas
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program. If not, see <https://www.gnu.org/licenses/>.
+
+
+
+mission "Remnant: Visit to Paradise 1"
+	name "与 Taely 一起玩气垫板"
+	description "乘坐泰利前往<stopovers>，然后返回<planet>。"
+	minor
+	source
+		government "Remnant"
+	destination "Caelian"
+	stopover "Vail"
+	passengers 1
+	to offer
+		has "event: remnant: cognizance calm"
+		or
+			and
+				random < 70
+				not "Remnant: Visit to Paradise 1: defer"
+			and
+				random < 30
+				has "Remnant: Visit to Paradise 1: defer"
+	on offer
+		conversation
+			`你刚在自助餐厅的一张桌子旁坐下，泰利就滑到你对面的长凳上。 “你好，<first>。冒险家的生活怎么样？”`
+			choice
+				`“一如既往地令人兴奋。”`
+				`“我现在正在休息。”`
+			`她同情地点点头。 “最近事情有点忙碌，有维度口袋和神秘的新外星人。我可以理解想要放慢一点速度。随着两艘新船在这么短的时间内推出，我知道我觉得我需要放松一下。”她叹了口气。 “老实说，这让我感到内疚。我已经取得了很多成就，有很多事情值得感激，但我什至还有更多正在开发的项目需要关注。”她看上去陷入了片刻的沉思。`
+			`泰利抬头看着你。 “我能问你一些关于祖先空间生活的事情吗？”`
+			choice
+				`“当然。”`
+					goto "ask question"
+				`“现在不行。”`
+			label "vail later"
+			`“哦，那也许改天吧。”她看起来很失望，然后坐下来吃饭。`
+				defer
+			label "ask question"
+			`“我翻阅了你带回来的历史档案，其中提到了韦尔。”她有趣地摇摇头。 “整个星球都致力于悬浮滑板和休闲活动的想法似乎太奢侈了……好吧，我很好奇去参观它。现在，这不是我们要求你做的任务，所以我不能提供任何后勤补偿。不过，作为交换，我可以向你展示我们的一些历史。你有兴趣吗？”`
+			choice
+				`“是的，听起来很有趣。”`
+					goto "vail fun"
+				`“当然，我自己也玩过一些悬浮滑板。”`
+				`“也许以后吧。”`
+					goto "vail later"
+			action
+				set "remnant: hoverboarding"
+			`“真的吗？这个描述听起来对探索很有用，而且看起来很有挑战性。”她的通讯链接切换，显示一个悬浮滑板运动员正在跳跃的全息图，周围有艺术气息的雪花。 “无论如何，我认为这次旅行对我们俩来说应该是一次很好的消遣。我很快就会在 <ship> 号上与你见面。”`
+				accept
+			label "vail fun"
+			`“太好了。我很快就会在 <ship> 号上与您见面。”`
+				accept
+	on defer
+		set "Remnant: Visit to Paradise 1: defer"
+	on stopover
+		conversation
+			branch science
+				has "outfit (flagship installed): Research Laboratory"
+			`当您接近时，您的导航系统会拾取指定接近路径的信标，不久之后您就会自动引导到主太空港郊区的着陆场。`
+				goto "vail landing"
+			label science
+			`当您接近韦尔时，遗迹研究实验室的专用传感器会检测到负责增加地球降雪量的天气控制网络的部分内容。你的导航系统会接收到指定进场路径的信标，不久之后你就会自动引导到主太空港郊区的着陆场。`
+			label "vail landing"
+			`往飞船外面看，你可以看到大量的旅游设施，压倒了正常的太空港功能。您可以在旁边找到一个小标志，上面标有专业商品和银行设施，但除此之外，该地区主要以提供山地旅游、体育课程和汽车租赁的企业为主。在你旁边，泰利时而凝视标志，时而阅读新通讯链接上的小册子。 “这里，<first>。这个听起来更感兴趣的是提供挑战而不是纵容。你觉得怎么样？”`
+			choice
+				`“我觉得不错。”`
+				`“好吧，应该不错。”`
+			branch "have hoverboarded"
+				has "remnant: hoverboarding"
+			`该度假村是一个更独特的设施，远离主要火车线路。您从一家租赁公司租了一辆气垫汽车，然后短途跋涉到达度假村。当天剩下的时间都在斜坡上度过，您和泰利最终都掌握了足够的技能，可以从简单的跑步升级到中等难度的跑步。你们俩都屡屡跌倒，但泰莉的幽默很有感染力，她泰然地面对不可避免的积雪。`
+				goto "vail head home"
+			label "have hoverboarded"
+			`该度假村是一个更独特的设施，远离主要火车线路。您从一家租赁公司租了一辆气垫汽车，然后短途跋涉到达度假村。这一天剩下的时间都在斜坡上度过，在那里你教泰利悬浮滑板的基础知识。一天结束时，泰莉的快速学习给您留下了深刻的印象，您在一些更具挑战性的斜坡上跑了几圈，结束了比赛。泰莉有几次失言，但她以幽默的态度对待自己的失败，而且似乎从来不会犯第二次同样的错误。`
+			label "vail head home"
+			`经过一天的悬浮滑板返回太空港时，泰利打开了悬浮车的引擎盖，花了近一个小时检查内部系统，然后点点头将其关闭，这让你大吃一惊。 “嗯，这很有趣。我是说，悬浮汽车。”她用通讯器对着它做了个手势。 “这么多不同的制造商参与了这辆车的制造。有时我想知道人类是否欣赏这种多样性给他们带来的奢侈。”她看起来若有所思，然后指着船。 “好吧，<first>，我答应你参观历史悠久的遗迹区。Caelian 也许是最好的例子，所以我建议我们去那里。”`
+	on complete
+		conversation
+			`泰利将带您前往主太空港郊区的一个着陆场，该区域似乎大部分都是海鸥和鹈鹕，正在运送大量产品。从 <ship> 下车后，她会带您走下一系列向多个方向分支的自动扶梯，偶尔会与充满源源不断的货物运输的大型坡道相连。几分钟后，他们将您安置在一个大平台上。`
+			`接近平台边缘时，泰莉伸出手臂阻止你继续前进。 “小心障碍物，”她一边说，一边伸出手，触摸了你面前半空中的某个东西。当她靠在上面时，你可以看到她的手周围有淡淡的波纹。 “它们是一项重要的安全功能，但如果你遇到它们，它们仍然会受伤。”她指着地板上容易辨认的危险标记。 “随着时间的推移，你将学会注意到空气中微弱的护盾波纹，但同时，请记住，地板上有‘后备’线的任何地方大多数时候都可能在其上方有护盾。”`
+			`片刻之后，当一列大型火车高速驶入车站，然后很快停下来时，您就会明白为什么要设置障碍物。障碍消失了，泰利带你上了火车。上下观察火车的长度，你可以看到数百甚至数千名残余人员进出火车。不一会儿，门就关上了，当你被按回到座位上时，火车又开始行驶。你看到窗外有几盏灯闪烁，但很快外面就只剩下单调的黑暗模糊了。`
+			`泰利注意到你的目光。 “抱歉，外面没什么可看的。整条火车线路都在地下很远的地方。足够远，可以简单地穿过河流、山谷或裂缝等地形障碍物。”她满意地点点头。 “这不会是一次长途旅行：我们只会以全速行驶几分钟，然后就会在目的地附近开始减速。我建议系好安全带。”`
+			choice
+				`“我很期待看到我们要去哪里。”`
+					goto "our destination"
+				`“这速度有多快？”`
+			`“C3-L0 磁悬浮列车的最大额定速度为每秒 11D.E78 米，只要轨道保持供电，就可以几乎无限期地维持该速度。在实践中，它很少一次保持该速度超过几分钟，因为它是当地的运输列车。我们确实有一些速度更快的列车，但在短轨道上使用它们所需的加速度并不十分实用。”她看起来很渴望。 “很多人都在致力于解决惯性问题，但 Embers 只知道什么时候会产生实际成果。”`
+			choice
+				`“有趣。我们还要多久才能到达？”`
+					goto "our destination"
+				`“为什么这个数字这么精确？”`
+				`“这听起来像是光速。”`
+			`泰利微笑着。 “在考虑了所有安全因素、误差范围和各种其他调整后，有人注意到，当用科学计数法表示时，额定值的系数计算为1.1DE79，比真空中光速的系数高出一小部分，因此他们只是稍微向下调整了额定最大速度，以便它们匹配。”`
+			choice
+				`“谢谢你的解释。”`
+					goto "our destination"
+				`“什么是系数？”`
+				`“什么是科学计数法？”`
+			`“这里我改用10进制，方便大家理解。”她拿出一张全息图，上面有 299,792,458 m/s。当她说话时，数字变为 2.99792458x10^8 m/s。 “当我们写出光速等数字时，通常会将其分成几部分。这通常称为科学记数法。这样做是为了方便比较和处理大数。第一部分，在本例中为 2.99792458，称为系数。第二部分，x10，称为基数；第三部分，^8 是指数。”显示屏再次切换显示 1.1DE784Ax10^7 m/s。 “所以这就是我们在研究中使用光速时通常如何书写的方式。因此，1.1DE78 是光速和火车速度的系数，只是指数不同。”她停顿了一下，然后消失了显示屏。 “我们很快就会到达，所以我应该停在那里。”`
+			label "our destination"
+			`几分钟后，车厢内的灯光突然闪烁了几下，火车开始大幅减速。当火车减速并停下来时，您可以感觉到自己被推入安全带。泰利解开安全带，带你到平台上，然后沿着长长的自动扶梯到达地面。出现在阳光下，你发现自己环顾四周，看到了一个几乎不合时宜的场景。`
+			scene "scene/remnant remote spaceport"
+			`泰利自豪地环顾四周，然后有趣地观察你的反应。`
+			choice
+				`“我不知道该怎么办。”`
+				`“这里是太空港？”`
+			`她点点头，引导你穿过骆驼拉的气垫车，驶向大门。 “在我们学习更适合我们新家的新技术之前，这是我们最早的太空港之一。当然，我们的创始飞船带来了尽可能多的东西，但事实证明，无论是历史上的飞行前时代还是现代的定居努力，最早的扩张阶段看起来都大同小异。”`
+			scene "scene/remnant remote spaceport"
+			label "question loop"
+			choice
+				`“看到骆驼拉动悬浮平台似乎仍然很奇怪。”`
+					goto "camel cart"
+				`“建造石墙似乎是一件奇怪的事情。”`
+					goto "stone walls"
+				`“那些是风力涡轮机吗？”`
+					goto "wind turbine"
+				`“所有这些木制品看起来都令人惊讶。”`
+				`“我想我已经看够了。”`
+					goto "main return"
+			label "wood products"
+			scene "scene/remnant remote spaceport"
+			`泰利从附近的一堆木板上捡起一块木板。 “我们很幸运，Caelian 有一些可以这样使用的植被。原生植被在生物学上与地球上的树木有很大不同，但它们具有相似的结构特征，并且在许多地区大量生长。”她给你提供了董事会。 “我们很早就做出了决定，任何可以用当地采购的材料制成的东西都应该在当地采购。我们希望保留有限的金属和其他稀有资源供应来满足需要的需求。”她敲击一个桶。 “这是一个很好的例子——一些金属带使木材能够容纳大量的液体。这与我们体内相对少量的骨骼如何为大量软组织和器官提供功能所必需的结构非常相似。”`
+				goto "question loop"
+			label "camel cart"
+			scene "scene/remnant remote spaceport"
+			`“是这样吗？工程优势非常简单：由于推车的机械结构完全专注于支撑负载，而骆驼提供水平运动，因此推车可以比必须分散力时支撑更大的质量。”她看起来很渴望。 “事实上，我有点羡慕祖先世界所拥有的工业能力——我们已经取得了很多成就，但我们必须做出选择，其中之一就是决定将我们的工业能力花在哪里。显然，我们选择专注于航天器和重工业应用。我们没有汽车，根本没有私人车辆，真的。甚至这些气垫车基本上都是来自我们航天器的斥力系统，已被重新设计用于承载大量负载。”`
+			`泰利指着大门外远处的风景。 “具有讽刺意味的是，在许多方面，遥远的恒星比隐喻的山的另一边更容易接近。我们这些探索世界的人经常乘坐骆驼队进行长途探险，以携带所有的科学设备。在一个项目上与朋友或家人分开几个月是很常见的，即使对于那些从未离开过我们星球表面的人来说也是如此。事实上，我们的许多探险家都过着游牧的生活方式——每隔几周就搬到一个新的研究地点进行研究，记录并分析世界。”她的手势带着恭敬的语气。 “我们许多最重要的发现都可以归功于这些探险家。”`
+			`她的语气变得有趣。 “不过，我们很幸运。我们的骆驼从一开始就能够以当地的几种植被为生。然而，在我们能够使它们真正正常觅食之前，我们花了相当多的细菌培养实验。现在它们在这里繁衍生息。一些专家怀疑，如果我们离开，骆驼可能会继续在这里生存数千年。”`
+				goto "question loop"
+			label "stone walls"
+			scene "scene/remnant remote spaceport"
+			`当泰莉带着你走到墙边时，她的表情变得悲伤。 “我们到达这里后不久就发现，这个星球并不像看上去那么安全。它有各种各样的天敌，包括成群结队的掠食性生物，它们在猎杀我们时非常具有侵略性。它们更喜欢黑暗，虽然它们视力很好，但听力更敏锐。一群人可以在很远的地方根据一个人的口语来三角测量一个人的位置。”`
+			`她在墙边向上做了个手势。 “幸运的是，我们发现，虽然它们是非常有能力的攀爬者，但它们无法穿越悬垂物。因此，虽然在防御现代武器时，这种嘴唇通常被认为是结构上的弱点，但它们对于遏制当地野生动物是必不可少的。当我们后来不得不应对科拉特地面攻击和其他更复杂的威胁时，这些墙也发挥了作用。”`
+				goto "question loop"
+			label "wind turbine"
+			scene "scene/remnant remote spaceport"
+			`“它们确实是风力涡轮机。”她跨过大门，来到了一个视野更好的地方。你可以看到，虽然墙上的那些只有几米高，但塔顶上的却要大得多。 “我们的祖先正确地猜测，任何有足够大气层而无需穿着压力服的地方也会有风。垂直式还有一个优点，它比出埃及时的一些更传统的形状更好地处理高风速和方向的快速变化。这似乎是一个很好的预防措施，因为它使它们能够在席卷整个大陆的严酷风暴中幸存下来。尽管它们经过几个世纪的修复和改进，这些风力涡轮机仍然为大部分农业提供足够的电力。在这里使用，所以我们让它们继续下去，它们也有助于提醒我们来自哪里。”`
+				goto "question loop"
+			label "main return"
+			`泰利将带领您在该地区游览几个小时，向您指出历史特色、在飞行出现之前复兴贸易和技能的地方，以及其他有趣的事情。最终她返回火车站，将你送回主太空港。`
+			`“我希望您喜欢这次旅行，<first>。通过新的视角了解我们的历史很有趣。”她顽皮地微笑着。 “我也很喜欢悬浮滑板。也许我们什么时候可以再做一次。”她停顿了一会儿，专注于你看不到的东西。 “看起来像是执行任务。余烬指引你的道路，<last> 队长。”她挥挥手，然后走进人群。`
+
+
+
+mission "Remnant: Celebration 1"
+	name "将庆祝记录发送至 <destination>"
+	description "遗民要求您将他们的庆祝活动记录带到<destination>。"
+	minor
+	source
+		government "Remnant"
+		attributes "remnant primary"
+	destination "Ssil Vida"
+	to offer
+		has "event: remnant: cognizance calm"
+		has "license: Remnant Capital"
+		random < 50
+		"day" == 7
+	on offer
+		conversation
+			`你正好在星港停下来，正好看到一大群残余者离开。一些最近的人注意到了你的兴趣，并开始做出认可或各种邀请来陪伴他们，但在你能够回应之前，泰利从人流中出现并接近你。`
+			`“很高兴见到，<first>。我们正要去参加每月一次的纪念庆典。你愿意陪我们一起吗？”`
+			choice
+				`“是的，我愿意。”`
+					goto "celebration attendance"
+				`“那是什么？”`
+					goto "celebration definition"
+				`“不，谢谢。”`
+			label "celebration declined"
+			`她点点头。 “好吧，愿余烬引导你，<first>。”说完，她重新加入了人流，他们消失在视线中。`
+				decline
+			label "celebration definition"
+			`“纪念庆典是一次聚会；我们花点时间记住我们来自哪里，欣赏我们现在的处境，并对我们未来的处境表示希望。”她的手势带有批评的语气。 “这听起来很正式，但它比定义更具艺术性。”她瞥了一眼渐渐变慢的人流。 “很快就要开始了，我想在这个月参加，所以我得动身了。你愿意加入我们吗？”`
+			choice
+				`“是的，我愿意。”`
+				`“不，谢谢。”`
+					goto "celebration declined"
+			label "celebration attendance"
+			`当你们两个加入人流时，泰利再次做了个手势。 “如果你愿意，我可以为你提供一些评论和解释，但这更多的是一种感觉，而不是做任何具体的事情。我们在一起，通过与歌唱和音乐相结合的自由舞蹈来纪念和庆祝。欢迎你参与，但尽量不要以你加入舞蹈的方式扰乱或妨碍他人。”`
+			choice
+				`“不，没关系，我就体验一下。”`
+					goto "celebration begin"
+				`“是的，我们将不胜感激。”`
+			action
+				set "remnant: celebration: annotated"
+			label "celebration begin"
+			`当你们都向前流动时，您加入的人群与其他人群汇合，最终从典型的走廊进入一个巨大的洞穴。一侧有一个大开口，由粗糙的石头和一些护盾发射器围成，抬头望向夜空。石笋和上面相配的钟乳石环绕着房间的周围，但这里没有滴水声或残留的湿气痕迹。虽然墙壁仍然是粗糙的天然石材，但地板和所有石笋都已打磨光滑。你快速扫了一眼，估计这里已经有一百多人了，还有更多的人还在从你周围和其他几扇门涌进来。泰莉带领你穿过人群，经常向路过的人打招呼。`
+			`泰利静静地向你打手势。 “我们从例行公事的询问和回答开始，询问我们是否安全。至少在这一刻是安全的。”`
+				to display
+					has "remnant: celebration: annotated"
+			`房间毫无预兆地静止了，所有的门都关上了。房间中央传来一连串的手势，仿佛每个人都在重复某人说过的话，但你看不到有人发起。 “周边安全吗？”出现了手势问题，随后是从房间边缘向中心回荡的回答：“一切顺利。”`
+			`突然，你感觉到寂静中响起了鼓声，然后意识到它已经从第一个手势开始了，安静得直到现在都没有被注意到。节拍逐渐形成：缓慢、稳定的节奏。`
+			`“扑通。”`
+			`“扑通。”`
+			`“扑通。”`
+			`“扑通。”`
+			choice
+				`（环视房间。）`
+				`（随着节拍及时移动。）`
+			`在你身边，泰利再次做了个手势。 “存在始于宇宙的规律，我们的故事始于生命。”`
+				to display
+					has "remnant: celebration: annotated"
+			`节奏在洞穴中回响，但你很快就找到了来源：一位年长的遗迹用双手敲击着抛光的石笋，从共鸣来看，石笋似乎是空心的。当你观看时，一个孩子走到她旁边，也开始用手掌敲击岩石，有点不合时宜，将模式变成了一种令人难以忘怀的熟悉模式：`
+			`“扑通扑通。”`
+			`“扑通扑通。”`
+			`“扑通扑通。”`
+			`“扑通扑通。”`
+			`环顾房间，你可以看到人们开始随着节拍移动。有的在摇摆，有的在点头，有的在跺脚。泰莉站在你旁边，一只手放在心口上，轻轻地敲击着。很快你就会听到其他鼓手加入，节奏在整个房间里回响。现在人们不仅随着节拍摇摆，而且跳舞。有些人原地旋转，有些人在不同的姿势之间来回摇摆，还有一些人手拉手开始绕圈移动。放眼望去，到处都是人们以无数种不同的方式跳舞。`
+			`从混乱中你听到歌声响起。你听不清它在说什么，但它带着期待的语气。然而，你可以清楚地从许多其他声音中解读出圣歌，将独奏声音与鼓声及时切开：`
+				to display
+					not "remnant: celebration: annotated"
+			`从混乱中你听到歌声响起。你听不清它在说什么，但它带着期待的语气。然而，你可以清楚地从许多其他声音中辨认出圣歌，与鼓声及时切入独奏声音，但也不会压倒性的：`
+				to display
+					has "remnant: celebration: annotated"
+			`“...6...5...4...点火...2...1...升空！”`
+			choice
+				`（满怀期待地环顾四周。）`
+					goto countdown
+				`（紧张地环顾四周。）`
+			`泰利注意到你的焦虑，做出了令人放心的手势：“一切都很好。”`
+				to display
+					not "remnant: celebration: annotated"
+			`泰利注意到你的焦虑和令人放心的手势。 “他们歌唱人类的婴儿期；当我们第一次走出摇篮时。”`
+				to display
+					has "remnant: celebration: annotated"
+			label countdown
+			`在最后一个词中，圣歌结束，数十个低沉的声音一起形成咆哮的渐强声，然后逐渐消失，取而代之的是许多表达惊奇语气的新声音。此时，似乎房间里几乎每个人都在打鼓、跳舞或唱歌——许多人似乎同时做几件事。`
+			`当星星在洞口上方的夜空中旋转时，你会注意到仪式的流程似乎在讲述某种故事。你听得懂的词很少，但歌声中传达的情感却很清晰。最初的期待语气转变为兴奋的咆哮，然后转变为平静的惊奇语气。`
+			`随着仪式的继续，这再次转变为一种稳定的、近乎机械的感觉，而这种感觉又突然被一股刺耳的兴奋所渗透，导致歌曲的整个基调变成了对另一个驱动节拍的好奇。然后，旋律似乎更加徘徊，陷入遗憾与期待、哀悼与喜悦、恐惧与希望、混乱与结构、失望与敬畏以及无数其他深刻情感的双重音调中，最终回到最初的、统一的心跳，歌手的声音汇聚在一起，在希望中向上延伸，最后一切都归于寂静。`
+			`通过这一切，泰利对仪式的每一部分如何代表他们集体历史的不同部分进行了连续的评论，从第一个人发射到太空到其商业化，再到超光速的出现开启了探索的新时代。它还包括许多冲突、灾难和战争。从你对人类历史的了解来看，其中大部分内容对你来说是相当熟悉的，但后面的部分却是陌生和陌生的。书中充满了第一次接触、奇怪的废墟、外星人入侵、绝望的最后一战和辉煌的发现的故事，给你留下的印象是，尽管遗迹目前很安全，但他们在存在的大部分时间里一直处于灭绝的边缘。`
+				to display
+					has "remnant: celebration: annotated"
+			choice
+				`（站着不动，享受这一刻。）`
+				`（环顾四周看看接下来会发生什么。）`
+			`你周围，每个人都静止了。大多数人看起来很疲惫，有些人坐在地板上或靠在墙上。有几个人看起来像是在哭，附近的人拥抱着他们，或者只是碰触他们的肩膀。你能看到的大多数人都带着虔诚和喜悦的表情。沉默持续了大约几分钟后，门打开，人们开始离开。很快，洞穴就几乎空了。`
+			`“我总是觉得这些纪念庆祝活动令人振奋，”泰利说。 “你觉得怎么样，<first>？”`
+			label "celebration questions"
+			choice
+				`“我想我得稍后再回复你。”`
+					goto "celebration request"
+				`“这真是令人敬畏。”`
+					to display
+						not "celebrationawestruck"
+					goto awestruck
+				`“为什么有些人哭了？”`
+					to display
+						not "celebrationaskedcrying"
+					goto "ask crying"
+				`“谁主持这些仪式？”`
+					to display
+						not "celebrationaskedleader"
+						not "celebrationaskedomitted"
+					goto "ceremony leader"
+				`“这看起来既是经过精心排练的，又非常杂乱无章。”`
+					to display
+						not "celebrationaskedrehearsed"
+					goto "celebration rehearsed"
+				`“你说‘实际上’。漏掉了谁？”`
+					to display
+						has "celebrationaskedleader"
+						not "celebrationaskedomitted"
+					goto "ceremony omitted"
+				`“你最严重的罪行是什么？”`
+					to display
+						has "celebrationaskedomitted"
+					goto "celebration crime"
+			label "celebration rehearsed"
+			action
+				set "celebrationaskedrehearsed"
+				clear "celebrationaskedleader"
+				clear "celebrationawestruck"
+				clear "celebrationaskedomitted"
+			`泰利对此微笑。 “嗯，是也不是。我们每个月都会举办几次这样的活动，虽然大多数人每隔几周才参加一次。我们大多数人都参加过数百场这样的活动。虽然就目前而言，每一次庆祝活动都是不同的。每个人的参与和风格完全取决于他们，所以每次集体庆祝活动的细节和感觉都是独一无二的。”在解释完这一点后，她做出了一个奇怪的手势，你会发现其中包含着这样的想法：“如果你还有更多问题，就问他们。”`
+				goto "celebration questions"
+			label "ceremony leader"
+			action
+				set "celebrationaskedleader"
+				clear "celebrationaskedrehearsed"
+				clear "celebrationaskedomitted"
+				clear "celebrationawestruck"
+			`泰利的手势带着坚定的语气。 “对于这样的事情，或者任何与此相关的社会或精神性质的事情，我们根据在场的人来决定目前谁在各个部分中负责。无论我们是在谈论我们与社会的联系，还是我们与宇宙的联系，我们每个人都必须形成自己对它的理解。因此，当我们聚集在一起举行这样的仪式时，几乎任何人都可以被选为其中一个部分的负责人。`
+			`“因此，每次庆祝活动都会呈现出不同的感觉——毕竟，我们每个人都有自己独特的视角，并带来自己的经验来做出贡献。”她停顿了一下，用恭敬的语气说道。 “仪式也不仅仅是重大事件。每个参加者都将自己的生活经历和回忆带入我们讲述的故事中。对不再与我们在一起的朋友和家人的回忆也很常见。”`
+				goto "celebration questions"
+			label "ceremony omitted"
+			action
+				clear "celebrationaskedleader"
+				set "celebrationaskedomitted"
+			`泰利对此皱起了眉头。 “只有那些犯有最严重罪行的人才不能担任主角。”她停顿了一下，用一种有趣的语气继续说道。 “即使是孩子也会时不时地起带头作用，通常是在父母或兄弟姐妹的指导下。”她对此微笑，然后示意你继续问问题。`
+				goto "celebration questions"
+			label "celebration crime"
+			action
+				clear "celebrationaskedomitted"
+			`泰利粗鲁地做了个手势。 “当然是危害社会罪。违背我们集体福祉的最大利益是某人可能犯下的最具破坏性和最愚蠢的行为。”`
+				goto "celebration questions"
+			label "ask crying"
+			action
+				set "celebrationaskedcrying"
+				clear "celebrationaskedrehearsed"
+				clear "celebrationaskedleader"
+				clear "celebrationawestruck"
+				clear "celebrationaskedomitted"
+			`泰利轻轻地做了个手势。 “许多人是最近在研究黑洞时被摧毁的一艘船的船员的朋友。他们从中获得了开创性的数据，但在这个过程中丧生。当然，他们的朋友和家人为他们感到骄傲，但这并不能改变我们凡人失去他们的事实。有时整个经历简直是压倒性的，我们中的一些人仍然为故事中的其他损失感到悲伤。”`
+				goto "celebration questions"
+			label awestruck
+			action
+				set "celebrationawestruck"
+				clear "celebrationaskedcrying"
+				clear "celebrationaskedrehearsed"
+				clear "celebrationaskedleader"
+				clear "celebrationaskedomitted"
+			`泰利点头表示同意，并简单地向你周围的洞穴做了一个宽阔的手势，给你一些时间来思考。最后她做了个手势询问你是否还有其他问题。`
+				goto "celebration questions"
+			label "celebration request"
+			`泰利大步走向最近的门附近的控制台，从里面的隔间取出一块水晶。她把它塞进盒子里，然后转向你。 “我们的庆祝活动将我们联系在一起，我们分享对逝者的记忆和对未来的希望。因此，我们保留它们的录音，以便那些没有参加特定活动的人仍然可以体验到它。这张录音是为在Postverta工作的人准备的，因为今天哀悼的其中一位朋友的朋友就驻扎在那里。你能把这个交给他们吗？”`
+			action
+				set "Remnant: Attended Celebration of Remembrance with Taely"
+			choice
+				`“是的。”`
+					accept
+				`“抱歉，我不会往那个方向走。”`
+			`她看起来很失望，但只是耸耸肩，把水晶装进口袋。 “那我就找人来搬运这个吧。”`
+				decline
+	on complete
+		payment 50000
+		conversation
+			`当你到达波斯特维尔塔时，一小群残余者在登陆港等待着你。当你将水晶递给其中一个人时，另一个人做了个手势：“<first> 队长，谢谢你把这个带给我们。能够参加纪念活动将帮助我向那些曾经经历过的人致敬。”一行人前往车站深处，将您留在海湾中。`
+			`泰利从未提及过任何有关补偿的事情，但是一旦残余人员离开，您的通讯链接就会通知您已被分配 <payment> 。`
+
+
+
+mission "Remnant: Teciimach Deployment"
+	invisible
+	minor
+	landing
+	name "新的电磁脉冲部署"
+	description "遗迹正在部署新版本的电磁脉冲，邀请您观看。"
+	deadline 7
+	source
+		attributes "shipyard"
+		attributes "remnant"
+	to offer
+		has "event: remnant: cognizance calm"
+		has "event: remnant: research update bjd1"
+	on offer
+		event "remnant: teciimach deployment"
+		conversation
+			`在 <ship> 接触地面之前，您注意到造船厂中出现了干扰。每个码头都停满了船只，骆驼拉着装满罐子的马车从装备店里缓缓驶出，技术人员到处爬行。当你走出船时，泰利从停在你​​旁边的秋沙鸭一侧滑下来。`
+			`“好时机，队长！我们刚刚对一些最古老的装备进行了升级，我们的秋沙鸭终于有了可以携带的东西作为先发制人的武器。有兴趣看看吗？”`
+			choice
+				`“是的。”`
+				`“抱歉，我现在有点忙。”`
+					goto "emp no"
+			`她转身朝附近的一个电梯走去，另一名残余人员刚刚将几个电磁脉冲鱼雷罐移到位。 “嗯，你可能时不时地看到我们使用电磁脉冲鱼雷，对吧？嗯，正如你可能注意到的那样，它们有一些战术问题。它们速度慢，它们经常击中我们的船只，几乎和我们的目标一样多，而且它们占用了我们本来可以用于实验室或扫描仪等更重要的东西的空间。”她在控制台中输入了几个命令，电梯开始将罐子升向等待的船只。`
+			`“在过去的几十年里，我们有几个团队从不同的角度致力于改进它们。一些专注于鱼雷本身，另一些专注于发射器。然而，令人惊讶的开发来自沃伦的一个团队。他们找到了一种方法，可以将组装鱼雷的系统削减几立方米，并压缩整个结构。非常令人印象深刻的工作，结果应该会在接下来的一两天内到达装备店。”`
+			`她看着你，若有所思地点点头。 “值得注意的是，你在学习我们的语言方面取得了很大的进步，因此我们的服装店中出现的新物品将以其正确的名称列出，而不是来自祖先语言的替代品。”`
+			choice
+				`“只要能让每个人的事情变得更容易就好。”`
+					goto "emp no"
+				`“谢谢。改了什么名字？”`
+			`她看起来很有趣。 “主要是武器。如果某物被命名为描述其用途的形容词，那么它就是我们当场编造的名称，包含在我们为展示设置的语言覆盖中。我们这样做是为了让你更容易理解某物的作用。值得庆幸的是，你不再需要这样的助手。”`
+			choice
+				`“谢谢你的解释。”`
+					goto "emp no"
+				`“谢谢！回到我们之前的话题，‘沃伦’是什么意思？”`
+			`“这是我们对地下深处的洞穴、隧道和空间网络的术语。我们的三个主要世界都以某种形式存在它们。我们对建造它们的原始人有一点了解，但并不像我们想要的那么多。他们称自己为 Zitchal Mau德拉克oi，我们能够了解到的最显着的特征之一是他们似乎不太重视方向性。例如，在我们发现的一个控制室中，每个可用的设备上都有仪器和控制器。表面，只有分散的手柄来支撑操作员。”她耸耸肩。 “羽或暮对他们的了解比我多。我主要专注于了解他们的装备。”`
+			label "emp no"
+			`“好吧，那么我该回去工作了。下次你在太空中时，看看我们的飞船在战斗中的表现如何。希望你会看到进步。”她从附近的电梯里抓起几个部件，然后爬回秋沙鸭号的一侧，继续在新的海湾上工作。`
+				accept
+	npc
+		government "Remnant"
+		personality staying uninterested disables plunders
+		fleet
+			names "remnant"
+			cargo 3
+			commodities "Food" "Clothing" "Metal" "Plastic" "Medical" "Heavy Metals"
+			outfitters "Korath Exiles Remnant Donations"
+			variant
+				"Merganser (II)" 3
+	npc
+		government "Remnant"
+		personality staying uninterested disables plunders
+		fleet "Small Remnant"
+	npc evade
+		government "Korath"
+		personality heroic plunders harvests staying
+		fleet "Korath Ember Waste Raid"
+	on complete
+		dialog
+			`现在，最近的科拉斯袭击者已经被击败，您决定检查传感器日志，看看泰利谈到的新型电磁脉冲鱼雷的性能如何。您注意到电磁脉冲爆发不再对友方船只产生影响。这可以使它们更加通用。`
+	on fail
+		dialog
+			`你记得泰利提到过一些关于新武器的事情，所以你决定检查你的日志，看看你的传感器最近记录了什么。查看最近的战斗细节，您会注意到电磁脉冲爆发不再对友方船只产生影响。这可以使它们更加通用。`
+
+
+
+mission "Remnant: Shattered Light 1"
+	invisible
+	non-blocking
+	landing
+	source
+		government "Remnant"
+	destination "Viminal"
+	to offer
+		has "event: remnant: cognizance calm"
+		random < 30
+	npc "scan outfits"
+		government "Ember Waste"
+		personality uninterested waiting staying mute
+		system "Caeculus"
+		ship "Modified Dromedary Ghost" "???"
+		dialog "这艘船几乎没有在你的传感器上记录下来，你可以清楚地透过它看到。余民会想知道这件事。你或许应该在 Viminal 上寻找 Taely。"
+	on complete
+		conversation
+			`环顾维米纳尔太空港，你会发现泰利正在使用一种有点像小型弹射器的东西，将一块相当大的岩石发射到洞穴中。附近的一只秋沙鸭跳到空中追赶它，扑向岩石，消失在视线中，然后重新出现在泰利身边，把它扔到她身边。她的目光没有离开秋沙鸭，向你挥手示意。`
+			`“很高兴见到，<first>，你的旅行怎么样？发现什么有趣的事情了吗？”`
+			`她一边听你描述与幽灵船的遭遇，一边查看你从通讯链接中调出的录音。 “这非常有趣。我需要咨询几个人。如果你有兴趣调查此事，请确保你的飞船安装了一个研究实验室，并在太空港与我会面。”`
+
+
+
+mission "Remnant: Shattered Light 2"
+	name "寻找鬼魂"
+	description "带着鲁奇去寻找并扫描那艘幽灵船。"
+	blocked "Your commlink chimes with a note that this mission requires a Research Laboratory installed on your flagship as well as 2 tons of cargo space and 1 free bunk."
+	cargo "equipment" 2
+	passengers 1
+	source "Viminal"
+	to offer
+		has "Remnant: Shattered Light 1: done"
+	to accept
+		has "outfit (flagship installed): Research Laboratory"
+	on offer
+		conversation
+			`当你到达太空港时，泰利正在与一位年老的遗迹进行深入交谈，他们面前的桌子上堆满了空食物托盘。当你走近时，他们都转过身来，打断了他们的谈话。`
+			`“感谢您的到来，<last> 船长。我想向您介绍 Ruach。她担任了数十年的造船厂工程级长，但现在大部分时间都在担任老师。”`
+			`鲁奇礼貌地鞠了一躬。 “泰利对我的赞美太多了，”她有趣地比划着。 “我尽了我的职责，尽了余烬所赐予我的一切，仅此而已。但看着有人接受我教给他们的一切，并带着它飞向我只能梦想的高度，这是值得的。”`
+			`鲁奇的手势节奏更加精确。 “泰利告诉我，你在卡库鲁斯身上发现了一个奇怪的‘幽灵’，它与祖先的船只很相似。你能带我扫描一下吗？”`
+			choice
+				`“好的。”`
+					accept
+				`“抱歉，没兴趣。”`
+					decline
+	on enter "Caeculus"
+		dialog
+			`鲁奇仔细检查了扫描阵列，然后报告对象不存在。她建议搜索附近的系统来找到它。`
+	npc "scan outfits"
+		government "Ember Waste"
+		personality uninterested waiting staying mute
+		system "Levana"
+		ship "Modified Dromedary Specter" "???"
+		dialog "这艘船看起来比你第一次看到它时更加坚固一些，但又似乎不太存在。"
+	on complete
+		payment 50000
+		conversation
+			`当 Ruach 从气闸跳下来并慢跑了几个地方，抬头凝视信天翁的鳃时，<ship> 甚至还没有落到着陆场上。过了一会儿，泰利从车里出来，热情地和鲁奇打招呼。当你加入他们时，鲁奇已经有了漂浮在空中的光谱船的全息图。 “它缺少确认码或识别信息，但我相信就是这样，”到达时鲁奇沉思道。`
+			`“很抱歉把你抛在后面，<first>，但这真是一个令人兴奋的发现。你发现的这艘船与破碎之光的外形相符——这是一艘大型城市船，曾是出埃及记的一部分，但从未到达虫洞的这一边。有很多问题需要回答！无论如何，数据现在正在分发。几个小时后到自助餐厅见我，看看有什么想法。哦，在我忘记之前，我们已经分配给你了<payment>，感谢您的帮助。”`
+			
+
+
+mission "Remnant: Shattered Light 3"
+	name "幽灵之触"
+	description "帮助残骸进行破碎之光实验。"
+	blocked "As you approach the starport your commlink chimes with a message from Ruach requesting that you make space for 13 people as well as 19 tons of cargo."
+	cargo "equipment" 19
+	passengers 13
+	source "Viminal"
+	waypoint "Coluber"
+	to offer
+		has "Remnant: Shattered Light 2: done"
+	on offer
+		conversation
+			`一群人挤在全息图周围引起了你的注意，并将你的目光吸引到 Ruach 身上，他示意你加入他们。在感谢你之前，她会向每个人介绍你。 “首先，我想对您的协助表示感谢，<first> 队长。您的眼睛很敏锐，很早就发现了这一点。”她指着你面前漂浮的船的全息图。 “此后不久其他球探也报告了这一情况，但你首先发现了它。`
+			`“我们已经确认，这与破碎之光的所有可用记录相符，尽管它似乎遭受了相当大的损坏。这里最古老的谜团之一是它发生了什么，以及我们应该采取什么措施。”`
+			`另一个遗迹向前迈了一步，全息图发生了变化，显示了一个洞穴中的场景，里面有一个巨大的物体。其他遗迹似乎用一些设备瞄准它，一两分钟后，该物体膨胀到原来大小的几倍。 “这些是我们对废墟探索的记录，展示了毛德拉科伊文物的减压过程。虽然不相同，但这些文物生成的读数与您扫描破碎之光期间记录的读数相似。`
+			`“因此，我们的建议是使用与减压相同的设备来稳定破碎光的纬向场，并且如果可能的话，再次使其完全同步。”她坚定地点点头，拍手让全息图消失。`
+			`鲁奇再次取得领先。 “所以，队长，我们需要你带我们靠近破碎之光，这样我们就可以尝试一下。我们的哨兵报告说在科鲁伯附近的星系中看到了它，所以可能需要一些搜索。”`
+			choice
+				`“看起来不错。开始加载 <ship>！”`
+					accept
+				`“等等，‘莫德拉科伊’？”`
+			`播放视频的遗迹看上去很惊讶，然后又感到尴尬。 “抱歉，我不知道你对他们不熟悉。”她环视房间，然后做了手势。全息图返回，现在显示一个大房间，边缘有许多架子，里面有几个大型物体，其中一些看起来像点防御炮塔。`
+			`“我们没有时间进行深入的介绍，但简短的版本是这样的：毛德拉科伊人是我们到达之前生活在这些世界上的主要文明。他们不是唯一生活在这里的文明，但他们是我们在考古记录中最常见的文明。对我们的研究来说幸运的是，他们似乎广泛生活在像这个这样的地下建筑群中。”`
+			`她的手势带着赞赏的语气。 “毛德拉科伊人广泛使用了使我们的船只和建筑如此独特的材料，这使得他们的城市和技术在灭绝后得以保存了亿万年。值得注意的一项技术是他们拥有操纵空间的有趣能力。他们用这种技术制造大型、高度复杂的物体，然后，由于缺乏更好的术语，将它们部分嵌入口袋尺寸中，以免完全存在。他们经常使用这种方法来使设备和材料比正常情况小得多。”她耸耸肩，用沮丧的语气做了个手势。 “我们无法复制它，但我们已经找到了如何破坏压缩，从而恢复文物。”`
+			`全息图转回显示破碎之光。 “这艘船没有显示出与毛德拉科伊文物相同的特征，但我们认为它非常相似，我们的设备也应该可以在上面工作。希望如此。无论如何，时间在流逝，所以我们应该开始装载。”说完，残民们收拾好装备出发了。`
+				accept
+	on enter "Coluber"
+		dialog `鲁奇简单地检查了扫描阵列，然后报告说，毫不奇怪，这艘船似乎不存在。她建议搜索附近的系统来找到它。`
+	npc "scan outfits"
+		government "Ember Waste"
+		personality uninterested waiting staying mute
+		system "Lucina"
+		ship "Modified Dromedary Specter" "???"
+		conversation
+			action
+				set "remnant: scanned specter"
+			`当扫描结果到达时，数据将被转发给货舱中的团队。您的视频显示了系统的一个大型全息图漂浮在其中一个托盘上方的半空中。附近，终端闪烁滚动读数和分析。随着光谱船上的数据固化，投影航向的锥体出现在显示屏上。随着来自遥测的额外数据流动，圆锥体逐行收紧，接近与附近世界相交的路径。`
+			`当系统继续完善轨道路径时，团队似乎不愿意等待：鲁奇激活了她的通讯链路，快速向你广播。 “这是 Far Monad 的速成班！”她惊呼道。 “快，降落！”在她身后，你可以看到她的团队正在争先恐后地在货舱门附近移动设备并密封他们的宇航服。`
+	to fail
+		has "remnant: scanned specter"
+		has "flagship planet: Far Monad"
+	to complete
+		never
+
+
+
+mission "Remnant: Shattered Light 4"
+	landing
+	name "破碎之光"
+	description "护送残骸返回维米纳尔。"
+	source "Far Monad"
+	destination "Viminal"
+	to offer
+		has "remnant: scanned specter"
+	on offer
+		conversation
+			`随着破碎之光向远摩纳德表面倾斜，您将 <ship> 推入俯冲状态。当你专注于在接近的船只附近寻找一个安全的着陆点时，你用眼角的余光注意到，残余小队已经全部穿戴好，正在将他们的设备推到货舱口。您的控制台上会出现一条消息。`
+			`“准备好降落了，队长。只要让我们沿着破碎之光前进，不要有太大的前进速度。我们可以处理剩下的事情。”`
+			branch "living ship"
+				or
+					has "flagship model: Peregrine"
+					has "flagship model: Merganser"
+			`过了一会儿，你发现船上有一个大洞。集中注意力，将 <ship> 向下飞行并保持在其上方。看一眼你的货舱显示屏就会发现残余物从后锁中消失了。你的外部摄像头显示设备落入推斥器托盘上，而残余物则落在它旁边。最后一条消息出现在您的控制台上。`
+				goto "drop success"
+			label "living ship"
+			`片刻之后，<ship> 对破碎之光上的一个点发出 ping 信号，表明船上有一个大洞。点头同意后，你的飞船就会俯冲到其上方的等待位置。看一眼你的货舱显示屏就会发现残余物从后锁中消失了。你的外部摄像头显示设备落入推斥器托盘上的洞中，而残余物则落在它旁边。最后一条消息出现在您的控制台上。`
+			label "drop success"
+			`“空投成功。离开到达区，尘埃落定后来接我们。”`
+			branch "living clear"
+				or
+					has "flagship model: Peregrine"
+					has "flagship model: Merganser"
+			`得到他们的确认后，你迅速远离正在逼近的残骸并撤退到安全距离。`
+				goto cleared
+			label "living clear"
+			`<ship> 不等您的批准就转向并加速远离接近的残骸，并撤退到安全距离。`
+			label cleared
+			`最终，你在几公里外找到了一个很好的有利位置，在那里你可以看到正在驶近的船只。破碎之光以一种看似缓慢的速度从天空中落下，更糟糕的是你可以看到云朵和天空穿过它。当它接近表面时，你会看到空气中爆发出一道波纹，随后伴随着一阵震荡波，破碎之光突然变得非常坚固。它的发动机突然启动，发出令人骨头嘎嘎作响的轰鸣声，船在半空中猛烈地停了下来，然后嘎吱嘎吱地坠入森林。`
+			`灰尘和碎片会在几分钟内沉降下来，很快你和 <ship> 就会在植被上掠过。这种方法让你有足够的时间来欣赏破碎之光有多大；为新殖民地奠定基础所需的一切都被装在一艘船上。你注意到船体上有大的伤口，巨大的传感器阵列，顶部有一个破碎的圆顶。由于部件不匹配，这艘船对其原始船体进行了大幅修改，并在遭受了无数损坏后幸存下来。`
+			`当你慢慢地在船边盘旋时，Ruach 就会出现在你的屏幕上。 “很高兴见到，船长！我们的理论成功了！我们成功地将破碎之光弹回主纬线，现在已经登上了飞船。不过，系统很可疑，所以我们不敢关闭任何东西，以免无法重新启动它。我们将感谢您协助护送我们返回维米纳尔。”`
+				accept
+	npc accompany save
+		government "Remnant (Research)"
+		personality launching timid escort
+		planet "Far Monad"
+		ship "Modified Dromedary Wreck" "Shattered Light"
+	npc evade
+		government "Korath"
+		personality entering plunders harvests
+		system "Lucina"
+		fleet "Korath Ember Waste Raid"
+	on complete
+		payment 250000
+		outfit "NDR-114 Android" 5
+		conversation
+			`破碎之光是如此之大，以至于交通管制将你引导到太空港旁边的一个大山谷，在那里你发现裂缝的一部分已经被覆盖，形成了一个半封闭的区域。从设备和货物堆放情况来看，该区域主要用于散装货物运输，几乎没有其他货物。然而现在，随着破碎之光缓缓靠近，一群鹈鹕在它面前散开，看起来就像是一群鸻鸟在接近的骆驼面前。`
+			`在地面上，你看到鲁奇和她的团队从破碎之光一侧的气闸室出来，跳到地面上。他们聚集在一起，拥抱。 “<first>！”鲁奇惊呼道。 “我们已经找回了遗失的一段历史。感谢您的帮助。我不知道这对我们长期来说意味着什么，但接下来的几周将会进行大量仔细的检查。”`
+			choice
+				`“我还有事情要做，如果需要帮忙的话尽管告诉我。”`
+					goto "shattered help"
+				`“那么，发生了什么事？”`
+			`遗民 团队太兴奋了，你几乎无法理解他们的手势，但只要冷静下来，他们的手势就可以理解。 “说实话，我们原以为这是进行详细扫描并尝试不同类型同步场的几次旅行中的第一次。但是当我们看到它正在前往地球时……”她的声音逐渐减弱，另一个人继续说道。 “当我们接近时，传感器已经在运行，所以一旦我们找到合理的匹配，我们就会跳起来并触发磁场。”`
+			`他皱起眉头。 “虽然并不完美，但它确实有效。有一些块丢失了，其中一些严重损害了它的功能。但它又回到了主纬纱中，所以现在我们有时间对其进行处理并弄清楚它发生了什么。”`
+			choice
+				`“我想我明白了。如果我能帮忙，请告诉我。”`
+					goto "shattered help"
+				`“你说的‘初纬’是什么？”`
+			`另一名残余者向前迈出一步。 “纬纱是我们所说的维度、能量和时间的网格，构成了宇宙的一个子集。某种意义上的一层。”他看起来很沉思。 “你可能知道的‘超空间’就是我们技术上所说的次要纬纱。还有一些我们相当有信心存在的其他纬纱，还有一些我们假设可能存在但我们无法确认的东西。实际上，这些纬纱中的每一个都在某种程度上与主要纬纱重叠。”他的手势带着一种有趣的语气。 “当然，我们所说的主纬纱只是对我们这些住在这里的人来说是主要的。据我们所知，可能有些生活在其他地方的人认为他们自己的纬纱是主要的。没有什么可以说我们的纬纱是特别的或最好的或任何类似的东西。实际上，有人建议我们将主纬纱称为经纱。这是一个古老的编织术语，可以合理地类比经纱和纬纱如何相互作用，并且可能更好地反映其状态而不是被贴上标签。 “主要的。”`
+			label "shattered help"
+			`“关于帮助，你能去凯尔安吗？我们已经提前传话了，我们的工程师正在取回一些出埃及时剩余的设备。我们希望它能帮助我们修复破碎之光，或者至少了解它发生了什么。`
+			`“不过，在你离开之前，我们想与你分享一些完好无损的东西。”在她身后，五个机器人从一个货舱中出现，每个人都携带着一大箱设备。`
+			scene "outfit/android"
+			`“这些被称为 NDR-114 仿生人，在大逃亡发生时属于尖端创新。不要对它们抱有太大期望。它们没有自我意识，没有感知能力，甚至没有特别先进的人工智能。然而，它们是飞船自我维护系统的出色扩展。事实证明，这些年来，大量这些仿生人在保持破碎之光号的飞行中发挥了重要作用。我们有很多东西要研究，所以我们认为你可能会喜欢拥有一个很少。”她做出了一个不屑一顾的手势。 “如果他们最终对你没有帮助，我们的装备供应商将能够将他们重新分配到另一艘船上。`
+			`“余烬照亮了你的道路，<first> 队长。”说完，人群散去。`
+
+
+
+mission "Remnant: Shattered Light 5"
+	landing
+	name "辉煌能量"
+	description "从 <destination> 找回一支队伍及其装备，以帮助研究破碎之光。"
+	source "Viminal"
+	destination "Caelian"
+	to offer
+		has "Remnant: Shattered Light 4: done"
+
+
+
+mission "Remnant: Shattered Light 6"
+	landing
+	name "破碎之光"
+	description "将团队及其装备运送回 <destination> 。"
+	blocked "From your count at the information desk, you estimate that you need space for 11 people as well as 18 tons of cargo."
+	cargo "equipment" 18
+	passengers 11
+	source "Caelian"
+	destination "Viminal"
+	to offer
+		has "Remnant: Shattered Light 5: done"
+	on offer
+		conversation
+			`在 <origin> 上，太空港里充满了谈话声，你可以看到到处都是人们谈论破碎之光的回收的片段。许多人都在猜测它最初发生了什么，而其他人则在讨论研究团队为恢复它所做的技术优点。细节似乎传播得很快。`
+			`您被派去接的团队正在咨询台旁边等候。他们附近有一堆托盘，一小群人围着他们热烈交谈。他们发现你和人群开始挥手告别，然后大家拿起行李朝你走去。`
+			`“啊，<first>！感谢您载我们来。我们很高兴看到破碎之光，并开始研究您发现的这个谜团。”他们轻快地前往你的船。`
+				accept
+	on complete
+		event "remnant: shattered light"
+		event "remnant: shattered light research" 60
+		conversation
+			`遗迹在旅途中忙于讨论迄今为止已知的情况并交换理论，热切地向你询问有关你所看到的内容的问题并审查你的传感器记录。当你到达维米纳尔时，他们已经拥有了一整套理论，并对他们希望进行的研究有了初步计划。然而，当受到追问时，他们都承认他们的首要任务是记录这艘船。每一次划痕、每一个带奇怪电荷的部件、每一次微小的修改。 “毕竟，”他们说，“了解它现在的情况是确定它是如何到达这里的第一步。”`
+			`当你进入通往破碎之光所在山谷的最后通道时，整个残骸都挤满了窗户。你可以看到，遗迹们一直在忙着在周围搭建大型装备塔，其中包括几个小型的帐篷营地。当你准备着陆时，你会看到一支骆驼队将装有大型防空炮组的雪橇操纵到位，并立即将其隐藏在与营地其他部分融为一体的帐篷中。`
+			`交通管制会引导你到破碎之光大门附近的一个垫子处。鲁奇和一小群遗迹聚集在飞船的全息图周围，似乎正在协调探索它的团队。大量设备似乎从船的两侧展开，其中一些似乎可以正常工作。当您完成着陆检查时，团队感谢您的运输并开始卸下他们的设备。`
+			`“欢迎回来，<first>！”护垫对面有 Ruach 的标志。 “我们已经取得了相当大的进展。”她似乎准备解释他们的发现。`
+			choice
+				`“太好了，但是请不要告诉我细节。”`
+					goto "shattered request"
+				`“你知道发生了什么了吗？太棒了！”`
+			`她看起来垂头丧气。 “好吧，无论如何，我们知道这艘船认为发生了什么。实际发生的情况可能有很大不同。”她的姿态呈现出更加积极的姿态。 “我们有机会开始查询机载系统并拼凑出一些破碎之光的历史。特别是日志。`
+			`“众所周知，它是进入终点站虫洞的出埃及记舰队的一部分。然而，与大多数其他飞船不同的是，它从未从另一边出现。幸运的是，它拥有比同类飞船正常数量更多的仪器，而且看起来至少有一些数据库幸存了下来。”`
+			`此时，另一个遗迹开始叙述。 “根据最初的事件日志，稳定场中的某些东西似乎在运输过程中发生了故障。数据不清楚是否是系统发生故障，或者虫洞波动中的某些东西是否超出了系统可以处理的参数。无论如何，这艘船似乎在运输途中从虫洞横向分流了。`
+			`“目前还不清楚之后发生了什么，但这艘船受到了巨大的力量，包括导致多个系统故障的不明撞击。此时数据失去了一些连贯性，但它基本上似乎半永久地与主纬线异相，直到能量激增使其不稳定并恢复到主纬线。那时，它再次开始可见，不久之后，你就发现了它。”`
+			choice
+				`“有趣。好吧，如果我能帮忙，请告诉我。”`
+					goto "shattered help"
+				`“我很好奇你现在要做什么。”`
+			`“第一步将是打开破碎之光的包装并安装其所有设备。当然，我们这样做时会对每件物品进行详细扫描。”她指着从船侧展开的设备。 “正如你所看到的，我们已经开始了这个过程，并发现其中大部分已经投入运行。”`
+			`另一位残余者继续说道。 “破碎之光承载着相当于整个重工业工厂的东西。从冶炼厂到焊接设备以及介于两者之间的一切。”他们微笑着，手势带着讽刺的语气。 “事实上，我们现在拥有的船只在很大程度上是由于破碎之光的缺席而造成的。如果没有这些能力，选择是否致力于学习我们之前住在这里的人的技术就容易得多。如果破碎之光如期抵达，我们很可能仍在用当时流行的传统材料建造船只。”`
+				goto "shattered request"
+			label "shattered help"
+			`“谢谢队长，我们当然不想让您久等，放心，以后如果需要您的帮助，我们会联系您的。”`
+			label "shattered request"
+			`鲁奇的手势带着好奇的语气。 “如果你愿意的话，你可以帮助我们的一件事就是资源。现在我们没有任何真正的需要让所有这些机器运转起来，因此我们没有足够的资源来让它完全运行。话虽这么说，如果你想要破碎之光的复制品，我们可以使用这个设备来建造一个。”`
+			`她的手势带着歉意。 “它不会是一个完美的复制品，因为我们将不得不使用我们自己的系统来完成大部分内部结构，并且资源分配成本将明显高于月球第谷陨石坑造船厂的成本……但如果你有资源和兴趣，机会就在那里。造船厂将在一两天内为你提供更多信息。”她的手势逐渐减弱，暗示着巨大的可能性。`
+			`“有一天，<first> 队长，这可能会带来很多成果。但现在，我们还需要几个月的时间才能分析完所有内容。感谢你帮助恢复我们的一段历史，队长。”`
+
+
+
+mission "Remnant: Scent of Rain 1"
+	landing
+	name "搜寻未知的科拉特船"
+	description "奇利亚要求您找到并进行可携带三艘“olofezes”的科拉斯船的装备扫描，然后向 <destination> 报告。残余者相信它会在科拉斯南部星系之一被发现。"
+	source
+		government "Remnant"
+	destination "Caelian"
+	to offer
+		or
+			and
+				has "Remnant: Cognizance 25: done"
+				not "flagship planet: Ssil Vida"
+			has "event: remnant: cognizance calm"
+	on offer
+		event "remnant: tubfalet appearance" 20 31
+		conversation
+			branch "scent ssil vida"
+				has "flagship planet: Ssil Vida"
+			`你走出气闸室，看到奇利亚级长大步朝你走来。 “<first> 队长！我读到一份报告，提到您在 Postverta 地区对付了三只‘olofezes’。您有兴趣为我们做一些侦察吗？我们想追踪它们的来源。”`
+				goto "scent of rain choice"
+			label "scent ssil vida"
+			`你走出气闸室，看到奇利亚级长大步朝你走来。 “<first> 队长！我读到一份报告，提到你在附近对付了三只单独巡逻的‘olofezes’。你有兴趣为我们做一些侦察吗？我们想追踪它们的来源。”`
+			label "scent of rain choice"
+			choice
+				`“是的，我能做到。”`
+				`“我宁愿不。”`
+					goto "rather not"
+			`他赞赏地签了字。 “我们钦佩你愿意提供帮助。”他拉出余烬废土的全息图，它转向显示朝向核心的系统。 “我们担心科拉斯号可能有一艘可以搭载三架战斗机的新船。根据科拉斯号的典型运动模式，我们怀疑 - 如果有这样一艘船存在 - 它应该位于较近的科拉斯星系中的某个地方。我们会将算法上传到您的目标系统，以查找在我们的数据库中没有匹配项的船舶资料。请对您找到的任何船舶进行装备扫描，然后通过 <destination> 向我报告。”`
+				accept
+			label "rather not"
+			`他恭敬地点点头。 “好吧，谢谢你为我们所做的一切。我看看还有谁有空。”说完，他便前往星港。`
+				decline
+	npc "scan outfits"
+		government "Korath"
+		personality staying target
+		system "Kor Zena'i"
+		ship "Tubfalet" "Ra'puk At 333"
+		dialog `在光线不佳的情况下，这艘船可能会被误认为是帕拉夫雷特号，但扫描显示出主要的结构差异。这些表明这至少是新一代的模型，或者可能是完全不同的设计。是时候向奇利亚报告此事了。`
+	npc
+		government "Korath"
+		personality staying
+		system "Kor Zena'i"
+		fleet
+			names "korath"
+			cargo 3
+			commodities "Food" "Clothing" "Metal" "Plastic" "Medical" "Heavy Metals"
+			outfitters "Korath Basics" "Korath Exiles"
+			variant
+				"'olofez" 3
+	on enter "Kor Zena'i"
+		dialog
+			`该算法快速解析此处出现的船舶签名，并通知您其中一个与数据库不匹配：被识别为“Ra'puk At 333”的签名。这肯定是奇利亚想要扫描的那艘船。`
+	on complete
+		payment 150000
+		conversation
+			`当您着陆时，Chilia 正在等您。从他面前漂浮的全息图来看，他似乎已经在查看你的扫描数据。当您靠近时，他会将其推到一边以将注意力集中在您身上。 “这是有趣的数据，”他评论道。 “亲眼所见，你有什么想法？”`
+			choice
+				`“你怀疑这艘新船携带了一架额外的战斗机是正确的。多一架战斗机可能不会在战斗中带来太大改变，但如果科拉特人正在建造新的战舰，他们也可能会建造更强大的战斗机。”`
+				`“额外的战斗机舱并不是这艘新舰唯一拥有的东西。它还配备了额外的火炮、更大的发动机、更好的护盾和船体，以及可能其他看不见的改进。总的来说，它比它的前身更强大。”`
+			`他认真地听你讲述拜访科尔泽纳伊的经历，对各种见解深思熟虑地点点头。`
+			`“感谢您对此进行调查，<first>。我将确保我们的工程师立即获取您的数据，并向我们的巡逻人员通报容量的增加情况。”他的手势带着期待和遗憾的语气。`
+			choice
+				`“不客气。”`
+					goto "scanning payment"
+				`“你在期待什么吗？”`
+			`奇利亚若有所思地微笑着。 “你知道那种感觉吗？当整个世界都静止了，天空晴朗时，你却从骨子里知道暴风雨即将来临？”他不等回应就继续说道。 “嗯，几十年来我一直有这种感觉，而且越来越强烈。而现在……”他停了下来，深吸了一口气。 “现在，感觉就像是第一股雨的味道。我能真正识别出的第一件事是风暴正在酝酿的可靠指标。”`
+			`他摇摇头。 “但没关系。为风暴做好准备是我的职责，不是你的，而且前方还没有出现。`
+			label "scanning payment"
+			`“我们为您分配了 <payment> 来承担风险。请明智地使用它。虽然我有责任预见对我们所有人的威胁，但您有责任确保做好准备面对它们可能带来的风险。”他转身大步走开，很快消失在太空港下方的隧道中。`
+
+
+
+mission "Remnant: Will Not Someone Please Think Of The Children"
+	minor
+	landing
+	name "对科拉斯人的同情"
+	description "前往 <waypoints> 系统以禁用滞留的 Dathnak A'awoj。不要摧毁或占领这艘船，因为它可能有大量平民。"
+	source
+		government "Remnant"
+	waypoint "Vaticanus"
+	to offer
+		random < 30
+		"remnant: broken jump drive count" >= 10
+		or
+			has "event: remnant: cognizance calm"
+			and
+				has "Remnant: Cognizance 25: done"
+				not "flagship planet: Ssil Vida"
+	on offer
+		conversation
+			`你走出气闸室，发现奇利亚级长正在等你，脸上露出担忧的表情。 “<first>队长，我有一个敏感的请求给你。`
+			`“我们的侦察员正在报告一艘搁浅在梵蒂冈的科拉特船，准确地说是一艘Dathnak A'awoj。如果它是一艘典型的阻碍我们行动的军舰，我们会要求你追踪它并消灭它，但由于这种类型的船只往往是大量平民的家园，直接摧毁或捕获它可能会引发报复，特别是在该地区。`
+			`“你愿意禁用它，从而消除威胁，同时保护船上无辜者的生命吗？”他的表情从询问的语气转变为自信的语气。 “完成后，我们可以解除飞船的武装并修复他们的跳跃驱动器。如果他们遵守他们的典型原则，他们应该决定回家。”`
+			choice
+				`“很乐意帮助那些有需要的人，甚至是科拉特人。”`
+				`“我无意为了科拉特而冒着生命危险。”`
+					goto "rather not"
+			`“我感谢您的理解和愿意提供帮助。我们可以共同确保每个人安全回家。”`
+				accept
+			label "rather not"
+			`他点头致意，手势断断续续。 “我担心我的要求太多了。我理解这种情绪。也许我天真地认为这样的结果是可能的。”`
+				decline
+	npc disable save
+		government "Korath"
+		personality heroic target marked staying disables plunders
+		system "Vaticanus"
+		ship "Kas'lor Ik 582 (Stranded)" "Fligrookor"
+		dialog `您已禁用 Dathnak A'awoj。是时候向 <planet> 报告了。`
+	npc
+		government "Korath"
+		personality timid disables plunders swarming
+		system "Vaticanus"
+		fleet
+			names "korath"
+			variant
+				"'olofez (Digger)" 3
+	on enter "Vaticanus"
+		dialog `当您进入系统时，您会发现目标船。你想象一下这个小镇里面有多少人，其中很多可能是孩子。`
+	on abort
+		dialog `遗民对你中止这项任务感到困惑，但他们告诉你他们将派其他人来做这项工作。他们警告你，他们不会再向你求婚。`
+	on fail
+		"reputation: Remnant" -= 250
+		dialog `你无法在不摧毁 Dathnak A'awoj 的情况下禁用它……残余势力不会高兴的……`
+	on complete
+		"remnant: disable and save count" ++
+		payment 2500000
+		conversation
+			`当你着陆时，你会发现奇利亚脸上露出如释重负的表情。`
+			`“这些任务通常由我们最值得信赖的团队来处理，因为攻击更大的科拉斯舰艇是一件敏感的事情。他们的大多数大型船只都是大批科拉斯平民的家园，其中包括儿童。我必须承认，有人担心你可能不是那些孩子们的最佳机会，但我们的舰队当时在其他地方被占领。我很高兴我对你的评估没有错，”他脸上挂着满意的微笑。`
+			`“我们必须小心，不要让科拉特社会的无知导致类似船只的不必要的破坏。既然你已经证明你可以用适当的技巧处理这些任务，你可以期待这些会出现在未来的任务板上。”奇莉亚随后迈着自信的步伐走开。`

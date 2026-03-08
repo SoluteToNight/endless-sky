@@ -1,0 +1,140 @@
+# Copyright (c) 2025 by Arachi-Lover
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program. If not, see <https://www.gnu.org/licenses/>.
+
+mission "Drak Revelations: Arachi"
+	entering
+	invisible
+	source
+		system "Flugbu"
+	destination "Earth"
+	to offer
+		has "drak revelations: arachi"
+		has "entered system by: takeoff"
+	on offer
+		clear "drak revelations: arachi"
+		conversation
+			`当 <ship> 穿过最后一层云层升起时，您会惊讶地发现自己完全脱离了飞船，进入了地下。`
+			`微小的洞只允许最少量的光线穿透狭窄的隧道群，并且不足以照亮隐藏在那里的各种生物的形态。从你所看到的一点点来看，他们似乎挤在一起，颤抖着，畏缩着。`
+			`头顶上发生了连续的行进，隧道里传来隆隆声。一些不那么胆怯的生物从你身边冲过去，他们穿着厚重的盔甲，完全覆盖了他们的身体和无数的腿。他们挖了起来，跳向第一个进入视野的淡金色物体，将巨人打翻。`
+			`你再也见不到它们了，因为更多的生物继续从洞中涌出，向四面八方涌去。有些人只需要花一点时间就可以与躲藏的人交谈，然后再向上移动。`
+			`在一次冲刺中，所有洞都挤满了它们，一切都变暗了。当光线返回时，您会看到自己刚刚从大气层升起。`
+				decline
+
+
+mission "Drak Revelations: Hai"
+	landing
+	minor
+	invisible
+	source "Darkwaste"
+	to offer
+		"flagship model" == "Anomalocaris"
+	on offer
+		conversation
+			`您走下<ship>并开始探索周围的环境。你在着陆的悬崖边缘附近发现了一个小水坑，并观察了一会儿。`
+			`当你意识到你无法再把目光移开时，水坑里似乎正在形成小土堆，而且似乎变得更深了。您注意到微型船只从一个“岛屿”驶向另一个“岛屿”。`
+			`船只四散开来，群岛开始热闹起来。但海浪和阳光变得更加刺眼，很快，高温开始烧焦岛屿和船只，使海洋沸腾。海浪变得越来越高，吞没了整个船只和岛屿，并试图伸手遮住太阳。`
+			`当大海最终平静下来，太阳落山时，所有的岛屿（如果它们还存在的话）都变成了废墟，并且很少有船只在它们之间航行。`
+			`你眨了眨眼，发现水坑又恢复正常了。`
+				decline
+
+
+mission "Drak Revelations Setup: Humanity"
+	landing
+	invisible
+	non-blocking
+	source "Jupiter"
+	to offer
+		has "chosen sides"
+		not "main plot completed"
+	on offer
+		set "drak revelations: humanity"
+		fail
+
+
+mission "Drak Revelations: Humanity"
+	landing
+	minor
+	invisible
+	source "Earth"
+	to offer
+		has "drak revelations: humanity"
+	on offer
+		clear "drak revelations: humanity"
+		conversation
+			`黄昏时分，<ship> 降落在 <origin>，在监督加油程序并完成船舶完整性检查后，您返回住处休息。`
+			`当你打瞌睡时，一道微弱的光线敲击着你的视野边界，在你无法完全识别的边界周围盘旋。您周围的杆向上延伸并连接到支撑结构，就像摇篮一样。平台似乎在黑暗中缓缓旋转。`
+			`突然，一块巨石向你滚落，眼看就要砸碎摇篮，这时光芒闪烁。它消失了。`
+			`摇篮再次旋转。黑暗被血红色的火焰所淹没，这些火焰侵蚀着摇篮的边缘，但就在木头开始发出噼啪声和吱吱声时，光线再次在你的视线周围闪烁，火焰本身开始燃烧殆尽。`
+			`很长一段时间里只有黑暗。然后是一场战斗，无形的实体在摇篮周围相互冲突，并以危险的轻视态度无视它。这一次，你周围爆发出光芒，你的眼睛被迫闭上。`
+			`你再次打开它们，发现自己躺在床上。`
+				decline
+
+
+mission "Drak Revelations: Korath"
+	entering
+	invisible
+	source
+		system "Mesuket"
+	destination "Earth"
+	to offer
+		has "Efreti: Distress Call 7: done"
+	on offer
+		conversation
+			`当你的飞船到达 <origin> 时，你眨了眨眼睛，不再在你的驾驶舱里。`
+			`在岩石高原上，砾石和沙子构成了建筑物的基础，这些建筑物由泥土和铁锈制成的笨重、模糊的人形人物建造而成。一道强光从上方照射下来，照亮了这片区域。`
+			`你感觉时间过得飞快。随着岁月的流逝，这些生物建造了越来越高、越来越宏伟的塔，它们不断升高并逐渐遮挡住了光线。最终，整个高原成为一座巨大圆顶塔的基础。`
+			`光线通过裂缝和缝隙微弱地渗入，但这些生物正在迅速修补这些裂缝，它们似乎对光线发出不满的嘶嘶声。它们开始升温并发光，越来越热，直到它们脱掉肮脏的外壳，变成闪亮、炽热的青铜。`
+			`这些生物以新的形态骄傲而坚强地站立着，但它们的身体继续升温，因此青铜融化，它们的塔楼开始因高温而倒塌和扭曲，直到整个穹顶倒塌。`
+			`你再次睁开眼睛，回到了 <ship> 的驾驶舱。`
+				decline
+
+
+mission "Drak Revelations: Quarg"
+	entering
+	invisible
+	source
+		system "Terra Incognita"
+	destination "Earth"
+	to offer
+		or
+			has "FW Pug 3: Quarg: done"
+			has "FWC Pug 4B: Quarg: done"
+		has "Ruin: Landing: offered"
+		not "entered system by: takeoff"
+	on offer
+		conversation
+			`当你的飞船完成跳跃的那一刻，驾驶舱内的灯光开始闪烁，直到一切都变暗。`
+			`一开始你能看到的只是贫瘠、潮湿的土壤，上方昏暗、遥远的灯光几乎没有照亮。浓浓的雾气从地面的裂缝中向上渗透，远处隐隐约约能辨认出海浪反复拍打的声音。`
+			`一个瘦削的淡金色巨人猛地划破了雾气，一边哀嚎一边砸向地面，试图拍打、踢开地上的积水，但无济于事。光芒闪烁、安静，伴随着它的破碎和哭泣。`
+			`当它闪烁得足够亮时，你就可以辨认出坟墓。在你的周围，它们似乎向各个方向无尽地延伸到地平线。巨人从不触摸或弄脏坟墓，在短暂的休息期间，似乎几乎无法看它们，然后再次被激怒。`
+			`灯一闪就灭了，你就什么也看不见了。你的船的灯光再次亮起，你发现自己回到了驾驶舱。`
+				decline
+
+
+mission "Drak Revelations: Saryds"
+	landing
+	minor
+	invisible
+	source "Chosen Nexus"
+	to offer
+		has "drak revelations: saryds"
+	on offer
+		clear "drak revelations: saryds"
+		conversation
+			`降落在 <origin> 上，您起身退出驾驶舱并开始着陆后检查。当你打开门时，你发现的不是 <ship> 的主走廊，而是一片阳光明媚的空地。回想起来，你的驾驶舱似乎也被一片森林所取代。`
+			`钢铁制成的巨大雄鹿停在林间空地的中央，当一小群淡金色的巨大巨人接近它们时，它们好奇又惊恐地站了起来。巨人轻轻地伸出手臂，一只又一只的雄鹿从暗淡的钢色变成了闪亮的银色。夜幕降临。`
+			`第二天，阳光微弱地回来了。在森林的边缘，你可以看到巨人追逐小动物，并将它们困在小笼子里。雄鹿们又在林间空地里交谈，似乎在争论如何应对外面的战争。太阳又落山了。`
+			`然后场景转移到森林外的田野，现在只有大量闪电照亮，这是由包围整个场景的猛烈雷暴带来的。雄鹿和巨人都死在地上，双方都受到了残酷的伤害。几只雄鹿留下来，悲伤地在布满尸体的大地上行走。他们沮丧地看着破碎的笼子。`
+			`场景正如最初出现的那样展开，你正站在驾驶舱门外。`
+				decline
+

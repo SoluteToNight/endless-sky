@@ -1,0 +1,34 @@
+# Copyright (c) 2025 by Azure
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program. If not, see <https://www.gnu.org/licenses/>.
+
+
+mission "Disabled Aberrant"
+	boarding
+	invisible
+	source
+		government "Aberrant"
+	destination "Earth"
+	on offer
+		conversation
+			branch "boarded ka'het"
+				has "Disabled Ka'het: offered"
+			action
+				log `Successfully boarded an Aberrant. A strange presence seemed to watch during the investigation, one that gave a sense of foreboding. It appears to be a single, ship-sized organism that can travel in space using a special exoskeleton.`
+			`你把<flagship>画在这个奇怪的实体旁边，尽管它缺乏运动，但似乎散发着一种不祥的气息。当你接近船体脆弱部分的一个洞时，你会感觉这艘船有根本性的问题，这似乎是某种外壳，里面包裹着一个巨大的鼻涕虫状生物。暴露在武器火力下，该生物似乎已经死了，但你几乎感觉好像有什么东西在看着你。`
+			`你可以毫不费力地与它的“外骨骼”对接，尝试决定下一步该做什么。虽然异常号与普通飞船有很大不同，你无法指挥它，但可以肯定地说你现在可以掠夺它的一些装备。其余部分似乎嵌入某种坚硬的玻璃状组织中；也许摧毁这艘船可以释放他们。`
+				decline
+			label "boarded ka'het"
+			action
+				log `Successfully boarded an Aberrant. It appears to strongly resemble a Ka'het, yet one that has been twisted into a new form, one that feels fundamentally wrong.`
+			`你将 <flagship> 画在这个奇怪但又几乎熟悉的实体旁边，尽管它缺乏运动，但似乎散发着一种不祥的气息。这艘船感觉有根本性的问题，它表面上类似于一艘 Ka'het，但显然不是——也许是一个远亲，或者是一艘被其他事物不可逆转地改变了的 Ka'het。你接近它船体脆弱部分的一个洞，在那里一只“het slug”看起来已经死了，但你几乎感觉它仍在注视着你。`
+			`你可以毫不费力地与它的“外骨骼”对接，尝试决定下一步该做什么。虽然异常号与普通飞船有很大不同，你无法指挥它，但可以肯定地说你现在可以掠夺它的一些装备。其余部分似乎嵌入某种坚硬的玻璃状组织中；也许摧毁这艘船可以释放他们。`

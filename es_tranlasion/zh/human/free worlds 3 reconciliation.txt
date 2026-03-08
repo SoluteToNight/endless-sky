@@ -1,0 +1,2734 @@
+# Copyright (c) 2015 by Michael Zahniser
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program. If not, see <https://www.gnu.org/licenses/>.
+
+ship "Gunboat" "Gunboat (Raven)"
+	outfits
+		"Electron Beam" 2
+		"Electron Turret"
+		"Fission Reactor"
+		"Supercapacitor" 3
+		"D14-RN Shield Generator"
+		"Cooling Ducts"
+		"Fuel Pod" 3
+		"Outfits Expansion" 2
+		"A250 Atomic Thruster"
+		"A255 Atomic Steering"
+		"Scram Drive"
+
+
+
+mission "FW Reconciliation 1"
+	name "从 <planet> 获取 Ijs"
+	description "将 Katya 和 Sawyer 以及 Raven 的飞船（荷鲁斯之眼）带到 <destination> ，并拿起 Ijs 和他的用于探测原子测试的设备。"
+	autosave
+	source "New Tibet"
+	destination "Winter"
+	to offer
+		has "FW Defend New Tibet: done"
+	passengers 2
+	on fail
+		dialog phrase "free worlds failed"
+	
+	npc accompany save
+		personality escort timid
+		government "Navy Intelligence"
+		ship "Gunboat (Raven)" "Eye of Horus"
+	
+	on visit
+		dialog `您降落在 <planet> 上，但意识到 Katya、Sawyer 和 Raven 尚未全部到达。最好离开并等待他们所乘坐的船只。`
+	
+	on offer
+		log "Decided to rescue the Syndicate defector rather than turning him over to the Syndicate. A Questioner who works with Navy Intelligence has confirmed that he is telling the truth, and a ceasefire has been declared. Also, the Navy has agreed to release Katya now that there is evidence proving her innocence."
+		log "People" "Raven" `Raven, whose full name is unknown, is a Questioner who works for Navy Intelligence. Through some combination of training and natural ability, she is able to reliably detect whether or not someone is telling the truth.`
+		log "Factions" "Navy Intelligence" `It is unclear why the Navy needs their own intelligence force, since the Republic already has a Department of Intelligence that is incredibly powerful and well-funded. Rumors say that one of the main purposes of Navy Intelligence is to watch for human rights abuses being committed by the Republic itself and for other questionable activities that the Department of Intelligence might turn a blind eye toward or even collude with.`
+		event "fw conservatory founded"
+		conversation
+			`在前往太空港的路上，你向卡蒂亚了解了战争的情况。她说，情报一直把她关在一个相对舒适但完全孤立的牢房里；她甚至不确定这是在哪个世界。从她的提问者似乎对自由世界越来越沮丧这一事实来看，她知道你仍在设法抵抗海军，但他们没有与她分享任何细节。`
+			`你在一家小茶馆里与瑞文会面，这家茶馆距离太空港足够近，每当另一艘自由世界的主力舰抵达以应对辛迪加的袭击时，桌子都会震动。 “谢谢你让我降落在这里，”雷文说。 “现在，你有什么问题要问我？”`
+			choice
+				`“我们现在与共和国和平相处了吗？”`
+					goto peace
+				`“你是某种读心术吗？”`
+					goto read
+				`“海军情报部门到底是做什么的？”`
+					goto intelligence
+			
+			label peace
+			`“好吧，”她说，“只有议会才能决定这一点。但是海军已被命令不得攻击自由世界的船只，而且索耶带来的消息已经成为公众所知，所以你会发现现在大多数共和国世界都会愿意欢迎你。”`
+			choice
+				`“你是某种读心术吗？”`
+					goto read2
+				`“海军情报部门到底是做什么的？”`
+					goto intelligence2
+			
+			label read
+			`她笑着说：“不，我只是一个很好的倾听者。”当她看到你对这个答案不满意时，她会详细说明。 “我们的官方术语是‘同理心’。我们吸收周围人情绪状态的能力更强。再加上大量的训练，我们的测谎仪比任何机器都更好。但如果你问我的能力是通过肢体语言和声音暗示发挥作用，还是通过某种神秘力量发挥作用，老实说，我们没有人确切知道这一点。”`
+			choice
+				`“我们现在与共和国和平相处了吗？”`
+					goto peace2
+				`“海军情报部门到底是做什么的？”`
+					goto intelligence2
+			
+			label intelligence
+			`她说：“我想你真正的问题是，既然共和国已经拥有一个非常强大、资金充足、几乎无所不知的独立于海军的情报部，为什么还要存在海军情报部？简单的回答是，我们不信任他们。需要有人监视观察者。”`
+			choice
+				`“我们现在与共和国和平相处了吗？”`
+					goto peace2
+				`“你是某种读心术吗？”`
+					goto read2
+			
+			label peace2
+			`“好吧，”她说，“只有议会才能决定这一点。但是海军已被命令不得攻击自由世界的船只，而且索耶带来的消息已经成为公众所知，所以你会发现现在大多数共和国世界都会愿意欢迎你。”`
+				goto next
+			
+			label read2
+			`她笑着说：“不，我只是一个很好的倾听者。”当她看到你对这个答案不满意时，她会详细说明。 “我们的官方术语是‘同理心’。我们吸收周围人情绪状态的能力更强。再加上大量的训练，我们的测谎仪比任何机器都更好。但如果你问我的能力是通过肢体语言和声音暗示发挥作用，还是通过某种神秘力量发挥作用，老实说，我们没有人确切知道这一点。”`
+				goto next
+			
+			label intelligence2
+			`她说：“我想你真正的问题是，既然共和国已经拥有一个非常强大、资金充足、几乎无所不知的独立于海军的情报部，为什么还要存在海军情报部？简单的回答是，我们不信任他们。需要有人监视观察者。”`
+				goto next
+			
+			label next
+			`卡蒂亚问道：“我们现在该怎么办？索耶的证据足以结束这场战争吗？”`
+			`雷文说：“有可能。尤其是因为辛迪加追捕他而自证其罪。但是辛迪加在议会中拥有如此大的权力，我们收集的证据越多越好。这意味着我们应该访问他所说的开发完成的世界，并在那里寻找更多证据。”`
+			`卡蒂亚说：“<last> 队长，Ijs Springborn 还在为自由世界工作吗？”`
+			`您告诉她，您上次听到的消息是，Ijs 正在帮助在 <planet> 上建立一所新大学。她说：“我们应该带他一起去。雷文，你也和我们一起旅行吗？”`
+			`“是的，”她说。 “我会告诉我的船和船员做好准备。”`
+				accept
+
+
+
+event "fw empty gienah"
+	system Gienah
+		fleet "Small Core Pirates" 5000
+
+event "fw restore gienah"
+	system Gienah
+		fleet "Small Core Pirates" 500
+		fleet "Large Core Pirates" 800
+		fleet "Large Syndicate" 5000
+
+mission "FW Reconciliation 1B"
+	name "前往<planet>"
+	description "将 Ijs、Sawyer 和 Katya 带到 <system> 。摧毁所有监视你的辛迪加飞船，然后降落在 <planet> 上。确保雷文的船也到达那里。你可能需要贿赂辛迪加世界才能让你加油。"
+	autosave
+	landing
+	source Winter
+	destination Mutiny
+	clearance
+	passengers 3
+	blocked "You need another bunk free (for Ijs) in order to continue this mission."
+	to offer
+		has "FW Reconciliation 1: done"
+	on fail
+		dialog phrase "free worlds failed"
+	
+	on offer
+		event "fw empty gienah"
+		conversation
+			`当您抵达卡蒂亚的那一刻起，她就迫不及待地想要参观音乐学院并找到 Ijs。在他来到这里的那段时间里，这里已经发展成为一个小而热闹的社区，成群结队的学生背着背包，穿着厚厚的外套，从一栋楼走到另一栋楼。你找到了 Ijs 的办公室；卡蒂亚敲了敲门，说道：“斯普林博恩教授，您现在有办公时间吗？”`
+			`他立即认出了她的声音，并跑出办公室拥抱她。 “卡蒂亚！你自由了！战争结束了吗？”`
+			`“不完全是，”她说，“但我们已经找到了轰炸机。显然整件事都是由辛迪加赞助的。你还保留着我们在整件事开始时收集到的同位素指纹吗？”`
+			`艾斯很快就找到了资料，并收集了他的装备。 “我只需要让他们知道我暂时需要一个替代者，”他说。`
+			`回到太空港，你与雷文会面。 “事情就是这样，”她说。 “我们需要到达 <planet> ，摧毁所有正在监视的辛迪加船只，然后着陆并希望我们有时间在更多辛迪加抵达之前收集证据。除非你有冲压铲，否则我们可能需要贿赂才能进入一些辛迪加世界来补充燃料。当然，我会指望你帮助确保我的船只安全。有问题吗？”`
+			choice
+				`“不用了，我准备走了！”`
+					goto leaving
+				`“他们不会早在我们到达之前就销毁了任何证据吗？”`
+			`“可能，”她说，“但如果他们在那里进行任何测试，我们应该能够拾取残留物。或者至少，我的人能够做到，因为他们拥有军用级海军装备。”`
+			`“我们也是，”艾斯不好意思地说。`
+			`雷文看上去有些惊讶，然后说道：“没关系，我确信有一个关于你如何得到那件装备的好故事，但它可以等到下次。我们开始吧。”`
+			label leaving
+			branch scram
+				or
+					has "flagship attribute: scram drive"
+					has "flagship attribute: jump drive"
+			`当你和其他人开始走向着陆场时，雷文向你走来。 “队长，您确定准备好前往<planet>了吗？”`
+			choice
+				`“当然。我可以在睡梦中炸毁一千支辛迪加舰队。”`
+				`“我担心在去那里的路上与辛迪加的船只战斗。”`
+					goto worried
+			`乌鸦坏笑着。 “如果能用武力穿过辛迪加空间，那就太好了。但是，万一辛迪加的力量太多，我们被迫逃离，我建议你把你的超光速引擎换成紧急驱动器。辛迪加快银是出了名的敏捷，他们的质子枪让普通超光速引擎几乎不可能跳跃。`
+				goto scanning
+			label worried
+			`“这确实是一个危险。辛迪加快银是出了名的敏捷，如果他们蜂拥而至，他们的质子枪就会把你推来推去，阻止普通超光速引擎跳跃。”`
+			choice
+				`“有什么办法可以超越他们的快银吗？”`
+				`“那么我们必须摧毁我们遇到的每一个快银吗？”`
+					goto destroy
+			`“在更大的战舰上？那不太可能，”雷文回答道，“但还有另一种方法可以更容易地逃离它们。”`
+				goto explanation
+			label destroy
+			`“不一定。仅仅因为普通超空间驱动器无法跳跃并不意味着没有办法逃脱快银。”`
+			label explanation
+			`你问：“你是什么意思？”`
+			`雷文说：“我建议你把超光速驱动器换成急停驱动器。与超光速驱动器不同，使用超速驱动器时你不需要完全静止，即使你被武器火力推到，你也可以跳跃。”`
+			label scanning
+			choice
+				`“谢谢你的建议。”`
+				`“等等，你怎么知道我没有紧急驾驶？”`
+					goto secrets
+			`“不用谢我，”雷文说。 “我只是照顾自己。毕竟，如果你被炸毁，他们接下来可能会试图杀死我。”她眨了眨眼睛，然后走向她的炮艇。`
+				accept
+			label secrets
+			`雷文将一根手指放在嘴边，眨了眨眼，转向她自己的炮艇。`
+				accept
+			label scram
+			`您引导 Ijs 和其他人返回您的飞船并准备设定 <planet> 的航向。`
+				accept
+	
+	npc accompany save
+		personality escort timid
+		government "Navy Intelligence"
+		ship "Gunboat (Raven)" "Eye of Horus"
+	
+	on visit
+		dialog "您已到达 <planet> ，但您要么将 Raven 的飞船抛在后面，要么未能摧毁一些监视着您的辛迪加飞船。"
+	
+	npc evade
+		personality heroic staying nemesis
+		system Gienah
+		government Syndicate
+		ship "Splinter (Mark II)" "Silence"
+		ship "Quicksilver (Mark II)" "Light-Bearer"
+		ship "Manta (Mark II)" "Morning Star"
+	
+	on complete
+		event "fw restore gienah"
+
+
+
+mission "FW Reconciliation 1C"
+	name "将证据交给<planet>"
+	description "在你或雷文不被辛迪加杀死的情况下前往<planet>，向议会出示你的证据和索耶的供词。"
+	landing
+	source Mutiny
+	destination Earth
+	clearance
+	passengers 3
+	to offer
+		has "FW Reconciliation 1B: done"
+	on fail
+		dialog phrase "free worlds failed"
+	
+	on offer
+		log "Collected atmospheric samples from Mutiny, a planet deep in Syndicate space, and verified that a nuclear test has been performed here using isotopes that match those from the attacks on Geminus and Martini. Also found carefully hidden signs of an underground test site."
+		conversation
+			`您在 <origin> 表面低空掠过，气闸稍微打开，以便 Ijs 收集大气样本。他穿着压力服，通过压力服的无线电说道：“这里的任何残留物都会非常微弱。再过几分钟就可以了。”`
+			`索耶将带您前往进行秘密开发的地点。除了一片宽阔且杂草丛生的空地之外，什么也没有留下。检查雷达后发现没有来袭船只，你就有着陆的危险。索耶说，几年前这里还有建筑物，但现在连地基都没有了，扫描金属物体的传感器什么也没发现，甚至连一颗钉子都没有。`
+			`然而，艾斯指出了一些人类居住的微妙迹象。 “像这样的空地通常会在火灾中形成，”他说，“但请注意，空地边缘的树木上没有火痕。”`
+			`雷文说：“我们的地球物理雷达正在探测到地下结构。几个深井，以及在一次大爆炸中受到压力和破裂的岩石。他们很好地隐藏了其他一切，但如果你给一颗行星留下了那么严重的疤痕，它就不会消失。石头会说话。”`
+			`当你继续检查现场时，雷文的副驾驶突然在她的炮艇门外对你大喊。 “辛迪加飞船已进入星系！我们需要带着证据返回地球，尽快！”`
+				launch
+	
+	npc accompany save
+		personality escort timid
+		government "Navy Intelligence"
+		ship "Gunboat (Raven)" "Eye of Horus"
+	
+	on visit
+		dialog "您已到达 <planet> ，但您把 Raven 的船落在后面了！最好先出发，等待他们到达这个星系。"
+	
+	npc
+		personality heroic nemesis waiting
+		government Syndicate
+		fleet "Small Syndicate"
+	
+	npc
+		personality heroic nemesis entering
+		government Syndicate
+		fleet "Small Syndicate"
+	
+	npc
+		personality heroic nemesis waiting
+		government Syndicate
+		fleet "Large Syndicate"
+		system Markab
+	
+	npc
+		personality heroic nemesis waiting
+		government Syndicate
+		fleet "Large Syndicate"
+		system Alnair
+
+
+
+mission "FW Reconciliation 2"
+	name "参观深渊"
+	description "一位来自深渊的代表给了你一张纸条，要求你在 <destination> 访问他们。与 Katya、Ijs、Sawyer 和 Raven 一起前往那里。"
+	autosave
+	landing
+	source Earth
+	destination Valhalla
+	passengers 3
+	to offer
+		has "FW Reconciliation 1C: done"
+	on fail
+		dialog phrase "free worlds failed"
+	
+	npc accompany save
+		personality escort timid
+		government "Navy Intelligence"
+		ship "Gunboat (Raven)" "Eye of Horus"
+	
+	on visit
+		dialog "您已到达 <planet> ，但您把 Raven 的船落在后面了！最好先出发，等待他们到达这个星系。"
+	
+	on offer
+		"reputation: Deep Security" >?= 1
+		log "Parliament still refuses to believe that the Syndicate could have been behind the attacks; the Syndicate has far too much power and influence in the government of the Republic. But, the people of the Deep might be more open to the defector's story."
+		event "deep sky tech available"
+		conversation
+			`当你带着辛迪加的舰船紧追不舍地逃离辛迪加空间时，你不禁注意到没有共和国舰船前来帮助你或攻击你的追击者。显然，在议会做出决定之前，他们还没有准备好打击辛迪加。当你等待议会听取你的证据时，卡蒂亚轻声问你：“那么，你对我们在这里的机会感觉如何？”`
+			choice
+				`“我认为我们的证据是不可否认的。我们不可能无法说服他们。”`
+					goto optimism
+				`“我担心辛迪加在议会中拥有多少权力。如果他们拒绝相信我们怎么办？”`
+					goto pessimism
+			
+			label optimism
+			`当 Sawyer 讲述他的故事和证据时，你会继续感到乐观，并得到 Ijs 和 Raven 团队收集的额外数据的证实。但当议员们开始质问索耶时，他们几乎所有的问题听起来都更像是对他的攻击，而不是试图更多地了解该辛迪加参与恐怖袭击的情况。`
+				goto why
+			
+			label pessimism
+			`事实证明你的悲观主义是有道理的。听证会开始得很顺利，有索耶的证词以及艾斯和雷文团队收集的额外证据。但当开始提问时，议员们提出的几乎每一个问题似乎都不是为了追查恐怖阴谋的真相，而是为了攻击或抹黑索耶。`
+				goto why
+			
+			label why
+			`你会情不自禁地意识到这里有多少人代表着辛迪加世界。其中一位年长的男子问道：“辛迪加可能出于什么原因发动这样的袭击？”`
+			`索耶说：“他们对银河经济有复杂的数学模型，这些模型预测了即将到来的经济衰退，这是几个世纪以来最严重的一次。这场战争阻止了经济衰退。从重视经济增长高于一切的人的角度来看，战争是比经济衰退更好的选择。”`
+			`“这完全是无稽之谈，”该男子说。 “这就是不懂商业的人会发明的荒谬阴谋论。”`
+			`听证会的其余部分并没有好多少，但当你离开时，来自深渊的一位代表与你握手，你感觉到一张纸被压进了你的手掌。你静静地把它装进口袋，回到船上后打开它。上面写着：“请访问我们的瓦尔哈拉殿堂。”`
+				accept
+
+
+
+mission "FW Navy Out Of Rastaban"
+	landing
+	destination "Dancer"
+	to offer
+		has "FW Reconciliation 2: offered"
+		karma > 0
+	
+	on offer
+		event "navy out of rastaban" 5
+		conversation
+			`你收到阿隆多发来的一条简短信息：“好消息，舰长！作为一种善意的表示，海军开始从拉斯塔班和射手座三角洲撤出。这些世界很快就会恢复到我们的控制之下。一定要告诉其他人。还有，告诉卡蒂亚，我很高兴她自由了，并期待着见到她。”你将他的信息传递给 Katya 和 Ijs。`
+				decline
+
+
+
+mission "fw tarazed joins"
+	landing
+	invisible
+	non-blocking
+	to offer
+		has "FW Reconciliation 2: done"
+		not "FW Reconciliation 2A: done"
+		karma > 0
+	on offer
+		event "fw tarazed joins"
+		fail
+
+
+
+mission "FW Reconciliation 2A"
+	name "Farpoint 上的誓言守护者"
+	description "前往<destination>与海军誓言者会面。瑞文的船将继续与你同行。"
+	autosave
+	landing
+	source Valhalla
+	destination Farpoint
+	clearance
+	passengers 2
+	to offer
+		has "FW Reconciliation 2: done"
+	on fail
+		dialog phrase "free worlds failed"
+	
+	on offer
+		log `The governor of Valhalla, in the Deep, has proposed a "police action" to arrest one or more of the Syndicate leaders and bring them to justice. It will be a secret joint operation between the Free Worlds, the Deep, and the Oathkeepers.`
+		conversation
+			`当你登陆瓦尔哈拉时，一名男子出现在你的船上，自我介绍为瓦尔哈拉总督埃德里克·弗林特。他邀请大家一起去他家吃晚饭，那是位于市中心一栋摩天大楼二十三楼的一套公寓。在那里，他向您介绍了其他几位地区州长和当局。`
+			`“你可能知道，”埃德里克说，“在共和国成立之前，深海是自治的。事实上，在太空时代最黑暗的几个世纪里，深海作为文明的灯塔脱颖而出，这里海盗不被容忍，所有旅行者都是安全的。当我们加入共和国时，我们保留了管理我们自己领土的权力，这个权力包括追捕逃到我们通常管辖范围之外的逃犯的权利。”`
+			choice
+				`“你建议对辛迪加采取‘警察行动’？”`
+					goto police
+				`“等等，在我们讨论细节之前，你是说你相信索耶针对辛迪加的证词吗？”`
+			`“每个人都相信他，”其他州长之一说道，“整个人类空间，在议会也是如此。我们都可以看到证据是不可否认的。人们不同意的是如何回应这些证据。”`
+			label police
+			`“我们希望看到正义得到伸张，”埃德里克说。 “我们的建议是，由我们管辖下的一支舰队，由自由世界和守誓者船只加入，前往核心区并逮捕至少一名恐怖袭击背后的辛迪加策划者。这样的行动将满足合法性的技术要求，前提是在逮捕之前，我们的一个法院听取了索耶的证词并宣布辛迪加个人有罪。”`
+			choice
+				`“‘技术上合法’对我来说听起来像是‘我们完全清楚的事情会给我们带来麻烦’的委婉说法。”`
+				`“一支战舰舰队究竟如何在没有大规模战斗的情况下穿越辛迪加空间？”`
+					goto travel
+			
+			`艾斯对此大笑。 “放心，船长。多年来我一直在做‘技术上合法’的事情。只是偶尔会出现灾难性的错误。但是总督，如果辛迪加看到你来了，你将需要一支完整的战争舰队，而不仅仅是几艘船。”`
+			label travel
+			`“这就是为什么舰队将由来自三个不同组织的船只组成，”埃德里克说。 “你会找到一个理由去地球旅行，也许你的一艘精美的新无畏舰作为护航。当你到达时，恰好有一支守誓者巡逻队经过同一个星系。还有一支来自深海的商船队。当然，还有它自己的一组护航。”`
+			`“在进入辛迪加太空之前，我们需要确切地知道我们的目标生活在哪个星球上，”卡蒂亚说。 “而且，如果你想在逮捕前立即进行法庭审判，那么索耶似乎需要留在这里。”`
+			`“确实如此，”艾德瑞克说道，“但我向你保证，他离开辛迪加这里比人类空间中的任何其他地方都安全，包括你自己的领地。至于定位目标，这就是守誓者要求你去远点拜访他们的原因。”`
+			branch tarazed
+				karma > 0
+			`晚上剩下的时间是更休闲的交谈时间，有很多美味的食物和美酒。`
+				goto end
+			
+			label tarazed
+			`晚上剩下的时间是更休闲的交谈时间，有很多美味的食物和美酒。阿隆多向您发送消息，通知您塔拉兹德在收到议会听证会的消息后决定正式加入自由世界，这一消息给卡蒂亚和艾斯带来了喜悦。`
+			label end
+			`有一次，埃德里克把你拉到一边说：“我请求允许你使用战争期间这里开发的一些新技术。特别是，请随意访问这里的装备商并安装一个冲压铲；你的下一次任务将需要一个。还有，带上这个。”他递给你一张数据卡。 “这是索耶证据的副本，以防万一这里发生什么事情。一定要保管好。”`
+				accept
+	
+	npc accompany save
+		personality escort timid
+		government "Navy Intelligence"
+		ship "Gunboat (Raven)" "Eye of Horus"
+	
+	on visit
+		dialog "您已到达 <planet> ，但您把 Raven 的船落在后面了！最好先出发，等待他们到达这个星系。"
+
+
+
+mission "FW Reconciliation 2B"
+	name "前往风暴要塞"
+	description "索耶已经任命了几位辛迪加高管，他们肯定参与了这一阴谋。前往风暴要塞的无法无天的世界，在那里您将能够购买有关这些高管居住地点的信息。"
+	autosave
+	landing
+	source Farpoint
+	destination Stormhold
+	clearance
+	passengers 2
+	to offer
+		has "FW Reconciliation 2A: done"
+	on fail
+		dialog phrase "free worlds failed"
+	
+	on offer
+		conversation
+			branch know
+				has "FW Alphas 1.1: done"
+			`在 Farpoint，迎接你的不是别人，正是著名的守誓者领袖威廉·丹福斯海军上将。即使在自由世界中，丹福斯也因其在战斗中的勇气和冷静以及对无数人道主义任务的领导而受到尊重。`
+				goto introductions
+			label know
+			`在远点，你会遇到海军上将丹福斯，他是守誓者的领袖，之前曾协助你将阿尔法和他们的雇佣舰队赶出毒林。他很高兴再次见到你，你对阮司令的去世表示哀悼；丹福斯告诉你，杀害他的凶手至今仍未找到。`
+			label introductions
+			`Ijs 和 Katya 向 Danforth 做了自我介绍，Katya 说道：“先生，当殖民地被疏散时，我还是希望号上的一个孩子。您的船将我的家人带到了安全的地方，我永远不会忘记，在我们的旅程中，您每天晚上都会走过我们住的货舱，检查以确保我们所有的需求都得到满足。以前我从来没有机会当面感谢您。”`
+			`丹佛斯很惊讶。 “雷诺兹议员，”他说，“谢谢你。我对你在议会的职业生涯有些兴趣，但遗憾的是，直到现在我们才见过面。但我很高兴我们终于有机会一起工作。”`
+			`雷文说：“埃德里克州长提到了一项计划，旨在追查卡斯托尔和波勒克斯系统袭击背后的辛迪加高管。”`
+			`“确实如此，”丹福斯说。 “这里的东南部是一个无人居住的恒星系统区域，是辛迪加空间的后门。很少有船只经过那里，因为没有地方加油，但只要有一个油箱或足够的燃料容量，旅行是可能的。另一边的第一个有人居住的世界是风暴要塞的无法无天的世界。在那里，你肯定能找到一个对辛迪加内部运作有足够了解的联系人，他可以告诉你至少我们的几个目标的家……只要付出代价。”他递给卡蒂亚一大堆信用筹码。`
+			`雷文说：“我将和守誓者一起留在这里。<last> 队长，很高兴与您合作。我们希望您能尽快为我们带回这些信息并返回这里。”`
+				accept
+	on visit
+		dialog `您降落在 <planet> 上，但意识到载有 Katya 和 Eyes 先生的护卫尚未进入系统。最好出发并等待它的到来。`
+
+
+
+mission "FW Reconciliation 2C"
+	name "返回远点"
+	description "返回 <planet>，并提供有关某些集团高管的下落的信息。走回程，这样辛迪加就不会注意到你的存在。"
+	autosave
+	landing
+	source Stormhold
+	destination Farpoint
+	clearance
+	passengers 2
+	to offer
+		has "FW Reconciliation 2B: done"
+	on fail
+		dialog phrase "free worlds failed"
+	
+	on offer
+		log "Visited a village on a lawless world in northern Syndicate space, and purchased information on the whereabouts of several of the Syndicate executives who were implicated in the terrorist attacks."
+		conversation
+			`你降落在风暴要塞的一个小村庄附近，用丹福斯给你的钱进行了一些小额贿赂后，最后一个村民回忆起当地的一个海盗团伙是由一位前辛迪加经理领导的。你怀着忐忑不安的心情飞到了他的据点，他同意和你“做生意”。`
+			`卡蒂亚给他看了索耶的名单。 “所以，这些都是坏孩子，是吧？”他说。显然，索耶揭露真相的消息甚至已经传到了这个遥远的世界。他查看了名单，并能够告诉您这五个人中的三个住在哪里。 “我很乐意看到所有这些混蛋都被打倒，”他说。`
+			`你把丹福斯剩下的钱给了他，感谢他对你的帮助——并要求他对你的来访保密。 “没问题，”他说。当你离开时，他补充道，“还有，斯普林博恩先生……你是我的英雄，伙计。很高兴你仍然在寻找方法来纠缠辛迪加。” Ijs 似乎对被认出感到惊喜。`
+				accept
+	on visit
+		dialog `您降落在 <planet> 上，但意识到载有 Katya 和 Eyes 先生的护卫尚未进入系统。最好出发并等待它的到来。`
+
+
+
+mission "FW Defend Farpoint"
+	landing
+	name "保卫远点"
+	description "协助守誓者保卫<planet>免受海盗袭击，然后返回星球。"
+	autosave
+	source Farpoint
+	clearance
+	passengers 2
+	to offer
+		has "FW Reconciliation 2C: done"
+	on fail
+		dialog phrase "free worlds failed"
+	
+	on offer
+		conversation
+			`当你回到远点时，丹福斯热切地见到你并询问你获得了哪些信息。你告诉他。 “所以，”他说，“一名高管在铸造厂，一名高管在赫菲斯托斯。这两颗行星都是辛迪加的核心行星，上面有数十亿人口。这不可能行得通。但是这个金融人物，亚历山大·索伊伦特……你的联系人说他住在一艘在宁布斯号上航行的巨型游艇上。现在，这是一个更有吸引力的目标。根据索耶的说法，辛迪加的金融部门是那些认为战争在第一时间会有利的人。地方。”`
+			`就在你们说话的时候，丹福斯的一名军官跑进了房间。 “长官，”他说，“我们检测到一支海盗船队即将到来。”`
+			`丹福斯发誓。 “当然，这是我真正的工作，”他解释道，“保卫北方免受海盗入侵。这不是我们必须击退的第一次攻击，最近议会一直在寻找理由将我最好的船只重新分配到其他地方。<last>船长，你愿意加入防御舰队吗？一旦他们被赶走，我们就会结束这次谈话。”`
+			`你赶紧回到你的船上，加入防御者行列……`
+				launch
+	
+	npc
+		government "Navy (Oathkeeper)"
+		personality heroic
+		fleet
+			names "republic capital"
+			fighters
+				names "republic fighter"
+			variant
+				"Carrier"
+				"Lance" 8
+				"Combat Drone" 6
+				"Cruiser"
+				"Combat Drone" 4
+				"Rainmaker" 2
+		fleet
+			names "republic capital"
+			fighters
+				names "republic fighter"
+			variant
+				"Cruiser (Mark II)"
+				"Combat Drone" 4
+				"Rainmaker (Mark II)" 2
+				"Gunboat (Mark II)" 2
+	
+	npc disable
+		government Pirate
+		system Mintaka
+		personality heroic
+		fleet
+			names "pirate"
+			variant
+				"Leviathan (Heavy)"
+				"Firebird (Plasma)" 2
+				"Hawk (Rocket)" 2
+		fleet
+			names "pirate"
+			variant
+				"Leviathan"
+				"Raven (Afterburner)" 2
+		fleet
+			names "pirate"
+			variant
+				"Leviathan (Laser)"
+				"Firebird" 3
+		fleet
+			names "pirate"
+			variant
+				"Splinter (Laser)"
+				"Manta" 2
+				"Quicksilver" 5
+	
+	on visit
+		dialog `您已降落在 <planet> 上，但仍有海盗船在头顶盘旋。你应该起飞并帮助解决它们。`
+	on complete
+		payment 1000000
+
+
+
+mission "FW Embassy 1"
+	name "来自地球的大使"
+	description "共和国已同意在自由世界设立大使馆。前往地球会见大使并护送他们前往自由空间。"
+	autosave
+	landing
+	source Farpoint
+	destination Earth
+	clearance
+	passengers 2
+	to offer
+		has "FW Defend Farpoint: done"
+	on fail
+		dialog phrase "free worlds failed"
+	
+	on offer
+		conversation
+			`当你着陆时，卡蒂亚告诉你，“<first>，我们刚刚收到了来自自由世界参议院的消息。他们已经安排在伯恩设立一个共和国大使馆，并在地球上设立一个自由世界大使馆。我们被要求会见地球上的大使并护送他们前往伯恩。”`
+			`几分钟后，丹福斯海军上将抵达您的船。 “<last> 队长，”他说道，“我要感谢您的帮助。”他递给你一张百万信用筹码。`
+			choice
+				`“谢谢您，先生。”`
+					goto next
+				`“哇，这是我听说过的最大的行星防御赏金。”`
+			`“这纯粹是为了你作为私人船长，为了补偿你的协助，”他说。 “我不希望你认为我以任何方式向自由世界提供财政支持，因为那是非法的。”`
+			`“当然不是，先生，”你说。 “谢谢。”`
+			label next
+			`“别提了，”他眨了眨眼说道。 “现在，我认为你最好前往地球并接那些大使。据我所知，既然瑞文没有和你一起旅行，人们开始询问这位自由世界的机长在无人护送的情况下在共和国太空中飞行做什么。”`
+				accept
+	on visit
+		dialog `您降落在 <planet> 上，但意识到载有 Katya 和 Eyes 先生的护卫尚未进入系统。最好出发并等待它的到来。`
+
+
+
+mission "FW Embassy 1B"
+	landing
+	name "驻伯恩大使"
+	description "护送这艘载有共和国大使的豪华船只前往自由世界首都 <destination>。"
+	autosave
+	source Earth
+	destination Bourne
+	passengers 2
+	to offer
+		has "FW Embassy 1: done"
+	on fail
+		dialog phrase "free worlds failed"
+	
+	on offer
+		conversation
+			branch "star queen"
+				has "ship model: Star Queen"
+				has "outfit (installed): Luxury Accommodations"
+			branch luxury
+				has "outfit (installed): Luxury Accommodations"
+			`不幸的是，共和国大使的表现符合你对共和国外交官的所有最坏的刻板印象：穿着花哨、不实用的衣服，携带着数量惊人的行李。起初你担心是否有足够的空间容纳他们，但其中一个人解释说他们不会梦想乘坐你肮脏的旧船旅行；他们将乘坐 Star Queen 豪华客轮以时尚的方式旅行，而您唯一的职责就是确保他们的安全。尽管你认为他们在你自己的船上会安全得多，但你别无选择，只能默许。`
+				accept
+			label luxury
+			`不幸的是，共和国大使的表现符合你对共和国外交官的所有最坏的刻板印象：穿着花哨、不实用的衣服，携带着数量惊人的行李。起初你担心是否有足够的空间容纳他们，但其中一个人解释说他们不会梦想乘坐你肮脏的旧船旅行；他们将乘坐 Star Queen 豪华客轮以时尚的方式旅行，而您唯一的职责就是确保他们的安全。尽管拥有最先进的设施，但你别无选择，只能默许。也许他们宁愿与共和国船员一起旅行，即使他们在自己的船上会安全得多。`
+				accept
+			label "star queen"
+			`不幸的是，共和国大使的表现符合你对共和国外交官的所有最坏的刻板印象：穿着花哨、不实用的衣服，携带着数量惊人的行李。起初你担心是否有足够的空间容纳他们，但其中一个人解释说他们不会梦想乘坐你肮脏的旧船旅行；他们将乘坐 Star Queen 豪华客轮以时尚的方式旅行，而您唯一的职责就是确保他们的安全。尽管你经营着自己的星际女王豪华邮轮，但你别无选择，只能默许。也许他们宁愿与共和国船员一起旅行，即使他们在自己的船上会安全得多。`
+				accept
+	
+	npc accompany save
+		personality escort timid
+		government Republic
+		ship "Star Queen" "Lady of the Lake"
+	
+	on visit
+		dialog phrase "generic arrived-without-npc dialog"
+
+
+
+event "fw reconciliation break"
+
+mission "FW Reconciliation Break"
+	name "Katya 和 Ijs 至 <planet>"
+	description "带 Katya 和 Ijs 到 <destination> 享受当之无愧的休假。然后，在等待参议院选择大使团队的同时，您将可以自由地花一些时间升级您的飞船。"
+	autosave
+	landing
+	source Bourne
+	destination Skymoot
+	to offer
+		has "FW Embassy 1B: done"
+	passengers 2
+	
+	on offer
+		log "Dropped off a team of Republic diplomats on Bourne. It seems like for now, the ceasefire is holding, and public opinion is slowly turning to favor the Free Worlds rather than the Syndicate. But the Syndicate leaders must still be brought to justice. The Council will be in touch when they are ready to help launch an attack on the Syndicate."
+		conversation
+			`从阿隆多看到卡蒂亚时眼睛里放出的光芒就可以看出，他现在想做的就是追上她，庆祝她的自由。但他扮演了一名优秀外交官的角色，护送共和国大使前往新驻地。一路上，他与他们进行愉快的闲聊，称赞他们的风格和成熟。你和你一样了解他，你可以看出他正在保留对他们的更严厉的评论，直到他们听不到为止。`
+			`当他们被解决的那一刻，他给了卡蒂亚一个拥抱，说道：“卡蒂亚！很高兴你能回到我们身边。委员会再次拥有五名成员。我想你已经被告知托梅克的……离职和 <first> 的晋升了？”她点点头。`
+			`阿隆多说：“不幸的是，我们还没有选出任何自己的大使。参议院坚持要选择他们，你不会相信参议院的审议进展得如此缓慢。到目前为止，他们已经采访了六名候选人，但没有发现一个符合他们的喜好。说起来我很痛苦，但我们可能已经成功地建立了一个与我们反对的官僚机构一样低效的官僚机构。”`
+			choice
+				`“没问题。重要的是，我们很和平，所以他们可以根据需要花很长时间才能做出决定。”`
+					goto peace
+				`“你自愿成为大使之一吗？你是一个显而易见的选择。”`
+					goto volunteer
+				`“我们在等待的时候做什么呢？”`
+					goto wait
+			
+			label peace
+			`“目前是和平，”艾吉斯说，“但到目前为止，和平还没有正义。时机成熟时，我们将打击辛迪加。”`
+				goto wait
+			
+			label volunteer
+			`阿隆多笑了。 “不，这对我来说不是工作，”他说。 “大使们的角色看似享有盛誉，但只不过是一种象征性的姿态。当重要的事情在其他地方发生时，却被关在一个星球上的大使馆里，这可不是我所渴望的工作。”`
+			`“那么，在等待参议院挑选大使期间我们要做什么？”你问。`
+				goto wait
+			
+			label wait
+			`阿隆多说：“我们应该好好利用这个和平时期，为接下来的另一场战斗做好准备。新西藏的那些辛迪加船只拥有我以前从未见过的装备，谁知道辛迪加还藏着什么——尤其是如果他们已经开始生产核武器的话。<last>舰长，你应该利用这段时间确保你的船只装备精良，以应对我们的下一次袭击。Ijs和Katya，你会利用这段时间做什么？”`
+			`Katya 看了一眼 Ijs，然后说道：“我当然希望有一个小小的休假，以及一个花时间在一起弥补我们错过的一切的机会。Springborn 教授，您认为音乐学院会延长您的休假时间，让我们能够去 <planet> 旅行吗？”`
+			`艾斯笑了。 “听起来很棒，议员，”他说。 “<first>，你认为你可以在你下一步要去的地方带我们去那里吗？”`
+			`你告诉他你很乐意这样做，然后你们就准备好一起踏上另一段旅程。`
+				accept
+	
+	on visit
+		dialog `您降落在 <planet> 上，但意识到载有 Katya 和 Eyes 先生的护卫尚未进入系统。最好出发并等待它的到来。`
+	on complete
+		event "fw reconciliation break" 30
+		conversation
+			`你让 Ijs 和 Katya 在 Skymoot 上下车，并祝他们一切顺利。他们似乎都渴望有机会放松一下，享受彼此的陪伴，暂时忘记银河系重要的事情。 “我们很快就会见到你，<first>，”卡蒂亚说。 “当将辛迪加绳之以法时，请确保你的船处于良好的战斗状态。”`
+
+
+
+mission "FW Reconciliation Break Ends"
+	name "返回<planet>"
+	description "在 <destination> 上重新加入 Ijs、Katya 和 Alondo。"
+	landing
+	source
+		near "Gamma Corvi" 1 100
+	destination Bourne
+	to offer
+		has "event: fw reconciliation break"
+		not "FW Embassy 1C: offered"
+	
+	on offer
+		conversation
+			`您收到来自阿隆多的编码消息：“参议院已完成大使选拔，我们的其他工作也已准备就绪。请尽快通过 <planet> 与我们会面。”`
+				accept
+
+
+
+mission "FW Embassy 1C"
+	landing
+	name "驻地球大使"
+	description `护送一艘载着自由世界大使前往地球的无畏舰。然后，这艘无畏舰将参加你们针对辛迪加的联合“警察行动”。`
+	autosave
+	source Bourne
+	destination Earth
+	clearance
+	passengers 2
+	blocked "You do not have bunks available for Ijs and Katya. Return here when you do."
+	to offer
+		has "event: fw reconciliation break"
+	on fail
+		dialog phrase "free worlds failed"
+	
+	on offer
+		conversation
+			`当你降落在伯恩时，你发现卡蒂亚和艾斯已经回到那里一周了。阿隆多也和他们在一起。 “我们就是无法长时间远离这一行动，”艾斯说。`
+			`将地球大使带到伯恩的星之女王豪华客轮仍然停在一个有点偏僻的机库里。 “别担心，船长，”卡蒂亚说，“我们的大使不可能穿着这么华丽的衣服出行。他们已经征用了一艘无畏舰。一艘好船，可以提醒地球上的人们，我们拥有一支自己的强大舰队。”`
+			`“更不用说，”艾吉斯说，“这是一艘参加我们打击辛迪加的好船。”`
+			`阿隆多向您介绍即将返回地球的自由世界大使。 “我已经联系了弗林特州长和丹福斯海军上将，”他说。 “他们的飞船将与你的飞船大约同时抵达太阳系。祝你好运，船长。”你帮助 Ijs 和 Katya 将他们的行李装载到你的船上，并告诉载着大使的无畏舰准备好跟随你。`
+				accept
+	
+	npc accompany save
+		government "Free Worlds"
+		personality escort heroic
+		ship "Dreadnought" "F.S. Gibraltar"
+	
+	on visit
+		dialog "您已达到 <planet> ，但您却把大使抛在了后面！最好先出发，等待他们到达这个星系。"
+	
+	npc
+		government Pirate
+		system Wei
+		personality heroic nemesis
+		fleet
+			names "pirate"
+			variant
+				"Raven (Afterburner)" 6
+	
+	npc
+		government Pirate
+		system Hintar
+		personality heroic nemesis
+		fleet
+			names "pirate"
+			variant
+				"Leviathan (Heavy)"
+				"Firebird (Plasma)" 2
+		fleet
+			names "pirate"
+			variant
+				"Leviathan"
+				"Firebird" 2
+	
+	npc
+		government Pirate
+		system Markab
+		personality heroic nemesis
+		fleet
+			names "pirate"
+			variant
+				"Splinter (Laser)" 2
+				"Manta" 3
+				"Quicksilver" 6
+
+
+
+mission "FW Syndicate Capture 1"
+	landing
+	name "突袭雨云"
+	description "与来自守誓者、深渊和自由世界的船只一起前往<destination>，捕获辛迪加高管亚历山大·索伊伦特。不要让你的护卫被摧毁。"
+	autosave
+	source Earth
+	destination Nimbus
+	clearance
+	passengers 2
+	to offer
+		has "FW Embassy 1C: done"
+	on fail
+		dialog phrase "free worlds failed"
+	
+	on offer
+		log "Preparing to invade Syndicate space with a joint strike force made up of Free Worlds, Deep security, and Oathkeeper ships. The plan is to capture one of the Syndicate executives and bring him to trial."
+		conversation
+			`你降落在地球上，并表现出非常忙碌的样子，以确保自由世界大使的舒适和良好的照顾，直到最后你收到来自埃德里克的安全消息。他告诉你，来自深海的车队现在正在登陆火星，一艘守誓者巡洋舰正在访问月球上的造船厂。一旦准备好，你们就可以起飞，一起前往 辛迪加 空间的中心。`
+			`你找借口离开，然后返回你的船。 “好吧，”艾吉斯说，“就是这样。如果我们幸运的话，他们不会看到我们来，但无论如何，从辛迪加空间回来将是一场噩梦。祝大家好运。”`
+				accept
+	on visit
+		dialog `您已到达 <planet>，但您离开了一名护卫！最好先出发，等待他们到达这个星系。`
+	
+	npc accompany save
+		personality escort heroic
+		ship "Dreadnought" "F.S. Gibraltar"
+		government "Free Worlds"
+	
+	npc accompany save
+		planet "Luna"
+		personality escort heroic waiting
+		government "Navy (Oathkeeper)"
+		ship "Cruiser (Mark II)" "N.S. Hand of Justice"
+	
+	npc accompany save
+		planet "Mars"
+		personality escort heroic waiting
+		government "Deep Security"
+		ship "Bactrian" "Unbreakable"
+		ship "Aerie" "Eagle's Eye"
+
+
+
+event "fw begin syndicate capture"
+	"reputation: Syndicate" <?= -100
+	government "Syndicate"
+		"attitude toward"
+			"Deep Security" -.01
+			"Navy (Oathkeeper)" -.01
+
+event "fw end syndicate capture"
+	government "Syndicate"
+		"attitude toward"
+			"Deep Security" 0
+			"Navy (Oathkeeper)" 0
+
+mission "FW Syndicate Capture 1B"
+	landing
+	name "转义至<planet>"
+	description "你已经抓获了辛迪加执行官亚历山大·索伊伦特。现在，把他安全地带到<planet>，他将在那里接受审判。"
+	source Nimbus
+	destination Valhalla
+	passengers 2
+	to offer
+		has "FW Syndicate Capture 1: done"
+	on fail
+		dialog phrase "free worlds failed"
+	
+	on offer
+		event "fw begin syndicate capture"
+		conversation
+			`当你接近这个星球时，你的船只分散开来，开始扫描海面，寻找与你所得到的描述相匹配的游艇。在怀疑 Soylent 此刻是否不在地球上的紧张时刻后，你找到了这艘船。`
+			`由于没有偏转护盾，也没有任何可见的武器，这艘游艇显然不会对武装星舰构成威胁。艾德里克派出的鹰巢发射了四架战斗机；当他们降落在游艇的甲板上时，武装警察出现了。与此同时，您的舰队已准备好在出现抵抗迹象时开火。`
+			`军官们很快就通过无线电通知你，他们已经找到了 Soylent，并把他带上了你的船。在一片混乱中，你注意到一个穿着潜水装备的人从游艇后部跳下来，消失在海浪之下——Soylent 的手下之一，试图逃跑。但既然他的首领现在被你拘留了，你的任务也完成了，你就没有理由追捕他了。`
+			`守誓者船长给你发了一条简短的信息：“你的首要任务是带着囚犯到达深海。我们的船员已经准备好作为后卫，在必要时留在后面以确保你的生存。祝你好运，船长。”`
+				accept
+	on visit
+		dialog `您降落在 <planet> 上，但意识到载有 Katya 和 Eyes 先生的护卫尚未进入系统。最好出发并等待它的到来。`
+	on complete
+		event "fw end syndicate capture"
+	
+	npc
+		personality escort heroic
+		ship "Dreadnought" "F.S. Gibraltar"
+		government "Free Worlds"
+	npc
+		personality escort heroic waiting
+		government "Navy (Oathkeeper)"
+		ship "Cruiser (Mark II)" "N.S. Hand of Justice"
+		ship "Combat Drone" "Red One"
+		ship "Combat Drone" "Red Two"
+		ship "Combat Drone" "Red Three"
+		ship "Combat Drone" "Red Four"
+	npc
+		personality escort heroic waiting
+		government "Deep Security"
+		ship "Bactrian" "Unbreakable"
+		ship "Aerie" "Eagle's Eye"
+		ship "Dagger" "Alpha One"
+		ship "Dagger" "Alpha Two"
+		ship "Dagger" "Alpha Three"
+		ship "Dagger" "Alpha Four"
+		ship "Dagger" "Alpha Five"
+		ship "Dagger" "Alpha Six"
+		ship "Dagger" "Alpha Seven"
+	
+	npc
+		government Syndicate
+		personality heroic nemesis entering
+		fleet
+			names "syndicate capital"
+			variant
+				"Splinter (Mark II)" 2
+				"Manta (Mark II)" 3
+				"Quicksilver (Mark II)" 4
+	npc
+		system Ruchbah
+		government Syndicate
+		personality heroic nemesis staying
+		fleet
+			names "syndicate capital"
+			variant
+				"Protector (Laser)"
+				"Protector" 3
+				"Wasp" 12
+	
+	npc
+		system Ankaa
+		government Syndicate
+		personality heroic nemesis staying
+		fleet
+			names "syndicate capital"
+			variant
+				"Manta (Nuclear)"
+	npc
+		system Ankaa
+		government Syndicate
+		personality heroic nemesis staying
+		fleet
+			names "syndicate capital"
+			variant
+				"Manta (Nuclear)"
+	npc
+		system Ankaa
+		government Syndicate
+		personality heroic nemesis staying
+		fleet
+			names "syndicate capital"
+			variant
+				"Manta (Nuclear)"
+	npc
+		system Scheat
+		government Syndicate
+		personality heroic nemesis staying
+		fleet
+			names "syndicate capital"
+			variant
+				"Manta (Nuclear)"
+	npc
+		system Scheat
+		government Syndicate
+		personality heroic nemesis staying
+		fleet
+			names "syndicate capital"
+			variant
+				"Manta (Nuclear)"
+	npc
+		system Scheat
+		government Syndicate
+		personality heroic nemesis staying
+		fleet
+			names "syndicate capital"
+			variant
+				"Manta (Nuclear)"
+	npc
+		system Sheratan
+		government Syndicate
+		personality heroic nemesis staying
+		fleet
+			names "syndicate capital"
+			variant
+				"Manta (Nuclear)"
+	npc
+		system Sheratan
+		government Syndicate
+		personality heroic nemesis staying
+		fleet
+			names "syndicate capital"
+			variant
+				"Manta (Nuclear)"
+	npc
+		system Sheratan
+		government Syndicate
+		personality heroic nemesis staying
+		fleet
+			names "syndicate capital"
+			variant
+				"Manta (Nuclear)"
+	
+	on enter Ankaa
+		dialog
+			`你的船的主控制面板上有一个警告灯从未打开过。它是银河旅行黑暗时代的遗迹，是每艘星际飞船内置的传感器系统的一部分，用于探测来袭的核弹头。你几乎忘记了它的存在，因为你从未见过它闪光。`
+			`现在开始闪烁。`
+	on enter Scheat
+		dialog
+			`你的船的主控制面板上有一个警告灯从未打开过。它是银河旅行黑暗时代的遗迹，是每艘星际飞船内置的传感器系统的一部分，用于探测来袭的核弹头。你几乎忘记了它的存在，因为你从未见过它闪光。`
+			`现在开始闪烁。`
+	on enter Sheratan
+		dialog
+			`你的船的主控制面板上有一个警告灯从未打开过。它是银河旅行黑暗时代的遗迹，是每艘星际飞船内置的传感器系统的一部分，用于探测来袭的核弹头。你几乎忘记了它的存在，因为你从未见过它闪光。`
+			`现在开始闪烁。`
+
+
+
+mission "FW Syndicate Capture 1C"
+	landing
+	name "返回<planet>"
+	description "辛迪加正在太阳系集结一支舰队。返回<planet>与自由世界舰队会合，以便在地球受到攻击时做好保卫地球的准备。"
+	autosave
+	source Valhalla
+	destination "New Tibet"
+	passengers 2
+	to offer
+		has "FW Syndicate Capture 1B: done"
+	on fail
+		dialog phrase "free worlds failed"
+	
+	on offer
+		log `Succeeded in capturing a Syndicate executive named Alexander Soylent, but the Syndicate has responded by sending a massive fleet to Sol, supposedly to "protect" Earth but more likely to put pressure on Parliament and the people of Earth to side with the Syndicate.`
+		event "syndicate occupies sol"
+		conversation
+			`艾德里克在你着陆后不久就会见到你，并监督将你的俘虏转移到当地一所防守严密的监狱。你告诉他你从辛迪加太空中死里逃生的事，以及辛迪加对你的舰队使用核武器的事实，这违反了人类几个世纪以来遵守的战争规则。`
+			`“不幸的是，”埃德里克说，“那次事件的所有其他目击者都与辛迪加结盟，所以人们会相信他们想相信的任何东西。辛迪加已经在散布关于一支由叛军和极端分子组成的叛变舰队的故事，他们袭击了他们的一个世界，企图暗杀他们的一位领导人。更糟糕的是，他们以此为借口，向太阳系派遣了一支庞大的辛迪加舰队——他们说，是为了保卫地球免受攻击。”`
+			choice
+				`“听起来更像是我们的目标是恐吓议会，让他们站在辛迪加一边。”`
+					goto intimidate
+				`“他们是在攻击共和国船只，还是技术上他们仍然处于和平状态？”`
+					goto peace
+				`“我们应该立即攻击他们，以免他们伤害地球上的任何人。”`
+					goto attack
+			
+			label intimidate
+			`“确实如此，”他说。`
+				goto katya
+			label peace
+			`“显然没有人向其他人开枪，”埃德里克说，“但这种情况随时都可能改变。你可能知道，海军上将们对辛迪加几乎没有什么好感。现在唯一阻止海军攻击辛迪加的因素是海军对秩序和服从的奉献；未经议会批准，他们不会发动新的战争，当然，在辛迪加军舰在上空盘旋的情况下，批准是不可能的。”`
+				goto katya
+			label attack
+			`“那将是一个糟糕的主意，”他说。 “首先，这会直接融入他们的叙述中。其次，人类现在正处于分裂成六个不同碎片的边缘：深海、自由世界、海军、辛迪加，每个碎片都在各自对抗其他碎片。我不想成为那个下令导致这种情况发生的人。”`
+				goto katya
+			
+			label katya
+			`卡蒂亚说：“听起来，如果自由世界进入索尔，我们将成为引发爆炸的火花。因此，我们必须相信深渊、海军或其他人来尝试化解局势。同时，我建议我们返回自由空间并集结整个舰队，协助海军对抗辛迪加。JJ 应该在 <planet> 上；我们可以在那里与他会合。”`
+				accept
+	on visit
+		dialog `您降落在 <planet> 上，但意识到载有 Katya 和 Eyes 先生的护卫尚未进入系统。最好出发并等待它的到来。`
+
+
+
+mission "FW Pug 1"
+	landing
+	name "兰德怎么了？"
+	description "尝试确定 Zeta Aquilae 系统中与兰德的通信被切断的原因。"
+	autosave
+	source "New Tibet"
+	waypoint "Cebalrai"
+	waypoint "Ascella"
+	to offer
+		has "FW Syndicate Capture 1C: done"
+	on fail
+		dialog phrase "free worlds failed"
+	
+	on offer
+		log "All communications with Rand, which recently joined the Free Worlds but is close to Syndicate territory, have been cut off. It is possible that this is the beginning of a Syndicate invasion."
+		event "pug invasion"
+		event "pug invasion 2" 6
+		event "pug invasion 3" 10
+		event "pug invasion 4" 14
+		"reputation: Pug" >?= 1
+		conversation
+			`一旦您降落在 <origin> 上，JJ 就会跑到您的船上。 “<first>，”他说，“我们遇到了严重的麻烦。几分钟前我收到了兰德的求救信号，然后他们的传输被切断了。我担心辛迪加可能正在向我们的空间扩张。”`
+			choice
+				`“我们的舰队准备好应对了吗？”`
+				`“我们该怎么办？”`
+			`“我们的舰队仍然分散在这个象限中，”他说，“我需要卡蒂亚指挥其中的一部分。如果可能的话，现在我只需要你前往兰德，看看发生了什么事。这可能只是通讯故障，但我严重怀疑这一点。同时，卡蒂亚和艾斯可以帮助我组织舰队。”`
+				accept
+	on visit
+		dialog phrase "generic waypoint on visit"
+	
+	on enter "Cebalrai"
+		dialog
+			`根据你之前的这个区域的地图，应该有一个从这里到 Rasalhague 系统的超空间链接。但你的传感器什么也没显示。有东西切断了链接。`
+	on enter "Ascella"
+		dialog
+			`Ascella 系统曾经与 Rasalhague 和 Zeta Aquilae 连接，但现在不再连接。要么辛迪加发现了改变超空间链接的能力，并用它来阻止自由世界干扰它们，要么你手上有一个更奇怪的问题......`
+	on waypoint
+		set "fw pug 1: visited waypoints"
+
+	on enter "Zeta Aquilae"
+		dialog
+			`跳转到 Zeta Aquilae 系统后，您可以看到应存在于 Ascella 的超空间链接已不复存在。相反，有一个新的链接向北延伸，指向一颗以前从未有过任何链接的恒星......`
+		set "fw pug 1: visited waypoints"
+
+
+mission "FW Pug 1 Tundra"
+	landing
+	source "Tundra"
+	to offer
+		has "FW Pug 1: active"
+	
+	on offer
+		log "No one on Tundra, which is one of Rand's neighbors, has any idea how the hyperspace link was cut off. They wonder if this might have something to do with a star system near Rand that was inaccessible by hyperdrive."
+		conversation
+			`你降落在苔原上，询问周围是否有人知道为什么与拉萨尔哈格的超空间链接消失了。每个人都在谈论它，但似乎没有人有一个可信的理论。 “也许拉萨尔哈格那颗你无法跳到的奇怪星星变成了新星，”一位队长建议道。`
+			`您还与几个人交谈，他们提到过去几天的北极光非常壮观，与他们以前见过的任何东西都不一样。`
+				decline
+
+
+mission "FW Pug 1 Arabia"
+	landing
+	source Arabia
+	to offer
+		has "FW Pug 1: active"
+	
+	on offer
+		log "No one on Arabia knows what has caused hyperspace links in this region of space to suddenly disappear. There are stories of graviton surges and an alien ship, but they may all just be rumors."
+		conversation
+			`你降落在阿拉伯半岛，试图找到一个知道发生了什么事的人，但每个人似乎都和你一样困惑。太空港当局表示，当超链接崩溃时，他们的传感器检测到了巨大的引力子激增，但他们不确定这种激增是否导致了崩溃，或者是崩溃的结果。`
+			`一位商船船长声称当时他在轨道上，他看到了一艘与他以前见过的任何船都不一样的船，它出现然后在一瞬间消失，“就像那些夸格船一样”。你不确定是否相信他。`
+				decline
+
+
+mission "FW Pug 1 Return"
+	landing
+	to offer
+		has "FW Pug 1: active"
+		has "event: pug invasion 4"
+		has "fw pug 1: visited waypoints"
+	
+	on offer
+		conversation
+			`你收到来自 JJ 的紧急消息：“％ID_0% 队长，立即返回新西藏！我们收到消息称辛迪加正在以某种方式切断他们与人类其他空间的超空间联系。我们正在召开紧急理事会会议，在你到达这里后立即召开。”`
+				decline
+
+
+
+mission "FW Pug 2"
+	landing
+	name "与议会会面"
+	description "与阿隆多一起前往地球与议会会面。考虑到辛迪加威胁的真实性，他们现在更愿意与您会面。"
+	autosave
+	source "New Tibet"
+	destination "Earth"
+	clearance
+	to offer
+		has "FW Pug 1: done"
+	passengers 1
+	blocked `As you are landing, Alondo contacts you and asks, "Do you have a bunk free for me?" You do not, so you will need to free one up in order to continue this mission.`
+	on fail
+		dialog phrase "free worlds failed"
+	
+	on offer
+		log "The Syndicate may be cutting off the hyperspace links that join their territory to the rest of human space, in order to escape being punished for their crimes. People are worried that they will try to take over even more territory, including Earth itself."
+		conversation
+			`当你到达时，阿隆多和芙蕾雅已经加入了 JJ 和卡蒂亚的新西藏行列；全体安理会成员均出席。 “故事是这样的，”JJ 说。 “几周前，辛迪加空间边缘的超空间链接开始崩溃。我们不确定为什么。然后，最近，一直占领太阳系的辛迪加舰队撤退到辛迪加空间——当他们的最后一艘飞船离开时，超空间链接就在他们身后消失了。我们认为辛迪加已经找到了一种改变超空间链接的方法，并正在用它来封锁自己，以逃避其他人类的报复，因为他们的罪行已经得到了如此明确的证明。”`
+			choice
+				`“那我们为什么不让他们走呢？”`
+					goto go
+				`“共和国计划采取什么应对措施？”`
+					goto republic
+			
+			label go
+			`芙蕾雅说，“不知何故，他们在隔离的过程中设法吞并了我们的几个系统——我们两个最好的重金属供应商。这表明我们与辛迪加接壤的任何系统都可能被接管，并让我们完全无法访问，在任何时候。这不是我们可以承担的风险。”`
+			`“不仅如此，”卡蒂亚说。 “想想现在有多少辛迪加世界里的工人，为了在辛迪加工厂里工作几年而离开他们的家人到另一个星球。想象一下这些家庭永远分裂的未来。”`
+				goto communications
+			
+			label republic
+			`“他们很恐慌，”卡蒂亚说。 “地球就在被切断的区域的边界上，这意味着在任何时候，他们都可以选择切断人类家园与其他人类空间的联系。而且我们甚至不知道一旦切断联系是否有可能恢复。”`
+				goto communications
+			
+			label communications
+			`“根据我们大使馆的说法，”阿隆多说，“与辛迪加空间的所有通信链路都已被切断。网络依靠超空间链路来传输消息，而无人居住的系统中没有发射器中继器，而这些系统现在构成了与辛迪加空间的唯一剩余链路。”`
+			`JJ 说：“参议院已经同意，我们必须搁置与共和国的分歧，立即与议会会面以应对这场危机。<first>，我们要求你和阿隆多前往地球，并在你认为合适的时候提供帮助。有什么问题吗？”`
+			choice
+				`“不用了，我准备走了。”`
+					accept
+				`“我们怎么知道辛迪加真的是幕后黑手？”`
+			
+			`“我们不知道，”JJ 说，“但这一切对他们来说确实非常有利；他们所在的银河系突然变成了一块非常容易防御的飞地。而那支舰队离开的时间，然后链接关闭——这太巧合了。但我们不能通过留在这里谈论来确定任何事情；你必须去地球。”`
+				accept
+	on visit
+		dialog `您降落在 <planet> 上，但意识到您携带阿隆多的护卫尚未进入系统。最好出发并等待它的到来。`
+	
+	npc
+		system "Sol"
+		personality heroic uninterested staying
+		government "Republic"
+		fleet "Large Republic" 5
+		fleet "Small Republic" 5
+
+
+
+mission "FW Pug 2A"
+	landing
+	name "与辛迪加讲道理"
+	description "与阿隆多一起前往铸造厂与辛迪加领导人会面，确定他们的意图，并说服他们不要完全将自己与人类空间隔离。快点，在他们切断最后一个链接之前。"
+	autosave
+	source "Earth"
+	destination "Foundry"
+	clearance
+	passengers 1
+	to offer
+		has "FW Pug 2: done"
+	on fail
+		dialog phrase "free worlds failed"
+	
+	on offer
+		log "Agreed to travel to Syndicate space through the one remaining hyperspace path that is still open, through the uninhabited star systems to the north."
+		conversation
+			`地球上的太空港笼罩着明显的恐惧和近乎恐慌的感觉。作为人类政府中心的这个系统随时都可能消失在吞噬其邻居的未知深渊中。`
+			`议会现在渴望与您会面，并获得您能够提供的任何帮助。当阿隆多站在会议厅前向议会议员询问更多信息时，他们以尊重和顺从的态度回答他，这与你过去在这里受到的对待截然不同。你了解到，虽然通往辛迪加空间的一个链接仍然开放，但没有人敢穿过它。考虑到其他链接被切断的速度，他们担心剩下的链接随时都会消失。`
+			`随着对话的继续，你被召唤到这里的原因最终会变得清晰：共和国希望你承担他们都不愿意面对的风险，并前往辛迪加空间与他们的领导人推理。`
+			choice
+				`“如果这就是阻止人类空间被撕成碎片所需要的，我会冒着我的船危险去与辛迪加会面。”`
+					goto yes
+				`“这听起来像是海军的工作，而不是我的工作。我不能冒险永远被困在敌对的辛迪加空间中。”`
+					to display
+						not "outfit (flagship installed): Jump Drive"
+					goto no
+				`“这听起来像是海军的工作，而不是我的工作。我不想面对整个敌对辛迪加。”`
+					to display
+						has "outfit (flagship installed): Jump Drive"
+					goto no
+				`“在链接被切断之前，辛迪加是否向你传达了任何可能有助于我们猜测他们意图的信息？”`
+			
+			`一名议会成员表示：“这一切都非常令人困惑。我们在辛迪加空间的消息来源报告称，就在事件发生之前，发生了大规模的舰队活动。我们还听到了辛迪加舰队互相争斗的传言。某种内部权力斗争。”`
+			`另一名男子补充道：“我们也早就知道，辛迪加通过与目前居住在银河核心的游牧外来物种相遇，获得了外星技术。他们可能已经找到了一种利用该技术来改变联系的方法。”从许多其他议员脸上惊讶的表情来看，显然这个信息对他们来说是陌生的。`
+			choice
+				`“很好，我们就接受这个任务。”`
+					goto yes
+				`“抱歉，我不愿意为此拿我的船冒险。”`
+					goto no
+			
+			label no
+			`阿隆多平静而坚定地说，“<last>连长，参议院要求你在这件事上协助共和国，安理会也同意。我知道风险很大，但你发誓要为自由世界服务，自由世界现在命令你承担这项使命。”`
+			`“很好，”你说，“我接受。但我担心当我们到达辛迪加空间时会发生什么。”`
+			
+			label yes
+			`议会感谢你愿意服务，你和阿隆多赶紧回到你的船上。 “目前还不清楚该链接将保持打开状态多久，”他说。 “所以，我们必须立即赶往<planet>的辛迪加总部。”`
+				accept
+	on enter
+		system
+			government "Syndicate"
+		"reputation: Syndicate" = 1
+		event "fw syndicate welcoming"
+	on visit
+		dialog `您降落在 <planet> 上，但意识到您携带阿隆多的护卫尚未进入系统。最好出发并等待它的到来。`
+	
+	npc
+		system "Sol"
+		personality heroic uninterested staying
+		government "Republic"
+		fleet "Large Republic" 5
+		fleet "Small Republic" 5
+
+
+
+mission "FW Pug 2A Visit"
+	landing
+	source
+		near "Achernar" 1 100
+		government "Syndicate"
+	to offer
+		has "FW Pug 2A: active"
+	
+	on offer
+		conversation
+			`奇怪的是，当你降落在 <origin> 上时，你会发现这里的人们和地球上一样处于困惑和恐惧的状态。要么没有人知道发生了什么以及为什么他们几乎与人类其他空间隔绝，要么与你交谈的每个人都团结在一个阴谋中假装无知。他们敦促您继续您的旅程，与 Foundry 的 辛迪加 高管会面。 “也许你可以跟他们讲讲道理，”一位商船船长说道。 “首先是核武器，现在是这个。辛迪加内部的极端主义派系正在失控。”`
+				decline
+
+
+
+mission "FW Pug 2B"
+	landing
+	name "安装跳跃驱动器"
+	description "前往赫菲斯托斯的辛迪加世界，辛迪加系统人员奉命在你的船上安装跳跃驱动器，以便你可以调查哈巴狗切断的系统。"
+	autosave
+	source "Foundry"
+	destination "Hephaestus"
+	to offer
+		has "FW Pug 2A: done"
+	passengers 1
+	on fail
+		dialog phrase "free worlds failed"
+	
+	on offer
+		log "The Syndicate CEO, Alastair Korban, claims that the disappearing hyperspace links are not their doing, and that in fact they are under attack by aliens. In fact, they say that the Syndicate has had contact with two different alien species in this region - raiders and scavengers known as the Korath coming from the galactic core, and an enigmatic and irrational species named the Pug who occupy the system adjacent to the ones that recently got cut off from human space."
+		log "By plundering the Korath raiders, the Syndicate has acquired some jump drives, which allow a ship to travel between systems that are not connected by hyperspace links. They are willing to part with one of these jump drives in order to prove the truth of their story to the rest of humanity."
+		log "People" "Alastair Korban" `CEO of the Syndicate Corporation for over two decades, Alastair Korban's tenure of the megacorporation has been capped by soaring profits owing to the human civil war. However, Korban has confirmed in speech what Sawyer brought forward to the Free Worlds and the Republic; that a "certain extremist faction" of the Syndicate were behind the bombings on Martini and Geminus.`
+		conversation
+			`当你准备着陆时，你向太空港当局宣布自己是自由世界和共和国的外交代表。当你落地的那一刻，一名辛迪加员工就会迎接你，并护送你到他们的总部，到整个辛迪加公司首席执行官阿拉斯泰尔·科班 (Alastair Korban) 令人难以置信的豪华角落办公室。 “我很高兴你能来，”阿拉斯泰尔说。 “除非我们共同努力，否则我们似乎不太可能击败这次攻击。”`
+			`“等等，”阿隆多说，“你是说这整件事不是辛迪加干的？”`
+			`阿拉斯泰尔似乎吃了一惊。 “当然不是。封锁有价值的贸易路线？我们为什么要这么做？”`
+			choice
+				`“我们以为你们把自己隔离起来是为了逃避因恐怖主义行为而受到的起诉。”`
+				`“如果不是你，那又是谁？”`
+					goto who
+			
+			`阿拉斯泰尔说：“那次恐怖主义是某个极端主义派系的行动，我们已将其从我们的队伍中清除，我们正在追捕肇事者。你们对宁布斯的袭击打断了这些计划，并给了其他人躲藏的机会，但我们会确保他们也被绳之以法。但现在，我们需要把过去抛在脑后，找出如何共同对抗我们共同敌人的方法。”`
+			choice
+				`“我认为你在撒谎。你有很多年的时间来推翻那些极端分子，但你没有。”`
+				`“很好，这个共同的敌人是谁？看来你比我们知道的还多。”`
+					goto who
+			
+			`阿拉斯泰尔说：“我们对这些极端分子的行为以及我们在举报他们方面的不作为深感抱歉。我们原本希望能够在内部处理他们，而不让公众知道我们与他们有联系。这对我们来说是一个愚蠢的选择，我们非常愿意做出你们要求的任何赔偿。”`
+			choice
+				`“你知道你发动了一场战争，对吧？每一个在战斗中死去的海军或自由世界民兵成员都是你的责任。”`
+				`“好吧，我们稍后再处理。现在，请告诉我们你所知道的关于攻击你的人的一切。”`
+					goto who
+			
+			`“<first>，够了，”阿隆多说。 “我们稍后会解决赔偿问题。现在，我们需要知道是谁切断了超空间链接。”`
+			
+			label who
+			`“它们被称为哈巴狗，”阿拉斯泰尔说，“一种非理性的外星物种，以前居住在辛迪加和共和国空间之间的单个恒星系统中。此后，它们扩大了自己的领地，将所有邻近它们自己恒星的人类系统包括在内，并基本上将这些人类世界变成了它们的奴隶。”`
+			`“你怎么知道这个？”阿隆多问道。`
+			`阿拉斯泰尔停顿了一分钟，仿佛试图找到解释自己的最佳方式，然后说道：“我们的一艘飞船前往被占领的星系，使用的是我们……从另一个外星物种……获得的跳跃驱动器。”他似乎意识到这听起来多么不可能，并后退了一步。 “多年来，我们一直在应对来自一个名为科拉特（科拉特）的物种的偶尔袭击。据我们所知，他们是目前居住在银河核心的游牧拾荒者和海盗。多年来，我们已经使他们的几艘船瘫痪并偷走了他们的跳跃驱动器。”`
+			choice
+				`“你没有想到攻击科拉特人可能会激怒其他外星物种吗？”`
+					goto anger
+				`“等等，现在有两个不同的外星物种参与其中？你的故事变得更加扑朔迷离，令人难以置信。”`
+					goto convoluted
+			
+			label anger
+			`“这不太可能。我们从科拉斯偷来的装备很可能是他们从别人那里偷来的。”`
+				goto help
+			
+			label convoluted
+			`“是的，”他说，“这是一个非常复杂的混乱。这就是为什么我们需要你的帮助。”`
+				goto help
+			
+			label help
+			`“假设你说的是实话，”阿隆多说，“你需要我们提供什么样的帮助？”`
+			`阿拉斯泰尔说：“我们只有七个跳跃驱动器，所以无论攻击哈巴狗的舰队都只能包含七艘船。除非夸格人或其他人会给你更多的驱动器，我想。所以这些船一定比我们在辛迪加空间的任何船都强大，因为哈巴狗非常强大。他们消灭了我们一直占领太阳系的舰队，尽管那支舰队装备了我们大部分的核武库。”`
+			choice
+				`“你是说你将提供跳跃驱动器，我们将提供船只？听起来很公平。”`
+					goto deal
+				`“等等，你是说你在地球轨道上运行的舰队……配备了核武器？你有种族灭绝吗？”`
+			
+			`阿拉斯泰尔看起来是那种很少承认自己错误的人，但你的问题确实让他感到慌张。 “好吧，好吧，我承认，从那以后我们就一直在做出一个又一个错误的决定……好吧，从第一个错误的决定开始。事情就失去了控制。我们以为海军会袭击我们，把我们都关进监狱。我们以为我们需要威慑。这很愚蠢。我承认，好吗？现在，拜托，让我们继续前进。我们需要你们的主力舰，你们也需要我们的跳跃引擎。”`
+			
+			label deal
+			`“等一下，”阿隆多说，“我有一个条件要补充。你立即给我们一个跳跃驱动器。我们会将它安装在我们的船上，并验证你所说的关于哈巴狗的事实是否属实。如果你是，我们将共同努力，直到这一威胁得到解决……一旦解决，我们将集中精力将参与恐怖袭击的辛迪加的每一位成员绳之以法。这是我们最好的也是最后的提议。”你点头同意。`
+			`显然阿拉斯泰尔对这笔交易不太高兴，但他接受了。 “跳跃驱动器都保留在赫菲斯托斯上，”他说。 “我们的系统部门试图发现它们背后的秘密，但收效甚微。如果你去那里，我会告诉他们在你的船上安装一个驱动器。”`
+				accept
+	on visit
+		dialog `您降落在 <planet> 上，但意识到您携带阿隆多的护卫尚未进入系统。最好出发并等待它的到来。`
+
+
+
+mission "FW Pug 2C: Hyperdrive"
+	landing
+	name "调查哈巴狗"
+	description "前往天津四星系调查哈巴狗；如果可能的话，与他们联系并确定他们的目标和愿望是什么。"
+	source Hephaestus
+	destination Pugglemug
+	clearance
+	to offer
+		has "FW Pug 2B: done"
+		not "fw given jump drive"
+		not "outfit (flagship installed): Jump Drive"
+	passengers 1
+	on fail
+		dialog phrase "free worlds failed"
+	
+	on offer
+		outfit "Hyperdrive" -1
+		conversation
+			`你将被引导降落在距离太空港一段距离的机库中，该机库位于 辛迪加d Systems 拥有的一组建筑中。一个工程师团队会见你，并快速有效地移除你的超级驱动器，并用一个奇怪的、看起来像外星人的设备取而代之，你认为它一定是一个跳跃驱动器。 “现在，请小心你的电量表，”其中一位告诉你。 “这东西每次跳跃消耗的燃料是普通超空间引擎的两倍，你不想在人类空间之外陷入困境。”`
+				accept
+	
+	on accept
+		outfit "Jump Drive" 1
+		set "fw given jump drive"
+	on visit
+		dialog `您降落在 <planet> 上，但意识到您携带阿隆多的护卫尚未进入系统。最好出发并等待它的到来。`
+	on complete
+		set "FW Pug 2C: done"
+
+
+
+mission "FW Pug 2C: Scram Drive"
+	landing
+	name "调查哈巴狗"
+	description "前往天津四星系调查哈巴狗；如果可能的话，与他们联系并确定他们的目标和愿望是什么。"
+	source Hephaestus
+	destination Pugglemug
+	clearance
+	to offer
+		has "FW Pug 2B: done"
+		not "fw given jump drive"
+		not "outfit (flagship installed): Jump Drive"
+	passengers 1
+	on fail
+		dialog phrase "free worlds failed"
+	
+	on offer
+		outfit "Scram Drive" -1
+		conversation
+			`你将被引导降落在距离太空港一段距离的机库中，该机库位于 辛迪加d Systems 拥有的一组建筑中。一个工程师团队会见你，并快速有效地拆除你的紧急驱动器，并用一个奇怪的、看起来像外星人的设备取代它，你认为它一定是跳跃驱动器。 “现在，请小心你的电量表，”其中一位告诉你。 “这东西每次跳跃消耗的燃料是普通超空间引擎的两倍，你不想在人类空间之外陷入困境。”`
+				accept
+	
+	on accept
+		outfit "Jump Drive" 1
+		set "fw given jump drive"
+	on visit
+		dialog `您降落在 <planet> 上，但意识到您携带阿隆多的护卫尚未进入系统。最好出发并等待它的到来。`
+	on complete
+		set "FW Pug 2C: done"
+
+
+
+mission "FW Pug 2C: Jump Drive"
+	landing
+	name "调查哈巴狗"
+	description "前往天津四星系调查哈巴狗；如果可能的话，与他们联系并确定他们的目标和愿望是什么。"
+	source Hephaestus
+	destination Pugglemug
+	clearance
+	to offer
+		has "FW Pug 2B: done"
+		not "fw given jump drive"
+		has "outfit (flagship installed): Jump Drive"
+	passengers 1
+	on fail
+		dialog phrase "free worlds failed"
+	
+	on offer
+		conversation
+			`你将被引导降落在距离太空港一段距离的机库中，该机库位于 辛迪加d Systems 拥有的一组建筑中。一组工程师会见您并询问他们是否可以检查您的船；几分钟后，其中一个人惊讶地说：“你已经有了跳跃驾驶！你是怎么做到的？”由于你不需要他们的设备，他们敦促你直接前往巴哥犬空间并继续你的任务。`
+				accept
+	
+	on accept
+		set "fw given jump drive"
+		set "already had jump drive"
+	on visit
+		dialog `您降落在 <planet> 上，但意识到您携带阿隆多的护卫尚未进入系统。最好出发并等待它的到来。`
+	on complete
+		set "FW Pug 2C: done"
+
+
+
+mission "FW Pug Jump Drive Check"
+	landing
+	to offer
+		has "fw given jump drive"
+		not "outfit (all): Jump Drive"
+		not "event: reconnected delta capricorni"
+	on offer
+		conversation
+			`不知何故，你失去了继续自由世界故事所需的跳跃驱动器！如果您无法找到跳跃驱动器，则应恢复到自动保存或游戏的其他早期快照。`
+			`或者，你可以尝试追踪辛迪加提到的科拉斯袭击者，并从他们那里窃取另一个跳跃驱动器，但听起来科拉斯可以进行相当大的战斗......`
+				decline
+
+
+
+mission "FW Pug 2C: Side"
+	landing
+	source
+		government Pug
+		near Deneb 1 100
+	to offer
+		has "fw given jump drive"
+		not "FW Pug 3: offered"
+	
+	on offer
+		log "Visited one of the human worlds that has been captured by the Pug. The Pug do not seem to be mistreating the people here, but they have stationed armed guards throughout the spaceport."
+		conversation
+			`当你降落在 <origin> 的太空港时，你没有发现任何暴力挣扎的证据；商船船长们可以自由地走来走去，讨价还价，并互相交谈，就像您访问过的任何其他太空港一样。然而，太空港也有一小群细长、两足行走、皮肤苍白的外星人在巡逻，你认为他们是哈巴狗。每个人都拿着一根金属杖：可能是某种武器。`
+			`着陆后不久，你会发现一个人正朝你的船走去，每当一群哈巴狗朝他的方向看时，他就会躲在其他船只和板条箱后面。如果他是他们的逃亡者，那么将你的命运和他一起投入可能是不明智的。另一方面，他可能为你提供有价值的信息。`
+			choice
+				`（留在身边并与他交谈。）`
+				`（在我引起哈巴狗注意之前起飞。）`
+					flee
+		
+			`You open your ship's hatch and allow him to come on board. "You came from outside, didn't you?" he says. "Outside of occupied space, I mean." You nod.`
+			`	"What's going on here?" asks Alondo. "Who are these aliens?"`
+			`	"I'm a planet-dweller," he says, "so the first I heard of it was when these ships unlike anything I'd ever seen before came down out of the sky, and hovered over the spaceport. Then they began transmitting radio messages on all frequencies, saying that this world is now a part of the Pug Protectorate, and that we must refrain from violence and give them a portion of the goods our world produces."`
+			label "planet dweller questions"
+			branch end
+				has "asked planet dweller about resisting pug"
+				has "asked planet dweller about pug intentions"
+				has "asked planet dweller about pug strategy"
+			choice
+				`“有人试图反抗吗？”`
+					to display
+						not "asked planet dweller about resisting pug"
+					goto resist
+				`“你认为他们的意图是什么？”`
+					to display
+						not "asked planet dweller about pug intentions"
+					goto intentions
+				`“他们有没有解释为什么将你与银河系其他地方隔绝？”`
+					to display
+						not "asked planet dweller about pug strategy"
+					goto cut
+		
+			label resist
+			action
+				set "asked planet dweller about resisting pug"
+			`	"A few. Their ships aren't invulnerable; a merchant in an Argosy managed to take out one of their smaller ships when it was landed with its shields down, before they blew his ship out of the air in retaliation. And those staffs they're carrying shoot some kind of stun ray, but if you cut them, they bleed, same as any other creature." He pauses, then taps the knife that is holstered at his belt and says, "Except, they bleed blue. Pale milky blue."`
+			goto "planet dweller questions"
+
+			label intentions
+			action
+				set "asked planet dweller about pug intentions"
+			`	"Well, they want our resources, of course. And, they say they have come to bring a new era of peace and an end to all violence and conflict. I don't buy it, though; they saw that humanity was too divided to resist them, and they seized the opportunity to invade and plunder us. It's that simple."`
+			goto "planet dweller questions"
+		
+			label cut
+			action
+				set "asked planet dweller about pug strategy"
+			`	"I'd think that would be obvious. With the hyperspace links cut, there's no way for anyone from outside to assist us. And they struck at a part of human space without much in the way of militias or bounty hunters or Navy protection. And the few half-decent warships that happened to be in system when they attacked have already been destroyed trying to fight them."`
+			goto "planet dweller questions"
+
+			label end
+			`	"Where did they come from originally?" asks Alondo.`
+			`	"From a star system that was always a neighbor of ours, but wasn't linked to us or to any other part of human space. We always just assumed it was an uninhabited system, but it turns out they were there all along, biding their time, waiting for a good opportunity to attack us."`
+			`	"Well," says Alondo, "they didn't attack us when we jumped into this system. Perhaps we should go to their home system and see what they have to say for themselves."`
+				decline
+
+
+mission "FW Pug 2C: Pugglequat"
+	landing
+	source Pugglequat
+	to offer
+		has "fw given jump drive"
+		not "FW Pug 3: offered"
+	
+	on offer
+		conversation
+			`这个星球显然是哈巴狗的原生世界之一，而不是一个已被占领的人类世界。这里的建筑完全是外星人的，你在这里看不到人类的船只或人类，只有外星人。但是，它似乎主要是一个采矿和工厂的世界；所有的外星人都忙着工作，似乎没有人会说你们的语言，也没有人有兴趣与你们交谈；相反，它们指向天空，也许是为了表明您应该访问该系统中的另一个哈巴狗星球。`
+				decline
+
+
+
+mission "FW Pug 3"
+	name "将新闻带到地球"
+	description "现在你已经与哈巴狗会面了，前往地球并向议会解释情况，并向自由世界发送消息，这样你就可以决定如何回应。"
+	autosave
+	landing
+	source Pugglemug
+	destination Earth
+	clearance
+	to offer
+		has "fw given jump drive"
+		has "FW Pug 2C: done"
+	passengers 1
+	on fail
+		dialog phrase "free worlds failed"
+	
+	on offer
+		log "Located the Pug homeworld, and met with some of them. They say that they have annexed the neighboring systems into the Pug Protectorate in order to stop the human civil war. However, their idea of bringing peace seems to involve conquering human space and replacing the Republic with their own government."
+		log "Factions" "Pug" `The Pug are aliens with barrel-shaped bodies, spindly legs, and milky blue blood. They claim to have intervened in the human civil war purely for the sake of preventing more bloodshed and helping humans to live together in peace.`
+		conversation
+			`这是一个完全陌生的世界。这些建筑有着奇怪的流动、锥形的形状，与哈巴狗的星际飞船没什么不同，从轨道上你可以数出数十座大城市，覆盖了大部分陆地。如果这是人类世界，估计人口超过十亿。你跟随一艘正在着陆的哈巴狗飞船，发现了一个大型太空港，除了外星人之外，还停泊着数量惊人的人类商船。`
+			`在其他地方，他们大多忽略了你，但在这里，一小群皮肤苍白、娇弱的外星人很快就接近了你的飞船。哈巴狗的比例很奇怪，胳膊和腿很长，但躯干很短，呈桶状，头很大，虽然它们只有两条腿，但它们的步态却隐约像昆虫。 “你是从外面来的，”其中一人说道。 “你并没有向都护国宣誓，你想在这个时候宣誓忠诚与和平吗？”`
+			choice
+				`“不，我们来这里是为了找出你袭击我们的原因，并要求你别打扰我们。”`
+				`“我们愿意和平，但前提是你让我们重新控制我们的恒星系统。”`
+			`“我们不想伤害你，”外星人说。 “到时候你们就会认识到这一点。我们干预你们的战争只是为了带来和平，并防止你们的物种对自己造成巨大伤害。我们必须保持对这些系统的控制，直到我们确信如果链接恢复，你们将不会继续战斗。”`
+			choice
+				`“如果你不想伤害我们，为什么要屠杀辛迪加舰队？”`
+				`“无论你的意图如何，你都无权侵入我们的空间并干涉我们的事务。”`
+					goto interfere
+		
+			`	"The fleet that was carrying nuclear weapons, weapons of genocide? The fleet that, when we demanded their surrender, instead attacked us with those weapons? We offered them a place in the Protectorate, but they chose violence instead, and so they perished by violence. That is justice."`
+			`	Alondo says, "I still don't understand what makes you think you have the right to interfere in human affairs."`
+		
+			label interfere
+			`	"'Interfere'?" says the alien. "We have 'interfered' many times before, and always you have benefited. If you do not believe us, ask those who live in the place you call the Deep. We helped them defeat the twisted half-human beings that you created in your foolish attempts to improve your race's genetic code. We have helped keep those creatures in check in the centuries since then. And we have helped in many other ways."`
+			choice
+				`“我来自深渊，以前从未听说过你。”`
+					to display
+						has "start: deep"
+				`“你想从我们这里得到什么回报？”`
+					goto goals
+				`“你打算如何处理你占领的这些系统？”`
+					goto goals
+			`	"Then perhaps you know of the myths of 'elves,' and of the tradition of tributation," says the alien. "We had been content with protecting your species from afar, letting your kind take our accomplishments as your own, but it is clear further intervention is necessary."`
+			`	Alondo asks, "And what is this 'further intervention?'"`
+			label goals
+			`	"We have brought peace to this region," says the alien, "and we will continue to spread peace until violence has come to an end throughout human space. That is our only desire. All that we ask in return is a portion of the goods your worlds produce, to help offset the cost of watching over and protecting so many human worlds. And after some time, we will again allow human beings autonomous control of certain parts of your territory, when you show yourselves capable of living peacefully."`
+			`	"By 'spreading peace,' do you mean occupying more systems?" asks Alondo.`
+			`	"We mean bringing an end to your war and your divisions," the alien says. "Those of your worlds and your people who have shown themselves unable to live peacefully, we must govern, to teach them peace. Any who attack us, we must destroy, because we are the bringers of peace, and whoever attacks us is not on the side of peace. And so we will send you back to your people now, to tell them that they have nothing to fear, and that they should await our peace and our protection."`
+			`	The aliens appear to think the conversation is over; they walk away and leave you puzzling over what they said. "We should report back to Earth," says Alondo. "This situation is far beyond what we can handle alone."`
+				accept
+	on visit
+		dialog `您降落在 <planet> 上，但意识到您携带阿隆多的护卫尚未进入系统。最好出发并等待它的到来。`
+
+
+
+mission "FW Pug 3: Deep"
+	landing
+	name "参观深海（可选）"
+	description "哈巴狗暗示他们过去曾帮助过深海人民。与瓦尔哈拉总督埃德里克交谈，看看他对哈巴狗了解多少。 （此任务是可选的。）"
+	source Earth
+	destination Valhalla
+	to offer
+		has "FW Pug 3: done"
+	to fail
+		has "FW Pug 3A: done"
+	
+	on complete
+		log "The governor of Valhalla, in the Deep, says that the Pug secretly assisted the people of the Deep to fight against the Alphas centuries ago, during the Alpha Wars. He thinks that the Pug have humanity's best interests at heart, but agrees that they can't be allowed to overthrow the Republic."
+		log "Factions" "Pug" `It is possible that the Pug secretly assisted the humans of the Deep centuries ago by providing them with weapons that helped to turn the tide of the Alpha Wars.`
+		conversation
+			`当您准备着陆时，您联系了埃德里克·弗林特（Edrick Flint），看看他是否可以谈话。几分钟后，你和阿隆多和他一起坐在他位于政府中心的办公室里。 “我想你听说过外星人入侵吧？”阿隆多说。埃德里克点点头。 “外星人声称他们过去曾与深渊打过交道。你知道这件事吗？”`
+			`艾德里克说：“你能描述一下这些外星人长什么样吗？”`
+			`“皮肤白皙，体格娇弱，大多数人身高不到两米，”阿隆多说。 “腿长，躯干短。他们可能有贵族血统。”`
+			`艾德瑞克停顿了几秒钟，然后说道：“是的，早在阿尔法战争期间，我们就接触过一个符合描述的物种。一些关于‘精灵’的民间传统至今仍然存在于深海，就是这些接触的结果。”`
+			choice
+				`“你知道当时他们想从人类那里得到什么吗？”`
+				`“他们的船有哪些优点和缺点？”`
+					goto strengths
+			
+			`“如果这些故事属实，那么他们想要的只是帮助我们赢得对抗阿尔法的战争，”埃德里克说。 “他们从未要求任何付款，只是借用了我们的一些船只，装满了外星技术，并伪装成人类船只与我们的船只并肩作战。他们还给了我们光束武器技术；五个世纪后，我们才刚刚达到了对这项技术足够了解并对其进行改进的地步。”`
+			`“你对他们的战舰了解多少？”阿隆多问道。`
+			
+			label strengths
+			`“我知道他们有一项技术可以让他们的护盾快速充电，”埃德里克说。 “所以要摧毁他们的一艘船需要大量的集中火力。但是你确定我们需要与他们战斗吗？我的人民世世代代都相信‘精灵族’是一种友好的物种，而不是敌对的物种。”`
+			choice
+				`“他们似乎一心想要占领整个人类空间，迫使我们屈服于他们的权威。所以我们必须与他们作战。”`
+				`“他们可能认为他们现在正在帮助我们，通过中断我们的内战，但我们仍然必须反击。”`
+			`艾德里克对此显得很失望。 “我理解。我相信他们真诚地认为他们正在做对我们最好的事情，但显然我们不能容忍这种入侵。祝你好运，队长。”他解雇了你。`
+
+
+
+mission "FW Pug 3: Quarg"
+	landing
+	name "参观夸格（可选）"
+	description "拜访 <planet> 上的夸格人，看看他们是否了解哈巴狗或愿意帮助你对抗他们。 （此任务是可选的。）"
+	source Earth
+	destination Lagrange
+	to offer
+		has "FW Pug 3: done"
+	to fail
+		has "FW Pug 3A: done"
+	
+	on complete
+		log "Learned from the Quarg that they have long been aware of the presence of the Pug in the Deneb system. Apparently the Pug are from another galaxy and possess such advanced technology that even the Quarg do not dare to interfere with them."
+		log "However, the Pug are known to treat warfare like a game, intentionally using weaker technology when fighting less advanced species in order to give them a fair chance at winning the battle. So, fighting them will not be a lost cause, but the Quarg are unwilling to provide any assistance."
+		log "Factions" "Pug" `The Quarg claim that the Pug treat warfare like a game. When battling another species, the Pug will limit themselves to ships and weapons that are weak enough that the other species has a chance of defeating them.`
+		conversation
+			`当你降落在空间站时，阿隆多说，“根据我对夸格外交的理解，我们应该要求他们中的任何一个人来引导我们找到能够回答我们问题的人。”他走向站在你的坞站附近的夸格人并说道：“打扰一下，你能带我们去找一个可以交谈的人吗？”`
+			`它点头并示意你跟随，并带你到主走廊的一个角落，另一个夸格站在桌子后面。你对这个物种知之甚少感到震惊：你是在跟导游还是外交官说话？你被带到这个人面前是因为他是空间站的站长，还是仅仅因为他会说人类语言？桌子后面的夸格人说：“你有什么问题要问我吗？”`
+			choice
+				`“你能帮助我们对抗哈巴狗吗？”`
+				`“你能给我们提供有关哈巴狗的信息吗？”`
+					goto info
+			
+			`“不，”它说。灰色脸上的几条皮肤变成了暗红色；你听说过，这可能表示悲伤、尴尬，或者可能是愤怒——关于夸格人的又一件事，没有人能很好地理解。 “很久以前，我们试图抵抗哈巴狗，”它说。 “作为报复，他们打破了我们的一枚戒指。”它指向车站窗外的半成品环形世界。 “这个戒指已经完成了一半，你们花了一千年的时间才建成。这些戒指是我们最珍贵的创造物，几乎不可能被摧毁，但哈巴狗知道如何扭曲和切割空间本身的结构。”`
+			`“那么你以前遇到过哈巴狗吗？”阿隆多问道。`
+			
+			label info
+			`夸格人沉默了很长一段时间。 “哈巴狗干涉了这个星系中许多物种的事务，”它说，“但它们不是这个星系的本地人。它们通过人造虫洞来到这里：这是一种连德拉克人都不具备的技术。它们的行为是不可预测的。它们声称自己是根据对未来事件的特殊知识采取行动的，但我们不知道这些知识是真实的还是只是欺骗其他物种的借口。”`
+			choice
+				`“如果他们这么先进，我们还有机会击败他们吗？”`
+					goto defeat
+				`“你认为龙族会和我们一起对抗他们吗？”`
+					goto drak
+			
+			label defeat
+			`“是的，”它说。 “在战斗中，哈巴狗总是以足够的力量做出反应，让对手有公平的获胜机会。”`
+			`阿隆多一头雾水。 “你是什么意思？”他问道。`
+				goto balance
+			
+			label drak
+			`“不，”它说。 “德拉克人不会干涉战争，除非他们的规则被打破。而且，无论如何，这对你没有帮助；哈巴狗总是调整他们的舰队的力量，给他们的对手他们认为公平的机会。”`
+			`“等等，”阿隆多说道，“你是说他们会故意用较弱的兵力攻击我们，而不是全力以赴保证胜利？”`
+				goto balance
+			
+			label balance
+			`“战争对哈巴狗来说是一场游戏，”夸格人说。 “他们是一个奇怪的物种。即使他们发动战争，他们的目标可能不是赢得战争，而是以某种方式失败。我们已经看到他们在与远不如你们先进的物种的战斗中失败，即使他们拥有保证他们胜利的武器。如果他们想要战争，你必须玩他们的游戏，如果你玩他们的游戏，他们可能会让你获胜。”`
+			`“这毫无意义，”阿隆多说。 “他们会为了一场比赛而死吗？”`
+			`夸格人停顿了一会儿，似乎在努力寻找言语。 “我是我自己，也是夸格。你们是你们自己，也是人类。但我们认为，也许哈巴狗首先是哈巴狗，然后也是它自己。”`
+			`“他们的身份是公共的，而不是个人的？”阿隆多说。`
+			`“确实如此。因为它们之间的联系如此之深，所以它们认为所有事物都与它们相关。至少，这是我们对它们物种所能获得的最好的了解。”`
+			choice
+				`“谢谢您的宝贵时间。”`
+					decline
+				`“你有没有机会给我们一些跳跃驾驶，这样我们就可以派出更大的舰队来对抗哈巴狗？”`
+			
+			`“不，我道歉，”它说。 “我们看到你们以某种方式获得了跳跃引擎，我们不会把它从你们手中夺走，但我们也不能给你们的物种更多的跳跃引擎。”`
+				decline
+
+
+
+mission "FW Pug 3A"
+	landing
+	name "集结舰队"
+	description "前往<destination>并征用两艘自由世界无畏舰加入对抗哈巴狗的战斗。 （但如果你想参观夸格或深渊，请先这样做。）"
+	autosave
+	source Earth
+	destination Zug
+	to offer
+		has "FW Pug 3: done"
+	passengers 1
+	on fail
+		dialog phrase "free worlds failed"
+	
+	on offer
+		conversation
+			`当你的飞船通过跳跃驱动器进入太阳系时，引起了不小的轰动。幸运的是，议会允许你降落在他们的一个私人机库，但即便如此，一些媒体无人机还是设法跟随你的船进入机库，并从你和阿隆多下船的那一刻起，摄像机就对准了你。`
+			`你向议会报告说，超空间链接不是被辛迪加切断的，而是被外星物种切断的，并且辛迪加已提出为攻击舰队提供跳跃驱动器，如果共和国和自由世界愿意提供船只的话。您还报告说，外星人的意图是扩散以占领更多的人类空间，并索取所有人类星球资源生产的一小部分，据说是以带来“和平”的名义。`
+			`一位参议员问道：“你认为我们有机会击败外星人吗？”`
+			choice
+				`“有可能。他们都生活在同一个恒星系统中，所以我们的数量比他们多。”`
+					goto questions
+				`“这不太可能。如果我们除了与他们战斗之外还有其他选择，我们应该探索这些选择。”`
+			`“我认为我们别无选择，”一位年长的成员说。 “哪怕是一场失败的战斗，我们也不能让人类不战而屈人之兵。”`
+			label questions
+			`之后他们还有很多其他问题；你尽可能地回答他们，并给他们留下外星飞船和行星的传感器日志的完整副本。议会同意你的下一步是说服自由世界向攻击舰队提供两艘无畏舰。 “另外，”一位议员说道，“也许你可以和住在你那片太空的那些外星人谈谈，看看他们是否能以任何方式帮助我们。如果哈巴狗最终成为他们的敌人，那肯定会很方便。”`
+			`在听证会上，你没有提到哈巴狗号声称过去曾协助过深海，但当你回到你的船上时，阿隆多说：“也许我们也应该访问瓦尔哈拉，看看弗林特总督是否能为我们提供任何信息。”`
+				accept
+	on visit
+		dialog `您降落在 <planet> 上，但意识到您携带阿隆多的护卫尚未进入系统。最好出发并等待它的到来。`
+
+
+
+mission "FW Pug 3B"
+	landing
+	name "护送至<planet>"
+	description "带着两艘自由世界无畏舰前往<planet>，它们将加入对抗哈巴狗的战斗。"
+	autosave
+	source Zug
+	destination Geminus
+	clearance
+	to offer
+		has "FW Pug 3A: done"
+	passengers 1
+	on fail
+		dialog phrase "free worlds failed"
+	
+	on offer
+		"salary: Free Worlds" = 17000
+		conversation
+			`弗雷亚 (Freya) 着陆后不久就会见到您。 “我听到了这个消息，”她说。 “我和参议院谈过，他们认为我应该在你袭击哈巴狗期间和你一起旅行，以防我能帮助弄清楚他们的技术，甚至可能如何恢复超空间链接。他们说他们需要阿隆多回到这里进行外交访问并帮助人们避免恐慌。”`
+			`“我想这是有道理的，”阿隆多说。`
+			`“另外，”芙蕾雅说，“参议院批准了你的加薪，<first>。你的新工资将是每天一万七千个学分。我希望这意味着你能够用尽可能强大的舰艇与哈巴狗作战，因为我怀疑我们需要我们能得到的所有火力。”`
+			`阿隆多祝你好运，然后出发去搭乘前往伯恩的交通工具，而芙蕾雅则带你前往太空港，并向你介绍了自愿与哈巴狗作战的两艘无畏舰的船长。她还会问你各种各样的技术问题：哈巴狗似乎使用什么样的推进和能源，它们的武器能力是什么，以及你是否看到任何用于摧毁超空间链接的技术的迹象。你很难回答她，但很高兴她这次能和你一起亲眼目睹外星人。`
+				accept
+	
+	npc accompany save
+		government "Free Worlds"
+		personality escort disables
+		ship "Dreadnought" "F.S. Independence"
+		ship "Dreadnought" "F.S. Freedom"
+	
+	on visit
+		dialog "您已到达 <planet> ，但无畏舰落后于您，因为它们使用的是普通超光速驱动器。最好先出发，等待他们到达这个星系。"
+
+
+
+conversation "前锋哈巴狗"
+	`你降落在双子座的共和国海军造船厂，护送两艘无畏舰，它们是自由世界对哈巴狗战争的贡献。造船厂主管和工程师团队会见您，他们正在准备海军舰艇加入您的行列。 “所以，这些是你们的无畏舰，”其中一位说道。 “我很高兴终于有机会近距离观察。我想其中一位船长不会愿意带我参观。”`
+	choice
+		`“嗯，我们现在正在抵抗外星人的入侵。”`
+		`“抱歉，我们无权与你分​​享军事机密。”`
+		`“当然，我相信我们可以安排一些事情。”`
+			goto yes
+
+	`	Freya laughs. "Give him a break, <first>. He's just thinking like an engineer, rather than a tactician. I mean, I'd certainly jump at the chance to tour a Cruiser even at a time like this."`
+
+	label yes
+	`	The supervisor seems irked that his engineers are more interested in exploring nifty new ship technology than in the task at hand, but he grudgingly offers to give you a tour of the Navy Yard in exchange for letting his engineers take a closer look at the Dreadnoughts. Freya whispers to you, "Just think of this as another step toward peace and reconciliation."`
+	`	The new shipyard is some distance away from the old one, which is still in ruins, a radioactive crater a few kilometers away from the spaceport. "The attack happened at night," says the supervisor. "Three hundred and forty-seven people were killed. If the attack had been during working hours, that number would have been in the thousands. We're recovering some metal from the old shipyard, but other than that it's a total loss. The radiation is slowly dying down, though."`
+	`	There is deep anger in his voice as he speaks. You are glad that the Free Worlds have been proved innocent of involvement in the attack, but you suspect that on the worlds that were bombed, most people will not accept peace with the Syndicate on any terms except the full surrender of all the Syndicate personnel who were responsible.`
+	`	When they're done giving you the tour, you return to the spaceport. The supervisor and the team of engineers wish you the best of luck, and depart.`
+		accept
+
+
+
+mission "FW Pug 3C"
+	landing
+	name "护送前往赫菲斯托斯"
+	description "护送自由世界和海军联合舰队前往<destination>，辛迪加将在那里为所有船只配备跳跃驱动器。"
+	autosave
+	source Geminus
+	destination Hephaestus
+	to offer
+		has "FW Pug 3B: done"
+		not "already had jump drive"
+	passengers 1
+	on fail
+		dialog phrase "free worlds failed"
+	
+	on offer
+		log "The Free Worlds and Republic Navy are sending a joint fleet into Syndicate space, where they will be fitted with jump drives to make an assault on Pug territory. The Syndicate only has six jump drives available, so this fleet will have to survive without reinforcements until a way is found to reopen the connection to the rest of human space."
+		conversation "前锋哈巴狗"
+	
+	npc accompany save
+		government "Free Worlds"
+		personality escort
+		ship "Dreadnought" "F.S. Independence"
+		ship "Dreadnought" "F.S. Freedom"
+	npc accompany save
+		personality escort
+		government "Republic"
+		ship "Cruiser (Mark II)" "R.N.S. Everest"
+		ship "Cruiser (Mark II)" "R.N.S. Denali"
+		ship "Carrier (Mark II)" "R.N.S. Vesuvius"
+		ship "Carrier (Mark II)" "R.N.S. Haleakala"
+	
+	on visit
+		dialog "您已到达 <planet>，但您的部分舰队尚未到达。最好先出发，等待他们到达这个星系。"
+
+
+
+mission "FW Pug 3C (Extra)"
+	landing
+	name "护送前往赫菲斯托斯"
+	description "护送自由世界和海军联合舰队前往<destination>，辛迪加将在那里为所有船只配备跳跃驱动器。"
+	autosave
+	source Geminus
+	destination Hephaestus
+	to offer
+		has "FW Pug 3B: done"
+		has "already had jump drive"
+	passengers 1
+	on fail
+		dialog phrase "free worlds failed"
+	
+	on offer
+		log "The Free Worlds and Republic Navy are sending a joint fleet into Syndicate space, where they will be fitted with jump drives to make an assault on Pug territory. The Syndicate only has seven jump drives available, so this fleet will have to survive without reinforcements until a way is found to reopen the connection to the rest of human space."
+		conversation "前锋哈巴狗"
+	
+	npc accompany save
+		government "Free Worlds"
+		personality escort
+		ship "Dreadnought" "F.S. Independence"
+		ship "Dreadnought" "F.S. Freedom"
+	npc accompany save
+		personality escort
+		government "Republic"
+		ship "Cruiser (Mark II)" "R.N.S. Everest"
+		ship "Cruiser (Mark II)" "R.N.S. Denali"
+		ship "Carrier (Mark II)" "R.N.S. Vesuvius"
+		ship "Carrier (Mark II)" "R.N.S. Haleakala"
+		ship "Cruiser (Mark II)" "R.N.S. Matterhorn"
+	
+	on visit
+		dialog "您已到达 <planet>，但您的部分舰队尚未到达。最好先出发，等待他们到达这个星系。"
+	on complete
+		set "FW Pug 3C: done"
+
+
+
+mission "FW Pug 4: Escorts"
+	landing
+	invisible
+	non-blocking
+	source Hephaestus
+	to offer
+		has "FW Pug 3C: done"
+	to fail
+		has "FW Pug 6: done"
+	
+	npc kill
+		government "Free Worlds"
+		personality escort heroic disables
+		ship "Dreadnought (Jump)" "F.S. Independence"
+		ship "Dreadnought (Jump)" "F.S. Freedom"
+	npc kill
+		personality escort heroic disables
+		government "Republic"
+		ship "Cruiser (Jump)" "R.N.S. Everest"
+		ship "Cruiser (Jump)" "R.N.S. Denali"
+		ship "Carrier (Jump)" "R.N.S. Vesuvius"
+		ship "Carrier (Jump)" "R.N.S. Haleakala"
+		ship "Dagger" "Red One"
+		ship "Dagger" "Red Two"
+		ship "Dagger" "Red Three"
+		ship "Dagger" "Red Four"
+		ship "Dagger" "Red Five"
+		ship "Dagger" "Red Six"
+		ship "Dagger" "Red Seven"
+		ship "Dagger" "Red Eight"
+		ship "Dagger" "Red Nine"
+		ship "Dagger" "Red Ten"
+		ship "Dagger" "Red Eleven"
+		ship "Dagger" "Red Twelve"
+		ship "Dagger" "Red Thirteen"
+		ship "Dagger" "Red Fourteen"
+		ship "Dagger" "Red Fifteen"
+		ship "Dagger" "Red Sixteen"
+		ship "Combat Drone" "Orange One"
+		ship "Combat Drone" "Orange Two"
+		ship "Combat Drone" "Orange Three"
+		ship "Combat Drone" "Orange Four"
+		ship "Combat Drone" "Orange Five"
+		ship "Combat Drone" "Orange Six"
+		ship "Combat Drone" "Orange Seven"
+		ship "Combat Drone" "Orange Eight"
+		ship "Combat Drone" "Yellow One"
+		ship "Combat Drone" "Yellow Two"
+		ship "Combat Drone" "Yellow Three"
+		ship "Combat Drone" "Yellow Four"
+		ship "Combat Drone" "Yellow Five"
+		ship "Combat Drone" "Yellow Six"
+		ship "Combat Drone" "Yellow Seven"
+		ship "Combat Drone" "Yellow Eight"
+		ship "Combat Drone" "Yellow Nine"
+		ship "Combat Drone" "Yellow Ten"
+		ship "Combat Drone" "Yellow Eleven"
+		ship "Combat Drone" "Yellow Twelve"
+
+mission "FW Pug 4: Escorts (Extra)"
+	landing
+	invisible
+	non-blocking
+	source Hephaestus
+	to offer
+		has "FW Pug 3C: done"
+		has "already had jump drive"
+	to fail
+		has "FW Pug 6: done"
+	npc kill
+		personality escort heroic disables
+		government "Republic"
+		ship "Cruiser (Jump)" "R.N.S. Matterhorn"
+		ship "Combat Drone" "Green One"
+		ship "Combat Drone" "Green Two"
+		ship "Combat Drone" "Green Three"
+		ship "Combat Drone" "Green Four"
+
+
+
+mission "FW Pug 4"
+	landing
+	name "解放<system>"
+	description "尝试将哈巴狗赶出 <system> 系统，然后降落在 <planet> 上。"
+	autosave
+	source Hephaestus
+	destination Maker
+	clearance
+	to offer
+		has "FW Pug 3C: done"
+	passengers 1
+	on fail
+		dialog phrase "free worlds failed"
+	
+	on offer
+		event "at war with the pug"
+		conversation
+			`辛迪加会指导您将船只降落在辛迪加系统的私人机库中。一旦你着陆，他们就会迅速在海军和自由世界的舰艇上安装跳跃驱动器。当他们工作时，你会听到一名工人对另一名工人说：“天哪，我忘了那些海军舰艇有多大。相比之下，保护者号显得微不足道，不是吗？”`
+			branch extra
+				has "already had jump drive"
+			`工作完成后，您会见一位名叫 Marco Bugati 的辛迪加高级管理人员。 “我真的希望这能奏效，”他说，“因为这是我们能够获得的唯一跳跃驱动器。如果你们的舰队被摧毁，我们将完全无法进入被占领土。”`
+				goto end
+			label extra
+			`工作完成后，您会见一位名叫 Marco Bugati 的辛迪加高级管理人员。 “我真的希望这能奏效，”他说，“因为这些是我们能够获得的唯一的跳跃驱动器，尽管你似乎自己也捡到了一个；我想和你聊聊，看看如果我们都能幸存的话，我们会怎么做。我可以告诉你，多亏了备用跳跃驱动器，我们得到的那艘额外的船可能是至关重要的。但如果你的舰队被摧毁，我们将完全无法进入被占领的领土。”`
+			label end
+			`你聚集你的舰队，准备攻击摩羯座三角洲，这是距离辛迪加空间最近的被占领的恒星系统。`
+			``
+			`[照顾好这支舰队：如果船只出现故障，战斗结束后登上它们进行“修复”。而且，当跳入战斗时，请记住，你可以按住跳跃键让所有船只准备好同时跳跃，这样就没有一艘船只首先进入系统并承受敌人火力的冲击。]`
+				accept
+	
+	npc evade
+		personality disables staying
+		system "Delta Capricorni"
+		government Pug
+		fleet 2
+			names "pug"
+			variant
+				"Pug Maboro"
+				"Pug Enfolta"
+				"Pug Zibruka" 2
+		fleet 4
+			names "pug"
+			variant
+				"Pug Enfolta"
+				"Pug Zibruka" 2
+	
+	on visit
+		dialog `您已降落在 <planet> 上，但要么仍有哈巴狗飞船在头顶盘旋，要么您已将 Freya 抛在后面。你应该起飞并帮助消灭哈巴狗，或者等待你的护卫带着芙蕾雅到达。`
+	on complete
+		event "battle for delta capricorni"
+
+
+
+mission "FW Pug 4A"
+	landing
+	name "保卫创客"
+	description "阻止哈巴狗重新获得对 Maker 的控制权足够长的时间，以便 Freya 弄清楚是否有可能将超空间链接恢复回 Markab 系统。"
+	source Maker
+	to offer
+		has "FW Pug 4: done"
+	on fail
+		dialog phrase "free worlds failed"
+	
+	on offer
+		log "Succeeded in driving the Pug out of the Delta Capricorni system for long enough to land on Maker and explore the technology that the Pug left behind. Freya thinks that she has discovered the device that is used for creating or destroying hyperspace links, but it will take time for her to figure out how to operate it."
+		conversation
+			branch lost
+				has "FW Pug 4: Escorts: done"
+			`您与联合攻击舰队的剩余船只一起降落在 <origin> 的主太空港。其他船只载有训练有素的士兵和行星防御设备：地面激光炮塔、地对空导弹和来袭船只的跟踪雷达。士兵们已经全副武装，准备在必要时在地面上与哈巴狗战斗，但事实证明，这里的所有哈巴狗都乘坐其中一艘试图击退你的攻击的船只起飞。`
+				goto generator
+			
+			label lost
+			`你解放了这个星球，但随着你的整个舰队被摧毁，你的胜利可能是短暂的。尽管如此，你别无选择，只能继续努力。幸运的是，事实证明，在 Maker 上，没有一只哈巴狗留在地上。他们都离开了这个星球，加入了你刚刚摧毁的舰队。所以至少你不用担心陆地战争。`
+				goto generator
+			
+			label generator
+			`芙蕾雅有一些好消息：她从马卡布系统的超空间通信中继站接收到非常微弱的间歇性信号。 “这意味着链接可能不会完全关闭，”她说，“或者至少还残留着一些残留物。”`
+			`弗雷娅引导你飞越地球，调查哈巴狗留下的建筑物和设备，搜索一段时间后，你发现了一座隐约类似于无线电发射机的外星建筑。你在附近着陆，当你步行接近这座建筑时，你会感觉脚下的地面正在起伏，就像波涛汹涌的大海上的船甲板一样。 “引力子扭曲，”她说。 “这可能就是他们用来破坏超空间链接的设备。不过，我需要一段时间才能弄清楚它是如何工作的。”`
+			`你同意她会留在这里尝试弄清楚外星技术，而你则尽力保卫地球并阻止哈巴狗重新夺回它。`
+				accept
+	on visit
+		dialog `您已降落在 <planet> 上，但仍有哈巴狗飞船在头顶盘旋。你应该起飞并帮助解决它们。`
+	
+	npc
+		system Deneb
+		government Pug
+		personality disables
+		fleet
+			names "pug"
+			variant
+				"Pug Maboro"
+				"Pug Enfolta"
+				"Pug Zibruka" 2
+		fleet
+			names "pug"
+			variant
+				"Pug Enfolta"
+				"Pug Zibruka" 2
+	
+	npc disable
+		system Rasalhague
+		government Pug
+		personality disables
+		dialog `你收到来自芙蕾雅的消息：“队长，我想我已经找到了发射器，我们确实有机会重新打开超空间链接。尽快回到地球与我会合——我需要你把一些设备带回赫菲斯托斯并在那里安装。”`
+		fleet
+			names "pug"
+			variant
+				"Pug Maboro"
+				"Pug Enfolta"
+				"Pug Zibruka" 2
+		fleet 3
+			names "pug"
+			variant
+				"Pug Enfolta"
+				"Pug Zibruka" 2
+
+
+
+mission "FW Pug 4B"
+	landing
+	name "赫菲斯托斯反射镜"
+	description `Freya 发现了一个她认为是“引力子反射器”的设备，可以以某种方式在 <system> 系统中设置该设备，以重新建立该系统与 Delta Capricorni 之间的超空间链接。将发射器交给 <planet> 的辛迪加官员。`
+	source Maker
+	destination Hephaestus
+	to offer
+		has "FW Pug 4A: done"
+	cargo "graviton reflector" 10
+	blocked `Freya contacts you and says, "Captain, you're going to need ten tons of cargo space." You do not have that much available, so you should return here when you do.`
+	on fail
+		dialog phrase "free worlds failed"
+	
+	on offer
+		conversation
+			`弗雷亚 (Freya) 着陆后不久就会见到您。她带来了一大件外星机械，安装在平板卡车上以方便运输。 “我关闭了发射器，”她说，“果然，来自马卡布的信号开始逐渐变强。我认为它在某种程度上干扰或抑制了超空间链接，而不是完全切断它。所以后来我发现发射器有一个不同的设置，它不是发送随机的引力子噪声，而是发送稳定的谐波脉冲。这加速了重新打开链接的过程。”`
+			choice
+				`“太棒了！链接多久才能再次打开？”`
+					goto time
+				`“你确定我们应该玩我们不理解的外星技术吗？”`
+			
+			`“我们真的有更好的选择吗？”她问。 “如果没有援军，你真的认为自己还能活过多少次巴哥犬袭击？而且，物理规则有一定的逻辑和平衡，所以即使在处理我们无法理解的事情时，直觉有时也能指导我们。”她停顿了一下，说道：“有时直觉会误导我们，但我们现在先别想这个。”`
+			`“那么，链接打开成功了吗？”你说。`
+			label time
+			`“嗯，这是坏消息，”她说。 “按照这个速度，重新打开连接将需要几年的时间。而且我怀疑如果没有剩余链路，这种方法是否会起作用。但这就是该设备的用武之地。”`
+			`她指着外星机器。 “这台机器就像发射器，但要简单得多。发射器以某种方式将行星的重力转向太空；这台机器的作用是将引力子束反射回它的来源处。如果我们可以将反射器安装在赫菲斯托斯上，并将它们非常精确地对齐，我们就可以在两者之间建立驻波，从而更快地重新生成超空间链接。或者据我所知，它可能会创建一个人造奇点，摧毁我们所有人。我在这里基本上是盲目的。”`
+			choice
+				`“嗯，我想我们应该尝试一下。”`
+					goto load
+				`“听起来很冒险。我们还有其他选择可以尝试吗？”`
+			
+			`“不，”她说，“不，没有。抱歉。”`
+			label load
+			`您将反射器装载到船上，并准备前往赫菲斯托斯。你怀疑哈巴狗一旦意识到发生了什么，就会试图阻止你……`
+				accept
+	on visit
+		dialog `您降落在 <planet> 上，但意识到携带引力子反射器的护卫尚未进入系统。最好出发并等待它的到来。`
+
+
+
+mission "FW Pug 4B: Enemies"
+	landing
+	invisible
+	non-blocking
+	source Maker
+	to offer
+		has "FW Pug 4A: done"
+	to fail
+		has "FW Pug 6: done"
+	
+	npc kill
+		personality waiting disables
+		system Deneb
+		government Pug
+		fleet 4
+			names "pug"
+			variant
+				"Pug Maboro"
+				"Pug Enfolta"
+				"Pug Zibruka" 2
+
+
+
+mission "FW Pug 4B: Reinforcements"
+	landing
+	invisible
+	non-blocking
+	source Maker
+	to offer
+		has "FW Pug 4A: done"
+	to fail
+		has "FW Pug 6: done"
+	
+	npc kill
+		personality disables
+		system Markab
+		government Syndicate
+		fleet
+			names "syndicate capital"
+			variant
+				"Splinter (Mark II)"
+				"Manta (Mark II)" 2
+				"Quicksilver (Mark II)" 4
+		fleet
+			names "syndicate capital"
+			variant
+				"Protector" 2
+
+
+
+mission "FW Pug 4C"
+	landing
+	name "返回<system>"
+	description "带着辛迪加提供的新增援舰队返回<destination>，与芙蕾雅交谈，决定下一步应该做什么，因为你已经有能力恢复与人类空间的联系了。"
+	source Hephaestus
+	destination Maker
+	to offer
+		has "FW Pug 4B: done"
+	on fail
+		dialog phrase "free worlds failed"
+	
+	on offer
+		event "reconnected delta capricorni" 0
+		conversation
+			`Freya 向反射器发送了详细说明，说明反射器的设置位置以及如何调整它以与哈巴狗空间的发射器连接。你把它交给了一个辛迪加工程师团队，他们看起来很有能力并且有信心能够让它发挥作用；你怀疑这些工程师就是一直在玩从科拉特偷来的设备的工程师，所以他们对外星技术并不陌生。`
+			`你还会见了负责监督跳跃驱动器安装的辛迪加高管马可·布加蒂 (Marco Bugati)，并告诉他你可能很快就能重新打开与共和国空间的连接之一。你问他是否可以派一艘信使船到地球来通知他们新的情况，让他们开始在那里集结舰队。他同意。他还告诉你，一些在轨道上与你相遇的辛迪加飞船已被指定为你的攻击舰队的补充，因此，如果反射器成功重新打开链接，它们将与你一起返回制造者。`
+			`几个小时后，工程师告诉您，他们认为链接开始重新开放。布加蒂说：“你应该尽快起飞并返回，以防 Maker 在你不在的时候遭到攻击。”`
+				accept
+
+
+
+mission "FW Pug 5"
+	landing
+	name "解放<planet>"
+	description "如果你能将哈巴狗赶离 <destination> ，你将能够重新建立 Altair 和 Sol 系统之间的超空间链接，并立即引入海军舰艇作为增援。"
+	source Maker
+	destination Shiver
+	clearance
+	to offer
+		has "FW Pug 4C: done"
+	cargo "graviton reflector" 10
+	passengers 1
+	blocked `Freya contacts you and says, "<first>, we're going to need space for me, plus ten tons of cargo, on your ship. Think you can do that?" You tell her you will contact her here on <origin> as soon as you have made the space available.`
+	on fail
+		dialog phrase "free worlds failed"
+	
+	on offer
+		log "Freya succeeded in reopening the hyperspace link to one of the Syndicate systems. If the same can be done for the link to Sol, the entire Navy will be able to join the battle against the Pug."
+		event "battle for altair"
+		conversation
+			branch extra
+				has "already had jump drive"
+			`芙蕾雅欣喜若狂，她找到了逆转哈巴狗技术并恢复与人类空间的超空间连接的方法。 “现在我们实际上有机会，”她说。 “以前，只有你和另外六艘船，胜利似乎不太可能。”`
+				goto choice
+			label extra
+			`芙蕾雅欣喜若狂，她找到了逆转哈巴狗技术并恢复与人类空间的超空间连接的方法。 “现在我们实际上有机会，”她说。 “以前，只有你和另外七艘船，胜利似乎不太可能。”`
+			label choice
+			choice
+				`“接下来我们该怎么办？”`
+					goto next
+				`“你确定产生这些引力波是安全的吗？”`
+			
+			`“我什么都不确定，”她说，“但它似乎有效，而且到目前为止没有任何灾难性的副作用，所以这就是问题。”`
+			label next
+			`芙蕾雅带你来到太空港的一个仓库，那里存放着另一个“引力子反射器”。 “这应该和你带给赫菲斯托斯的一样，”她说。 “如果颤抖星上有发射器，我们可以把反射器带到太阳系，打开一条通往人类太空核心的链接。到那时，我们甚至可能在火力上击败哈巴狗。但首先，我们需要将它们赶离那个恒星系统足够长的时间，以便我能够操作发射器。”`
+				accept
+	on visit
+		dialog `您已降落在 <planet> 上，但仍有哈巴狗飞船在头顶盘旋。你应该起飞并帮助解决它们。`
+	
+	npc evade
+		personality staying disables
+		system Altair
+		government Pug
+		fleet 3
+			names "pug"
+			variant
+				"Pug Maboro"
+				"Pug Enfolta"
+				"Pug Zibruka" 2
+		fleet
+			names "pug"
+			variant
+				"Pug Enfolta"
+				"Pug Zibruka" 2
+
+
+
+mission "FW Pug 5A: Enemies"
+	landing
+	invisible
+	non-blocking
+	source Shiver
+	to offer
+		has "FW Pug 5: done"
+	to fail
+		has "FW Pug 6: done"
+	
+	npc kill
+		personality waiting disables
+		system Deneb
+		government Pug
+		fleet 4
+			names "pug"
+			variant
+				"Pug Maboro"
+				"Pug Enfolta"
+				"Pug Zibruka" 2
+
+
+
+mission "FW Pug 5A"
+	landing
+	name "<planet> 的反射器"
+	description `将此“引力子反射器”带到 <planet> 并将其设置在那里，以恢复 Sol 和 Altair 系统之间的超空间链接。`
+	source Shiver
+	destination Earth
+	clearance
+	to offer
+		has "FW Pug 5: done"
+	cargo "graviton reflector" 10
+	on fail
+		dialog phrase "free worlds failed"
+	
+	on offer
+		event "liberation of altair"
+		conversation
+			`果然，Freya 在 <origin> 上发现了一个引力波发射器，它被设置为向太阳系方向广播不相干的引力子噪声。 “就是这样，”她说。 “如果你能在我们被哈巴狗占领之前用反射器到达<planet>，我们就可以重新打开超空间链接，整个海军都会在我们身后。希望辛迪加收到消息，当你到达时他们会有一支舰队在等你。”`
+			choice
+				`“你真的认为如果我跑向 <planet> 你就能挡住哈巴狗吗？”`
+				`“我担心如果我不保护这个系统，你将无法生存。”`
+			`“不用担心我们在这里，”她说。 “如果说到这一点的话，我们在地面上有相当数量的船只。但最重要的是，你在<system>系统中与海军增援部队会合，如果你能吸引哈巴狗舰队追击你，那就更好了。祝你好运，<first>。”`
+				accept
+	on visit
+		dialog `您降落在 <planet> 上，但意识到携带引力子反射器的护卫尚未进入系统。最好出发并等待它的到来。`
+	
+	npc
+		government Republic
+		personality staying
+		system Sol
+		fleet
+			names "republic capital"
+			fighters
+				names "republic fighter"
+			variant
+				"Cruiser (Mark II)"
+				"Combat Drone" 4
+				"Frigate (Mark II)" 2
+		fleet
+			names "republic capital"
+			fighters
+				names "republic fighter"
+			variant
+				"Carrier (Mark II)"
+				"Lance" 8
+				"Combat Drone" 6
+				"Gunboat (Mark II)" 3
+
+
+
+mission "FW Pug 5B"
+	landing
+	name "保卫牛郎星"
+	description "Freya 向您发送了一条消息，称 <system> 系统受到攻击。在新的海军援军的陪同下返回那里，并击退哈巴狗。"
+	source Earth
+	destination Shiver
+	clearance
+	to offer
+		has "FW Pug 5A: done"
+	on fail
+		dialog phrase "free worlds failed"
+	
+	on offer
+		log "Succeeded in rendezvousing with the Navy in the Sol system and reopening a link to the Pug territory. But now Shiver is under attack by a massive Pug fleet."
+		event "reconnected altair" 0
+		conversation
+			`你帮助地球上的一些海军工程师按照芙蕾雅的指示设置引力子反射器。和以前一样，反射器投入使用后不久，当弗雷亚的光束瞄准反射器并在两者之间建立谐波振荡时，地面似乎会倾斜和滚动。 “链接重新打开！”一位工程师说道。 “我们开始再次收到来自 Altair 和辛迪加的超空间通信。”`
+			`一秒钟后，您自己的通讯器发出蜂鸣声。是芙蕾雅。 “快点回到这里，”她说。 “尽可能带上援军。一支庞大的哈巴狗舰队刚刚出现在轨道上。”`
+				accept
+	on visit
+		dialog `您已降落在 <planet> 上，但仍有哈巴狗飞船在头顶盘旋。你应该起飞并帮助解决它们。`
+	
+	npc
+		government Republic
+		personality escort disables waiting
+		fleet 2
+			names "republic capital"
+			fighters
+				names "republic fighter"
+			variant
+				"Cruiser (Mark II)"
+				"Combat Drone" 4
+				"Frigate (Mark II)" 2
+		fleet
+			names "republic capital"
+			fighters
+				names "republic fighter"
+			variant
+				"Carrier (Mark II)"
+				"Lance" 8
+				"Combat Drone" 6
+				"Gunboat (Mark II)" 3
+	
+	npc evade
+		government Pug
+		personality staying disables
+		system Altair
+		fleet 5
+			names "pug"
+			variant
+				"Pug Maboro"
+				"Pug Enfolta" 2
+
+
+
+mission "FW Pug 6"
+	landing
+	name "击败哈巴狗"
+	description "现在海军已经加入了你的行列，是时候将战斗直接带到哈巴狗的家园系统了。一旦他们的舰队被消灭，就降落在他们的家乡 <planet> 尝试和平谈判。"
+	autosave
+	source Shiver
+	destination Pugglemug
+	clearance
+	to offer
+		has "FW Pug 5B: done"
+	passengers 1
+	blocked "You need a bunk free for Freya to continue this mission."
+	on enter Deneb
+		dialog
+			`你进入天津四星系，期待着一支庞大的哈巴狗战斗舰队在等着你。相反，它完全被遗弃了。此外，你的传感器正在检测到最外层行星轨道之外的某种异常现象。`
+	on fail
+		dialog phrase "free worlds failed"
+	
+	on offer
+		log "Preparing for the final assault on the Pug homeworld. There seems to be no other option but to force them to surrender, but with the help of the Navy that no longer seems like an impossible task."
+		event "pug flee"
+		conversation
+			`随着越来越多的海军舰艇前来着陆，颤抖号上的小型太空港挤满了人。海军上将们认为拖延是没有意义的：你将在早上对哈巴狗的家园发动攻击。尽管到目前为止你在与哈巴狗的战斗中取得了成功，但你知道如果他们的整个舰队都反对你，即使是海军也可能没有强大到足以击败他们。这可能是您最后一次看到这些军官和船员活着。`
+			`每个人都以不同的方式为死亡做准备。太空港的酒吧里挤满了人，人群涌入走廊，音乐声震耳欲聋。教堂里同样挤满了人，低声祈祷和诵经的声音与酒吧里传来的舞曲相互冲突。穿过教堂的门口，你可以看到一些人盘腿坐在地板上，另一些人跪在祈祷地毯上，组成共和国的各种文化尽最大努力共享这个空间。`
+			`你发现芙蕾雅坐在太空港大楼楼上一个僻静的角落里，看着窗外飘落的雪花。 “准备好最后一战了吗，队长？”她问。`
+			choice
+				`“当然，有海军在我们的支持下，我认为我们有很好的机会。”`
+				`“我想我已经做好了准备。”`
+			`她笑了。 “我想这是我们能期待的最好的结果。你介意我明天乘坐你的船，而不是其他的船吗？如果这就是结局，我宁愿和我认识的人一起面对。”你同意。她回头看向窗外。`
+			`由于芙蕾雅似乎想一个人呆着，你回到楼下，发现一支规模庞大的守誓者舰队已经抵达。航天港的主大厅里，守誓官正在带领大家进行气功冥想。令人惊讶的是，你发现丹福斯海军上将与穆斯林祈祷小组坐在一起，用流利的阿拉伯语诵经。与此同时，酒吧外的聚会仍在继续。`
+			`最终早晨到来，你准备好你的船来攻击哈巴狗的家园......`
+				accept
+	
+	npc
+		government "Navy (Oathkeeper)"
+		personality disables waiting
+		fleet 2
+			names "republic capital"
+			fighters
+				names "republic fighter"
+			variant
+				"Cruiser (Mark II)"
+				"Combat Drone" 4
+				"Frigate (Mark II)" 2
+		fleet 2
+			names "republic capital"
+			fighters
+				names "republic fighter"
+			variant
+				"Carrier (Mark II)"
+				"Lance" 8
+				"Combat Drone" 6
+				"Gunboat (Mark II)" 3
+	npc
+		government Republic
+		personality disables
+		fleet 2
+			names "republic capital"
+			fighters
+				names "republic fighter"
+			variant
+				"Cruiser"
+				"Combat Drone" 4
+				"Frigate" 2
+		fleet 2
+			names "republic capital"
+			fighters
+				names "republic fighter"
+			variant
+				"Carrier"
+				"Lance" 8
+				"Combat Drone" 6
+				"Gunboat" 3
+	npc
+		personality disables waiting
+		government Syndicate
+		fleet 2
+			names "syndicate capital"
+			variant
+				"Splinter (Mark II)"
+				"Manta (Mark II)" 2
+				"Quicksilver (Mark II)" 4
+		fleet 2
+			names "syndicate capital"
+			variant
+				"Protector" 2
+	
+	on visit
+		dialog `您降落在 <planet> 上，但意识到携带 Freya 的护卫尚未进入系统。最好出发并等待它的到来。`
+	on complete
+		log `The Pug have fled, apparently traveling through an artificial wormhole back to whatever galaxy they came from. And, it turns out that many of their cities on "Pugglemug" were only for show: buildings with no inhabitants, and with holograms creating the appearance of a heavily populated world. They left no advanced technology behind, and no sign of what their true intentions were, but it turns out that the fake cities here were designed for human habitation. They must have been planning this departure for a very long time.`
+		log `Now that the Pug are gone, the Navy will be able to use the "graviton reflectors" to repair the broken hyperspace links and to reconnect all of human space.`
+		log "Factions" "Pug" `The Pug disappeared from human space, and left behind more questions than answers. It is possible that the true purpose of their attack was to give human beings a common enemy that would force them to band together and forget their internal struggles.`
+		event "pug territory liberated"
+		event "pug link restoration 1" 10
+		event "pug link restoration 2" 25
+		event "pug link restoration 3" 45
+		event "pug link restoration 4" 60
+		conversation
+			`当你带着你的舰队着陆时，你发现帕格的主太空港出人意料地空无一人。然而，一群哈巴狗孩子在一个着陆场上围成一个松散的圈子。他们似乎在玩某种游戏；他们忽略了你的舰队开销。`
+			choice
+				`（攻击他们。）`
+				`（避免伤害他们和土地。）`
+					goto avoid
+			
+			`你向圆圈中心开了一枪，在着陆垫上留下一道黑色的疤痕，并向空中喷出一缕灰尘和烟雾。孩子们继续玩游戏，就像什么都没发生一样。`
+			label avoid
+			`你将你的船降落在哈巴狗孩子们的圈子附近。他们在彼此之间来回弹球，并故意忽视你的存在。除了球撞击人行道的声音外，整个城市安静得出奇。 “这真的很奇怪，”弗雷亚说。`
+			choice
+				`（探索这座城市。）`
+					goto city
+				`（加入游戏。）`
+					goto join
+			
+			label join
+			`你走进圆圈并抓住球，但它直接穿过你的手指。芙蕾雅伸出手去触碰其中一个孩子，她的手也穿过了他们。 “某种全息投影，”她说。`
+			`海军舰艇开始登陆并派出船员去探索。你和芙蕾雅走进城市，路过一对成年哈巴狗，它们坐在一家看起来像咖啡馆的外面的桌子旁，正在玩棋盘游戏，棋盘上有六角形网格上的黑白棋子。你检查后发现它们也是全息幻象。`
+				goto house
+			
+			label city
+			`海军舰艇开始登陆并派出船员去探索。你和芙蕾雅走进城市。街道大多空无一人，但在其中一条街道上，你会经过一对成年哈巴狗，它们坐在外面类似咖啡馆的桌子旁，玩着六边形网格上黑白棋子的棋盘游戏。`
+			choice
+				`（攻击他们。）`
+					goto attack
+				`（尝试与他们交谈。）`
+					goto talk
+			
+			label attack
+			`你向桌上的一只哈巴狗挥了一拳，但你的拳头直接穿过了它的头，好像那里什么都没有。芙蕾雅惊讶地伸出手去触碰另一只，她的手再次穿过它们。 “某种全息投影，”她说。你继续探索。`
+				goto house
+			
+			label talk
+			`你试图与哈巴狗交谈，但它们就像孩子们一样，完全无视你；他们甚至似乎不知道你的存在。最后，芙蕾雅伸出手来摇晃其中一个人的肩膀，她的手径直穿过了那人的肩膀。她感到惊讶，双手在两人之间来回挥动。 “某种全息投影，”她说。`
+				goto house
+			
+			label house
+			`你继续探索一段时间。除了幻象之外，这座城市似乎空无一人。 “让我们检查一下其中一栋房子的内部，”芙蕾雅最后说道。你爬上台阶，来到一栋看起来像公寓楼的地方，发现所有的门都没有锁。在其中一个起居空间内，您探索不同的房间，发现供水装置和电力正常，但所有东西都覆盖着一层厚厚的灰尘。与此同时，芙蕾雅正盯着其中一个电源插座。 “<first>，”她说，“你觉得这有什么奇怪的吗？”`
+			choice
+				`“不是，就是一个普通的电源插座。”`
+				`“这里的一切都很奇怪。这座城市，全息图，所有的一切。”`
+			`她说：“这是一个普通的、人类风格的电源插座。人类。在一个陌生的城市。还有我们到达这里的台阶：哈巴狗的腿是我们的一半长。但踏板间距是正常人类的高度。这座建筑不是为哈巴狗建造的。它是为我们建造的。”`
+			`随着海军探索地球的其他地方，报告开始出现，他们都发现了同样的事情：这些城市被遗弃，其中许多城市有迹象表明它们从未有人居住过。当你第一次访问这个星球时，你认为它一定有十亿居民，但现在看来它的真实人口不到一百万——所有这些人显然都离开了虫洞之外的某个地方。`
+			`芙蕾雅说：“我们回太空港去见一下海军上将们吧。”`
+
+
+
+mission "FW Syndicate Extremists 1"
+	name "对付辛迪加"
+	description "现在哈巴狗似乎已经被赶走了，是时候从辛迪加那里得到一些答案了。与丹福斯上将一起返回<destination>，与辛迪加首席执行官再次会面。"
+	autosave
+	source Pugglemug
+	destination Foundry
+	to offer
+		has "FW Pug 6: done"
+	passengers 1
+	on fail
+		dialog phrase "free worlds failed"
+	
+	on offer
+		conversation
+			`当你和芙蕾雅回到太空港时，丹福斯把你拉到一边。 “我们应该谈谈，”他说。他把你带到他船上的一个私人房间，并说：“看来我们已经到了这些外星人与我们玩的游戏的终点。这意味着我们需要回到他们打扰我们之前所做的事情：将辛迪加绳之以法。”`
+			choice
+				`“听起来不错。你的计划是什么？”`
+					goto plan
+				`“我们刚刚打了一场大战，辛迪加帮了我们，我们真的想再次与他们交战吗？”`
+			
+			`丹福斯叹了口气。 “不，我不想要更多的战争。但我也不认为我们可以重新信任辛迪加。特别是现在我们知道他们拥有核武器。”`
+			`“那你有什么计划？”芙蕾雅问道。`
+			label plan
+			`“从我听说的你和辛迪加首席执行官科尔班的谈话来看，”丹福斯说，“我认为辛迪加领导层可能愿意将这些极端分子交给我们。特别是如果这有助于领导人洗清自己的罪名的话。我想我们应该趁辛迪加舰队的其余部分还留在这里的时候顺便去辛迪加总部。如果只有我和你的船离开，也不会引起太多注意。”`
+				accept
+	
+	npc accompany save
+		government "Navy (Oathkeeper)"
+		personality escort heroic
+		ship "Cruiser (Mark II)" "N.S. Peacemaker"
+	
+	on visit
+		dialog phrase "generic arrived-without-npc dialog"
+
+
+
+mission "FW Syndicate Extremists 1A"
+	landing
+	name "隐形装置"
+	description "阿拉斯泰尔·科班已同意给你一个隐形装置，可以让你躲避导弹攻击。前往赫菲斯托斯，他们将在你的船上安装该设备。"
+	autosave
+	source Foundry
+	destination Hephaestus
+	to offer
+		has "FW Syndicate Extremists 1: done"
+	passengers 1
+	on fail
+		dialog phrase "free worlds failed"
+	
+	on offer
+		log "With the Pug defeated, it is finally time to deal with the Syndicate extremists and the Alphas that they allied with. The extremists are armed with nuclear missiles, but the Syndicate CEO has agreed to provide a cloaking device that will make it possible to dodge the missiles."
+		log "People" "Alastair Korban" `Following the defeat of the Pug, Korban has revealed that the "extremist faction" of the Syndicate collaborated with Alphas in starting the human civil war, ostensibly to prevent humanity from entering a new dark age. This revelation has resulted in his resignation from his position as CEO of the Syndicate.`
+		conversation
+			`轨道上的海军巡洋舰的存在很少会被忽视，尤其是由威廉·丹福斯这样的名人驾驶的巡洋舰。您一落地，一名 辛迪加 员工就会与您会面，并护送您、Freya 和 Danforth 前往首席执行官 Alastair Korban 的办公室。他见到你似乎不太高兴。 “我几天前才得知外星人被击败了，”他说。 “我很惊讶你竟然回来了。”`
+			`丹福斯说：“我有一整支海军舰队距离这里仅几步之遥，他们渴望摧毁一些东西。所以，协议如下。你给我指定一些目标：对恐怖袭击负责的人。然后我会帮你一个忙，把他们从你手中夺走。公平吗？”`
+			`科班叹了口气，然后打开办公桌，拿出一张纸。 “这是我的辞职信，”他说。 “自从第一次与 <last> 队长会面以来，我就一直在努力解决这个问题。我对这家公司的领导失败了。但你不知道这种失败有多严重。”`
+			choice
+				`“你是什么意思？”`
+			
+			`“几年前，”他说，“一些……顾问接触过我们金融部门的一些领导。一些非常聪明、知识渊博的人。这些顾问建造了一台强大的量子计算机，运行银河经济模型。他们称之为‘甲骨文’。”如您所知，商业就是为了不确定的回报而承担风险。但 Oracle 为我们提供了一种预测未来的方法，涵盖从供应链管理到股票交易再到大宗商品市场的各个方面。”`
+			`“这些顾问，”芙蕾雅说，“他们是人吗？”`
+			`阿拉斯泰尔看起来很不舒服。 “是的……也不是，”他说。`
+			`丹福斯发誓。 “阿尔法。你在和阿尔法打交道。你给了他们什么回报？”`
+			`“科拉斯袭击才刚刚开始，”阿拉斯泰尔说，“所以我们突然接触到了外星技术。他们对所有这些技术都很感兴趣，尤其是跳跃驱动器。这样它们就可以传播到人类空间之外。”`
+			choice
+				`“来自神谕的信息准确吗？”`
+					goto information
+				`“你为什么会同意与阿尔法合作？”`
+			
+			`“他们拥有权力。还有知识。对我们中的一些人来说，这就足够了，”他说。`
+			`“那个知识准确吗？”芙蕾雅问道。`
+			label information
+			`“非常准确，”他说。 “我们的业务前所未有地蓬勃发展。但一个月后，甲骨文的预测却变得黯淡。一场大规模的经济衰退即将到来，共和国的黄金岁月结束了。我们尝试以各种方式改变模式：改变我们的生产、我们的工资。我们甚至询问甲骨文解散辛迪加是否会避免经济衰退。但它的预测保持不变。然后我们从议会的联系人处了解到南方防御条约，以及他们即将宣布独立的担忧。所以我们询问神谕，如果战争爆发会发生什么。”`
+			`“你发动战争……是为了拯救经济？”丹福斯说。他听起来很厌恶。 “你知道有多少人因你的贪婪而丧生吗？”`
+			`阿拉斯泰尔对丹福斯厉声说道。 “你认为我们做出这个决定轻率吗？你知道如果真的发生这样的经济衰退，会有多少人丧生吗？上次经济衰退如神谕所预测的那样严重时，人类进入了一个黑暗时代，数百万人死于饥饿，数十亿人遭受由此产生的混乱！`
+			`“但是……阿尔法人非常乐意提供帮助。特别是在核研究方面。顺便说一句，这就是我告诉你这一切的原因，因为如果你的舰队试图消灭阿尔法人，他们会用核武器进行反击。”`
+			choice
+				`“除了攻击他们之外，你还有其他选择吗？”`
+				`“我们有什么办法可以禁用核武器吗？”`
+			
+			`“我们把大部分回收的外星技术交给了阿尔法人，”他说，“但我们设法对他们保守了一个秘密。我们在科拉特货舱里发现了它，我们花了很长时间才弄清楚如何激活它。但当我们这样做时，我们发现它是一个隐身装置。它不仅在可见光谱上遮盖了一艘船，而且还遮盖了雷达，以及我们测试过的除重力传感器之外的所有其他传感器。我确信它会隐藏你。来自核武器上的跟踪系统。”`
+			`芙蕾雅说：“但它只能隐藏一艘船。这听起来并没有多大用处。”`
+			`阿拉斯泰尔说：“他们的核武器数量有限。我们的计划是派一艘隐身舰艇，让它暴露足够长的时间来吸引他们的火力，然后隐身以避免导弹。基本上，看看我们可以在主攻击舰队到达之前让他们消耗多少导弹。”`
+			`丹弗斯说：“这主意不错。<last>队长，你愿意充当诱饵吗？”`
+			choice
+				`“这听起来很冒险，但我会这么做。”`
+					goto end
+				`“完成后我可以保留隐形装置吗？”`
+			
+			`“我不明白为什么不，”丹福斯说道，用锐利的目光注视着阿拉斯泰尔。 “这肯定比把它留在辛迪加手中要好。”`
+			label end
+			`阿拉斯泰尔告诉你，该装置保存在赫菲斯托斯上，那里的工程师可以将它安装在你的船上。与此同时，丹福斯将召集他的守誓者舰队的其余成员。 “当我们完成这件事后，我将确保这个神谕被摧毁，这样这种情况就不会再发生了，”丹福斯说。阿拉斯泰尔温顺地点点头表示同意。 “现在，阿尔法们在哪里？”`
+			`“阿尔法们躲藏在海盗湾，”阿拉斯泰尔说，“这是一个古老的海盗世界。祝你好运，打败他们。”`
+				accept
+	
+	npc accompany save
+		government "Navy (Oathkeeper)"
+		personality escort heroic
+		ship "Cruiser (Mark II)" "N.S. Peacemaker"
+	
+	on visit
+		dialog phrase "generic arrived-without-npc dialog"
+
+
+
+mission "FW Syndicate Extremists 1B"
+	landing
+	name "最终之战"
+	description "由阿尔法控制的一支拥有核武器的辛迪加极端分子舰队正在占领 <system> 星系。前往那里并使用隐形装置来吸引他们的火力；守誓者舰队就在你身后。"
+	source Hephaestus
+	destination "Buccaneer Bay"
+	clearance
+	to offer
+		has "FW Syndicate Extremists 1A: done"
+	passengers 1
+	on fail
+		dialog phrase "free worlds failed"
+	
+	on offer
+		"reputation: Syndicate (Extremist)" <?= -1000
+		event "battle of algenib"
+		outfit "Cloaking Device" 1
+		conversation
+			`你降落在你之前访问过的安装跳跃驱动器的同一个私人机库中，你认为这些工程师就是当时遇见你的同一批机组人员。 “这件事几乎和跳跃驱动器本身一样奇怪，”其中一位说道。 “我们不知道它是如何工作的，当科班命令我们把它交给你时，我们还没有完成研究，所以请不要把自己炸毁。好吗？”`
+			`与此同时，丹福斯正在返回天津四去集结守誓者。你应该直接前往<system>系统，这样你就能比守誓者舰队提前到达那里。`
+				accept
+	on visit
+		dialog `您已降落在 <planet> 上，但仍有辛迪加飞船在头顶盘旋。你应该起飞并帮助解决它们。`
+	
+	npc evade
+		government "Syndicate (Extremist)"
+		system Algenib
+		personality staying heroic
+		fleet
+			names "syndicate capital"
+			variant
+				"Manta (Nuclear)" 2
+	npc evade
+		government "Syndicate (Extremist)"
+		system Algenib
+		personality staying heroic
+		fleet
+			names "syndicate capital"
+			variant
+				"Manta (Nuclear)" 2
+	npc evade
+		government "Syndicate (Extremist)"
+		system Algenib
+		personality staying heroic
+		fleet
+			names "syndicate capital"
+			variant
+				"Manta (Nuclear)" 2
+	npc evade
+		government "Syndicate (Extremist)"
+		system Algenib
+		personality staying heroic
+		fleet
+			names "syndicate capital"
+			variant
+				"Manta (Nuclear)" 2
+	npc evade
+		government "Syndicate (Extremist)"
+		system Algenib
+		personality staying heroic
+		fleet 3
+			names "syndicate capital"
+			variant
+				"Protector" 2
+		fleet 2
+			names "syndicate capital"
+			variant
+				"Splinter"
+				"Quicksilver" 3
+	
+	npc
+		government "Navy (Oathkeeper)"
+		system Deneb
+		personality heroic escort
+		fleet
+			names "republic capital"
+			fighters
+				names "republic fighter"
+			variant
+				"Carrier (Mark II)" 3
+				"Lance" 24
+				"Combat Drone" 18
+				"Cruiser (Mark II)" 3
+				"Combat Drone" 12
+
+
+
+mission "FW Syndicate Extremists 1C"
+	landing
+	name "向议会报告"
+	description "返回地球向议会报告如何解决与哈巴狗和辛迪加极端分子的冲突。"
+	autosave
+	source "Buccaneer Bay"
+	destination Earth
+	clearance
+	to offer
+		has "FW Syndicate Extremists 1B: done"
+	passengers 1
+	on fail
+		dialog phrase "free worlds failed"
+	
+	on offer
+		log "Succeeded in drawing the fire of the Syndicate extremists for long enough for a Navy fleet to safely arrive in-system and assist in destroying them. This cloaking device will come in very handy in the future."
+		event "navy occupies algenib"
+		event "navy done with algenib" 50
+		conversation
+			`着陆后不久，更多的海军舰艇开始涌入该星系，其中包括丹福斯海军上将自己的巡洋舰。海军士兵和舰艇正在整个地球表面搜寻；留在这里的阿尔法几乎不可能逃脱他们的检测。丹福斯上将会见了你和芙蕾雅，并感谢你提供了诱饵，使他自己的船只免于遭受阿尔法核武库的冲击。`
+			`“你还需要我们在这里做点什么吗？”芙蕾雅问道。`
+			`“不，”他说，“我听说议会想和你谈话，<last> 队长。我想是为了正式表彰你在对抗哈巴狗的战斗中所做出的贡献。同时，这可能不是我们与辛迪加的麻烦的结束，但至少这是一个好的开始。与你并肩作战是我的荣幸。”`
+			choice
+				`“你也是，先生。”`
+					goto end
+				`“你的意思是这就结束了？不再有战斗可打了？”`
+			
+			`“什么，和平与和解对你来说听起来很无聊吗？”他说。 “不用担心这个。在你的飞船上安装了跳跃驱动器后，整个银河系都向你开放。谁知道你会在人类太空边界之外发现什么？”`
+			label end
+			`你回到你的飞船，准备返回地球的旅程，希望议会最终愿意与自由世界谈判永久和平。`
+				accept
+	
+	on visit
+		dialog `您降落在 <planet> 上，但意识到携带 Freya 的护卫尚未进入系统。最好出发并等待它的到来。`
+	on complete
+		log "Received an official commendation from Parliament and a promise that the war with the Free Worlds are officially over. Humanity is at peace once more, but new challenges may await in the star systems out beyond human space that are accessible only by jump drive."
+		log "Factions" "Free Worlds" `Tensions between the Free Worlds and the Republic mounted when additional systems decided to leave the Republic and join the Free Worlds, culminating in a series of military confrontations that ended when the Free Worlds were able to present credible evidence denying any involvement in the terrorist attacks. After the Free Worlds joined the effort to drive out the Pug invaders, the Republic officially recognized the Free Worlds and diplomatic relations were established.`
+		log "Factions" "Syndicate" `It was exposed that the bombings of Geminus and Martini that helped cause the war between the Republic and Free Worlds were the doing of the Syndicate, designed by top executives with the help of a group of Alphas. Despite the claims that all the extremists responsible have been purged and handed over to the Navy, the reputation of the Syndicate will be damaged for years to come.`
+		payment 5000000
+		event "stack core for sale"
+		"salary: Free Worlds" = 8900
+		set "main plot completed"
+		set "free worlds plot completed"
+		set "free worlds reconciliation"
+		conversation
+			`在地球上，你会受到英雄般的欢迎，这与你第一次来这里执行外交任务时大不相同。一群当地人聚集在太空港观看您的飞船着陆。由于自由世界在击败外星人方面发挥了重要作用，并免除了恐怖袭击中的任何罪责，似乎这里的大多数人都准备将你视为英雄而不是罪犯。`
+			`你与议会的会面是漫长而艰苦的，因为他们向你和芙蕾雅施压，要求你提供有关神秘的哈巴狗及其入侵人类空间的明显动机的每一个细节。关于辛迪加的问题同样难以回答。但在会议结束时，一名议会成员通知你，他们已授权对你进行正式嘉奖，并奖励五百万积分“以支付你与外星人战斗的任何费用”。`
+			`当你走出去时，你发现阿隆多、JJ 和卡蒂亚坐在议会的庭院里。当他们发现你朝他们走来时，JJ 挥手说道：“<first> 和 Freya！我很高兴看到你们两个仍然连在一起！是什么让你们来到了地球？”`
+			choice
+				`“我收到了议会的嘉奖。”`
+				`“议会想审问我们哈巴狗和辛迪加发生的事情。”`
+					goto know
+				`“我们只是需要处理一些无聊的行政事务。”`
+					goto bureaucratic
+			`“我确信这是当之无愧的，”卡蒂亚笑着说。`
+				goto next
+			
+			label know
+			`“我希望他们问你的时候比问我的时候更友善，”卡蒂亚笑着说。`
+				goto next
+			
+			label bureaucratic
+			`“好吧，”卡蒂亚笑着说，“你会很高兴知道你并不是唯一一个与官僚作斗争的人。”`
+			
+			label next
+			`“你们三个最近在做什么？”芙蕾雅问道。`
+			
+			branch good
+				has "event: navy out of rastaban"
+			`阿隆多说：“我们一直在与议会交谈，他们终于开始放过我们了。他们已经与自由世界签署了一项条约，同意海军将开始撤出任何被占领的星系，并且只要自由世界不寻求进一步扩大领土，他们将在他们目前控制的地区获得自治权。到目前为止，我们对共和国的战争正式结束了。”`
+				goto end
+			
+			label good
+			`阿隆多说道：“我们一直在和议会谈判，他们终于开始放过我们了。他们已经与自由世界签署了一项条约，同意自由世界将在他们目前控制的地区享有自治权，只要他们不寻求进一步扩大领土。至此，我们对共和国的战争正式结束了。”`
+			
+			label end
+			`“你们两个呢？” JJ 说。 “与巴哥犬的战斗进行得怎么样？”`
+			`你和芙蕾雅向议会的其他成员解释哈巴狗是如何被击败的，以及辛迪加发动战争背后的真相。当你结束时，卡蒂亚说，“消失的外星人，预言超级计算机发动战争，阿尔法在辛迪加的队伍中幕后操纵；如果我在过去几个月里没有看到同样令人难以置信的事件，我会把你所说的写成一个糟糕的阴谋论。”`
+			`“好吧，看来委员会又聚在一起了，”JJ 说，“这是最后一次，事实也确实如此。现在战争已经结束，哈巴狗也被打败了，参议院投票决定解散委员会，让我们可以自由地恢复平民生活。不过，他们也同意支付你<first>的薪水，以感谢你的服务。那么，你认为你接下来会做什么？”`
+			choice
+				`“建立一支商船队，过上安全、安静的生活。”`
+				`“看看边缘世界的人们是否需要任何帮助来对抗海盗。”`
+				`“用我的跳跃引擎去探索人类之外的空间。”`
+			`“好吧，我们都祝你好运，”弗雷亚说。 “如果没有你，我们永远不会走到这一步。一定要保持联系。”你拥抱他们每个人告别，然后返回你的船。接下来要做什么就由你自己决定了...`
+
+
+
+mission "FW Navy Out Of Rastaban (Bad Karma)"
+	landing
+	invisible
+	non-blocking
+	to offer
+		has "FW Syndicate Extremists 1C: done"
+		not "event: navy out of rastaban"
+	on offer
+		event "navy out of rastaban" 30
+		fail

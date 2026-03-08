@@ -1,0 +1,339 @@
+# Copyright (c) 2017 by Michael Zahniser
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program. If not, see <https://www.gnu.org/licenses/>.
+
+mission "Historical field trip to <planet>"
+	job
+	repeat
+	description `这些 <bunks> 学校的学生需要在 <date> 之前到达 <destination> 进行历史实地考察。学校将向您支付<payment>。`
+	passengers 15 5 .1
+	deadline
+	to offer
+		random < 10
+	source
+		attributes "deep" "paradise"
+	destination
+		distance 4 12
+		attributes "near earth"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment
+		payment 10000
+		dialog `学生们兴奋地冲下船，拍摄他们所看到的一切。学校将 <payment> 存入您的帐户。`
+
+
+mission "To Earth Day celebration [0]"
+	name `地球日庆祝活动`
+	job
+	repeat
+	description `由 <date> 将 <fare> 带到 <destination>，参加 4 月 22 日的地球日庆祝活动。付款方式为<payment>。`
+	passengers 4 4 .5
+	deadline 0 2
+	to offer
+		or
+			and
+				random < 60
+				month == 2
+				day >= 6
+			and
+				random < 80
+				month == 3
+			and
+				random < 20
+				month == 4
+				day < 22
+		"days until year end" - 2 * "hyperjumps to system: Sol" > 253
+		has "landing access: Earth"
+	to fail
+		month * 100 + day >= 422
+	source
+		near "Sol" 1 15
+		government "Republic" "Free Worlds" "Syndicate" "Neutral"
+	destination "Earth"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment 1000 180
+		dialog "您祝您的 <passengers> 在 <planet> 一切顺利。在收到您的 <payment> 付款后，您的 <passengers> 戴上地球日帽子并带着随身物品离开。"
+
+
+mission "To Earth Day celebration [1]"
+	name `地球日庆祝活动`
+	job
+	repeat
+	description `由 <date> 将 <cargo> 交付给 <destination>，为 4 月 22 日的地球日庆祝活动做准备。付款方式为<payment>。`
+	cargo random 5 2 .1
+	deadline 0 2
+	to offer
+		or
+			and
+				random < 60
+				month == 2
+				day >= 6
+			and
+				random < 80
+				month == 3
+			and
+				random < 20
+				month == 4
+				day < 22
+		"days until year end" - 2 * "hyperjumps to system: Sol" > 253
+		has "landing access: Earth"
+	to fail
+		month * 100 + day >= 422
+	source
+		near "Sol" 1 15
+		government "Republic" "Free Worlds" "Syndicate" "Neutral"
+	destination "Earth"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment 1000 180
+		dialog `太空港工作人员已经身着节日盛装迎接地球日，将 <commodity> 的货物从您的船上卸下，并向您支付 <payment> 的款项。`
+
+
+mission "To Earth Day celebration [2]"
+	name `地球日庆祝活动`
+	job
+	repeat
+	description `由 <date> 将 <fare> 带到 <destination>，参加 4 月 22 日的地球日庆祝活动。付款方式为<payment>。`
+	passengers 15 5 .1
+	deadline 0 2
+	to offer
+		random < ( "passenger space" - 30 ) * 2
+		or
+			and
+				random < 60
+				month == 2
+				day >= 6
+			and
+				random < 80
+				month == 3
+			and
+				random < 20
+				month == 4
+				day < 22
+		"days until year end" - 2 * "hyperjumps to system: Sol" > 253
+		has "landing access: Earth"
+	to fail
+		month * 100 + day >= 422
+	source
+		near "Sol" 1 15
+		government "Republic" "Free Worlds" "Syndicate" "Neutral"
+	destination "Earth"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment 1000 120
+		dialog "您祝您的 <passengers> 在 <planet> 一切顺利。在收到您的 <payment> 付款后，您的 <passengers> 戴上地球日帽子并带着随身物品离开。"
+
+
+mission "From Earth Day celebration [0]"
+	name `地球日归来`
+	job
+	repeat
+	description `地球日庆祝活动结束后，将 <fare> 带回 <destination>。付款方式为 <payment>。`
+	passengers 4 4 .5
+	to offer
+		or
+			and
+				random < 70
+				month == 4
+				day > 22
+			and
+				random < 50
+				month == 5
+			and
+				random < 30
+				month == 6
+				day <= 22
+	source "Earth"
+	destination
+		distance 1 15
+		government "Republic" "Free Worlds" "Syndicate" "Neutral"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment
+		payment 1000
+		dialog `您的乘客感谢您将其归还给 <planet>，您也收到了 <payment> 的付款。`
+
+
+mission "From Earth Day celebration [1]"
+	name `地球日归来`
+	job
+	repeat
+	description `地球日庆祝活动结束后，将 <fare> 带回 <destination>。付款方式为 <payment>。`
+	passengers 4 4 .3
+	to offer
+		or
+			and
+				random < 50
+				month == 4
+				day > 22
+			and
+				random < 30
+				month == 5
+			and
+				random < 10
+				month == 6
+				day <= 22
+	source "Earth"
+	destination
+		distance 1 15
+		government "Republic" "Free Worlds" "Syndicate" "Neutral"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment
+		payment 1000
+		dialog `您的乘客感谢您将其归还给 <planet>，您也收到了 <payment> 的付款。`
+
+
+mission "From Earth Day celebration [2]"
+	name `地球日归来`
+	job
+	repeat
+	description `地球日庆祝活动结束后，将 <fare> 带回 <destination>。付款方式为 <payment>。`
+	passengers 15 5 .1
+	to offer
+		random < ( "passenger space" - 30 ) * 2
+		or
+			and
+				random < 50
+				month == 4
+				day > 22
+			and
+				random < 30
+				month == 5
+			and
+				random < 10
+				month == 6
+				day <= 22
+	source "Earth"
+	destination
+		distance 1 15
+		government "Republic" "Free Worlds" "Syndicate" "Neutral"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment 1000 100
+		dialog `您的乘客感谢您将其归还给 <planet>，您也收到了 <payment> 的付款。`
+
+
+mission "Transport farmers to Mars"
+	job
+	repeat
+	description "这群 <bunks> 工厂工人希望以农民的身份在 <planet> 重新开始。他们将支付您 <payment> 让您带他们去那里。"
+	passengers 2 2 .8
+	to offer
+		random < 50
+		has "landing access: Mars"
+	source "Earth"
+	destination "Mars"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment
+		payment 2000
+		dialog "您祝愿农民在 <planet> 好运，并收取 <payment> 的付款。"
+
+
+mission "Transport tourists to Luna"
+	job
+	repeat
+	description "这个 <bunks> 家庭想要参观卢纳上的历史景点。他们会付给您 <payment> 让您带他们去那里。"
+	passengers 2 2 .8
+	to offer
+		random < 50
+		has "landing access: Luna"
+	source "Earth"
+	destination "Luna"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment
+		payment 2000
+		dialog "您祝愿游客在 <planet> 一切顺利，并收取 <payment> 的付款。"
+
+mission "Transport seasonal workers to Earth"
+	job
+	repeat
+	description "这群 <bunks> 临时农场工人正在寻找返回地球家园的交通工具。他们会付给您 <payment> 让您带他们去那里。"
+	passengers 2 2 .8
+	to offer
+		random < 50
+		has "landing access: Earth"
+	source "Mars"
+	destination "Earth"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment
+		payment 2000
+		dialog "您祝愿工作人员在 <planet> 一切顺利，并收取 <payment> 的付款。"
+
+
+mission "Tycho Crater Shipyards Shipment [0]"
+	name "运送至<planet>"
+	description "将 <cargo> 运送到 <destination>，这是第谷陨石坑造船厂的所在地，该造船厂是共和国海军造船厂的组成部分。付款方式为 <payment>。"
+	cargo "weapons" 5 2 .1
+	job
+	repeat
+	to offer
+		random < 10
+	source
+		near Sol 2 10
+		attributes factory
+	destination Luna
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment 0 160
+		dialog phrase "generic cargo delivery payment"
+
+mission "Tycho Crater Shipyards Shipment [1]"
+	name "运送至<planet>"
+	description "将 <cargo> 运送到 <destination>，这是第谷陨石坑造船厂的所在地，该造船厂是共和国海军造船厂的组成部分。付款方式为 <payment>。"
+	cargo "Ship Alloys" 5 2 .1
+	job
+	repeat
+	to offer
+		random < 10
+	source
+		near Sol 2 10
+		attributes factory mining
+	destination Luna
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment 0 160
+		dialog phrase "generic cargo delivery payment"
+
+mission "Tycho Crater Shipyards Shipment [2]"
+	name "运送至<planet>"
+	description "将 <cargo> 运送到 <destination>，这是第谷陨石坑造船厂的所在地，该造船厂是共和国海军造船厂的组成部分。付款方式为 <payment>。"
+	cargo "Ship Systems" 5 2 .1
+	job
+	repeat
+	to offer
+		random < 10
+	source
+		near Sol 2 10
+		attributes factory
+	destination Luna
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment 0 160
+		dialog phrase "generic cargo delivery payment"

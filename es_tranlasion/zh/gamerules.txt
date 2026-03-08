@@ -1,0 +1,35 @@
+# Copyright (c) 2022 by Michael Zahniser
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program. If not, see <https://www.gnu.org/licenses/>.
+
+"gamerules preset" "Default"
+	description "游戏开发所围绕的默认游戏规则集。"
+	
+	"depreciation min" 0.25
+	"depreciation grace period" 7
+	"depreciation max age" 1000
+	"depreciation daily" 0.997
+	
+	"person spawn period" 72000
+	"no person spawn weight" 1000
+	
+	"npc max mining time" 3600
+	"universal frugal threshold" 0.75
+	
+	"universal ramscoop" true
+	"system arrival min" unset
+	"system departure min" 0.
+	"fleet multiplier" 1.
+	
+	"lock gamerules" true
+	"disabled fighters avoid projectiles" "all"
+	"universal ammo restocking" true

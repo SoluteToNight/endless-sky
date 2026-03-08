@@ -1,0 +1,530 @@
+# Copyright (c) 2016 by Michael Zahniser
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program. If not, see <https://www.gnu.org/licenses/>.
+
+outfit "Small Collector Module"
+	category "Power"
+	series "Solar"
+	index 08010
+	licenses
+		Coalition
+	cost 60000
+	thumbnail "outfit/small collector module"
+	"mass" 8
+	"outfit space" -6
+	"solar collection" .8
+	"solar heat" .4
+	description "太阳能是联盟商船的支柱。这些面板的设计经过数千年的改进，效率越来越高。"
+
+outfit "Large Collector Module"
+	category "Power"
+	series "Solar"
+	index 08020
+	licenses
+		Coalition
+	cost 300000
+	thumbnail "outfit/large collector module"
+	"mass" 28
+	"outfit space" -21
+	"solar collection" 3.3
+	"solar heat" 1.5
+	description "其中一块太阳能电池板就足以满足一艘中型联军民用船只的能源需求，特别是考虑到其发动机的能源效率以及根据他们的法律只有 Heliarch 船只才允许拥有武器的事实。"
+
+outfit "Small Reactor Module"
+	category "Power"
+	series "Generators"
+	index 08030
+	licenses
+		Heliarch
+	cost 5497000
+	thumbnail "outfit/small reactor module"
+	"mass" 42
+	"outfit space" -42
+	"energy generation" 9.8
+	"heat generation" 19
+	description "太阳能足以满足商业需求，但过度节俭很少是战争中的制胜策略。对于必须拥有可靠能源来为武器提供动力的船只，Heliarchs 使用紧凑型核反应堆。"
+	description "一束反质子会引发微小喷射燃料芯块的聚变，从而使完全燃尽的效率远高于其他方式。"
+
+outfit "Large Reactor Module"
+	category "Power"
+	series "Generators"
+	index 08040
+	licenses
+		Heliarch
+	cost 17754000
+	thumbnail "outfit/large reactor module"
+	"mass" 98
+	"outfit space" -98
+	"energy generation" 24.2
+	"heat generation" 45
+	description "尽管仍然无法复制夸格发电技术，Heliarch 科学团队一直在寻求实现他们对其工作原理的最新猜测。对于这个更大的模块，注入的反质子源源不断地催化严格限制的聚变等离子体中的反应，尽可能多地提取物理能量。"
+	description "这个先进的聚变反应堆是为最强大的Heliarch战舰设计的。自第一次与夸格人的战斗以来，它的结构在几千年里没有发生重大变化，但每一代反应堆的效率都比前一代稍高一些。"
+
+outfit "Small Cogeneration Module"
+	category "Power"
+	series "Generators"
+	index 08010
+	licenses
+		Coalition
+	cost 176000
+	thumbnail "outfit/small cogeneration module"
+	"mass" 11
+	"outfit space" -11
+	"energy generation" 1.15
+	"heat generation" .85
+	description "Kimek 最初创建了该模块的更大版本，旨在为他们的饥饿塔提供能量。"
+	description "这种紧凑的设计回收了大部分废热，使其成为非常高效的燃料电池。"
+
+outfit "Large Cogeneration Module"
+	category "Power"
+	series "Generators"
+	index 08020
+	licenses
+		Coalition
+	cost 799000
+	thumbnail "outfit/large cogeneration module"
+	"mass" 46
+	"outfit space" -46
+	"energy generation" 5.3
+	"heat generation" 3.45
+	description "和平时期没有太多令人兴奋的工作，许多联盟工程师开始修补现有设备以提高其效率。"
+
+outfit "Small Battery Module"
+	category "Power"
+	series "Batteries"
+	index 08010
+	licenses
+		Coalition
+	cost 22000
+	thumbnail "outfit/small battery module"
+	"mass" 4
+	"outfit space" -4
+	"energy capacity" 3600
+	description "由于联军舰艇依赖太阳能，因此它们还必须能够储存大量能量。这种小型电池组比同类人类技术效率高得多。"
+
+outfit "Large Battery Module"
+	category "Power"
+	series "Batteries"
+	index 08020
+	licenses
+		Coalition
+	cost 170000
+	thumbnail "outfit/large battery module"
+	"mass" 18
+	"outfit space" -18
+	"energy capacity" 18000
+	description "该电池组存储了足够的电力，即使其太阳能电池板仅产生其峰值输出的一小部分，也可以让联军舰艇继续机动。"
+
+
+outfit "Small Shield Module"
+	category "Systems"
+	series "Shields"
+	index 08010
+	licenses
+		Coalition
+	cost 84000
+	thumbnail "outfit/small shield module"
+	"mass" 11
+	"outfit space" -11
+	"shield generation" .28
+	"shield energy" .28
+	"shield heat" .1
+	description "尽管战斗在联盟太空中几乎闻所未闻，但几乎所有的船只都能够在必要时为其护盾充电。"
+
+outfit "Large Shield Module"
+	category "Systems"
+	series "Shields"
+	index 08020
+	licenses
+		Coalition
+	cost 553000
+	thumbnail "outfit/large shield module"
+	"mass" 39
+	"outfit space" -39
+	"shield generation" 1.3
+	"shield energy" 1.3
+	"shield heat" .5
+	description "联盟为其船只制造重型护盾发电机，以防它们面临夸格人或其他物种的侵略。"
+
+outfit "Overcharged Shield Module"
+	category "Systems"
+	series "Shields"
+	index 08030
+	licenses
+		Heliarch
+	cost 1216000
+	thumbnail "outfit/overcharged shield module"
+	"mass" 44
+	"outfit space" -44
+	"shield generation" 4.6
+	"shield energy" 4.6
+	"shield heat" 1.4
+	"energy consumption" .5
+	description "这些模块化护盾发生器是联盟空间中生产的最强大的发射器，因此它们受到严格控制并仅由 Heliarchs 使用。大型护盾模块的新增功能使其护盾生成量增加了两倍多，但代价是需要持续供应能量来稳定它。"
+
+outfit "Small Repair Module"
+	category "Systems"
+	series "Repair"
+	index 08010
+	licenses
+		Coalition
+	cost 64000
+	thumbnail "outfit/small repair module"
+	"mass" 6
+	"outfit space" -6
+	"hull repair rate" .12
+	"hull energy" .12
+	"hull heat" .1
+	description "阿拉克舰船更依赖于坚固的船体而不是能量护盾，它们通常携带其中一种修复模块，以便可以在飞行中将损坏的船体板修补在一起。"
+
+outfit "Large Repair Module"
+	category "Systems"
+	series "Repair"
+	index 08020
+	licenses
+		Coalition
+	cost 553000
+	thumbnail "outfit/large repair module"
+	"mass" 21
+	"outfit space" -21
+	"hull repair rate" .57
+	"hull energy" .57
+	"hull heat" .5
+	description "该中心拥有一小群修复机器人，即使在战斗中，它们也可以在船体上爬行并修复损坏的船体。"
+
+outfit "Overclocked Repair Module"
+	category "Systems"
+	series "Repair"
+	index 08030
+	licenses
+		Heliarch
+	cost 1126000
+	thumbnail "outfit/overclocked repair module"
+	"mass" 32
+	"outfit space" -32
+	"hull repair rate" 1.4
+	"hull energy" 1.4
+	"hull heat" 1.2
+	"heat generation" .6
+	description "这些先进的维修模块被配发给 Heliarch 舰艇，提供联盟所有太空中无与伦比的船体维修服务。大量小型维修无人机拥有广泛的路径，用于快速绕过船舶，因此该装备可能会干扰船舶的冷却和散热系统。"
+
+outfit "Cooling Module"
+	category "Systems"
+	series "Cooling"
+	index 08010
+	licenses
+		Coalition
+	cost 160000
+	thumbnail "outfit/cooling module"
+	"mass" 5
+	"outfit space" -5
+	"active cooling" 21
+	"cooling energy" 1.4
+	description "该冷却模块消耗能量。为了节省电力，除非船舶非常接近过热，否则它不会达到最大强度。"
+
+outfit "Fuel Module"
+	category "Systems"
+	series "Fuel"
+	index 08020
+	licenses
+		Coalition
+	cost 270000
+	thumbnail "outfit/fuel module"
+	"mass" 19
+	"outfit space" -19
+	"fuel capacity" 400
+	"fuel protection" .25
+	description "在太空探索的早期，萨利德夫妇开发了燃料模块，可以在远离沙罗斯的地方旅行，而不必担心因没有燃料而陷入困境或突然发生燃料泄漏。"
+	description "如今，联盟中几乎每个系统都有加油设施，但一些船长仍然可以利用这些模块提供的额外跳跃。"
+
+outfit "Decoy Plating"
+	category "Systems"
+	series "Jammers"
+	index 08010
+	cost 93000
+	thumbnail "outfit/decoy plating"
+	"mass" 7
+	"outfit space" -7
+	"scan interference" 2
+	"radar jamming" 5
+	description "这种电镀利用船舶的扫描日志并复制附近其他船舶的数据，有效地阻止扫描船舶真实货物和设备的尝试。"
+	description "出于保护自身免受破坏性 Heliarch 鱼雷攻击的需要，月球号在甲板的每个部分都安装了小型独立雷达干扰系统，哪怕只是作为最后一道防线。"
+
+outfit "Refueling Module"
+	category "Systems"
+	series "Fuel"
+	index 08030
+	cost 822000
+	thumbnail "outfit/refueling module"
+	"mass" 10
+	"outfit space" -10
+	"fuel capacity" -100
+	"fuel generation" .05
+	"energy consumption" .11
+	description "为了避免在行星上加油时被赫利亚克斯检查的风险，月球船长在携带补给品或偷来的装备时会使用这套装备。"
+	description "该装备的机械装置需要预留一定数量的燃料才能正常工作，因此一艘船在无法跳转到另一个系统之前只能安装这么多的燃料。"
+
+outfit "Shield Refactor Module"
+	category "Systems"
+	series "Shields"
+	index 08040
+	cost 3248000
+	thumbnail "outfit/shield refactor module"
+	"mass" 7
+	"outfit space" -7
+	"hull repair rate" -.25
+	"shield energy multiplier" .2
+	"shield heat" .32
+	"shield generation multiplier" .2
+	"hull repair multiplier" -.2
+	description "理论上，如果达到真正的极限，所有护盾发生器都可以以比正常情况快得多的速度运行。然而，在激烈的战斗中不断需要改造护盾很快就会使护盾发生器过载并在此过程中损坏它们。通过重新定位专用船体修复系统，专门专注于修复此类损坏，这种紧凑的设备使护盾发生器能够发挥其真正的潜力。"
+	description "这是对抗 Heliarch 鱼雷对船体板造成破坏性影响的急需恩惠，月宫非常赞成生产这种昂贵的产品，因为它比其他护盾发生器具有优势。"
+
+outfit "Small Recovery Module"
+	category "Systems"
+	series "Shields"
+	index 08050
+	cost 625000
+	thumbnail "outfit/small recovery module"
+	"mass" 25
+	"outfit space" -25
+	"shield generation" .97
+	"shield energy" .43
+	"shield heat" .7
+	"hull repair rate" .43
+	"hull energy" .97
+	"hull heat" .07
+	description "通过将联盟的护盾生成和船体修复技术结合到一件设备中，月球馆提高了两者的效率，从而可以更好地防御Heliarch武器。"
+
+outfit "Scanning Module"
+	category "Systems"
+	series "Scanners"
+	index 08010
+	licenses
+		Heliarch
+	cost 453600
+	thumbnail "outfit/scan module"
+	"mass" 3
+	"outfit space" -3
+	"outfit scan power" 25
+	"outfit scan efficiency" 18
+	"cargo scan power" 25
+	"cargo scan efficiency" 18
+	"tactical scan power" 25
+	description "该系统允许Heliarchs扫描附近的船只，使它们能够检测武器或非法货物。"
+
+outfit "Outskirts Gauger"
+	category "Systems"
+	series "Scanners"
+	index 08020
+	cost 1406000
+	thumbnail "outfit/outskirts gauger"
+	"mass" 8
+	"outfit space" -8
+	"unique" 1
+	"tactical scan power" 169
+	"energy consumption" .2
+	description "伊德里斯家族的最新扫描仪配备了来自一颗失落已久的卫星的数据，擅长读取远距离的各种能量特征。"
+	description "测量仪不断地对它在其令人印象深刻的范围内检测到的每一个小东西进行计算，需要稳定的能量供应才能发挥作用。"
+
+outfit "Small Thrust Module"
+	category "Engines"
+	series "Engines"
+	index 08011
+	licenses
+		Coalition
+	"cost" 66000
+	thumbnail "outfit/small thrust module"
+	"mass" 9
+	"outfit space" -9
+	"engine capacity" -9
+	"thrust" 12.45
+	"thrusting energy" 0.46
+	"thrusting heat" 3
+	"flare sprite" "effect/coalition flare/small"
+		"frame rate" 10
+	"flare sound" "atomic tiny"
+	description "这个微小的推进器产生相当大的推力……但也产生大量的热量。"
+
+outfit "Large Thrust Module"
+	category "Engines"
+	series "Engines"
+	index 08021
+	licenses
+		Coalition
+	"cost" 292000
+	thumbnail "outfit/large thrust module"
+	"mass" 32
+	"outfit space" -32
+	"engine capacity" -32
+	"thrust" 45.9
+	"thrusting energy" 1.7
+	"thrusting heat" 11
+	"flare sprite" "effect/coalition flare/large"
+		"frame rate" 7
+	"flare sound" "atomic small"
+	description "联盟工程师更愿意专注于完善一些多功能设计，而不是生产各种设计。这种推进器非常高效，但大型船舶需要将多个推进器堆叠在一起才能产生足够的推力。"
+
+outfit "Small Reverse Module"
+	category "Engines"
+	series "Engines"
+	index 08012
+	licenses
+		Coalition
+	"cost" 66000
+	thumbnail "outfit/small reverse module"
+	"mass" 9
+	"outfit space" -9
+	"weapon capacity" -9
+	"reverse thrust" 12.45
+	"reverse thrusting energy" 0.46
+	"reverse thrusting heat" 3
+	"reverse flare sprite" "effect/coalition flare/small"
+		"frame rate" 10
+	"reverse flare sound" "atomic tiny"
+	description "将这个微型推进器放置在货船或运输工具的前面，可以使联盟商人大大提高能源效率，这在依赖太阳能时非常有好处。"
+	description "由于反向推进器必须面向前方，因此它必须安装在船舶的武器部分而不是发动机部分。"
+
+outfit "Large Reverse Module"
+	category "Engines"
+	series "Engines"
+	index 08022
+	licenses
+		Coalition
+	"cost" 292000
+	thumbnail "outfit/large reverse module"
+	"mass" 32
+	"outfit space" -32
+	"weapon capacity" -32
+	"reverse thrust" 45.9
+	"reverse thrusting energy" 1.7
+	"reverse thrusting heat" 11
+	"reverse flare sprite" "effect/coalition flare/large"
+		"frame rate" 7
+	"reverse flare sound" "atomic small"
+	description "由于其大量武器容量在和平时期未被使用，大型联盟货轮和运输船的船长可以使用大型反向模块来快速减慢他们的船只，从而节省时间和精力。"
+	description "由于反向推进器必须面向前方，因此它必须安装在船舶的武器部分而不是发动机部分。"
+
+outfit "Small Steering Module"
+	category "Engines"
+	series "Engines"
+	index 08010
+	licenses
+		Coalition
+	"cost" 60000
+	thumbnail "outfit/small steering module"
+	"mass" 7
+	"outfit space" -7
+	"engine capacity" -7
+	"turn" 268.2
+	"turning energy" 0.26
+	"turning heat" 1.8
+	"steering flare sprite" "effect/coalition flare/small"
+		"frame rate" 10
+	"steering flare sound" "atomic tiny"
+	description "尽管效率很高，但该模块仅适用于最小的船舶。相反，这些模块的设计预期船舶可以串联使用其中的两个或三个。"
+
+outfit "Large Steering Module"
+	category "Engines"
+	series "Engines"
+	index 08020
+	licenses
+		Coalition
+	"cost" 269000
+	thumbnail "outfit/large steering module"
+	"mass" 25
+	"outfit space" -25
+	"engine capacity" -25
+	"turn" 1120.5
+	"turning energy" 1.0
+	"turning heat" 6.5
+	"steering flare sprite" "effect/coalition flare/large"
+		"frame rate" 7
+	"steering flare sound" "atomic small"
+	description "通过专注于小型模块化发动机而不是大多数其他物种开发的大型主力舰驱动器，联盟失去了一些超大型船舶的潜在效率，但获得了相当大的灵活性。"
+
+outfit "Enforcer Confrontation Gear"
+	category "Hand to Hand"
+	series "H2H"
+	index 08020
+	licenses
+		Heliarch
+	cost 369000
+	thumbnail "outfit/enforcer confrontation gear"
+	"capture attack" 3.1
+	"capture defense" 4.9
+	"unplunderable" 1
+	description "Heliarch 战斗工程的巅峰之作，这种武器利用浓缩的能量爆炸来消灭任何胆敢威胁联盟安全的人。"
+
+outfit "Enforcer Riot Staff"
+	category "Hand to Hand"
+	series "H2H"
+	index 08010
+	licenses
+		Heliarch
+	cost 97000
+	thumbnail "outfit/enforcer riot staff"
+	"capture attack" 2.0
+	"capture defense" 3.5
+	"unplunderable" 1
+	description "这些武器是为了以非致命的方式对付偶尔出现在联盟空间周围的持不同政见者而设计的，这些武器在舰上战斗中的用途很少，但在持不同政见者登船的情况下无论如何都会携带。"
+
+outfit "Guardian Turret"
+	category "Hand to Hand"
+	series "Fortifications"
+	index 08025
+	licenses
+		Heliarch
+	cost 876000
+	thumbnail "outfit/guardian turret"
+	"mass" 1
+	"outfit space" -1
+	"capture defense" 19
+	"unplunderable" 1
+	description "这些紧凑型自动炮塔可用于保护建筑物和船只，由 Heliarchs 根据夸格自己的反登机设备设计和建造。活跃的、极其细小的光束将炮塔和目标连接起来，无论需要多少次才能确认执行。"
+	description "每个炮塔还配备了一个紧凑的发射器，旨在为炮塔底座周围的小区域提供屏蔽。虽然一开始开发起来很棘手，但这项技术不仅使大多数炮塔免受狙击攻击，而且还确保了许多Heliarchs的生存，否则他们将面临悲惨的结局。"
+	description "唯一的缺点是在炮塔系统中登记每位机组成员的过程相对繁琐，这样炮塔就可以在登船遭遇战时识别并避免向盟友开火。"
+
+outfit "Anti-Materiel Gun"
+	category "Hand to Hand"
+	series "H2H"
+	index 08030
+	cost 257200
+	thumbnail "outfit/anti-materiel gun"
+	"capture attack" 3.4
+	"capture defense" 1.9
+	"unplunderable" 1
+	description "这些武器易于使用且制造相对便宜，是通过翻新Heliarchs最喜欢的武器而诞生的，新的枪管将能量转化为致命的爆炸，即使是最坚韧的防弹衣也能在短时间内发挥作用。"
+
+outfit "Coalition License"
+	category "Licenses"
+	series "Licenses"
+	index 08010
+	thumbnail "outfit/coalition license"
+	description "该文件是一种风格化徽章形式的数字芯片，表示所有者允许浏览、使用和处理涉及民用联盟技术的交易。"
+	description "围绕该许可证存在着争议的历史，因为几千年来，关于某人获得许可证所需满足的条件，几项 Heliarch 法律一直在反复争论。这一争论始于独立战争后几十年制定的第三部《民用商品和票价法案》。一直延续到两百多年前的《九改商交通》第二条第二十六条补遗，使得收购要求更加灵活。"
+
+outfit "Heliarch License"
+	category "Licenses"
+	series "Licenses"
+	index 08020
+	thumbnail "outfit/heliarch license"
+	description "它是一个由黄金和铂金制成的华丽圆环，既是等级的象征，也是使用 Heliarch 专属设施的许可证。它专为贴合人体头部而定制，极其轻盈舒适。"
+
+outfit "Beyond the Hyperdrive"
+	category "Unique"
+	series "Non-Functional Unique"
+	index 11
+	thumbnail "outfit/beyond the hyperdrive"
+	"unique" 1
+	description "这是安娜·方文 (Anna Fangvin) 送给您的一本书，她是一位在联盟领域取得成功的苦苦挣扎的作家。这是一份签名副本。"
+	description "故事讲述了一位人类船长从夸格人那里窃取了跳跃驱动器并穿越超航道，了解有关银河系外星人的新事物。"

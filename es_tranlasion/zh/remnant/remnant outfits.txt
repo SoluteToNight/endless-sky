@@ -1,0 +1,1018 @@
+# Copyright (c) 2017 by Michael Zahniser
+# Copyright (c) 2021 by Zitchas
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program. If not, see <https://www.gnu.org/licenses/>.
+
+# Weapons:
+
+outfit "Inhibitor Cannon"
+	category "Guns"
+	series "Guns"
+	index 03010
+	licenses
+		Remnant
+	cost 471000
+	thumbnail "outfit/inhibitor cannon"
+	"mass" 16
+	"outfit space" -16
+	"weapon capacity" -16
+	"gun ports" -1
+	weapon
+		sprite "projectile/inhibitor"
+			"frame rate" 10
+			"no repeat"
+		sound "inhibitor"
+		"hit effect" "inhibitor impact" 3
+		"inaccuracy" .5
+		"velocity" 36
+		"random velocity" .5
+		"lifetime" 24
+		"reload" 13
+		"cluster"
+		"firing energy" 26
+		"firing heat" 45.5
+		"firing force" 19.5
+		"shield damage" 26
+		"hull damage" 19.5
+		"hit force" 58.5
+		"slowing damage" .5
+	description `近一个世纪前，一名残余侦察兵在余烬废土以北的太空中探索，遭到一支外星舰队的攻击，该舰队配备的武器干扰了侦察兵的引擎。故事称，残余船长平静地告诉她的船员，“除非我们偷走那件武器，否则我们不会回家。”这项外星技术成为了抑制剂加农炮的基础。`
+	description `尽管残余者很欣赏原来的武器，但他们感到失望的是，它太大了，无法安装在他们的大多数船上。他们没有让自己的努力白费，而是选择利用新发现的知识来创造适合他们更灵活工艺的武器。因此，抑制剂非常擅长控制交战距离，通过每次射击的冲击力将目标向后推，同时通过干扰发动机来减慢目标的接近速度，从而将目标保持在射程内。`
+
+effect "inhibitor impact"
+	sprite "effect/inhibitor impact"
+		"frame rate" 30
+		"no repeat"
+	"lifetime" 11
+	"random angle" 360
+	"random frame rate" 15
+	"random velocity" 6
+	"velocity scale" -.05
+
+outfit "Inhibitor Turret"
+	category "Turrets"
+	series "Turrets"
+	index 03010
+	licenses
+		Remnant
+	cost 1371000
+	thumbnail "outfit/inhibitor turret"
+	"mass" 42
+	"outfit space" -28
+	"weapon capacity" -22
+	"required crew" 1
+	"turret mounts" -1
+	weapon
+		sprite "projectile/inhibitor"
+			"frame rate" 10
+			"no repeat"
+		"hardpoint sprite" "hardpoint/inhibitor turret"
+		"hardpoint offset" 6.
+		sound "inhibitor"
+		"hit effect" "inhibitor impact" 3
+		"inaccuracy" .5
+		"turret turn" 3.6
+		"velocity" 36
+		"random velocity" .5
+		"lifetime" 24
+		"reload" 6.5
+		"cluster"
+		"firing energy" 26
+		"firing heat" 45.5
+		"firing force" 19.5
+		"shield damage" 26
+		"hull damage" 19.5
+		"hit force" 58.5
+		"slowing damage" .5
+	description `虽然可以干扰舰船发动机的大炮在任何情况下都很有用，但遗迹很快就决定将它作为炮塔更有用，他们的舰船可以用它来阻止那些追赶他们的人。这些小型抑制炮塔通常主要出现在试图超越对手而不是击败对手的鹈鹕身上。`
+	description `尽管这些炮塔在性能方面并不引人注目，但相对最近的完善技术是将大部分武器本身安装在炮塔底座外部而不是底座下方，这使得武器占用的装备空间相对较小。然而，它确实仍然增加了船的质量。`
+
+
+outfit "Thrasher Cannon"
+	category "Guns"
+	series "Guns"
+	index 03020
+	licenses
+		Remnant
+	cost 218000
+	thumbnail "outfit/thrasher cannon"
+	"mass" 10
+	"outfit space" -10
+	"weapon capacity" -10
+	"gun ports" -1
+	weapon
+		sprite "projectile/thrasher"
+			"frame rate" 10
+			"random start frame"
+			"no repeat"
+		sound "thrasher"
+		"hit effect" "thrasher impact"
+		"inaccuracy" 9
+		"velocity" 10
+		"lifetime" 36
+		"reload" 20
+		"firing energy" 36
+		"firing heat" 27
+		"shield damage" 38
+		"hull damage" 46
+	description "这种武器最初是为了对一种远程能量射弹进行逆向工程而开发的，这种射弹受到遗迹附近遇到的外来物种的青睐。在此过程中，他们发现通过向射弹添加更多能量，可以造成更大伤害，以换取更短的射程，Thrasher Cannon 就此诞生。"
+
+effect "thrasher impact"
+	sprite "effect/thrasher impact"
+		"frame rate" 30
+		"no repeat"
+	"lifetime" 11
+	"random angle" 360
+	"random spin" 30
+	"random velocity" 3
+	"velocity scale" -.1
+
+
+outfit "Thrasher Turret"
+	category "Turrets"
+	series "Turrets"
+	index 03020
+	licenses
+		Remnant
+	cost 980000
+	thumbnail "outfit/thrasher turret"
+	"mass" 49
+	"outfit space" -49
+	"weapon capacity" -49
+	"required crew" 1
+	"turret mounts" -1
+	weapon
+		sprite "projectile/thrasher"
+			"frame rate" 10
+			"random start frame"
+			"no repeat"
+		"hardpoint sprite" "hardpoint/thrasher turret"
+		"hardpoint offset" 6.
+		sound "thrasher"
+		"hit effect" "thrasher impact"
+		"inaccuracy" 6
+		"turret turn" 2
+		"velocity" 10
+		"lifetime" 36
+		"reload" 5
+		"firing energy" 36
+		"firing heat" 27
+		"shield damage" 38
+		"hull damage" 46
+	description "该炮塔在一个旋转底座上安装了四门 Thrasher 火炮。由此产生的武器在近距离发射时会造成非常令人满意的伤害，尤其是针对缓慢移动的目标。"
+
+
+outfit "Point Defense Turret"
+	category "Turrets"
+	series "Anti-Missile"
+	index 03010
+	licenses
+		Remnant
+	cost 1120000
+	thumbnail "outfit/point defense"
+	"mass" 33
+	"outfit space" -33
+	"weapon capacity" -33
+	"turret mounts" -1
+	weapon
+		"hardpoint sprite" "hardpoint/point defense"
+		"fire effect" "point defense fire"
+		"die effect" "point defense hit"
+		"die effect" "point defense die"
+		"anti-missile" 42
+		"velocity" 270
+		"lifetime" 1
+		"reload" 10
+		"firing energy" 62
+		"firing heat" 18
+	description "遗迹在阿文丁定居后不久，他们开始在山下深处的金库中发现外星技术的宝藏，这些金库由古老但仍在运作的点防御系统守卫着。遗迹学会了如何复制这些防御系统，现在它们被认为比他们守护的大多数物品更有用。"
+
+effect "point defense fire"
+	sprite "effect/point defense fire"
+		"frame rate" 17
+		"no repeat"
+	sound "point defense"
+	"sound category" "anti-missile"
+	lifetime 10
+	"velocity scale" .5
+
+effect "point defense hit"
+	sprite "effect/point defense hit"
+		"frame rate" 13
+		"no repeat"
+	lifetime 10
+	"velocity scale" .2
+
+effect "point defense die"
+	sprite "effect/point defense die"
+		"frame rate" 20
+		"no repeat"
+	lifetime 15
+	"velocity scale" .2
+
+
+outfit "EMP Torpedo"
+	plural "EMP Torpedoes"
+	category "Ammunition"
+	series "Ammunition"
+	index 03010
+	cost 4400
+	thumbnail "outfit/emp torpedo"
+	"mass" 1
+	"emp torpedo capacity" -1
+	description "这种鱼雷可以发射电磁脉冲，干扰船舶的发电机。"
+
+outfit "EMP Torpedo Storage Bay"
+	category "Ammunition"
+	series "Ammunition"
+	index 03011
+	licenses
+		Remnant
+	cost 98000
+	thumbnail "outfit/emp rack"
+	"mass" 5
+	"outfit space" -12
+	"energy capacity" 400
+	"emp torpedo capacity" 7
+	ammo "EMP Torpedo"
+	description "EMP 鱼雷储存舱用于储存使用 EMP 鱼雷的武器的额外弹药。"
+	description "除了弹药容量外，存储舱还可以容纳少量电荷，足以让一艘没有电池的舰船发射电磁脉冲鱼雷。"
+
+outfit "EMP Torpedo Bay"
+	category "Secondary Weapons"
+	series "Secondary Weapons"
+	index 03010
+	licenses
+		Remnant
+	cost 583000
+	thumbnail "outfit/emp torpedo bay"
+	"mass" 9
+	"outfit space" -18
+	"weapon capacity" -18
+	"gun ports" -1
+	"emp torpedo capacity" 9
+	weapon
+		sprite "projectile/emp torpedo"
+			"frame rate" 2
+			"no repeat"
+		sound "torpedo"
+		ammo "EMP Torpedo"
+		icon "icon/emp"
+		"fire effect" "emp torpedo fire" 5
+		"hit effect" "nuke explosion"
+		"hit effect" "emp ring" 30
+		"hit effect" "emp spark" 20
+		"die effect" "tiny explosion"
+		stream
+		"reload" 330
+		"firing energy" 400
+		"firing heat" 18
+		"inaccuracy" 5
+		"lifetime" 300
+		"velocity" 7
+		"acceleration" .7
+		"drag" .1
+		"turn" 2
+		"homing"
+			"throttle control"
+		"infrared tracking" .7
+		"radar tracking" .8
+		"trigger radius" 50
+		"blast radius" 200
+		"shield damage" 700
+		"hull damage" 100
+		"ion damage" 48
+		"scrambling damage" 48
+		"hit force" 135
+		"missile strength" 80
+	description "电磁脉冲武器是由残余者在其殖民地的早期开发的，当时他们生活在阿尔法人会占领人类空间并超越人类空间的恐惧之中。"
+	description "该武器的弹药可以在任何装备商处补充。"
+		to display
+			has "gamerule: universal ammo restocking"
+
+outfitter "EMP Torpedo Restock"
+	to sell
+		has "gamerule: universal ammo restocking"
+		or
+			has "outfit: EMP Torpedo Bay"
+			has "outfit: Ka'het EMP Deployer"
+			has "outfit: EMP Torpedo Storage Bay"
+	location
+		attributes "outfitter"
+	stock
+		"EMP Torpedo"
+
+
+
+outfit "Teciimach Canister"
+	category "Ammunition"
+	series "Ammunition"
+	index 03020
+	cost 35500
+	thumbnail "outfit/emp torpedo"
+	"mass" 1
+	"teciimach canister capacity" -1
+	description "该罐包含组装 Teciimach 鱼雷所需的一切。这些武器发射强烈的电磁脉冲，干扰船舶的发电机并抵消其部分能量。"
+	description `与上一代“EMP 鱼雷”不同，Teciimach 鱼雷会主动调整其发射模式，以避免影响盟友。`
+
+outfit "Teciimach Canister Rack"
+	category "Ammunition"
+	series "Ammunition"
+	index 03021
+	licenses
+		Remnant
+	cost 295000
+	thumbnail "outfit/emp rack"
+	"mass" 5
+	"outfit space" -9
+	"energy capacity" 500
+	"teciimach canister capacity" 9
+	ammo "Teciimach Canister"
+	description "Teciimach 罐架用于存储额外的组件，既可以扩展船舶的容量，也可以在航母上为战斗机补给。"
+	description "除了弹药容量外，存储舱还可以容纳少量电荷，足以让一艘没有电池的船只组装特西马赫鱼雷。"
+
+outfit "Teciimach Bay"
+	category "Secondary Weapons"
+	series "Secondary Weapons"
+	index 03030
+	licenses
+		Remnant
+	cost 1525000
+	thumbnail "outfit/teciimach bay"
+	"mass" 9
+	"outfit space" -13
+	"weapon capacity" -13
+	"gun ports" -1
+	"teciimach canister capacity" 9
+	weapon
+		sprite "projectile/emp torpedo"
+			"frame rate" 2
+			"no repeat"
+		sound "torpedo"
+		ammo "Teciimach Canister"
+		icon "icon/emp"
+		"fire effect" "emp torpedo fire" 5
+		"hit effect" "nuke explosion"
+		"hit effect" "emp ring" 30
+		"hit effect" "emp spark" 20
+		"die effect" "tiny explosion"
+		cluster
+		safe
+		"reload" 310
+		"firing energy" 400
+		"firing heat" 18
+		"inaccuracy" 5
+		"lifetime" 300
+		"velocity" 8
+		"acceleration" .7
+		"drag" .1
+		"turn" 2.5
+		"homing"
+			"throttle control"
+		"infrared tracking" .8
+		"radar tracking" .9
+		"trigger radius" 50
+		"blast radius" 200
+		"shield damage" 900
+		"hull damage" 125
+		"disabled damage" 60
+		"ion damage" 65
+		"scrambling damage" 65
+		"energy damage" 2000
+		"hit force" 135
+		"missile strength" 95
+	description "电磁脉冲武器最初是由残余者在其殖民地早期开发的，当时他们生活在阿尔法人会占领人类空间并扩展到人类空间之外的恐惧之中。"
+	description "几个世纪后，Teciimach 的修订版对其有效性、效率、可靠性和安全性进行了一系列升级。遗迹将这些改进归功于沃伦研究团队发现的最新研究和秘密。"
+	description "该武器的弹药可以在任何装备商处补充。"
+		to display
+			has "gamerule: universal ammo restocking"
+
+outfit "Teciimach Pod"
+	category "Secondary Weapons"
+	series "Secondary Weapons"
+	index 03020
+	licenses
+		Remnant
+	cost 762500
+	thumbnail "outfit/teciimach pod"
+	"mass" 3
+	"outfit space" -6
+	"weapon capacity" -6
+	"gun ports" -1
+	"teciimach canister capacity" 3
+	weapon
+		sprite "projectile/emp torpedo"
+			"frame rate" 2
+			"no repeat"
+		sound "torpedo"
+		ammo "Teciimach Canister"
+		icon "icon/emp"
+		"fire effect" "emp torpedo fire" 5
+		"hit effect" "nuke explosion"
+		"hit effect" "emp ring" 30
+		"hit effect" "emp spark" 20
+		"die effect" "tiny explosion"
+		cluster
+		safe
+		"burst count" 3
+		"burst reload" 110
+		"reload" 620
+		"firing energy" 350
+		"firing heat" 16
+		"inaccuracy" 5
+		"lifetime" 300
+		"velocity" 8
+		"acceleration" .7
+		"drag" .1
+		"turn" 2.5
+		"homing"
+			"throttle control"
+		"infrared tracking" .8
+		"radar tracking" .9
+		"trigger radius" 50
+		"blast radius" 200
+		"shield damage" 900
+		"hull damage" 125
+		"disabled damage" 60
+		"ion damage" 60
+		"scrambling damage" 60
+		"energy damage" 2000
+		"hit force" 135
+		"missile strength" 95
+	description "虽然“残余”最初是作为一种重型武器来瘫痪敌方主力舰而开发的，但现在已经利用现场组装技术来支持其在小型舰艇上的使用。这些吊舱牺牲了多个组装系统，以便将它们安装到拦截级舰艇上。"
+	description "尽管有这样的解释，但对这些海湾和吊舱的仔细检查表明，这里的东西比它们的体积所暗示的要多得多。"
+	description "该武器的弹药可以在任何装备商处补充。"
+		to display
+			has "gamerule: universal ammo restocking"
+
+effect "emp torpedo fire"
+	sprite "effect/emp torpedo fire"
+		"no repeat"
+		"frame rate" 10
+	"lifetime" 31
+	"random angle" 10
+	"random frame rate" 10
+	"random spin" 2
+	"random velocity" 7
+
+effect "emp ring"
+	sprite "effect/emp ring"
+		"no repeat"
+		"frame rate" 12
+	"lifetime" 60
+	"random angle" 360
+	"random frame rate" 6
+	"random velocity" 4
+	"velocity scale" 0.1
+
+effect "emp spark"
+	sprite "effect/emp spark"
+		"no repeat"
+		"frame rate" 8
+	"lifetime" 45
+	"random angle" 360
+	"random frame rate" 6
+	"random velocity" 7
+	"velocity scale" 0.1
+
+outfitter "Teciimach Canister Restock"
+	to sell
+		has "gamerule: universal ammo restocking"
+		or
+			has "outfit: Teciimach Bay"
+			has "outfit: Teciimach Pod"
+			has "outfit: Teciimach Canister Rack"
+	location
+		attributes "outfitter"
+	stock
+		"Teciimach Canister"
+
+
+
+outfit "Ember Tear"
+	category "Secondary Weapons"
+	series "Secondary Weapons"
+	index 03040
+	licenses
+		"Remnant Capital"
+	cost 270000000
+	thumbnail "outfit/ember tear"
+	"mass" 250
+	"outfit space" -190
+	"weapon capacity" -200
+	"gun ports" -1
+	"spinal mount" -1
+	"unplunderable" 1
+	weapon
+		sprite "projectile/ember tear/ember tear"
+			"frame rate" 30
+		sound "ember tear"
+		"hit effect" "ember tear spark"
+		"hit effect" "ember tear impact"
+		"hit effect" "ember tear vortex"
+		"fire effect" "ember tear fire"
+		"velocity" 800
+		"inaccuracy" 0
+		"safe"
+		"lifetime" 1
+		"reload" 1
+		"firing force" 1.5
+		"blast radius" 150
+		"firing energy" 230
+		"firing fuel" 10
+		"firing heat" 105
+		"shield damage" 250
+		"hull damage" 250
+		"slowing damage" 10
+		"fuel damage" 2.5
+	description "余烬废土是一个异常区域，受到违背传统物理学的力量的影响：能量从真空自发涌出，物质密度远远大于人们在太空中所能找到的密度——甚至在星云周围，虫洞集中在银河系中闻所未闻，以及宇宙本身似乎在流动的区域。这个区域比任何建筑物或船只都更像是遗迹实验室，他们在那里研究宇宙最深处的运作。"
+	description "当被要求澄清这个名字是指撕裂还是哭泣时，技术人员用好奇的表情看着你，并回答“两者都是”。然后他们继续解释说，对这种武器的一个非常简单的解释是，它在时空结构中产生微撕裂，然后再次将它们烧焦在一起。灰烬荒原难道不应该为这种武器的必要性而哭泣吗？"
+	description "这些大型武器需要特殊的挂载点，而且数量如此之少，以至于残余者可以根据需要直接分配它们。由于巨大的能源和燃料需求，只有最大的残余船只才能支持这些武器的常规使用。"
+
+effect "ember tear spark"
+	sprite "effect/ember tear/ember tear spark"
+		"start frame" 0
+		"no repeat"
+		"frame rate" 30
+	"lifetime" 10
+	"velocity scale" 0
+	"random angle" 360
+	"random velocity" 10
+	"random frame rate" 10
+
+effect "ember tear fire"
+	sprite "effect/ember tear/ember tear fire"
+		"start frame" 0
+		"no repeat"
+		"frame rate" 60
+	"lifetime" 3
+	"velocity scale" 1
+	"random angle" 360
+	"random velocity" 3
+	"random frame rate" 10
+
+effect "ember tear impact"
+	sprite "effect/ember tear/ember tear impact"
+		"start frame" 1
+		"no repeat"
+		"frame rate" 60
+	"lifetime" 3
+	"velocity scale" 0
+	"random angle" 360
+	"random velocity" 10
+	"random frame rate" 10
+
+effect "ember tear vortex"
+	sprite "effect/ember tear/ember tear vortex"
+		"start frame" 0
+		"no repeat"
+		"frame rate" 10
+	"sound" "ember tear hit"
+	"lifetime" 100
+	"velocity scale" 0
+	"random angle" 360
+	"random velocity" 0
+	"random frame rate" 30
+
+
+
+# Systems:
+
+outfit "Crystal Capacitor"
+	category "Power"
+	series "Batteries"
+	index 03010
+	licenses
+		Remnant
+	cost 57000
+	thumbnail "outfit/crystal capacitor"
+	"mass" 12
+	"outfit space" -12
+	"energy capacity" 13600
+	"energy consumption" .4
+	"heat generation" .4
+	"ion resistance" 0.01
+	"scramble resistance" 0.01
+	description "这些晶体是在维米纳尔遗迹星球上开采的，可以以紧凑的形式储存惊人的能量。然而，纯度足以以这种方式使用的晶体很难找到。"
+	description "电容器往往会以余热的形式泄漏少量能量。这种能量泄漏还会导致电离更快地消散，从而使装有这些晶体的船只对废土中偶尔发生的离子风暴具有一定的抵抗力。"
+
+outfit "Millennium Cell"
+	category "Power"
+	series "Generators"
+	index 03010
+	licenses
+		Remnant
+	cost 553000
+	thumbnail "outfit/millennium cell"
+	"mass" 29
+	"outfit space" -29
+	"energy generation" 3.6
+	"heat generation" 6.0
+	"ion resistance" 0.025
+	"scramble resistance" 0.025
+	description "这种相当紧凑的放射热发生器使用具有放射性的同位素，并且紧密地堆积在一起，几乎可以归类为核反应堆。"
+	description "尽管在产生的能量方面并不是很令人印象深刻，但残余发生器的设计目的是更好地处理电离的能量消耗效应。"
+
+outfit "Epoch Cell"
+	category "Power"
+	series "Generators"
+	index 03020
+	licenses
+		Remnant
+	cost 2123000
+	thumbnail "outfit/epoch cell"
+	"mass" 98
+	"outfit space" -98
+	"energy generation" 12.7
+	"heat generation" 19.8
+	"ion resistance" 0.085
+	"scramble resistance" 0.085
+	description "高效剩余技术确保该发电机的放射性同位素产生的几乎所有热量都转化为电能，而不是成为废热。"
+	description "遗迹吸收了维米纳尔上发现的晶体的离子耗散效应，并将其复制到他们的发电机中，以帮助他们在灰烬废土的恶劣环境中生存。"
+
+outfit "Aeon Cell"
+	category "Power"
+	series "Generators"
+	index 03030
+	licenses
+		Remnant
+	cost 4384000
+	thumbnail "outfit/aeon cell"
+	"mass" 160
+	"outfit space" -160
+	"energy generation" 21.9
+	"heat generation" 31.5
+	"ion resistance" 0.14
+	"scramble resistance" 0.14
+	description "早期的遗迹工程师不相信当时在人类太空中使用的挑剔且不可预测的核反应堆，因此他们转而专注于完善放射性同位素热电技术。"
+	description "所有残余发电机上的离子阻力不仅使它们能够更快地从离子风暴中反弹，而且还为它们的飞船提供了一个在离子风暴开始时不受影响的时间窗口，让它们有机会在被风暴削弱之前逃脱。"
+
+outfit "Thermoelectric Cooler"
+	category "Systems"
+	series "Cooling"
+	index 03010
+	licenses
+		Remnant
+	cost 100000
+	thumbnail "outfit/thermoelectric cooler"
+	"mass" 4
+	"outfit space" -4
+	"active cooling" 8
+	"cooling energy" .4
+	description "这个冷却器实际上只是千年电池的发电元件之一，但通过接线可以反向运行：消耗电力以将热量从船舶系统传递到其外部。"
+
+outfit "Emergency Ramscoop"
+	category "Systems"
+	series "Ramscoops"
+	index 03010
+	licenses
+		Remnant
+	cost 72000
+	thumbnail "outfit/emergency ramscoop"
+	"mass" 4
+	"outfit space" -4
+	"ramscoop" 1.25
+	description `余烬废土是那种只有非常愚蠢的船长才会在没有某种补充超空间燃料的装置的情况下旅行的地方。虽然这种风险在残余船舶中并不存在，因为它们的“鳃”实际上是内置的冲压斗，但一些船长更愿意通过增加额外的容量来加快这一过程。对于驾驶非遗迹船只勇敢面对该地区的罕见船长来说，这把冲勺并不是特别强大，但它可以让船只探索而不必担心搁浅。`
+
+outfit "NDR-114 Android"
+	category "Unique"
+	series "Functional Unique"
+	index 40
+	cost 120000
+	thumbnail "outfit/android"
+	"required crew" -1
+	"energy consumption" 0.01
+	"unique" 1
+	unplunderable 1
+	description "虽然这些设备曾经被认为是尖端设备，但它们缺乏自主能力和经济效益，导致它们从未获得制造商的许可。"
+	description "尽管如此，一些船长还是直接从发明者那里委托使用了这些设备，有效地用机器人替代了其中一名船员。这些船长发现，机器人拥有足够的能力来完成大部分工作，但缺乏驾驶船只或参与登船行动的能力。"
+
+outfit "Research Laboratory"
+	category "Systems"
+	series "Scanners"
+	index 03020
+	licenses
+		Remnant
+	cost 500000
+	thumbnail "outfit/research laboratory"
+	"mass" 11
+	"outfit space" -6
+	"asteroid scan power" 84
+	"cargo scan power" 20
+	"cargo scan efficiency" 6
+	"atmosphere scan" 100
+	"required crew" 1
+	"unplunderable" 1
+	description "从一开始，遗迹就依靠他们的能力来研究他们遇到的一切。这些知识使他们能够在灰烬废土的恶劣环境中生存甚至繁荣。为了实现对知识的追求，遗迹设计了这个紧凑的实验室，建在货舱、食堂或其他较大房间的侧面。当房间没有其他用途时，该模块会扩展，将其转变为一个完全成熟的实验室。"
+	description "虽然行星上的科学家可能认为它只不过是一个装满扫描仪和设备的壁橱，但对于遗迹来说，它是用于现场调查外星和恒星现象的行动基地。对于船长来说，拥有先进的设备来支持他们的传感器套件以及训练有素的科学家为他们的船员服务相当于一个巨大的好处。"
+
+outfit "Quantum Key Stone"
+	category "Systems"
+	series "Drives"
+	index 60
+	licenses
+		Remnant
+	cost 240000
+	thumbnail "outfit/keystone"
+	"mass" 0.1
+	"outfit space" -1
+	"quantum keystone" 1
+	description "这件珍贵的文物可以调节飞船的量子振荡，使其能够穿过灰烬废土中某些原本无法通过的虫洞。这些石头非常稀有且有价值，因为它们只能从荒地的一个地点开采。"
+
+outfit "Salvage Scanner"
+	category "Systems"
+	series "Scanners"
+	index 03010
+	licenses
+		Remnant
+	cost 410000
+	thumbnail "outfit/salvage scanner"
+	"mass" 7
+	"outfit space" -7
+	"outfit scan power" 13
+	"outfit scan efficiency" 12
+	"tactical scan power" 84
+	description "当遗迹拆解了守卫阿文廷金库的外星点防御炮塔时，他们还破译了引导古代武器的机制。经过大量的研发投资，他们已将这些制导系统转变为复杂的扫描技术。"
+	description "虽然所有残余船只都配备了内部扫描仪，但一些船长仍然喜欢提高其射程和功率，以更有效地选择值得瞄准的敌方船只。"
+
+
+
+# Engines:
+
+outfit "Bellows-Class Afterburner"
+	category "Engines"
+	series "Afterburners"
+	index 03010
+	"cost" 640000
+	thumbnail "outfit/remnant afterburner"
+	"mass" 8
+	"outfit space" -11
+	"engine capacity" -11
+	"slowing resistance" 0.01
+	"afterburner thrust" 187.5
+	"afterburner fuel" 1.95
+	"afterburner energy" 6
+	"afterburner heat" 72
+	"afterburner effect" "remnant afterburner"
+	description "遗迹生活在星云风中燃料原料相对常见的环境中。因此，他们的船舶采用了重要的内置冲压技术，虽然他们不愿意浪费燃料，但他们并不害怕在需要时使用它。更重要的是他们的舰艇能够根据需要快速有效地进入或退出战斗。归根结底，最重要的是继续生活。"
+	description "风箱级加力燃烧器体现了这一理念，为船长提供了一种工具，使他们能够实现大幅加速，通常是在规避机动或追赶逃跑目标时。由于其燃料消耗量巨大，只有最专业的船舶才有足够的燃料一次使用这些船舶几秒钟以上，然后才会完全耗尽燃料。"
+
+effect "remnant afterburner"
+	sprite "effect/remnant afterburner/remnant afterburner"
+		"frame rate" 10
+	sound "remnant afterburner"
+	"sound category" "afterburner"
+
+
+
+outfit "Anvil-Class Engine"
+	category "Engines"
+	series "Engines"
+	index 03010
+	licenses
+		Remnant
+	"cost" 290000
+	thumbnail "outfit/tiny remnant engine"
+	"mass" 26
+	"outfit space" -26
+	"engine capacity" -26
+	"thrust" 20.7
+	"thrusting energy" 2.05
+	"thrusting heat" 1.95
+	"turn" 554.4
+	"turning energy" 1.05
+	"turning heat" 1.1
+	"reverse thrust" 15.45
+	"reverse thrusting energy" 1.5
+	"reverse thrusting heat" 1.45
+	"slowing resistance" 0.02
+	"flare sprite" "effect/remnant flare/small"
+		"frame rate" 5
+	"flare sound" "plasma tiny"
+	"steering flare sprite" "effect/remnant flare/small"
+		"frame rate" 5
+	"steering flare sound" "plasma tiny"
+	"reverse flare sprite" "effect/remnant flare/small"
+		"frame rate" 5
+	"reverse flare sound" "plasma tiny"
+	description "这套微型发动机是专门为小型飞船设计的，它将推进器和转向装置组合成一个单元。"
+
+outfit "Crucible-Class Thruster"
+	category "Engines"
+	series "Engines"
+	index 03021
+	licenses
+		Remnant
+	"cost" 200000
+	thumbnail "outfit/small remnant thruster"
+	"mass" 20
+	"outfit space" -20
+	"engine capacity" -20
+	"thrust" 24.825
+	"thrusting energy" 2.1
+	"thrusting heat" 2.0
+	"reverse thrust" 18.6
+	"reverse thrusting energy" 1.6
+	"reverse thrusting heat" 1.5
+	"slowing resistance" 0.012
+	"flare sprite" "effect/remnant flare/small"
+		"frame rate" 5
+	"flare sound" "plasma tiny"
+	"reverse flare sprite" "effect/remnant flare/small"
+		"frame rate" 5
+	"reverse flare sound" "plasma tiny"
+	description "这些小型但功能强大的发动机由以相当大的光速推进的电离气体驱动。"
+
+outfit "Forge-Class Thruster"
+	category "Engines"
+	series "Engines"
+	index 03031
+	licenses
+		Remnant
+	"cost" 441000
+	thumbnail "outfit/medium remnant thruster"
+	"mass" 39
+	"outfit space" -39
+	"engine capacity" -39
+	"thrust" 51
+	"thrusting energy" 4.4
+	"thrusting heat" 4.25
+	"reverse thrust" 38.25
+	"reverse thrusting energy" 3.3
+	"reverse thrusting heat" 3.2
+	"slowing resistance" 0.024
+	"flare sprite" "effect/remnant flare/medium"
+		"frame rate" 4
+	"flare sound" "plasma small"
+	"reverse flare sprite" "effect/remnant flare/small"
+		"frame rate" 5
+	"reverse flare sound" "plasma small"
+	description "遗迹采用了人类自太空飞行诞生以来一直使用的基本离子推进器设计，并使其更加强大……但也更加耗电。"
+
+outfit "Smelter-Class Thruster"
+	category "Engines"
+	series "Engines"
+	index 03041
+	licenses
+		Remnant
+	"cost" 984000
+	thumbnail "outfit/large remnant thruster"
+	"mass" 76
+	"outfit space" -76
+	"engine capacity" -76
+	"thrust" 106.65
+	"thrusting energy" 9.5
+	"thrusting heat" 9.6
+	"reverse thrust" 79.95
+	"reverse thrusting energy" 7.1
+	"reverse thrusting heat" 7.2
+	"slowing resistance" 0.048
+	"flare sprite" "effect/remnant flare/large"
+		"frame rate" 3
+	"flare sound" "plasma medium"
+	"reverse flare sprite" "effect/remnant flare/medium"
+		"frame rate" 5
+	"reverse flare sound" "plasma medium"
+	description "遗迹舰船的发动机比其武器系统消耗更多的动力并非闻所未闻：这也许表明他们倾向于在可能的情况下避免战斗。"
+
+outfit "Crucible-Class Steering"
+	category "Engines"
+	series "Engines"
+	index 03020
+	licenses
+		Remnant
+	"cost" 172000
+	thumbnail "outfit/small remnant steering"
+	"mass" 14
+	"outfit space" -14
+	"engine capacity" -14
+	"turn" 684
+	"turning energy" 1.32
+	"turning heat" 1.4
+	"slowing resistance" 0.008
+	"steering flare sprite" "effect/remnant flare/small"
+		"frame rate" 5
+	"steering flare sound" "plasma tiny"
+	description "这种转向系统足够小，甚至可以安装在拦截机中，但残余物主要使用它们来为他们的大型舰艇提供额外的机动性。"
+
+outfit "Forge-Class Steering"
+	category "Engines"
+	series "Engines"
+	index 03030
+	licenses
+		Remnant
+	"cost" 393000
+	thumbnail "outfit/medium remnant steering"
+	"mass" 28
+	"outfit space" -28
+	"engine capacity" -28
+	"turn" 1492.5
+	"turning energy" 2.64
+	"turning heat" 3.0
+	"slowing resistance" 0.016
+	"steering flare sprite" "effect/remnant flare/medium"
+		"frame rate" 4
+	"steering flare sound" "plasma small"
+	description "这种异常耗电的转向系统将大量动力集成到相对较小的空间中。对于遗迹来说，发动机技术的进步似乎比其他人类要快。"
+
+outfit "Smelter-Class Steering"
+	category "Engines"
+	series "Engines"
+	index 03040
+	licenses
+		Remnant
+	"cost" 880000
+	thumbnail "outfit/large remnant steering"
+	"mass" 55
+	"outfit space" -55
+	"engine capacity" -55
+	"turn" 3184.5
+	"turning energy" 5.21
+	"turning heat" 6.2
+	"slowing resistance" 0.032
+	"steering flare sprite" "effect/remnant flare/large"
+		"frame rate" 3
+	"steering flare sound" "plasma medium"
+	description "目前尚不清楚遗迹强大的引擎系统是否纯粹是他们自己的发明，或者是否部分受到了外星技术的启发。"
+
+
+
+# Hand to Hand
+
+outfit "Tuning Rifle"
+	category "Hand to Hand"
+	series "H2H"
+	index 03010
+	licenses
+		Remnant
+	cost 22000
+	thumbnail "outfit/remnant rifle"
+	"capture attack" 1.2
+	"capture defense" 1.8
+	"unplunderable" 1
+	description "调谐步枪使用声波来破坏许多种族较弱的内部组织并液化它们。"
+
+
+
+# Unique
+
+outfit "Void Rifle"
+	category "Unique"
+	series "Functional Unique"
+	index 50
+	licenses
+		Remnant
+	cost 1000000
+	thumbnail "outfit/void rifle"
+	"capture attack" 20
+	"capture defense" 20
+	"energy consumption" 0.017
+	"unique" 1
+	"unplunderable" 1
+	description "遗迹在研究虚空精灵的早年期间制造了大量此类武器，但自从执政官停止收割后就无法制造任何新武器。如果没有新的触手可供使用，遗迹就无法制造更多的触手。虽然它们很耐用，但很少能使用超过十年，因此即使是保养得最好的旧虚空步枪也会在几个世纪前变得毫无用处。这些高效武器被认为在早年帮助残存者保护他们的避难所免受地面威胁。"
+	description "虚空步枪发射时会发出光束，对神经系统产生强烈的麻痹效果。它的作用范围可以穿透墙壁和其他固体物体，是一种非常有效的武器。"
+
+
+
+outfit "Void Sprite Parts"
+	plural "Void Sprite Parts"
+	category "Unique"
+	series "Non-Functional Unique"
+	index 20
+	cost 500
+	thumbnail "outfit/void sprite parts"
+	"flotsam sprite" "effect/void sprite parts/void sprite parts"
+	"mass" 1
+	"outfit space" -1
+	"flotsam chance" .5
+	"installable" -1
+	"unique" 1
+	description "这只不过是一立方米的虚空精灵部件。对于遗民来说，这既是一次可怕的事件，也是一次可怕的机会。"
+	description "如果处理得当，这对于那些知道自己在做什么的人来说可能非常有价值。相反，它的价值仅比其中所含化合物的价值高一点点。"
+
+
+
+# Special
+
+outfit "Remnant License"
+	category "Licenses"
+	series "Licenses"
+	index 03010
+	thumbnail "outfit/remnant license"
+	description "除了作为方便的 IFF 验证器、个人识别工具和购买 遗民 技术的许可证之外，该设备还具有可移动部件，每次调整时都会机械地点击。当这些片段按照特定的顺序和节奏切换时，一系列的咔嗒声会产生令人惊讶的美丽的古典音乐曲目的融合。"
+
+outfit "Remnant Capital License"
+	category "Licenses"
+	series "Licenses"
+	index 03020
+	thumbnail "outfit/remnant capital license"
+	description "虽然乍一看似乎无害，但该设备显示了遗迹工程的出色简单性。敲击任一边缘都会产生短暂而微弱的嗡嗡声，这种嗡嗡声可以在行星上传播很远的距离。这种嗡嗡声使那些被赋予了残余物最有价值技术的船长们可以在陷入困境时呼叫附近的巡逻队寻求援助。"

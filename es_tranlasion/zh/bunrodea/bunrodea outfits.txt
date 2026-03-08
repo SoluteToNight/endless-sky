@@ -1,0 +1,402 @@
+# Copyright (c) 2021 by Amazinite
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program. If not, see <https://www.gnu.org/licenses/>.
+
+outfit "Shield Relay Booster"
+	category "Systems"
+	series "Shields"
+	index 10098
+	cost 59000
+	thumbnail "outfit/shield booster"
+	"mass" 2
+	"outfit space" -2
+	"shield generation" 0.4
+	"shield energy" 1.2
+	"relay upgrades" -1
+	description "屏蔽继电器增强器是一个可以安装到 Bunrodean 屏蔽继电器中以修改其有效性的组件。助推器提高了继电器的护盾生成强度，但代价是降低了能源效率。"
+
+outfit "Shield Relay Limiter"
+	category "Systems"
+	series "Shields"
+	index 10099
+	cost 12000
+	thumbnail "outfit/shield limiter"
+	"mass" 1
+	"outfit space" -1
+	"shield generation" -0.02
+	"shield energy" -0.1
+	"relay upgrades" -1
+	description "屏蔽继电器限制器是一个可以安装到 Bunrodean 屏蔽继电器中以修改其有效性的组件。限制器提高了继电器的能源效率，但代价是降低了其屏蔽生成的强度。"
+
+outfit "Small Shield Relay"
+	category "Systems"
+	series "Shields"
+	index 10010
+	cost 172000
+	thumbnail "outfit/small shield relay"
+	"mass" 21
+	"outfit space" -21
+	"shield generation" 0.65
+	"shield energy" 0.6
+	"relay upgrades" 6
+# Giving an outfit "ammo" like this means that selling this outfit sells the "ammo," which is better UX for selling these outfits without having to sell the upgrades first, but this also makes it so that if you have space for upgrades, entering the outfitter asks you if you want to "buy ammo," which is not good UX. We either need a way to decouple those two mechanics (only ask to buy ammo if the "ammo" is actually in the ammo category?), or come up with a new keyword that only provides the "selling this sells that" behavior.
+#	ammo "Shield Relay Booster"
+#	ammo "Shield Relay Limiter"
+	description "Bunrodean 屏蔽继电器的效率非常高；虽然来自另一个派系的类似尺寸的护盾发生器可能能够提供更多的护盾生成，但 Bunrodean 护盾中继仅需要少量的能量即可提供适量的护盾生成。"
+	description "屏蔽继电器可以通过安装屏蔽增强器或限制器来升级，这会改变屏蔽继电器的性能。不过，每个中继只有有限数量的插槽用于这些升级。"
+
+outfit "Large Shield Relay"
+	category "Systems"
+	series "Shields"
+	index 10020
+	cost 593000
+	thumbnail "outfit/large shield relay"
+	"mass" 56
+	"outfit space" -56
+	"shield generation" 2
+	"shield energy" 1.6
+	"relay upgrades" 16
+#	ammo "Shield Relay Booster"
+#	ammo "Shield Relay Limiter"
+	description "一些本罗丁军事船长认为，用护盾发电换取能源效率是一种愚蠢的交易，而希望充分利用反应堆的商船船长则认为，它们可以提高能源效率。因此，可以使用外部组件根据所有者的喜好定制屏蔽继电器。"
+	description "屏蔽继电器可以通过安装屏蔽增强器或限制器来升级，这会改变屏蔽继电器的性能。不过，每个中继只有有限数量的插槽用于这些升级。"
+
+
+
+outfit "Nanite Enhancer"
+	category "Systems"
+	series "Repair"
+	index 10098
+	cost 76000
+	thumbnail "outfit/nanite enhancer"
+	"mass" 5
+	"outfit space" -5
+	"hull repair rate" 0.25
+	"hull energy" 0.75
+	"nanite upgrades" -2
+	description "纳米增强器是一个可以安装到 Bunrodean 纳米制造器中以修改其有效性的组件。增强剂可以提高制造商的船体修复强度，但代价是降低能源效率。"
+
+outfit "Nanite Limiter"
+	category "Systems"
+	series "Repair"
+	index 10099
+	cost 21000
+	thumbnail "outfit/nanite limiter"
+	"mass" 2
+	"outfit space" -2
+	"hull repair rate" -0.025
+	"hull energy" -0.2
+	"nanite upgrades" -1
+	description "Nanite Limiter 是一个可以安装到 Bunrodean nanite 制造商中以修改其有效性的组件。限制器提高了制造商的能源和热效率，但代价是降低了船体修复的强度。"
+
+outfit "Small Nanite Fabricator"
+	category "Systems"
+	series "Repair"
+	index 10010
+	cost 650000
+	thumbnail "outfit/small nanite fabricator"
+	"mass" 23
+	"outfit space" -23
+	"hull repair rate" 0.72
+	"hull energy" 1.08
+	"nanite upgrades" 4
+#	ammo "Nanite Enhancer"
+#	ammo "Nanite Limiter"
+	description "尽管 Bunrodea 飞船倾向于依靠护盾进行防御，但一些飞行员会选择安装纳米制造器。这些制造商生产出源源不断的纳米粒子，它们穿过船体并修复他们发现的任何损坏。"
+	description "纳米制造商可以通过安装纳米增强剂或限制器来升级，这会改变制造商的性能。不过，每个制造商用于这些升级的插槽数量有限。"
+
+outfit "Large Nanite Fabricator"
+	category "Systems"
+	series "Repair"
+	index 10020
+	cost 1940000
+	thumbnail "outfit/large nanite fabricator"
+	"mass" 58
+	"outfit space" -58
+	"hull repair rate" 2.12
+	"hull energy" 3.18
+	"nanite upgrades" 10
+#	ammo "Nanite Enhancer"
+#	ammo "Nanite Limiter"
+	description "Bunrodea 和 科拉特 之间的早期接触刺激了纳米制造商的创建。 科拉特 系统核心的船体行走微型机器人使 科拉特 舰艇无需太空港即可进行维修，Bunrodea 喜欢在其侦察舰上使用这一特性。"
+	description "纳米制造商可以通过安装纳米增强剂或限制器来升级，这会改变制造商的性能。然而，每个制造商用于这些升级的插槽数量有限。"
+
+
+
+outfit "Solar Battery"
+	plural "Solar Batteries"
+	category "Power"
+	series "Batteries"
+	index 10010
+	cost 49000
+	thumbnail "outfit/solar battery"
+	"mass" 7
+	"outfit space" -7
+	"energy capacity" 6000
+	"solar cell" 36
+#	ammo "Solar Cell"
+	description "安装太阳能电池需要Bunrodean太阳能电池，但太阳能电池完全可以在没有太阳能电池的情况下运行。许多船长会安装电池来储存从普通反应堆获得的能量，而无需安装太阳能电池。"
+
+outfit "Solar Cell"
+	category "Power"
+	series "Batteries"
+	index 10020
+	cost 17000
+	thumbnail "outfit/solar cell"
+	"mass" 1
+	"outfit space" -1
+	"solar collection" 0.145
+	"solar heat" 0.07
+	"solar cell" -1
+	description "Bunrodean 太阳能电池板效率极高，甚至能够为较小或威力较弱的军舰提供动力。但请注意：虽然这些太阳能电池可以提供大量能量，但也存在产生废热的缺点，废热随着产生的能量而增加，当靠近明亮恒星时，这可能特别危险。"
+	description "这些电池必须安装在附带太阳能电池的安装平台上才能使用。"
+
+
+
+outfit "Reactor Overclocker"
+	category "Power"
+	series "Generators"
+	index 10098
+	cost 142000
+	thumbnail "outfit/reactor overclocker"
+	"mass" 4
+	"outfit space" -4
+	"energy generation" 0.9
+	"heat generation" 3.15
+	"reactor upgrades" -3
+	description "Reactor Overclocker 是一个可以安装到 Bunrodea 反应堆中以修改其有效性的组件。超频者可以提高反应堆的发电强度，但代价是热效率降低。"
+
+outfit "Reactor Limiter"
+	category "Power"
+	series "Generators"
+	index 10099
+	cost 26000
+	thumbnail "outfit/reactor limiter"
+	"mass" 2
+	"outfit space" -2
+	"energy generation" -0.55
+	"heat generation" -6.6
+	"reactor upgrades" -2
+	description "反应器限制器是一个可以安装到 Bunrodea 反应器中以修改其有效性的组件。限制器提高了反应堆的热效率，但代价是降低了其发电强度。"
+
+outfit "Quark Reactor"
+	category "Power"
+	series "Generators"
+	index 10010
+	cost 3367000
+	thumbnail "outfit/quark reactor"
+	"mass" 61
+	"outfit space" -61
+	"energy generation" 8.35
+	"heat generation" 10.9
+	"reactor upgrades" 6
+#	ammo "Reactor Overclocker"
+#	ammo "Reactor Limiter"
+	description "班罗丁反应堆似乎是以奇异恒星的类型命名的，这些恒星曾经或仍然被人类认为是理论上的。 28世纪，人类首次在北极星系统附近发现了一颗夸克星，这颗恒星的核心温度和压力非常高，以至于产生了夸克物质。"
+	description "Bunrodean 反应堆可以通过安装反应堆超频器或限制器来升级，这会改变反应堆的性能。不过，每个反应堆用于这些升级的插槽数量有限。"
+
+outfit "Electroweak Reactor"
+	category "Power"
+	series "Generators"
+	index 10020
+	cost 8393000
+	thumbnail "outfit/electroweak reactor"
+	"mass" 106
+	"outfit space" -106
+	"energy generation" 17.25
+	"heat generation" 20.5
+	"reactor upgrades" 18
+#	ammo "Reactor Overclocker"
+#	ammo "Reactor Limiter"
+	description "人类仍然不知道以班罗丁反应堆命名的奇异恒星的存在。电弱恒星是一种奇异的恒星，当夸克在恒星核心转化为轻子时，电弱力可以防止其塌缩。"
+	description "Bunrodean 反应堆可以通过安装反应堆超频器或限制器来升级，这会改变反应堆的性能。不过，每个反应堆用于这些升级的插槽数量有限。"
+
+outfit "Dark Reactor"
+	category "Power"
+	series "Generators"
+	index 10030
+	cost 15022000
+	thumbnail "outfit/dark reactor"
+	"mass" 142
+	"outfit space" -142
+	"energy generation" 24.7
+	"heat generation" 28.6
+	"reactor upgrades" 30
+#	ammo "Reactor Overclocker"
+#	ammo "Reactor Limiter"
+	description `“暗星”一词可以有不同的含义，但它的一个定义是核心由大量暗物质形成的恒星。人类推测这种奇异的恒星可能存在于宇宙中第一代恒星中，其中暗物质的浓度充当成核位点。`
+	description "Bunrodean 反应堆可以通过安装反应堆超频器或限制器来升级，这会改变反应堆的性能。不过，每个反应堆用于这些升级的插槽数量有限。"
+
+
+
+outfit "Lasher Pistol"
+	category "Hand to Hand"
+	series "H2H"
+	index 10010
+	cost 47000
+	thumbnail "outfit/lasher pistol"
+	"capture attack" 1.1
+	"capture defense" 2.8
+	"unplunderable" 1
+	description "在与科拉斯人的战争期间，科拉斯劫掠者登上布罗丁船只以窃取技术和物资的情况并不少见。因此，有效的小型武器成为每个班罗丁船员的重要组成部分，他们可能需要击退任何登船队。"
+
+
+
+outfit "Chiisana Rift Thruster"
+	category "Engines"
+	series "Engines"
+	index 10011
+	cost 130000
+	thumbnail "outfit/chiisana rift thruster"
+	"mass" 11
+	"outfit space" -11
+	"engine capacity" -11
+	"thrust" 11.6625
+	"thrusting energy" 1.15
+	"thrusting heat" 0.65
+	"flare sprite" "effect/bunrodea flare/large"
+		"frame rate" 1
+		"rewind"
+		"scale" 0.3
+	"flare sound" "ion tiny"
+	description "科拉特人偏爱发动机的原始动力，而本罗德亚人则偏爱效率，选择使用产生较小推力的发动机，从而显着减少产生的热量。"
+
+outfit "Nami Rift Thruster"
+	category "Engines"
+	series "Engines"
+	index 10021
+	cost 262000
+	thumbnail "outfit/nami rift thruster"
+	"mass" 19
+	"outfit space" -19
+	"engine capacity" -19
+	"thrust" 21.135
+	"thrusting energy" 2.3
+	"thrusting heat" 1.3
+	"flare sprite" "effect/bunrodea flare/large"
+		"frame rate" 1
+		"rewind"
+		"scale" 0.6
+	"flare sound" "ion small"
+	description "尽管裂谷发动机的热效率极高，但与它们产生的推力相比，它们的能量需求相当高，甚至仅次于效率极低的科拉斯发动机。"
+
+outfit "Ookii Rift Thruster"
+	category "Engines"
+	series "Engines"
+	index 10031
+	cost 512000
+	thumbnail "outfit/ookii rift thruster"
+	"mass" 32
+	"outfit space" -32
+	"engine capacity" -32
+	"thrust" 37.455
+	"thrusting energy" 4.4
+	"thrusting heat" 2.5
+	"flare sprite" "effect/bunrodea flare/large"
+		"frame rate" 1
+		"rewind"
+		"scale" 0.8
+	"flare sound" "ion medium"
+	description "尽管裂谷发动机每单位推力消耗的能量比科拉特发动机差，但相比之下裂谷发动机的整体能量需求仍然要少得多。"
+
+outfit "Subarashii Rift Thruster"
+	category "Engines"
+	series "Engines"
+	index 10041
+	cost 1004000
+	thumbnail "outfit/subarashii rift thruster"
+	"mass" 55
+	"outfit space" -55
+	"engine capacity" -55
+	"thrust" 69.75
+	"thrusting energy" 8.6
+	"thrusting heat" 4.9
+	"flare sprite" "effect/bunrodea flare/large"
+		"frame rate" 1
+		"rewind"
+	"flare sound" "ion large"
+	description "由于裂谷发动机的尺寸和推力较小，班罗丁舰艇并不以其追击能力而闻名。但一些邦罗德亚人中有传言说，有一套古老的引擎，甚至比科拉特号的引擎还要强大，可以让任何飞船像彗星一样掠过星空，追捕任何潜在的目标。"
+
+outfit "Chiisana Rift Steering"
+	category "Engines"
+	series "Engines"
+	index 10010
+	cost 201000
+	thumbnail "outfit/chiisana rift steering"
+	"mass" 17
+	"outfit space" -17
+	"engine capacity" -17
+	"turn" 808.5
+	"turning energy" 2.6
+	"turning heat" 1
+	"steering flare sprite" "effect/bunrodea flare/large"
+		"frame rate" 1
+		"rewind"
+		"scale" 0.3
+	"steering flare sound" "ion tiny"
+	description "鉴于班罗迪亚舰船通常专注于大量使用前向火炮，因此班罗迪亚舰更喜欢高转弯率而不是高航速。因此，Rift 转向系统比相同尺寸类别的相应推进器系统更大。"
+
+outfit "Nami Rift Steering"
+	category "Engines"
+	series "Engines"
+	index 10020
+	cost 442000
+	thumbnail "outfit/nami rift steering"
+	"mass" 31
+	"outfit space" -31
+	"engine capacity" -31
+	"turn" 1705.5
+	"turning energy" 5.3
+	"turning heat" 2.1
+	"steering flare sprite" "effect/bunrodea flare/large"
+		"frame rate" 1
+		"rewind"
+		"scale" 0.6
+	"steering flare sound" "ion small"
+	description "与许多 Bunrodean 系统一样，裂谷发动机产生的热量非常少。这使得他们的舰艇可以放弃使用任何重要的冷却系统，为其他系统留下更多空间，无论是防御性还是进攻性。"
+
+outfit "Ookii Rift Steering"
+	category "Engines"
+	series "Engines"
+	index 10030
+	cost 940000
+	thumbnail "outfit/ookii rift steering"
+	"mass" 53
+	"outfit space" -53
+	"engine capacity" -53
+	"turn" 3148.5
+	"turning energy" 9.2
+	"turning heat" 3.65
+	"steering flare sprite" "effect/bunrodea flare/large"
+		"frame rate" 1
+		"rewind"
+		"scale" 0.8
+	"steering flare sound" "ion medium"
+	description "尽管注重转向而非推力使得班罗丁舰艇很容易成为跟踪目标，但其武器系统的威力会让任何人愚蠢地相信它们是易受攻击的目标。"
+
+outfit "Subarashii Rift Steering"
+	category "Engines"
+	series "Engines"
+	index 10040
+	cost 1577000
+	thumbnail "outfit/subarashii rift steering"
+	"mass" 90
+	"outfit space" -90
+	"engine capacity" -90
+	"turn" 5850
+	"turning energy" 17.1
+	"turning heat" 6.5
+	"steering flare sprite" "effect/bunrodea flare/large"
+		"frame rate" 1
+		"rewind"
+	"steering flare sound" "ion large"
+	description "这些发动机是裂谷转向系统中最大的，使得班罗迪亚的重型武装直升机能够将许多火炮射向不幸的目标。"

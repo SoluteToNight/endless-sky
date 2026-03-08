@@ -1,0 +1,387 @@
+# Copyright (c) 2023 by RisingLeaf (https://github.com/RisingLeaf)
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program. If not, see <https://www.gnu.org/licenses/>.
+
+# Weapons:
+outfit "Plasma Discharger"
+	category "Guns"
+	series "Guns"
+	index 12010
+	cost 140000
+	mass 25
+	"outfit space" -20
+	"weapon capacity" -20
+	"gun ports" -1
+	thumbnail "outfit/plasma discharger"
+	weapon
+		sprite "projectile/plasma discharge"
+		sound "plasma discharger"
+		"hit effect" "blaster impact"
+		"submunition" "plasma particle" 5
+		"inaccuracy" 8
+		"velocity" 10
+		"lifetime" 64
+		"random lifetime" 12
+		"reload" 40
+		"firing energy" 60
+		"firing heat" 30
+		"shield damage" 33
+		"hull damage" 39
+		"minable damage" 90
+	description "因西皮亚斯人早在开始星系内旅行之前就开始开采小行星，因为他们的家乡星球的大气层与其环很接近。因此，这种采矿工具看起来比他们的一般技术要先进，但仍然无法与人类武器的效率相提并论。"
+	description "放电器本身会发射高密度等离子体，一段时间后这些等离子体会分裂成小颗粒。由于等离子注入器，火速非常快，但能量消耗也很高。"
+
+outfit "plasma particle"
+	weapon
+		sprite "effect/plasma particle"
+		"hit effect" "blaster impact"
+		"lifetime" 60
+		"random velocity" 2
+		"inaccuracy" 20
+		"shield damage" 6.6
+		"hull damage" 7.8
+		"minable damage" 18
+
+outfit "Stagnation Beam"
+	category "Turrets"
+	series "Turrets"
+	index 12010
+	cost 180000
+	mass 30
+	"outfit space" -30
+	"weapon capacity" -30
+	"turret mounts" -1
+	thumbnail "outfit/stagnation beam"
+	licenses
+		"Hicemus Conflict"
+	weapon
+		sprite "projectile/stagnation beam"
+			"random start frame"
+			"frame rate" 6
+		"hardpoint sprite" "hardpoint/stagnation beam"
+		sound "stagnation beam"
+		"hit effect" "stagnation beam impact"
+		"inaccuracy" .5
+		"turret turn" 3.8
+		"velocity" 600
+		"lifetime" 1
+		"reload" 1
+		"firing energy" 0.5
+		"firing heat" 3.2
+		# Deal damage to provoke ships.
+		"shield damage" 0.1
+		"hull damage" 0.1
+		"hit force" -40
+		"slowing damage" 0.1
+	description "停滞光束是因西皮亚人为数不多的超越人类迄今为止所创造的技术之一——事实上，第一个原型是在因西皮亚人梦想太空旅行之前就建造出来的。这种武器的起源在于巨型反应堆，这些反应堆的建造目的是将小行星拉出其母星轨道，从而方便地获取更多资源。当然，还实施了一种减缓小行星速度的机制，以防止意外的小行星撞击。"
+	description "随着因西皮亚斯对太空飞行的掌握不断增强，发电机的效率也随之提高，从而可以实现更紧凑的舰载牵引光束。这些新模型极大地简化了资源收集，这对因西皮亚斯原本行动迟缓的船只大有裨益。"
+	description "这些光束如何工作的秘密只有少数受国家控制的 Incipias 科学家知道。这些知识如果被公开，可能会给希西莫斯家族及其对权力的掌控带来灾难性的后果。"
+
+effect "stagnation beam impact"
+	sprite "effect/stagnation beam impact"
+		"no repeat"
+		"frame rate" 30
+	"lifetime" 5
+	"random angle" 2
+	"velocity scale" -.005
+
+outfit "Star Tail"
+	category "Secondary Weapons"
+	series "Secondary Weapons"
+	index 12010
+	cost 320000
+	mass 48
+	"outfit space" -50
+	"weapon capacity" -50
+	"gun ports" -1
+	thumbnail "outfit/star tail launcher"
+	"star tail capacity" 20
+	licenses
+		"Hicemus Conflict"
+	weapon
+		sprite "projectile/star tail upload"
+			"frame rate" 10
+			"no repeat"
+		sound "star tail"
+		"hit effect" "blaster impact"
+		"velocity" 1
+		"lifetime" 58
+		"reload" 180
+		"firing energy" 60
+		"firing heat" 30
+		"shield damage" 820
+		"hull damage" 860
+		"range override" 3000
+		
+		# To make the AI fire even if the ship is not directly in front.
+		"homing"
+			"blindspot"
+		"optical tracking" 1
+		"turn" 0.5
+
+		ammo "Star Tail Cell"
+		"submunition" "Star Tail Projectile" 1
+	description "关于这种武器的信息几乎没有公开过。有传言称它会发射高度挥发性的等离子体块。"
+	description "使用过这种武器的机长表示，它的射弹可以在飞行中改变方向，并且能够跟踪目标，尽管受害者试图躲避射击。"
+	description "该武器的弹药可以在任何装备商处补充。"
+		to display
+			has "gamerule: universal ammo restocking"
+
+outfit "Star Tail Projectile"
+	weapon
+		sprite "projectile/star tail"
+			"frame rate" 12
+		"hit effect" "star tail hit"
+		"live effect" "star tail live" 120
+		"velocity" 1
+		acceleration 5
+		drag .2
+		"lifetime" 120
+		"shield damage" 410
+		"hull damage" 430
+		"homing"
+			"blindspot"
+		"optical tracking" 1
+		"turn" .5
+
+effect "star tail hit"
+	sprite "effect/star tail hit"
+		"no repeat"
+		"frame rate" 40
+	sound "explosion small"
+	"lifetime" 30
+	"velocity scale" 0.
+
+effect "star tail live"
+	sprite "effect/star tail live"
+		"no repeat"
+		"frame rate" 28
+	"lifetime" 15
+	"velocity scale" 0.
+
+outfit "Star Tail Cell"
+	category "Ammunition"
+	cost 1500
+	thumbnail "outfit/star tail cell"
+	"mass" .1
+	"star tail capacity" -1
+	description "星尾需要大量的能量，而 Incipias 无法在短时间内产生。为了适应这一点，星尾电池包含一种富含能量的物质，在发射时会释放能量。其中一个细胞拥有足够的能量来发射一发子弹。"
+
+outfit "Star Tail Storage"
+	category "Ammunition"
+	cost 6000
+	thumbnail "outfit/star tail cell storage"
+	"mass" 10
+	"outfit space" -10
+	"star tail capacity" 20
+	ammo "Star Tail Cell"
+	licenses
+		"Hicemus Conflict"
+	description "由于星尾电池具有很高的易失性，因此它们需要强大的存储系统。这种径向设计能够通过使用可临时部署的护盾变体来承受轻微爆炸。"
+	description "这种易于扩展的系统的一层已经随枪本身一起发货。为了增加存储空间，只需在顶部堆叠更多层即可。"
+
+outfitter "Star Tail Cell Restock"
+	to sell
+		has "gamerule: universal ammo restocking"
+		or
+			has "outfit: Star Tail"
+			has "outfit: Star Tail Storage"
+	location
+		attributes "outfitter"
+	stock
+		"Star Tail Cell"
+
+
+outfit "Horizon Grappler"
+	category "Turrets"
+	series "Tractor Beams"
+	index 12020
+	cost 200000
+	thumbnail "outfit/horizon grappler"
+	"mass" 25
+	"outfit space" -25
+	"weapon capacity" -25
+	"turret mounts" -1
+	weapon
+		"hardpoint sprite" "hardpoint/horizon grappler"
+		"hardpoint offset" 0.
+		sound "tractor beam"
+		"hit effect" "horizon grappler"
+		"tractor beam" 9
+		"velocity" 400
+		"lifetime" 1
+		"reload" 1
+		"firing energy" 3.2
+		"firing heat" 1.1
+	description `该采矿设施代表了 Incipian 技术的顶峰。经过几个世纪的完善，这种牵引光束远远超出了 Incipias 迄今为止开发的任何产品。这种光束的名字源于它在太空飞行出现之前开发的第一个原型，它通过将小行星从小行星环拉入大气层来收集矿物。`
+
+effect "horizon grappler"
+	sprite "effect/horizon grappler"
+		"frame rate" 3.5
+	"lifetime" 1
+	"velocity scale" 1
+
+# Shields/Energy:
+outfit "Gas-Class Shield"
+	category "Systems"
+	series "Shields"
+	index 12010
+	thumbnail "outfit/gas class shield"
+	cost 136000
+	mass 60
+	"outfit space" -60
+	"shield generation" .1
+	"energy generation" 4.2
+	"heat generation" 5
+	"shield fuel" .01
+	description "盾牌技术是 Incipias 的最新发展之一。虽然这个盾牌看起来与人体盾牌装置相似，但它的工作原理完全不同。在其核心中，氢气被燃烧，为再生提供能量。事实证明，这非常有效，以至于它成为他们所有船只的主要动力源。"
+
+outfit "Liquid-Class Shield"
+	category "Systems"
+	series "Shields"
+	index 12020
+	thumbnail "outfit/liquid class shield"
+	cost 216000
+	mass 80
+	"outfit space" -90
+	"shield generation" .25
+	"energy generation" 6.1
+	"heat generation" 6
+	"shield fuel" .02
+	description "这种更先进的护盾发生器燃烧的是液体而不是气体。这大大提高了效率，但也需要更多的空间，使得这种装备只在大型船舶上流行。"
+
+outfit "Metallic Hydrogen Cell"
+	category "Power"
+	series "Batteries"
+	index 12010
+	thumbnail "outfit/metallic hydrogen cell"
+	cost 2500
+	mass 20
+	"outfit space" -20
+	"energy capacity" 500
+	description "氢能储存很早就被 Incipias 人发现，因为他们的家乡蕴藏着大量的金属氢。由于 Incipias 船舶通常在生产时获取能量，因此只需要少量存储。因此，他们的大多数船只只安装了一个单元。"
+
+# Engines:
+outfit "MH Blue-Class Thruster"
+	category "Engines"
+	series "Engines"
+	index 12011
+	thumbnail "outfit/mh blue-class thruster"
+	cost 32000
+	mass 27
+	"outfit space" -27
+	"engine capacity" -27
+	"flare sprite" "effect/incipias flare/metallic hydrogen small"
+		"frame rate" 24
+	"flare sound" "incip plasma small"
+	"thrust" 24
+	"thrusting energy" 2
+	"thrusting heat" 2.5
+	description "在伊奇皮亚文化中，蓝色是最弱的颜色。标记为蓝色的推进器对于任何使用它的船舶的速度来说都不是好兆头。"
+
+outfit "MH Blue-Class Steering"
+	category "Engines"
+	series "Engines"
+	index 12010
+	thumbnail "outfit/mh blue-class steering"
+	cost 28000
+	mass 24
+	"outfit space" -24
+	"engine capacity" -24
+	"turn" 498
+	"turning energy" 1.
+	"turning heat" 3
+	description "这种转向装置几乎无法提供转动船只所需的最小力，但由于其价格低廉，仍然经常使用。"
+
+outfit "MH Green-Class Thruster"
+	category "Engines"
+	series "Engines"
+	index 12021
+	thumbnail "outfit/mh green-class thruster"
+	cost 44000
+	mass 32
+	"outfit space" -32
+	"engine capacity" -32
+	"flare sprite" "effect/incipias flare/metallic hydrogen medium"
+		"frame rate" 24
+	"flare sound" "incip plasma med"
+	"thrust" 30
+	"thrusting energy" 2.2
+	"thrusting heat" 2.8
+	description "绿色对于 Incipias 来说是一种平衡的颜色。该推进器平衡了空间需求和强大发动机的需求。"
+
+outfit "MH Green-Class Steering"
+	category "Engines"
+	series "Engines"
+	index 12020
+	thumbnail "outfit/mh green-class steering"
+	cost 35000
+	mass 28
+	"outfit space" -28
+	"engine capacity" -28
+	"turn" 618
+	"turning energy" 1.1
+	"turning heat" 3.1
+	description "Incipias 似乎有一些反对改变他们的船的想法。尽管这款转向系统应该是 Blue-Class 转向系统的升级版，但它几乎算不上是一个改进。"
+
+outfit "MH Red-Class Thruster"
+	category "Engines"
+	series "Engines"
+	index 12031
+	thumbnail "outfit/mh red-class thruster"
+	cost 50000
+	mass 41
+	"outfit space" -41
+	"engine capacity" -41
+	"flare sprite" "effect/incipias flare/metallic hydrogen large"
+		"frame rate" 24
+	"flare sound" "incip plasma large"
+	"thrust" 48
+	"thrusting energy" 5
+	"thrusting heat" 10
+	description "因西皮亚斯母星上丰富的金属氢促进了利用这种强大能源的发动机的发展，考虑到因西皮亚斯短暂的太空飞行历史，其推进器的效率比预期的要高。"
+
+outfit "MH Red-Class Steering"
+	category "Engines"
+	series "Engines"
+	index 12030
+	thumbnail "outfit/mh red-class steering"
+	cost 49000
+	mass 41
+	"outfit space" -41
+	"engine capacity" -41
+	"turn" 1134
+	"turning energy" 2.5
+	"turning heat" 12
+	description "甚至 Incipias 也意识到船只需要转向目标才能射击。这种转向是专门为战斗而设计的，但有很多钱的船长发现它对于采矿非常有用。"
+
+
+# Hand to Hand
+outfit "Cloud Piercer"
+	category "Hand to Hand"
+	series "H2H"
+	index 12010
+	cost 10000
+	thumbnail "outfit/cloud piercer"
+	licenses
+		"Hicemus Conflict"
+	"capture attack" .55
+	"capture defense" 1.5
+	"unplunderable" 1
+	description "当谈到近战时，因西皮亚人是可怕的对手。这种残酷的武器可能不是入侵另一艘船的最佳选择，但在防御时，它确实可以撕碎敌人。"
+
+# Special
+outfit "Hicemus Conflict License"
+	category "Licenses"
+	series "Licenses"
+	index 12010
+	description "海斯穆斯对你足够信任，给了你这个许可证，让你一睹他们最珍贵的技术——这些技术旨在让他们比其他派系更具优势。"

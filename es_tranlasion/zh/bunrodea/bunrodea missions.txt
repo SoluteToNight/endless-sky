@@ -1,0 +1,220 @@
+# Copyright (c) 2023 by Amazinite
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program. If not, see <https://www.gnu.org/licenses/>.
+
+mission "First Contact: Bunrodea (Hostile)"
+	landing
+	name "有趣的邀请"
+	description "你收到了一些像螳螂一样的外星人对标记系统的邀请或召唤，他们似乎一直在人类太空中跟踪你。"
+	source
+		near "Sol" 0 100
+		not attributes "urban" "station"
+		attributes "spaceport"
+	destination "Erabuthro"
+	clearance "After hailing the planet the map pointed you towards, you hear an alien voice respond. Before you can think of what to say, the small device that the aliens threw at you on <origin> responds for you. The voice on the other end says something short, then cuts the feed. It seems like you've been cleared to land."
+	to offer
+		random < 10
+		or
+			"reputation: Bunrodea" < 1
+			"reputation: Bunrodea (Megasa)" < 1
+			"reputation: Bunrodea (Erabu)" < 1
+			"reputation: Bunrodea (Guard)" < -1
+	
+	on offer
+		"bunrodea: guard rep" = "reputation: Bunrodea (Guard)"
+		"bunrodea: megasa rep" = "reputation: Bunrodea (Megasa)"
+		"bunrodea: erabu rep" = "reputation: Bunrodea (Erabu)"
+		"bunrodea: normal rep" = "reputation: Bunrodea"
+		conversation
+			`当你离开你的飞船时，你会被一艘小型外星飞船在你面前露出来吓到。两个优雅的螳螂般的生物从上面走下来，每个人都拿着一把看起来很奇怪的武器，直接指向你。它们有四条长长的昆虫腿和两条手臂。虽然它们的手臂末端看起来像手，但它们也有奇怪的爪状特征，部分包围它们，从前臂向外延伸以抓住武器。你环顾四周，看看是否有其他人目睹了这一切，但你在半夜降落在 <origin> 的主太空港，只剩下你是视线范围内唯一的人类。`
+			`外星人开始用你听不懂的语言与你交谈，他们的话语中夹杂着咔哒声。其中一人说话时，听起来几乎是机器人，就好像他们是通过合成器说话一样。仔细观察，你会发现你只能猜测是对外星人身体部分的控制论改造；外星人的喉咙和一只眼睛以及腿部的关节看起来都是非有机的。不过，另一台则没有这种明显的修改。`
+			choice
+				`“你平安来吗？”`
+				`“你说的我一个字都听不懂。”`
+				`“别开枪！我带你去见我的首领。”`
+			`外星人互相看了一眼，说了几句话。其中一个人从腰带上抓起一个小设备，然后把它扔到你面前的地上。`
+			choice
+				`（把它捡起来。）`
+				`（躲避掩护。）`
+					goto dodge
+			`您拿起设备并查看它。它在您手中弹开，导致您掉落。当它落到地面后，它开始投影全息星图。你认出地图上的一些系统是你与外星舰队作战的地方，这些舰队由与你面前的类似的船只组成。该区域内的单个系统被突出显示。外星人返回他们的飞船，飞船再次变得隐形，虽然你看不到它，但你听到它起飞并飞走了。`
+				accept
+			label dodge
+			`你躲到船后面寻找掩护。几秒钟后，您会听到弹跳的声音。当你从飞船后面回头看时，外星人已经消失了，他们扔给你的设备现在正在投影全息星图。你认出地图上的一些系统是你与外星舰队作战的地方，这些舰队由与你面前的类似的船只组成。该区域内的单个系统被突出显示。外星飞船再次变得隐形，虽然你看不到它，但你听到它起飞并飞走了。`
+				accept
+	
+	on accept
+		"reputation: Bunrodea" = 0
+		"reputation: Bunrodea (Guard)" = 0
+		"reputation: Bunrodea (Megasa)" = 0
+		"reputation: Bunrodea (Erabu)" = 0
+	
+	on complete
+		"reputation: Bunrodea" = 10
+		conversation
+			`当你进入大气层时，你的两侧是两艘大型外星飞船，它们引导你到达地面，引导你到达一个特定的着陆区。当您离开飞船时，您会遇到两个外星人，它们看起来与 <origin> 上吓到您的外星人相似，包括拥有相同的武器。`
+			`当你花点时间环顾四周时，你会发现自己身处一座大都市的中心。比你在人类太空中见过的任何建筑都高的摩天大楼覆盖了地平线，尽管你周围的大多数建筑物在建筑上看起来要优雅得多。正前方是一座巨大的宫殿式建筑，有相当多的台阶通向前门。`
+			`你向前迈出了一步，但其中一个外星人一边挥舞着武器一边说了些什么，你意识到你现在不应该移动。另一个人对着通讯设备说了些什么，然后坐在地上，示意你也做同样的事情。你怀疑你可能会在这里等待一段时间。`
+			choice
+				`（坐下。）`
+					goto sit
+				`（转身重新进入我的船。）`
+			`你重新进入你的飞船，外星人并没有阻止你。您决定重新打开飞船并尝试起飞，但正当您尝试启动斥力发动机时，您听到外面传来巨大的嗡嗡声。你向最近的窗户望去，发现外星人已经在你的飞船附近移动了某种车辆，充满了能量。你试图起飞，但你的飞船的反冲引擎无法将你带到任何地方。这辆车似乎正在停用附近的任何排斥器。`
+			choice
+				`（用炮塔炸毁车辆。）`
+					to display
+						"旗舰基础属性：炮塔坐骑>>》旗舰属性：炮塔坐骑"
+				`（离开我的船，和外星人一起坐下来。）`
+					goto leave
+			action
+				"reputation: Bunrodea" = -10
+				"reputation: Bunrodea (Guard)" = -10
+				"reputation: Bunrodea (Megasa)" = -10
+				"reputation: Bunrodea (Erabu)" = -10
+			`你将其中一个炮塔转向车辆并开火，然后立即尝试拉起。看起来你的射击要么摧毁了飞行器，要么扰乱了它，足以让你在你的飞船迅速升入大气层时逃脱它的影响。不过，当你开始在雷达上看到瞄准你的船只时，外星人似乎对你的行为不太友善。`
+				flee
+			label leave
+			`您离开船并坐在登机坡道上。看着你的外星人似乎并不关心你只是试图离开。`
+				goto intro
+			label sit
+			`您坐在游轮的登船坡道上，一边等待一边欣赏风景。`
+			label intro
+			`过了一段时间，你抬头望向宫殿的台阶，发现一个六足生物正在注视着你，这与螳螂般的外星人不同。当它慢慢向下移动并到达最后几步时，守卫你的外星人就会立正。你想知道你是否一直在等待这个外星人到达楼梯底部。`
+			`该生物用六肢接近你，但当它距离你只有几步远时，它就会用两条后腿站起来。它相当小，站立时几乎够不到你的下巴，长着圆圆的大眼睛和球根状的大鼻子。它伸出四只手臂，露出手掌。除了脸和手掌之外，它都覆盖着一层薄薄的金棕色皮毛。它开始说话。你无法理解它在说什么，但它似乎在各种不同的语言之间循环，并在每行之后暂停，因为每个句子听起来都与上一个完全不同。当它完美地说“你好”时，你会突然感到惊讶。`
+			choice
+				`“你好？”`
+				`“等等，你再说一遍。”`
+			label loop
+			`“你好，”这个生物重复了一遍。 “你好。你好。你好，”它继续说。`
+			choice
+				`“你还能说点别的吗？”`
+				`“你怎么懂我的语言？”`
+					goto language
+				`“你好。”`
+					goto loop
+			`“你还能说点别的吗？”它会向你重复。`
+				goto human
+			label language
+			`“你怎么懂我的语言？”它会向你重复。`
+			label human
+			`“人类？”它问道。`
+			choice
+				`“是的，我是人类。”`
+				`“你究竟是什么？”`
+			`“人类，”它自信地对自己说。 “人类。人类。人类。”它重复着，环顾四周，仿佛在寻找心中的什么东西。 “一……百年前。人类，”它说。`
+			choice
+				`“我不是这里的第一个人？”`
+				`“一百年前是什么意思？”`
+			`“人类访客，很多年前，”它说。 “不重要。女王希望你在场。”然后它用螳螂般的外星人能理解的语言说了一些话，当这个小外星人开始返回宫殿的台阶时，他们示意你跟上。你有一种感觉，接下来的半个小时你会感到恐惧。`
+			`你终于到达了宫殿楼梯的顶端，完全精疲力尽，尽管和你在一起的外星人看起来完全没有相貌。`
+			`外星人带领你进入宫殿并穿过各种优雅的走廊。墙壁上排列着大理石雕像和绘画，似乎描绘了这个外星种族的历史人物和事件，尽管你不能逗留足够长的时间来仔细观察其中的任何一个。`
+			`你最终会接近一扇华丽的大门，外星人将其推开，露出了女王的王座室。这是一间又长又窄的房间，两旁都是彩色玻璃窗，你猜那是外星女王坐的王座椅。女王是螳螂类物种的一部分，外观比守护你的螳螂要大得多。`
+			`当你接近时，小生物对女王说了些什么，女王做出了回应。该生物转向你进行翻译。`
+			branch royalty
+				"bunrodea: erabu rep" < 1
+			branch guard
+				"bunrodea: guard rep" < -1
+			branch civi
+				"bunrodea: normal rep" < 1
+			`“我听说你袭击了我的一位梅加萨。”`
+			choice
+				`“你的什么？”`
+					goto megasa
+				`“我只是在为自己辩护。”`
+					goto lie
+				`“我有，为此我道歉。”`
+					goto apologize
+				`“好吧，还有？”`
+					goto and
+			
+			label civi
+			`“我听说你袭击了我的一名平民。”`
+			choice
+				`“我只是在为自己辩护。”`
+					goto lie
+				`“我有，为此我道歉。”`
+					goto apologize
+				`“好吧，还有？”`
+					goto and
+			
+			label guard
+			`“我听说你和我的一名卫兵打斗了。”`
+			choice
+				`“我只是在为自己辩护。”`
+					goto defending
+				`“嘿，他们活该，是他们先袭击我的。”`
+					goto attacked
+				`“我有，为此我道歉。”`
+					goto apologize
+				`“好吧，还有？”`
+					goto and
+			
+			label royalty
+			`“我听说你袭击了我的一名埃拉布。”`
+			choice
+				`“你的什么？”`
+					goto erabu
+				`“我只是在为自己辩护。”`
+					goto lie
+				`“我有，为此我道歉。”`
+					goto apologize
+				`“好吧，还有？”`
+					goto and
+			
+			
+			label erabu
+			`当这个小生物为你翻译时，女王似乎以一种奇怪的叽叽喳喳的方式大笑。 “埃拉布是我土地上的贵族。攻击他们是一种严重的冒犯，”这个生物翻译为女王。 “你自己说什么？”`
+				goto rechoice
+			
+			label megasa
+			`当这个小生物为你翻译时，女王似乎以一种奇怪的叽叽喳喳的方式大笑。 “梅加萨是我人民中地位最低的，但仍然是我要保卫的人民，”这个生物翻译为女王。 “你自己说什么？”`
+			
+			label rechoice
+			choice
+				`“无论我攻击谁，我只是在保护自己。”`
+					goto lie
+				`“那么，那我就道歉了。”`
+					goto apologize
+				`“好吧，还有？”`
+					goto and
+			
+			label defending
+			`当这个小生物为你翻译时，女王似乎以一种奇怪的叽叽喳喳的方式大笑。 “是的，我的皇家卫兵相当……渴望保卫，为此我道歉，”女王说话时，这个生物翻译道。 “但是，如果我的皇家卫队不是在保卫我的土地免受未知的威胁，那么他们真的会尽到自己的职责吗？不过，也许他们可以更耐心地评估真正的威胁。我可能会惩罚那些负有责任的人，但看来你已经处理了那些轻视你的人了。”`
+				goto slighted
+			
+			label attacked
+			`当这个小生物为你翻译时，女王似乎以一种奇怪的叽叽喳喳的方式大笑。 “你说，罪有应得？”当女王说话时，这个生物就会翻译。 “如果不是保卫我的土地免受未知的威胁，我的皇家卫队真的会尽到自己的职责吗？不过，也许他们可以更耐心地评估真正的威胁。我可能会惩罚那些负有责任的人，但看来你已经处理了那些轻视你的人了。”`
+				goto slighted
+			
+			label lie
+			`当这个小生物为你翻译时，女王走下她的王座并向你走来。她伸展双腿，使她比你高至少两倍。她说话，生物翻译。 “你真是太轻率了，在最高皇室面前撒谎。你要么非常勇敢，要么非常愚蠢。”女王转身返回王座。 “我会手下留情，就这一次。但下一次，你就不会这么幸运了。”`
+				goto threatened
+			
+			label and
+			`当这个小生物为你翻译时，女王走下她的王座并向你走来。她伸展双腿，使她比你高至少两倍。她说话，生物翻译。 “你真是太轻率了，在最高皇室面前说出这样的话。你要么极其勇敢，要么极其愚蠢。”女王转身返回王座。 “我会手下留情，就这一次。但下一次，你就不会这么幸运了。”`
+				goto threatened
+			
+			label apologize
+			`当这个小生物为你翻译时，女王看起来就像在微笑。 “道歉。真是……意想不到的反应，”该生物继续为女王翻译。 “通常情况下，那些冒犯女王的人都会为自己找借口。你的道歉被接受了。”`
+			`女王向其中一名守卫示意，并对他们说了一些该生物无法翻译的话。然后她对你说话，这个生物翻译道：“既然你已经道歉，你就可以活下去了。我的守卫已被命令离开你，你可以在我们的少数世界中来来去去。但这只是为了让你不会造成进一步的麻烦，并让你在穿过我的系统时补充能量。你的存在只会被容忍，而不是欢迎。现在请离开我的法庭。”`
+				goto end
+			
+			label threatened
+			`女王向其中一名守卫示意，并对他们说了一些该生物无法翻译的话。然后她对你说话，这个生物翻译道：“既然我已经对你仁慈了，你就可以活下去了。我的守卫已被命令离开你，你可以在我们的少数世界中来来去去。但这只是为了让你不会造成进一步的麻烦，并让你在穿过我的系统时能够补充能量。你的存在只会被容忍，而不是欢迎。现在请离开我的法庭。”`
+				goto end
+			
+			label slighted
+			`女王向其中一名守卫示意，并对他们说了一些该生物无法翻译的话。然后她对你说话，这个生物翻译道：“既然是我的守卫对你表现出了不尊重，那么你将被允许活下去。我的守卫已被命令离开你，你可以在我们的少数世界中来来去去。但这只是为了让你不会造成进一步的麻烦，并允许你在穿过我的系统时补充能量。你的存在只会被容忍，而不是欢迎。现在请离开我的法庭。”`
+			
+			label end
+			`你被护送出王座室，并被那个小生物告知在你到达你的船后立即离开。你走出宫殿，意识到你必须再次面对楼梯。你深吸一口气，为漫长的下山之旅做好准备。`
+				launch

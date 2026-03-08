@@ -1,0 +1,76 @@
+# Copyright (c) 2015 by Michael Zahniser
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program. If not, see <https://www.gnu.org/licenses/>.
+
+mission "Ruin: Landing"
+	landing
+	source Ruin
+	
+	on offer
+		conversation
+			`你扫描这个星球的表面，只发现了一个微弱的能量源。你小心翼翼地接近它，发现了一个废弃的加油站：一圈着陆场围绕着一群形状和大小各异的坦克。有些储罐必须是低温储罐，因为它们被冰覆盖。一些缓慢移动的昆虫机器人正忙着清除冰块和清洁坦克，但它们似乎没有武装，你看不到任何其他生物或任何防御系统的迹象。`
+			`你让你的船着陆。你的传感器显示空气可以安全呼吸，但你要戴上呼吸器，以防万一你下船探索仓库。蜘蛛机器人不会注意到你。从一些油箱被霜覆盖而另一些则没有的事实来看，您可能会猜测每个油箱都含有不同的燃料，并且每个油箱都有数十个不同的连接器从中分支出来。您惊讶地发现其中一个连接器是人类太空中使用的样式，并且您可以使用它为您的飞船加油。`
+			`除了机器人和在你下方山谷中盘旋的雾气之外，这里没有任何生命或运动的迹象，尽管附近地面上的几个通风口冒着热蒸汽，但空气却潮湿而寒冷，令人不舒服。`
+				decline
+
+mission "Pug Cease Hostilities"
+	landing
+	invisible
+	non-blocking
+	to offer
+		has "main plot completed"
+	on offer
+		"reputation: Pug" >?= 1
+		fail
+
+mission "Pug in Wanderer Space"
+	landing
+	to offer
+		has "main plot completed"
+		not "Wanderers Invaded 3C: offered"
+	source "Vara Pug"
+	on offer
+		conversation
+			`这个世界上居住着哈巴狗，这种神秘的物种最近入侵了人类太空，但在没有给你任何明确答案的情况下就离开了。在这里，他们看起来很平静，但他们完全无视你。您想尝试与其中一位交谈吗？`
+			choice
+				`（是的。）`
+				`（不，不要冒险。）`
+					goto ship
+			`您尝试与路过的几只哈巴狗交谈，但它们没有回应，甚至没有看您。如果你站起来挡住他们的路，他们就会绕过你，然后你通过故意撞到其中一个来确定他们是真实的，而不仅仅是全息投影。从他们中的一些人在将目光移开之前短暂的目光接触中，你会感觉到他们是故意忽视你的。`
+			`巴哥犬的体力并不是很强。您可能可以抓住其中之一并要求它回答您的问题，而不会冒太大伤害您的风险。`
+			choice
+				`（抓住其中一个。）`
+				`（放弃并离开。）`
+					goto ship
+			`你抓住一只哈巴狗的手臂。 “你需要给我一些答案，”你说。它开始用你不懂的语言胡言乱语，一群哈巴狗聚集在你周围。最终，他们中的一些人拿着某种棍子到达，他们威胁地指着你，同时又用他们自己的语言向你大喊命令。这里的哈巴狗有可能实际上没有一个会说人类语言，在这种情况下，试图与他们交流将是徒劳的。`
+			choice
+				`（放开哈巴狗，然后走开。）`
+					goto ship
+				`（威胁要开枪射击他们。）`
+			`当你伸手拿枪的那一刻，一只武装的哈巴狗从它的棍子上发出一阵光芒，一种温暖、愉快的感觉笼罩着你——这是你经历过的最美妙的感觉。迷迷糊糊中，你开始漫步回到船上，偶尔停下来惊叹周围以前从未注意到的事物：水面上闪闪发光的阳光，海沼草尖上挂着闪闪发光的海浪水滴，天空是你所见过的最蓝的。这一切是如此美丽，让你开始哭泣。一旦你到达你的船，你坐在驾驶舱里，被控制面板上闪烁的灯光迷住了，却记不起它们的用途。`
+			`几个小时后，这种美妙的感觉被一阵恶心和剧烈的头痛所取代。`
+				decline
+			
+			label ship
+			`你决定安全起见并返回你的船。哈巴狗仍然像以前一样神秘。`
+				decline
+
+mission "Pug Angry at Being Farmed"
+	landing
+	invisible
+	to offer
+		"reputation: Pug (Wanderer)" < -100
+	npc kill
+		government "Pug (Wanderer)"
+		personality nemesis unconstrained staying
+		system "Pug Iyik"
+		ship "Pug Arfecta" "Ayee Eee Eek"

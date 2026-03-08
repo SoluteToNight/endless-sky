@@ -1,0 +1,2989 @@
+# Copyright (c) 2019 by Tommaso Becca
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program. If not, see <https://www.gnu.org/licenses/>.
+
+mission "Graveyard Label"
+	landing
+	invisible
+	non-blocking
+	source
+		attributes ka'het
+	on offer
+		event "graveyard label"
+		fail
+
+event "graveyard label"
+	galaxy "label graveyard"
+		sprite label/graveyard
+
+mission "Disabled Ka'het"
+	boarding
+	invisible
+	source
+		government "Ka'het" "Ka'het (Infighting)"
+	destination "Earth"
+	on offer
+		conversation
+			branch "boarded aberrant"
+				has "Disabled Aberrant: offered"
+			action
+				log `Successfully boarded a Ka'het. It appears to be a single, ship-sized organism that can travel in space using a special exoskeleton.`
+			`你的船慢慢接近<origin>，现在在你附近毫无生气地漂浮着。当你靠近时，你会发现船体上有一个巨大的洞，露出了一个巨大的鼻涕虫状生物。虽然船上的大部分机械似乎没有受到严重损坏，但武器火力肯定击中了蛞蝓的重要器官，将其杀死，此后船似乎已经停止工作。`
+			`你可以毫不费力地与它的“外骨骼”对接，尝试决定下一步该做什么。虽然 Ka'het 与普通飞船有很大不同，你无法指挥它，但可以肯定地说你现在可以掠夺它的装备。`
+				decline
+			label "boarded aberrant"
+			action
+				log "Successfully boarded a Ka'het. Like the Aberrant, it appears to be a single, ship-sized organism that can travel in space using a special exoskeleton, but does not seem to induce the same ominous feeling."
+			`你的船慢慢接近<origin>，现在毫无生气地漂浮在你附近。当你靠近时，你会发现船体上有一个巨大的洞，露出了一个巨大的鼻涕虫状生物，与你在异常号内发现的非常相似。虽然船上的大部分机械似乎没有受到严重损坏，但武器火力肯定击中了蛞蝓的重要器官，将其杀死，此后船似乎已经停止工作。与异常者不同的是，当你接近时，你不会感觉到任何奇怪的存在或不祥的感觉——它只是一只死去的动物。`
+			`你可以毫不费力地与它的“外骨骼”对接，尝试决定下一步该做什么。虽然 Ka'het 与普通飞船有很大不同，你无法指挥它，但可以肯定地说你现在可以掠夺它的装备。`
+
+conversation "ka'het：残余物"
+	`你想向遗迹询问有关余烬废土以南的那片空间、墓地及其居民的情况吗？`
+	choice
+		`（是的。）`
+		`（现在不要。）`
+			defer
+	branch taely
+		has "remnant met taely"
+	`你问了周围十几个人，但他们似乎都不知道你在说什么。要么这些信息太机密，无法提供给像您这样的陌生人，要么您没有询问正确的人。`
+		decline
+	label taely
+	`你问了周围十几个人，但他们似乎都不知道你在说什么。也许你可能更幸运地向泰利询问维米纳尔的情况。`
+		decline
+
+mission "First Contact: Ka'het: Remnant 1A"
+	landing
+	invisible
+	source
+		government "Remnant"
+		not planet "Viminal"
+	to offer
+		or
+			has "Graveyard Label: offered"
+			has "ringworld debris"
+			has "Ringworld Debris: Quarg: offered"
+		has "remnant: blood test pure"
+		not "First Contact: Ka'het: Remnant 1B: offered"
+	on offer
+		conversation "ka'het：残余物"
+
+mission "First Contact: Ka'het: Remnant 2A"
+	landing
+	invisible
+	source "Viminal"
+	to offer
+		or
+			has "Graveyard Label: offered"
+			has "ringworld debris"
+			has "Ringworld Debris: Quarg: offered"
+		has "remnant: blood test pure"
+		not "remnant met taely"
+		not "First Contact: Ka'het: Remnant 1B: offered"
+	on offer
+		conversation "ka'het：残余物"
+
+mission "First Contact: Ka'het: Remnant 1B"
+	landing
+	invisible
+	source "Viminal"
+	to offer
+		or
+			has "Graveyard Label: offered"
+			has "ringworld debris"
+			has "Ringworld Debris: Quarg: offered"
+		has "remnant met taely"
+	on offer
+		conversation
+			`你想向泰利询问有关余烬废土以南的空间、墓地及其居民的情况吗？`
+			choice
+				`（是的。）`
+				`（现在不要。）`
+					defer
+			`你在造船厂的一个外部机库里找到了泰利，他显然正在教一小群人如何对信天翁进行基本维修。你坐在长凳上等她完成课程，然后她走到你身边。 “你好，<first>！”她说。 “有什么我可以帮你的吗？”`
+			`“我来这里是因为我需要问你几个问题，”你回答道。`
+			`当她坐在你附近时，你开始向她解释你到达的区域，包括奇怪的外星飞船，它们用类似于遗迹拥有的武器攻击你，尽管这对她来说似乎不是什么新闻。 “自从我们第一次到达余烬废土以来，我们就知道你们遇到的外星人 Ka'het 的存在。我们在我们的行星中发现了他们的许多外壳，在我们到达之前数千年，甚至可能是数万年坠毁在那里，但他们的一些装备幸存了足够长的时间，让我们能够对这些先进技术进行逆向工程。”`
+			`“然后，”她继续说道，“几百年前，一支侦察舰队到达了一个星系，那里有一些卡赫特人还活着。他们立即用电磁脉冲鱼雷袭击了我们的舰队，很快使两艘椋鸟失去了能力。椋鸟无法快速恢复以生存，而唯一剩下的船除了尽快逃跑之外什么也做不了。”`
+			choice
+				`“你从坠毁的卡赫特号上恢复了哪些技术？”`
+					goto tech
+				`“等等，你为什么称它们为‘炮弹’而不是船只？”`
+					goto shells
+				`“卡赫特曾经攻击过遗迹行星吗？”`
+			`“事实上，我们在余烬废土中根本没有遇到任何活着的卡赫特。我们发现的炮弹具有与量子基石类似的能力，这意味着它们可以穿过虫洞，所以我们不确定他们为什么留在墓地里。也许他们不知道自己的技能，或者也许随着时间的推移他们失去了这些技能。”`
+			choice
+				`“等等，你为什么称它们为‘炮弹’而不是船只？”`
+					goto shells
+			label tech
+			`“当时我们发现了大量他们的电磁脉冲鱼雷，其中大部分几乎处于原始状态；它们的内部机制也足够简单，我们能够完美地复制它们。我们无法对炮弹中其他幸存的系统做同样的事情，但他们的技术几个世纪以来一直是灵感的源泉。”`
+			choice
+				`“等等，你为什么称它们为‘炮弹’而不是船只？”`
+			label shells
+			`“你看，<first>，”她说，“Ka’het 不是普通的宇宙飞船。我们发现的碎片是人造外骨骼，围绕巨大的生物建造；这么大的物种不太可能开发出这种技术，所以我们推测一定有人为它们创造了这种技术。我们称他们为建造者。`
+			`“当我们在墓地失去第一艘侦察船后，级长们决定我们应该继续侦察该地区，但要采取必要的预防措施。多亏了这些协议（其中一些至今仍在应用），我们能够广泛探索墓地的大部分地区，并破译了我们发现的大量书面语言。还有很多东西有待我们发现。”`
+			`你和泰莉讨论了墓地一段时间，直到之前与她交谈的一个人走近，并向她展示了数据板上的一些东西。 “我现在得走了，船长，”她告诉你。 “祝你好运。”`
+				decline
+	on decline
+		log `Asked Taely about the Graveyard and the Ka'het and learned of the Remnant's previous contacts between them.`
+		log "Factions" "Ka'het" `The Ka'het are a species which live in the Graveyard, an area south of the Ember Waste. They are large lifeforms which can travel in space using artificial exoskeletons and will attack anyone on sight, even other Ka'het.`
+
+mission "graveyard insights compatibility"
+	landing
+	invisible
+	non-blocking
+	to offer
+		has "First Contact: Ka'het: Remnant 1B: offered"
+	on offer
+		event "graveyard insights"
+		fail
+
+event "graveyard insights"
+	planet Alix
+		add description `	Here the Ka'het attacks were limited to the inhabited settlements; had they also destroyed the mining bases and the unmanned vessels, Parii'het would have run out of supplies thousands of years ago.`
+	planet Celeatis
+		add description `	This planet appears to have been home to one of the largest Builder research centers, which focused on studying the anomaly in the system. Had they found out how to stabilize it and use it as a wormhole, perhaps their species would have survived and spread to the rest of the Ember Waste.`
+	planet Ceilia'sei
+		add description `	The main purpose of Ceilia'sei was to act as some sort of anti-missile platform, but when the Ka'het invaded a second time, the station had no way to defend against their deadly Ravager Beams, and the station's defense systems were subsequently lost forever.`
+	planet Eavine
+		add description `	This moon was also home for the second Ka'het wave, which, same as the first, refused to obey their creators. It had been terraformed to make it a more appealing place to live, but after their civilization collapsed the moon began to return to its natural state. When it reverted to its original sub-zero temperatures, the facilities stopped working, and the Ka'het production in this site came to an end.`
+	planet "Letis'sei"
+		add description `	As it was designed to be crewed as minimally as possible, only a tiny fraction of Letis'sei station was inhabitable. The rest of the station was instead dedicated to advanced computing and targeting systems, most of which are still intact today.`
+	planet Osaeli
+		add description `	For most of the intervening millennia between the Builders' achievement of spaceflight and their extinction, Osaeli was the de facto capital of the Builders, a key part of their economy and society. The first Het station was constructed orbiting this planet's star with the purpose of protecting them from any external threat.`
+	planet Palarei
+		add description `	Thanks to their earlier exploration efforts, this was where the Builders encountered the first lifeforms that evolved outside their home planet. While the climate was drastically different from that of the Builders' homeworld, the fruits the local flora produced were popular enough for Palarei to become a major farming planet.`
+	planet Parii'het
+		add description `	Parii'het was almost finished when the invasion broke out, and already capable of creating Ka'het. Thanks to the mining on Alix and the occasional asteroid mine operated by the Mar drones, most of the facilities are still fully operational to this day.`
+	planet Retilie
+		add description `	As it was mainly used for fishing, the settlements on this planet were never as advanced as the ones on nearby worlds, so when the Ka'het arrived, there was basically nothing to stop them: after a few attacks, the planet was uninhabited again.`
+	planet Seli'het
+		add description `	This was the only Het station the Builders ever completed, orbiting Giribea. As the young Ka'heta reach their "Age of Assembly," strange, lanky machines start molding an exoskeleton onto their bodies right away. As the Ka'heta grow, their exoskeleton is expanded and various outfits are added, transforming them into living weapons.`
+	planet Siteria
+		add description `	This was the Builder homeworld; both the place where their journey began and where it ended. After a dozen millennia of underpopulation, the Ka'het arrival forced them to withdraw from the planet entirely. As one of the few remaining planets capable of sustaining farming, this was their last stronghold, falling centuries after the invasion begun.`
+	planet Veliante
+		add description `	Soon after the beginning the invasion, an attack on some sort of advanced nuclear facility started a meltdown; the fallout quickly spread across most of the planet, leaving all Builder settlements uninhabitable.`
+
+mission "Ringworld Debris"
+	invisible
+	entering
+	source
+		system "Queri"
+	destination "Earth"
+	on offer
+		set "ringworld debris"
+		conversation
+			`当你进入这个可疑的空系统时，你的注意力会被船上的扫描仪吸引。接近检测系统正在启动，表明有一个相当大的东西正在靠近您的飞船，尽管无论它是什么，当您从驾驶舱向外看时都看不到它。`
+			`你调转船头，打开货舱舱门，抓住物体。当你去检查它时，你会看到一块极暗的小碎片，看起来几乎被万塔黑覆盖，但它不像你在宇宙飞船或空间站上看到的任何合金，看起来像是晶体和金属结构。`
+			scene "scene/ringworld debris"
+			`在一个特定的角落里，你会看到有一根几乎无法辨认的小管子，已严重损坏，但有几根完好的电线爬了出来。对电线进行一些修补后，你设法将碎片连接到飞船的辅助电力系统。它几乎不消耗任何能量，但你可以感觉到它周围的空气开始变得稍微寒冷。`
+			`你拔掉它的插头并将碎片存放在你的船的一个单独的部分。如果你把它带给一些外来物种，也许他们可以告诉你这件事。`
+				decline
+
+mission "Ringworld Debris: Remnant"
+	minor
+	landing
+	invisible
+	source
+		government "Remnant"
+	to offer
+		has "ringworld debris"
+		has "First Contact: Ka'het: Remnant 1B: offered"
+	on offer
+		conversation
+			`你想向遗迹展示你在废弃的空星系中发现的碎片，并询问他们对此了解多少吗？`
+			choice
+				`（是的。）`
+				`（现在不要。）`
+					defer
+			`当你提到你发现了一项奇怪的技术时，一群遗迹研究人员很快来到你的船上，但当他们看到碎片时，他们看起来很失望，有些人甚至皱起了眉头，因为你解释了你发现它的系统以及它在接受一些能量时的反应。`
+			`“几十年来，我们在该系统中发现了许多像这样的碎片。它也许可以改善我们的冷却系统，但我们永远无法开始理解它是如何工作的，”其中一位说。`
+			`他们说他们对这个物体的了解并不比你多，但要求你与他们分享有关它如何工作的任何信息，如果你知道的话。`
+				decline
+
+mission "Ringworld Debris: Hai"
+	minor
+	landing
+	invisible
+	source
+		government "Hai"
+	to offer
+		has "ringworld debris"
+		has "First Contact: Hai: offered"
+	on offer
+		conversation
+			`你想向海族展示你在废弃的空星系中发现的碎片，并询问他们对此了解多少吗？`
+			choice
+				`（是的。）`
+				`（现在不要。）`
+					defer
+			`你四处询问了一下，最终被带到了一个车间，那里聚集了一些海工程师和造船师。`
+			`“你好，人类朋友！有什么可以帮到你的吗？”`
+			`你向他们展示这块碎片，他们观察了一会儿，但在处理了几分钟后，他们得出结论，他们没有必要的设备来分析它。`
+			`“抱歉，无论你发现了什么，对于我们的系统来说，这项技术都太先进了，”他们说。你感谢他们抽出时间，然后返回你的船。`
+				decline
+
+mission "Ringworld Debris: Coalition"
+	minor
+	landing
+	invisible
+	source
+		government "Coalition" "Heliarch"
+	to offer
+		has "ringworld debris"
+		has "Coalition: First Contact: done"
+	on offer
+		conversation
+			`你想向联盟成员展示你在废弃的空星系中发现的碎片，并询问他们对此了解多少吗？`
+			choice
+				`（是的。）`
+				`（现在不要。）`
+					defer
+			`询问了一圈后，你被引导到一座巨大的螺旋建筑，其中有几个人手持武器站岗，而其他人则在对一大块船体板进行维护。从它的大小来看，它可能是他们的武器和服装的仓库。 “我们能提供什么帮助吗，好心的访客？”一名特工问道。`
+			`你向他们展示碎片，并解释你在哪里找到了它。他们看到它时感到震惊，但没有尝试对其进行任何测试。 “夸格技术的一部分，这就是！”他们说，再次要求你解释你到底在哪里找到了它，因为这次他们一定要把它全部写下来。`
+			`然后他们说，他们拥有在战争期间从夸格人那里偷来的技术的经验，并且这些碎片是夸格人设备中某种常见组件的残余物。他们还指出，与他们自己购买的产品相比，您发现的产品已经恶化很多，而且很可能甚至无法达到最佳冷却输出的一小部分。`
+			`您感谢他们的时间和解释，然后返回您的船。`
+				decline
+
+mission "Ringworld Debris: Quarg"
+	minor
+	landing
+	invisible
+	source
+		attributes "human quarg" "hai quarg"
+		attributes "ringworld"
+	to offer
+		has "ringworld debris"
+		has "First Contact: Quarg: offered"
+	on offer
+		conversation
+			`你想向夸格人展示你在废弃的空星系中发现的碎片，并询问他们对此了解多少吗？`
+			choice
+				`（是的。）`
+				`（现在不要。）`
+					defer
+			action
+				clear "ringworld debris"
+				log "Factions" "Builders" `The Builders inhabited the Graveyard millennia ago, but have since become extinct. They developed some sort of weapon, called the "Ka'het," which stopped obeying their orders and rebelled against them.`
+				log "Factions" "Ka'het" `According to the Quarg, the Ka'het were initially a weapon created by the Builders, which then rebelled and led them to extinction. Even in the millennia that passed, they are still being produced in the Graveyard.`
+			`沿着看起来像外星人的主厅走下去，你决定拦住你在那里看到的少数夸格人之一。 “你好，人类。需要什么服务吗？”夸格人说。你给它看那块碎片，并询问它对此了解多少。当你展示那项黑暗科技时，它先是一愣，恢复过来后又冷静地把它收在自己手里。 “这就是我们船只的碎片。我们部分设备的残余物。感谢您将其归还给我们。”`
+			`你继续告诉它你在银河系中发现碎片的部分的旅行，并询问它对这个地方和居住在其中的敌人的了解。`
+			`“啊，你遇到了建造者的遗骸。几千年前，他们是一个繁荣而深思熟虑的帝国，但敌对的接触迫使他们变​​得恐惧和鹰派。虽然他们从未攻击过我们，但他们总是克制着不接受我们的援助，并试图搬迁到离我们和我们的环形世界更远的地方，在比他们更近的世界更容易维护的世界里。”`
+			choice
+				`“这些敌对联系人是谁？”`
+				`“建设者怎么了？”`
+					goto ka'het
+			`“很久以前，很少有来自外来物种的船只利用通向那里的一些虫洞到达了那个太空区域。他们属于一个年轻的种族，他们愚蠢地决定攻击建造者而不是向他们学习。他们的船只比建造者当时拥有的任何船只都要强大，但数量也不足以被建造者摧毁。”`
+			choice
+				`“那之后发生了什么？”`
+			label ka'het
+			`夸格停了几秒钟才继续，好像在反思什么。 “他们成长了数千年，开发出了辉煌的技术。然后，在过去的经验的驱使下，他们开始制造武器，不仅是为了自卫，也是为了报复；这些被他们命名为“Ka'het”的武器在完成后不久就向它们的创造者发起攻击。`
+			`“建造者们又持续了几个世纪，然后陷入了他们自己的傲慢之下。他们的空间里仍然居住着他们通过他们组装的巨大设施所诞生的卡赫特，一个尚未拥有巨大智慧的存在。”夸格人鞠了一躬，仍然抓着那块碎片，似乎正准备走开。`
+			choice
+				`“你们墓地里的环形世界怎么了？我是在系统里发现那东西的吗？”`
+				`（让夸格走开。）`
+					decline
+			action
+				log "Asked the Quarg about the history of the Graveyard, and have learned about the previous inhabitants of the region, the Builders."
+			`在最短暂的瞬间，你会看到夸格人全身的皮肤从通常的灰色彻底转变为红色和蓝色，一些斑点混合成紫色，你可以发誓你看到它眼睛上虹膜的某些部分非常轻微地“张开”。`
+			`恢复正常后，它沉思了一秒钟，然后说道：“它就在那个星系里，但在建造者灭亡数千年之后就丢失了。”`
+			`它似乎不想再回答任何问题，很快就走开了。`
+				decline
+
+mission "Ka'het: Death in the Graveyard 1"
+	landing
+	name "奥德·卡赫特"
+	description "找到一个可以帮助你对付倒下的卡赫特的残余人员，并陪伴他们前往<destination>。"
+	source
+		planet "Celeatis" "Eavine" "Palarei" "Siteria" "Alix" "Retilie" "Osaeli"
+	stopover "Aventine"
+	to offer
+		has "Remnant: Cognizance 19: done"
+		or
+			not "builder signal"
+			has "Ka'het: Voice From The Past 5: offered"
+		random < 15
+		not "remnant: dusk busy"
+		has "event: remnant: lab availability"
+	on offer
+		conversation
+			`在设定朝向水面的航向后，您会感到足够舒服，可以离开控制面板并让自动驾驶仪完成工作。 <planet> 的这个地区是一个平静、万里无云的夜晚；这在墓地乃至大部分灰烬废土中都是罕见的景象。除了必要的灯光之外，所有灯光都关闭，您有机会在椅子上放松几分钟，观看下面不断变化的景观和上面的夜空。`
+			`您的船只的接近警报打破了沉默，然后在您到达控制面板之前陷入了安静。快速扫一眼窗外，确认您仍然处于相当高的位置，并且船上的雷达没有显示任何有趣的信息 - 至少目前没有。你按下几个按钮来检查你的船记录的内容，并在警报期间看到距离你的船一百米的地方看起来像大质量闪烁几秒钟。`
+			choice
+				`（继续下降。）`
+				`（停下你的船并准备战斗。）`
+				`（转身离开。）`
+					depart
+			`几秒钟后，接近警报再次响起。这一次，你看到了。你用船上的泛光灯照射它，露出部分隐身的 Maeri'het 的半透明身影。它闪烁着，各个部分似乎随机地变得越来越透明和越来越不透明。`
+			`更奇怪的是，它并没有面向你，也没有任何反应。它只是漂浮在你旁边，慢慢下降，同时从上半身喷出蒸汽云。没有任何迹象表明它可能已准备好发起攻击，尽管这种情况可能会在几秒钟内发生变化。`
+			choice
+				`（抓住机会并攻击它。）`
+					to display
+						"armament deterrence" > 0
+					goto attack
+				`（靠近点，小心点。）`
+				`（保持距离。）`
+				`（转身离开。）`
+					depart
+			`几分钟过去了，Maeri'het 仍然对你的出现没有任何反应。当你们完成绕飞飞行时，你们都几乎已经到达地面了；当 Ka'het 着陆时，一些金属面板从其外壳上脱落，气球开始从由此产生的孔中膨胀。`
+				goto dead
+			label attack
+			branch "attack fleet"
+				"total ships" > 1
+			`你预热你的武器并将瞄准计算机瞄准敌人。按下按钮，你就可以向卡赫特释放你的全部愤怒——如此之大，以至于第一枪似乎没有遇到任何盾牌，而是深深地穿透了蛞蝓的皮肤下面。 Maeri'het 号向右舷倾斜并开始迅速下落；在它到达地面之前，一些金属板从它的外壳上脱落，气球迅速从由此产生的孔中膨胀出来。`
+				goto dead
+			label "attack fleet"
+			`你预热你的武器并将瞄准计算机瞄准敌人。你向卡赫特号释放了所有舰队的愤怒——如此之大，以至于第一发子弹似乎没有遇到任何护盾，而是深深地穿透了蛞蝓的皮肤之下。 Maeri'het 号向右舷倾斜并开始迅速下落；在它到达地面之前，一些金属板从它的外壳上脱落，气球迅速从由此产生的孔中膨胀出来。`
+			label dead
+			`卡赫特最终发出一声令人不舒服的响亮哨声，强度逐渐减弱，然后完全消失。它一动不动地坐落在看起来像干涸河床的底部，周围除了你和平静的夜空之外什么也没有。`
+			choice
+				`（向余民报告。）`
+					goto report
+				`（把它吹成碎片。）`
+					to display
+						"armament deterrence" > 0
+					goto blow
+				`（降落在它旁边并穿上你的 EVA 套装。）`
+			`当你走下楼梯时，你会本能地检查你的手枪，尽管你知道这是多么徒劳。尽管 Maeri'het 是您见过的最小的 Ka'het 类型，但它的体型仍然大得吓人。不再隐形，你注意到有一种液体从它的侧面流下来，这种液体源自蛞蝓本身。它覆盖了整个着陆区，其中一些几乎已经到达你的船了。`
+			`一瞬间，你萌生了抢劫它的服装的念头。但就像它在读懂你的想法一样，Maeri'het 会用另一团温暖、苍白的蒸汽袭击你，触发你的套装的过热警告。失败了，你转身爬回驾驶舱。`
+			label report
+			`一旦引擎恢复运行，您就需要花一点时间来思考最佳的行动方案。选择是去阿文丁：如果有人想听这个，那一定是普鲁姆的实验室。`
+				accept
+			label blow
+			action
+				outfit "Neodymium"
+				outfit "Iron" 7
+				outfit "Copper" 3
+			`卡赫特号在你的火力攻击下崩溃了，几秒钟内就会自行塌陷。它身体的某些部分被从尸体上炸飞，但大部分仍然完好无损，而机械则需要更多的努力才能摧毁；当你完成时，除了一滩有机材料和一些废金属之外，什么也没有剩下。在搜寻废墟后，你最终会发现一些珍贵的材料，可以直接出售。`
+				defer
+	on visit
+		dialog `您已返回 <planet>，但尚未在阿文丁与 Plume 会面，或者他的船尚未抵达。`
+	npc accompany save
+		to spawn
+			has "Ka'het: Death in the Graveyard 2: offered"
+		system "Pantica"
+		government "Remnant"
+		personality timid launching escort
+		ship "Gull (Support)" "Late Season Dancing"
+	on enter Pantica
+		dialog `快速检查船舶标识符后发现，普鲁姆的船目前正在潘蒂卡着陆。您抓住机会向他们致敬并向他们介绍您的最新发现。`
+
+
+mission "Ka'het: Death in the Graveyard 2"
+	invisible
+	landing
+	source "Aventine"
+	to offer
+		has "Ka'het: Death in the Graveyard 1: active"
+	on offer
+		conversation
+			`<planet> 这里一定是冬天：星港周围寒冷的山谷被厚厚的积雪覆盖，你可以看到你的飞船的防冰液自动喷洒在驾驶舱的窗户上。你会发现 Plume 就在他在降落时向你指示的着陆台上等着你，离一群鹈鹕和一只孤独的海鸥不远。`
+			`“现在是跳过寒暄的最佳时机，”他开始说道，在寒冷中揉着双臂。由于天气原因，他的衣着似乎严重不足。你邀请他上船，但他停在气闸门前。 “抱歉。这次我已经乘车执行任务了。我们已经根据您的指示准备好了海鸥号——我们打算从弹头中回收的机械将需要一个适当大的货舱。”`
+			choice
+				`“那个 Maeri'het 出了什么事？”`
+					goto what
+				`“我的舰队就足够了。”`
+					to display
+						"total ships" > 1
+				`“我的船就足够了。”`
+					to display
+						"total ships" == 1
+			`“我可以相信！”他回答道，快速扫视了一下有效载荷舱。 “但是为执行任务装备一艘船需要时间，而我们现在没有时间。`
+			label what
+			`“正如你所知，Ka’het 一半是机械的，一半是生物的。然而，对你来说可能是新闻，他们的生物自我在大多数时候都受到抑制：我们已经能够确定他们的恒星导航和系统管理完全由他们的编程决定，”他示意道，眼中带着不寻常的厌恶神色。`
+			`“不过，就像大多数生物一样，在名义上的数百年寿命之后，它们可能会开始因衰老而死亡。当这种情况发生时，它们会进入冬眠状态，呼唤建造者，希望能被拯救。当然，不会有任何帮助。`
+			`“我们观察到，”他一边读着数据板，一边继续说道，“其他卡赫特人在一段时间后会尽其所能地修补它们，大概是按照他们自己的编程来进行的。发现一个人的尸体单独躺着是很不寻常的。我们对任何通常无法在严重战斗损伤中幸存下来的东西感兴趣。记忆库、逻辑终端，以及一般来说，他们机械大脑的所有部分。”`
+			`尽管有手语，你还是注意到，与你之前遇到他时相比，他似乎显得三心二意。他走向他的海鸥，晚季之舞。`
+				decline
+
+mission "Ka'het: Death in the Graveyard 3"
+	landing
+	name "愤怒的卡赫特"
+	description "摧毁 <system> 中的 Telis'het 以防止其摧毁 <planet> 表面的 Maeri'het。"
+	to offer
+		has "Ka'het: Death in the Graveyard 1: done"
+	on offer
+		conversation
+			`当你从空中降落到上次所在的地方时，太阳高高挂在头顶。与晚季之舞一起编队飞行时，你很容易在地面上发现 Maeri'het：它展开了一对巨大的太阳翼，至少是 Ka'het 身体本身长度的三倍。然而，看看你的雷达，你会发现更多——还有第二架 Ka'het 盘旋在被击落的那架飞机上方，被你的敌我识别系统归类为 Telis。`
+			`“它正在试图让 Maeri'het 复活，”Plume 在对讲机中喊道，“但我认为它做不到。自从你发现它以来，修复已经没有任何效果了。”在烟雾云中，你看到一对小手臂从泰利斯赫特的底部伸出，压在下面的尸体上。你的飞船记录了它们之间的电击，但 Maeri'het 没有反应。`
+			choice
+				`“那就等它走吧。”`
+				`“我应该参与吗？”`
+					goto engage
+			`“这没那么容易。它的程序可能会告诉它去治愈 Maeri'het，但是蛞蝓会因为每次失败的尝试而变得更加沮丧。你看，生物方面控制下的功能之一就是战斗。它可能无法决定停止尝试治愈它，但它可以决定将 Maeri'het 登记为敌人，摧毁它，然后自由地离开，就好像它从未在那里一样，”他用冷酷的吟唱总结道。`
+				goto firepower
+			label engage
+			`“恐怕是这样。它的程序可能会告诉它去治愈 Maeri'het，但是蛞蝓会因为每次失败的尝试而变得更加沮丧。你看，生物方面控制下的功能之一就是战斗。它可能无法决定停止尝试治愈 Maeri'het，但它可以决定将其登记为敌人，消灭它，然后自由地离开，就好像它从未在那里一样，”他用冷酷的吟唱总结道。`
+			label firepower
+			`“因此，泰利斯对残余者的异种生物利益构成了威胁。如果你有足够的火力，我要求你攻击卡赫特并将其带走，这样我们就可以在它仍然有用的时候掠夺它的尸体。”`
+			choice
+				`（开火。）`
+				`“抱歉，我还没准备好面对这样的战斗。”`
+					goto weak
+			`你将一只手放在油门上，另一只手向下倾斜到水面。当你发射第一枪时，海鸥会使用它的斗篷，与卡赫特相距几米，以避免损坏梅里的尸体。很快，愤怒的泰利斯跟着你回到太空，真正的战斗开始了。`
+				launch
+			label weak
+			`“我们也不是，”对讲机里的其他声音齐声喊道。 “这个项目因此中止，因为没有实际的方法来完成它。我们的小组可以在这里分开：返回路线已经被很好地探索了，我们的坦克有足够的推进剂来保持隐形，直到到达更安全的地区。”`
+			`“<first>队长，”Plume继续用柔和的语气继续说道，“我请求你也和我们一起离开这个星球。只要我们留在这里，即使相隔这么远，Maeri'het的一些生物自我就会保持活跃，关注我们的意图，并将继续这样做，直到它最终死亡。我宁愿让它们在生命终结时受到抑制，而不是完全清醒——因为缺乏更好的语言，这样更人性化。”他向你告别，海鸥在天空中短暂爬升后就消失了。`
+			choice
+				`（飞回轨道。）`
+					flee
+				`（留下来看看会发生什么。）`
+			`半个小时过去了，两个卡赫特都没有采取任何行动。然后，在您的外部传感器记录到低沉的嗡嗡声后，Telis 就会升到空中并上下颠倒旋转。它会发射三次：一束光束射向头部两侧，另一束光束射向腹部中部。如果 Maeri'het 没有开始塌陷，大部分服装可能会完好无损地幸存下来。`
+			`当表演结束后，你可以命令自动驾驶仪返回轨道并在 Telis 决定与你交战之前离开。`
+				flee
+	npc kill
+		government "Ka'het"
+		personality harvests launching mining plunders staying target
+		ship "Telis'het" "So-oss'het"
+		dialog "你已经摧毁了 Ka'het 船。您现在可以返回 <planet> 与 Plume 会面。"
+	on visit
+		dialog `你试图返回 Maeri'het，但 Telis 跟着你！如果你想安全接近，就需要摧毁它。`
+
+mission "Ka'het: Death in the Graveyard 4A"
+	landing
+	name "拆卸后的卡赫特"
+	description "护送 Plume 和他的船员安全返回 <destination>，同时运送在 <origin> 执行任务期间收集的 Ka'het 组件。"
+	destination "Aventine"
+	to offer
+		has "Ka'het: Death in the Graveyard 3: done"
+	on offer
+		conversation
+			`Maeri'het 的脸已被撬开，可以看到蛞蝓身上布满了复杂的电线网格。船周围有各种各样的机械，从发出微弱紫色光芒的圆柱体到覆盖着某种蓝色液体的球形容器。`
+			`最大的部件被移动到某种反重力板上，将它们提升到地形上方，但否则需要人类将它们推到某个地方。你帮助残存者从尸体中运出一些碎片；尽管有镀层的帮助，但它们纯粹的惯性使活动变得筋疲力尽。一旦进入他们的海鸥内部，残余人员将 Ka'het 机械连接到船上的适配器上，并用他们的仪器为它们供电。`
+			`“根据应答器的信息，它的名字是 Nona-caci'het，”Plume 透露。 “它的寿命只有 500 多年，几乎与我们遗迹存在的时间一样长。它经历了数千场战斗，其中最后一场战斗，”他在数据板上坚忍地读着，“就在两个多月前，与另一个 Maeri'het 发生了战斗。从那时起，它所见过的唯一的其他生命形式就是它下降到行星大气层中，去炮轰一些被它视为敌人的两栖动物标本。”`
+			choice
+				`“它为什么死了？”`
+				`“我不知道他们这么做了。”`
+					goto foe
+				`“衣服完好无损吗？”`
+					goto skip
+			`“啊，很难说。他们在一生中遭受了如此多的战斗伤害，以至于他们的整个身体都布满了斑块和疤痕。尽管如此，我们还是进行了一些扫描，以便<planet>上的实验室能够确定更多信息。”`
+				goto honest
+			label foe
+			`“哦，不仅是他们，卡赫特袭击的绝大多数受害者都是地表动物。过去数万年里，无数物种因狩猎而灭绝。在可预见的未来，墓地将继续名副其实。”`
+			label honest
+			`他耸耸肩。 “我很难像大多数生命体一样看待卡赫特。它们似乎蔑视进化原理：它们没有本质上的差异，破旧的工厂阻碍了遗传性，更重要的是，我们所理解的自然选择似乎是不可能的！它们的内部器官的排列方式并不像我们所知道的任何生物，而是像一艘宇宙飞船，其形状易于维护和更换。`
+			`“如你所知，虚空精灵的研究最近才重新开始。因此，异星生物学家的典型课程重点是共生体、科拉特、灰烬废土行星的本土生物，最后是卡赫特。但实际上，卡赫特的设计或行为很少可以用生物学来描述。该领域的大多数发现都是几十年前，甚至几个世纪前做出的——这是一个简单的、甚至是机械的设计。我们的工程师可以专门研究Ka’het，虽然没有任何异种生物学分支详细介绍它们。”`
+			choice
+				`“我懂了。”`
+					goto outfit
+				`“和遗迹船有什么区别？”`
+			branch living
+				or
+					has "event: remnant: cognizance merganser"
+					has "event: remnant: penguin"
+			`“我们还没有完全达到真正的活船的地步，”他快速地看了一眼他的海鸥，回答道，“但从我所看到的来看，我们应该很接近了。`
+			label living
+			`“就我而言，关键的区别在于留给所讨论的存在的角色。我们的范式不是采取一个有机体，在不需要它时抑制它，并围绕它建造真正的宇宙飞船。不，我们的整艘船是以与生物有机体相同的方式建造的，以至于它们与生物体的相似性是由机械部件产生的一种新兴属性。船员和飞船之间的关系永远不会超越遗迹和他们的共生体之间的关系：两者都能够去他们以自己的方式行事，但从他们的关系中互惠互利。”`
+				goto outfit
+			label skip
+			`他看起来很有趣。 “我有预感你会对此感到好奇。不用担心，<first>，我们也为你留下了一些东西。”`
+			label outfit
+			`他陪你走向两个大型集装箱，方便地放置在你的船旁边，并打开门：一个包含一对 MHD 发生器，另一个包含一对护盾恢复器。 “我们必须卸载许多系统才能访问我们正在寻找的系统。其中大多数系统在此过程中都被损坏，但我们确保保持这些系统完好无损，以感谢您在前往 <planet> 之前做出的贡献。”`
+			action
+				outfit "Ka'het MHD Generator" 2
+				outfit "Ka'het Shield Restorer" 2
+			choice
+				`“谢谢。”`
+					accept
+				`“我可能没有足够的空间容纳他们。”`
+			`“哦，我相信像你这样经验丰富的船长一定能够在这些地方找到一个地方来藏匿它们，”他以一种有趣的方式说道。 “<planet> 见！”`
+				accept
+	on complete
+		conversation
+			branch rifle
+				has "Remnant: Face to Maw 2B: offered"
+			`你在他的海鸥坡道旁边等待羽。当你看到他时，他正在与另一个遗迹讨论卡赫特机器的目的地。`
+				goto talk
+			label rifle
+			`你在他的海鸥坡道旁边等待羽。当你看到他时，他正在与另一个遗迹讨论卡赫特机器的目的地，你认出他就是用虚空步枪帮助你的人。`
+			label talk
+			`“噢，队长，”普鲁姆满意地转向你，“再次感谢你的帮助。我一直在努力做一些安排，以便将来事情变得简单。刚刚和我谈话的技术人员对卡赫特表现出了兴趣，并且很乐意接受你带来更多机械时将其安全存放的工作。”`
+			`他递给你一个小数据晶体，形状像二十面体。 “这包含一系列关于如何使用研究实验室中的工具的短片，如果你要携带一个工具上船，从冬眠的 Ka’het 中提取一些最重要的部件。当然，你需要练习，但过程与抢劫一艘标准船并没有太大不同。如果再次发生这种情况，只要你在有效载荷舱中留下 40 到 50 吨的空间，你将能够完成我们今天所做的大部分工作，而不会浪费请稍后给我们打电话！”`
+			`在花了更多时间讨论下次遇到冬眠的卡赫特时应遵循的程序后，你们互相短暂鞠躬告别并分道扬镳。`
+	on visit
+		dialog `您已返回 <planet>，但羽鸥尚未抵达。`
+	npc accompany save
+		government "Remnant"
+		personality timid launching escort
+		ship "Gull" "Late Season Dancing"
+
+mission "Ka'het: Death in the Graveyard 4B"
+	invisible
+	landing
+	source
+		government "Remnant"
+	to offer
+		has "Ka'het: Death in the Graveyard 3: declined"
+	on offer
+		conversation
+			`当您即将离开驾驶舱时，应答器顶部的屏幕开始发出蜂鸣声。这是来自 Plume 的消息。 “％ID_0%船长，我一直在努力做一些安排，以便将来简化事情。我正在向您发送一系列短片，介绍如何使用研究实验室中的工具，如果您要携带一个工具上船，从休眠的 Ka’het 中提取出最重要的部件。当然，您需要练习，但过程与抢劫一艘标准船的过程并没有太大不同。它们将是一些沉重的碎片；我建议在至少有 40 或 50 吨的可用货物空间以应对这种可能性。`
+			branch rifle
+				has "Remnant: Face to Maw 2B: offered"
+			`“我已指派一名技术人员来处理您可能带来的 Ka'het 机械。”屏幕上出现了遗迹的照片和 ID，但你不认识他。 “愿余烬们在我们未来的事业中取得更大的成功！”`
+				decline
+			label rifle
+			`“我已指派一名技术人员来处理您可能带来的 Ka'het 机械。”屏幕上会出现遗迹的照片和 ID：他就是之前用虚空步枪帮助过你的人。 “愿余烬们在我们未来的事业中取得更大的成功！”`
+				decline
+
+mission "Ka'het: Another Death in the Graveyard 0"
+	invisible
+	repeat
+	landing
+	deadline 7
+	source
+		planet "Celeatis" "Eavine" "Palarei" "Siteria" "Alix" "Retilie" "Osaeli"
+	to offer
+		or
+			has "Ka'het: Death in the Graveyard 4B: declined"
+			has "Ka'het: Death in the Graveyard 4A: done"
+		random < 8
+	to accept
+		has "outfit (flagship installed): Research Laboratory"
+	to complete
+		never
+	to fail
+		has "Ka'het: Another Death in the Graveyard 1A: active"
+	on offer
+		clear "ka'het: slug loot"
+		clear "ka'het: maeri"
+		clear "ka'het: telis"
+		clear "ka'het: vareti"
+
+mission "Ka'het: Another Death in the Graveyard 1A"
+	repeat
+	landing
+	name "另一个奇怪的卡赫特"
+	description "将您收集到的 Ka'het 装备带到 <destination> 。"
+	source
+		planet "Celeatis" "Eavine" "Palarei" "Siteria" "Alix" "Retilie" "Osaeli"
+	destination "Aventine"
+	cargo "Ka'het machinery" 40
+	blocked "Your sensors identify another hibernated Ka'het on the surface of <planet>, but you quickly realize that you wouldn't have enough space to take its machinery."
+	to offer
+		has "Ka'het: Another Death in the Graveyard 0: active"
+	to accept
+		has "outfit (flagship installed): Research Laboratory"
+	on offer
+		fail "Ka'het: Another Death in the Graveyard 0"
+		conversation
+			branch vareti
+				random < 10
+			branch telis
+				random < 75
+			action
+				set "ka'het: maeri"
+			`地面发出的眩光引起了你的注意。在远处，你会注意到有一个看起来像 Maeri'het 的东西躺在干涸的河床底部，巨大的太阳翼从它的两侧伸出——所有这些明显的迹象都表明蛞蝓已经进入冬眠，并且很快就会死亡。借助 Plume 为您提供的指南，您可以使用您的研究实验室来极大地帮助遗迹异种生物学研究工作。`
+				goto choice
+			label telis
+			action
+				set "ka'het: telis"
+			`地面发出的眩光引起了你的注意。在远处，你会注意到一个看起来像泰利斯赫特的东西躺在干涸的湖床底部，巨大的太阳翼从它的两侧伸出——所有这些明显的迹象都表明蛞蝓已经进入冬眠，并且很快就会死亡。借助 Plume 为您提供的指南，您可以使用您的研究实验室来极大地帮助遗迹异种生物学研究工作。`
+				goto choice
+			label vareti
+			action
+				set "ka'het: vareti"
+			`地面发出的眩光引起了你的注意。在远处，你会注意到一个看起来像瓦雷提赫特的东西躺在干涸的盆地底部，巨大的太阳翼从它的侧面伸出——所有这些明显的迹象都表明蛞蝓已经进入冬眠，并且很快就会死亡。借助 Plume 为您提供的指南，您可以使用您的研究实验室来极大地帮助遗迹异种生物学研究工作。`
+			label choice
+			choice
+				`（下降并尝试拆除其机械装置。）`
+				`（忽略它并寻找另一个着陆点。）`
+					decline
+			`一步步跟随 Plume 的视频，整个过程非常简单明了。一个多小时后，你的货舱就装满了各种 Ka'het 机械，通过一系列越来越笨重的适配器连接到研究实验室。你用 Ka'het 的名字来标记它们，它似乎是 ${ka'het}。现在工作已经完成，你可以花更多的时间来掠夺蛞蝓的传统服装 - 但需要注意的是，另一个卡赫特注意到你存在的机会会相当高。`
+			choice
+				`（出发并将机器带到阿文丁。）`
+					launch
+				`（停下来，抢劫 Ka'het 剩下的东西。）`
+			action
+				set "ka'het: slug loot"
+			`正如你所预料的，在你有机会拿出它的任何装备之前，你的雷达记录到另一架卡赫特举枪进入大气层。如果你想有机会掠夺被击落的蛞蝓，你就需要与它战斗——否则，它会自己到达并可能摧毁它。`
+				launch
+	on decline
+		clear "ka'het: maeri"
+		clear "ka'het: telis"
+		clear "ka'het: vareti"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		clear "ka'het: maeri"
+		clear "ka'het: telis"
+		clear "ka'het: vareti"
+		payment 100000
+		dialog
+			`你在指定的坐标与残余技术人员会面，并将你收集的货物一一扔掉。完成后，他会向您短暂鞠躬表示感谢，并向您提供<payment>的帮助，然后迅速消失在机库门后面。`
+	on visit
+		dialog `您已到达 <planet> ，但 Ka'het 机器已启动。`
+	on fail
+		clear "ka'het: maeri"
+		clear "ka'het: telis"
+		clear "ka'het: vareti"
+
+mission "Ka'het: Another Death in the Graveyard 1B"
+	invisible
+	repeat
+	landing
+	deadline 4
+	source
+		planet "Celeatis" "Eavine" "Palarei" "Siteria" "Alix" "Retilie" "Osaeli"
+	to offer
+		has "Ka'het: Another Death in the Graveyard 0: active"
+	to accept
+		has "outfit (flagship installed): Research Laboratory"
+	to complete
+		has "ka'het: dead in the graveyard"
+	to fail
+		not "Ka'het: Another Death in the Graveyard 1A: active"
+		not "Ka'het: Another Death in the Graveyard 0: active"
+	npc kill
+		to spawn
+			has "ka'het: slug loot"
+		government "Ka'het"
+		personality harvests launching mining plunders staying target
+		fleet
+			names "ka'het"
+			variant 5
+				"梅里赫特"
+			variant 5
+				"梅里赫特 (EMP)"
+			variant 12
+				"泰利斯赫特"
+			variant 12
+				"泰利斯赫特 (EMP)"
+			variant 5
+				"Telis'het（枪）"
+			variant 1
+				"瓦雷蒂赫特"
+			variant 1
+				"瓦雷提赫特 (EMP)"
+			variant 1
+				"瓦雷提赫特（强）"
+		dialog "你已经摧毁了 Ka'het 船。你现在可以返回<planet>来拾取休眠的蛞蝓。"
+		on kill
+			set "ka'het: dead in the graveyard"
+	on complete
+		clear "ka'het: dead in the graveyard"
+		conversation
+			`随着卡赫特被摧毁，你回到了另一只蛞蝓毫无防御能力的地方。虽然战斗没有触及它，但您注意到许多组件显示出表面损坏，这可能是由于您的撤离工作或之前的战斗损坏造成的。最好只专注于掠夺一个地区，而忽略其他地区，以避免面临崩溃的风险。`
+			choice
+				`（掠夺其能量发生器。）`
+					goto energy
+				`（掠夺它的护盾和冷却植入物。）`
+					goto shield
+				`（抢劫它的发动机舱。）`
+					goto engine
+				`（掠夺其武器系统。）`
+					goto weapon
+				`（尝试掠夺它的所有服装。）`
+			branch "all lucky"
+				random < 20 + "flagship attribute: outfit scan power" / 1000
+			action
+				outfit "Ka'het Reserve Accumulator"
+				outfit "Neodymium"
+				outfit "Iron" 4
+				outfit "Copper" 2
+			`当你在服装清单上看到一半时，在没有任何警告的情况下，整个结构开始以越来越猛烈的方式脉动。你跳向你的飞船，但整个鼻涕虫在你面前爆炸！你毫发无伤地度过了难关，但你取出的大部分装备都被飞溅的碎片严重损坏。废品中唯一完好无损的是一个储备累积器和一些贵金属。`
+				decline
+
+			label "all lucky"
+			branch "all telis"
+				has "ka'het: telis"
+			branch "all vareti"
+				has "ka'het: vareti"
+			action
+				outfit "Ka'het Annihilator Turret" 2
+				outfit "Ka'het Ravager Turret" 2
+				outfit "Ka'het Ravager Beam" 2
+
+				outfit "Ka'het Support Cooling"
+				outfit "Ka'het Primary Cooling"
+				outfit "Ka'het Shield Restorer" 2
+				outfit "Ka'het MHD Generator" 2
+				outfit "Ka'het Reserve Accumulator"
+
+				outfit "Maeri Engine Nacelles"
+				outfit "Ka'het Sustainer Nacelles"
+				outfit "Hyperdrive"
+			`	Despite the apparent damage, the structure holds up surprisingly well to your careful looting. It takes a while, but you successfully extract all of the outfits carried aboard the downed Maeri'het.`
+				decline
+			label "all telis"
+			action
+				outfit "Ka'het Ravager Beam" 4
+				outfit "Ka'het Annihilator Turret" 5
+
+				outfit "Ka'het Shield Restorer" 10
+				outfit "Ka'het Primary Cooling"
+				outfit "Ka'het Support Cooling"
+				outfit "Ka'het MHD Generator" 2
+				outfit "Ka'het Reserve Accumulator" 6
+
+				outfit "Telis Engine Nacelles"
+				outfit "Ka'het Sustainer Nacelles"
+				outfit "Hyperdrive"
+			`	Despite the apparent damage, the structure holds up surprisingly well to your careful looting. It takes a while, but you successfully extract all the outfits carried aboard of the downed Telis'het.`
+				decline
+			label "all vareti"
+			action
+				outfit "Ka'het Nullifier"
+				outfit "Ka'het Ravager Beam" 4
+				outfit "Ka'het Annihilator Turret" 4
+				outfit "Ka'het Ravager Turret"
+				outfit "Ka'het EMP Deployer" 2
+				outfit "EMP Torpedo" 13
+				
+				outfit "Ka'het Grand Restorer" 2
+				outfit "Ka'het MHD Generator" 6
+				outfit "Ka'het Reserve Accumulator" 8
+				outfit "Ka'het Primary Cooling"
+				outfit "Ka'het Support Cooling"
+				
+				outfit "Vareti Engine Block"
+				outfit "Hyperdrive"
+			`	Despite the apparent damage, the structure holds up surprisingly well to your careful looting. It takes a while, but you successfully extract all of the outfits carried aboard the downed Vareti'het.`
+				decline
+
+			label energy
+			branch "energy telis"
+				has "ka'het: telis"
+			branch "energy vareti"
+				has "ka'het: vareti"
+			action
+				outfit "Ka'het MHD Generator" 2
+				outfit "Ka'het Reserve Accumulator"
+			`	Deep inside the shell of the Maeri'het, you use a blowtorch to cut the MHD Generators out of their fittings and uninstall the Reserve Accumulators from their banks. Over a few hours, you are able to make a nice stash in your cargo hold before you leave.`
+				decline
+			label "energy telis"
+			action
+				outfit "Ka'het MHD Generator" 4
+				outfit "Ka'het Reserve Accumulator"
+			`	Deep inside the shell of the Telis'het, you use a blowtorch to cut the MHD Generators out of their fittings and uninstall the Reserve Accumulators from their banks. Over a few hours, you are able to make a good stash in your cargo hold before you leave.`
+				decline
+			label "energy vareti"
+			action
+				outfit "Ka'het MHD Generator" 6
+				outfit "Ka'het Reserve Accumulator" 8
+			`	Deep inside the shell of the Vareti'het, you use a blowtorch to cut the MHD Generators out of their fittings and uninstall the Reserve Accumulators from their banks. Over a few hours, you are able to make a huge stash in your cargo hold before you leave.`
+				decline
+
+			label shield
+			branch "shield telis"
+				has "ka'het: telis"
+			branch "shield vareti"
+				has "ka'het: vareti"
+			action
+				outfit "Ka'het Support Cooling"
+				outfit "Ka'het Primary Cooling"
+				outfit "Ka'het Shield Restorer" 2
+			`	Mounted at the very edges of the shell of the Maeri'het, you find a pair of pristine Shield Restorers connected with a heat sink. You uninstall them together with the cooling systems they sit next to, and in a few hours you are ready to leave.`
+				decline
+			label "shield telis"
+			action
+				outfit "Ka'het Primary Cooling"
+				outfit "Ka'het Support Cooling"
+				outfit "Ka'het Shield Restorer" 10
+			`	Mounted at the very edges of the shell of the Telis'het, you find a series of pristine Shield Restorers connected with a heat sink. You uninstall them together with the cooling systems they sit next to, and in a few hours you are ready to leave.`
+				decline
+			label "shield vareti"
+			action
+				outfit "Ka'het Primary Cooling"
+				outfit "Ka'het Support Cooling"
+				outfit "Ka'het Grand Restorer" 2
+			`	Mounted at the very edges of the shell of the Vareti'het, you find a pair of enormous Grand Restorers connected with a heat sink. You carefully uninstall them together with the cooling systems they sit next to, and in a few hours you are ready to leave.`
+				decline
+
+			label engine
+			branch "engine telis"
+				has "ka'het: telis"
+			branch "engine vareti"
+				has "ka'het: vareti"
+			action
+				outfit "Maeri Engine Nacelles"
+				outfit "Ka'het Sustainer Nacelles"
+			`	Despite their easily accessible position, disconnecting the nacelles of a Maeri'het proves to be more complicated than expected due to the bundle of tubes attached to them. After a few hours and a lot of sweat you are able to put both engine types into your cargo hold, and you can finally leave.`
+				decline
+			label "engine telis"
+			action
+				outfit "Telis Engine Nacelles"
+				outfit "Ka'het Sustainer Nacelles" 2
+			`	Despite their easily accessible position, disconnecting the nacelles of a Telis'het proves to be more complicated than expected due to the bundle of tubes attached to them. After a few hours and a lot of sweat you are able to put both engine types into your cargo hold, and you can finally leave.`
+				decline
+			label "engine vareti"
+			action
+				outfit "Vareti Engine Block"
+			`	Despite its easily accessible position, disconnecting the huge thrusters of a Vareti'het proves to be more complicated than expected due to the bundle of tubes attached to it. After a few hours and a lot of sweat you are able to put the engine block into your cargo hold, and you can finally leave.`
+				decline
+
+			label weapon
+			branch "weapon maeri EMP"
+				has "ka'het: maeri"
+				random < 50
+			branch "weapon telis gun"
+				has "ka'het: telis"
+				random < 50
+			branch "weapon telis EMP"
+				has "ka'het: telis"
+			branch "weapon vareti gun"
+				has "ka'het: vareti"
+				random < 50
+			branch "weapon vareti EMP"
+				has "ka'het: vareti"
+			action
+				outfit "Ka'het Annihilator Turret" 2
+				outfit "Ka'het Ravager Turret" 2
+				outfit "Ka'het Ravager Beam" 2
+			`	The front of this Maeri'het appears to have been set up to focus on hull damage: a pair of Ravager Beams and another of Ravager Turrets show prominently, plus a couple of Annihilator Turrets on the back. You disconnect them from their base plates, making sure not to damage any of their fragile targeting systems, and move them all to your cargo hold.`
+				decline
+			label "weapon maeri EMP"
+			action
+				outfit "EMP Torpedo" 32
+				outfit "Ka'het Ravager Turret"
+				outfit "Ka'het EMP Deployer" 2
+				outfit "Ka'het Annihilator Turret" 3
+			`	The front of this Maeri'het appears to have been set up for electronic warfare: a pair of EMP Deployers with their storage rack show prominently, plus a couple of Annihilator Turrets on the back. You disconnect them from their base plates, making sure not to damage any of their fragile targeting systems, and move them all to your cargo hold.`
+				decline
+			label "weapon telis gun"
+			action
+				outfit "Ka'het Ravager Beam" 4
+				outfit "Ka'het Annihilator Turret" 5
+			`	The front of this Telis'het appears to have been set up to focus on hull damage: a long series of Ravager Beams show prominently, plus a number of Annihilator Turrets on the back. You disconnect them from their base plates, making sure not to damage any of their fragile targeting systems, and move them all to your cargo hold.`
+				decline
+			label "weapon telis EMP"
+			action
+				outfit "Ka'het EMP Deployer" 4
+				outfit "Ka'het Annihilator Turret"
+				outfit "Ka'het Ravager Turret" 4
+				outfit "EMP Torpedo" 64
+			`	The front of this Telis'het appears to have been set up for electronic warfare: a long series of EMP Deployers with their storage rack show prominently, plus a number of Ravager Turrets on the back. You disconnect them from their base plates, making sure not to damage any of their fragile targeting systems, and move them all to your cargo hold.`
+				decline
+			label "weapon vareti gun"
+			action
+				outfit "Ka'het Nullifier"
+				outfit "Ka'het Annihilator" 4
+				outfit "Ka'het Ravager Beam" 2
+				outfit "Ka'het Annihilator Turret" 2
+				outfit "Ka'het Ravager Turret" 4
+			`	The impressive front of this Vareti'het appears to have been set up to focus on shield damage: a long series of Annihilators show prominently, surrounding the enormous barrel of the Nullifier. On the back, a variety of Ravager and Annihilator Turrets make their appearance. You disconnect them from their base plates, making sure not to damage any of their fragile targeting systems, and move them all to your cargo hold.`
+				decline
+			label "weapon vareti EMP"
+			action
+				outfit "Ka'het Nullifier"
+				outfit "Ka'het Ravager Beam" 4
+				outfit "Ka'het Annihilator Turret" 4
+				outfit "Ka'het Ravager Turret"
+				outfit "Ka'het EMP Deployer" 2
+				outfit "EMP Torpedo" 32
+			`	The impressive front of this Vareti'het appears to have been set up to focus on hull damage: a number of EMP Deployers and Ravager Beams show prominently, surrounding the enormous barrel of the Nullifier. On the back, a variety of Ravager and Annihilator Turrets make their appearance. You disconnect them from their base plates, making sure not to damage any of their fragile targeting systems, and move them all to your cargo hold.`
+				decline
+
+mission "Ka'het: Patir Reveal"
+	invisible
+	non-blocking
+	landing
+	to offer
+		has "Remnant: Cognizance 19: done"
+	on offer
+		event "patir appears" 3
+	on enter "Patir"
+		dialog
+			`当跳跃序列结束时，你发现自己绕着一个小黑洞运行，周围只有无数的小行星和碎片。更有趣的是，小行星带似乎居住着小型宇宙飞船，其外观与侵扰附近系统的 Ka'het 类似，但同时又不同于您以前见过的任何类型。也许遗迹可以告诉你更多关于这个系统及其突然出现的信息。`
+		fail
+	to complete
+		never
+
+event "patir appears"
+	system "Patir"
+		remove hidden
+
+mission "Ka'het: Patir Mystery 1"
+	minor
+	name "访问<waypoints>"
+	description "在前往 <destination> 之前，请带上 Taely 来访问 <waypoints> 系统。"
+	source
+		government "Remnant"
+	destination "Aventine"
+	waypoint "Patir"
+	passengers 1
+	cargo "Ka'het tracking equipment" 5
+	to offer
+		has "Ka'het: Patir Reveal: failed"
+	on offer
+		conversation
+			`你想找泰莉告诉她墓地里出现的新系统吗？`
+			choice
+				`（当然。）`
+				`（现在不行。）`
+					defer
+			
+			`如果你发现泰利在当地造船厂监督某种无人卫星的焊接，你并不感到惊讶。虽然你对遗迹技术不够熟悉，无法理解其功能，但你识别出放置在你认为的探测器前端附近的一块大晶体，作为量子钥匙石，或者至少是它的衍生物。`
+			`当泰莉注意到你朝她走来时，她向你挥手。 “<first>！好久不见了。你在找我吗？”`
+			choice
+				`“我有消息。墓地附近突然出现了一个新的黑洞，和西尔维达一样。”`
+					goto talk
+				`“那颗卫星的用途是什么？”`
+			`“她是个美人，不是吗？波斯特维塔之外的恒星系统的发现激发了对探索探测器的巨大需求，比我们几十年来的需求还要大。这是我自己的提议：她将对与我们发现外星人定居点的世界最相似的四颗行星进行精确的激光雷达扫描，寻找遗迹和古代文物！看到你提出的想法在你面前成为现实，真是令人难以置信的兴奋。”`
+			`她停下来，自豪地盯着探头。`
+			`“有趣的是你提到了 Postverta，”你说。 “墓地附近刚刚出现了一个新的黑洞，就像西尔维达那样。”`
+			label talk
+			`你尝试尽可能地解释这个系统及其居民。泰利看起来很感兴趣。 “你能告诉我你的飞船记录了那个系统吗？”她问。花了几分钟检查了你的船舶登记册后，她显得比以前更加惊讶。 “这太不可思议了！这引发了很多问题。如果是建造者建造了 Ssil Vida 呢？我们以为他们从未离开过墓地，但这可能会改变一切。看看引力滑流：这个系统没有超航道连接，至少目前是这样。我们需要了解更多。”她停下来想了一会儿。 “跟我来吧，<first>。”`
+			`你跟随泰利进入大楼另一端的一部大型电梯。短暂旅行后，你发现自己身处一个大型地下机库，里面装满了形状怪异的盘子和复杂的机械部件。 “我们用这些旧避难所来存放不再需要的零件。有时它们仍然可以方便地更换损坏的机器，因此我们不会拆卸它们，而是将它们留在这里几年。而这，”她指着一排圆柱形物体说，“这就是我们在这里的原因。”`
+			choice
+				`“那是什么？”`
+				`“一堆棒子？”`
+			`“这是一种古老的跟踪和监视设备，专为墓地开发，”她说。 “它应该追踪它能找到的所有 Ka'het，并对其行为进行详细图像，以便找到他们遵循的模式或利用其控制的方法。这项任务是一项长期任务，因此当出现紧急项目时，资源就会从它身上转移，留下一些传感器未使用。`
+			`“我的计划是在 <ship> 安装一些，然后前往 <waypoints> 了解有关那里船只的更多信息。它需要在使用前进行精确校准，但对你来说幸运的是，我是开发部署程序的人，”她脸上带着坏笑说道。 “你准备好了吗？”`
+			choice
+				`“我们走吧！”`
+					goto mount
+				`“追踪卡赫特的尝试进展如何？”`
+				`“抱歉，这次我帮不了你了。你得另找别人了。”`
+					decline
+			`“哦，扫描仪工作得很好。但是据我们所知，Ka’het 似乎除了最基本的模式外没有任何模式。我想你可以将它们与简单的动物进行比较，寻找食物并为自己的领地而互相争斗。它们似乎对繁殖它们的空间站有某种‘印记’，但除此之外，它们还没有表现出任何其他特殊行为。”`
+			choice
+				`“好吧，我们安装扫描仪吧！”`
+				`“抱歉，这次我帮不了你了。你得另找别人了。”`
+					decline
+			label mount
+			`泰利回答说：“我会召集一个团队来安装扫描系统。我们应该会在一个小时左右完成。”她带着扫描仪离开仓库，让你为即将到来的任务做好准备。`
+				accept
+	
+	on enter "Patir"
+		conversation
+			`当你进入系统时，泰利已经坐在扫描仪的控制台前。她开始大声数数。 “外部部署三...二...一...跟踪器。正在启动启动序列。”她开始在键盘上输入命令。 “这需要一段时间，<first>，”她说，眼睛没有离开屏幕。 “这通常不是一个人的工作。”`
+			choice
+				`“有什么我可以帮你的吗？”`
+				`“我会在驾驶舱等你说完。”`
+					goto wait
+			`“恐怕没有。比如说，给我半个小时，我就能把结果拿出来。”`
+			label wait
+			`差不多一个小时过去了，泰利终于回复了。 “扫描已完成。系统目前正在将收集到的所有数据处理成可用的数据；除了等待，我们无能为力。”她开始凝视驾驶舱窗户外。 “黑洞是一种奇妙的现象。它们是如此神秘，每个黑洞都有自己的独特之处，尤其是这个。”`
+			choice
+				`“关于这个系统的出现，你有什么新的发现吗？”`
+					goto how
+				`“这件事已经被遗迹知道了吗？”`
+			`“这是最奇怪的部分；事实并非如此。我们知道波斯特维塔之外恒星的存在，因为它们可以从我们自己的系统中观察到；它们只是无法通过跳跃驱动器到达。但是，从我从这些读数中可以看出，帕蒂尔直到不久前才存在。`
+			`“你知道这个系统为什么会出现吗？”你问。`
+			label how
+			`“我现在只有理论，没有一个可以得到证实。在这个领域比我更有知识的人现在正在研究这个现象。但是看看这个，”她一边说，一边在全息投影仪上打开一张星图。 “这个白点就是Postverta，而我们就在这里。当Ssil Vida第一次出现时，它释放出强烈的电离辐射爆发，当我们能够计算出它的速度时，我们发现它的速度比光速快得多。它正在逐渐减慢，所以它不会走得更远，但就在能量爆发应该到达这里的同一天，帕蒂尔出现了！如果两个事件没有联系，这将是一个令人难以置信的巧合。`
+			`“我们对这个系统如何消失的信息更少。如果我可以大胆猜测的话，我会说黑洞参与其中。建造者似乎从来没有能力让一个系统消失，我们过去已经看到，一些黑洞可以在足够的时间内使它们所连接的任何超空间变得无法进入。也许像这样一个年轻的、不旋转的黑洞可以做得更多。我的一部分认为这个系统随时可能再次消失，但如果有什么激励我在我们有的时间内尽可能多地了解它，”她眨了眨眼说道。`
+			choice
+				`“等等，我们有危险吗？”`
+				`“处理完数据需要多少时间？”`
+					goto data
+			`“哦，我只是让我的想象力飞翔。还有成千上万的其他解释和我的一样好，但没有一个包含如此悲惨的结局。但我们可以在返回 <planet> 的路上更多地思考这些解释。”`
+				decline
+			label data
+			`“数据完全分析需要一些时间。我们应该在查看之前返回<planet>，因为到那时就应该完成了。”`
+	
+	on visit
+		dialog "您已到达 <planet>，但您的任务尚未完成！确保 Taely 和所有设备都经过 <waypoints> 。如果他们在护送中，您必须等待其到达 <waypoints>，然后才能返回 <planet>。"
+	on complete
+		conversation
+			`当您返回 <planet> 时，Taely 立即开始在她的控制台上浏览由传感器编译的几张图像。`
+			`“看看这些，<first>。你看到了什么？”第一张图片显示了一艘船，就像您在帕蒂尔看到的其他船一样，正在建造某种小型结构。在下面的图片中，大概描绘了同一艘船的不同版本，结构逐渐变得更大、更复杂，直到最后一张，显示了一个类似卡赫特的蛞蝓在这个壳内生长。`
+			`“这些船，Fetri'sei，是冯·诺依曼探测器，”她说。 “自我复制航天器。与我们发现无法复制且只能在工厂制造的 Ka'het 不同，Ka'sei 可以用从小行星上收获的材料复制自己的结构。这个过程可能需要数年甚至更长时间，但这仍然是一项令人难以置信的成就。”`
+			label questions
+			choice
+				`“如果他们可以复制自己，为什么没有更多的Ka'sei呢？”`
+					to display
+						not "patir: asked about ka'sei"
+					goto kasei
+				`“如果建造者能够制造自我复制的航天器，为什么卡赫特号不能也是这样呢？”`
+					to display
+						not "patir: asked about ka'het"
+					goto kahet
+				`“如果他们能够到达帕蒂尔，这是否表明他们有跳跃驱动器？”`
+					goto "jump drive"
+				`“为什么它们不在其他系统中？”`
+					goto "jump drive"
+			label kasei
+			action
+				set "patir: asked about ka'sei"
+			`“我想问题出在它们的寿命上。Ka'het 一旦投入运行，可以存活几百年；而这些可能会持续更短的时间。另一个重要因素是，我们不知道系统隐藏的千年里发生了什么。也许 Ka'sei 进入了休眠状态，等待系统再次出现。”`
+				goto questions
+			label kahet
+			action
+				set "patir: asked about ka'het"
+			`泰利再次看向控制台。屏幕上出现 Fetri'sei 的战术视图。 “好吧，考虑到卡赫特号是真正的战列舰，有严密的防护罩，并且总是准备好武器。它们更类似于侦察和采矿探测器。它们的结构极其脆弱，除了开采小行星所需的设备外，没有任何武器。我想即使是一艘梅里赫特号也需要几十年的时间才能复制自己。`
+			`“还有一个战术问题：迫使卡赫特人花费如此长的时间来建造自己的副本，使他们容易受到敌人的攻击，并且无法有效反击，从而使他们不适合这项工作。”`
+				goto questions
+			label "jump drive"
+			`“它们上没有任何驱动器，甚至连超光速驱动器都没有。受限于亚光速，它们需要数百年的时间才能从一个星系转移到另一个星系，这证明了建造者们的耐心。我们遇到的大多数物种在开发出超光速技术后，立即放弃了恒星系统之间任何形式的亚光速运输。据我们所知，这些费特里星或其他卡星可能曾访问过灰烬废土，但他们因某种我们不知道的原因而不得不离开。最后一位建造者大约在 10 万年前就去世了——时间太长了，以至于不可能清楚地了解发生了什么。”`
+			choice
+				`“Ka'sei 和 Fetri'sei 有什么区别？”`
+			`“嗯，没有什么区别，”泰利回答道，“至少在这种情况下没有。建造者们使用的命名方案有点奇怪：我们知道，在他们的语言中，‘Ka’的含义接近‘团体’、‘团队’，有时甚至是‘戒指’，尽管它永远不能在旁边没有名字的情况下使用。所以我们有‘group mar’、‘group het’等等。这些不限于宇宙飞船：例如，Ka'het 包括墓地周围的生物航天器和建造它们的空间站，而到目前为止，我们认为 Ka'sei 只包括少数大型建设项目。我们知道“Fetri”是一种宇宙飞船子分类，但我们不知道它的确切含义，因此 Fetri'sei 或“ship sei”是 Ka'sei 或“group sei”的一部分。简单来说，类似于所有正方形都是矩形，但并非所有矩形都是正方形。碰巧的是，这个系统中的所有东西都被归类为 Fetri'sei，所以我们可以互换使用两者。`
+			branch busy
+				has "remnant: dusk busy"
+			`“我知道有人想看看这一切。有机会的话到太空港来见我。”`
+				decline
+			label busy
+			action
+				set "ka'het: dusk was busy"
+			`“我知道有人想看到这一切。你见过暮色，对吧？”`
+			`你点点头。 “我有，但我相信他现在很忙。”`
+			`“这很不幸。你应该在他有空时立即向他展示这个，”泰利回答道。 “但我担心我现在必须回去工作了，船长。我很乐意和你一起继续探索，但目前我还有更紧迫的问题需要解决。我保证，我会密切关注帕蒂尔的活动。”`
+
+mission "Ka'het: Patir Mystery 2"
+	name "<system> 中的扫描仪"
+	description "对 <system> 系统中指示的小行星 Dusk 进行详细扫描。"
+	source "Aventine"
+	destination "Builder Settlement"
+	cargo "short range scanner" 15
+	blocked "You'll need <capacity> available to carry short range scanners. Return here when you have enough free space."
+	to offer
+		has "Ka'het: Patir Mystery 1: done"
+		not "remnant: dusk busy"
+	on offer
+		conversation
+			branch busy
+				has "ka'het: dusk was busy"
+			
+			branch known
+				has "remnant met dusk"
+			`你发现泰利在太空港里等你，旁边还有一个拿着触摸板的年轻遗迹。当你走近时，他们都会挥手致意。`
+			`“队长！”泰利说。 “让我向你们介绍一下Dusk。他是一位年轻的研究员，专门研究异种考古学和天体生物学。Dusk，这是<first>，我之前告诉过你们的船长。现在我让你们两个继续工作，因为我担心我现在必须回去工作了。我很乐意和你们一起继续探索，但目前我还有更紧迫的问题需要解决。我保证，我会关注帕蒂尔的活动。五月余烬为你们俩而燃烧。”`
+			`当泰利走开时，你转向黄昏。 “很高兴认识你，队长！”他说。`
+			choice
+				`“黄昏？这样的名字常见吗？”`
+				`“我也很高兴认识你，黄昏。”`
+					goto greet
+			`“你是指日光不同阶段的名称？嗯，我不会说它们很常见，但也并不罕见。我们的祖先以一种或另一种方式奉献了一生来研究星星和宇宙不断变化的光线。他们的词汇与我们的文化如此紧密地交织在一起也就不足为奇了。`
+				goto greet
+			
+			label known
+			`你发现泰利在黄昏旁边的太空港里等着你。当你走近时，他们都会挥手致意。`
+			`“队长！”泰利说。 “我相信你已经了解Dusk了。Dusk，我想你应该会发现这正是你感兴趣的领域。现在我让你们两个继续工作，因为我担心我现在必须回去工作了。我很乐意和你们继续探索，但现在我还有更紧迫的问题需要解决。我保证，我会密切关注帕蒂尔的活动。愿余烬为你们俩燃烧得明亮。”`
+			`当泰利走开时，你转向黄昏。 “很高兴再次见到你，队长！”他说。`
+				goto choice
+			
+			label busy
+			`黄昏不再忙碌。你想联系他了解墓地中突然出现的黑洞系统帕蒂尔吗？`
+			choice
+				`（当然。）`
+				`（现在不行。）`
+					defer
+			
+			`你联系了黄昏，他同意在自助餐厅与你见面。当你发现他时，他会向你招手。 “很高兴再次见到你，队长！”他说。`
+			label choice
+			choice
+				`“我也很高兴见到你，黄昏。”`
+					goto greet
+				`“泰利告诉你我们的发现了吗？”`
+			`“是的，墓地里出现了一个新系统。太令人兴奋了！泰莉尽快把数据发给了我。`
+				goto greet
+			
+			label greet
+			`“我在泰利发给我的数据中发现了一些有趣的东西，队长。”黄昏向你展示了帕蒂尔系统的地图，上面画满了各种线条。 “这张图片显示了扫描仪能够追踪到的每一个卡星所遵循的路线。乍一看，它们似乎没有太多共同点，对吧？然而，经过仔细检查，几乎每条路径都有一些一致的东西：每隔一段时间，每艘船都会在一颗小行星上停留几分钟——整个小行星带中最大的小行星之一。`
+			`“然而，这很可能只是一个巧合；从这么大的小行星上提取资源需要付出很大的努力，所以也许他们只是联合力量来收获它。所以，在这一点上我有了一个想法。”触摸板上的屏幕发生变化，现在显示电子表格上分开的原始数字。 “你携带到帕提尔的传感器有多种功能，其中之一是高能小行星扫描仪。这颗小行星被证明富含一种特殊的金属，铱。它的铱含量比整个六个余烬废物系统（包括行星）还要多。然而，奇怪的是：当你跳走时，小行星上铱的浓度并不低于扫描开始时，而是更高！无论出于何种原因，费特里星人都在沉积小行星上的铱。”`
+			choice
+				`“你确定这不仅仅是测量错误？”`
+				`“他们为什么要这么做？”`
+					goto why
+			`“嗯，这是有可能的；这个仪器已经很多年没有经过测试了。但如果没有，这可以让我们深入了解这些卡星的真正目的以及它们为什么在那个黑洞周围。它至少值得研究！`
+				goto end
+			label why
+			`“这就是我们要一起找出的答案！我们能够深入了解他们真正目的的唯一方法就是研究这颗小行星以及卡星人在那里所做的事情。`
+			label end
+			`“计划是使用短程高功率扫描仪并绘制整个小行星的地图，以分析 Ka'sei 带来铱的地点。在你对我指示给你的地点进行广泛扫描后，请通过 <origin> 联系我，以便我分析数据。如果一切顺利，你应该在几周内回到这里。现在我已经指示太空港工程师在你的船上安装扫描仪。我几乎迫不及待地想看看你在那里发现了什么！”黄昏太兴奋了，你还没来得及反应，他就离开了。`
+				accept
+	on accept
+		"remnant met dusk" ++
+		set "remnant: dusk busy"
+		event "asteroid on patir"
+	on enter "Patir"
+		dialog
+			`对系统进行简短扫描后，你的飞船计算机识别出了黄昏所说的小行星。与您习惯的小行星相比，这颗小行星要大几个数量级，几乎有一个小卫星那么大。降落在 <planet> 上，以便距离足够近，以便短距离扫描仪对其进行分析。`
+	on visit
+		dialog "您已到达，但您发现携带 <commodity> 的护送人员尚未进入系统！最好离开并等待。"
+
+event "asteroid on patir"
+	planet "Builder Settlement"
+		remove attributes "requires: ka'sei"
+
+mission "Ka'het: Patir Mystery 3"
+	landing
+	name "返回<planet>"
+	description "返回 <destination> 以显示对 Patir to Dusk 中的大小行星的扫描结果。"
+	source "Builder Settlement"
+	destination "Aventine"
+	cargo "short range scanner" 15
+	to offer
+		has "Ka'het: Patir Mystery 2: done"
+	on offer
+		conversation
+			`您的初步扫描表明，这颗小行星正在像月球或行星一样缓慢旋转。你将你的飞船设置在围绕它的极地轨道上，并激活黄昏给你的传感器，希望能找到帕蒂尔神秘出现所提出的所有问题的答案。`
+			`你从小行星的黑暗面开始探索，从你能看到的那一点点来看，它的表面似乎完全被无关紧要的风化层覆盖。但在经过明暗界线后不久，你会在地平线附近看到一个反光极强的斑块。当你走近时，你会发现，这就是黄昏所说的铱的储存处：一个巨大的反光金属凝固湖，在卡星人在地形上挖的一个巨大洞内，向各个方向延伸数公里。`
+			`几个小时后，您就可以检查被要求扫描的每个站点，但大部分表面仍然未知。`
+			choice
+				`（继续我对小行星的探索。）`
+					goto explore
+				`（离开并返回阿文丁。）`
+			`当你准备跳走时，铱存储边缘附近的一个人造结构引起了你的注意，你决定把你的船拉近一些。`
+				goto image
+			label explore
+			`当你正在设置一条新路线以通过尽可能多的地形时，你的目光被铱存储边缘附近的人造结构吸引了。`
+			label image
+			scene "scene/asteroid scene"
+			`您首先注意到的是一系列极高的塔架，排列成两条平行线。当您接近以获得更好的角度时，您会发现一个巨大的圆顶高耸在该区域上方。虽然在没有参考点的情况下很难理解它的规模，但你估计它的直径至少有一公里。`
+			`你想知道是否应该靠近一些，但卡星人可能不会友好地欢迎你接近他们的建筑。`
+			choice
+				`（在安全距离处收集测量值。）`
+				`（不顾风险，靠近建筑物。）`
+					goto near
+			`Dusk 的扫描仪收集的数据并不完美，但这总比不得不冒险接近你知之甚少的东西要好。几分钟后，扫描完成，您就可以返回到 <planet> 了。`
+				accept
+			label near
+			action
+				"exploration interest" ++
+			`您小心地将飞船定位在建筑物上方并激活传感器。随着扫描的进行，你可以监视 Ka'sei 舰队的位置。一些离你最近的费特里星已经停止了他们的标准活动并待命，也许会像你观察他们的行为一样观察你的行为。幸运的是，几分钟后，传感器完成了对结构的分析，您就可以不受干扰地返回 <planet>。`
+				accept
+	on visit
+		dialog "您已返回<planet>，但您发现携带<commodity>的护卫尚未进入系统！最好离开并等待。"
+	on complete
+		dialog
+			`在着陆区附近，你与黄昏讨论你在铱存储旁边发现的东西。 “这太棒了！这比我希望在这次探险中发现的要多得多。给我几个小时来分析数据并在太空港与我会面。”`
+
+mission "Ka'het: Patir Mystery 4"
+	name "参观小行星"
+	description "带黄昏去<system>参观古老的建造者定居点。"
+	source "Aventine"
+	destination "Builder Settlement"
+	passengers 1
+	blocked "You'll need <capacity> available so Dusk can join you on your mission. Return with the available space to continue."
+	to offer
+		has "Ka'het: Patir Mystery 3: done"
+	on offer
+		conversation
+			`像往常一样，你在自助餐厅再次见到了 Dusk，他拿着触摸板。 “再次感谢您的帮助，<first>。通过这一发现，我们可以了解很多关于建造者的信息。”他向您展示了半球形圆顶内建筑物的黑白图像。该建筑群似乎由相互连接的圆柱体组成，可能是居住模块。`
+			choice
+				`“那是什么？”`
+			`“哦，这是你对建造者结构所做的扫描。看，外部冲天炉是完全加压的，这可以让我们深入了解建造者的生物学。经过这么长时间，他们行星上的大气成分很可能已经发生了变化，而卡赫特号能够到达的每一个载人空间站都早已被摧毁了。这是我们第一次有可能研究他们可以呼吸的气体，而不会因为数千年的生物活动而影响结果。冲天炉内部还有一个巨大的完整的复合体，这可以给我们更多关于这一切的答案。`
+			`“如果你能带我到小行星，我就可以使用控制器并进入冲天炉来测量大气的成分。”`
+			choice
+				`“我准备走了。”`
+					accept
+				`“等等，你是说你能读懂建造者语言？”`
+			`	"Very approximately, but yes. We have been studying every piece of written language we could find from their cities, mostly inside sealed containers. It is very hard to understand full phrases or even what they mean at times, but we can reliably translate most of the common words and phrases, which will hopefully be enough for our mission."`
+				accept
+	on visit
+		dialog "你已经到达了，但你发现你的护卫黄昏还没有进入系统！最好离开并等待。"
+
+mission "Ka'het: Patir Mystery 5"
+	landing
+	name "第一次接触"
+	description "在混乱的第一次接触之后，返回<destination>，不要伤害任何卡星，即使他们攻击你。"
+	source "Builder Settlement"
+	destination "Aventine"
+	passengers 1
+	to offer
+		has "Ka'het: Patir Mystery 4: done"
+	on offer
+		"reputation: Ka'sei" = -10
+		conversation
+			`当你接近这座建筑时，暮色停止准备设备，从窗户观察它。 “这是一个令人着迷的结构。我只见过少量的建造者建筑，但这看起来与我见过的任何东西都不一样。鉴于重力几乎可以忽略不计，也许它在结构上与他们的空间站比前哨站更相似，或者他们有其他小行星殖民地，随着时间的推移逐渐消失。在某个时候，值得对墓地的小行星带进行一次认真的探索。”`
+			choice
+				`“你去过建造者星球吗？”`
+					goto planets
+				`“遗迹已经探索了墓地多远？”`
+				`“装备都准备好了吗？”`
+					goto skip
+			
+			`“我想泰利已经告诉过你我们在探索该地区时遇到的麻烦了；因此，我们必须重新评估探索附近系统和物种的程序，尤其是在奥西帕戈虫洞之外。每艘进入该地区的侦察船都必须始终保持隐形，以防止无数在该地区巡逻的卡赫特人的攻击；这意味着我们需要行驶得越远才能到达目的地，我们回家时需要花费的燃料就越多，这对我们的生存造成了很大影响。我们可以在目的地隐身的时间。墓地另一端的一些系统看到的椋鸟很少，其中大多数停留时间不到一天。`
+			`“尽管如此，即使有这些限制，我们仍然取得了相当大的进展。我们可以阅读他们语言中的一些文字，并且我们能够取回无数部分完整的建造者文物。也许有一天我们将能够了解如何控制卡赫特。谁知道呢？`
+				goto skip
+			
+			label planets
+			`“哦，我去过很多次了。我从来没有去过建造者空间站，但有几次我参加了对新发现的城市或半潜地堡的探险。我想泰利已经告诉过你我们在探索该地区时遇到的麻烦了；因此，我们不得不重新评估探索附近系统和物种的程序，特别是在奥西帕戈虫洞之外。每艘进入该地区的侦察船都必须始终保持隐身状态。安全；这意味着探索行星只能在有限的时间内进行，并且如果您没有办法隐藏自己，则无法离开您的飞船。`
+			`“正因为如此，大部分行星探索都是通过机器人探测器完成的。Ka’het 能够探测并摧毁比光通信速度更快的设备，因此只能在同一系统中使用椋鸟进行远程控制。必须采取很多妥协，但即使有这些限制，我们仍然可以取得相当大的进展。`
+			
+			label skip
+			`“在我们着陆之前，我需要准备更多的仪器，”达斯克说，他不再盯着圆顶，回到他的设备上。当你到达综合体时，你会绕着它飞行几次，以寻找一个好的着陆点。黄昏指出了结构上一组小圆形凹痕旁边的一个点。着陆后，你和黄昏穿上舱外服，开始朝冲天炉走去。他停在表面的一个圆环前，开始检查他的设备。`
+			choice
+				`“那是什么？”`
+			`“嗯，我显然不能确定，但​​考虑到它的位置以及另一边有一个加压区域，它应该是一个气闸。我看过建造者站的扫描，它们看起来非常相似。”他拿起一台看起来很重的扫描仪，把它放在建筑物的墙上，然后开始移动它。 “如果我是对的，这条路应该有一个控制站隐藏在墙内 - 就在这里！”他满意地唱着。`
+			`暮色使用一种外观类似于撬棍的小工具，慢慢地从墙上拉出一部分，在此过程中踢掉了大量的灰尘。控制站是一个两侧面板，充满了开关和按钮，每个开关和按钮上方都有小外星人标记。`
+			choice
+				`“你能读懂它们吗？”`
+				`“你能打开气闸吗？”`
+					goto open
+				`“你确定这不会让我们陷入危险吗？”`
+					goto danger
+			`“我可以，是的。第一排开关控制综合体内部的灯光，第二排控制冗余加压系统，并且面板的其余部分控制类似的操作。`
+				goto open
+			label danger
+			`“没有办法确定，但这是在不破坏建筑群一半的情况下进入的唯一可能的方法。`
+			label open
+			`“这，”达斯克按下面板中间的开关时说道，“这就是我们想要的。”不久之后，你面前的门打开，露出一个小房间，对面还有另一扇门。你跟着 Dusk 进去，他再次拿出扫描仪寻找另一个控制面板。一旦打开，另一个开关就可以让他关上门。只有头盔上的灯才能让你不被淹没在完全的黑暗中。环顾四周，你会发现这座建筑明显是外星人的，房间的每一侧都有圆角，门的两侧都有扶壁。小行星环本身太小，你无法直立穿过它，但小行星的低重力让你几乎可以毫无困难地飞过它。 “我们现在必须等待房间加压，”他告诉你。`
+			choice
+				`“你觉得需要多长时间？”`
+				`“之后摘下头盔安全吗？”`
+					goto dumb
+			`“我不知道。通常只需要几分钟的时间，但我们对这项技术几乎一无所知。我们必须等等看。与此同时，”他一边说，一边开始启动另一台扫描仪，“我可以分析开始充满这个房间的气氛。在这里这样做应该可以节省我们一些时间，而且如果这对我们的防护服有危险的话，也会更安全。”`
+				goto scan
+			label dumb
+			`黄昏给你一种奇怪的感觉。 “当然不是<first>；它几乎肯定会杀了你。这样的外星大气不太可能适合人类呼吸，即使是这样，我们也无法确定，除非我们对其进行广泛分析。”他开始启动另一台扫描仪，“说到这里，我可以开始分析开始充满这个房间的气氛了。在这里这样做应该可以节省我们一些时间，而且如果这对我们的防护服有危险的话，也更安全。”`
+			label scan
+			`黄昏继续在大气分析仪上工作了大约五分钟，没有发生任何事情。你尝试连接到船上的扫描仪来检查附近 Fetri'sei 的位置，但圆顶似乎堵塞了与外界的所有通信。突然，你听到“砰”的一声巨响，通向圆顶内部的门凹进了几厘米。 “来得正是时候，”黄昏说。 “气氛分析完毕，我们进去看看吧。”他简单地看了一眼门上的字，然后抓住门把手，将门向左滑动。舱门开始慢慢向内打开。当您靠近入口时，您会立即被从门另一侧射来的强光弄瞎。放下头盔上的遮阳罩后，您的眼睛开始适应新的光线水平，您需要几秒钟的时间才能意识到眼前的情况。降落在冲天炉内、气闸室正前方的是一个 Fetri'sei（Ka'sei 探测器），它指向你和 Dusk。`
+			`你和暮色站在它面前一动不动，一言不发。从眼角的余光里，你可以看到他的双手在颤抖。突然间，卡星开始发出非常高的音调，很难听清，而且强度经常变化。这仅持续几秒钟，然后突然停止。`
+			choice
+				`（跑回气闸室。）`
+					goto run
+				`（保持静止并等待。）`
+			`整个冲天炉一片寂静。感觉好像几个小时过去了，卡星号在您面前迅速升空，盘旋在地面上方几米处。就像上次一样，它开始发出与上次相同的声音序列，然后是咔哒声。黄昏转向你。`
+			choice
+				`（跑回气闸室。）`
+					goto still
+				`（保持静止。）`
+					goto still
+				`（尝试用我的随身武器射击 Ka'sei 的悬停引擎。）`
+			`你拿出枪，开始瞄准 Fetri'sei 的侧舱。你的第一次射击完全错过了它，但之后你就可以对悬停引擎进行三次完整命中。几乎立刻，卡星号就开始发出响亮的警报声。飞船在你的左边发射一道光束，发出刺耳的哀号。你和黄昏都尽快跳回气闸室，但距离太远，无法在掠夺者光束撕裂你的宇航服之前及时到达气闸室。你看到的最后一件事是黄昏关闭气闸室。`
+				die
+			
+			label still
+			`又一阵短暂的沉默后，卡星号开始发出响亮的警报声。当一束愤怒的能量束在你左边的空气中灼烧时，你会听到掠夺者火焰的尖叫声，几乎没有击中你。你和暮色跳回气闸室，砰地关上门。你仍然可以从门的另一边感受到掠夺者大炮的噼啪声，一秒钟后，门开始发光。`
+			choice
+				`（打开出口门，即使气闸室充满空气。）`
+					goto blast
+				`（等待气闸排空。）`
+			`等了几秒，暮色快步朝控制站走去。 “抓紧东西，我哈——”突然，他被从气闸门原来所在的地方发出的一阵光芒打断了。你的套装几乎无法抵御掠夺者光束的全部力量。`
+				die
+			
+			label blast
+			`你以最快的速度到达控制站，按下了黄昏在你第一次进来时使用的开关。爆炸并不像你想象的那么强烈，但几秒钟后，你就被从缺口处喷出的空气的巨大力量从气闸门中抛出了。你们俩在几米后着陆，在冲天炉周围的地形上猛烈撞击。你用眼角的余光看到气闸室里仍有空气流出，这表明内门已被破坏。你的西装没有被刺破真是太幸运了。`
+			`环顾四周，你看到暮色脸朝下躺在你旁边。值得庆幸的是，当你接近他时，他开始站起来。当他看到你时，他默默地停顿了一会儿，然后猛地把头转向气闸并签名。 “我们需要逃跑。它可能会冲出冲天炉，或者其他人可能会到达，而在空旷的地方，我们更容易成为目标。”你点点头，开始和他一起回到你的船上。`
+			`全速运行，两人只需几分钟即可到达 <ship> 。一旦安全进入驾驶舱，您就坐下来喘口气。过了一会儿，黄昏开始紧张地在他的套装上寻找什么东西。他拿出之前用过的大气扫描仪，但屏幕破裂了，外部传感器也弯曲了。 “当我们倒在地上时，它肯定已经被毁掉了。我希望至少它的记忆还完好无损。”`
+				goto attack
+			
+			label run
+			`你开始以最快的速度跑向气闸室。起初，暮色试图反抗，但你强行拖住了他，并锁上了身后的门。当你等待房间减压时，一切又陷入了半分钟的寂静，但突然，掠夺者大炮的声音打破了寂静，内气闸门开始发光并着火。`
+			choice
+				`（打开出口门，即使气闸室充满空气。）`
+					goto rush
+				`（等待气闸排空。）`
+			`等了几秒，暮色快步朝控制站走去。 “我有一个主意，”他一边说，一边按下面板上的几个开关。 “我可以打开一个通风口，将这里的空气排出到虚空中，几秒钟之内就能让我们离开这里。”`
+				goto expel
+			label rush
+			`你以最快的速度到达控制站，并告诉黄昏抓住一些东西，但他阻止了你。 “我有一个更好的主意，”他一边说，一边按下面板上的几个开关。 “我可以打开一个通风口，将这里的空气排出到虚空中，几秒钟之内就能让我们离开这里。”`
+			label expel
+			`不久之后，前门退开。你们两个尽快跑出气闸室。在你身后，当一股气流从你身边经过时，你会听到金属熔化的轰鸣声。你开始和黄昏一起跑回你的船，希望在你安全之前卡星不会离开建筑物。`
+			`全速运行，两人只需几分钟即可到达 <ship> 。一旦安全进入驾驶舱，您就坐下来喘口气。过了一会儿，黄昏开始紧张地在他的套装上寻找什么东西。他拿出之前用过的大气扫描仪并将其打开。 “呼。我担心当我们不得不逃跑时它坏了，但也许我们仍然可以获得我们需要的数据。”`
+			action
+				set "atmospheric scan intact"
+			
+			label attack
+			`	Dusk is interrupted by the shrieking wail of your ship's proximity alert as a hostile object appears on the radar screen. As Dusk suspected, the Fetri'sei must have tracked your movements after leaving the cupola. You start to ready your ship for combat, but Dusk interrupts you. "You cannot kill them, <first>. Do you remember the high pitched sound it emitted before shooting? He was trying to speak with us, Captain. Only a few words, maybe even pre-programmed for this kind of interaction, but still a complete phrase or more in pure Builder language. In decades of xenoarchaeological research, this is the first time that it occurs. These ships are an incredible discovery. They may be the only thing still capable of speaking that language in the entire Graveyard. You cannot destroy it, and disabling one is more a matter of luck than skill."`
+			choice
+				`“那我该怎么办？”`
+			`“好吧，我只能建议从这里出发，直接返回阿文丁，同时避开嘉星。抱歉<first>，但我们最好不要打扰他们。”在你必须承担所有风险之后，如果这意味着你要尽可能远离这里，你会情不自禁地点点头。`
+				launch
+	
+	npc
+		government "Ka'sei"
+		personality plunders mining harvests staying
+		fleet
+			names "ka'sei"
+			cargo 3
+			variant
+				"Fetri'sei" 18
+				"Fetri'sei (Disable-able)" 6
+	
+	on enter "Patir"
+		dialog
+			`离开后不久，您的船只警告您，大量船只正在瞄准您。看来其他卡星也要去攻击了。`
+	on visit
+		dialog "你已经返回<planet>，但你发现你的护卫黄昏还没有进入系统！最好离开并等待。"
+	on complete
+		clear "remnant: dusk busy"
+		event "patir mystery timer" 10 16
+		conversation
+			branch attacked
+				"reputation: Ka'sei" < -10
+			action
+				"reputation: Ka'sei" = 1
+			`你和黄昏一起下船，讨论发生在帕蒂尔的事件。 “感谢你让 Ka'sei 保持活力，<first>。它们可能正是我们建造者研究所需要的，我真的希望将来能继续和你一起探索那个地方。我将研究我们在过去几天收集到的东西，试图找到任何可以为我们提供更多关于它们的线索的东西。”他向你挥手，然后开始朝太空港的出口走去。 “当我找到值得一看的东西时，我会再次与您联系。愿余烬为您燃烧明亮，<first>。”`
+				decline
+			
+			label attacked
+			action
+				set "ka'het: attacked ka'sei"
+			`你和黄昏一起下了船，他显然对你摧毁了其中一艘卡星感到愤怒。 “我告诉过你不要攻击他们！我告诉过你他们的重要性！”他一边来回踱步，一边粗声地打着手势。 “天哪，天哪，我们只能希望这不会为我们关闭任何大门。也许我们可以尝试与他们沟通？告诉他们这是一次意外？”他看着你，好像在寻求安慰，但你却无能为力。 “算了。我会研究一下我们收集到的东西，但恐怕这就是我们从那个系统收集到的全部东西了。”黄昏没有说再见就怒气冲冲地走了，一边走一边在触摸板上打字。`
+
+event "pacified ka'sei"
+	"reputation: Ka'sei" = 1
+
+event "patir mystery timer"
+
+ship "Cloak Check"
+	attributes
+		"heat dissipation" 1
+		"hull" 3
+		"mass" 100
+		"drag" 5
+		"automaton" 1
+		"thrust" 100
+		"turn" 6000
+	outfits
+		"Cloak Checker"
+	turret 0 0
+
+outfit "Cloak Checker"
+	category "Turrets"
+	thumbnail "outfit/unknown"
+	"turret mounts" -1
+	weapon
+		"velocity" 10
+		"lifetime" 1
+		"reload" 1
+		"blast radius" 20
+		"hull damage" 5
+		"no damage scaling"
+		"range override" 1000000
+		"turret turn" 360
+
+mission "Ka'het: Patir Mystery 6"
+	name "第二次接触"
+	description "与 Dusk 和其他四位异种考古学家一起返回 <system>，继续探索 <planet>。进入时您需要穿上隐形斗篷，以免惊动 Ka'sei。"
+	source
+		government "Remnant"
+		attributes "remnant primary"
+	destination "Builder Settlement"
+	passengers 5
+	cargo "instruments and samplers" 2
+	blocked `As soon as you arrive, Dusk contacts you again. "Welcome back, <first>! We should be ready for the next Patir expedition, but we need at least five free bunks to attempt it, and at least 2 tons of cargo space for samples."`
+	to offer
+		has "event: patir mystery timer"
+		has "Remnant: Cognizance 38: done"
+		not "ka'het: attacked ka'sei"
+		not "remnant: dusk busy"
+	on offer
+		conversation
+			`很快，您就会在拥挤但安静的 <origin> 星港中受到注意。你感觉到有人拍了拍你的肩膀，你转身看到黄昏，身边有四人陪伴。 “很高兴再次在这里见到你，<first>！你还记得我们对帕提尔黑洞的探索吗？”`
+			branch "atmospheric data"
+				has "atmospheric scan intact"
+			`其他遗迹之一向您展示了系统的全息图，其中看起来像您之前访问过的建造者定居点，并以黄色光芒突出显示。 “在研究了我们上次访问期间收集的数据后，我们可能已经设计了一种不受干扰地进入该结构的方法！根据我们的记录，在该结构中攻击我们的 Fetri'sei 正在与其同伴 Ka'sei 一起从小行星带收集材料，并且只有在发现我们时才进入圆顶内。”`
+				goto proposal
+
+			label "atmospheric data"
+			action
+				payment 300000
+			`	One of the other Remnant shows you a hologram of the system, with what looks like the Builder settlement you visited earlier highlighted by a yellow light. "First of all, we have transferred <payment> to your logistics account for saving the data on the dome's atmosphere. It is only thanks to you that we were able to learn more about what kind of atmosphere the Builders may have lived in."`
+			choice
+				`“谢谢。”`
+					goto "skip dialog"
+				`“你能告诉我更多关于这件事吗？”`
+			`	"The air in the settlement we visited was almost evenly split between oxygen and argon, while containing very little nitrogen. Despite its differences, it is interesting to note that such a composition is breathable by human standards."`
+			`	"We could have removed our helmets after the airlock?" you ask.`
+			`	"It is a bit more complicated than that. We found that the pressure inside the complex was much, much lower than what we are used to - less than a sixteenth of an atmosphere. On most Earth-like planets, you would only find such pressures at over 20,000 meters. There are two possibilities: either the Builders were born in a thin atmosphere, or the life support system failed some time ago and the structure has been slowly losing air ever since. We hope to find the answer soon enough.`
+
+			label "skip dialog"
+			`	"On top of that, we have learned that the Fetri'sei that attacked us was not waiting in the structure when we first entered the system; it was gathering materials from the asteroid belt together with the rest of its fellow Ka'sei, and only moved inside the dome when it spotted us."`
+
+			label proposal
+			choice
+				`“你有什么建议？”`
+				`“和？”`
+			`	"Cloaking is the key. If we can stay hidden as we enter Patir and land, then the Fetri'sei should stay outside of the settlement, letting us explore further. Make sure your ship has enough fuel for the journey, however; if you drop your cloak at any time in Patir, then the Ka'sei will block our progress again."`
+			`	After he finishes signing, he makes a few quick gestures toward the projector, enlarging the hologram of the Builder settlement and revealing what looks like a flight path. "You are going to land roughly where we did last time, carrying me and four other xenoarcheologists. If you accept, I should be able to allocate 100,000 credits to help you buy the necessary equipment for this mission."`
+			choice
+				`“我进去了。”`
+					accept
+				`“如果他们在建筑内部发现我们怎么办？”`
+				`“抱歉，但我认为回到那里不是个好主意。”`
+					decline
+			`	"It is a possibility, yes. It is also quite problematic because communication between the inside and the outside of the structure is impossible. I think the best course of action would be to place a scanner that keeps an eye on the large airlocks on the upper side of the dome, the ones the Ka'sei used last time. If I am right, it should give us around a quarter of an hour to get back in the airlock and escape."`
+			choice
+				`“好吧，我们就这么办吧。”`
+					accept
+				`“抱歉，但我认为回到那里不是个好主意。”`
+					decline
+
+	on accept
+		payment 100000
+		set "remnant: dusk busy"
+	on abort
+		clear "remnant: dusk busy"
+	on fail
+		clear "remnant: dusk busy"
+		dialog
+			`你已经接近建造者定居点，导致Ka'sei跟随你，或者运载残余科学家的护航舰已被摧毁，或者运载任务货物的护卫舰已被摧毁。你这个任务失败了。`
+	on visit
+		dialog `您已到达 <planet> ，但并非所有货物和乘客都在系统中！最好离开并等待你的护卫到达这个星系。请记住，您的护送人员也需要隐形。您可能需要停放无法隐身的护卫。`
+	npc save
+		government "Test Dummy"
+		personality heroic nemesis unconstrained
+		system "Patir"
+		fleet
+			variant
+				"Cloak Check" 10
+
+mission "Ka'het: Patir Mystery 7"
+	landing
+	name "返回<planet>"
+	description "带 Dusk 和其他研究人员以及 <cargo> 回到 <destination> 。"
+	source "Builder Settlement"
+	destination "Aventine"
+	passengers 5
+	cargo "Patir samples" 2
+	to offer
+		has "Ka'het: Patir Mystery 6: done"
+	on offer
+		conversation
+			`当你慢慢下降到小行星表面时，大部分费特里星人继续绕帕提尔运行，进出小行星带，从中开采贵金属。小行星周围的少数人不是前往建造者定居点的废墟，而是前往附近的大量铱库存。在最后一次绕过圆顶以确保没有人开始跟踪你之后，你降落在你上次来这里时你的飞船在尘土飞扬的风化层上留下的印记附近。`
+			`“干得好，队长。我们已经准备好开始我们的任务了。”杜斯克和他的团队携带了一套与您第一次来这里时类似的仪器，从紧凑型激光扫描仪到一对大型撬棍。船员背上有不同尺寸的圆柱体，最大的圆柱体几乎有一米宽。你跟随他们穿过飞船的气闸室到达地面，然后开始走向建筑群。在到达穹顶的途中，暮色通过无线电讲话。 “ <first>，在我们到达那里之前，您对任务计划还有什么疑问吗？”`
+			choice
+				`“我们进去之后我该怎么办？”`
+					goto inside
+				`“你和你的团队要在综合大楼里做什么？”`
+					goto dusk
+				`“你认为卡星人会一直放过我们吗？”`
+					goto kasei
+				`“放心吧，我会想办法的。”`
+			`“嗯，我真的希望如此！”黄昏回答道，在头盔玻璃后面咧嘴一笑。`
+				goto entrance
+
+			label inside
+			`	"Well, that is up to you. From the brief scans I made of the structure it does not seem to have particularly thick internal walls, so communication between us within the dome should be feasible. You could come with me inside the structure to help identify what we find, or if you prefer you could also remain near the airlocks and keep an eye out for incoming Fetri'sei. As I said, the choice is yours."`
+				goto entrance
+
+			label dusk
+			`	"It depends. Here, look," he says, passing you a data pad with a rather blurry picture. "It is a still image taken from the recording of our encounter with the Fetri'sei. The strong lights ruined most of the video, so we will to have to settle for this picture, but look at the background: do you see that curved board on the left? The quality of the video is too low to be sure, but I think it could be a map of the complex. If I am right, we could split into groups and cover more ground in the few hours we are going to spend here."`
+				goto entrance
+
+			label kasei
+			`	"Honestly? At this point, I am positive they will. The last time we came here, they had already found us and were probably starting to enter the dome. Right now, they are still in the asteroid belt continuing their mission. There's the possibility that the airlock will alert them of our arrival, but at this point it is unlikely. In either case, I will be sure to keep an eye on the airlock once we are inside the dome."`
+			label entrance
+			`	It doesn't take long to reach the airlock ring in front of the dome. The airlock you used last time is still open, and its control panel is visible next to it. Dusk, following your gaze, quickly stops you. "I doubt it would be a good idea to pass through the same airlock we used last time, <first>," he says. "It looks like the structure's automated systems patched up the hole left by the Ka'sei, but I would never trust it as a pressure vessel at this point. Plus, I count at least six more airlocks we could use."`
+			`	He and another member of the group move to the opposite side of the control station next to the airlock, then flip one of the switches on the panel. Just like last time, a door opens next to them, revealing another on the opposite side of the small room. There is space only for three crew members at a time; you, Dusk, and another Remnant enter the airlock, while the other three wait their turn. The door closes, and Dusk flips the switch to begin the pressurization procedure. Suddenly, the lights inside the module turn on, emitting a bright, azure light.`
+			choice
+				`“是你做的吗？”`
+				`“发生了什么？”`
+			`	"I am not sure. Wait." Moving to the opposite side of the airlock, he uses a crowbar to open another hidden control station, which slides out of the wall to reveal a rather large screen scrolling through some alien writing. After reading through it with some difficulty, Dusk breathes a sigh of relief and pulls it back to its original location. "I think it is nothing," he adds, "at least I hope so. From what I could gather, the lights being switched on were a normal, timed event in the commanded startup sequence - why they did not turn on last time is beyond me, but nothing seems to be out of the ordinary. Perhaps they were just broken."`
+			`	A few minutes later, pressurization finishes, and the interior door opens. You follow Dusk out of the airlock and find yourself in front of a large area, likely the same place the encounter with the Fetri'sei took place. "The moment of truth," exclaims Dusk, placing down a heavy scanner, similar to a short telescope. "This is a low-power laser system, capable of measuring the density of the atmosphere anywhere within 10 kilometers. If a Fetri'sei was alerted when we crossed the airlock, by now the large airlock will be filling up with oxygen and argon to allow it to pass through, and this sensor here will register it. Let's see." A tense silence ensues as the machine boots up.`
+			choice
+				`“它说什么？”`
+				`“读数是多少？”`
+			`	Dusk smiles. "The airlock is still empty. It looks like we can finally begin exploring the facility." When the rest of the group finishes crossing the airlock, you all start moving toward a curved board, placed equidistant from each of the entrances. After scrutinizing the writings on it for a few seconds, one of the Remnant exclaims, "A map!" Dusk starts discussing something with the rest of his team, but from your position you can't see what they're signing.`
+			choice
+				`（等他们讨论完。）`
+				`（靠近一点，尝试跟上对话。）`
+				`（尝试引起黄昏的注意。）`
+			`	Dusk turns around to you. "So, <first>," he asks, "what do you think? This is indeed a map of the Builder complex. The team and I have split the exploration in four groups - one going to the armory, one visiting the underground facilities and another visiting someplace that roughly translates to 'part cycler.' If you want to come with me, we can choose between the general storage area and what seem to be some kind of elevated gardens. Or you could remain here to keep an eye on the laser scanner if you wish; the choice is yours."`
+			choice
+				`“我们去仓库吧。”`
+					goto storage
+				`“我认为最好参观高架花园。”`
+					goto gardens
+				`“抱歉，但是卡星人太危险了。我会留在这里。”`
+			`	"Alright." Dusk and the rest of the team split toward different buildings in the complex, disappearing behind large armored doors. The next hours pass slowly as you stand outside the complex, surrounded by complete silence interrupted only by short updates from those exploring the buildings. Almost four hours later, while checking the atmospheric density scanner yet again, you notice a blinking yellow light, placed near the bottom of the control panel.`
+			choice
+				`（用收音机呼叫黄昏。）`
+					goto alarm
+				`（忽略它。）`
+			`	As the time passes, the light dims and blinks slower. It takes almost half an hour, but the yellow light finally turns off entirely.`
+			`	Some time later the group returns, satisfied with what they've found inside. "It was an interesting trip for sure, Captain," Dusk tells you. "Did anything of note happen out here?"`
+			choice
+				`（告诉他关于光的事。）`
+					goto explain
+				`“没什么。有点无聊。”`
+			`	"I imagine so. You would have been more helpful in the complex together with me." After picking up the scanners, you begin to pass through the airlocks, three people at a time. After a few minutes, you're all back outside the dome, ready to finally return to <planet>.`
+				goto ending
+
+			label alarm
+			`	As you tell him about the blinking light, he interrupts you and announces to the rest of the group that they are leaving. "The yellow light is an indicator that the battery is running out," he explains hurriedly. "I should have checked our equipment better. Soon, the starship airlock will be unwatched." Instead of going through a single airlock, the group splits, half going into one airlock and half into another. When you're finally all outside of the dome, the tense mood dissipates.`
+				goto ending
+
+			label explain
+			`	As you tell him about the blinking light, his expression changes. "You should have called me! We could have died!" He moves to the console on the laser scanner, which stays dark. "The yellow light was an indicator that the battery was running out," he says. "I should have checked our equipment better. The starship airlock may have remained unwatched for hours now. We need to leave." Instead of going through a single airlock, the group splits, half going into one airlock and half into another. When you're finally all outside of the dome, the tense mood dissipates.`
+
+			label ending
+			`	While walking back to the ship, Dusk continues talking about the mission. He explains that they found that the Patir settlement had never been visited in its history - not even by the Builders themselves. "I did not expect to find a thriving colony inside, but this is perplexing. A possible theory is that the settlement was built by the Ka'sei themselves, but the variety of designs inside and the way everything was assembled contradicts everything we know about their capabilities. Perhaps the buildings were transported here together with them - or perhaps even the entire asteroid was brought here from a Graveyard system, though that seems unlikely. There is a lot we still have to learn about Patir."`
+			`	Once you're back inside the <ship>, the team moves to their rooms to continue discussing theories about the Builder settlement here. Next destination: <planet>.`
+				accept
+
+			label storage
+			`	Dusk takes the lead, and you reach a large building on the opposite side of the dome. The towering cubical structure has multiple doors on the sides, each of them taller than the one before; its walls are light, of a pale blue, with gold and brown finishes around the signs scattered across the area. Dusk stops in front of one of the smallest doors, only a few centimeters taller than you, and starts pushing it to the side to make it slide. Slowly but surely, it starts to move. Dusk enters first, and you follow.`
+			`	If the depot seemed large from the outside, it's even more impressive seen from the inside; massive, sturdy shelves tower left and right, surrounded by odd machinery and cylindrical containers. While you're still studying the structure, Dusk calls you over. "Look here, <first>," he says, indicating the lower shelves in front of him. "What do you see?" It isn't easy to inspect the shelves with just your helmet lights, but you notice they're all empty. "This is not what I would expect from a settlement that used to be inhabited."`
+			choice
+				`“你认为这里发生了什么？”`
+					goto theory
+				`“也许仓库的其他地方也会有东西。”`
+					goto samples
+				`“难不成他们离开的时候就把储物空间清空了？”`
+			`	"Maybe. But look at how pristine this place is. There is no dirt or dust anywhere I can see, and everything seems to be exactly where it should. It seems more as if it was never inhabited in the first place. There are far too many unknowns about Patir and this settlement to be certain of anything, though." He pulls another instrument from a waist pouch, then begins gathering samples from around the depot, both from the ground and on the shelves. The procedure takes a few minutes; he then puts the samples in one of the cylinders on his back and starts moving to the next room, signing for you to follow him.`
+				goto depot
+
+			label theory
+			`	"At first I thought they abandoned this place and took everything with them, but look: there is no dirt or dust anywhere I can see, and everything seems to be exactly where it should. It seems more as if it was never inhabited in the first place. There are far too many unknowns about Patir and this settlement to be certain of anything, though." He pulls another instrument from a waist pouch, then begins gathering samples from around the depot, both from the ground and on the shelves. The procedure takes a few minutes; he then puts them in one of the cylinders on his back and starts moving to the next room, signing for you to follow him.`
+				goto depot
+
+			label samples
+			`	"Maybe, but I would not get my hopes up if I were you." Sitting down, Dusk takes out of his waist pouch a slim, organic-looking instrument, connected with a cable to a larger box still inside the bag. He takes samples from everywhere in the room: the shelves, the door, the walls, even some from the floor. After enclosing everything inside cylindrical containers, he tells you to get ready to move to another compartment.`
+			label depot
+			`	You follow Dusk around the building, but the results are the same. The depot is full of empty, untouched containers and barren racks in an incredible state of preservation. After Dusk gathers the last samples, you follow him outside, where you join the other teams leaving the building with their samples. Next stop: <planet>.`
+				accept
+
+			label gardens
+			action
+				"patir: builder seeds" ++
+			`	"I agree, it feels the more interesting of the two." The two of you follow the route indicated on the map for a while before reaching the entrance: a slender, sturdy-looking pillar roughly two meters wide with a circular opening on one side. Moving closer you can see the end of a shallow ramp right beyond the door, swirling upwards inside of the column and likely reaching the top of the dome.`
+			`	"If this is supposed to be the exit of the garden," Dusk says, "I fail to see where the entrance should be. We are going to have to walk up it instead."`
+			choice
+				`“好吧，我们走吧。”`
+					goto ramp
+				`“我宁愿继续寻找入口。”`
+			`	You and Dusk keep walking around the structure for almost half an hour to no avail; with no other choices left but going up the ramp, you give up and decide to follow it up the pillar. Going through it is simpler than it looked, as the surface of the floor is ribbed in a peculiar way so that gripping onto it becomes rather effortless. Despite this, it takes half an hour to reach the garden, and the roof of the dome still lies well above.`
+				goto top
+
+			label ramp
+			`	You follow Dusk up along the ramp, the length of it making the ascent quite tiresome. Luckily, going through it is simple, as the surface of the floor is ribbed in a peculiar way so that gripping onto it becomes rather effortless. Even so, though the garden is nowhere near the top of the dome, it takes another half an hour to reach it.`
+			label top
+			`	The view at the top is disappointing. In front of you, there are only rows upon rows of long racks with a dry, light gray material on the top and bottom of each shelf. Interspersed between the rows there is some Builder equipment, in which you only recognize large unlit lamps connected to the rest of the structure. Despite all of this, there are no plants anywhere, as far as the eye can see. "I believe we have stumbled upon some kind of hydroponics facility," Dusk says. "I think I have mistranslated the label on the map; this is more like a field than a simple garden."`
+			choice
+				`“现在有什么计划吗？”`
+					goto plan
+				`“为什么没有植物生长？”`
+			`	"It has probably been around a hundred thousand years since the last time a sapient being was anywhere near this structure. If we were on an Earth-like planet, the plants would have completely covered any artificial structure, but here on an asteroid in the middle of nowhere? Whatever water supply this place had likely ran out when the Builders were still alive." After stopping to think for a few seconds, Dusk continues.`
+			label plan
+			`	"Even if there are no plants, there must be containers with seeds and fertilizers somewhere around here. We have already wasted a lot of time coming up here; if you go look for those while I gather samples from the abandoned hydroponics, we will cover more terrain in the time we have left." As Dusk begins to prepare the sampling vials and the rest of the equipment, you walk toward the back of the "fields." You enter a series of tall rooms parallel to the hydroponics, none of which contain anything of note - all except the last room, which contains numerous hexagonal containers stacked on top of each other.`
+			choice
+				`（给黄昏打电话。）`
+					goto call
+				`（打开其中一个盒子。）`
+			`	You take one of the boxes from the top of the stack. It seems very heavy for its size, but with the help of the almost negligible gravity of the asteroid, you eventually succeed in taking it down to the floor. Opening it is even harder, as the box seems to have been sealed shut hermetically. After a lot of struggle, it opens to reveal a mass of spherical, light blue seeds tightly packed together.`
+			`	Dusk reaches you shortly thereafter, but he doesn't seem too happy. "I have few pressurized containers with me, <first>. We cannot expose the seeds to the vacuum of space without the risk of killing them, and we are going to need as many chances as possible to make something grow." Taking another box from the stack, he continues, "We ought to leave this one here for a future expedition and grab another one instead."`
+				goto continue
+
+			label call
+			`	It doesn't take long for Dusk to reach you. "Great find, <first>." After glancing at boxes on various piles, he finally settles for one on the top of a nearby stack and brings it down. "From the labels on its back, it seems to contain three different kinds of seeds."`
+			label continue
+			`	As you awkwardly scoot down the slide with the seeds, the same corrugated texture that made it possible to climb now working against you, Dusk continues his explanation. "It seems odd how none of the boxes you found were empty, or even unsealed. The hydroponics fields were in a similar situation; you would expect to find at least traces indicating the place used to be full of plants, but there was nothing of that sort. I am starting to believe this place was never inhabited in the first place, but assembling this facility would go far beyond the known capabilities of the Ka'sei."`
+			`	Shortly after reaching the end, you meet up with the rest of the team, who all describe situations similar to the one you found. It takes a while to reach your ship outside the dome, but finally everything is ready to return to Remnant space. Next stop: <planet>.`
+				accept
+	on visit
+		dialog phrase "generic cargo and passenger on visit"
+	on complete
+		payment 50000
+		conversation
+			`从 <ship> 下船后，你帮助残民执行他们在建造者定居点中发现的东西。其他队伍在旅途中收集了很多文物，从形状怪异的小瓶到高大的外星机械；你帮助黄昏搬运一个小板条箱，里面装着十几个大约和你的手一样大的圆柱形物体，后面有一个透明的盖子。 “谢谢你的帮助，队长。”`
+			choice
+				`“下一步是什么？”`
+					goto next
+				`“那个箱子里装的是什么？”`
+			`“哦，这些？它们是建造者的随身武器——一种能够发射短程电爆发的武器，其强度足以使你的目标丧失能力或杀死你的目标。很久以前，我们在墓地的一些掩体中发现了几百个。如果你愿意，我不介意放错一个，作为感谢你在这里提供的所有帮助。”`
+			scene "outfit/ka'het taser"
+			choice
+				`“谢谢。我该如何使用它？”`
+					goto outfit
+				`“我宁愿以积分的形式获得报酬。”`
+			`“哦，我已经把五万积分转入你的账户了，我需要为下一次任务安排一些事情，如果几个小时后你在太空港见到我，我应该已经准备好了。”`
+				decline
+
+			label outfit
+			action
+				outfit "Ka'het Electric Stunner" 1
+			`	Dusk quickly explains how to use the Ka'het weapon; its short cylindrical shape is evidently not made for human hands and proves to be quite hard to use, but you eventually figure out how to hold it while still being able to readily press the trigger. While they may not be the best weapon to capture an enemy ship, they're surely going to be very handy from a defensive position inside your own.`
+			label next
+			`	"Now that we know how to safely access the site, I am going to need to organize our next mission. If you meet me in the spaceport a few hours from now I should have everything ready. In the meanwhile, make sure to prepare a large enough freighter for takeoff - chances are we will need at least a hundred tons of free space in the cargo hold for the complete payload."`
+
+mission "Ka'het: Patir Mystery 8A"
+	name "进入实验室"
+	description "从 <destination> 拿走地面实验室（重 97 吨），为下一次探险做准备。"
+	source "Aventine"
+	destination "Babiali"
+	passengers 5
+	blocked `Dusk contacts you soon after you reach the spaceport. "<first>, we will need at least five free bunks for the mission we are preparing."`
+	to offer
+		has "Ka'het: Patir Mystery 7: done"
+	on offer
+		conversation
+			`没过多久你就会看到黄昏；他正在你的着陆场旁边的天篷下等你，就在阿文丁星港的边缘。 “我们几乎准备好了，”他说，“但我遇到了一个问题。我对下一次任务的计划是重复上次的探险，但这​​一次将一个临时实验室带到建造者现场。我能够在当地的科学设施中收集到我正在寻找的大部分仪器，但我默认授权征用的移动实验室没有一个处于良好的状态可以飞行。`
+			`“因此，在我们开始任务之前，我们需要在 <destination> 停留 - 我说服了维米纳尔的级长将他们刚刚交付的一个前哨站重新分配给我们的任务，因为它比他们正在建立的采矿探险队具有更高的优先级。在为它配备了我们的研究设备后，它的重量已经达到了 97 吨。”`
+			`你帮助黄昏将选定的仪器运送到你的船上；您还请确保为您要从 <planet> 获取的设施留出足够的空间。当你走回飞船的控制室时，暮色提醒你带上尽可能多的冲压铲——你需要它们才能在隐身状态下完成任务计划。`
+				accept
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		dialog
+			`Dusk 的坐标表示 <planet> 赤道附近一个大峡谷的边界。与地表上的大多数裂缝不同，这条裂缝显示出地质活动的迹象：当你从头顶经过时，你只能勉强避开从峡谷间歇泉喷出的溪流。当您着陆时，一排与悬崖平行的遗迹建筑清晰可见。`
+			`当地工作人员协助装载分成三个托盘的模块化实验室；与他们一起到达的是一个单独的包裹，其中包含一颗在隐形状态下部署在帕蒂尔附近的监视卫星。`
+	on abort
+		clear "remnant: dusk busy"
+	on fail
+		clear "remnant: dusk busy"
+
+
+mission "Ka'het: Patir Mystery 8B"
+	landing
+	name "实验室部署"
+	description "到达<system>并在仍处于隐形状态时着陆，以建立遗迹实验室。"
+	source "Babiali"
+	destination "Builder Settlement"
+	passengers 5
+	cargo "research lab and satellite" 97
+	blocked `Dusk contacts you soon after you reach the spaceport. "<first>, this mission is going to require <capacity>."`
+	to offer
+		has "Ka'het: Patir Mystery 8A: done"
+	on enter Patir
+		dialog
+			`探测器慢慢远离你的船，打开其外部面板和仪器；当你看到它变成一个暗淡的光点时，遗迹团队确认它运行正常。是时候登陆小行星了。`
+	on abort
+		clear "remnant: dusk busy"
+	on fail
+		clear "remnant: dusk busy"
+		dialog
+			`你已经接近建造者定居点，导致Ka'sei跟随你，或者运载残余科学家的护航舰已被摧毁，或者运载任务货物的护卫舰已被摧毁。你这个任务失败了。`
+	on visit
+		dialog `您已到达 <planet> ，但并非所有货物和乘客都在系统中！最好离开并等待你的护卫到达这个星系。请记住，您的护送人员也需要隐形。您可能需要停放无法隐身的护卫。`
+	npc save
+		government "Test Dummy"
+		personality unconstrained heroic nemesis
+		system "Patir"
+		fleet
+			variant
+				"Cloak Check" 10
+
+
+# Invisible ship in Lathia, represents the power of the asteroid base in the system
+
+mission "Asteroid guarding Lathia"
+	invisible
+	non-blocking
+	landing
+	to offer
+		has "Ka'het: Patir Mystery 8B: offered"
+	to complete
+		never
+	npc save
+		government "Magic Asteroid"
+		personality forbearing frugal heroic staying vindictive
+		system Lathia
+		ship "Asteroid Planet" "Queen Asteroid"
+
+ship "Asteroid Planet"
+	attributes
+		category "Heavy Warship"
+		"uncapturable" 1
+		"inscrutable" 1
+		"cost" 158000000
+		"hull" 86135672193
+		"required crew" 1
+		"bunks" 1
+		"mass" 67400
+		"drag" 3040
+		"heat dissipation" 10
+		"energy capacity" 1
+		"fuel generation" 0.3
+		"cargo space" 40
+		"outfit space" 390
+		"weapon capacity" 150
+		"engine capacity" 95
+		"hull repair rate" 47
+		"cargo scan power" 1
+		"cargo scan efficiency" 0.001
+		"thrust" 34020
+		"turn" 593140
+		"asteroid mount jd" 1
+		"asteroid mount am" 1
+		"asteroid mount" 1
+		weapon
+			"blast radius" 80
+			"shield damage" 800
+			"hull damage" 400
+			"hit force" 1200
+	outfits
+		"Asteroid Weapon Super"
+
+	gun 0 0 "Asteroid Weapon Super"
+
+outfit "Asteroid Weapon Super"
+	"display name" "???"
+	category "Guns"
+	cost 1861000000
+	thumbnail "outfit/unknown"
+	mass 1
+	"outfit space" -1
+	"weapon capacity" -1
+	"gun ports" -1
+	weapon
+		"submunition" "asteroid fragment" 180
+		"inaccuracy" 1
+		"velocity" 70
+		"lifetime" 2
+		"reload" 360
+		"safe"
+		"split range" 300
+		"blast radius" 400
+
+outfit "asteroid fragment"
+	weapon
+		"submunition" "spin1 print right"
+		"submunition" "spin1 print left"
+		"inaccuracy" 360
+		"velocity" -65
+		"random velocity" 20
+		"lifetime" 40
+		"random lifetime" 80
+		"hull damage" 50
+		"heat damage" 800
+		"ion damage" 3
+		"safe"
+		"hit force" 100
+		"blast radius" 200
+
+
+mission "Ka'het: Patir Mystery 9"
+	landing
+	name "探索附近地区"
+	description "访问您能到达的 <system> 周围的每个系统，然后返回黄昏。"
+	source "Builder Settlement"
+	waypoint "Athiri"
+	waypoint "Chanai"
+	waypoint "Ghila"
+	waypoint "Lathia"
+	waypoint "Maithi"
+	waypoint "Mitera"
+	waypoint "Sarifa"
+	waypoint "Thepa"
+	waypoint "Balnii"
+	to offer
+		has "Ka'het: Patir Mystery 8B: done"
+	on offer
+		event "Patir spaceport" 0
+		conversation
+			`从东北方向接近定居点，你再次将<ship>停在气闸阵列旁边；现在它几乎开始成为人们熟悉的景象了。当货运坡道指向入口并完成飞行后检查表后，遗迹团队开始部署实验室，而你则留在驾驶舱内，密切关注卡星的活动。除了偶尔丢失螺丝外，研究人员在小行星的轻重力下工作速度很快，几乎没有任何问题。然而，施工工作仍然需要几乎一整天的时间。`
+			`Ka'sei 还没有注意到，实验室也已经建立起来，你利用这个机会舒展一下腿，拜访了新前哨站的研究人员。 “那么，队长，”黄昏在入口处遇见你时问道，“你觉得怎么样？”`
+			scene "scene/lab scene"
+			choice
+				`“很漂亮。”`
+					goto beautiful
+				`“嗯，看起来还蛮实用的。”`
+					goto functional
+				`“仅此而已？”`
+			`“诚然，其中以研究为重点的部分相当有限——毕竟，它是一个经过改造的采矿中心——但它应该可以根据需要舒适地容纳一些人。此外，”他补充道，“圆顶内有你可以要求伸展双腿的所有空间。”`
+				goto tour
+
+			label functional
+			`	"Hopefully! It is a repurposed mining hub, after all, so its capabilities will be quite limited as a laboratory, but it should comfortably house a few people for as long as needed. Besides," he adds, "there is all the space you could ask for to stretch your legs inside the dome."`
+				goto tour
+			label beautiful
+			`	He smiles. "It has a certain charm for sure. As a repurposed mining hub, its capabilities will be quite limited for a laboratory, but it should comfortably house a few people for as long as needed. Besides," he adds, "there is all the space you could ask for to stretch your legs inside the dome."`
+			label tour
+			`	You step inside the lab's internal door, removing your helmet now that the atmosphere is breathable. Dusk takes you around the cylindrical hub to show the various sections of it: the sleeping quarters, small but not cramped; the extravehicular research module, a flexible corridor connecting it with the airlock and housing spacesuits with rather unwieldy instruments, and so on. As the tour comes to an end, you and Dusk return to the entrance, where the rest of the team is split between checking the expedition's equipment and preparing something to eat. "We are about to dine now," Dusk mentions. "There is an extra seat in case you would like to join us."`
+			choice
+				`“我很乐意。”`
+					goto dinner
+				`“接下来会发生什么？”`
+					goto next
+				`“如果仅此而已，我宁愿回到我的船上准备升空。”`
+			`	"Alright, Captain," Dusk replies. "I will contact you when we need a ride back. Our current plan is to remain at the outpost for one or two months, exploring the Builder settlement and studying everything it has to offer. Do not go too far, though - emergencies can always happen, after all."`
+				goto decline
+
+			label dinner
+			`	Lacking a true dining room, the meal has been set up on a table between the bunks of the researchers. It takes a few tries to find a position in which everyone is at least somewhat comfortable and the dinner can finally begin. You notice that the portions of the rather unappealing Remnant food are much smaller than what you're used to seeing them eat - similar to yours, in fact. One of the researchers notices you looking at her plate, and replies, "I assume you have been told about the symbionts and their increased nutritional needs by now? The four of us have been selected for the mission in part because of the fact that we are part of the small number of scientists that do not wear one, which makes us better suited for expeditions with limited supplies."`
+			choice
+				`“你没有共生体的原因是什么？”`
+					goto reason
+				`“你有共生体吗，黄昏？”`
+					goto "dusk symbiont"
+				`（吃完晚饭就走。）`
+			`	The rest of the dinner passes rather quickly, and within half an hour you're ready to return to your ship. At the entrance, Dusk approaches you.`
+				goto next
+			label "dusk symbiont"
+			`	"I do have one - right under the cervical vertebrae, at the top of my back. Being the lead researcher of this mission, there was not much choice left; removing it at this point wasn't an acceptable option, and switching positions this late into the program would have been much more harmful than increasing the reserves planned to the right level." As the dinner comes to an end, you and Dusk move back near the entrance.`
+				goto next
+
+			label reason
+			`	"For me, the reason is medical. My body rejected the symbiont quite violently shortly after the initial operation, to the point that even attempting to install another would be very risky. But if you ask around, the causes are quite varied." As the dinner comes to an end, you and Dusk move back near the entrance.`
+			label next
+			`	"Our current plan is to remain at the outpost for one or two months, exploring the Builder settlement and studying everything it has to offer. Do not go too far in the meanwhile, though - emergencies can always happen, and you are supposed to be our ride back when the time comes." He pauses for a few seconds to think. "If you are interested, perhaps you could remain here with us to help with the research. You would need to sleep in your starship, of course, and the supplies would be slightly more limited, but neither issue is a showstopper. It is up to you, <first>."`
+			choice
+				`（接受这个提议。）`
+				`（拒绝报价。）`
+					goto decline
+			`	"Perfect then," Dusk replies. "See you tomorrow!" You move back aboard your ship and walk up to the bunks to prepare for the night; however, you notice out of a window that the full Remnant team has come out of the lab, staring up at the sky. You attempt to contact them, but the only result is an eerie quiet. All of a sudden, you realize what is wrong: the starry night is gone, and a sky of an overwhelming black now surrounds everything and everyone.`
+				goto sky
+
+			label decline
+			`	"I understand. See you in a few weeks then, Captain, and may the Embers guide you." You move back aboard your ship and walk up to the cockpit to prepare for liftoff; however, you notice out of the corner of your eye that the full Remnant team has donned their spacesuits, and is standing outside the lab. For a split second you think that they've come outside to watch the liftoff, but they aren't looking at your ship; they're staring up, at the sky. You attempt to contact them, but the only result is an eerie quiet. All of a sudden, you realize what is wrong: the starry night is gone, and a sky of an overwhelming black now surrounds everything and everyone.`
+			label sky
+			`	As your eyes adapt to a featureless sky, you notice brief, nearly imperceptible white streaks passing past your field of view in an instant. The lines become more and more visible, almost like stars during a hyperjump, when your attention is captured by a white mass slightly above the horizon. It starts as a tiny dot in the distance, then becomes bigger and bigger, until it covers the entire sky. The extreme light it produces forces you to look away for a second, and when you look back, there are even more streaks in the sky, to the point of making you feel nauseous.`
+			`	You can't tell how much time has passed since the phenomenon began, but it finally starts to show signs that it's coming to an end: the streaks become shorter and last longer in the sky, and the number of stars you can see becomes less and less. You begin noticing more and more details; some streaks seem to end before reaching the horizon, while others follow a curved or even cyclical pattern around Patir. Eventually, the stars come to a standstill, and everything returns to normal.`
+			`	Still dizzy from the experience, you carefully walk back down outside to speak with the Remnant. By the time you've reached them, they seem to have recomposed themselves and have started studying some sort of holographic stellar map.`
+			action
+				event "Patir moves" 0
+			choice
+				`“那是什么？”`
+					goto what
+				`“大家还好吗？”`
+			`	"We are all shaken by the experience, but we have much bigger problems to think about now," Dusk replies. "Something is not right with the sky."`
+				goto constellation
+			label what
+			`	"I wish I knew. And the worst may have yet to come," Dusk replies. "Something is not right with the sky."`
+			label constellation
+			`	He points at the projector. "Do you see those two triangular formations near the top of the star map? That is something we called the Ember Prism - a constellation of six stars of similar magnitude, located far from the Wastes and close to each other. While it is not visible from Earth, it should be recognizable from almost every system here, including Patir, but no longer. And that is not all. None of the constellations in this star map can be found anywhere in the sky." He stops for a second, giving a worried look to the rest of the team. "We are no longer in the Ember Wastes."`
+			choice
+				`“这怎么可能？”`
+				`“那我们现在在哪儿？”`
+				`“我们怎么回去？”`
+				`“那是超空间跳跃吗？”`
+			`	"I have no idea, <first>. What I can tell you for now is that we need to get a clearer idea of what we have around before deciding the next step, and there is no way to get that from here. You need to explore as far as possible in this new sector, and return once you either find a way out or run out of systems. I promise we will have a plan ready by the time you're back."`
+				accept
+	on enter Chanai
+		dialog
+			`一旦你进入查奈，你的传感器就会检测到一个巨大的人造结构，显然是某种空间站。`
+	on enter Athiri
+		dialog
+			`当你进入系统时，你的传感器就会失去你所经过的虫洞的任何痕迹。似乎没有办法从这一端再穿过去。`
+	on visit
+		dialog
+			`观察你所绘制的系统，黄昏似乎很失望。 “一定有办法到达其他星系。请到处寻找通道；一定有什么东西。”`
+
+
+event "Patir moves"
+	system Patir
+		pos 10059.5 10.5
+		remove haze
+	set "ka'het: beyond Patir"
+
+event "Patir spaceport"
+	planet "Builder Settlement"
+		spaceport `遗迹实验室与环境的其他部分奇怪地融为一体，其颜色和设计与周围的建造者结构相似。太空港仅由定居点附近的一条平坦的风化层组成，覆盖大部分地形的碎片被匆忙清除。`
+
+
+mission "Ka'het: Patir Mystery 10"
+	landing
+	name "收集数据"
+	description "登上 <system> 周围轨道上的遗迹卫星，了解有关这里奇怪生物的更多信息。"
+	passengers 1
+	source "Builder Settlement"
+	blocked `Right as you touch down, you notice a message coming in from Dusk. "<first>, we will need at least a free bunk for the mission we are preparing."`
+	to offer
+		has "Ka'het: Patir Mystery 9: done"
+	on offer
+		conversation
+			`当你登陆时，残余分子已经在讨论对你的飞船记录和传输的数据进行分析。当他们注意到你时，他们会放弃当前的谈话，并走近与你面对面交谈。`
+			`当你详细讲述你的旅程时，他们会仔细聆听：吉拉环形世界、单向虫洞、查奈空间站，以及每个系统中的许多奇怪之处。从他们问你的问题来看，他们似乎对在这个区域漫游的类似小行星的生物特别感兴趣。当你回忆完最后发生的事情时，已经过去了将近一个小时。`
+			`“有趣。”暮色用手势回应道。 “听说没有明确的出路令人失望，但这里的其他一切都很有趣——也许其中之一是找到返回通道的关键。我们与余烬废土沟通的尝试没有成功；我担心这一次我们将不得不完全靠自己了。”`
+			choice
+				`“你有没有发现这里有什么值得注意的地方？”`
+				`“你有计划吗？”`
+					goto plan
+				`“你查到这里是什么地方了吗？”`
+			`“不幸的是，你似乎比我们留在帕蒂尔学到了更多的东西。我们没有足够的信息来说明我们已经不在银河系了。我们能够重新进入定居点并访问控制该结构的计算机，但不幸的是，其中很多都出现故障或损坏。从我们收集到的信息来看，他们似乎完全不知道发生了什么事。`
+				goto lab
+
+			label plan
+			`	"For now, only vague ideas. I was hoping we could determine a clear, identifiable origin of our accidental jump, but we have nothing of that sort for now. While you were away, we were able to re-enter the settlement and access the computers that control the structure, but unfortunately a lot of them are malfunctioning or broken. From what we were able to gather, they seem to be entirely unaware of what has happened.`
+			label lab
+			`	"The time spent inside the lab was more productive. After a few days, one of the creatures you have encountered jumped in - and a few minutes after, every Fetri'sei around us went dormant. They stopped their engines, ceased mining and just drifted without any sign of life. But as soon as the creature left the system, they returned to their normal activities as if nothing happened.`
+			`	"Going forward, we need to determine a list of possible causes for the event that brought us here, and investigate the most likely one. If we dock to the satellite we launched at the beginning of this mission and recover everything it recorded during the encounter, it could help us understand them better than we can from the ground.`
+			`	"Besides that, we have also confirmed you no longer need to cloak when landing here; when you approach the lab with your ship, you are too far away from the settlement for the Ka'sei to understand that you are coming to visit it, as long as we explore the Builder base only when your spaceship isn't landed here. It should save you some fuel, hopefully. Any questions?"`
+			choice
+				`“不用了，我准备走了。”`
+					accept
+				`“我想如果我们直接去车站会更快一些。”`
+			`	"Maybe, but that might be an unnecessary risk. First things first, <first>; there is no need to rush anything."`
+				accept
+
+	npc assist save
+		system "Patir"
+		government "Remnant"
+		personality derelict mute pacifist target
+		ship "Remnant Satellite" "Bright Ember Yonder"
+		dialog `从开放的货舱中，您可以看到卫星在船内向上移动。你将任务分配给 Dusk，在他下载数据时保持卫星稳定。几分钟后，该过程就会结束，您可以将探测器返回到原来的任务。`
+	
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		conversation
+			`走下你的船的楼梯，黄昏再次感谢你的帮助。你递给他一个数据板，其中包含收集到的信息，以及他随身携带的用于接收卫星信号的设备。`
+			`“我将与团队其他成员一起开始分析，”他回应道。 “我们有很多数据需要检查，但时间不多。几个小时后到实验室与我们见面。”`
+
+
+ship "Remnant Satellite"
+	sprite "ship/remnant satellite"
+	attributes
+		category "Drone"
+		hull 130
+		mass 10
+		drag 2
+		"heat dissipation" 1
+	explode "tiny explosion" 5
+	explode "small explosion" 2
+
+
+mission "Ka'het: Patir Mystery 11"
+	name "收集更多数据"
+	description "访问 <waypoints> 的中子星，研究生活在其周围的神秘生物。"
+	source "Builder Settlement"
+	waypoint "Lathia"
+	to offer
+		has "Ka'het: Patir Mystery 10: done"
+	on offer
+		conversation
+			`与任务开始时的整洁相比，实验室一片混乱：地板和桌子上散落着各种残余设备和建造者物品，只留下一条小路连接各个部分。团队聚集在建筑物的另一端，面带失望地讨论任务结果。`
+			`“坏消息，船长，”暮色转向你说道。 “我们的地面扫描仪和轨道卫星都记录了有关这些生物的相同数量的信息：什么也没有。在整个遭遇过程中，收集到的关于它们的唯一信息就是它们的位置。它们构造中的某些东西使得我们不可能推断出有关它们内部结构的任何信息。`
+			`“如果我们找不到一种方法来更多地了解它们，我们就没有多少选择，而且都相当危险。”`
+			choice
+				`“你有什么想法吗？”`
+				`“嗯，我们还有其他地方可以去。”`
+			`“我们正在评估我们的选择。吉拉环形世界太大太远；发生事故的风险掩盖了发现任何有用东西的可能性。另一方面，查奈的空间站距离帕蒂尔现在的位置非常近——双向都有几次跳跃。`
+			`“然而，也有缺点。探索它意味着将我们自己暴露在空间站内的任何装置或陷阱中；我们对墓地建造者空间站的探索已经有人员统计。”黄昏停了几秒，沉浸在自己的思绪中。 “目前来说，登上车站的风险太大了。”`
+			`在地面上搜查了一个大袋子后，其中一名遗迹拿出了另一台全息投影仪。她对它进行了一些修改，直到它集中在你之前访问过的中子星拉西亚上。 “这是我们了解更多有关这些生物的最安全的赌注，”她表示。 “根据你的数据，这个系统的数量和多样性是迄今为止最高的。如果你在隐身状态下通过该系统并使用我们的传感器，你也许能够获得足够的信息，而不会让自己处于危险之中。”`
+			choice
+				`“如果这些扫描仪在这里不起作用，为什么拉西亚会有所不同呢？”`
+					goto why
+				`“如果我的燃料用完了怎么办？”`
+					goto fuel
+				`“如果这也失败了怎么办？”`
+			`“这是一种明显的可能性，”达斯克回答道，“但我们必须在采取冒险人员之前调查每一个途径。”`
+				goto assembly
+
+			label fuel
+			`	"It will only take a few minutes to determine whether our equipment can see through the exterior of these beings," Dusk replies. "I suggest filling your fuel tanks near Patir before leaving."`
+				goto assembly
+			label why
+			`	"It is a shot in the dark," Dusk replies. "Being able to scan even just one of these beings would be a great leap forward - perhaps one without external shielding, or damaged in such a way that permits us to analyze them."`
+			label assembly
+			`	The Remnant begin to mount and wire all the scanning equipment on the <ship>. After a few hours, you're ready to take off once again.`
+				accept
+	on enter Lathia
+		dialog
+			`驾驶舱下方传来沉闷的嗡嗡声，表明扫描仪已激活。您借此机会观察中子星迷人的颜色，美丽而可怕。几分钟后，会发出蜂鸣声提醒您扫描已完成，您可以返回到 <system> 。`
+	on visit
+		dialog `您已返回 <planet>，但尚未访问 <waypoints>！最好离开并确保您访问了系统。`
+	npc
+		government "Magic Asteroid"
+		system "Lathia"
+		personality plunders harvests surveillance mute waiting staying
+		fleet
+			cargo 3
+			variant
+				"小行星大 4"
+				"小行星介质"
+				"小行星年轻2号"
+				"小行星年轻 1 号"
+
+
+mission "Ka'het: Patir Mystery 12.1A"
+	landing
+	name "<system> 站"
+	description "调查 <system> 的空间站，寻找与五位遗迹科学家一起返回银河系的方法。"
+	passengers 5
+	source "Builder Settlement"
+	destination "Chanai Structure"
+	blocked `Right as you touch down, you notice a message coming in from Dusk. "<first>, we will need at least five free bunks for the mission we are preparing."`
+	to offer
+		has "Ka'het: Patir Mystery 11: done"
+	on offer
+		conversation
+			`遗迹已经站在实验室外等待你的到来。当你完成保护飞船的任务时，黄昏就在驾驶舱里与你会面。`
+			`“看起来前景并不乐观，<first>。就像卫星一样，我们给你的扫描仪除了基本轨道信息之外没有记录任何东西。也许经过深入分析我们可以了解一些关于这些生物的信息，但没有任何东西可以帮助我们进行搜索。`
+			`“我们能做出的为数不多的发现之一是在拉西亚周围存在一颗特定的小行星——其数量级比舰队中的其他小行星大，但仍然属于同一物种。与它的同类不同，它似乎完全静止，并且没有显示出任何外部活动；这可能使它适合表面探险，但在看似有生命的物体上这样做仍然是极其危险的。`
+			`“尽管如此，我们的选择还是有限的。我之前已经提到过探索查奈空间站的可能性；这肯定会有风险，但如果找不到更安全的替代方案，这可能是我们无法避免的事情。然而，当你离开时，团队的一部分制定了第二个任务计划。我们开始意识到，如果这些生物能够阻止 Fetri'sei，那么它们之间一定存在某种联系。如果我们能够以某种方式拦截这种联系，它将使我们能够比我们的传感器进行更多的研究，甚至可能进行交流和他们在一起。”`
+			choice
+				`“你打算怎么做？”`
+					goto how
+				`“你可以从这里做吗？”`
+			`“不幸的是，这远远超出了我们的专业领域，”Dusk 回答道，“如果一开始就有可能的话。物理上连接到这个信号会更可行。我们知道 Ka'sei 在该生物留在这个系统的整个过程中都会保持休眠状态。如果当该生物到达时 <ship> 距离 Fetri'sei 足够近，我们将有大约半小时的时间来访问其内部计算机并连接到其通信系统。然而，这暴露了如果生命体过早离开系统，或者访问 Fetri'sei 重新激活它，我们就会面临重大危险。`
+				goto choose
+
+			label how
+			`	"In our opinion," Dusk replies, "connecting to it physically seems like the most feasible option we have. We know that the Ka'sei will remain dormant for the entire time the being remains in this system. If the <ship> was close enough to a Fetri'sei when the being arrives, we would have around half an hour to access its internal computer and connect to its communication system. However, this exposes us to significant danger if the being leaves the system prematurely, or if accessing the Fetri'sei reactivates it.`
+			label choose
+			`	"Even still, we believe this approach is safer than exploring Chanai. You have seen what happened the first time we tried to explore Patir; the structures in this part of space are guarded by lethal force. In contrast, if our new plan goes south, we will at least be able to quickly return to the lab. Of course, it may be that neither of these options will help us escape," he adds, somewhat frustrated. "The team is at a standstill, with both options having more cons than pros. The choice is yours, Captain."`
+			choice
+				`“查奈似乎是一个更好的选择。”`
+					goto chanai
+				`“新计划对我来说更可行。”`
+					goto hack
+				`“你更喜欢哪个选择？”`
+			`	"I do not want to influence you in making this choice, <first>. Both options are more dangerous than I am comfortable with, but there is little we can do about that now. It is up to you now."`
+			choice
+				`“查奈似乎是一个更好的选择。”`
+					goto chanai
+				`“新计划对我来说更可行。”`
+			label hack
+			`	"Alright then. The first step will be deploying some satellites in the nearby systems. To maximize the amount of time we have, we will need preemptive warning on the arrival of these beings. Reusing the sensors we put on your ship and coupling them with the spare parts we have in storage should be enough to assemble a few probes; meet us in the lab in a few hours and we will be ready."`
+				decline
+
+			label chanai
+			`	"Okay then. Most of the equipment we are going to need is the same equipment we used for Patir, so we will be ready to depart in just half an hour." After helping them pack the last few items, you take off and set the course to the new destination: <system>.`
+				launch
+	on enter Chanai
+		dialog
+			`巨大的车站仍然离你很远，看起来只是远处的一个点。对结构进行长距离扫描可以揭示出足够的信息以进行初步评估；经过快速讨论后，残余人员为您选择了一个接近向量。`
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		conversation
+			`该结构的外部涂层看起来原始且未受破坏，就像一艘新的宇宙飞船。围绕黑洞上方的轨道运行，几乎没有小行星在能够对其构成威胁的轨道上运行。在你旁边，一名遗迹研究人员将一台庞大的扫描仪指向空间站；几分钟后，她指出了可以进入该结构的地方。`
+			`“这与我们之前在帕提尔 <first> 的探险相比会有一点不同，”达斯克一边走向飞船的气闸室一边说道。 “我们甚至无法弄清楚是谁建造了这个地方，更不用说了解如何访问他们的系统并控制他们的门了。我们将不得不在这里使用更多的蛮力才能进入建筑群内。”说着，他指了指背上那个类似喷灯的设备。`
+			`当 <ship> 驻扎在距建筑物约一米远的地方时，整个团队将与您一起慢慢移出气闸室。为了安全起见，残骸仍被拴在船上，他们迅速准备好执行任务的登船设备，并在几分钟内将其连接到平台上。 “为了进入这个模块，我们即将融化它的外壳，”达斯克宣布。 “你准备好了吗？”`
+			choice
+				`“当然。”`
+					goto melting
+				`“你确定这里安全吗？”`
+			`“据我们所知。该模块已完全减压，从我们的扫描来看，它似乎完全处于惰性状态——当然，总是存在不确定性，但这是我们在有限的时间内可以识别的最容易到达的地点。”`
+			label melting
+			`明亮的闪光开始登机；其中一名遗迹，拿着你之前看到的同一把火炬，慢慢地在模块的鞭打护罩上切出一个大致圆形的孔，直到它轻松脱落。将碎片移走，然后很快对下一层重复该过程，然后再对下一层重复该过程；它向结构的其余部分传递的强烈振动让您清楚地了解该设备的力量。最终，最内层也被移除，你跟随团队的其他成员进入外星平台。`
+			`断开系绳并进一步进入开口，您立即注意到该模块似乎有一些特殊之处。尽管处于微重力状态，但你附近却找不到扶手，行动十分困难；然而，当你用手电筒在里面寻找一些东西时，你的注意力被一些更奇怪的东西吸引了：一个不祥的、毫无特征的斑点，在离你几米远的半空中盘旋。`
+			`该物体的表面只被一些周期性的波纹打断，反射并奇怪地扭曲了房间周围的一切。房间里一片寂静，每个人似乎都在评估局势。几秒钟后，暮色和两名遗迹开始向那个现象移动，手里拿着一个装置。`
+			choice
+				`“那是什么东西？”`
+					goto thing
+				`（等等，看看会发生什么。）`
+					goto thing
+				`（举起我的爆能枪。）`
+			`注意到你的反应，黄昏示意你停下来。 “冷静点，队长，”他示意道，“在这种情况下手枪没什么用处。”他继续关注其他科学家正在收集的数据。 “我们似乎是从其中一个燃料箱进入空间站的。那边的那个球体是由某种推进剂制成的，尽管我们的仪器在确定其确切成分方面存在一些困难。`
+				goto continue
+
+			label thing
+			`	"Interesting," Dusk states, as if immersed in his thoughts. After checking that the device has started gathering data, he continues. "We seem to have entered the station from one of the fuel tanks. That sphere over there is made of some kind of propellant, though our instruments have some difficulties determining its exact composition. It must have an incredibly low vapor pressure to remain liquid in this near vacuum.`
+			label continue
+			`	"All I can say for certain is that it is not the hyperdrive fuel we use - liquid deuterium would have boiled off long ago. Luckily, we don't need to know what it is; there should be enough space to pass through without touching it." Scouting around the tank for a passage, the team quickly identifies a maintenance hatch, hopefully leading to the crew section, and starts creating another hole to pass through. The whole process is slightly quicker than the first was, but by the time they're done more than a third of the oxygen reserves in your suit are gone.`
+			`	Moving through the opening, you reach a long, cylindrical corridor, just as dark as the room you just came from. Based on the many handles and scaffolding attached to the surfaces around you, you guess this part of the station used to be inhabited. After following the group through the tunnel for a few minutes, you reach an intersection: the corridor splits into two lateral openings, each of them seemingly as small and endless as the one you're in.`
+			`	"We only have a limited amount of time for this expedition, <first>. You have seen us work a few times now; can you explore the two tunnels on your own and reach us when you have completed it?" Dusk asks. "We will remain in radio contact the entire time."`
+			choice
+				`（接受。）`
+					goto tunnel
+				`“你有关于这部分的信息吗？”`
+				`“你为什么不去帮忙探索这些隧道呢？”`
+					goto help
+			`	"Not much. We only had time for a brief scan during the approach, but based on the volume of these sectors alone, it shouldn't take you more than a couple hours to explore them.`
+				goto tunnel
+			label help
+			`	"Well, we have our own tunnels to go through," he replies half-seriously. "We have a lot of ground to cover, and only so much air in our suits. The safest way to increase our reach without staying here for weeks is by splitting up, like we did when we first explored the Builder settlement a few weeks ago.`
+			label tunnel
+			`	"Whenever you reach a new area, take samples and pictures of anything you deem interesting. Never forget to keep an eye on your oxygen: each of us will consume it at slightly different rates, and we should start the trip back as soon as someone has less than a third of a tank left. May the Embers help your search, Captain, and see you soon!"`
+			`	Moving in the zero gravity station is quick and relatively easy; despite its length, it only takes you a few minutes to reach the end of the right tunnel. All you can find, however, is a closed hatch. A few tries at forcing it open only serve to confirm that it is locked shut, and you decide to go back and try the other tunnel. This time, your search turns up results, and you end up in a dark, somewhat cramped room.`
+			`	The room is lavish and dazzling, the walls covered with intricate carvings. It's a striking difference from the gray and slightly coarse material everywhere else in the station, pushing you to gather a few samples to analyze later. To an extent, it reminds you of the Art Deco paintings of ancient humanity. Around the room, alien plants of varying height and shape paint every corner with a reddish hue.`
+			choice
+				`（快速取样并继续我的任务。）`
+					goto moving
+				`（别管他们。）`
+					goto moving
+				`（仔细检查它们。）`
+			`	Growing from the vase up to almost the ceiling, the plant you choose to analyze stands at nearly twice your height; despite this, the trunk is only a few millimeters thick, thanks to the lack of gravity aboard the station. Slender, needle-like leaves are spread across the entire stem, contrasting its okra with a red tint.`
+			`	As you try to take a better look at the fronds, the entire trunk breaks in half with minimal pressure. You try to pick up the upper segment before it flies away, but this only splits it into more parts; you decide to observe the resulting pieces from afar instead. To your surprise, the plant is completely hollow, with a large hole inside the stem. You take a few pictures and a couple samples of both the surface and of the vase, then move to the next room.`
+			label moving
+			`	The rest of the zone isn't as interesting. A series of holes in a wall attract your attention, but they prove too narrow to pass through and too long to see the end; similarly, the corridor at the end of the area is slightly smaller than your suit, preventing you from continuing. As you return back to the rest of the group, however, you notice an unusual drawing.`
+			`	The canvas, attached between various carvings, shows a series of points in a line with every color of the rainbow. While the lines are near the bottom of the mural, above them all shines what looks like a red sun, sending rays of light down to each of the colorful dots and surrounding them all in a crimson halo. You pass your glove over its surface, and you notice every part is composed of a different material, smoother and more refined than the walls around it.`
+			`	While the oxygen levels in your suit continue to lower, you follow Dusk's instructions from the radio up and down the maze of tunnels until reaching a large open area where you finally find the Remnant, busy observing a vial of samples. Behind them, you see the start of the giant barrel that composes most of the station's structure.`
+			choice
+				`“这是什么地方？”`
+					goto place
+				`“小瓶里装的是什么？”`
+					goto vial
+				`（靠近桶。）`
+			`	The sheer size of the frame is rather impressive: as you walk toward it, you estimate it must be at least a kilometer from one side to the opposite. At the very end, an enormous lens is attached to the last ring of the barrel; four holes near its center give it a slight resemblance to a cloth button.`
+			label place
+			`	"We are most likely in the exhaust chamber of this station's laser system," Dusk says, putting the vial inside a container. "It is impossible to say for certain what its purpose was - hopefully, it was not purely a military system. That being said, we have obtained some info that is far more relevant for our search. Let us get going toward the <ship> first, then I will show you everything we have gathered."`
+				goto back
+
+			label vial
+			`	"Our ticket back, hopefully," Dusk replies with a half smile. "While everything we have seen is interesting in its own way, there is something in particular that gives me hope about finding a way out. But first, we need to start moving back now - we have spent enough time studying this exhaust chamber, and our oxygen margins are starting to worry me."`
+			label back
+			`	One at a time, the group enters back into the main tunnel, with Dusk at the rear and you right in front of him. You notice the passage at the end doesn't show any blowtorch marks; it seems that the Remnant found it already open when they arrived here.`
+			`	"While you were exploring that sector, we found a few more tunnels and split up into subgroups to explore each of them. This is how we found the path to the barrel, for instance, as well as many other peculiar areas. And, in one of them," he continues, clumsily passing you a data pad, "this is what we stumbled upon."`
+			`	Looking at the screen, you see a photograph of two Remnant standing in front of a large mural, three times as tall as them and far wider. Despite the picture being rather poorly lit, you recognize it as a two-dimensional starmap, carved into the wall of the station. Near the bottom right, a set of circles and unfamiliar markers surround one of the systems indicated.`
+			`	"Look at the orbital parameters of that system. It is, without a shadow of doubt, indicating Patir. A system they should not be aware of, if it only just arrived here, but it is one they were apparently interested in."`
+			choice
+				`“这可能是巧合。”`
+					goto coincidence
+				`“也许帕蒂尔在到达银河系之前曾经住在这里。”`
+					goto milky
+				`“什么目的？”`
+			`	"I would also like to know that. I cannot recognize the language in the text, and deciphering it would be an enormous task - one that would require a vast amount of text to analyze, as well as years of focused effort from the whole community. We must base our decisions only on what we can infer from the graphic itself, which is far from ideal. And then, there is this."`
+				goto crystal
+			label milky
+			`	"You may be right. I cannot recognize the language in the text, and deciphering it would be an enormous task - one that would require a vast amount of text to analyze, as well as years of focused effort from the whole community. We must base our decisions only on what we can infer from the graphic itself, which is far from ideal. And then, there is this."`
+				goto crystal
+			label coincidence
+			`	"Maybe. Without reading the text surrounding it, which is written neither in Builder nor any language I can recognize, we can only analyze what we can infer from the graphic itself - something far from ideal. But if we take it at face value, it could be the first step towards escape from this sector. And then, there is this."`
+			label crystal
+			`	Dusk hands you the vial from earlier, which, despite its size, feels rather heavy in your hand. Inside is a grainy dust interspersed with small, violet crystals of various shapes. "We found a similar powder on the ground of a number of rooms inside the station. We have not explored the entire complex, of course, but if the pattern repeats we expect there to be something similar around the entire barrel."`
+			`	The particles suspended in the vial remind you of the regolith surrounding the Builder settlement orbiting Patir, but far less compact. "Attempts to learn the dust's composition have been inconclusive. Perhaps the instruments in the lab will give us better results, but our current tools only returned noise. However, we did notice something potentially interesting: the noise aligned with the scans you took in Lathia a few days ago. Whatever it is, it could be made of the same matter that composes those creatures - I can use the scanners on your ship to confirm it without wasting any time while we depart."`
+			`	You exit the station and enter your ship, and see most of the scientists have already moved their samples inside your cargo hold, with around two dozen containers scattered on the floor. Soon after, you're back inside the cockpit, preparing for liftoff; discussion about the next mission will have to wait until you're in Patir.`
+
+mission "Ka'het: Patir Mystery 12.1B"
+	landing
+	name "返回<system>"
+	description "返回到 <destination> 以找出下一步。"
+	passengers 5
+	source "Chanai Structure"
+	destination "Builder Settlement"
+	blocked `Right as you touch down, you notice a message coming in from Dusk. "<first>, we will need at least five free bunks for the mission we are preparing."`
+	to offer
+		has "Ka'het: Patir Mystery 12.1A: done"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		conversation
+			`当你陪同遗迹团队返回实验室时，他们证实了达斯克关于尘埃的理论。从他们的说话方式来看，他们对于风化层的来源似乎已经达成了共识，虽然他们没有详细说明。`
+			`该模块从来都不是特别吸引人，但在过去的几周里，来自小行星外部的一层薄薄的灰尘覆盖了地板，只有研究所需的表面保持清洁。疲倦困扰着科学家们的脸：他们在过去的几天里一定没有睡太多，以跟上传入的数据量，你也没有。当你试图回忆最后一次不穿西装出门时——至少一个月了——你的思绪被黄昏的到来打断了，他背着最后几个样品。`
+			choice
+				`“听起来这次探险比上次更有成效。”`
+				`“既然事情已经完成了，接下来你打算做什么？”`
+					goto next
+			`“哦，当然！虽然我们收集到的数据没有我希望的那么多，但我们现在在帕蒂尔和查奈之间，以及空间站和那些奇特的生物之间有了相当清晰的联系。仅此一点，对我们的任务来说就非常宝贵了。`
+			label next
+			`“在返回的途中，我们评估了我们可以使用的选项。正如你可能猜到的，最明显的一个是进一步探索空间站；然而，它并不像之前想象的那么有吸引力。虽然它可能被用来影响帕蒂尔，但很明显它现在静静地坐着，无能为力，好像错过了一些可以让它复活的东西。也许我们可以找到更多关于它的设计，但在合理的时间范围内我们自己使用它的机会很低。`
+			`“我们还有足够的消耗品可以维持数周；我们一到达这个区域就开始配给，并准备在必要时进一步减少消耗品。不过，如果我们想要结果，我们需要采取更直接的方法。此时此刻，接近栖息在这个集群中的物种至关重要，并且建议尽快这样做。”`
+			choice
+				`“你有什么建议？”`
+					goto plan
+				`“你提议进行某种形式的第一次接触吗？”`
+					goto contact
+				`“他们在查奈车站后面吗？”`
+			`“也许，也许不是。空间站的内部设计与小行星的大小和特征很奇怪，但我们确实知道它们过去曾在那里，而且你亲眼看到了找到进入的方法是多么困难。`
+				goto plan
+
+			label contact
+			`	"In a way. We have been considering a close approach to one of those beings ever since we first saw them, and your discovery of the planetoid in Lathia opens up the opportunity for a surface expedition - gathering samples, analyzing its reaction, and perhaps yes, if they are intelligent and the conditions are right, a true first contact between our two species could happen.`
+				goto lab
+			label plan
+			`	"We have been considering a close approach to one of those beings ever since we first saw them, and your discovery of the planetoid in Lathia opens up the possibility for a surface expedition. Thanks to its size, landing with the <ship> should be possible, and we could even explore the planetoid in our suits if the surface is safe. Perhaps, if these beings are truly intelligent, this could be the first contact between our two species.`
+			label lab
+			`	"Meet us in the lab in a few hours, and we will have everything ready for the trip. With a bit of luck, most of the instruments we used on Chanai will be a good fit for this mission as well."`
+		
+mission "Ka'het: Patir Mystery 12.2A"
+	name "卫星部署"
+	description "在 <waypoints> 部署两个探测器来监视传入的太空岩石。"
+	source "Builder Settlement"
+	passengers 5
+	cargo "Remnant Probes" 3
+	waypoint "Mitera"
+	waypoint "Thepa"
+	blocked `Right as you touch down, you notice a message coming in from Dusk. "<first>, we will need at least five free bunks and 3 tons of cargo for the mission we are preparing."`
+	to offer
+		has "Ka'het: Patir Mystery 11: done"
+		( "Ka'het: Patir Mystery 12.1A: offered" + "Ka'het: Patir Mystery 12.1A: declined" ) % 2 == 0
+	to accept
+		has "Ka'het: Patir Mystery 12.1A: declined"
+	on offer
+		conversation
+			`您会发现团队在实验室里等您。旁边是两个机械板条箱，大约有一个人那么大。房间周围的大部分杂物已被大大减少；仅这些卫星就肯定已经使用了其储备的大部分。 “他们在这里，队长。”暮色自豪地说。 “两个自主监视探测器，能够在没有任何输入的情况下扫描整个系统，并将结果缓慢地传回给我们。它们的能力与我们主力舰队的能力相去甚远，但考虑到我们的情况，它们应该绰绰有余。`
+			`“我们已经确定了它们的目的地：<waypoints> 的恒星黑洞。一旦到达那里，它们将足够远以向我们发出适当的警告，但也足够近以仅捕捉到朝帕蒂尔飞去的小行星。如果它们这样做，这将是我们离开的信号，并在它们进来时拦截它们。”`
+			choice
+				`“明白了。”`
+					accept
+				`“我应该将这些探测器部署在特定的轨道上吗？”`
+			`“哦，这个不用担心。他们的扫描仪很容易强大到足以覆盖整个系统。他们的力量和通信能力要有限得多，但在我们需要他们持续的时候，这应该不是问题。带我去那些系统，剩下的我会处理。”`
+				accept
+	on enter "Mitera"
+		dialog
+			`当卫星离开你的飞船时，你会看到它移得更远并展开太阳能电池板。探测器很快消失在黑暗的太空中。`
+	on enter "Thepa"
+		dialog
+			`Dusk 很快就到达了控制台，启动了您已经习惯的卫星部署程序。它不需要很长时间就可以完成，几分钟后您就可以再次离开系统了。`
+	on visit
+		dialog phrase "generic missing waypoint or cargo and passengers"
+
+ship "Asteroid Blocker"
+	attributes
+		"heat dissipation" 1
+		"hull" 3
+		"mass" 100
+		"drag" 5
+		"automaton" 1
+		"thrust" 100
+		"turn" 6000
+	outfits
+		"Fuel Removal"
+	turret 0 0
+
+outfit "Fuel Removal"
+	category "Turret"
+	thumbnail "outfit/unknown"
+	"turret mounts" -1
+	weapon
+		"velocity" 1000
+		"lifetime" 10
+		"reload" 100000
+		"blast radius" 200000
+		"safe"
+		"no damage scaling"
+		"range override" 10000000
+		"homing"
+			"leading"
+			"throttle control"
+		"tracking" 1
+		"acceleration" 1.5
+		"drag" 0.2
+		"turn" 12
+		"fuel damage" 500
+		"turret turn" 360
+
+mission "Ka'het: Patir Mystery 12.2B"
+	landing
+	name "Ka'sei黑客攻击"
+	description "利用其中一颗小行星的到来，与残疾的 Ka'sei 对接，从其内部计算机收集数据。"
+	passengers 5
+	cargo "Ka'het boarding payload" 3
+	source "Builder Settlement"
+	to offer
+		has "Ka'het: Patir Mystery 12.2A: done"
+	on offer
+		event "no Patir spaceport and no Fetri spawn" 0
+		conversation
+			`当你下降到定居点时，黄昏似乎比平时更加​​忙碌，不断与地面团队沟通，同时检查传入的遥测数据。当您悬停在着陆平台上方时，他会转向您的控制台。 “让推进器处于待命状态，船长，”他急忙示意。 “我们不会在这里停留。卫星工作得很好；事实上，Thepa探测器刚刚探测到其中一个生物正朝我们的方向跳跃。我们只有几个小时的时间返回轨道，否则我们就会浪费这个机会。”`
+			`在地面上，整个团队从你的船上冲向实验室，很快就带着满手奇怪的设备和笨重的机械回来了。您快速为船的货舱准备好新的有效载荷，然后步行到 Dusk，以便帮助他们将仪器搬运上船。 “据我所知，接近的小行星是小型或中型的。考虑到你们过去的互动或缺乏互动，它不太可能引起任何问题。”`
+			`“进入轨道后我应该做什么？”你问。`
+			`“首先，我们将验证所有可识别的 Ka'sei 在该生物到达后是否已进入休眠状态。一旦确认，你将与其中一个已停用的 Fetri'sei 会合，以便我们可以太空行走到它。我们将从那里处理剩下的事情。`
+			`“当然，这将是遗迹历史上第一次有人登上Ka'sei；毕竟，我们不久前才知道它们的存在。但这些年来我们已经探索了多种Ka'het，取得了不同的结果，有了这些经验，我相信我们应该能够完成我们的使命。”`
+			choice
+				`“你确定这会安全吗？”`
+				`“那我们走吧。”`
+					goto depart
+			`“相信我，<first>，”达斯克回答道，“这将是非常危险的。如果我们可以肯定地说有更好的方法，我们谁都不会这样做，但我们在这里。现在帮我搬这个板条箱；我们快准备好了。”`
+			label depart
+			`当最后一个集装箱被运入时，货运坡道向后移动，出口门也随之向后移动。看了一眼扫描仪遥测仪，你意识到外星人已经开始退出超空间了；按下按钮，发动机就会重新启动，船开始上升。`
+				launch
+	on enter
+		event "Patir spaceport returns and Fetri spawn" 1
+	npc assist
+		government "Ka'sei (12.2)"
+		personality derelict harvests mining plunders uninterested waiting
+		fleet
+			names "ka'sei"
+			cargo 3
+			variant
+				"费特里塞伊 (Patir 12.2)"
+		conversation
+			`这个巨大的生物漂浮在距离你的驾驶舱几米远的地方，一言不发，一动不动，但你知道，在壳内，蛞蝓仍然活着，状态良好，随时准备杀死它。与墓地中的一些 Ka'het 相比，这是建造者较小的创造物之一，但对于本质上是一个单一有机体来说，它的尺寸仍然令人印象深刻。`
+			`在将 <flagship> 设置为自动位置保持之前，您移动您的飞船，使主舱门尽可能靠近 Fetri'sei。残余人员已经穿着舱外服进入气闸室，不久之后你也加入了他们。`
+			`“当我们在里面时，我们很可能无法沟通，”杜斯克建议道。 “通常情况下，装甲外壳的墙壁太厚太密，我们的信号无法通过，而且我们需要导航的空间阻止我们使用物理系绳。但这并不意味着我们将不受保护。我可以看看你的手枪吗？”`
+			`你从皮套里抽出武器，递给他。快速检查后，他点点头并把它还给我，然后继续。 “进入内部后，我们的第一个操作将是连接到 Fetri 遥测的下行链路：根据我们的经验，它没有受到保护，而且很容易访问。从那里，我们将能够监控船只的防护罩。`
+			`“在这次任务中，很多事情都可能出错：未知生物可能会提前离开系统，或者我们的行动可能会无意中唤醒Ka'sei。如果你发现任何异常情况，无论多么轻微，请拿出这把枪，指向炮弹上的空位，然后射击。我们的终端会让我们知道其护盾完整性的哪怕是最微小的变化，一旦发生这种情况，我们就会立即跑回安全地带。”`
+			choice
+				`“这不会激怒Ka'sei吗？”`
+					goto anger
+				`“如果你无法进入护盾等级怎么办？”`
+			`“那么我们就放弃任务。如果没有那个安全网，继续下去就太危险了。不过，既然它们都是建造者创造的，那么它应该和Ka'het设计语言足够相似。`
+				goto move
+
+			label anger
+			`	"Almost certainly not, given how negligible the damage should be. A sidearm would not make a scratch in its armor, let alone a dent; and even in the small chance it does activate its defenses, you should have enough time to leave the system and let it calm down.`
+			label move
+			`	"Inside, we will search for the memory banks of the spacecraft. After a quick selection based on the data we can scrape, we will take the few that contain information concerning our research and extract their contents. Understood?"`
+			choice
+				`（点头。）`
+					goto entrance
+				`“关于我的什么？”`
+			`	"Given that you need to be able to fire as quick as possible, you cannot return to the cockpit. So, we took the liberty of creating a small terminal here to keep an eye on the situation." He points to a small desk in the cargo bay filled to the brim with Remnant machinery.`
+			label entrance
+			`	One by one, the scientists jump from your ship to the Fetri, moving toward a closed, circular hatch in between the two engines. As you watch them start the expedition, you sit down at the makeshift console, monitoring movements in the system as well as any changes to the slug. Though you can't clearly see what they are doing, you distinguish someone inserting a rod inside a small aperture, followed by the hatch opening right after.`
+			`	As the crew moves beyond your line of sight and communications cease, your unease grows steadily. You split your attention between the various screens in front of you and glancing out of the airlock. The clock on your suit's wrist keeps on ticking slowly.`
+			`	Scanning over the monitors for the umpteenth time, you see that heightened energy levels have been detected inside the unknown creature.`
+			choice
+				`（等等，看看会发生什么。）`
+					goto waiting
+				`（用我的随身武器射击Fetri'sei。）`
+			`	You take the weapon from the table and shoot the Fetri'sei just as the creature covers itself in rose-tinted sparks. According to Dusk, one shot should be enough to send the message through the impenetrable armor of the spacecraft, but nothing seems to happen after your gun's energy bolt disperses on the surface of the ship.`
+				goto fired
+			label waiting
+			`	A second later, the creature covers itself in a burst of rose-colored sparks: it's about to jump away! You take the weapon from the table and pull the trigger, releasing a bolt of energy that quickly disperses on the surface of the Fetri'sei. According to Dusk's words, it should be enough to send the message through the impenetrable armor of the spacecraft, but nothing seems to happen after the shot.`
+			label fired
+			`	Second after second passes relentlessly, with no reaction whatsoever from the Fetri'sei or its surroundings. As the unknown creature fades behind a violet cloud and jumps away, you can't help but wonder what to do.`
+			choice
+				`（第二次射击 Fetri'sei。）`
+					goto shoot
+				`（继续等待。）`
+					goto wait
+				`（跳上卡西号，召唤残存者上船。）`
+			`	There's no time to waste. Without hesitation, you push yourself off the border of the airlock and toward the Fetri'sei. After remaining airborne for a few instants, you land right next to the leftmost engine nacelle, bouncing off its skin. A timely activation of the thrusters on your wrists helps you move back to its surface, however, and by grabbing a long spike attached to its back, you can finally stabilize and move further ahead.`
+			`	White noise starts coming from your communicator; moving your head up, you finally see the Remnant leaping out of the hatch, carrying a dozen faintly glowing cylindrical tubes under their arms. They notice you right when communication returns to normal, and their message arrives loud and clear: "Jump!"`
+			`	You leave the handles and use your feet to give you a good push away from the spacecraft. At the last second, you move to the right to avoid ending up behind one of its thrusters just as they roar to life. The Fetri'sei has awakened, and for an instant you see all of its systems activate at once - the engines, the steering, even the Ravagers.`
+				goto return
+
+			label shoot
+			`	You press the trigger once more, and the projectile again dissolves in the shield protecting the back of the Fetri'sei. For a few seconds still nothing seems to happen, but then, slowly, white noise starts coming from the communicator. Watching the spacecraft, you finally see the Remnant leaping out of the hatch, carrying a dozen faintly glowing cylindrical tubes under their arms.`
+				goto continue
+			label wait
+			`	The wait is excruciating, but after a few seconds, you start hearing white noise coming from your headphones. Right as you start recognizing some words, one of the Remnant leaps out of the hatch, followed closely by the other four. Under their arms, you can distinguish a dozen cylindrical tubes, a faint glow surrounding them.`
+			label continue
+			`	A flashing warning appears on the console: the energy readings of the other spacecraft are rising quickly. Right as you try to warn the rest of the group, the Ka'sei comes back to life, and for an instant you see all of its systems returning online at once - the engines, the steering, even the Ravagers.`
+			label return
+			`	Amidst the chaos, you count that all five of them made it out of the hatch, still carrying some of the cylinders with them. They were able to leave before the spacecraft's thrusters started firing, and they seem to have remained relatively unharmed by the event. The Ka'sei moves further and further away.`
+			`	One at a time, they move back into the airlock, leaving their cargo attached to one of the instruments they carried with them. As you close the door and pressurize the compartment, Dusk approaches you about the mission.`
+			`	"Thank you for that, <first>. We had to cut short the exploration when we saw your message, before we had the chance to retrieve the specific data we were looking for. As a compromise, we decided to take some memory banks - these cylinders - with us, so we could search through the data later. It was dangerous, but it worked.`
+			`	"That said, I suggest returning to the outpost as soon as possible. The Ka'sei we have boarded may start acting erratically after this, or it may even attack us; we have removed part of its brain, after all. Hopefully this mission will not backfire against us."`
+			`	You sit back in the cockpit, starting the engines once again.`
+	on visit
+		dialog phrase "generic cargo and passenger on visit"
+	on complete
+		fail "Ka'het: Patir Mystery 12.2C"
+
+# The mission here is a complex mashup of game functions that uses many different mechanics to achieve the intended sequence:
+# - two ships spawn, one disabled and one functional (but otherwise standing still);
+# - the player boards the disabled ship, with the mission happening before their eyes;
+# - the other ships jump away right after the mission, and the one the player boarded returns to its normal functions.
+# In order to achieve this, the asteroid ship has just over 200 fuel and a negative fuel generation, meaning that it will be unable to jump essentially right after it spawns; removing the spaceport means that it won't be able to refuel on the Builder settlement, and so it remains in space doing nothing but waiting. When the player boards the disabled NPC, it is repaired and returns to its functions; as it is an enemy of the asteroid ship, it will shoot it with every available weapon, including what has been hidden under "Ka'het Machinery": a negative fuel damage weapon, that will instantly refill its fuel reserves and let it jump. Giving it just a capacity of 200 would mean that the game would always think it is just infinitesimally under the threshold to jump, so I gave it 250 and everything works as it should with surprising consistency. Two peculiarities of this are that the player will be able to board the asteroid ship to refuel it, and that the Ka'sei could shoot the asteroid with its ravagers for a split second before it jumps if the position of the two is just right. Both of them are harmless: the health of the asteroid is orders of magnitude higher than the damage the Ka'sei can inflict in that time, and as the player boarding the asteroid will give it exactly 200 fuel because of game mechanics, 1 single frame later it will be already unable to jump. However, in order to account for their oddity I added a small dialog to the asteroid's boarding screen to make it as if you were flying by it, and described at the end of the previous mission how for an instant the Ravagers ignite when the Ka'sei returns online, as if in an unintended burst.
+
+event "no Patir spaceport and no Fetri spawn"
+	system Patir
+		remove fleet "Ka'sei"
+	planet "Builder Settlement"
+		remove spaceport
+
+event "Patir spaceport returns and Fetri spawn"
+	system Patir
+		add fleet "Ka'sei" 300
+	planet "Builder Settlement"
+		spaceport `遗迹实验室与环境的其他部分奇怪地融为一体，其颜色和设计与周围的建造者结构相似。太空港只是定居点附近的一条平坦的风化层，覆盖了大部分地形的碎片被匆忙清理干净。`
+
+
+mission "Ka'het: Patir Mystery 12.2C"
+	landing
+	invisible
+	non-blocking
+	source "Builder Settlement"
+	to offer
+		has "Ka'het: Patir Mystery 12.2A: done"
+	npc assist
+		government "Magic Asteroid"
+		personality coward fleeing harvests pacifist uninterested waiting mute
+		fleet
+			cargo 3
+			variant
+				"大小行星（Patir 12.2）"
+		dialog
+			`这个巨大的生物站在你面前，在淡粉色的光环中缓慢地脉动。中断类小行星表面的气泡略显半透明，让您可以简要了解内部的晶体结构，但您的思绪很快就会回到限时任务，并决定在为时已晚之前继续前进。`
+	to fail
+		has "Ka'het: Patir Mystery 12.2B: done"
+
+
+outfit "Ka'het Machinery"
+	category "Turrets"
+	thumbnail "outfit/unknown"
+	"turret mounts" -1
+	"unplunderable" 1
+	weapon
+		"velocity" 1000
+		"lifetime" 1
+		"reload" 1
+		"blast radius" 100000
+		"safe"
+		"no damage scaling"
+		"range override" 1000000
+		"homing"
+			"leading"
+			"throttle control"
+		"tracking" 1
+		"acceleration" 1.5
+		"drag" 0.2
+		"turn" 12
+		"fuel damage" -400
+		"turret turn" 360
+
+ship "Fetri'sei" "Fetri'sei (Patir 12.2)"
+	plural "Fetri'seia"
+	sprite "ship/fetri'sei"
+	thumbnail "thumbnail/fetri'sei"
+	attributes
+		category "Interceptor"
+		"cost" 5700000
+		"shields" 2400
+		"hull" 7200
+		"required crew" 1
+		"bunks" 1
+		"mass" 210
+		"drag" 2.9
+		"heat dissipation" .5
+		"fuel capacity" 100
+		"self destruct" 1
+		"ramscoop" 0.13
+		"cargo space" 62
+		"outfit space" 383
+		"weapon capacity" 184
+		"engine capacity" 86
+		"energy capacity" 10000
+		"energy generation" 23.3
+		"heat generation" 32
+		"shield heat" 3.4
+		"hull repair rate" 0.3
+		"ka'sei" 1
+		weapon
+			"blast radius" 120
+			"shield damage" 540
+			"hull damage" 280
+			"hit force" 780
+	outfits
+		"Ka'het Machinery"
+		"Ka'het Ravager Beam" 2
+
+		"Ka'het Primary Cooling"
+		"Ka'het Shield Restorer"
+		"Ka'het MHD Generator"
+		"Ka'het Reserve Accumulator"
+
+		"Ka'het Compact Engine" 2
+
+	gun -13 -36
+	gun 13 -36
+	turret 0 0
+	engine -20 46.5
+	engine 20 46.5
+	explode "tiny explosion" 6
+	explode "small explosion" 10
+	explode "medium explosion" 18
+	explode "large explosion" 10
+	"final explode" "final explosion small"
+	description "Fetri 是一个自我复制的探测器，旨在从墓地收集铱并将其运回建造者。"
+
+ship "Asteroid Large 1" "Asteroid Large (Patir 12.2)"
+	sprite "ship/asteroid adult"
+	attributes
+		category "Transport"
+		"cost" 1350000000
+		"hull" 965612
+		"required crew" 1
+		"bunks" 1
+		"mass" 130
+		"drag" 4.1
+		"heat dissipation" .7
+		"energy capacity" 1000
+		"energy generation" 10
+		"fuel capacity" 250
+		"fuel generation" -1
+		"cargo space" 50
+		"outfit space" 390
+		"weapon capacity" 150
+		"engine capacity" 95
+		weapon
+			"blast radius" 80
+			"shield damage" 800
+			"hull damage" 400
+			"hit force" 1200
+	outfits
+		"Asteroid Anti-Missile"
+
+		"Asteroid Jump Drive"
+		
+	engine 0 0
+		zoom 1
+		angle 0
+		over
+	turret 0 0 "Asteroid Anti-Missile"
+	explode "tiny explosion" 10
+	explode "small explosion" 25
+	explode "medium explosion" 25
+	explode "large explosion" 10
+	"final explode" "final explosion medium"
+
+
+mission "Ka'het: Patir Mystery 13.1"
+	name "返回<planet>"
+	description "现在帕提尔黑洞似乎已经返回银河系，与黄昏一起返回<planet>。"
+	passengers 5
+	source "Builder Settlement"
+	destination "Aventine"
+	to offer
+		has "Ka'het: Patir Mystery 12.1B: done"
+	on offer
+		event "Patir returns" 0
+		conversation
+			`时机已到：走向实验室的步行既快捷又直接，只需几分钟即可走完全程。透过舱门的窗户，你可以看到其他人正在准备背包，每个方向都围绕着他们准备好的工具箱。你隔着玻璃挥手，他们也会回应你的问候。`
+			`你移动气闸室沉重的门穿过，等待房间重新加压后再走进去。然而，当舱门打开时，残余人员已经走了，匆忙地将他们的行李留在地板上。`
+			`当你走进实验室几步时，你转身发现他们都用敬畏的目光粘在窗户上。天空再次变黑，远处已经开始出现几条昏暗的线条。`
+			`当星星和星系在夜空中放大时，一些遗迹在实验室里跑来跑去，打开各种仪器。然而，他们中的大多数人仍然将脸贴在玻璃上。光线开始汇聚到一个点，在背景中形成一个巨大但迅速缩小的物体。`
+			`恒星在进入最终位置之前开始减速。当你在这里呆了这么久之后，不难发现天空又变了。在你旁边，团队的其他成员已经在分析收集到的数据；黄昏似乎正在从天文钟上记下一些东西。`
+			choice
+				`“我们回到银河系了吗？”`
+				`“那有多久了？”`
+					goto time
+				`“我们现在在哪里？”`
+			`“我还不能说。”暮色急忙回答道。 “快，穿上你的EVA套装，我们要尽快出发，大家一起出发，不知道还有多少时间。”你匆忙将头盔连接回生命维持系统，并跟随他们走出气闸室，尽力跟上。`
+				goto depart
+
+			label time
+			`	"Around four minutes," Dusk replies hurriedly. "But we will talk about that another time. We need to depart as soon as possible, all of us together. I do not know how much time we have." You hastily connect your helmet back to the life support and follow them out of the airlock, trying to keep up as best as you can.`
+			label depart
+			`	It takes only a few minutes to launch the <ship>, the six of you standing in the cockpit with trepidation. "We will take care of the necessary analysis while you bring us to orbit. Hopefully we have been sent to the Milky Way, and not to yet another unreachable galaxy."`
+				launch
+	on enter
+		conversation "Patir 2 结束 - 输入时"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment 1570000
+		clear "remnant: dusk busy"
+		set "initial patir exploration"
+		event "patir mystery 2 timer" 45
+		conversation "Patir 2 结束 - 完成"
+
+mission "Ka'het: Patir Mystery 13.2"
+	landing
+	name "返回<planet>"
+	description "现在帕提尔黑洞似乎已经返回银河系，与黄昏一起返回<planet>。"
+	passengers 5
+	source "Builder Settlement"
+	destination "Aventine"
+	to offer
+		has "Ka'het: Patir Mystery 12.2B: done"
+	on offer
+		conversation
+			`回到地面后，您完成着陆后检查表，同时密切关注 Ka'sei 的动向。在过去的探险中，该研究站一直是一个安全的撤退地点，但它能否持续抵御费特里塞伊人的长期攻击似乎值得怀疑。`
+			`当科学家们卸下货物后，黄昏会用通讯器给你打电话。现在眼前的危险已经过去，他的声音里透着一丝沮丧。`
+			`“我们从 Fetri 中取出的细胞只是数百个中的几个。我们尽力选择那些在这些生物存在时记录到的细胞，但我们仍然需要一些运气才能得到我们想要的结果。`
+			`“自从我们打开第一个罐子以来，我们的计算器已经计算了几个小时的数字。当你到达实验室时，我们应该已经准备好分析了。”你关上身后的舱门，加入其他船员的行列。`
+			`当小行星继续其几乎难以察觉的旋转时，帕蒂尔从巨大的圆顶后面出现，让它的光线穿过。你向前哨站迈出最后一步，遮阳帘降下，然后再次走进实验室。`
+			`该模块从来都不是特别吸引人，但在过去的几周里，来自小行星外部的一层薄薄的灰尘覆盖了地板，只有研究所需的表面保持清洁。疲倦困扰着科学家们的脸：他们在过去的几天里一定没有睡太多，以跟上传入的数据量，你也没有。当你努力回忆上次不穿西装出门是什么时候——很可能至少一个月了——你的思绪被黄昏的到来打断了，他手里拿着一叠文件。`
+			`“记忆容器中的信息确实来自其中一个生命体在系统中时的信息，记录的数据比我们自己扫描的要全面得多。然而，我们提取的记忆容器中只包含了现象中间的记录，而没有显示它是如何开始或结束的。此外，理解它们的内容将比我们希望的要花更长的时间。我们知道生命体和费特里塞伊之间的确切关系超出了我们的知识范围，但我们甚至无法对它们如何进行交流做出初步猜测。`
+			`“我们还有足够的消耗品来维持数周；我们一到达这个区域就开始配给，并准备在必要时进一步减少消耗品。尽管如此，破解这个密码所需的时间和人力将远远超出我们能够实现的目标。我们遇到了目前无法克服的障碍。”`
+			choice
+				`“这是否意味着我们需要重复任务？”`
+				`“我们有什么选择？”`
+					goto options
+			`“我们简单地考虑了一下，但这非常无效。我们的阻止者正在了解数据本身，拥有更多的数据对我们帮助不大。最重要的是，正如我们所看到的，风险会非常高。考虑到所有因素，我们正处于一周前的同一点。`
+			label options
+			`“我们别无选择。正如我之前告诉过你的，查奈空间站是一个有趣的可能性，并且可能会影响帕蒂尔的古怪行为。同时，探索拉西亚周围的小行星可能会让我们更接近地了解生物的内部运作以及它们如何与Ka'sei互动。这是相当危险的，但访问空间站也是一个未知数，也许我们需要一种更直接的方法来实现我们的目标。这两个任务都以明确的方式胜过另一个任务，我们团队内的选票在两者之间平分，所以如果你——”`
+			`	Dusk halts mid phrase, looking behind you with an awestruck gaze. The sky has again turned black, and a few dim lines are already starting to appear in the distance. The whole team jumps to the windows, watching as the light show begins.`
+			`当星星和星系在夜空中放大时，两个遗迹继续在实验室里跑来跑去，打开各种仪器。然而，其余的人仍然将脸贴在玻璃上和你在一起。光线开始汇聚到一个点，在背景中形成一个巨大但迅速缩小的物体。`
+			`恒星在进入最终位置之前开始减速。当你在这里呆了这么久之后，不难发现天空又变了。在你旁边，团队的其他成员已经在分析收集到的数据；黄昏似乎正在从天文钟上记下一些东西。`
+			action
+				event "Patir returns" 0
+			choice
+				`“我们回到银河系了吗？”`
+				`“那有多久了？”`
+					goto time
+				`“我们现在在哪里？”`
+			`“我还不能说。”暮色急忙回答道。 “快，穿上你的EVA套装，我们要尽快出发，大家一起出发，不知道还有多少时间。”你匆忙将头盔连接回生命维持系统，并跟随他们走出气闸室，尽力跟上。`
+				goto depart
+
+			label time
+			`	"Around four minutes," Dusk replies hurriedly. "But we will talk about that another time. We need to depart as soon as possible, all of us together. I do not know how much time we have." You hastily connect your helmet back to the life support and follow them out of the airlock, trying to keep up as best as you can.`
+			label depart
+			`	It takes only a few minutes to launch the <ship>, the six of you standing in the cockpit with trepidation. "We will take care of the necessary analysis while you bring us to orbit. Hopefully we have been sent to the Milky Way, and not to yet another unreachable galaxy."`
+				launch
+	on enter
+		conversation "Patir 2 结束 - 输入时"
+
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment 1570000
+		clear "remnant: dusk busy"
+		event "patir mystery 2 timer" 45
+		set "initial patir exploration"
+		conversation "Patir 2 结束 - 完成"
+
+event "Patir returns"
+	system Patir
+		pos -38 553
+		haze _menu/haze-red
+	clear "ka'het: beyond Patir"
+
+
+conversation "Patir 2 结束 - 输入时"
+	`驾驶舱变得相当混乱：团队带来的仪器不断发出嗡嗡声和嘟嘟声。关闭主发动机后，有人拍拍您的肩膀以引起您的注意。 “<first>，你能把船倾斜几度吗？”黄昏问道，表情比升空时更加平静。你点头回应，然后稍微向前移动操纵杆。`
+	`“那里！你看到了吗？”他继续说道，用手指向天空中的一个点。在你面前的大量恒星之间，一个图案跃入眼帘：两组三颗恒星，彼此相邻，形成一个棱镜状结构。 “我们回来了。”`
+
+
+conversation "Patir 2 结束 - 完成"
+	`一大群人迅速聚集在您的着陆场周围，热切地等待您的到来。在星际之间度过了这么久之后，踏上一颗拥有真正大气层的行星是令人难以置信的耳目一新。暂时忽略寒冷的天气，你尽最大的努力来弥补过去几周的循环空气。`
+	`在您到达坡道尽头之前，地面上的人们已经在向您和团队其他成员提出有关您旅程的问题。你尽力回答，但在困惑和兴奋的整体混合中，你不确定是否有人理解你刚才说的话。`
+	`在混乱之中，你听到一个熟悉的声音唱着你的名字：在你左边几米处，你注意到奇利亚举起手臂，咧嘴笑着向你打招呼。穿过人群并不容易，你跟着他穿过一扇窄门，进入了靠近垫子的狭窄房间。`
+	`“我更喜欢这个比较安静的太空港，”他叹了口气，“但在过去几周之后，一些疯狂是可以理解的。我们现在只能用这个仓库了。”他邀请你入座。 “那么，<first>，你能告诉我你的旅程吗？”`
+	`等你做完的时候，已经过去一个多小时了。奇利亚在房间里漫无目的地踱步，思考着你对事件的叙述。随着寂静的降临，你注意到垫子上似乎也恢复了平静。`
+	choice
+		`（等他说话。）`
+			goto wait
+		`“你知道我们是怎么回到这个银河系的吗？”`
+		`“我们不在的时候发生了什么？”`
+	`“哦。我以为你已经被告知了。”他坐在你面前。 “是我们把帕蒂尔带回了这里。你离开后，没过多久，我们的远程传感器就发现黑洞连同你和团队一起消失了。我们的数据很少，但我们知道一件非常重要的事情：如果帕蒂尔曾经在这里出现过，一定有办法再次出现。`
+		goto explain
+	label wait
+	`“如果你的描述是准确的，那就意味着帕蒂尔不是通往袖珍宇宙的另一张嘴，而是通往另一个星系的传送器。或者说是宇宙，据我们所知。回想起来，有足够的理由怀疑第一个理论，但我们太忙于拯救你而没有认真研究它。”看到你一脸困惑的样子，他继续说道。 “<first>，是我们把帕蒂尔带回了这里。`
+	label explain
+	`“我们知道Postverta与Patir的最初到来有关，并且与那里的团队一起，我们发现Ssil Vida首次出现时释放的能量爆发与控制其袖珍宇宙的系统没有关系。因此，它的激活或停用对Patir没有影响，我们不得不开始寻找其他地方。`
+	`“到目前为止，我们的研究主要集中在袖珍宇宙上；Postverta 的大部分对我们来说仍然是模糊的。在评估我们的选择时，我们确定，当我们能够充分了解空间站的系统并将其用于我们的目的时，你们的船员可能已经耗尽补给并死亡。相反，我们尝试仅使用我们的技术来复制能量爆发，并通过 Ssil Vida 的传输系统进行增强。`
+	`“这个项目花了我们大部分的劳动力，花了几周的时间才完成，这不归功于一些挫折，几乎让我们从头开始。但是，凭借机载反应堆的全部能力和一系列可以与我们最大的前哨站相媲美的计算器，它的巨型天线恢复了生机，并释放了与 Ssil Vida 出现时一样强大的波浪。两周后，帕蒂尔回来了，现在你在这里，安然无恙。”`
+	`最后，疲倦的黄昏降临在储藏室里，向你们两人打招呼后坐下。从他们之间的简短交流中，你推断他也被告知了你回来时的情况。`
+	choice
+		`“帕蒂尔现在会发生什么？”`
+			goto patir
+		`“等等，如果帕蒂尔回来时我们不在身边怎么办？”`
+	`“如果没有我们，黑洞就会离开，而我们仍然会被困在那个区域——只是这一次没有实验室来支持我们，也没有我们的大部分消耗品。这里的人们也许可以派帕蒂尔回去接我们，但到那时我们早就耗尽了补给，并在星际之间灭亡。考虑到所有因素，我们很幸运，事情按照他们的方式发展。我们在这些系统中的研究应该把我们带回来，但我们只是在追逐彩虹，我们每走一步都会进一步危及自己。`
+		goto next
+
+	label patir
+	`	"It is difficult to say. Given what we have observed, it will probably disappear once again after the effects of our energy burst; when that will happen or where it will go is beyond our current knowledge. Those same systems we were stuck in could now be inaccessible, and our data might be the only information we will ever gather on them.`
+	label next
+	`	"At this point in time, exploring Patir would be a gamble, and an extremely risky one at that. The next phase will have to be operated from a distance, in order to fully understand the way that system works and how Ssil Vida controls it. How much time that will take, I cannot say; maybe weeks, or months, or even years. But then, and only then, will we go back there and start digging deeper."`
+	choice
+		`“我明白。”`
+			goto finish
+		`“你想回那里？！”`
+	`	Dusk smiles. "It is my job, after all. The danger of the unknown is always a part of it, even in the simplest of missions. I do admit the risk in these past weeks was far beyond an acceptable level, but one day, we will know enough about the mess in which we have become tangled in to unravel it."`
+	label finish
+	`	The two of them accompany you to the <ship>, sitting alone in the now-quiet spaceport of <planet>. The cargo bay has been emptied of the vast array of instruments that had been lying in it for a while, and you guess the same has been done with the cockpit. As you walk once again up the stairway, the Remnant bid you farewell. "We have transferred <payment> as a way to express our gratitude," Dusk signs with a smile. "Of course, their worth is incomparable with the value of what you have done for us; without you, we would have never made it out alive. Goodbye for now, and may the Embers aid in your pursuits."`
+
+
+
+event "patir mystery 2 timer"
+
+ship "Builder Satellite"
+	sprite "ship/builder satellite"
+	attributes
+		category "Drone"
+		"hull" 1500
+		"mass" 10
+		"drag" 2
+		"heat dissipation" 1
+
+
+ship "Builder Satellite" "Builder Satellite 2"
+	explode "tiny explosion" 5
+	explode "small explosion" 2
+
+
+mission "Ka'het: Voice From The Past 0"
+	landing
+	invisible
+	non-blocking
+	to offer
+		has "event: patir mystery timer"
+	to complete
+		never
+	npc assist save
+		government "Builder"
+		system "Fereti"
+		personality derelict waiting
+		ship "Builder Satellite 2" "Valii'sei"
+		on assist
+			dialog
+				`你近距离飞过这颗毫无生命力的卫星，它被遗弃在墓地轨道上，谁知道多久。突然，你的通讯器发出一种微弱的、混乱的、类似口哨的声音，就像收到了来自建造者飞船的通讯一样。虽然你无法理解它，但也许值得再次访问遗迹。`
+			set "builder signal"
+		on kill
+			dialog
+				`看一眼雷达屏幕，就会发现附近的 Builder 卫星爆炸了，大概是由于所造成的损坏。浪费了一次机会。`
+			clear "builder signal"
+
+
+
+mission "Ka'het: Voice From The Past 1"
+	name "建造者信号"
+	description "在 <destination> 上寻找加夫里尔 (Gavriil)，向他们询问有关 Builder 卫星的情况。"
+	source
+		government "Remnant"
+		attributes "remnant primary"
+	destination "Ssil Vida"
+	to offer
+		has "builder signal"
+	on offer
+		conversation
+			`你想向遗迹询问你在费雷蒂遇到的建造者卫星吗？`
+			choice
+				`（是的。）`
+				`（现在不要。）`
+					defer
+			`你在太空港里找了至少半个小时，但似乎找不到熟悉的人。正当你开始失去希望时，你注意到一个科学实验室的方向出现了一阵骚动。`
+			`走近一些，您会发现人群逐渐散开，为重型机械车队留出空间。虽然你似乎无法识别他们的功能，但你确实认出了在骆驼前面引领车辆的人：这是普鲁姆，领导虚空精灵研究计划的科学家。`
+			`你挥动手臂试图引起他的注意，慢慢地挤过人群，直到他注意到你。 “<first>舰长！没想到会在这里见到你。你也是舰队的一员？”他兴奋地指着正在运输的货物。`
+			`看到你一脸困惑的样子，他就明白自己的错误了。 “最近我在实验室待了好几天。我们有如此丰富的数据当然很好，但这次探险的准备工作却很累人。”`
+			choice
+				`“你在运送什么？”`
+				`“我在费雷蒂身上发现了一些有趣的东西。”`
+					goto satellite
+			`“低温大桶，装满了虚空精灵材料。在埃斯奎林所做的所有工作终于结出硕果，这是更引人注目的结果。在我们让它们在潘蒂卡漫游后不久，我们开始意识到它们在接近空间站时在其各处留下了可见的分泌物痕迹。我们所要做的就是在其船体上放置可拆卸的面板，开始收集和分析这些样本。`
+			`“当然，大多数机器都是致力于将材料保持在正确的压力、温度和成分条件下。每个桶最多只容纳几公斤样本。尽管如此，随着时间的推移，这种连续且无害的虚空精灵样本来源可能对基因研究产生的影响怎么强调也不为过。`
+			`“你呢？”`
+			label satellite
+			`您解释了您与 Builder 卫星的遭遇以及它向您发送到 Plume 的信号。然而，在你的故事结束时，他似乎仍然很困惑。 “我本来希望会有虚空精灵参与其中，”他开玩笑说，“但这仍然是一个有趣的故事。`
+			`“不过，我不太确定这次如何帮助你——这些都不在我的专业范围内。”`
+			choice
+				`“那我该问谁呢？”`
+				`“这太可惜了。”`
+			`普卢姆离开去监督一群技术人员卸下第一辆车的货物，并示意你等他。几分钟后他回来找你。 “我有一个主意，跟我来吧。”`
+			`“这里，”走了一小段路后，他指着一个壁挂式终端做了个手势。 “我可能没有足够的工程经验来直接帮助你，但如果有地方可以提供这些信息，那就是这里。”他向您展示了一个数据板，抓住您的手并将其传递到扫描仪下方，然后再继续。`
+			`“这个本子包含了我们所有已发表的工程论文的摘录——至少是公开的。如果你所遇到的内容以前已经被研究过，它应该就在这里的某个地方。”在向您展示了基本知识后，普卢姆回到了工作岗位，如果您需要更多帮助，请给他打电话。`
+			`你独自一人，在附近找了个座位，开始在航站楼内进行一些搜索。前半个小时不会返回任何有用的结果：有数百万篇论文可供选择，您提出的初始查询要么找到数千个可能的匹配项，要么根本没有。`
+			`然而，最终你会开始掌握它的窍门。你会发现一篇论文描述了你观察到的现象，然后是另一篇，然后甚至更多。到一个小时结束时，您已经保存了至少十几篇相关论文。`
+			`尽管您无法深入理解其中的任何一篇，但有一个细节引起了您的注意：其中三篇论文的作者是 Gavriil，您上次留在 <system> 的工程师。如果有人可以帮助你完成这一切，那一定是他们。`
+			`你向仍在忙着将精致货物转移到安全的实验室的羽挥手告别，然后登上了你的船。下一站：<planet>。`
+				accept
+	on complete
+		conversation
+			`时间越长，西尔维达就越像一个遗迹前哨站。当地的太空港经历了与埃斯基林类似的更大规模的改造，墙壁上布满了迷宫般的管道和数十个活跃的工作站，扩大了已经运营的装备店的规模。不过，您无需四处闲逛：加夫里尔 (Gavriil) 就在停机坪旁边等您。`
+			`“很高兴再次见到你，”他们热情地比划着。 “我希望余烬能祝福你的旅程。”`
+			choice
+				`“他们做到了。”`
+				`（告诉他们这次遭遇。）`
+			`你把他们拉到一边，再次解释你与建造者卫星的遭遇，但他们在你开始之前阻止了你。 “几天前，Plume 告诉了我一切。看到人们的理论变成现实总是令人高兴的，”他们自豪地继续说道。 “你所观察到的东西通常被称为‘僵尸卫星’。也许这种表达方式不太专业，但确实有意义。`
+			`“航天器死亡的方式有很多种，其中一些方式比其他方式不那么暴力。有时，在假定的运行结束多年后，航天器会自发地复活并再次与地面通信。这不是一个可预测的事件，也不仅仅发生在特定的设计中；它只是发生了，无论卫星是在阿文丁、海霍姆还是瓦尔哈拉建造的。`
+			`“在这种情况下，它的特别之处在于从卫星‘死亡’到现在已经过去了很长的时间。我们上次探索费雷蒂时，这艘航天器保持沉默，这要么意味着它存活了数万年，并在几百年前死亡，要么意味着它在建造者时代死亡，直到几千年后才复活——这两种可能性本身就非常令人着迷。`
+			`“这将是我们发现的第一颗活跃的 Builder 卫星，考虑到这些条件，这并不奇怪。如果你的报告准确，我们需要尽快去研究它。”`
+			choice
+				`“怎么又活过来了？”`
+				`“你能看一下它发出的信号吗？”`
+					goto signal
+			`“我有一些想法，但无法确定。最常见的原因之一是软件在内存故障后成功重新启动，实际上将其重置为出厂设置，但在没有更多信息的情况下，这充其量只是我的猜测。”`
+			label signal
+			`你递给他们一个数据芯片，里面有你从卫星收到的通信信息，他们很快就把它放进口袋里。 “我会尝试花几个小时的时间来使用我们这里的仪器进行第一次测试。虽然它们不是最适合这种分析的，但我记得一些技巧，可能会从中得到一些有用的东西。`
+			`“与此同时，请随意看看我们在这里所做的改变。当我有东西要展示时，我会从太空港给你打电话。”`
+
+mission "Ka'het: Voice From The Past 1B"
+	invisible
+	source "Ssil Vida"
+	to offer
+		has "Ka'het: Voice From The Past 0: done"
+		not "Ka'het: Voice From The Past 1: offered"
+	on offer
+		conversation
+			`你想向遗迹询问从建造者卫星收到的通讯吗？`
+			choice
+				`（是的。）`
+				`（现在不要。）`
+					defer
+			`由于正在进行的施工使您无法到达车站的大部分区域，您尝试在着陆场附近环顾四周。差不多要半个小时你才会放弃；有太多人试图找到认识你的人，而其他人似乎都太忙而没有时间停下来听你的故事。也许你在主星球的太空港里会有更好的运气。`
+				decline
+
+mission "Ka'het: Voice From The Past 2"
+	name "库姆卡皮前哨站"
+	description "将 Gavriil 带到 <destination> 准备捕获 Builder 卫星。"
+	blocked `This mission requires one empty bunk to carry Gavriil with you.`
+	source "Ssil Vida"
+	destination "Kumkapi"
+	passengers 1
+	deadline 8
+	to offer
+		has "Ka'het: Voice From The Past 1: done"
+	on offer
+		conversation
+			`西尔·维达的装备店建在空间站原来的存储平台上，对于遗迹的后勤系统来说太大了。虽然它的装备似乎不是特别好，但自从你第一次来到这里以来，他们在完全陌生的基础设施上建立的东西仍然令人印象深刻。`
+			`当加夫里尔的名字出现在你的通讯器上时，你的步行就结束了。你转身大步走回太空港，发现他们在一张桌子旁等着。`
+			`“我有一个好消息和一个坏消息，”他们微微皱着眉头说道。 “你对我们探索墓地的历史了解多少？”`
+			choice
+				`“不多，你能总结一下吗？”`
+				`“足够的。”`
+					goto waaaah
+			`“在我们现在所知道的卡赫特失去了一些车辆之后，我们的祖先制定并采用了新的标准，以降低此类探险深入灰烬废土的风险。在墓地内时，斗篷必​​须始终保持活动状态，这将我们考古任务的范围限制在不断增加的油箱容量上。`
+			`“尽管限制了大多数对北方系统的探险，这些指南仍然引领了建造者考古学的黄金时代，让我们对这个地区及其居民的历史有了令人难以置信的洞察。这项工作的顶峰是部分翻译了他们的书面语言，以及解码了他们的一些编程。然而，问题是这并没有扩展到他们的口语。`
+				goto continue
+			label waaaah
+			`他看起来很有趣。 “那么我会尽量保持简短。在我们的考古工作中，我们能够翻译大部分书面建造者语言并解码他们的一些编程。然而，问题是这并没有扩展到他们的口语。`
+			label continue
+			`“我们在分析中发现，你收到的通讯包含某种录音，其含义仍然是个谜。我已将其传输给阿文丁，以便异种语言学家能够将其存档以供进一步研究，但该信号以及卫星的目的仍然未知。”`
+			`他停顿了几秒钟，若有所思。 “我们收集的数据显示，这颗卫星不是太大，也不是特别重。解决这些问题的一种方法可能是捕获建造者号航天器并将其带到我们的一个实验室——如果它仍然活着，即使不是完全完整，也应该可以提取大部分数据。`
+			`“您上过 <planet> 吗？”他们不等回答就问道。 “这是 <system> 的一个小型半废弃殖民地，在维米纳尔上方运行。我以前认识那里的一些人，他们应该拥有像这样的项目所需的设备。”`
+			choice
+				`“好吧，我们就这么做吧。”`
+				`“你愿意跟我一起去吗？”`
+			`你向你的船做了个手势，他们却以犹豫不决的表情回应。 “我们这里的积压订单已经大幅增加，现在离开去进行另一次冒险不会让时间缩短。”他们停了几秒钟，然后继续。`
+			`“另一方面，我们最近也提前完成了里程碑，这里有很多经验丰富的人可以接手一段时间。我可以把权力交给别人几天。”`
+			`“另外，”他们微笑着总结道，“这将是一个机会，可以看到一些我多年未见的面孔，并回忆一下过去。我早就应该这样做了。”`
+				accept
+	on complete
+		fail "Ka'het: Voice From The Past 0"
+
+
+mission "Ka'het: Voice From The Past 3"
+	landing
+	name "建造者卫星"
+	description "捕获 <waypoints> 中的 Builder 卫星并将其带到 <destination> 。"
+	blocked `The cargo is ready to load, but you do not have enough free space. Come back when you have <tons> free.`
+	source "Kumkapi"
+	waypoint "Fereti"
+	cargo "Satellite Capture Equipment" 45
+	deadline 60
+	to offer
+		has "Ka'het: Voice From The Past 2: done"
+	on offer
+		conversation
+			`向着陆点的逐渐下降是相当缓慢的。地表上散布着数十个采矿前哨站，其中一些相当大，但没有一个给人留下正在积极使用的印象。就连几乎全空的着陆场也开始出现一层薄薄的灰尘和风化层。`
+			`“就在几十年前，这些建筑还充满了活动，”加夫里尔解释道，眼睛一直盯着地平线。 “每个人都在寻找维米纳尔之外的钥匙石矿脉，而行星系统之间往往具有相似的特征。我不会向你透露细节，但事实证明<planet>的情况并非如此，在这里建立的大部分基础设施都没有明确的目的。”`
+			`沿着着陆轨迹，经过峡谷后向左转向，准备最后进近。你会注意到，当目标前哨进入视野时，他们的眼睛会发光，只是一瞬间。 “为了不让它腐烂，一些重新利用废弃设施的项目得到了批准。我们今天要参观的设施已经成为先进技术的主要测试设施，无论是我们建造的还是从其他来源回收的。”`
+			choice
+				`“我懂了。”`
+					goto skip
+				`“这个测试危险吗？”`
+					goto danger
+				`“钥匙石搜寻成功了吗？”`
+			`“没有我们希望的那么多。唯一能取得积极结果的地方是埃文（Eavine），这是一颗气态巨行星的卫星，位于卡赫特控制的太空中央。这是一个科学上有趣的发现，但我们在不久的将来无法利用。”`
+				goto skip
+			label danger
+			`“有可能。这些年来，许多武器在这里进行了测试，甚至一些具有更和平目的的项目偶尔也会产生一些相当爆炸性的结果。请注意，这件事不能掉以轻心。”`
+			label skip
+			`当您完成着陆后检查表时，加夫里尔已经离开飞船去与地面上的人们会合。聚集在停机坪周围的人群热烈欢迎他们，他们也高兴地回应。他们年轻时一定在这颗月球上度过了很多时间。`
+			`经过一些简短的介绍后，您跟随这群人走下几段楼梯坡道，进入前哨基地下方一些光线充足的隧道内。它们的尽头是一个大型机库，两个方向都很宽，但天花板相当低。 “我们有一些过去用来捕获测试卫星的设备，”一位技术人员解释道。 “在这些情况下，它们是遗迹航天器，但没有什么从根本上阻止它们在你的任务中使用。`
+			`“你把它带到这里之后，与飞船的连接会稍微复杂一些。我们有必要的机器来保存它，但我必须从阿文丁订购一些特殊的设备来下载它的数据。不管怎样，在你回来之前，一支舰队会把它带到这里，所以应该不会造成问题。”`
+			`您帮助他们将卫星捕获设备装载到您的船上，并确保为航天器本身留出足够的空间。加夫里尔表示：“我将留在这里帮助他们为卫星发射做好准备，并希望在我缺席期间向 Ssil Vida 通报最新进展情况。一两个月后见。”`
+				accept
+	npc assist
+		government "Builder"
+		system "Fereti"
+		personality derelict target waiting
+		ship "Builder Satellite" "Valii'sei"
+		conversation
+			`你接近飞船，并激活遗迹给你的设备。慢慢地，一个巨大的机器人爪子，填充着厚厚的灰色绝缘材料，从你的货舱中出现。这需要几次尝试，但您终于能够将卫星放入货舱并准备配件以将其固定到位。`
+				launch
+
+mission "Ka'het: Voice From The Past 4"
+	landing
+	name "返回加夫里尔"
+	description "将加夫里尔带回<destination>。"
+	source "Kumkapi"
+	destination "Ssil Vida"
+	to offer
+		has "Ka'het: Voice From The Past 3: done"
+	on offer
+		conversation
+			`几名护垫工作人员会引导您前往指定的着陆地点，那里有一条大型安全带正在等待您的特殊有效载荷到达。一旦卫星的集装箱安全停泊在运输机上，您就可以跟随车队缓慢地沿着宽阔的坡道下降，进入您之前看到的同一个机库。`
+			`加夫里尔看上去很热情。 “太棒了。我们已经准备好了从阿文丁运来的机器，所以我们现在应该可以开始转移，”他们指着四个装置——每个装置都有一个壁橱那么大。 “希望你的旅途一切顺利。”`
+			choice
+				`“墓地中央的任务差不多可以完成。”`
+				`“事情本来可以做得更好。”`
+			`“一旦这件事说完并完成，我一定会给予你适当的奖励，”他们回答道。在他们身后，两名技术人员爬上脚手架，仔细观察你随身携带的卫星。 “此类文物面临的挑战之一不仅在于它们的外星起源，还在于它们被设计的时代。`
+			`“建造者帝国延续了数万年，期间科技水平参差不齐，一个时代的遗迹往往与前一个时代的遗迹不相容。我们已经尽了最大努力来确定这艘飞船的年代，所以现在是关键时刻。”`
+			`一名技术人员小心翼翼地将一根宽电缆递给平台顶部的两人，他们向捕获的卫星走去，并尝试将电缆插入卫星背面的开口中。`
+			`这需要几次尝试，但最终他们成功了。虽然您无法完全看到技术人员在控制台上签署的内容，但从随后爆发的欢呼声来看，这肯定是个好消息。 “传送开始了！”加夫里尔做出庆祝的手势。他们几乎难以置信地冲向机库后面的航站楼。`
+			`随着时间的流逝，兴奋感只是略有减弱，从航天器获取的大量数据一次又一次地增强了兴奋感。最后，加夫里尔满怀期待地回到你身边。 “现在转移已经基本完成，分析很快就会开始。如果你准备好了，这将是返回 Ssil Vida 的好时机 - 需要几天时间才能得出结果。”`
+				accept
+
+mission "Ka'het: Voice From The Past 5"
+	landing
+	name "返回<planet>"
+	description "返回<destination>获取一些新装备。"
+	source "Ssil Vida"
+	destination "Kumkapi"
+	to offer
+		has "Ka'het: Voice From The Past 4: done"
+	on offer
+		log `Captured an active Builder satellite. It was a warning beacon orbiting the moon Alix, which appears to have been used as a quarantine site to defend against an alien plague.`
+		event "ka'het: alix discoveries"
+		conversation
+			`在旅途中，加夫里尔不断收到来自库姆卡皮或西尔维达的通讯。他们陪着你走出气闸室，走下坡道，沉默不语，但显然在深思熟虑。`
+			`“谢谢你，船长——不仅是你送我回来，也是你让这次小小的冒险成为可能。关于建造者们和他们的文明，还有很多东西有待发现，我很高兴能为这个谜题做出至少一点点的贡献。`
+			`“为了了解他们的历史，关键事件之一是他们与外来物种的第一次接触。正如经常发生的那样，第一次接触是与爱好和平的夸格人，但我们知道至少有另一次接触的进展并不那么顺利。`
+			`“我们不知道这是一次真正的入侵企图，还是只是一个探险家在压力下没有做出很好的反应，但这两个物种发生了战斗，而建造者在经过多天的战斗后才取得了胜利。建造者社会的军事化是同时开始的。”`
+			`“他们被什么物种袭击了？”你问。`
+			`“我们还不能肯定。据我了解，过去的墓地探险中，除了建造者之外，并没有发现任何外星人的遗骸。不过，星际物种不会就这样消失得无影无踪，符合条件的候选者也只有少数。”`
+			choice
+				`“科拉特？”`
+					goto korath
+				`“海？”`
+				`“哈巴狗？”`
+					to display
+						has "main plot completed"
+					goto pug
+				`“雪拉吉？”`
+					to display
+						has "event: rim archaeology results"
+			`“一个不错的猜测。海族和雪拉吉族都说得通——时间线足够吻合，众所周知，它们非常好战，而且它们的潜在影响范围足够大，足以包括墓地。我听说关于这两个物种的争论至今仍在继续，尤其是在西尔维达的发现之后，但我不是询问它们的人。`
+				goto continue
+			label pug
+			`“有趣的猜测。我们确实知道他们曾经在某个时候出现在这个地区，但在信息如此之少的情况下猜测他们的目的是没有用的，尤其是当有更多可能的候选人时。海族或雪拉吉都更有意义——时间线足够合适，他们被认为是相当好战的，而且他们的潜在影响范围足以包括墓地。`
+				goto continue
+			label korath
+			`“这次不行，”他们开心地比划道。 “建造者们的终结和科拉斯人发现太空飞行之间的时间比后者和现在之间的时间要长。请记住，我们正在谈论可能发生在十万年前的事情。在这种情况下，海人或雪拉吉人更有意义——时间线足够吻合，他们被认为是相当好战的，而且他们的潜在影响范围足以包括墓地。`
+			label continue
+			`“无论发生什么，这次短暂的相遇留下的伤痕不仅仅是心理上的。这颗卫星显示，某种病毒或细菌在第一次接触后不久就开始传播，可能是外星起源。我们不知道它对他们的文明产生了怎样的影响，但一定相当严重：阿利克斯当时似乎被用作检疫设施，而像这样的卫星的唯一功能是警告即将到来的船只存在危险。`
+			`“如果您还有什么发现，请尽管告诉我们。分析仍在进行中，但我已经抽出了三十万积分存入您的账户，以表谢意。”`
+			choice
+				`“钱你可以留着，我宁愿继续进一步探索。”`
+					goto keep
+				`“雪拉吉人是谁？”`
+					to display
+						not "event: rim archaeology results"
+				`“谢谢。”`
+					goto capitalist
+			action
+				set "remnant: sheragi question"
+			`“你可能没有听说过这个名字，但你肯定已经进入过他们的领地。他们是一种早已灭绝的物种，曾经居住在人类空间的边缘和南部。不久前，你在同一地区获得了我们目前用来为 Ssil Vida 提供动力的材料，”他们回答道，朝空间站反应堆的方向做了个手势。`
+			`“我可以告诉你，据我们所知，他们大致与建造者同时进行；但这是我在Postverta工作期间学到的丰富信息。这是一个不断发展的领域，除了这个空间站的工程研究之外，我无法密切关注它。”`
+			choice
+				`“钱你可以留着，我宁愿继续进一步探索。”`
+				`“谢谢。”`
+					goto capitalist
+			label keep
+			`“哦。令人着迷。”他们似乎对你的回复很满意。 “好吧，这样的话，我可以尝试再次给 Kumkapi 打电话，看看他们是否有什么可以帮助他们的。我有很多事情要处理，但一旦收到他们的消息，我会尽力回复你。”`
+			`你等了加夫里尔近一个小时，但他们没有再出现。就在离开之前，您注意到他们在您的数据板上向您发送了一条通信信息。 “ <first> ”，上面写着，“今天我无法再次与您见面。对于我的无礼行为，我深表歉意，但为了让项目保持目标，我需要赶上的事情太多了。”`
+			`“尽管如此，我还是能够联系到测试场，他们似乎很高兴获得更多帮助。这次我无法和你一起去，但如果你遵循我上次给你的指示，找到他们应该没有问题。`
+			`“再见了，船长，愿余烬很快带你回来。”`
+				accept
+			label capitalist
+			action
+				payment 300000
+				event "ka'het: quarantine site" 80
+			`“再见，船长，愿余烬很快带你回来。”他们做了一个简短的鞠躬手势。`
+				decline
+
+mission "Ka'het: Voice From The Past 6"
+	landing
+	name "探索<stopovers>"
+	description "访问 <stopovers> 寻找隔离设施的遗迹。"
+	blocked `The cargo is ready to load, but you do not have enough free space. Come back when you have <tons> of empty cargo space.`
+	source "Kumkapi"
+	stopover "Alix"
+	cargo "High-powered scanner" 7
+	to offer
+		has "Ka'het: Voice From The Past 5: done"
+	on offer
+		conversation
+			`<planet> 看起来比几天前活跃得多。前哨站附近的几乎每个着陆场上都有一艘残骸船，甚至在停泊的舰队中间还有几艘信天翁号。幸运的是，您在主入口旁边找到了为您抵达时预留的垫子。`
+			`在您到达船的楼梯底部之前，一群当地人已经满怀期待地聚集在您的船下方。你试图向他们致敬，但他们似乎对你的船更感兴趣：其中一些人撬开货舱附近的面板，试图与有效载荷控制装置连接。`
+			`你试图要求解释，但他们引导你去找垫子经理。最后，在花了大约一个小时试图穿过人群后，你发现她在秋沙鸭后面处理装载操作。`
+			choice
+				`（向她询问我的任务。）`
+				`“他们拿我的船做什么？”`
+			`“看来一路上一定有一些沟通不畅，”她在回答你的询问时签名道。 “抱歉，至少在过去三十年里，我们还没有遇到过如此大的交通量。现在我们连一分钟都不能浪费。`
+			`“自从几天前有人给我们带来那颗卫星以来，”她继续说道，似乎不知道自己是谁，“不断有船长想要查看它并进行各种分析。我们没有配备应对这种交通的人员，甚至附近也没有。”`
+			`你试图进一步询问你的任务，但她似乎并不比你知道得更多。她再次将你重新引导到平台，指向他们正在装载在你船上的货物上所附的着陆单。`
+			`最后，您在那里找到了所需的信息：您的有效负载是一个大型穿透式扫描仪，您的任务是在月球南极附近指定位置的 <stopovers> 表面上方使用它来尝试找到隔离设施。`
+				accept
+	npc
+		government "Remnant"
+		personality heroic launching lingering uninterested
+		fleet "Large Remnant"
+		fleet "Small Remnant"
+	on stopover
+		conversation
+			`与你在余烬废土中访问过的许多卫星不同，阿利克斯没有什么特别独特的地方。它是一颗小型岩石卫星，靠近帕塞拉气态巨行星上方运行，几乎没有大气层，重力相当低。它的表面被数以百万计的小型流星体撞击所打断，这些撞击肯定是受到帕泰拉深重力井的吸引。甚至 <home planet> 也有几颗气态巨行星，它们的卫星在各方面都与这颗行星相似。`
+			`然而，建造者们似乎发现了它的一些有趣的用途。在阿利克斯周围被摧毁的定居点中，巨大的采矿设施不仅在袭击中幸存下来，而且仍然看到源源不断的卡玛车辆前来收集他们的矿物货物，并将其运送到围绕同一颗恒星运行的雄伟的卡赫特空间站。`
+			`奇怪的是，这颗卫星没有任何露天采矿的迹象，或者实际上根本没有任何挖掘的迹象。采矿设施运行了十万年之后，地表应该显示出如此密集运行的清晰可见的迹象，但似乎什么也没有。`
+			choice
+				`（飞近采矿前哨进行调查。）`
+				`（移动到遗迹给我的目标位置。）`
+					goto quarantine
+			`你将船倾斜并驶向最近的前哨站：一长串带有倾斜屋顶的短建筑，让人想起船屏幕上的太阳能场。然而，靠近后，您意识到您最初的猜测是错误的 - 这些并不类似于屋顶，而是类似于由浅白色纺织品组成的帆。它们的表面覆盖着一层薄薄的灰尘，大部分都聚集在底部。`
+			`你试图靠近，但你船上的罗盘突然开始随机旋转！你惊慌失措，迅速改变航向离开该设施，仪器重新启动后很快又恢复正常。自动化前哨站显然正在散发出强大的磁场，但所有这些之间的联系并不是立即显而易见的。`
+			choice
+				`（即使罗盘失控，也要近距离飞越。）`
+				`（尝试在设施周围搜索，保持安全距离。）`
+					goto coward
+				`（放弃并转向原来的目标。）`
+					goto quarantine
+			`短暂的探索不会发现任何你之前没有见过的东西，你所能做的就是看着费斯玛的迷人流动进出设施继续在你下面不受干扰。`
+			label coward
+			`就在您开始觉得这个谜团仍未解开时，您遇到了幸运：一颗小陨石撞击了距离您几公里的地表，向各个方向抛洒了一团碎片。你检查了地表附近几乎难以察觉的大气成分，发现它几乎完全由贵金属颗粒组成。`
+			`整体情况已经变得更加清晰：像这样频繁的小行星撞击月球，会产生足够的陨石尘埃，有效地将地球笼罩在极其稀疏的大气层中，建造者机器会吸引并收集这些尘埃，以便随后将它们运出行星。这是一个缓慢而繁琐的过程，但它也是一个能够在无需维护的情况下工作数万年的过程。`
+			label quarantine
+			`您记录下您的想法的简短日志，然后前往目标位置。你看到的采矿设施变得越来越小、越来越分散，直到完全消失。飞越一系列越来越平淡的高地，您最终到达目的地：一个向各个方向延伸数公里的不起眼的高原。`
+			`你俯仰并降低高度来寻找碎片，但你找不到任何有用的东西。来这里的路上有很多废墟，肯定可能是某个时候的隔离点，但这里什么也没有，就好像从来没有人居住过一样。`
+			`困惑之余，你调转飞船并启动了遗迹给你的高功率扫描仪。这项任务非常繁琐：你必须以正确的速度通过每一个地形，小心不要因任何突然的移动而扭曲数据，这样仪器才能正常工作。`
+			`这需要一个小时，但驾驶舱面板发出熟悉的蜂鸣声，最终表明您可以返回 <destination> 传递数据。`
+	on complete
+		event "ka'het: quarantine site" 25
+		conversation
+			`与您上次访问不同，<planet> 上的测试范围再次变得空空如也。忙碌的人群和占据每个停车位的庞大舰队都消失了：仍然留在这里的几艘船很少比海燕大。受到诱惑，你随机看到了设施附近的一块垫子，然后轻轻着陆。`
+			`手里拿着数据板，数据板工作人员正在卸载你用过的任务设备，你开始四处寻找可以提供数据的人。您在附近唯一能找到的人就是您船上的工作人员，以及您之前遇到的停机坪经理。`
+			`“他们心软了！”她注意到你后兴奋地签名。 “花了几天时间，但他们最终接受了我们没有设施和人员来处理此类流量的事实，并将卫星转移到一个更合适的实验室。我相信是在阿文丁的某个地方。”`
+			choice
+				`“我可以把这些数据提供给谁吗？”`
+				`“你给我的位置，好像没有人居住。”`
+			`你向她简要介绍了你的任务和发现。 “我担心你应该提供这些数据的人已经和卫星一起离开了，”她困惑地回答道。 “最近我们大家都很忙，为了加快进程，跳过了一些步骤。`
+			`“如果你把数据板留在这里，我保证我会确保它落入正确的人手中。我相信事情平静下来后他们会亲自联系你。”你把写有你记录的信息的平板电脑递给她，希望它能到达目的地。`
+
+event "ka'het: quarantine site"
+
+event "ka'het: alix discoveries"
+	planet Alix
+		add description `	Long before becoming an automated mining outpost, this moon was designated as a Builder quarantine site.`

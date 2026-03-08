@@ -1,0 +1,2188 @@
+# Copyright (c) 2016 by Michael Zahniser
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program. If not, see <https://www.gnu.org/licenses/>.
+
+ship "Arach Courier"
+	sprite "ship/arach courier"
+	thumbnail "thumbnail/arach courier"
+	attributes
+		category "Light Freighter"
+		licenses
+			Coalition
+		"cost" 723000
+		"shields" 1200
+		"hull" 2000
+		"required crew" 1
+		"bunks" 1
+		"mass" 125
+		"drag" 3.2
+		"heat dissipation" .6
+		"fuel capacity" 300
+		"cargo space" 94
+		"outfit space" 148
+		"weapon capacity" 39
+		"engine capacity" 40
+		weapon
+			"blast radius" 20
+			"shield damage" 200
+			"hull damage" 100
+			"hit force" 300
+	outfits
+		"Small Collector Module"
+		"Small Battery Module"
+		"Small Repair Module"
+		
+		"Small Thrust Module" 2
+		"Small Reverse Module" 2
+		"Small Steering Module" 2
+		"Hyperdrive"
+		
+	engine -27 58 .6
+	engine -15 58 .8
+	engine 15 58 .8
+	engine 27 58 .6
+	gun -14 -38
+	gun 14 -38
+	explode "tiny explosion" 10
+	explode "small explosion" 10
+	"final explode" "final explosion small"
+	description `这些坚固的小型货船对于年轻的阿拉奇来说是完美的尺寸，他们刚刚踏上天空，梦想有一天建立自己的商船队。当然，足够幸运地出生在一个伟大家族的阿拉克可能会找到一位赞助人为他们购买一艘更大的船。`
+
+ship "Arach Courier" "Arach Courier (Miner)"
+	outfits
+		"MCS Extractor" 2
+		
+		"Small Cogeneration Module" 2
+		"Small Collector Module" 2
+		"Small Battery Module" 2
+		"Small Repair Module"
+		
+		"Small Thrust Module" 2
+		"Small Steering Module" 3
+		"Hyperdrive"
+
+ship "Arach Freighter"
+	sprite "ship/arach freighter"
+	thumbnail "thumbnail/arach freighter"
+	attributes
+		category "Light Freighter"
+		licenses
+			Coalition
+		"cost" 4580000
+		"shields" 3400
+		"hull" 8500
+		"required crew" 3
+		"bunks" 10
+		"mass" 672
+		"drag" 14.8
+		"heat dissipation" .4
+		"fuel capacity" 500
+		"cargo space" 372
+		"outfit space" 349
+		"weapon capacity" 132
+		"engine capacity" 92
+		weapon
+			"blast radius" 80
+			"shield damage" 800
+			"hull damage" 400
+			"hit force" 1200
+	outfits
+		"Small Collector Module" 3
+		"Small Battery Module" 2
+		"Small Shield Module"
+		"Small Repair Module" 2
+		
+		"Large Thrust Module"
+		"Large Reverse Module"
+		"Small Thrust Module" 2
+		"Small Reverse Module" 2
+		"Large Steering Module"
+		"Small Steering Module" 2
+		"Hyperdrive"
+		
+	engine -18 141 .7
+	engine 0 143 1
+	engine 18 141 .7
+	gun -19 -112
+	gun 19 -112
+	turret -41 37
+	turret 41 37
+	explode "tiny explosion" 10
+	explode "small explosion" 15
+	explode "medium explosion" 15
+	"final explode" "final explosion medium"
+	description `Arach 货船船体以其耐用性而闻名。对于一个大阿拉克家族来说，将一艘不再适合太空的货轮改造成行星上的住宅并不罕见，即使在最恶劣的条件下，这些改建的房屋也可以在很少或根本不需要外部维护的情况下持续数百年。`
+
+ship "Arach Freighter" "Arach Freighter (Miner)"
+	outfits
+		"MCS Extractor" 2
+		
+		"Small Cogeneration Module" 2
+		"Small Collector Module" 3
+		"Small Battery Module" 2
+		"Small Shield Module"
+		"Small Repair Module" 2
+		
+		"Large Thrust Module"
+		"Large Reverse Module"
+		"Large Steering Module"
+		"Small Thrust Module" 2
+		"Small Reverse Module" 2
+		"Small Steering Module" 2
+		"Hyperdrive"
+
+ship "Arach Hulk"
+	sprite "ship/arach hulk"
+	thumbnail "thumbnail/arach hulk"
+	attributes
+		category "Heavy Freighter"
+		licenses
+			Coalition
+		"cost" 9978000
+		"shields" 5700
+		"hull" 13800
+		"required crew" 8
+		"bunks" 14
+		"mass" 1325
+		"drag" 29.3
+		"heat dissipation" .33
+		"fuel capacity" 500
+		"cargo space" 688
+		"outfit space" 520
+		"weapon capacity" 208
+		"engine capacity" 148
+		weapon
+			"blast radius" 120
+			"shield damage" 1200
+			"hull damage" 600
+			"hit force" 1800
+	outfits
+		"Large Collector Module"
+		"Large Battery Module"
+		"Small Battery Module"
+		"Small Shield Module" 2
+		"Large Repair Module"
+		
+		"Large Thrust Module" 2
+		"Large Reverse Module" 2
+		"Small Thrust Module" 2
+		"Small Reverse Module" 2
+		"Large Steering Module" 2
+		"Small Steering Module" 2
+		"Hyperdrive"
+		
+	engine -13 198 .7
+	engine 0 199 1
+	engine 13 198 .7
+	gun -27 -88
+	gun 27 -88
+	turret 0 -65
+	turret -90 88
+	turret 90 88
+	turret 0 189
+	explode "small explosion" 10
+	explode "medium explosion" 20
+	explode "large explosion" 30
+	explode "huge explosion" 10
+	"final explode" "final explosion large"
+	description `阿拉奇人相信高效的功能是美的最高形式，他们的飞船中没有哪艘船比丑陋但实用的浩克更清楚地体现了这一原则，浩克设计有可拆卸的侧舱，如果船长急于到达下一个目的地，可以在几分钟内将其更换到行星上。`
+
+ship "Arach Hulk" "Arach Hulk (Miner)"
+	outfits
+		"MCS Extractor" 2
+		
+		"Large Cogeneration Module"
+		"Large Collector Module"
+		"Large Battery Module"
+		"Small Collector Module"
+		"Small Battery Module"
+		"Small Shield Module" 2
+		"Large Repair Module"
+		
+		"Large Thrust Module" 2
+		"Large Reverse Module" 2
+		"Large Steering Module" 2
+		"Small Thrust Module" 2
+		"Small Reverse Module" 2
+		"Small Steering Module" 2
+		"Hyperdrive"
+
+ship "Arach Spindle"
+	sprite "ship/arach spindle"
+	thumbnail "thumbnail/arach spindle"
+	attributes
+		category "Heavy Freighter"
+		licenses
+			Coalition
+		"cost" 6652000
+		"shields" 5000
+		"hull" 9700
+		"required crew" 4
+		"bunks" 14
+		"mass" 766
+		"drag" 16.7
+		"heat dissipation" .36
+		"fuel capacity" 500
+		"cargo space" 392
+		"outfit space" 434
+		"weapon capacity" 138
+		"engine capacity" 148
+		weapon
+			"blast radius" 100
+			"shield damage" 1000
+			"hull damage" 500
+			"hit force" 1500
+	outfits
+		"Large Collector Module"
+		"Large Battery Module"
+		"Small Battery Module"
+		"Small Shield Module" 2
+		"Small Repair Module" 3
+		"Cooling Module"
+		
+		"Large Thrust Module" 2
+		"Large Reverse Module" 2
+		"Small Thrust Module" 3
+		"Small Reverse Module" 3
+		"Large Steering Module" 2
+		"Small Steering Module" 1
+		"Hyperdrive"
+		
+	engine -13 198 .7
+	engine 0 199 1
+	engine 13 198 .7
+	gun -27 -88
+	gun 27 -88
+	turret 0 -65
+	turret 0 189
+	explode "small explosion" 10
+	explode "medium explosion" 20
+	explode "large explosion" 20
+	"final explode" "final explosion large"
+	description `阿拉克浩克是一艘笨拙、笨重的巨舰，但拆除侧舱后，它就变成了机动性更强的纺锤号。由于其货舱空间要低得多，通常舰队配备主轴的唯一原因是他们计划在目的地装载新的货舱。`
+
+ship "Arach Spindle" "Arach Spindle (Miner)"
+	outfits
+		"MCS Extractor" 2
+		
+		"Large Collector Module"
+		"Large Battery Module"
+		"Small Cogeneration Module" 2
+		"Small Collector Module" 2
+		"Small Battery Module"
+		"Cooling Module"
+		"Small Shield Module" 2
+		"Small Repair Module" 3
+		
+		"Large Thrust Module" 2
+		"Large Reverse Module" 2
+		"Large Steering Module" 2
+		"Small Thrust Module" 3
+		"Small Reverse Module" 3
+		"Small Steering Module"
+		"Hyperdrive"
+
+ship "Arach Spindle" "Arach Spindle (Plasma)"
+	outfits
+		"Hyperdrive"
+		"Outfits Expansion" 3
+		"Small Shield Module"
+		"Small Repair Module" 2
+		"Large Repair Module"
+		"Cooling Module" 5
+		"Small Thrust Module" 3
+		"Large Thrust Module" 2
+		"Small Steering Module"
+		"Small Battery Module"
+		"Large Battery Module"
+		"Large Steering Module" 2
+		"Fusion Reactor"
+		"Plasma Turret" 2
+
+ship "Arach Spindle" "Arach Spindle (Jump Drive)"
+	outfits
+		"Large Collector Module" 3
+		"Small Collector Module" 2
+		"Large Battery Module"
+		"Large Shield Module"
+		"Small Shield Module"
+		"Large Repair Module"
+		"Small Repair Module" 2
+		"Cooling Module" 2
+		"Fuel Module" 4
+		
+		"Large Thrust Module" 2
+		"Small Thrust Module" 3
+		"Large Steering Module" 2
+		"Small Steering Module"
+		"Jump Drive"
+
+
+ship "Arach Transport"
+	sprite "ship/arach transport"
+	thumbnail "thumbnail/arach transport"
+	attributes
+		category "Light Freighter"
+		licenses
+			Coalition
+		"cost" 2772000
+		"shields" 2300
+		"hull" 4800
+		"required crew" 2
+		"bunks" 5
+		"mass" 420
+		"drag" 9
+		"heat dissipation" .48
+		"fuel capacity" 400
+		"cargo space" 228
+		"outfit space" 281
+		"weapon capacity" 96
+		"engine capacity" 70
+		weapon
+			"blast radius" 40
+			"shield damage" 400
+			"hull damage" 200
+			"hit force" 600
+	outfits
+		"Small Collector Module" 2
+		"Small Battery Module"
+		"Small Shield Module"
+		"Small Repair Module"
+		
+		"Large Thrust Module"
+		"Large Reverse Module"
+		"Large Steering Module"
+		"Small Steering Module"
+		"Hyperdrive"
+		
+	engine -14 117 .4
+	engine -7 117 .9
+	engine 7 117 .9
+	engine 14 117 .4
+	gun -22 13
+	gun 22 13
+	turret 0 -77
+	explode "small explosion" 10
+	explode "medium explosion" 30
+	explode "large explosion" 5
+	"final explode" "final explosion medium"
+	description `阿拉克运输船是他们最古老的船舶设计，可以追溯到他们第一次加入联盟推翻夸格人并占领他们的环形世界时。当时，运输舰偶尔被用作战舰，但几千年后的今天，与最新的赫利亚军舰相比，它们被认为已经过时了。`
+
+ship "Arach Transport" "Arach Transport (Miner)"
+	outfits
+		"MCS Extractor" 2
+		
+		"Small Cogeneration Module" 2
+		"Small Collector Module" 3
+		"Small Battery Module" 2
+		"Small Shield Module"
+		"Small Repair Module"
+		
+		"Large Thrust Module"
+		"Large Reverse Module"
+		"Large Steering Module"
+		"Small Steering Module"
+		"Hyperdrive"
+
+
+ship "Heliarch Breacher"
+	sprite "ship/heliarch breacher"
+	thumbnail "thumbnail/heliarch breacher"
+	attributes
+		category "Light Warship"
+		licenses
+			Heliarch
+		"cost" 17659000
+		"shields" 24400
+		"hull" 21500
+		"required crew" 11
+		"bunks" 15
+		"mass" 343
+		"drag" 4.0
+		"heat dissipation" .62
+		"ion protection" .1
+		"scramble protection" .1
+		"fuel capacity" 800
+		"cargo space" 13
+		"outfit space" 372
+		"weapon capacity" 112
+		"engine capacity" 106
+		weapon
+			"blast radius" 150
+			"shield damage" 1200
+			"hull damage" 600
+			"hit force" 1500
+	outfits
+		"Bombardment Cannon" 2
+		"Bombardment Turret"
+		"Finisher Pod"
+		"Finisher Torpedo" 40
+		
+		"Small Reactor Module" 2
+		"Small Battery Module"
+		"Overcharged Shield Module"
+		"Overclocked Repair Module"
+		"Cooling Module" 2
+		"Scanning Module"
+		"Enforcer Riot Staff" 8
+		"Enforcer Confrontation Gear" 6
+		"Guardian Turret"
+		
+		"Large Thrust Module" 2
+		"Small Steering Module"
+		"Hyperdrive"
+	
+	engine 0 85 .9
+	engine -19 78 .7
+	engine 19 79 .7
+	gun 0 -87 "Finisher Pod"
+	gun -20 -33 "Bombardment Cannon"
+	gun 20 -33 "Bombardment Cannon"
+	turret 0 -23.5 "Bombardment Turret"
+	explode "small explosion" 30
+	explode "medium explosion" 40
+	explode "large explosion" 20
+	"final explode" "final explosion medium" 1
+	description `突破者号并不是最耐用的 Heliarch 舰艇，但其令人印象深刻的前进速度和相对尺寸的高火力使这艘舰艇成为扫射的理想选择。`
+
+ship "Heliarch Breacher" "Heliarch Breacher (Ions)"
+	outfits
+		"Ion Hail Turret"
+		"Ion Rain Gun" 3
+		
+		"Small Reactor Module" 2
+		"Small Battery Module" 2
+		"Overcharged Shield Module"
+		"Overclocked Repair Module"
+		"Cooling Module" 2
+		"Scanning Module" 2
+		"Enforcer Riot Staff" 8
+		"Enforcer Confrontation Gear" 7
+		
+		"Large Thrust Module"
+		"Small Thrust Module"
+		"Large Steering Module" 2
+		"Hyperdrive"
+
+ship "Heliarch Breacher" "Heliarch Breacher (Missile)"
+	outfits
+		"Finisher Pod" 3
+		"Finisher Storage Tube" 2
+		"Finisher Torpedo" 160
+		
+		"Small Reactor Module"
+		"Small Battery Module"
+		"Large Shield Module"
+		"Large Repair Module"
+		"Cooling Module"
+		"Scanning Module" 2
+		"Enforcer Riot Staff" 9
+		"Enforcer Confrontation Gear" 7
+		"Guardian Turret"
+		
+		"Large Thrust Module" 2
+		"Large Steering Module"
+		"Small Steering Module"
+		"Hyperdrive"
+
+ship "Heliarch Breacher" "Heliarch Breacher (Scrappy)"
+	outfits
+		"Bombardment Cannon" 3
+		"Bombardment Turret"
+		
+		"Small Reactor Module" 2
+		"Small Battery Module" 2
+		"Overcharged Shield Module"
+		"Overclocked Repair Module"
+		"Cooling Module" 2
+		"Scanning Module"
+		"Enforcer Riot Staff" 8
+		"Enforcer Confrontation Gear" 8
+		"Guardian Turret"
+		
+		"Large Thrust Module"
+		"Small Thrust Module"
+		"Large Steering Module" 2
+		"Hyperdrive"
+
+
+ship "Heliarch Hunter"
+	sprite "ship/heliarch hunter"
+	thumbnail "thumbnail/heliarch hunter"
+	attributes
+		category "Medium Warship"
+		licenses
+			Heliarch
+		"cost" 32985000
+		"shields" 54900
+		"hull" 45300
+		"required crew" 26
+		"bunks" 41
+		"mass" 860
+		"drag" 7.7
+		"heat dissipation" .5
+		"ion protection" .2
+		"scramble protection" .2
+		"fuel capacity" 1500
+		"cargo space" 27
+		"outfit space" 552
+		"weapon capacity" 201
+		"engine capacity" 141
+		weapon
+			"blast radius" 200
+			"shield damage" 2700
+			"hull damage" 1200
+			"hit force" 3000
+	outfits
+		"Finisher Pod" 3
+		"Finisher Torpedo" 120
+		"Bombardment Turret"
+		"Heliarch Attractor"
+		
+		"Large Reactor Module"
+		"Small Battery Module" 3
+		"Overcharged Shield Module"
+		"Overclocked Repair Module"
+		"Cooling Module" 2
+		"Scanning Module" 2
+		"Enforcer Riot Staff" 25
+		"Enforcer Confrontation Gear" 13
+		"Guardian Turret"
+		
+		"Large Thrust Module" 2
+		"Small Thrust Module"
+		"Large Steering Module"
+		"Small Steering Module" 3
+		"Scram Drive"
+	
+	engine -5.5 103 .1
+	engine 5.5 103 .1
+	engine -25 113 .8
+	engine 25 113 .8
+	gun 0 -117 "Finisher Pod"
+	gun -17.5 -72.5 "Finisher Pod"
+	gun 17.5 -72.5 "Finisher Pod"
+	turret 0 -39.5 "Heliarch Attractor"
+	turret 0 33 "Bombardment Turret"
+	explode "small explosion" 30
+	explode "medium explosion" 50
+	explode "large explosion" 25
+	explode "huge explosion" 5
+	"final explode" "final explosion large" 1
+	description `虽然如今在和平时期它们主要用作巡逻船，但猎人最初的设计目的是快速追捕持不同政见者并将他们绳之以法。`
+
+ship "Heliarch Hunter" "Heliarch Hunter (Burst Fire)"
+	outfits
+		"Finisher Maegrolain" 2
+		"Finisher Storage Tube" 2
+		"Finisher Torpedo" 160
+		
+		"Large Reactor Module"
+		"Small Battery Module" 2
+		"Overcharged Shield Module"
+		"Overclocked Repair Module"
+		"Cooling Module" 2
+		"Scanning Module"
+		"Outfits Expansion"
+		"Enforcer Riot Staff" 12
+		"Enforcer Confrontation Gear" 35
+		"Guardian Turret"
+		
+		"Large Thrust Module" 2
+		"Small Thrust Module" 2
+		"Large Steering Module"
+		"Small Steering Module" 4
+		"Scram Drive"
+		
+	gun
+	gun "Finisher Maegrolain"
+	gun "Finisher Maegrolain"
+	
+ship "Heliarch Hunter" "Heliarch Hunter (Interdicting)"
+	outfits
+		"Finisher Pod" 2
+		"Finisher Storage Tube"
+		"Finisher Torpedo" 100
+		"Heliarch Attractor"
+		"Heliarch Repulsor"
+		
+		"Large Reactor Module"
+		"Large Battery Module"
+		"Overcharged Shield Module"
+		"Overclocked Repair Module"
+		"Cooling Module" 2
+		"Scanning Module" 3
+		"Outfits Expansion"
+		"Enforcer Riot Staff" 26
+		"Enforcer Confrontation Gear" 14
+		"Guardian Turret" 4
+		
+		"Large Thrust Module" 2
+		"Small Thrust Module"
+		"Large Steering Module" 2
+		"Small Steering Module"
+		"Scram Drive"
+	
+	gun
+	gun "Finisher Pod"
+	gun "Finisher Pod"
+	turret "Heliarch Repulsor"
+	turret "Heliarch Attractor"
+
+ship "Heliarch Hunter" "Heliarch Hunter (Ions)"
+	outfits
+		"Ion Hail Turret" 2
+		"Ion Rain Gun" 3
+		
+		"Large Reactor Module"
+		"Small Reactor Module"
+		"Large Battery Module"
+		"Overcharged Shield Module" 2
+		"Overclocked Repair Module"
+		"Cooling Module" 3
+		"Scanning Module"
+		"Outfits Expansion"
+		"Enforcer Riot Staff" 28
+		"Enforcer Confrontation Gear" 16
+		"Guardian Turret"
+		
+		"Large Thrust Module" 2
+		"Small Thrust Module"
+		"Large Steering Module" 2
+		"Small Steering Module" 2
+		"Scram Drive"
+
+ship "Heliarch Hunter" "Heliarch Hunter (Missile)"
+	outfits
+		"Finisher Pod" 3
+		"Finisher Storage Tube" 6
+		"Finisher Torpedo" 240
+		
+		"Large Reactor Module"
+		"Small Battery Module" 2
+		"Overcharged Shield Module"
+		"Overclocked Repair Module"
+		"Cooling Module" 2
+		"Scanning Module" 2
+		"Outfits Expansion"
+		"Enforcer Riot Staff" 27
+		"Enforcer Confrontation Gear" 17
+		
+		"Large Thrust Module" 2
+		"Small Thrust Module" 3
+		"Large Steering Module" 2
+		"Scram Drive"
+
+ship "Heliarch Hunter" "Heliarch Hunter (Scrappy)"
+	outfits
+		"Bombardment Cannon" 3
+		"Bombardment Turret" 2
+		
+		"Large Reactor Module"
+		"Small Reactor Module"
+		"Large Battery Module"
+		"Overcharged Shield Module"
+		"Overclocked Repair Module" 2
+		"Cooling Module" 3
+		"Scanning Module"
+		"Outfits Expansion"
+		"Enforcer Riot Staff" 26
+		"Enforcer Confrontation Gear" 18
+		"Guardian Turret"
+		
+		"Large Thrust Module" 2
+		"Small Thrust Module"
+		"Large Steering Module" 2
+		"Small Steering Module"
+		"Scram Drive"
+
+
+ship "Heliarch Interdictor"
+	sprite "ship/heliarch interdictor"
+	thumbnail "thumbnail/heliarch interdictor"
+	attributes
+		category "Medium Warship"
+		licenses
+			Heliarch
+		"cost" 35487000
+		"shields" 65300
+		"hull" 54600
+		"required crew" 42
+		"bunks" 70
+		"mass" 1052
+		"drag" 11.1
+		"heat dissipation" .47
+		"ion protection" .2
+		"scramble protection" .2
+		"fuel capacity" 800
+		"cargo space" 79
+		"outfit space" 544
+		"weapon capacity" 179
+		"engine capacity" 135
+		weapon
+			"blast radius" 250
+			"shield damage" 3000
+			"hull damage" 1500
+			"hit force" 3800
+	outfits
+		"Finisher Pod" 2
+		"Finisher Storage Tube"
+		"Finisher Torpedo" 100
+		"Heliarch Attractor"
+		"Heliarch Repulsor"
+		
+		"Large Reactor Module"
+		"Small Battery Module" 4
+		"Overcharged Shield Module"
+		"Overclocked Repair Module"
+		"Cooling Module" 2
+		"Scanning Module" 3
+		"Enforcer Riot Staff" 28
+		"Enforcer Confrontation Gear" 30
+		"Guardian Turret" 2
+		
+		"Large Thrust Module" 2
+		"Large Steering Module" 2
+		"Small Steering Module"
+		"Hyperdrive"
+	
+	engine -30 163 .5
+	engine -20 163 .85
+	engine 20 163 .85
+	engine 30 163 .5
+	gun -20 -98 "Finisher Pod"
+	gun 20 -98 "Finisher Pod"
+	turret -8 -63 "Heliarch Attractor"
+	turret 8 -63 "Heliarch Repulsor"
+	explode "small explosion" 20
+	explode "medium explosion" 50
+	explode "large explosion" 30
+	explode "huge explosion" 10
+	"final explode" "final explosion large" 1
+	description `任何激怒了日光君王的人都不能指望能够通过拦截器快速逃脱，拦截器的主要设计目的是携带一对吸引光束和排斥光束，可以将飞船保持在安全距离之外，同时将其推向足够远的位置，以防止其获得超空间锁而跳出系统。`
+
+ship "Heliarch Interdictor" "Heliarch Interdictor (Bombardment)"
+	outfits
+		"Finisher Pod" 2
+		"Finisher Storage Tube" 2
+		"Finisher Torpedo" 120
+		"Bombardment Turret" 2
+		
+		"Large Reactor Module"
+		"Small Battery Module" 3
+		"Overcharged Shield Module"
+		"Overclocked Repair Module"
+		"Cooling Module" 2
+		"Scanning Module" 3
+		"Enforcer Riot Staff" 31
+		"Enforcer Confrontation Gear" 27
+		"Guardian Turret"
+		
+		"Large Thrust Module" 2
+		"Small Thrust Module"
+		"Large Steering Module" 2
+		"Small Steering Module"
+		"Hyperdrive"
+
+ship "Heliarch Interdictor" "Heliarch Interdictor (Burst Fire)"
+	outfits
+		"Finisher Maegrolain" 2
+		"Finisher Storage Tube" 4
+		"Finisher Torpedo" 200
+		
+		"Large Reactor Module"
+		"Small Battery Module" 4
+		"Overcharged Shield Module"
+		"Overclocked Repair Module"
+		"Cooling Module" 2
+		"Scanning Module"
+		"Outfits Expansion" 3
+		"Enforcer Riot Staff" 20
+		"Enforcer Confrontation Gear" 63
+		
+		"Large Thrust Module" 2
+		"Small Thrust Module"
+		"Large Steering Module" 2
+		"Small Steering Module"
+		"Hyperdrive"
+
+ship "Heliarch Interdictor" "Heliarch Interdictor (Ions)"
+	outfits
+		"Ion Hail Turret" 2
+		"Ion Rain Gun" 2
+
+		"Large Reactor Module"
+		"Small Reactor Module"
+		"Small Battery Module" 4
+		"Overcharged Shield Module" 2
+		"Overclocked Repair Module" 2
+		"Cooling Module" 3
+		"Scanning Module" 3
+		"Outfits Expansion"
+		"Enforcer Riot Staff" 36
+		"Enforcer Confrontation Gear" 33
+
+		"Large Thrust Module" 2
+		"Large Steering Module" 2
+		"Small Steering Module"
+		"Hyperdrive"
+
+ship "Heliarch Interdictor" "Heliarch Interdictor (Missile)"
+	outfits
+		"Finisher Pod" 2
+		"Finisher Storage Tube" 13
+		"Finisher Torpedo" 340
+
+		"Small Reactor Module" 2
+		"Overcharged Shield Module"
+		"Overclocked Repair Module"
+		"Cooling Module"
+		"Scanning Module" 2
+		"Outfits Expansion" 3
+		"Enforcer Riot Staff" 25
+		"Enforcer Confrontation Gear" 28
+		"Guardian Turret"
+
+		"Large Thrust Module" 3
+		"Small Thrust Module"
+		"Large Steering Module"
+		"Hyperdrive"
+
+ship "Heliarch Interdictor" "Heliarch Interdictor (Scrappy)"
+	outfits
+		"Bombardment Cannon" 2
+		"Bombardment Turret" 2
+
+		"Large Reactor Module"
+		"Small Reactor Module"
+		"Large Battery Module"
+		"Overcharged Shield Module"
+		"Small Shield Module"
+		"Overclocked Repair Module" 2
+		"Small Repair Module"
+		"Cooling Module" 3
+		"Scanning Module" 5
+		"Outfits Expansion" 2
+		"Enforcer Riot Staff" 29
+		"Enforcer Confrontation Gear" 29
+		"Guardian Turret"
+
+		"Large Thrust Module" 2
+		"Small Thrust Module"
+		"Large Steering Module" 2
+		"Small Steering Module"
+		"Hyperdrive"
+
+
+ship "Heliarch Judicator"
+	sprite "ship/heliarch judicator"
+	thumbnail "thumbnail/heliarch judicator"
+	attributes
+		category "Medium Warship"
+		licenses
+			Heliarch
+		"cost" 33953000
+		"shields" 47700
+		"hull" 41900
+		"required crew" 31
+		"bunks" 110
+		"mass" 982
+		"drag" 11.9
+		"heat dissipation" .45
+		"ion protection" .2
+		"scramble protection" .2
+		"fuel capacity" 900
+		"cargo space" 136
+		"outfit space" 524
+		"weapon capacity" 164
+		"engine capacity" 114
+		weapon
+			"blast radius" 250
+			"shield damage" 2800
+			"hull damage" 1400
+			"hit force" 3800
+	outfits
+		"Finisher Pod" 2
+		"Finisher Torpedo" 140
+		"Finisher Storage Tube" 3
+		"Ion Hail Turret"
+		
+		"Large Reactor Module"
+		"Small Battery Module" 2
+		"Overcharged Shield Module"
+		"Overclocked Repair Module" 2
+		"Cooling Module" 2
+		"Scanning Module" 4
+		"Enforcer Riot Staff" 83
+		"Enforcer Confrontation Gear" 49
+		"Guardian Turret"
+		
+		"Small Thrust Module" 2
+		"Small Steering Module"
+		"Large Thrust Module" 2
+		"Large Steering Module"
+		"Scram Drive"
+	
+	engine -33 108 .5
+	engine -17 163 .7
+	engine 17 163 .7
+	engine 33 108 .5
+	gun -13 -124.5 "Finisher Pod"
+	gun 13 -124.5 "Finisher Pod"
+	turret 0 45 "Ion Hail Turret"
+	bay "Fighter" -34.5 -82
+		"launch effect" "coalition launch"
+	bay "Fighter" 34.5 -82
+		"launch effect" "coalition launch"
+	bay "Fighter" -67.5 35
+		"launch effect" "coalition launch"
+	bay "Fighter" -67.5 35
+		"launch effect" "coalition launch"
+	bay "Fighter" 67.5 35
+		"launch effect" "coalition launch"
+	bay "Fighter" 67.5 35
+		"launch effect" "coalition launch"
+	explode "small explosion" 20
+	explode "medium explosion" 50
+	explode "large explosion" 20
+	explode "huge explosion" 10
+	"final explode" "final explosion large" 1
+	description `在与夸格人作战期间，联盟专注于尽可能生产最强大、最坚韧的战舰，因此战斗机是不可能的。然而现在，Heliarch 的护盾矩阵和船体完整性技术更加先进，他们最近也用这种飞船进行了实验。审判者号是为了运输这些新战斗机而制造的。`
+	description `除了六个战斗机舱外，审判者号还拥有比其他 Heliarch 战舰更多的铺位和更高的货舱空间，因此可以兼作运输部队和装备的后勤船。`
+
+ship "Heliarch Judicator" "Heliarch Judicator (Attractor)"
+	outfits
+		"Ion Rain Gun" 2
+		"Heliarch Attractor"
+		
+		"Large Reactor Module"
+		"Small Reactor Module"
+		"Large Battery Module"
+		"Small Battery Module" 2
+		"Overcharged Shield Module" 2
+		"Overclocked Repair Module" 2
+		"Cooling Module" 3
+		"Scanning Module" 3
+		"Outfits Expansion" 3
+		"Enforcer Riot Staff" 87
+		"Enforcer Confrontation Gear" 42
+		
+		"Large Thrust Module" 2
+		"Large Steering Module" 2
+		"Scram Drive"
+
+ship "Heliarch Judicator" "Heliarch Judicator (Ions)"
+	outfits
+		"Ion Rain Gun" 2
+		"Ion Hail Turret"
+		
+		"Large Reactor Module"
+		"Small Reactor Module"
+		"Large Battery Module"
+		"Overcharged Shield Module" 2
+		"Overclocked Repair Module" 3
+		"Cooling Module" 3
+		"Scanning Module" 4
+		"Outfits Expansion" 3
+		"Enforcer Riot Staff" 90
+		"Enforcer Confrontation Gear" 31
+		
+		"Large Thrust Module"
+		"Small Thrust Module" 3
+		"Large Steering Module" 2
+		"Scram Drive"
+
+ship "Heliarch Judicator" "Heliarch Judicator (Missile)"
+	outfits
+		"Finisher Pod" 2
+		"Finisher Storage Tube" 14
+		"Finisher Torpedo" 360
+		
+		"Small Reactor Module" 2
+		"Small Battery Module"
+		"Overcharged Shield Module"
+		"Overclocked Repair Module"
+		"Cooling Module" 2
+		"Scanning Module" 5
+		"Outfits Expansion" 6
+		"Enforcer Riot Staff" 81
+		"Enforcer Confrontation Gear" 36
+		"Guardian Turret"
+		
+		"Large Thrust Module" 2
+		"Small Thrust Module" 3
+		"Small Steering Module" 3
+		"Scram Drive"
+
+ship "Heliarch Judicator" "Heliarch Judicator (Repulsor)"
+	outfits
+		"Finisher Pod" 2
+		"Finisher Storage Tube" 3
+		"Finisher Torpedo" 140
+		"Heliarch Repulsor"
+		
+		"Large Reactor Module"
+		"Large Battery Module"
+		"Overcharged Shield Module" 2
+		"Overclocked Repair Module"
+		"Cooling Module" 2
+		"Scanning Module" 3
+		"Outfits Expansion" 3
+		"Enforcer Riot Staff" 87
+		"Enforcer Confrontation Gear" 42
+		"Guardian Turret" 2
+		
+		"Large Thrust Module"
+		"Small Thrust Module" 3
+		"Large Steering Module" 2
+		"Scram Drive"
+
+ship "Heliarch Judicator" "Heliarch Judicator (Scrappy)"
+	outfits
+		"Bombardment Cannon" 2
+		"Bombardment Turret"
+		
+		"Large Reactor Module"
+		"Small Reactor Module"
+		"Large Battery Module"
+		"Overcharged Shield Module"
+		"Small Shield Module"
+		"Overclocked Repair Module" 3
+		"Cooling Module" 3
+		"Scanning Module"
+		"Outfits Expansion"
+		"Enforcer Riot Staff" 83
+		"Enforcer Confrontation Gear" 33
+		"Guardian Turret"
+		
+		"Large Thrust Module"
+		"Small Thrust Module" 2
+		"Large Steering Module" 2
+		"Small Steering Module" 2
+		"Scram Drive"
+
+
+ship "Heliarch Neutralizer"
+	sprite "ship/heliarch neutralizer"
+	thumbnail "thumbnail/heliarch neutralizer"
+	attributes
+		category "Light Warship"
+		licenses
+			Heliarch
+		"cost" 18847000
+		"shields" 36400
+		"hull" 32800
+		"required crew" 17
+		"bunks" 24
+		"mass" 429
+		"drag" 5.1
+		"heat dissipation" .6
+		"ion protection" .1
+		"scramble protection" .1
+		"fuel capacity" 1000
+		"cargo space" 36
+		"outfit space" 367
+		"weapon capacity" 72
+		"engine capacity" 102
+		weapon
+			"blast radius" 150
+			"shield damage" 1800
+			"hull damage" 900
+			"hit force" 2100
+	outfits
+		"Ion Rain Gun" 4
+		
+		"Small Reactor Module" 2
+		"Small Battery Module" 3
+		"Overcharged Shield Module"
+		"Overclocked Repair Module"
+		"Cooling Module" 2
+		"Scanning Module" 2
+		"Enforcer Riot Staff" 9
+		"Enforcer Confrontation Gear" 11
+		"Guardian Turret"
+		
+		"Large Thrust Module"
+		"Small Thrust Module" 2
+		"Large Steering Module"
+		"Small Steering Module" 2
+		"Hyperdrive"
+	
+	engine -17 82 .7
+	engine 0 74 1
+	engine 17 82 .7
+	gun -16 -59 "Ion Rain Gun"
+	gun 16 -59 "Ion Rain Gun"
+	gun -22 -57 "Ion Rain Gun"
+	gun 22 -57 "Ion Rain Gun"
+	explode "small explosion" 30
+	explode "medium explosion" 40
+	explode "large explosion" 20
+	"final explode" "final explosion medium" 1
+	description `中和者号是最常见的 Heliarch 巡逻舰，其设计强度足以在增援抵达之前占领敌方船只。`
+
+ship "Heliarch Neutralizer" "Heliarch Neutralizer (Missile)"
+	outfits
+		"Finisher Pod" 2
+		"Finisher Storage Tube" 4
+		"Finisher Torpedo" 160
+
+		"Small Reactor Module"
+		"Overcharged Shield Module"
+		"Overclocked Repair Module"
+		"Cooling Module"
+		"Scanning Module" 3
+		"Outfits Expansion"
+		"Enforcer Riot Staff" 8
+		"Enforcer Confrontation Gear" 12
+
+		"Large Thrust Module" 2
+		"Small Thrust Module"
+		"Large Steering Module"
+		"Hyperdrive"
+	
+	gun "Finisher Pod"
+	gun "Finisher Pod"
+	gun
+	gun
+
+ship "Heliarch Neutralizer" "Heliarch Neutralizer (Nimble)"
+	outfits
+		"Ion Rain Gun" 4
+		
+		"Small Reactor Module" 2
+		"Small Battery Module" 2
+		"Overcharged Shield Module"
+		"Overclocked Repair Module"
+		"Cooling Module"
+		"Scanning Module" 2
+		"Enforcer Riot Staff" 10
+		"Enforcer Confrontation Gear" 10
+		"Guardian Turret" 2
+		
+		"Large Thrust Module"
+		"Small Thrust Module"
+		"Large Steering Module" 2
+		"Small Steering Module"
+		"Hyperdrive"
+
+ship "Heliarch Neutralizer" "Heliarch Neutralizer (Scrappy)"
+	outfits
+		"Bombardment Cannon" 4
+		
+		"Large Reactor Module"
+		"Small Battery Module" 2
+		"Overcharged Shield Module"
+		"Overclocked Repair Module"
+		"Cooling Module" 2
+		"Scanning Module" 2
+		"Enforcer Riot Staff" 11
+		"Enforcer Confrontation Gear" 9
+		"Guardian Turret"
+		
+		"Large Thrust Module"
+		"Small Thrust Module" 2
+		"Large Steering Module" 2
+		"Hyperdrive"
+
+
+ship "Heliarch Punisher"
+	sprite "ship/heliarch punisher"
+	thumbnail "thumbnail/heliarch punisher"
+	attributes
+		category "Heavy Warship"
+		licenses
+			Heliarch
+		"cost" 58487000
+		"shields" 108000
+		"hull" 85000
+		"required crew" 96
+		"bunks" 145
+		"mass" 2030
+		"drag" 21.3
+		"heat dissipation" .35
+		"ion protection" .3
+		"scramble protection" .3
+		"fuel capacity" 600
+		"cargo space" 94
+		"outfit space" 885
+		"weapon capacity" 352
+		"engine capacity" 187
+		weapon
+			"blast radius" 400
+			"shield damage" 4800
+			"hull damage" 2400
+			"hit force" 6000
+	outfits
+		"Ion Rain Gun" 4
+		"Finisher Pod" 2
+		"Finisher Torpedo" 80
+		"Bombardment Turret" 4
+		
+		"Large Reactor Module" 2
+		"Large Battery Module"
+		"Overcharged Shield Module" 2
+		"Overclocked Repair Module" 2
+		"Cooling Module" 4
+		"Scanning Module" 4
+		"Enforcer Riot Staff" 78
+		"Enforcer Confrontation Gear" 44
+		"Guardian Turret" 2
+		
+		"Large Thrust Module" 2
+		"Small Thrust Module" 2
+		"Large Steering Module" 2
+		"Small Steering Module" 3
+		"Hyperdrive"
+	
+	engine -24 184 .6
+	engine 0 187 1.1
+	engine 24 184 .6
+	gun -21 -121 "Ion Rain Gun"
+	gun 21 -121 "Ion Rain Gun"
+	gun -27 -118 "Ion Rain Gun"
+	gun 27 -118 "Ion Rain Gun"
+	gun -43 -43 "Finisher Pod"
+	gun 43 -43 "Finisher Pod"
+	turret -13 -42 "Bombardment Turret"
+	turret 13 -42 "Bombardment Turret"
+	turret 0 -35 "Bombardment Turret"
+	turret 0 164 "Bombardment Turret"
+	explode "small explosion" 20
+	explode "medium explosion" 60
+	explode "large explosion" 40
+	explode "huge explosion" 20
+	"final explode" "final explosion large" 1
+	description `虽然天星惩罚者不如它们所要对抗的夸格飞船那么强大，但它们是多功能且耐用的飞船。有传言说，Heliarchs 藏有一小批偷来的夸格天矛，可以在战争时期装备惩罚者。`
+
+ship "Heliarch Punisher" "Heliarch Punisher (Burst Fire)"
+	outfits
+		"Finisher Maegrolain" 4
+		"Finisher Storage Tube" 4
+		"Finisher Torpedo" 320
+		
+		"Large Reactor Module"
+		"Small Reactor Module"
+		"Large Battery Module"
+		"Overcharged Shield Module" 2
+		"Overclocked Repair Module" 2
+		"Cooling Module" 3
+		"Scanning Module"
+		"Outfits Expansion" 4
+		"Enforcer Riot Staff" 29
+		"Enforcer Confrontation Gear" 113
+		
+		"Large Thrust Module" 3
+		"Small Thrust Module" 2
+		"Large Steering Module" 2
+		"Small Steering Module" 3
+		"Hyperdrive"
+	
+	gun "Finisher Maegrolain"
+	gun "Finisher Maegrolain"
+	gun
+	gun
+	gun "Finisher Maegrolain"
+	gun "Finisher Maegrolain"
+
+ship "Heliarch Punisher" "Heliarch Punisher (Fuel)"
+	outfits
+		"Finisher Pod" 2
+		"Finisher Torpedo" 80
+		"Bombardment Turret" 4
+		
+		"Large Reactor Module" 2
+		"Large Battery Module"
+		"Overcharged Shield Module" 2
+		"Overclocked Repair Module" 2
+		"Cooling Module" 4
+		"Scanning Module" 4
+		"Fuel Module" 4
+		"Enforcer Riot Staff" 160
+		"Enforcer Confrontation Gear" 150
+		"Guardian Turret"
+	
+		"Large Thrust Module" 2
+		"Small Thrust Module" 2
+		"Large Steering Module" 2
+		"Small Steering Module" 2
+		"Jump Drive"
+
+ship "Heliarch Punisher" "Heliarch Punisher (Interdicting)"
+	outfits
+		"Bombardment Cannon" 4
+		"Finisher Pod" 2
+		"Finisher Torpedo" 80
+		"Heliarch Attractor" 2
+		"Heliarch Repulsor"
+		"Bombardment Turret"
+		
+		"Large Reactor Module" 2
+		"Small Battery Module" 3
+		"Overcharged Shield Module" 2
+		"Overclocked Repair Module" 2
+		"Cooling Module" 4
+		"Scanning Module" 4
+		"Enforcer Riot Staff" 80
+		"Enforcer Confrontation Gear" 42
+		"Guardian Turret"
+		
+		"Large Thrust Module" 2
+		"Small Thrust Module" 3
+		"Large Steering Module" 2
+		"Small Steering Module" 2
+		"Hyperdrive"
+	
+	gun "Bombardment Cannon"
+	gun "Bombardment Cannon"
+	gun "Bombardment Cannon"
+	gun "Bombardment Cannon"
+	gun "Finisher Pod"
+	gun "Finisher Pod"
+	turret "Heliarch Attractor"
+	turret "Heliarch Attractor"
+	turret "Heliarch Repulsor"
+	turret "Bombardment Turret"
+
+ship "Heliarch Punisher" "Heliarch Punisher (Ions)"
+	outfits
+		"Ion Hail Turret" 4
+		"Ion Rain Gun" 6
+
+		"Large Reactor Module" 2
+		"Small Reactor Module"
+		"Large Battery Module"
+		"Overcharged Shield Module" 3
+		"Overclocked Repair Module" 3
+		"Cooling Module" 5
+		"Scanning Module" 4
+		"Outfits Expansion" 2
+		"Enforcer Riot Staff" 96
+		"Enforcer Confrontation Gear" 48
+		"Guardian Turret"
+
+		"Large Thrust Module" 3
+		"Large Steering Module" 2
+		"Small Steering Module" 3
+		"Hyperdrive"
+
+ship "Heliarch Punisher" "Heliarch Punisher (Missile)"
+	outfits
+		"Finisher Pod" 6
+		"Finisher Torpedo" 240
+		"Heliarch Repulsor"
+		
+		"Large Reactor Module" 2
+		"Small Battery Module" 3
+		"Overcharged Shield Module" 3
+		"Overclocked Repair Module" 2
+		"Cooling Module" 4
+		"Scanning Module" 4
+		"Outfits Expansion" 2
+		"Enforcer Riot Staff" 85
+		"Enforcer Confrontation Gear" 40
+		"Guardian Turret" 2
+		
+		"Large Thrust Module" 4
+		"Large Steering Module" 2
+		"Small Steering Module"
+		"Hyperdrive"
+	
+	turret
+	turret
+	turret "Heliarch Repulsor"
+	turret
+
+ship "Heliarch Punisher" "Heliarch Punisher (Pure Finishers)"
+	outfits
+		"Finisher Pod" 6
+		"Finisher Storage Tube" 21
+		"Finisher Torpedo" 660
+
+		"Large Reactor Module"
+		"Overcharged Shield Module"
+		"Overclocked Repair Module"
+		"Cooling Module" 4
+		"Scanning Module" 4
+		"Outfits Expansion" 4
+		"Enforcer Riot Staff" 71
+		"Enforcer Confrontation Gear" 40
+		"Guardian Turret"
+
+		"Large Thrust Module" 4
+		"Small Thrust Module"
+		"Large Steering Module" 2
+		"Hyperdrive"
+
+ship "Heliarch Punisher" "Heliarch Punisher (Scrappy)"
+	outfits
+		"Bombardment Cannon" 6
+		"Bombardment Turret" 4
+		
+		"Large Reactor Module" 2
+		"Small Reactor Module"
+		"Large Battery Module"
+		"Overcharged Shield Module" 2
+		"Overclocked Repair Module" 3
+		"Cooling Module" 5
+		"Scanning Module" 4
+		"Outfits Expansion" 3
+		"Enforcer Riot Staff" 77
+		"Enforcer Confrontation Gear" 45
+		"Guardian Turret" 2
+		
+		"Large Thrust Module" 2
+		"Small Thrust Module"
+		"Large Steering Module" 4
+		"Small Steering Module" 2
+		"Hyperdrive"
+
+
+ship "Heliarch Pursuer"
+	sprite "ship/heliarch pursuer"
+	thumbnail "thumbnail/heliarch pursuer"
+	attributes
+		category "Fighter"
+		licenses
+			Heliarch
+		"cost" 1029000
+		"shields" 2200
+		"hull" 1600
+		"required crew" 1
+		"bunks" 1
+		"mass" 31
+		"drag" 0.8
+		"heat dissipation" 0.99
+		"outfit space" 105
+		"weapon capacity" 19
+		"engine capacity" 36
+		weapon
+			"blast radius" 15
+			"shield damage" 150
+			"hull damage" 200
+			"hit force" 350
+	outfits
+		"Ion Rain Gun"
+		
+		"Large Collector Module"
+		"Small Collector Module" 2
+		"Small Battery Module"
+		"Small Shield Module"
+		"Small Repair Module"
+		
+		"Small Steering Module" 2
+		"Small Thrust Module" 2
+	
+	engine 0 34.5
+	engine 7 33.5
+	engine -7 33.5
+	gun 0 -35.5
+	explode "tiny explosion" 20
+	explode "small explosion" 10
+	description `有时，当 Heliarch 学员在空战模拟中表现出有希望的结果时，他们会被允许驾驶自己的飞船：追击者号。`
+	description `虽然肯定不如联军太空中的其他战斗机那么耐用，但基梅克的设计生产成本更低，并且能够超越任何其他联军舰艇。`
+	description "战斗机没有配备超光速引擎。除非您的舰队中有一艘带有战斗机舱的舰艇，否则您无法携带战斗机。"
+
+ship "Heliarch Pursuer" "Heliarch Pursuer (Scrappy)"
+	outfits
+		"Bombardment Cannon"
+		
+		"Large Collector Module"
+		"Small Collector Module" 3
+		"Small Battery Module"
+		"Small Shield Module"
+		"Small Repair Module"
+		
+		"Small Thrust Module" 2
+		"Small Steering Module" 2
+
+
+ship "Heliarch Rover"
+	sprite "ship/heliarch rover"
+	thumbnail "thumbnail/heliarch rover"
+	attributes
+		category "Fighter"
+		licenses
+			Heliarch
+		"cost" 1238000
+		"shields" 3300
+		"hull" 3100
+		"required crew" 1
+		"bunks" 1
+		"mass" 37
+		"drag" 1.19
+		"heat dissipation" .96
+		"outfit space" 125
+		"weapon capacity" 24
+		"engine capacity" 32
+		weapon
+			"blast radius" 15
+			"shield damage" 150
+			"hull damage" 200
+			"hit force" 350
+	outfits
+		"Bombardment Cannon" 2
+		
+		"Large Collector Module"
+		"Small Battery Module" 2
+		"Small Cogeneration Module"
+		"Small Shield Module"
+		"Small Repair Module" 3
+		
+		"Small Thrust Module" 2
+		"Small Steering Module" 2
+	
+	engine 7 28
+	engine -7 28
+	gun 5 -30
+	gun -5 -30
+	explode "tiny explosion" 25
+	explode "small explosion" 15
+	description `作为他们设计的第一架战斗机，漫游者是全能的战舰，由于其在任何情况下的可靠性，Heliarchs 经常使用它们。`
+	description "战斗机没有配备超光速引擎。除非您的舰队中有一艘带有战斗机舱的舰艇，否则您无法携带战斗机。"
+
+ship "Heliarch Rover" "Heliarch Rover (Ions)"
+	outfits
+		"Ion Rain Gun"
+		
+		"Large Collector Module"
+		"Small Collector Module" 3
+		"Small Battery Module"
+		"Small Shield Module"
+		"Large Repair Module"
+		
+		"Small Thrust Module" 2
+		"Small Steering Module" 2
+
+
+ship "Heliarch Stalker"
+	sprite "ship/heliarch stalker"
+	thumbnail "thumbnail/heliarch stalker"
+	attributes
+		category "Fighter"
+		licenses
+			Heliarch
+		"cost" 1358000
+		"shields" 5700
+		"hull" 5200
+		"required crew" 1
+		"bunks" 2
+		"mass" 101
+		"drag" 2.3
+		"heat dissipation" 0.59
+		"outfit space" 133
+		"weapon capacity" 43
+		"engine capacity" 16
+		weapon
+			"blast radius" 15
+			"shield damage" 150
+			"hull damage" 200
+			"hit force" 350
+	outfits
+		"Ion Hail Turret"
+		
+		"Large Collector Module"
+		"Small Collector Module"
+		"Small Battery Module"
+		"Large Shield Module"
+		"Large Repair Module"
+		
+		"Small Steering Module"
+		"Small Thrust Module"
+	
+	engine 0 40 .8
+	turret 0 -1.5
+	explode "tiny explosion" 25
+	explode "small explosion" 15
+	description `对于这种尺寸的舰船来说，追猎者号拥有令人难以置信的耐用性，它是一座紧凑的堡垒，可以承受严重的惩罚，并且比某些战舰恢复得更快。然而，它的速度和机动性还有很多不足之处。`
+	description "战斗机没有配备超光速引擎。除非您的舰队中有一艘带有战斗机舱的舰艇，否则您无法携带战斗机。"
+
+ship "Heliarch Stalker" "Heliarch Stalker (Scrappy)"
+	outfits
+		"Bombardment Turret"
+		
+		"Small Reactor Module"
+		"Small Battery Module"
+		"Small Shield Module"
+		"Small Repair Module" 2
+		"Cooling Module"
+		
+		"Small Thrust Module"
+		"Small Steering Module"
+
+
+ship "Kimek Briar"
+	sprite "ship/kimek briar"
+	thumbnail "thumbnail/kimek briar"
+	attributes
+		category "Transport"
+		licenses
+			Coalition
+		"cost" 1532000
+		"shields" 3600
+		"hull" 1700
+		"required crew" 3
+		"bunks" 38
+		"mass" 286
+		"drag" 4.8
+		"heat dissipation" .6
+		"fuel capacity" 700
+		"cargo space" 23
+		"outfit space" 245
+		"weapon capacity" 89
+		"engine capacity" 60
+		weapon
+			"blast radius" 34
+			"shield damage" 340
+			"hull damage" 170
+			"hit force" 510
+	outfits
+		"Small Collector Module" 2
+		"Small Battery Module" 2
+		"Small Shield Module" 2
+		
+		"Large Thrust Module"
+		"Large Reverse Module"
+		"Large Steering Module"
+		"Hyperdrive"
+		
+	engine -12 85 .5
+	engine 0 89 1.2
+	engine 12 85 .5
+	gun -10 -52
+	gun 10 -52
+	turret 0 -14
+	explode "tiny explosion" 5
+	explode "small explosion" 20
+	explode "medium explosion" 5
+	"final explode" "final explosion medium"
+	description `基梅克人的人口是萨雷德人和阿拉奇人加起来的两倍多，基梅克人不断需要运输船将人员从一个世界运送到另一个世界。`
+
+ship "Kimek Briar" "Kimek Briar (Miner)"
+	outfits
+		"MCS Extractor" 2
+		
+		"Small Cogeneration Module" 2
+		"Small Collector Module" 3
+		"Small Battery Module" 2
+		"Small Shield Module" 2
+		
+		"Large Thrust Module"
+		"Large Reverse Module"
+		"Large Steering Module"
+		"Hyperdrive"
+
+ship "Kimek Spire"
+	sprite "ship/kimek spire"
+	thumbnail "thumbnail/kimek spire"
+	attributes
+		category "Space Liner"
+		licenses
+			Coalition
+		"cost" 9375000
+		"shields" 14200
+		"hull" 4900
+		"required crew" 19
+		"bunks" 296
+		"mass" 1152
+		"drag" 13
+		"heat dissipation" .39
+		"fuel capacity" 800
+		"cargo space" 70
+		"outfit space" 489
+		"weapon capacity" 256
+		"engine capacity" 129
+		weapon
+			"blast radius" 140
+			"shield damage" 1400
+			"hull damage" 700
+			"hit force" 2100
+	outfits
+		"Large Collector Module"
+		"Small Collector Module"
+		"Large Battery Module"
+		"Large Shield Module"
+		"Small Shield Module"
+		
+		"Large Thrust Module" 2
+		"Large Reverse Module" 2
+		"Large Steering Module" 2
+		"Small Steering Module"
+		"Hyperdrive"
+		
+	engine -22 221 .6
+	engine -10 219 .8
+	engine 10 219 .8
+	engine 22 221 .6
+	gun -14 -183
+	gun 14 -183
+	turret 0 -153
+	turret 0 -43
+	turret -42 131
+	turret 42 131
+	explode "small explosion" 10
+	explode "medium explosion" 30
+	explode "large explosion" 20
+	explode "huge explosion" 5
+	"final explode" "final explosion large"
+	description `尖顶号是联盟空间中最大的客运交通工具，能够搭载近三百人……只要他们舒服地住在主要为满足 Kimek 的需求而设计的小双层房间里即可。大多数天花板都太短，萨利德人无法站直，而床也太小，阿拉克人无法舒适地伸展双腿。`
+
+ship "Kimek Spire" "Kimek Spire (Miner)"
+	outfits
+		"MCS Extractor" 2
+		
+		"Large Cogeneration Module"
+		"Large Collector Module"
+		"Large Battery Module"
+		"Small Collector Module" 2
+		"Large Shield Module"
+		"Small Shield Module"
+		
+		"Large Thrust Module" 2
+		"Large Reverse Module" 2
+		"Large Steering Module" 2
+		"Small Steering Module"
+		"Hyperdrive"
+
+ship "Kimek Thistle"
+	sprite "ship/kimek thistle"
+	thumbnail "thumbnail/kimek thistle"
+	attributes
+		category "Transport"
+		licenses
+			Coalition
+		"cost" 2904000
+		"shields" 7500
+		"hull" 2800
+		"required crew" 7
+		"bunks" 78
+		"mass" 506
+		"drag" 8.1
+		"heat dissipation" .5
+		"fuel capacity" 700
+		"cargo space" 32
+		"outfit space" 321
+		"weapon capacity" 118
+		"engine capacity" 87
+		weapon
+			"blast radius" 60
+			"shield damage" 600
+			"hull damage" 300
+			"hit force" 900
+	outfits
+		"Large Collector Module"
+		"Small Battery Module"
+		"Small Shield Module" 3
+		
+		"Large Thrust Module"
+		"Large Reverse Module"
+		"Small Thrust Module" 2
+		"Small Reverse Module" 2
+		"Large Steering Module"
+		"Small Steering Module"
+		"Hyperdrive"
+		
+	engine -13 120 .7
+	engine 0 123 1
+	engine 13 120 .7
+	gun -11 -92
+	gun 11 -92
+	turret -13 3
+	turret 13 3
+	explode "small explosion" 10
+	explode "medium explosion" 30
+	explode "large explosion" 10
+	"final explode" "final explosion medium"
+	description `基梅克人非常热爱旅行，以至于他们中的一些人会很高兴地在这种规模的交通工具上度过几个月，而且在旅程结束时，乘客们往往会成为一个紧密团结的社区。`
+
+ship "Kimek Thistle" "Kimek Thistle (Miner)"
+	outfits
+		"MCS Extractor" 2
+		
+		"Large Collector Module"
+		"Small Cogeneration Module" 2
+		"Small Collector Module"
+		"Small Battery Module" 2
+		"Small Shield Module" 3
+		
+		"Large Thrust Module"
+		"Large Reverse Module"
+		"Large Steering Module"
+		"Small Thrust Module" 2
+		"Small Reverse Module" 2
+		"Small Steering Module"
+		"Hyperdrive"
+
+ship "Kimek Thistle" "Kimek Thistle (Torpedoes)"
+	outfits
+		"Hyperdrive"
+		"Small Shield Module" 2
+		"Small Repair Module" 2
+		"Cooling Module" 2
+		"Small Thrust Module" 2
+		"Small Steering Module"
+		"Large Thrust Module"
+		"Small Battery Module"
+		"Large Steering Module"
+		"Heavy Anti-Missile Turret"
+		"Torpedo Launcher" 2
+		Torpedo 60
+		"Breeder Reactor"
+
+ship "Kimek Thorn"
+	sprite "ship/kimek thorn"
+	thumbnail "thumbnail/kimek thorn"
+	attributes
+		category "Transport"
+		licenses
+			Coalition
+		"cost" 440000
+		"shields" 1400
+		"hull" 800
+		"required crew" 1
+		"bunks" 10
+		"mass" 90
+		"drag" 1.9
+		"heat dissipation" .77
+		"fuel capacity" 600
+		"cargo space" 13
+		"outfit space" 133
+		"weapon capacity" 40
+		"engine capacity" 38
+		weapon
+			"blast radius" 14
+			"shield damage" 140
+			"hull damage" 70
+			"hit force" 210
+	outfits
+		"Small Collector Module"
+		"Small Battery Module"
+		"Small Shield Module"
+		
+		"Small Thrust Module" 2
+		"Small Reverse Module" 2
+		"Small Steering Module" 2
+		"Hyperdrive"
+		
+	engine -8 41 .7
+	engine 0 43 1
+	engine 8 41 .7
+	gun -8 -23
+	gun 8 -23
+	explode "tiny explosion" 10
+	explode "small explosion" 5
+	"final explode" "final explosion small"
+	description `荆棘号相当于 Kimek 航天飞机，由于其速度和机动性，它们在整个联盟太空中被用来将乘客从一艘船转移到另一艘船或从一颗行星转移到轨道上。`
+
+ship "Kimek Thorn" "Kimek Thorn (Miner)"
+	outfits
+		"MCS Extractor" 2
+		
+		"Small Cogeneration Module" 2
+		"Small Collector Module"
+		"Small Battery Module"
+		"Small Shield Module"
+		
+		"Small Thrust Module" 2
+		"Small Steering Module" 2
+		"Hyperdrive"
+
+
+ship "Saryd Runabout"
+	sprite "ship/saryd runabout"
+	thumbnail "thumbnail/saryd runabout"
+	attributes
+		category "Transport"
+		licenses
+			Coalition
+		"cost" 942000
+		"shields" 2000
+		"hull" 1400
+		"required crew" 2
+		"bunks" 14
+		"mass" 190
+		"drag" 3.2
+		"heat dissipation" .61
+		"fuel capacity" 400
+		"cargo space" 46
+		"outfit space" 172
+		"weapon capacity" 44
+		"engine capacity" 42
+		weapon
+			"blast radius" 22
+			"shield damage" 220
+			"hull damage" 110
+			"hit force" 330
+	outfits
+		"Small Collector Module" 2
+		"Small Battery Module"
+		"Small Shield Module"
+		
+		"Small Thrust Module" 2
+		"Small Reverse Module" 2
+		"Small Steering Module" 3
+		"Hyperdrive"
+		
+	engine -14 52 1
+	engine 14 52 1
+	gun -21 -4
+	gun 21 -4
+	explode "tiny explosion" 10
+	explode "small explosion" 10
+	"final explode" "final explosion small"
+	description `Saryds 非常重视独处，也非常重视社区和协作。因此，他们最小的航天器需要至少两人组成的团队来操作也就不足为奇了。孤独的萨利德与基梅克或阿拉奇担任副驾驶是很常见的，以此作为建立跨物种友谊的一种方式。`
+
+ship "Saryd Runabout" "Saryd Runabout (Miner)"
+	outfits
+		"MCS Extractor" 2
+		
+		"Small Cogeneration Module" 2
+		"Small Collector Module" 3
+		"Small Battery Module" 2
+		"Small Shield Module"
+		
+		"Small Thrust Module" 2
+		"Small Steering Module" 3
+		"Hyperdrive"
+
+ship "Saryd Sojourner"
+	sprite "ship/saryd sojourner"
+	thumbnail "thumbnail/saryd sojourner"
+	attributes
+		category "Utility"
+		licenses
+			Coalition
+		"cost" 11075000
+		"shields" 13000
+		"hull" 7700
+		"required crew" 17
+		"bunks" 101
+		"mass" 1304
+		"drag" 20
+		"heat dissipation" .33
+		"fuel capacity" 800
+		"cargo space" 312
+		"outfit space" 568
+		"weapon capacity" 202
+		"engine capacity" 156
+		weapon
+			"blast radius" 200
+			"shield damage" 2000
+			"hull damage" 1000
+			"hit force" 3000
+	outfits
+		"Large Collector Module"
+		"Small Collector Module" 3
+		"Large Battery Module"
+		"Large Shield Module"
+		"Small Repair Module" 2
+		
+		"Large Thrust Module" 2
+		"Large Reverse Module" 2
+		"Small Thrust Module" 3
+		"Small Reverse Module" 3
+		"Large Steering Module" 2
+		"Small Steering Module"
+		"Hyperdrive"
+		
+	engine -24 176 .6
+	engine -11 181 .8
+	engine 11 181 .8
+	engine 24 176 .6
+	gun -23 -104
+	gun 23 -104
+	turret -17 -104
+	turret 17 -104
+	turret 0 -96
+	turret 0 157
+	explode "small explosion" 20
+	explode "medium explosion" 30
+	explode "large explosion" 10
+	explode "huge explosion" 10
+	"final explode" "final explosion large"
+	description `当第一次战争针对夸格人时，萨利德人已经在太空飞行了一万多个地球年，他们的星舰技术比基梅克或阿拉奇先进得多。当时，类似于现代旅居者号的舰艇是联军舰队中最强大的主力舰。`
+
+ship "Saryd Sojourner" "Saryd Sojourner (Miner)"
+	outfits
+		"MCS Extractor" 2
+		
+		"Large Cogeneration Module"
+		"Large Collector Module"
+		"Large Battery Module"
+		"Small Cogeneration Module"
+		"Small Collector Module" 3
+		"Small Battery Module" 2
+		"Large Shield Module"
+		"Small Repair Module" 2
+		
+		"Large Thrust Module" 2
+		"Large Reverse Module" 2
+		"Large Steering Module" 2
+		"Small Thrust Module" 3
+		"Small Reverse Module" 3
+		"Small Steering Module"
+		"Hyperdrive"
+
+ship "Saryd Sojourner" "Saryd Sojourner (Bombardments)"
+	outfits
+		"Hyperdrive"
+		"Bombardment Turret" 3
+		"Ion Rain Gun" 2
+		"Large Reactor Module"
+		"Small Battery Module"
+		"Large Battery Module" 2
+		"Cooling Module" 3
+		"Small Thrust Module" 3
+		"Large Thrust Module" 2
+		"Small Steering Module" 2
+		"Large Steering Module" 2
+		"Overclocked Repair Module"
+		"Overcharged Shield Module"
+
+ship "Saryd Traveler"
+	sprite "ship/saryd traveler"
+	thumbnail "thumbnail/saryd traveler"
+	attributes
+		category "Utility"
+		licenses
+			Coalition
+		"cost" 3385000
+		"shields" 6500
+		"hull" 4000
+		"required crew" 10
+		"bunks" 54
+		"mass" 676
+		"drag" 7.7
+		"heat dissipation" .43
+		"fuel capacity" 600
+		"cargo space" 164
+		"outfit space" 466
+		"weapon capacity" 177
+		"engine capacity" 79
+		"asteroid scan power" 36
+		"atmosphere scan" 100
+		weapon
+			"blast radius" 72
+			"shield damage" 720
+			"hull damage" 360
+			"hit force" 1080
+	outfits
+		"Small Collector Module" 3
+		"Small Battery Module" 2
+		"Small Shield Module" 2
+		"Small Repair Module"
+		
+		"Large Thrust Module"
+		"Large Reverse Module"
+		"Small Thrust Module"
+		"Small Reverse Module"
+		"Large Steering Module"
+		"Small Steering Module"
+		"Hyperdrive"
+		
+	engine -30 87 .7
+	engine -21 86 .7
+	engine 21 86 .7
+	engine 30 87 .7
+	gun -32 -18
+	gun 32 -18
+	gun -22 -18
+	gun 22 -18
+	turret -41 9
+	turret 41 9
+	explode "small explosion" 30
+	explode "medium explosion" 20
+	explode "large explosion" 10
+	"final explode" "final explosion medium"
+	description `旅行者号最初被设计为科学飞船，几千年前，萨利德人已经对联盟空间中每个世界的所有生命形式和物理现象进行了编目。如今，许多萨利德社区仍然选择生活在旅行者中，一起从一个星系旅行到另一个星系，而不是在一个星球上扎根。`
+
+ship "Saryd Traveler" "Saryd Traveler (Miner)"
+	outfits
+		"MCS Extractor" 4
+		
+		"Large Cogeneration Module"
+		"Small Collector Module" 3
+		"Small Battery Module" 3
+		"Small Shield Module" 2
+		"Small Repair Module"
+		
+		"Large Thrust Module"
+		"Large Reverse Module"
+		"Large Steering Module"
+		"Small Thrust Module"
+		"Small Reverse Module"
+		"Small Steering Module"
+		"Hyperdrive"
+
+ship "Saryd Visitor"
+	sprite "ship/saryd visitor"
+	thumbnail "thumbnail/saryd visitor"
+	attributes
+		category "Transport"
+		licenses
+			Coalition
+		"cost" 1982000
+		"shields" 4000
+		"hull" 2400
+		"required crew" 5
+		"bunks" 32
+		"mass" 418
+		"drag" 5.5
+		"heat dissipation" .52
+		"fuel capacity" 400
+		"cargo space" 108
+		"outfit space" 320
+		"weapon capacity" 90
+		"engine capacity" 57
+		weapon
+			"blast radius" 42
+			"shield damage" 420
+			"hull damage" 210
+			"hit force" 630
+	outfits
+		"Small Collector Module" 2
+		"Small Battery Module" 2
+		"Small Shield Module"
+		"Small Repair Module"
+		
+		"Small Thrust Module" 3
+		"Small Reverse Module" 3
+		"Large Steering Module"
+		"Hyperdrive"
+		
+	engine -23 75 .6
+	engine -11 78 .8
+	engine 11 78 .8
+	engine 23 75 .6
+	gun -15 -51
+	gun 15 -51
+	turret 0 26
+	explode "tiny explosion" 20
+	explode "small explosion" 30
+	explode "medium explosion" 5
+	"final explode" "final explosion medium"
+	description `萨利德人并不专门从事载客或载货，而是寻求使他们的船只尽可能平衡和多功能。因此，典型访客的工作人员每周都可以执行不同类型的工作。`
+
+ship "Saryd Visitor" "Saryd Visitor (Miner)"
+	outfits
+		"MCS Extractor" 2
+		
+		"Small Cogeneration Module" 2
+		"Small Collector Module" 4
+		"Small Battery Module" 2
+		"Small Shield Module"
+		"Small Repair Module"
+		
+		"Large Steering Module"
+		"Small Thrust Module" 3
+		"Small Reverse Module" 3
+		"Hyperdrive"

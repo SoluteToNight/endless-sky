@@ -1,0 +1,717 @@
+# Copyright (c) 2014 by Michael Zahniser
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program. If not, see <https://www.gnu.org/licenses/>.
+
+outfit "Volcano Afterburner"
+	category "Engines"
+	series "Afterburners"
+	index 01000
+	"cost" 70000
+	thumbnail "outfit/afterburner"
+	"mass" 10
+	"outfit space" -10
+	"engine capacity" -10
+	"afterburner thrust" 40.65
+	"afterburner fuel" .1875
+	"afterburner heat" 10.0
+	"afterburner effect" "afterburner"
+	description "加力燃烧室的工作原理是将超空间燃料倒入发动机并点燃，产生大量推力。这对于躲避导弹或短暂逃离更快的对手非常有用，但你必须小心避免消耗太多燃料，以至于没有足够的剩余空间进行超空间旅行。"
+
+effect "afterburner"
+	sprite "effect/afterburner"
+		"no repeat"
+		"frame rate" 30
+	sound "afterburner"
+	"sound category" "afterburner"
+	"lifetime" 10
+	"random angle" 30
+	"random spin" 10
+	"random velocity" 1.
+	"velocity scale" 1.
+
+outfit "Caldera Afterburner"
+	category "Engines"
+	series "Afterburners"
+	index 01010
+	"cost" 390000
+	thumbnail "outfit/caldera afterburner"
+	"mass" 37
+	"outfit space" -37
+	"engine capacity" -37
+	"afterburner thrust" 165
+	"afterburner fuel" .75
+	"afterburner heat" 42.0
+	"afterburner effect" "caldera afterburner" 5
+	description "火山口加力燃烧器专为重型战舰而设计，可以让本来速度较慢的舰艇获得爆发性的速度，以追上更快的目标或逃离激烈的战斗。"
+
+effect "caldera afterburner"
+	sprite "effect/afterburner"
+		"no repeat"
+		"frame rate" 15
+	sound "afterburner"
+	"sound category" "afterburner"
+	"lifetime" 20
+	"random angle" 30
+	"random spin" 10
+	"random velocity" 4.
+	"velocity scale" 1.
+
+
+outfit "Ionic Afterburner"
+	category "Engines"
+	series "Afterburners"
+	index 01020
+	"cost" 340000
+	thumbnail "outfit/ionic afterburner"
+	"mass" 16
+	"outfit space" -16
+	"engine capacity" -16
+	"afterburner thrust" 47.1
+	"afterburner fuel" .045
+	"afterburner energy" 5.1
+	"afterburner heat" 4.0
+	"afterburner effect" "ionic afterburner"
+	description "离子加力燃烧室由辛迪加设计，旨在弥补普通加力燃烧室的主要弱点：即它以惊人的速度消耗超空间燃料。相反，离子加力燃烧室使用少量燃料与船舶电池的大量能量相结合来达到相同的效果。"
+
+effect "ionic afterburner"
+	sprite "effect/ionic afterburner"
+		"no repeat"
+		"frame rate" 30
+	sound "ionic afterburner"
+	"sound category" "afterburner"
+	"lifetime" 12
+	"random angle" 360
+	"random spin" 30
+	"random velocity" 1.
+	"velocity scale" 1.
+
+
+
+outfit "X1050 Ion Engines"
+	plural "X1050 Ion Engines"
+	category "Engines"
+	series "Engines"
+	index 01000
+	"cost" 20000
+	thumbnail "outfit/tiny ion engines"
+	"mass" 20
+	"outfit space" -20
+	"engine capacity" -20
+	"thrust" 9.3
+	"thrusting energy" .4
+	"thrusting heat" .6
+	"turn" 198
+	"turning energy" .25
+	"turning heat" .5
+	"flare sprite" "effect/ion flare/tiny"
+		"frame rate" 1.2
+	"flare sound" "ion tiny"
+	"steering flare sprite" "effect/ion flare/tiny"
+		"frame rate" 1.2
+	"steering flare sound" "ion tiny"
+	description `在设计 Barb 时，辛迪加 借此机会集成了他们最小的推进器模型，以创建更紧凑的转向和推进发动机。除了战斗机之外，结果对其他任何东西都没有多大用处，并且对于该角色来说只是“足够”。不过，如果发动机空间非常宝贵，那么这是仍然可以（最终）实现这一目标的最小发动机组。`
+
+
+
+outfit "X1700 Ion Thruster"
+	category "Engines"
+	series "Engines"
+	index 01011
+	"cost" 12000
+	thumbnail "outfit/tiny ion thruster"
+	"mass" 16
+	"outfit space" -16
+	"engine capacity" -16
+	"thrust" 13.545
+	"thrusting energy" .6
+	"thrusting heat" .9
+	"flare sprite" "effect/ion flare/tiny"
+		"frame rate" 1.2
+	"flare sound" "ion tiny"
+	description "这是你能买到的最小的推进器，它的力量非常弱，以至于任何比无人机更大的东西在使用这个发动机时都会加速得很慢。另一方面，它也非常节能。"
+	description "离子发动机比等离子发动机消耗的能量更少，产生的热量也更少，但在相同的推力下，它们也会占用更多的空间。"
+
+outfit "X2700 Ion Thruster"
+	category "Engines"
+	series "Engines"
+	index 01021
+	"cost" 26000
+	thumbnail "outfit/small ion thruster"
+	"mass" 27
+	"outfit space" -27
+	"engine capacity" -27
+	"thrust" 24.075
+	"thrusting energy" 1.1
+	"thrusting heat" 1.7
+	"flare sprite" "effect/ion flare/small"
+		"frame rate" 1.1
+	"flare sound" "ion small"
+	description "X2700 离子推进器主要用于小型单人或两人船舶以及战斗机。它也用于较大的船舶，例如货轮，这些船舶的推进系统或驱动能量的空间很小。但这些较大的船只的移动速度却慢得令人难以忍受。"
+	description "离子发动机比等离子发动机消耗的能量更少，产生的热量也更少，但在相同的推力下，它们也会占用更多的空间。"
+
+outfit "X3700 Ion Thruster"
+	category "Engines"
+	series "Engines"
+	index 01031
+	"cost" 58000
+	thumbnail "outfit/medium ion thruster"
+	"mass" 46
+	"outfit space" -46
+	"engine capacity" -46
+	"thrust" 43.275
+	"thrusting energy" 1.9
+	"thrusting heat" 3.2
+	"flare sprite" "effect/ion flare/medium"
+		"frame rate" 1.0
+	"flare sound" "ion medium"
+	description "X3700 离子推进器专为重型货船和小型主力舰而设计。理论上，它也可以安装在较小的船舶上，如果它们有足够的发动机空间，以达到近乎荒谬的速度。"
+	description "离子发动机比等离子发动机消耗的能量更少，产生的热量也更少，但在相同的推力下，它们也会占用更多的空间。"
+
+outfit "X4700 Ion Thruster"
+	category "Engines"
+	series "Engines"
+	index 01041
+	"cost" 128000
+	thumbnail "outfit/large ion thruster"
+	"mass" 79
+	"outfit space" -79
+	"engine capacity" -79
+	"thrust" 80.4
+	"thrusting energy" 3.5
+	"thrusting heat" 6.2
+	"flare sprite" "effect/ion flare/large"
+		"frame rate" 0.9
+	"flare sound" "ion large"
+	description "X4700 离子推进器是在共和国海军开始建造大型军舰而 X3700 不足以满足其需求时开发的。它甚至可以让主力舰以相当快的速度移动。"
+	description "离子发动机比等离子发动机消耗的能量更少，产生的热量也更少，但在相同的推力下，它们也会占用更多的空间。"
+
+outfit "X5700 Ion Thruster"
+	category "Engines"
+	series "Engines"
+	index 01051
+	"cost" 281000
+	thumbnail "outfit/huge ion thruster"
+	"mass" 121
+	"outfit space" -121
+	"engine capacity" -121
+	"thrust" 134.925
+	"thrusting energy" 6.3
+	"thrusting heat" 11.7
+	"flare sprite" "effect/ion flare/huge"
+		"frame rate" 0.8
+	"flare sound" "ion huge"
+	description "X5700 推进器仅适用于最大的主力舰。当辛迪加第一次开始生产这些发动机时，这些发动机被认为只不过是一种宣传噱头，因为当时没有一艘船足够大来容纳一台发动机。"
+	description "离子发动机比等离子发动机消耗的能量更少，产生的热量也更少，但在相同的推力下，它们也会占用更多的空间。"
+
+
+outfit "X1200 Ion Steering"
+	category "Engines"
+	series "Engines"
+	index 01010
+	"cost" 10000
+	thumbnail "outfit/tiny ion steering"
+	"mass" 12
+	"outfit space" -12
+	"engine capacity" -12
+	"turn" 288
+	"turning energy" .3
+	"turning heat" .6
+	"steering flare sprite" "effect/ion flare/tiny"
+		"frame rate" 1.2
+	"steering flare sound" "ion tiny"
+	description "这是您可以购买的最小的转向推进器，通常被认为仅适用于小型无人驾驶飞机。有时，寻求额外装备空间的飞行员会尝试将较大的转向系统换成其中之一，但结果总是令人失望。"
+	description "离子发动机比等离子发动机消耗的能量更少，产生的热量也更少，但在相同的推力下，它们也会占用更多的空间。"
+
+outfit "X2200 Ion Steering"
+	category "Engines"
+	series "Engines"
+	index 01020
+	"cost" 21000
+	thumbnail "outfit/small ion steering"
+	"mass" 20
+	"outfit space" -20
+	"engine capacity" -20
+	"turn" 552
+	"turning energy" .6
+	"turning heat" 1.1
+	"steering flare sprite" "effect/ion flare/small"
+		"frame rate" 1.1
+	"steering flare sound" "ion small"
+	description "X2200 转向系统专为战斗机和其他小型航天器而设计，也适用于不需要机动性的大型船舶。"
+	description "离子发动机比等离子发动机消耗的能量更少，产生的热量也更少，但在相同的推力下，它们也会占用更多的空间。"
+
+outfit "X3200 Ion Steering"
+	category "Engines"
+	series "Engines"
+	index 01030
+	"cost" 46000
+	thumbnail "outfit/medium ion steering"
+	"mass" 35
+	"outfit space" -35
+	"engine capacity" -35
+	"turn" 1062
+	"turning energy" 1.1
+	"turning heat" 2.0
+	"steering flare sprite" "effect/ion flare/medium"
+		"frame rate" 1.0
+	"steering flare sound" "ion medium"
+	description "X3200转向系统适用于小型军舰和货船。它产生足够的转向力，可以为除最大的人类船只之外的所有船只提供灵活性，并且它比等离子驱动替代方案更加节能。"
+	description "离子发动机比等离子发动机消耗的能量更少，产生的热量也更少，但在相同的推力下，它们也会占用更多的空间。"
+
+outfit "X4200 Ion Steering"
+	category "Engines"
+	series "Engines"
+	index 01040
+	"cost" 102000
+	thumbnail "outfit/large ion steering"
+	"mass" 59
+	"outfit space" -59
+	"engine capacity" -59
+	"turn" 2139
+	"turning energy" 1.9
+	"turning heat" 3.9
+	"steering flare sprite" "effect/ion flare/large"
+		"frame rate" 0.9
+	"steering flare sound" "ion large"
+	description "X4200 是一款功能强大的转向系统，主要为军舰设计，因为货轮设计中很少要求快速转向。"
+	description "离子发动机比等离子发动机消耗的能量更少，产生的热量也更少，但在相同的推力下，它们也会占用更多的空间。"
+
+outfit "X5200 Ion Steering"
+	category "Engines"
+	series "Engines"
+	index 01050
+	"cost" 225000
+	thumbnail "outfit/huge ion steering"
+	"mass" 89
+	"outfit space" -89
+	"engine capacity" -89
+	"turn" 3913.5
+	"turning energy" 3.5
+	"turning heat" 7.3
+	"steering flare sprite" "effect/ion flare/huge"
+		"frame rate" 0.8
+	"steering flare sound" "ion huge"
+	description "X5200 是一个如此庞大和强大的转向系统，只有少数船舶可以安装它。由于市场有限，所以产量很少。"
+	description "离子发动机比等离子发动机消耗的能量更少，产生的热量也更少，但在相同的推力下，它们也会占用更多的空间。"
+
+
+outfit "X1100 Ion Reverse Thruster"
+	category "Engines"
+	series "Engines"
+	index 01012
+	"cost" 12000
+	thumbnail "outfit/reverse thruster ion"
+	"mass" 16
+	"outfit space" -16
+	"weapon capacity" -16
+	"reverse thrust" 13.545
+	"reverse thrusting energy" .6
+	"reverse thrusting heat" .9
+	"reverse flare sprite" "effect/ion flare/tiny"
+		"frame rate" 1.2
+	"reverse flare sound" "ion tiny"
+	description "传统上，船舶会掉头，以便可以使用主推进器进行减速。然而，有些船只过于笨拙，不方便进行这种操作，或者运载着不能快速摇摆的敏感货物。对于此类船舶，反向推进器使它们能够平稳地向后施加推力。"
+	description "由于反向推进器必须面向前方，因此它必须安装在船舶的武器部分而不是发动机部分。"
+
+
+
+outfit "Chipmunk Plasma Thruster"
+	category "Engines"
+	series "Engines"
+	index 01101
+	"cost" 20000
+	thumbnail "outfit/tiny plasma thruster"
+	"mass" 20
+	"outfit space" -20
+	"engine capacity" -20
+	"thrust" 21.75
+	"thrusting energy" 1.0
+	"thrusting heat" 1.8
+	"flare sprite" "effect/plasma flare/tiny"
+		"frame rate" 5
+	"flare sound" "plasma tiny"
+	description "这是 Delta V 公司生产的最小的等离子推进系统，适用于超轻型战斗机和拦截机。"
+	description "等离子发动机比相同尺寸的离子发动机更强大一些，但它们的能源效率较低并且产生更多的热量。"
+
+outfit "Greyhound Plasma Thruster"
+	category "Engines"
+	series "Engines"
+	index 01111
+	"cost" 45000
+	thumbnail "outfit/small plasma thruster"
+	"mass" 34
+	"outfit space" -34
+	"engine capacity" -34
+	"thrust" 38.85
+	"thrusting energy" 1.8
+	"thrusting heat" 3.4
+	"flare sprite" "effect/plasma flare/small"
+		"frame rate" 6
+	"flare sound" "plasma small"
+	description "该推进器适用于小型船舶和货轮。它装在一个板条箱里，上面装饰着一只奔跑的灰狗的风格化卡通画。"
+	description "等离子发动机比相同尺寸的离子发动机更强大一些，但它们的能源效率较低并且产生更多的热量。"
+
+outfit "Impala Plasma Thruster"
+	category "Engines"
+	series "Engines"
+	index 01121
+	"cost" 99000
+	thumbnail "outfit/medium plasma thruster"
+	"mass" 58
+	"outfit space" -58
+	"engine capacity" -58
+	"thrust" 69.9
+	"thrusting energy" 3.2
+	"thrusting heat" 6.5
+	"flare sprite" "effect/plasma flare/medium"
+		"frame rate" 7
+	"flare sound" "plasma medium"
+	description "黑斑羚级推进器可产生巨大的推力，适用于较小的主力舰。但是，您的船可能需要额外的冷却系统才能处理它们。"
+	description "等离子发动机比相同尺寸的离子发动机更强大一些，但它们的能源效率较低并且产生更多的热量。"
+
+outfit "Orca Plasma Thruster"
+	category "Engines"
+	series "Engines"
+	index 01131
+	"cost" 217000
+	thumbnail "outfit/large plasma thruster"
+	"mass" 98
+	"outfit space" -98
+	"engine capacity" -98
+	"thrust" 128.4
+	"thrusting energy" 5.8
+	"thrusting heat" 12.3
+	"flare sprite" "effect/plasma flare/large"
+		"frame rate" 8
+	"flare sound" "plasma large"
+	description "这种发动机消耗的动力足够大，除非配备成熟的核反应堆，否则船舶不太可能使用它，但它产生的推力令人印象深刻。"
+	description "等离子发动机比相同尺寸的离子发动机更强大一些，但它们的能源效率较低并且产生更多的热量。"
+
+outfit "Tyrant Plasma Thruster"
+	category "Engines"
+	series "Engines"
+	index 01141
+	"cost" 389000
+	thumbnail "outfit/huge plasma thruster"
+	"mass" 129
+	"outfit space" -129
+	"engine capacity" -129
+	"thrust" 180.225
+	"thrusting energy" 8.6
+	"thrusting heat" 19.1
+	"flare sprite" "effect/plasma flare/huge"
+		"frame rate" 9
+	"flare sound" "plasma huge"
+	description "这个推进器出售的巨大板条箱上装饰着一张咧着嘴笑的霸王龙的图片，它的牙齿数量令人难以置信。只有少数船只足够大，需要这种尺寸的发动机……或者有能力安装一个。"
+	description "等离子发动机比相同尺寸的离子发动机更强大一些，但它们的能源效率较低并且产生更多的热量。"
+
+
+outfit "Chipmunk Plasma Steering"
+	category "Engines"
+	series "Engines"
+	index 01100
+	"cost" 16000
+	thumbnail "outfit/tiny plasma steering"
+	"mass" 15
+	"outfit space" -15
+	"engine capacity" -15
+	"turn" 460.5
+	"turning energy" .5
+	"turning heat" 1.1
+	"steering flare sprite" "effect/plasma flare/tiny"
+		"frame rate" 5
+	"steering flare sound" "plasma tiny"
+	description "这是 Delta V 生产的最小的等离子转向系统。包装上有一幅漫画，画的是一种咖啡因含量很高的啮齿动物。"
+	description "等离子发动机比相同尺寸的离子发动机更强大一些，但它们的能源效率较低并且产生更多的热量。"
+
+outfit "Greyhound Plasma Steering"
+	category "Engines"
+	series "Engines"
+	index 01110
+	"cost" 36000
+	thumbnail "outfit/small plasma steering"
+	"mass" 26
+	"outfit space" -26
+	"engine capacity" -26
+	"turn" 885
+	"turning energy" 0.9
+	"turning heat" 2.1
+	"steering flare sprite" "effect/plasma flare/small"
+		"frame rate" 6
+	"steering flare sound" "plasma small"
+	description "灰狗级等离子推进系统是 Delta V 最受欢迎的产品，适用于各种小型星际飞船。"
+	description "等离子发动机比相同尺寸的离子发动机更强大一些，但它们的能源效率较低并且产生更多的热量。"
+
+outfit "Impala Plasma Steering"
+	category "Engines"
+	series "Engines"
+	index 01120
+	"cost" 79000
+	thumbnail "outfit/medium plasma steering"
+	"mass" 43
+	"outfit space" -43
+	"engine capacity" -43
+	"turn" 1699.5
+	"turning energy" 1.6
+	"turning heat" 4.1
+	"steering flare sprite" "effect/plasma flare/medium"
+		"frame rate" 7
+	"steering flare sound" "plasma medium"
+	description "Impala 级等离子转向系统适用于大多数货船和除最大战舰之外的所有船舶，并且比 辛迪加 生产的离子推进系统紧凑得多。"
+	description "等离子发动机比相同尺寸的离子发动机更强大一些，但它们的能源效率较低并且产生更多的热量。"
+
+outfit "Orca Plasma Steering"
+	category "Engines"
+	series "Engines"
+	index 01130
+	"cost" 174000
+	thumbnail "outfit/large plasma steering"
+	"mass" 74
+	"outfit space" -74
+	"engine capacity" -74
+	"turn" 3424.5
+	"turning energy" 2.9
+	"turning heat" 7.7
+	"steering flare sprite" "effect/plasma flare/large"
+		"frame rate" 8
+	"steering flare sound" "plasma large"
+	description "虎鲸级转向系统可以让任何中型船舶像战斗机一样快速转向，并且功能强大，甚至可以为最大的战舰服务。"
+	description "等离子发动机比相同尺寸的离子发动机更强大一些，但它们的能源效率较低并且产生更多的热量。"
+
+outfit "Tyrant Plasma Steering"
+	category "Engines"
+	series "Engines"
+	index 01140
+	"cost" 324700
+	thumbnail "outfit/huge plasma steering"
+	"mass" 101
+	"outfit space" -101
+	"engine capacity" -101
+	"turn" 5323.5
+	"turning energy" 4.4
+	"turning heat" 12.5
+	"steering flare sprite" "effect/plasma flare/huge"
+		"frame rate" 9
+	"steering flare sound" "plasma huge"
+	description "与相应的推进器一样，暴君级转向系统是如此庞大和强大，以至于很少有船只可以使用它。"
+	description "等离子发动机比相同尺寸的离子发动机更强大一些，但它们的能源效率较低并且产生更多的热量。"
+
+
+outfit "Capybara Reverse Thruster"
+	category "Engines"
+	series "Engines"
+	index 01102
+	"cost" 20000
+	thumbnail "outfit/reverse thruster plasma"
+	"mass" 20
+	"outfit space" -20
+	"weapon capacity" -20
+	"reverse thrust" 21.75
+	"reverse thrusting energy" 1.0
+	"reverse thrusting heat" 1.8
+	"reverse flare sprite" "effect/plasma flare/tiny"
+		"frame rate" 5
+	"reverse flare sound" "plasma tiny"
+	description "大型船舶往往缺乏机动性，无法在短时间内进行 180 度转弯而需要停下来。对于如此巨大的船只，反向推进器可以让它们平稳地向后加速，而不需要掉头。"
+	description "由于反向推进器必须面向前方，因此它必须安装在船舶的武器部分而不是发动机部分。"
+
+
+
+outfit "A120 Atomic Thruster"
+	category "Engines"
+	series "Engines"
+	index 01201
+	"cost" 140000
+	thumbnail "outfit/tiny atomic thruster"
+	"mass" 22
+	"outfit space" -22
+	"engine capacity" -22
+	"thrust" 28.02
+	"thrusting energy" 1.8
+	"thrusting heat" 3.5
+	"flare sprite" "effect/atomic flare/tiny"
+		"frame rate" 14
+	"flare sound" "atomic tiny"
+	description "如果您正在寻找适合您的飞船的最强大的发动机，并且有足够的钱可以烧，那么深空的原子推进器就是您的答案。当然，它们所需的额外能量和冷却很容易抵消其小尺寸带来的好处。"
+
+outfit "A250 Atomic Thruster"
+	category "Engines"
+	series "Engines"
+	index 01211
+	"cost" 280000
+	thumbnail "outfit/small atomic thruster"
+	"mass" 34
+	"outfit space" -34
+	"engine capacity" -34
+	"thrust" 45.9375
+	"thrusting energy" 3.1
+	"thrusting heat" 6.1
+	"flare sprite" "effect/atomic flare/small"
+		"frame rate" 13
+	"flare sound" "atomic small"
+	description "深空公司的原子推进器已经生产了几个世纪，但由于其高价格和高能源需求，仍然是一种利基产品。"
+
+outfit "A370 Atomic Thruster"
+	category "Engines"
+	series "Engines"
+	index 01221
+	"cost" 560000
+	thumbnail "outfit/medium atomic thruster"
+	"mass" 53
+	"outfit space" -53
+	"engine capacity" -53
+	"thrust" 75.375
+	"thrusting energy" 5.1
+	"thrusting heat" 10.3
+	"flare sprite" "effect/atomic flare/medium"
+		"frame rate" 12
+	"flare sound" "atomic medium"
+	description "该推进器足够小，可以安装在轻型军舰或货轮中，但功能强大，可以移动除最大的船只之外的任何船只。当然，这样的性能需要付出高昂的代价。"
+
+outfit "A520 Atomic Thruster"
+	category "Engines"
+	series "Engines"
+	index 01231
+	"cost" 1120000
+	thumbnail "outfit/large atomic thruster"
+	"mass" 82
+	"outfit space" -82
+	"engine capacity" -82
+	"thrust" 122.85
+	"thrusting energy" 8.3
+	"thrusting heat" 17.4
+	"flare sprite" "effect/atomic flare/large"
+		"frame rate" 11
+	"flare sound" "atomic large"
+	description "如果你的飞船配备了一套深空原子发动机，你将成为银河系中每个飞行员羡慕的对象。人类发现的任何其他形式的推进力都无法通过如此小的发动机产生如此大的推力。"
+
+outfit "A860 Atomic Thruster"
+	category "Engines"
+	series "Engines"
+	index 01241
+	"cost" 2240000
+	thumbnail "outfit/huge atomic thruster"
+	"mass" 127
+	"outfit space" -127
+	"engine capacity" -127
+	"thrust" 199.95
+	"thrusting energy" 13.3
+	"thrusting heat" 29.1
+	"flare sprite" "effect/atomic flare/huge"
+		"frame rate" 10
+	"flare sound" "atomic huge"
+	description "A860 原子推进器是人类太空中出售的最强大的发动机，并且比任何替代品都紧凑得多。但是，您可能需要升级船舶的电力和冷却系统来应对它。"
+
+
+outfit "A125 Atomic Steering"
+	category "Engines"
+	series "Engines"
+	index 01200
+	"cost" 120000
+	thumbnail "outfit/tiny atomic steering"
+	"mass" 16
+	"outfit space" -16
+	"engine capacity" -16
+	"turn" 603
+	"turning energy" 0.9
+	"turning heat" 2.2
+	"steering flare sprite" "effect/atomic flare/tiny"
+		"frame rate" 14
+	"steering flare sound" "atomic tiny"
+	description "深空公司的原子推进器是高端星际飞船的热门选择。一套原子发动机的成本超过它们所安装的船舶的情况并不少见。"
+
+outfit "A255 Atomic Steering"
+	category "Engines"
+	series "Engines"
+	index 01210
+	"cost" 240000
+	thumbnail "outfit/small atomic steering"
+	"mass" 25
+	"outfit space" -25
+	"engine capacity" -25
+	"turn" 1056
+	"turning energy" 1.5
+	"turning heat" 3.7
+	"steering flare sprite" "effect/atomic flare/small"
+		"frame rate" 13
+	"steering flare sound" "atomic small"
+	description "如果您已经用尽所有其他选项来使您的飞船更具机动性，那么可能是时候投资一组原子发动机了。"
+
+outfit "A375 Atomic Steering"
+	category "Engines"
+	series "Engines"
+	index 01220
+	"cost" 480000
+	thumbnail "outfit/medium atomic steering"
+	"mass" 38
+	"outfit space" -38
+	"engine capacity" -38
+	"turn" 1833
+	"turning energy" 2.5
+	"turning heat" 6.3
+	"steering flare sprite" "effect/atomic flare/medium"
+		"frame rate" 12
+	"steering flare sound" "atomic medium"
+	description "赏金猎人和其他需要获得相对于他们所追捕的船只的速度优势的船长经常梦想能够攒下足够的钱来购买一套原子发动机。"
+
+outfit "A525 Atomic Steering"
+	category "Engines"
+	series "Engines"
+	index 01230
+	"cost" 960000
+	thumbnail "outfit/large atomic steering"
+	"mass" 60
+	"outfit space" -60
+	"engine capacity" -60
+	"turn" 3151.5
+	"turning energy" 4.1
+	"turning heat" 10.5
+	"steering flare sprite" "effect/atomic flare/large"
+		"frame rate" 11
+	"steering flare sound" "atomic large"
+	description "这套来自深空的机动推进器将使小型战舰能够像战斗机一样快速转向。对于大型船舶，用一组原子发动机替换现有发动机可以为其他装备或武器腾出大量空间。"
+
+outfit "A865 Atomic Steering"
+	category "Engines"
+	series "Engines"
+	index 01240
+	"cost" 1920000
+	thumbnail "outfit/huge atomic steering"
+	"mass" 92
+	"outfit space" -92
+	"engine capacity" -92
+	"turn" 5395.5
+	"turning energy" 6.6
+	"turning heat" 17.5
+	"steering flare sprite" "effect/atomic flare/huge"
+		"frame rate" 10
+	"steering flare sound" "atomic huge"
+	description "许多人认为原子发动机是深空的最高成就。尽管它们非常昂贵，以至于使用的数量相对较少，但很少有船长不梦想有一天安装一套它们。"
+
+
+outfit "AR120 Reverse Thruster"
+	category "Engines"
+	series "Engines"
+	index 01202
+	"cost" 140000
+	thumbnail "outfit/reverse thruster"
+	"mass" 22
+	"outfit space" -22
+	"weapon capacity" -22
+	"reverse thrust" 28.02
+	"reverse thrusting energy" 1.8
+	"reverse thrusting heat" 3.5
+	"reverse flare sprite" "effect/atomic flare/tiny"
+		"frame rate" 14
+	"reverse flare sound" "atomic tiny"
+	description "对于那些想要施展大多数人无法复制的奇特技巧的飞行员来说，反向推进器可以让船只向后加速，而无需掉头。"
+	description "由于反向推进器必须面向前方，因此它必须安装在船舶的武器部分而不是发动机部分。"

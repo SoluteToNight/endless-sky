@@ -1,0 +1,352 @@
+# Copyright (c) 2015 by Michael Zahniser
+# Copyright (c) 2021 by Amazinite
+# Copyright (c) 2024 by Hurleveur
+# Copyright (c) 2025 by Anarchist2
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program. If not, see <https://www.gnu.org/licenses/>.
+
+start "default"
+	name "无尽的天空"
+	description `你在新波士顿长大，这是一个位于泥土地带的无趣世界。自从您第一次访问太空港以来，您就梦想拥有一艘星际飞船。在纺织厂工作多年后，您已经积攒了足够的积分来申请共和国的飞行员执照。现在你必须为你的第一艘船申请贷款......`
+	description `这是经典的无尽天空体验。你将开始负债累累，并且必须使用你的新星际飞船来偿还抵押贷款。`
+	thumbnail "scene/new boston"
+	date 16 11 3013
+	system "Rutilicus"
+	planet "New Boston"
+	conversation "默认介绍"
+	account
+		credits 480000
+		score 400
+		mortgage Mortgage
+			principal 480000
+			interest 0.004
+			term 365
+	set "license: Pilot's"
+	set "species: human"
+	set "human space start"
+	set "start: default"
+
+
+# Patch for if the player started a game before 0.10.17
+mission "Start: Default Patch"
+	invisible
+	landing
+	non-blocking
+	to offer
+		has "Intro [0]: offered"
+		not "start: default"
+	on offer
+		set "species: human"
+		set "human space start"
+		set "start: default"
+		fail
+
+
+conversation "默认介绍"
+	action
+		log "Finally scraped together enough money to buy a pilot's license. The interest on the mortgage for my starship is exorbitant."
+		log "Factions" "Republic" `Hundreds of years ago, the independent territories in different parts of human space agreed to join together into a single democratic government, with Earth as its capital. The rise of the Republic ushered in a long period of peace and prosperity in human history.`
+			`共和国议会的代表权以人口为基础。这意味着某些单独的“天堂世界”比整个太空区域（例如人烟稀少的泥土带）拥有更多的代表。`
+		log "Factions" "Syndicate" `The Syndicate is a megacorporation, the largest employer in human space. People who cannot find steady work elsewhere flock to the Syndicate factory worlds, where they are almost guaranteed to find a job. Although the Syndicate is technically part of the Republic, Syndicate worlds are governed directly by the corporation.`
+			`该辛迪加是共和国经济的核心部分，但他们也因销售劣质产品和对他们控制的世界的环境造成破坏而闻名。他们对工人的待遇值得怀疑，他们对有组织劳工的反对更是传奇。一些辛迪加工业城镇甚至被指控侵犯人权。`
+		log "Factions" "Pirates" `In poorer and more remote star systems, where the Navy seldom patrols, pirate attacks on merchant ships are frequent. Pirates are also known to attack large, unguarded convoys of freighters even in more populated areas. Most pirate fleets come from lawless worlds on the outskirts of human space.`
+	scene "scene/lobby"
+	`当你梦想未来不会像现在那么肮脏时，银行的建筑就是你所说的“未来主义”：一层一层的曲线、尖顶和阳台，全部都是闪闪发光的金属。每扇厚重的玻璃门旁都站着一名门卫。你穿着最好的衣服，但在它们旁边你却感觉很破旧。`
+	`贷款经纪人的办公室同样令人生畏。墙上布满了大型电脑显示器，股票行情和其他信息从显示器上溢出，速度快得几乎无法阅读。你偶尔会瞥见只在电影中见过的地名：毕宿五。塔拉兹。地球。`
+	`这支笔重如铅，但当你在一页又一页不祥的法律文件底部打印你的姓名缩写并签署几十份声明、通知和协议时，它几乎可以毫无摩擦地滑动。银行家是一位秃顶的中年男子，他穿着一套你怀疑比你要购买的宇宙飞船还要贵的西装，他快速地翻过你身边的书页，一边指着每一页，一边简短地说道：“在这里签名。现在在这里。”他动作迅速、机械。`
+	`他真正变得活跃的唯一时刻是向你解释借贷声明中的真相时。 “你借了 480,000 个学分，”他说，“需要在一年内偿还。你的日利率是 0.4%，这意味着你每天还款额是 2,503 个学分，到年底你将支付……433,567 个学分的利息。在这里签名。”他笑了。`
+	`你最后一次签上你的名字：`
+	name
+	`电梯调节得非常好，你甚至都没有意识到它正在移动，直到它把你送回大厅。但当你离开银行时，你面带微笑。这场疯狂的冒险突然让你感觉真实。你会这么做的。你终于要离开这个星球了。`
+	`与银行相比，在造船厂里走着，走在生锈的船体和在阳光下闪闪发光的新船之间，感觉更自在。你闻到油脂、泥土和火箭燃料的味道；美妙的气味。您的价格范围内共有三种船舶型号。你的选择将决定你的未来...`
+
+
+
+start "deep"
+	name "深切的渴望"
+	description `你在米德加德长大，这是一个位于高级深渊区域的世界。大多数人追求高等教育，但你一直想成为一名星际飞船船长。完成初等教育后，您得知深海为成绩足够高的勘探船长提供低息贷款，您取得了成功！您前往首都新雷克雅未克......`
+	description `此启动提供较低的利率和更多的积分来升级您的船舶。`
+	thumbnail "scene/midgard"
+	date 16 11 3013
+	system "Aludra"
+	planet "Midgard"
+	conversation "深入介绍"
+	account
+		credits 680000
+		score 400
+		mortgage Mortgage
+			principal 680000
+			interest 0.002
+			term 365
+	set "license: Pilot's"
+	set "species: human"
+	set "human space start"
+	set "start: deep"
+
+conversation "深入介绍"
+	action
+		log "Applied for the Deep's starship captain program, and was accepted. The program included a pilot's license and low-interest loan."
+		log "Factions" "Republic" `Hundreds of years ago, the independent territories in different parts of human space agreed to join together into a single democratic government, with Earth as its capital. The rise of the Republic ushered in a long period of peace and prosperity in human history.`
+			`共和国议会的代表权以人口为基础。这意味着某些单独的“天堂世界”比整个太空区域（例如人烟稀少的泥土带）拥有更多的代表。`
+		log "Factions" "Syndicate" `The Syndicate is a megacorporation, the largest employer in human space. People who cannot find steady work elsewhere flock to the Syndicate factory worlds, where they are almost guaranteed to find a job. Although the Syndicate is technically part of the Republic, Syndicate worlds are governed directly by the corporation.`
+			`该辛迪加是共和国经济的核心部分，但他们也因销售劣质产品和对他们控制的世界的环境造成破坏而闻名。他们对工人的待遇值得怀疑，他们对有组织劳工的反对更是传奇。一些辛迪加工业城镇甚至被指控侵犯人权。`
+		log "Factions" "Pirates" `In poorer and more remote star systems, where the Navy seldom patrols, pirate attacks on merchant ships are frequent. Pirates are also known to attack large, unguarded convoys of freighters even in more populated areas. Most pirate fleets come from lawless worlds on the outskirts of human space.`
+	scene "scene/train"
+	`从你家乡出发的火车以平稳的节奏左右摇晃，带你离首都越来越近。前面几个座位上，一对与你年龄相仿的年轻夫妇热切地讨论着他们搬到新公寓的事情，他们的腿踢着行李。在你身后，一位穿着油腻工作服的年长男子正在与一位熟人告别。`
+	`不久之后，您到达新雷克雅未克负责处理星际飞船贷款的政府办公室。接待处热闹非凡，其他新面孔的毕业生在等待轮到的时候互相聊天。阳光透过开缝的天花板窗户落在大厅中央的深海徽章的三维模型上，这是一棵红色的树，树枝形成了大脑的形状。雕塑周围有一圈文字，宣告了深海的核心价值观：和平。繁荣。进步。`
+	`最终你的号码被叫到，在读完你的申请后，办公室工作人员递给你两张卡。其中之一是您在附近银行获得低息贷款的资格证明。另一个是您的飞行员执照，已全额付款。你通往星星的门票。`
+	`您将卡插入银行的自动柜员机中，在轻柔的“ping”声后，一份大文档填满了屏幕。一个合成声音说：“您借了680,000学分，需要在一年内偿还。您的日利率为0.2%，这意味着您每天的还款额为2,627学分，到年底您将支付278,760学分的利息。准备好后，请在屏幕上签名。”`
+	`仔细阅读贷款协议的每一页后，您签署您的名字：`
+	name
+	`你冲出银行，跳上地铁前往造船厂。当车厢里的其他人茫然地看着窗外和他们的设备时，你几乎无法保持正脸，在旅程结束之前翻阅你的飞行员执照至少一百次。您考虑一下车后就扔掉交通卡，但在最后一刻改变了主意。很快就不会有太多其他东西将你与这个星球联系在一起了。`
+	`您年轻时曾仔细研究过新雷克雅未克造船厂的镜头，但亲眼目睹这个地方会让您最疯狂的期望落空。销售人员使用全息显示器向衣冠楚楚的客户展示各种船只，而摩天大楼大小的船只则静静地隐现在船厂的阴影中，等待最富有的商人认领它们。尽管大多数船只都远远超出了您的价格范围，但您还是发现了四种可以购买的型号。你的选择将决定你的未来...`
+
+
+
+start "paradise"
+	name "生日惊喜"
+	description `你在主帆长大，这是一个经过完美改造的海洋天堂世界。只有最富有的人才能生活在这样的世界里；幸运的是，你的父亲是一位富有的金融家。但你总觉得养尊处优的生活很无趣，更感兴趣的是明星间的生活。当你的十八岁生日聚会结束时，你的父亲把你拉到一边谈话……`
+	description `这个起点没有抵押，让你可以按照自己的节奏自由探索银河系。`
+	thumbnail "scene/mainsail"
+	date 16 11 3013
+	system "Alhena"
+	planet "Mainsail"
+	conversation "天堂简介"
+	account
+		credits 500000
+		score 600
+	set "license: Pilot's"
+	set "species: human"
+	set "human space start"
+	set "start: paradise"
+
+conversation "天堂简介"
+	action
+		log "Got a pilot's license for my birthday, as well as 500,000 credits to purchase a starship. The galaxy is now at my fingertips."
+		log "Factions" "Republic" `Hundreds of years ago, the independent territories in different parts of human space agreed to join together into a single democratic government, with Earth as its capital. The rise of the Republic ushered in a long period of peace and prosperity in human history.`
+			`共和国议会的代表权以人口为基础。这意味着某些单独的“天堂世界”比整个太空区域（例如人烟稀少的泥土带）拥有更多的代表。`
+		log "Factions" "Syndicate" `The Syndicate is a megacorporation, the largest employer in human space. People who cannot find steady work elsewhere flock to the Syndicate factory worlds, where they are almost guaranteed to find a job. Although the Syndicate is technically part of the Republic, Syndicate worlds are governed directly by the corporation.`
+			`该辛迪加是共和国经济的核心部分，但他们也因销售劣质产品和对他们控制的世界的环境造成破坏而闻名。他们对工人的待遇值得怀疑，他们对有组织劳工的反对更是传奇。一些辛迪加工业城镇甚至被指控侵犯人权。`
+		log "Factions" "Pirates" `In poorer and more remote star systems, where the Navy seldom patrols, pirate attacks on merchant ships are frequent. Pirates are also known to attack large, unguarded convoys of freighters even in more populated areas. Most pirate fleets come from lawless worlds on the outskirts of human space.`
+	scene "scene/reception"
+	`“我知道你长期以来一直想成为一艘星际飞船的船长，”你的父亲说。 “那么，作为我送给你的生日礼物，我们去造船厂给你弄一张飞行员执照和一艘船怎么样？”你不假思索地说是。`
+	`你父亲带你来到位于太空港的共和国星舰许可部大楼。队伍很长，但你父亲径直走到一张桌子前。在排在前面的人或桌子后面的人可以抱怨之前，他向他们每个人扔了一张信用卡芯片——这两个芯片都价值不菲。 “我想为我的孩子取得飞行员执照。”`
+	`“抱歉，”柜台后面的人开始说道，“但是您需要先通过网络办理申请，然后等待三到五个工作日——”`
+	`你的父亲向桌子后面的人扔了另一个信用卡芯片，促使他们递给你一支手写笔和一本便笺簿。 “请在这里签名。您的飞行员执照一会儿就到了。”`
+	`毫不犹豫地跳过几页法律文本后，您签下了自己的名字：`
+	name
+	`你走进造船厂，一手握着你全新的飞行员执照，另一只手握着你父亲留下的 500,000 积分。出售的船型有近十几种，但您买得起的只有四种。你的选择将决定你的未来...`
+
+
+
+start "syndicate"
+	name "逃离肮脏"
+	description `你在地球上长大，这是一个人口过剩、机会很少的世界。但你签了一份为辛迪加工作的合同，他们给你一个住的地方，足够的食物，以及地球上体面的工资。后来你搬到了Antipode，一个廉价的边疆世界，却发现它并不比地球好多少。受够了，你用剩下的钱前往德尔夫，最近的有造船厂的星球......`
+	description `这是一个更困难的开始，每日还款额更大。`
+	thumbnail "scene/earth"
+	date 16 11 3013
+	system "Scheat"
+	planet "Delve"
+	conversation "辛迪加简介"
+	account
+		credits 480000
+		score 200
+		mortgage Mortgage
+			principal 600000
+			interest 0.005
+			term 365
+	set "license: Pilot's"
+	set "species: human"
+	set "human space start"
+	set "start: syndicate"
+
+conversation "辛迪加简介"
+	action
+		log "Bought a pilot's license and a ship, but had to take out a crushing mortgage. One last greedy stab by the Syndicate before I'm free."
+		log "Factions" "Republic" `Hundreds of years ago, the independent territories in different parts of human space agreed to join together into a single democratic government, with Earth as its capital. The rise of the Republic ushered in a long period of peace and prosperity in human history.`
+			`共和国议会的代表权以人口为基础。这意味着某些单独的“天堂世界”比整个太空区域（例如人烟稀少的泥土带）拥有更多的代表。`
+		log "Factions" "Syndicate" `The Syndicate is a megacorporation, the largest employer in human space. People who cannot find steady work elsewhere flock to the Syndicate factory worlds, where they are almost guaranteed to find a job. Although the Syndicate is technically part of the Republic, Syndicate worlds are governed directly by the corporation.`
+			`该辛迪加是共和国经济的核心部分，但他们也因销售劣质产品和对他们控制的世界的环境造成破坏而闻名。他们对工人的待遇值得怀疑，他们对有组织劳工的反对更是传奇。一些辛迪加工业城镇甚至被指控侵犯人权。`
+		log "Factions" "Pirates" `In poorer and more remote star systems, where the Navy seldom patrols, pirate attacks on merchant ships are frequent. Pirates are also known to attack large, unguarded convoys of freighters even in more populated areas. Most pirate fleets come from lawless worlds on the outskirts of human space.`
+	scene "scene/icy opening"
+	`德尔夫与您曾经去过的任何星球都不一样：整个太空港建在一个巨大的山洞中，一侧暴露在露天。构成港口的横梁和建筑物使安提波德的可怜结构相形见绌，但又与地球上令人窒息的城市景观截然不同。`
+	`你将最后的积分交给带你来这里的船长。在她离开之前，她会给你一些建议。 “请注意：如果你不想早死，那就在发射后向北行驶。这里的南部除了无人居住的星系和海盗之外什么都没有。你在任何你能负担得起的船上都呆不了多久。”在分道扬镳之前，你感谢她的陪伴和建议。`
+	`你先去造船厂看看他们有什么。当你走近时，一位推销员注意到了你，他会嘲笑你，这可能是因为与周围的人相比，你的衣服很破旧。你问他在这里购买一艘船需要什么费用。在开始滔滔不绝地谈论所有最便宜的型号之前，他提到了飞行员执照的必要性，但你打断了他，说这就是你所需要的。`
+	`幸运的是，银行目前不是很忙。当你进去时，一位出纳员打量着你。 “我们能帮您什么？”他带着无拘无束的喜悦问道。你说你需要贷款购买一艘星际飞船； 600,000积分应该足以支付许可证和船舶费用。在您交出您的联合系统帐户信息并扫描您的指纹后，出纳员会带着一张纸回来。`
+	`“你很幸运，现在的价格很优惠！”你看了一下报纸：日利率是0.5%，也就是说全年每天还款额是3,580学分。如果您不提前还清任何贷款，您将支付 706,571 个积分的利息，超过 600,000 个贷款本身。 “就在这里签名吧。”柜员笑了。`
+	`兴趣是可怕的，但你却无能为力。您签上您的名字：`
+	name
+	`离开银行后，你要花一个小时排队等待申请飞行员执照。这个过程出奇的简单，完成后，你就剩下 480,000 个积分了。你无法摆脱辛迪加又在玩弄你的感觉。`
+	`你回到造船厂，这次你手里拿着一张信用芯片，以引起推销员的注意。 “欢迎回来！我希望我们能为您找到完美的模特，”他说。造船厂里摆满了你买不到的船只，但推销员在你的价格范围内找到了三种型号：拦截舰、轻型货轮和运输船。你的选择将决定你的未来...`
+
+
+
+start "hai space"
+	name "海源"
+	description `你在格林沃特长大，这是一个海世界，由于其气候而拥有丰富而混合的文化。自从小时候收到玩具宇宙飞船以来，您就梦想着拥有自己的舰队。为了实现这一目标，您在一家旅游公司努力工作，推荐人类空间中的地点。`
+	description `现在，当您的渡轮停靠在主太空港时，您会觉得这是作为船长的新生活的开始。`
+	thumbnail "scene/greenwater"
+	system "Fah Soom"
+	planet "Greenwater"
+	date 16 11 3013
+	on display
+		description `此启动已锁定。`
+	to reveal
+		has "Ask the Hai about the Unfettered"
+	on reveal
+		name "海源"
+		description `你在格林沃特长大，这是一个海世界，由于其气候而拥有丰富而混合的文化。自从小时候收到玩具宇宙飞船以来，您就梦想拥有自己的舰队，并且您在一家旅游公司努力工作以实现这一目标。`
+		description `现在，当您的渡轮停靠在主太空港时，您会觉得这是作为船长的新生活的开始。`
+		description `要解锁此开始，您必须完成主要的人类战役。`
+		system "Fah Soom"
+		planet "Greenwater"
+		date 16 11 3013
+		credits 1431000
+		debt 1431000
+	to unlock
+		has "Hai Start Unlocked"
+	conversation "嗨介绍"
+	account
+		credits 1431000
+		score 400
+		mortgage Mortgage
+			principal 1431000
+			interest 0.003
+			term 730
+	set "species: human"
+	set "hai space start"
+	set "start: hai"
+	# need to set it here to not have it trigger alongside the invisible mission
+	set "First Contact: Hai: offered"
+	set "First Contact: Hai: declined"
+	set "First Contact: Unfettered: offered"
+	set "First Contact: Unfettered: declined"
+	set "Ask the Hai about the Unfettered: offered"
+	set "Ask the Hai about the Unfettered: declined"
+
+
+# Patch for if the player started a Hai space game before 0.10.17
+mission "Start: Hai Patch"
+	invisible
+	landing
+	non-blocking
+	to offer
+		has "hai space start"
+		not "start: hai"
+	on offer
+		set "species: human"
+		set "hai space start"
+		set "start: hai"
+		fail
+
+
+conversation "嗨介绍"
+	scene "scene/hai shipyard"
+	action
+		log "Finally scraped together enough money for a down payment on a starship. The interest on the mortgage is exorbitant."
+		log "Factions" "Republic" `Hundreds of years ago, the independent territories in different parts of human space agreed to join together into a single democratic government, with Earth as its capital. The rise of the Republic ushered in a long period of peace and prosperity in human history.`
+			`共和国议会的代表权以人口为基础。这意味着某些单独的“天堂世界”比整个太空区域（例如人烟稀少的泥土带）拥有更多的代表。`
+		log "Factions" "Syndicate" `The Syndicate is a megacorporation, the largest employer in human space. People who cannot find steady work elsewhere flock to the Syndicate factory worlds, where they are almost guaranteed to find a job. Although the Syndicate is technically part of the Republic, Syndicate worlds are governed directly by the corporation.`
+			`该辛迪加是共和国经济的核心部分，但他们也因销售劣质产品和对他们控制的世界的环境造成破坏而闻名。他们对工人的待遇值得怀疑，他们对有组织劳工的反对更是传奇。一些辛迪加工业城镇甚至被指控侵犯人权。`
+		log "Factions" "Pirates" `In poorer and more remote star systems, where the Navy seldom patrols, pirate attacks on merchant ships are frequent. Pirates are also known to attack large, unguarded convoys of freighters even in more populated areas. Most pirate fleets come from lawless worlds on the outskirts of human space.`
+		log "Factions" "Hai" `The Hai are a species of giant, intelligent rodents, who live to the north of human space. They allow any humans who discover their territory to live alongside them, and to trade with them and purchase their technology.`
+		log "Factions" "Unfettered Hai" `The "Unfettered" are a faction within the Hai species who are not as peaceful as the rest, and are normally not friendly toward humans. They claim that long ago the Drak altered the Hai to make them docile and peaceful, and that the Unfettered are descendants of those Hai who avoided undergoing that alteration. They are seeking jump drives so that they can escape the "prison" they are now stuck in: a few deteriorating worlds on the far northern edge of Hai space.`
+		log "Factions" "Sheragi" `A long extinct dragon-like species called the "Sheragi" used to live in human space, back when much of what is now human territory was occupied by the Hai.`
+	
+	`去北极已经让你感觉仿佛来到了另一个世界；即使在渡轮的泊位内，您也能看到比您整个家乡还要多的海。在广播系统说了几句告别的话后，您和其他乘客下了飞机，人流冲破了海人群。`
+	`在前往造船厂的路上，您打开了贷款协议的人类语言版本进行审查：您已经借了 143.1 万积分，需要在两年内偿还。您的利率为 0.3%，每天还款额为 4,836 个积分。`
+	`你从平板电脑上抬起头，然后迎面撞上了一个穿着飞行服、毛茸茸的灰色海人，把他撞倒了。当你弯腰帮忙时，他看了一眼你的抵押贷款文件。 “你马上就要成为队长了，是吗？”他掸掉身上的灰尘后说道。`
+	
+	choice
+		`“我是。”`
+		`“你怎么知道？”`
+			goto tell
+		`“谁说你可以看的？”`
+			goto look
+	
+	`“那也许我能帮忙。跟我来吧。”`
+		goto help
+	
+	label tell
+	`“来自你的贷款，”他回答道。 “拥有那么多学分的理由只有一个。说到这一点，我想我可以帮到你。”`
+		goto help
+	
+	label look
+	`他挠了挠后脑勺。 “抱歉。我只是想帮忙，但如果我造成太多麻烦，我就不妨碍你了。”`
+	choice
+		`“我不介意。”`
+			goto happy
+		`“我宁愿自己处理事情。”`
+			goto leave
+	label happy
+	`他鞠躬。 “谢谢。”`
+	
+	label help
+	`亥族 号将您带到 Greenwater 的着陆场，那里有大量人类和 亥族 聚集在几艘船只周围。人群中，另一个海语接近你的同伴，用海语与他交谈。灰毛海人只是点点头，递给另一人一套钥匙，以换取信用芯片。另一名海族连忙鞠了一躬，然后冲向其中一艘登陆的船只。`
+	`“我会在退休前卖掉我的车队，”海说。 “当然，我可以直接去造船厂，但如果不是另一位退休船长在我年轻时以便宜的价格卖给我一艘船，我永远不可能开始。所以，我决定把钱传出去，帮助其他未来的船长。”`
+	`海号走向舰队中一艘较小的舰艇——一艘“蚱蜢”拦截舰。 “这是原始宝石。在过去的一个世纪里，她为我提供了很好的帮助，但我相信她在你手中会很安全。”`
+	choice
+		`“你把它给我？”`
+		`“有货船可以代替吗？”`
+			goto freighter
+		`“那这里的其他人呢？他们不是应该先选吗？”`
+			goto pick
+	
+	`亥笑道。 “那就太好了，不是吗？不幸的是，退休并不便宜。不过，我很乐意以 113.2 万信用点与她分开；这比一只蚜虫还少，更不用说一只新的蚱蜢了。`
+		goto deal
+	
+	label freighter
+	`“不幸的是，我的蚜虫都在今天早些时候被买了。不过，我相信你能活下来；无拘无束会是一个艰难的要求，但人类空间的海盗不会有太大的对手。而且，如果你仍然无法处理它，你可以随时卖掉她。她只需要你113.2万信用点，你可以使用原始宝石的旧部件以折扣价购买一只蚜虫。`
+		goto deal
+	
+	label pick
+	`海摇摇头。 “别担心，大多数人只是看客。通常都是人类船长在搞噱头，公开出售自己的舰队；大多数退休的海族只是将自己的舰队捐赠给政府。我也不是完全免费分发这些船只。如果你想要她，原始宝石号的 113.2 万信用点。`
+	
+	label deal
+	`“那么，我们达成协议了吗？”`
+	choice
+		`“我们愿意！”`
+		`“我认为从造船厂购买会更好。”`
+			goto leave
+	
+	`“伟大的！”他拿出一块数据板。 “只要在这里签字，她就是你的了。”`
+	name
+	action
+		set "hai space start: Grasshopper"
+		give ship "Grasshopper (Hai Start)" "Pristine Jewel"
+		payment -1132000
+	`在您交出平板电脑和付款后，亥族 会给您 Grasshopper 的钥匙。 “看来这是你成为星际企业家的第一步。我想说我们有一天会再次见面，但我不想撒谎。在我的这些年里，我再也没有见过卖给我第一艘船的船长。无论如何，这并不重要；这是你的故事，不是我的。”`
+	`在返回人群出售另一艘船之前，他向你致以最后的敬意。`
+		decline
+	
+	label leave
+	`当你朝造船厂走去时，他点点头。`
+	`它的入口处有一个自动安全亭。您快速填写屏幕上的表格，然后拿起手写笔并签名：`
+	name
+	`您穿过玻璃推拉门进入格林沃特的造船厂。在大部分泊位，工人们正忙着翻新旧船以进行转售，但在一些较远的海湾，你可以看到崭新的船舶骨架上焊枪的闪光。院子里排列着各种尺寸的船只，但对你来说，只有一种选择......`
+
+
+
+# This ship uses the most expensive loadout possible so its sell price is roughly equal to the buy price.
+ship "Grasshopper" "Grasshopper (Hai Start)"
+	outfits
+		`"Benga" Atomic Thruster`
+		`"Biroo" Atomic Steering`
+		"Fuel Pod"
+		"Hai Chasm Batteries"
+		"Hai Corundum Regenerator"
+		"Hai Williwaw Cooling"
+		Hyperdrive
+		"Ion Cannon"
+		"Pebble Core"
+		"Pulse Rifle"
+		"Quantum Keystone" 2

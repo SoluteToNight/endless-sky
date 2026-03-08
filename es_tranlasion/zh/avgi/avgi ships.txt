@@ -1,0 +1,2768 @@
+# Copyright (c) 2023 by Azure
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program. If not, see <https://www.gnu.org/licenses/>.
+
+
+# Transports
+
+ship "Koryfi"
+	sprite "ship/avgi koryfi/koryfi"
+		"frame rate" 24
+	thumbnail "thumbnail/avgi koryfi"
+	attributes
+		category "Transport"
+		"cost" 600000
+		"shields" 300
+		"hull" 1800
+		"required crew" 2
+		"bunks" 24
+		"mass" 180
+		"drag" 3
+		"heat dissipation" 0.72
+		"fuel capacity" 900
+		"cargo space" 60
+		"outfit space" 144
+		"weapon capacity" 36
+		"engine capacity" 42
+		"solar collection" 6
+		"solar heat" 2.4
+		"anchor point" 1
+		weapon
+			"blast radius" 240
+			"shield damage" 360
+			"hull damage" 240
+			"hit force" 240
+	outfits
+		"Ultracapacitor Cell" 3
+		"Luxury Accommodations"
+		"Multispectral Scanner"
+		"Optical Laser Rifle" 2
+
+		"Magnetoplasma Drive" 3
+		"Hyperdrive"
+
+	engine -101.5 -11
+	engine 101.5 -11
+	engine -94.5 -11
+	engine 94.5 -11
+	engine -88.5 -11
+	engine 88.5 -11
+	engine -83 -11
+	engine 83 -11
+	"reverse engine" -101.5 -23
+	"reverse engine" 101.5 -23
+	"reverse engine" -94.5 -23
+	"reverse engine" 94.5 -23
+	"reverse engine" -88.5 -23
+	"reverse engine" 88.5 -23
+	"reverse engine" -83 -23
+	"reverse engine" 83 -23
+	"steering engine" -101.5 -23
+		angle 180
+		left
+	"steering engine" 101.5 -23
+		angle 180
+		right
+	"steering engine" -94.5 -23
+		angle 180
+		left
+	"steering engine" 94.5 -23
+		angle 180
+		right
+	"steering engine" -88.5 -23
+		angle 180
+		left
+	"steering engine" 88.5 -23
+		angle 180
+		right
+	"steering engine" -83 -23
+		angle 180
+		left
+	"steering engine" 83 -23
+		angle 180
+		right
+	"steering engine" -101.5 -11
+		right
+	"steering engine" 101.5 -11
+		left
+	"steering engine" -94.5 -11
+		right
+	"steering engine" 94.5 -11
+		left
+	"steering engine" -88.5 -11
+		right
+	"steering engine" 88.5 -11
+		left
+	"steering engine" -83 -11
+		right
+	"steering engine" 83 -11
+		left
+	gun 0 -27
+	turret 0 -12
+
+	leak "leak" 60 60
+	leak "flame" 60 60
+	explode "tiny explosion" 15
+	explode "small explosion" 12
+	explode "medium explosion" 9
+	"final explode" "final explosion medium"
+
+	description "Koryfi 是一种轻型客运交通工具，其基本设计早于超光速引擎的发明。最初仅限于星系内旅行，其旋转重力系统早在重力板发展之前就确保了乘客的舒适航行。如今，它因其高可维护性和充足的居住空间而成为独立船长的热门选择，许多人将其用作永久居所。"
+	description "有进取心的船长经常利用 Koryfi 和 Avlaki 设计的共性，将模块化离心机替换为一组标准货物集装箱。"
+	description "虽然其标准的磁等离子动力推进器组使其加速度被慷慨地描述为缓慢，但 Koryfi 的恒定推力飞行剖面使其能够在足够的时间内达到令人印象深刻的巡航速度。"
+
+
+ship "Melodikos"
+	plural "Melodikos"
+	sprite "ship/avgi melodikos/melodikos"
+		"frame rate" 30
+	thumbnail "thumbnail/avgi melodikos"
+	attributes
+		category "Space Liner"
+		"cost" 1200000
+		"shields" 600
+		"hull" 2400
+		"required crew" 6
+		"bunks" 144
+		"mass" 360
+		"drag" 4.5
+		"heat dissipation" 0.72
+		"fuel capacity" 1200
+		"cargo space" 120
+		"outfit space" 180
+		"weapon capacity" 42
+		"engine capacity" 90
+		"solar collection" 15
+		"solar heat" 6.9
+		"anchor point" 1
+		weapon
+			"blast radius" 360
+			"shield damage" 600
+			"hull damage" 360
+			"hit force" 270
+	outfits
+		"Green Optical Laser" 2
+
+		"Ultracapacitor Bank"
+		"Optical Lasing Generator"
+		"Luxury Accommodations"
+		"Multispectral Scanner"
+		"Optical Laser Rifle" 6
+
+		"Magnetoplasma Drive" 2
+		"Hyperdrive"
+
+	engine -92 1.5
+	engine 92 1.5
+	engine -88 1.5
+	engine 88 1.5
+	engine -84 1.5
+	engine 84 1.5
+	engine -80 1.5
+	engine 80 1.5
+	engine -76 1.5
+	engine 76 1.5
+	engine -72 1.5
+	engine 72 1.5
+	"reverse engine" -92 -7
+	"reverse engine" 92 -7
+	"reverse engine" -88 -7
+	"reverse engine" 88 -7
+	"reverse engine" -84 -7
+	"reverse engine" 84 -7
+	"reverse engine" -80 -7
+	"reverse engine" 80 -7
+	"reverse engine" -76 -7
+	"reverse engine" 76 -7
+	"reverse engine" -72 -7
+	"reverse engine" 72 -7
+	"steering engine" -92 -7
+		angle 180
+		left
+	"steering engine" 92 -7
+		angle 180
+		right
+	"steering engine" -88 -7
+		angle 180
+		left
+	"steering engine" 88 -7
+		angle 180
+		right
+	"steering engine" -84 -7
+		angle 180
+		left
+	"steering engine" 84 -7
+		angle 180
+		right
+	"steering engine" -80 -7
+		angle 180
+		left
+	"steering engine" 80 -7
+		angle 180
+		right
+	"steering engine" -76 -7
+		angle 180
+		left
+	"steering engine" 76 -7
+		angle 180
+		right
+	"steering engine" -72 -7
+		angle 180
+		left
+	"steering engine" 72 -7
+		angle 180
+		right
+	"steering engine" -92 1.5
+		right
+	"steering engine" 92 1.5
+		left
+	"steering engine" -88 1.5
+		right
+	"steering engine" 88 1.5
+		left
+	"steering engine" -84 1.5
+		right
+	"steering engine" 84 1.5
+		left
+	"steering engine" -80 1.5
+		right
+	"steering engine" 80 1.5
+		left
+	"steering engine" -76 1.5
+		right
+	"steering engine" 76 1.5
+		left
+	"steering engine" -72 1.5
+		right
+	"steering engine" 72 1.5
+		left
+	gun -96 -3
+		angle -90
+		parallel
+	gun 96 -3
+		angle 90
+		parallel
+	turret -9 -3
+	turret 9 -3
+
+	leak "leak" 30 60
+	leak "flame" 30 60
+	explode "tiny explosion" 18
+	explode "small explosion" 18
+	explode "medium explosion" 15
+	"final explode" "final explosion large"
+
+	description "Melodikos 是一种大型客运交通工具，采用与 Koryfi 和 Avlaki 类似的推进和结构框架，但具有大幅扩大的太阳能电池板，以及宽敞的离心机栖息地。它曾经被用作行星际循环器，现在用于恒星之间的质量运输。"
+	description "虽然不像 Koryfi 和 Avlaki 设计那样模块化，但 Melodikos 与 Harmonikos 共享相同的太阳能电池阵列和结构框架。由于涉及的工作量很大，将离心机更换为一组货舱的改装并不常见，但仍然是可能的。"
+	description "虽然其标准磁等离子动力推进器组使其加速度被慷慨地描述为缓慢，但 Melodikos 的恒定推力飞行剖面使其能够在足够的时间内达到令人印象深刻的巡航速度。"
+
+
+# Freighters
+
+ship "Avlaki"
+	sprite "ship/avgi avlaki"
+		"frame rate" 30
+	thumbnail "thumbnail/avgi avlaki"
+	attributes
+		category "Light Freighter"
+		"cost" 450000
+		"shields" 300
+		"hull" 1800
+		"required crew" 2
+		"bunks" 6
+		"mass" 180
+		"drag" 3
+		"heat dissipation" 0.72
+		"fuel capacity" 900
+		"cargo space" 240
+		"outfit space" 144
+		"weapon capacity" 36
+		"engine capacity" 42
+		"solar collection" 6
+		"solar heat" 2.4
+		"anchor point" 1
+		weapon
+			"blast radius" 240
+			"shield damage" 360
+			"hull damage" 240
+			"hit force" 240
+	outfits
+		"Ultracapacitor Bank"
+		"Multispectral Scanner"
+		"Optical Laser Rifle" 2
+
+		"Magnetoplasma Drive" 3
+		"Hyperdrive"
+
+	engine -101.5 -11
+	engine 101.5 -11
+	engine -94.5 -11
+	engine 94.5 -11
+	engine -88.5 -11
+	engine 88.5 -11
+	engine -83 -11
+	engine 83 -11
+	"reverse engine" -101.5 -23
+	"reverse engine" 101.5 -23
+	"reverse engine" -94.5 -23
+	"reverse engine" 94.5 -23
+	"reverse engine" -88.5 -23
+	"reverse engine" 88.5 -23
+	"reverse engine" -83 -23
+	"reverse engine" 83 -23
+	"steering engine" -101.5 -23
+		angle 180
+		left
+	"steering engine" 101.5 -23
+		angle 180
+		right
+	"steering engine" -94.5 -23
+		angle 180
+		left
+	"steering engine" 94.5 -23
+		angle 180
+		right
+	"steering engine" -88.5 -23
+		angle 180
+		left
+	"steering engine" 88.5 -23
+		angle 180
+		right
+	"steering engine" -83 -23
+		angle 180
+		left
+	"steering engine" 83 -23
+		angle 180
+		right
+	"steering engine" -101.5 -11
+		right
+	"steering engine" 101.5 -11
+		left
+	"steering engine" -94.5 -11
+		right
+	"steering engine" 94.5 -11
+		left
+	"steering engine" -88.5 -11
+		right
+	"steering engine" 88.5 -11
+		left
+	"steering engine" -83 -11
+		right
+	"steering engine" 83 -11
+		left
+	gun 0 -27
+	turret 0 -12
+
+	leak "leak" 60 60
+	leak "flame" 60 60
+	explode "tiny explosion" 15
+	explode "small explosion" 12
+	explode "medium explosion" 9
+	"final explode" "final explosion medium"
+
+	description "Avlaki 是一艘中型货船，大致源自前超级驱动太阳能电动拖船设计。其低成本和著名的可维护性使其能够一直服役至今，并且是独立船长的热门选择。"
+	description "有进取心的船长经常利用 Koryfi 和 Avlaki 设计的共性，将标准集装箱换成离心机栖息地。"
+	description "虽然其标准磁等离子动力推进器组使其加速度被慷慨地描述为缓慢，但 Avlaki 的恒定推力飞行剖面使其能够在足够的时间内达到令人印象深刻的巡航速度。"
+
+
+ship "Harmonikos"
+	plural "Harmonikos"
+	sprite "ship/avgi harmonikos"
+		"frame rate" 30
+	thumbnail "thumbnail/avgi harmonikos"
+	attributes
+		category "Heavy Freighter"
+		"cost" 900000
+		"shields" 600
+		"hull" 2400
+		"required crew" 6
+		"bunks" 12
+		"mass" 360
+		"drag" 4.5
+		"heat dissipation" 0.72
+		"fuel capacity" 1200
+		"cargo space" 600
+		"outfit space" 180
+		"weapon capacity" 42
+		"engine capacity" 90
+		"solar collection" 15
+		"solar heat" 6.9
+		"anchor point" 1
+		weapon
+			"blast radius" 360
+			"shield damage" 600
+			"hull damage" 360
+			"hit force" 270
+	outfits
+		"Green Optical Laser" 2
+
+		"Ultracapacitor Bank"
+		"Optical Lasing Generator"
+		"Multispectral Scanner"
+		"Optical Laser Rifle" 6
+
+		"Magnetoplasma Drive" 2
+		"Hyperdrive"
+
+	engine -92 1.5
+	engine 92 1.5
+	engine -88 1.5
+	engine 88 1.5
+	engine -84 1.5
+	engine 84 1.5
+	engine -80 1.5
+	engine 80 1.5
+	engine -76 1.5
+	engine 76 1.5
+	engine -72 1.5
+	engine 72 1.5
+	"reverse engine" -92 -7
+	"reverse engine" 92 -7
+	"reverse engine" -88 -7
+	"reverse engine" 88 -7
+	"reverse engine" -84 -7
+	"reverse engine" 84 -7
+	"reverse engine" -80 -7
+	"reverse engine" 80 -7
+	"reverse engine" -76 -7
+	"reverse engine" 76 -7
+	"reverse engine" -72 -7
+	"reverse engine" 72 -7
+	"steering engine" -92 -7
+		angle 180
+		left
+	"steering engine" 92 -7
+		angle 180
+		right
+	"steering engine" -88 -7
+		angle 180
+		left
+	"steering engine" 88 -7
+		angle 180
+		right
+	"steering engine" -84 -7
+		angle 180
+		left
+	"steering engine" 84 -7
+		angle 180
+		right
+	"steering engine" -80 -7
+		angle 180
+		left
+	"steering engine" 80 -7
+		angle 180
+		right
+	"steering engine" -76 -7
+		angle 180
+		left
+	"steering engine" 76 -7
+		angle 180
+		right
+	"steering engine" -72 -7
+		angle 180
+		left
+	"steering engine" 72 -7
+		angle 180
+		right
+	"steering engine" -92 1.5
+		right
+	"steering engine" 92 1.5
+		left
+	"steering engine" -88 1.5
+		right
+	"steering engine" 88 1.5
+		left
+	"steering engine" -84 1.5
+		right
+	"steering engine" 84 1.5
+		left
+	"steering engine" -80 1.5
+		right
+	"steering engine" 80 1.5
+		left
+	"steering engine" -76 1.5
+		right
+	"steering engine" 76 1.5
+		left
+	"steering engine" -72 1.5
+		right
+	"steering engine" 72 1.5
+		left
+	gun -96 -3
+		angle -90
+		parallel
+	gun 96 -3
+		angle 90
+		parallel
+	turret -9 -3
+	turret 9 -3
+
+	leak "leak" 30 60
+	leak "flame" 30 60
+	explode "tiny explosion" 18
+	explode "small explosion" 18
+	explode "medium explosion" 15
+	"final explode" "final explosion large"
+
+	description "Harmonikos 是一艘大型货船，采用与 Koryfi 和 Avlaki 类似的推进和结构框架建造，但具有大幅扩大的太阳能电池阵列，以及在主桁架后面拖曳的巨大货物模块组件。它曾经被用作星际散货货轮，现在用于在星际之间运输货物。"
+	description "虽然不像 Koryfi 和 Avlaki 设计那样模块化，但 Harmonikos 与 Melodikos 共享相同的太阳能电池阵列和结构框架。偶尔可以看到其宽敞的货舱里装满了设备和铺位，以创造一种临时的客运运输，尽管缺乏 Melodikos 的人造重力。"
+	description "虽然其标准磁等离子动力推进器组使其加速度被慷慨地描述为缓慢，但 Harmonikos 的恒定推力飞行剖面使其能够在足够的时间内达到令人印象深刻的巡航速度。"
+
+
+ship "Phononos"
+	plural "Phononos"
+	sprite "ship/avgi phononos"
+	thumbnail "thumbnail/avgi phononos"
+	attributes
+		category "Light Freighter"
+		"cost" 180000
+		"hull" 1500
+		"automaton" 1
+		"mass" 72
+		"drag" 0.72
+		"heat dissipation" 0.6
+		"fuel capacity" 300
+		"cargo space" 240
+		"outfit space" 72
+		"engine capacity" 24
+		"radar jamming" 6
+		weapon
+			"blast radius" 24
+			"shield damage" 420
+			"hull damage" 360
+			"hit force" 180
+	outfits
+		"Concentrating Solar Array"
+		"Ultracapacitor Cell"
+		
+		"Magnetoplasma Drive" 2
+		"Hyperdrive"
+
+	engine -9 -19
+		angle 15
+	engine 9 -19
+		angle -19
+	"reverse engine" -9 -19
+		angle -15
+		zoom 0.5
+	"reverse engine" 9 -19
+		angle 15
+		zoom 0.5
+	"steering engine" -9 -19
+		angle 15
+		zoom 0.5
+		right
+	"steering engine" 9 -19
+		angle -15
+		zoom 0.5
+		left
+	"steering engine" -9 -19
+		angle 165
+		zoom 0.5
+		left
+	"steering engine" 9 -19
+		angle 195
+		zoom 0.5
+		right
+
+	leak "leak" 30 60
+	explode "tiny explosion" 12
+
+	description "这种对退役 Photikon 的改造只不过是在前鱼雷轰炸机前部连接了一组货舱，集装箱支架取代了通常用于安装武器的挂载点和挂架。为超光速引擎提供燃料的扩展内部油箱勉强塞进了飞船，但牺牲了其他内部系统和装甲。正因为如此，弗诺诺斯号很容易受到不和谐海盗甚至异常入侵的影响，因此总是被发现是大型舰队护航队的一部分。即便如此，作为一艘自动化货船，它在深空的事故和损失率要高得多，这一事实使像 Avlaki 这样的载人船只保持了竞争力。"
+	description "Phononos 可以使用 Avlaki 和 Harmonikos 使用的相同标准化集装箱运载大量货物，这些集装箱可以在目的地快速更换为一组空集装箱，而无需卸载。"
+
+
+ship "Frequentia"
+	sprite "ship/avgi frequentia"
+	thumbnail "thumbnail/avgi frequentia"
+	attributes
+		category "Light Freighter"
+		"cost" 1200000
+		"shields" 600
+		"hull"	1800
+		"required crew" 2
+		"bunks" 6
+		"mass" 300
+		"drag" 4.5
+		"heat dissipation" 1.2
+		"solar heat" 2.7
+		"fuel capacity" 2400
+		"cargo space" 240
+		"outfit space" 186
+		"engine capacity" 66
+		"anchor point" 1
+		weapon
+			"blast radius" 360
+			"shield damage" 1800
+			"hull damage" 1200
+			"hit force" 2400
+	outfits
+		"Lantern Fission Core"
+		"Ultracapacitor Cell" 3
+		"Heatsink Partition"
+		"Multispectral Scanner"
+		"Cryogenic Deuterium Tank" 6
+		"Magnetic Scoop"
+		"Optical Laser Rifle" 2
+
+		`Z-333 "Spark" Fusion Torch`
+		"Inductive Extractor"
+		"Remass Injector"
+		"R-180 RCS Thrusters"
+		"Hyperdrive"
+
+	engine 0 75
+		gimbal 6
+		zoom 0.6
+	"reverse engine" -3 75
+		angle -30
+	"reverse engine" 3 75
+		angle 30
+	"steering engine" -36 -52
+		angle 90
+		right
+	"steering engine" 36 -52
+		angle -90
+		left
+	"steering engine" -3 75
+		angle 90
+		left
+	"steering engine" 3 75
+		angle -90
+		right
+
+	leak "leak" 30 90
+	leak "flame" 30 90
+	leak "big leak" 15 90
+	explode "tiny explosion" 18
+	explode "small explosion" 30
+	explode "medium explosion" 45
+	explode "large explosion" 12
+	"final explode" "final explosion medium"
+
+	description "频率级货机最常被用作大型舰队中船舶的燃料补给船，利用其庞大而笨拙的货物容器来存储足够的低温氘，以满足小型舰队在长途旅行中的需求。虽然其球形油箱可以排空并用于运输干货和货物，但货舱出名的小检修门使得装载任何无法用泵移动的物品成为一个极其痛苦的过程。"
+
+
+# Utility
+
+ship "Polari"
+	sprite "ship/avgi polari"
+	thumbnail "thumbnail/avgi polari"
+	attributes
+		category "Utility"
+		"cost" 1800000
+		"shields" 600
+		"hull"	2100
+		"required crew" 6
+		"bunks" 12
+		"mass" 240
+		"drag" 3.6
+		"heat dissipation" 0.9
+		"solar heat" 2.4
+		"fuel capacity" 1800
+		"cargo space" 42
+		"outfit space" 312
+		"weapon capacity" 36
+		"engine capacity" 66
+		"asteroid scan power" 72
+		"tactical scan power" 72
+		"anchor point" 1
+		weapon
+			"blast radius" 90
+			"shield damage" 600
+			"hull damage" 360
+			"hit force" 480
+	outfits
+		"Green Optical Laser" 2
+
+		"Photoelectric Lamina"
+		"Ultracapacitor Cell" 3
+		"Diffuse Deflector"
+		"Optical Lasing Generator"
+		"Multispectral Scanner" 3
+		"Spectrometer Array" 3
+		"Heatsink Partition"
+		"Deuterium Slush Tank"
+		"Magnetic Scoop"
+		"Optical Laser Rifle" 9
+
+		`Z-333 "Spark" Fusion Torch`
+		"Inductive Extractor"
+		"Remass Injector"
+		"R-180 RCS Thrusters"
+		"Hyperdrive"
+
+	engine 0 69
+		gimbal 6
+		zoom 0.6
+	"reverse engine" -6 66
+		angle -30
+	"reverse engine" 6 66
+		angle 30
+	"steering engine" -3 -87
+		angle 90
+		right
+	"steering engine" 3 -87
+		angle -90
+		left
+	"steering engine" -6 66
+		angle 90
+		left
+	"steering engine" 6 66
+		angle -90
+		right
+	turret -14 27 "Green Optical Laser"
+	turret 14 27 "Green Optical Laser"
+	bay "Drone" -9 -25
+		"launch effect" "avgi internal"
+	bay "Drone" 9 -25
+		"launch effect" "avgi internal"
+	bay "Fighter" 0 48
+		"launch effect" "avgi internal"
+
+	leak "leak" 30 30
+	leak "flame" 30 60
+	explode "tiny explosion" 12
+	explode "small explosion" 9
+	"final explode" "final explosion medium"
+
+	description "北极星级侦察机是一种传统设计，由于履行了历史上不需要太多战斗力的角色，因此在当今时代仍然具有重要意义。它是一艘专业科学船，配备了一个宽敞的实验室，用于分析样本和处理数据，以及一套广泛的传感器阵列，用于记录观察结果。一对托架可以部署 Optikon 传感器无人机，而外部支架则设计用于容纳 Akoustiki 远足飞行器，以进行有人驾驶的样本采集操作。"
+	description "尽管具有这种多功能性，但在入侵后 Avgi 星团的竞争性战场空间中，北极星号根本无法胜任。随着科学船员越来越多地被要求带领危险的侦察探险队返回 Avgi 母星，对一艘更新、更具生存能力的科学船的需求通常会流向暮光守卫。"
+
+
+ship "Entasi"
+	sprite "ship/avgi entasi"
+	thumbnail "thumbnail/avgi entasi"
+	attributes
+		category "Utility"
+		"cost" 2400000
+		"shields" 1500
+		"hull" 3600
+		"required crew" 6
+		"bunks" 12
+		"mass" 720
+		"drag" 6
+		"heat dissipation" 0.72
+		"fuel capacity" 1200
+		"cargo space" 240
+		"outfit space" 420
+		"weapon capacity" 120
+		"engine capacity" 42
+		"solar collection" 18
+		"solar heat" 7.2
+		"anchor point" 1
+		weapon
+			"blast radius" 360
+			"shield damage" 1800
+			"hull damage" 1200
+			"hit force" 1200
+	outfits
+		"Blue Optical Laser" 2
+
+		"Ultracapacitor Bank" 3
+		"Diffuse Deflector"
+		"Optical Lasing Generator" 2
+		"Multispectral Scanner" 2
+		"Spectrometer Array" 6
+		"Optical Laser Rifle" 9
+
+		"Magnetoplasma Drive" 3
+		"Hyperdrive"
+
+	engine -45 45
+		zoom 0.9
+	engine 45 45
+		zoom 0.9
+	engine -39 45
+		zoom 0.9
+	engine 39 45
+		zoom 0.9
+	engine -33 45
+		zoom 0.9
+	engine 33 45
+		zoom 0.9
+	engine -30 45
+		zoom 0.9
+	engine 30 45
+		zoom 0.9
+	"reverse engine" -21 51
+		zoom 0.7
+	"reverse engine" 21 51
+		zoom 0.7
+	"reverse engine" -18 51
+		zoom 0.7
+	"reverse engine" 18 51
+		zoom 0.7
+	"steering engine" 12 -69
+		zoom 0.7
+		angle 270
+		left
+	"steering engine" 12 -63
+		zoom 0.7
+		angle 270
+		left
+	"steering engine" -12 -69
+		zoom 0.7
+		angle 90
+		right
+	"steering engine" -12 -63
+		zoom 0.7
+		angle 90
+		right
+	"steering engine" 9 87
+		zoom 0.7
+		angle 270
+		right
+	"steering engine" 9 90
+		zoom 0.7
+		angle 270
+		right
+	"steering engine" -9 87
+		zoom 0.7
+		angle 90
+		left
+	"steering engine" -9 90
+		zoom 0.7
+		angle 90
+		left
+	gun -36 9
+	gun 36 9
+	gun -36 9
+	gun 36 9
+	turret -10 72 "Blue Optical Laser"
+	turret 10 72 "Blue Optical Laser"
+	turret 0 -4
+	bay "Fighter" 0 -30
+		"launch effect" "avgi external"
+		over
+	bay "Fighter" 0 -30
+		"launch effect" "avgi external"
+		under
+	bay "Drone" -18 -45
+		"launch effect" "avgi internal"
+		angle 270
+	bay "Drone" 18 -45
+		"launch effect" "avgi internal"
+		angle 90
+	bay "Drone" -18 -18
+		"launch effect" "avgi internal"
+		angle 270
+	bay "Drone" 18 -18
+		"launch effect" "avgi internal"
+		angle 90
+	bay "Drone" -18 72
+		"launch effect" "avgi internal"
+		angle 270
+	bay "Drone" 18 72
+		"launch effect" "avgi internal"
+		angle 90
+
+	leak "leak" 60 60
+	leak "flame" 60 60
+	explode "tiny explosion" 15
+	explode "small explosion" 12
+	explode "medium explosion" 9
+	"final explode" "final explosion large"
+
+	description "Entasi 是一艘中型采矿船，其一对巨大的太阳能热发电机非常容易辨认。凭借支持激光采矿武器所需的动力和武器能力，Entasi 能够快速有效地切割小行星，然后由一群 Sonikis 货运无人机收集小行星中的矿物成分，并将其运送到小行星场。"
+	description "虽然有些脆弱，但经过适当的改造，恩塔西号可用的能量和空间可以使其成为一艘强大的战舰。有传言称，某些同情不和谐运动的恩塔西船长为这种不测事件保留了武器储备。"
+
+
+ship "Undsyni"
+	sprite "ship/avgi undsyni"
+	thumbnail "thumbnail/avgi undsyni"
+	attributes
+		category "Utility"
+		"cost" 12000000
+		"shields" 2400
+		"hull" 15000
+		"required crew" 12
+		"bunks" 60
+		"cargo space" 600
+		"mass" 2100
+		"drag" 15
+		"heat dissipation" 1.2
+		"solar heat" 21
+		"fuel capacity" 2400
+		"outfit space" 636
+		"weapon capacity" 153
+		"engine capacity" 168
+		"spinal mount" 1
+		"anchor point" 1
+		weapon
+			"blast radius" 540
+			"shield damage" 3600
+			"hull damage" 2400
+			"hit force" 4800
+	outfits
+		"Green Optical Laser" 3
+		"Speckle Turret" 2
+		"Speck Round" 4800
+		"Optical Laser Rifle" 24
+
+		"Lantern Fission Core"
+		"Ultracapacitor Bank" 3
+		"Diffuse Deflector"
+		"Optical Lasing Generator"
+		"Multispectral Scanner"
+		"Magnetic Scoop"
+		"Spectrometer Array" 2
+		"Cargo Expansion" 12
+
+		`Z-333 "Spark" Fusion Torch`
+		"Inductive Extractor"
+		"Remass Injector" 2
+		"R-360 RCS Thrusters"
+		"Hyperdrive"
+
+	engine 0 239
+		gimbal 6
+	"reverse engine" -6 240
+		angle -30
+	"reverse engine" 6 240
+		angle 30
+	"steering engine" -42 -138
+		angle 90
+		right
+	"steering engine" 42 -138
+		angle -90
+		left
+	"steering engine" -6 240
+		angle 90
+		left
+	"steering engine" 6 240
+		angle -90
+		right
+	gun 0 -213
+		over
+	gun -42 -139
+		angle -90
+		parallel
+	gun 42 -139
+		angle 90
+		parallel
+	turret -33 -138 "Speckle Turret"
+	turret 33 -138 "Speckle Turret"
+	turret 0 -30 "Green Optical Laser"
+	turret 0 42 "Green Optical Laser"
+	turret 0 186 "Green Optical Laser"
+	bay "Drone" -65.5 3
+		"launch effect" "avgi internal"
+		angle 270
+	bay "Drone" 65.5 3
+		"launch effect" "avgi internal"
+		angle 90
+	bay "Drone" 65.5 29
+		"launch effect" "avgi internal"
+		angle 90
+	bay "Drone" -65.5 29
+		"launch effect" "avgi internal"
+		angle 270
+
+	leak "leak" 30 90
+	leak "flame" 30 90
+	leak "big leak" 30 90
+	explode "tiny explosion" 18
+	explode "small explosion" 30
+	explode "medium explosion" 60
+	explode "large explosion" 30
+	explode "huge explosion" 9
+	"final explode" "final explosion large"
+
+	description "Undsyni 级辅助货轮不是一艘脆弱的散装货轮，而是一艘建造得足够大、足够坚固，能够抵御更小型、更军事化船只的攻击。虽然其有效载荷效率不如 Avlaki 和 Harmonikos 等更细长的舰船，但 Undsyni 的弹性使其在抵御攻击时更具生存能力，其聚变火炬使其能够加速躲避敌人并最大限度地缩短航行时间。"
+	description "甚至在入侵之前，安德西尼号强大的船体和内部装备能力就使其成为无法获得专业战舰的叛徒团体的主力舰。"
+	description "沿着船长延伸的加固脊柱使其能够安装一个巨大的 Plasmadyne 铲子，能够承受等离子磁体磁场对其超导磁体造成的极端应力。在这种配置中，Undsyni 号油轮可以通过数十个系统满足整个船队的燃料需求。"
+
+
+ship "Undsyni" "Undsyni (Tanker)"
+	outfits
+		"Green Optical Laser" 3
+		"Speckle Turret" 2
+		"Speck Round" 4800
+		"Optical Laser Rifle" 24
+
+		"Lantern Fission Core" 3
+		"Ultracapacitor Bank"
+		"Ultracapacitor Cell" 3
+		"Diffuse Deflector"
+		"Optical Lasing Generator"
+		"Magnetic Scoop"
+		"Cryogenic Deuterium Tank" 18
+		"Deuterium Slush Tank" 12
+		"Multispectral Scanner"
+		"Spectrometer Array"
+		"Outfits Expansion"
+
+		`Z-333 "Spark" Fusion Torch`
+		"Inductive Extractor"
+		"Remass Injector" 2
+		"R-360 RCS Thrusters"
+		"Hyperdrive"
+
+	turret "Speckle Turret"
+	turret "Speckle Turret"
+	turret "Green Optical Laser"
+	turret "Green Optical Laser"
+	turret "Green Optical Laser"
+
+ship "Undsyni" "Undsyni (Plasmadyne)"
+	outfits
+		"Green Optical Laser" 3
+		"Speckle Turret" 2
+		"Speck Round" 4800
+		"Optical Laser Rifle" 24
+
+		"Lantern Fission Core" 3
+		"Ultracapacitor Bank"
+		"Ultracapacitor Cell" 3
+		"Diffuse Deflector"
+		"Optical Lasing Generator"
+		"Plasmadyne Scoop"
+		"Cryogenic Deuterium Tank" 18
+		"Multispectral Scanner"
+		"Spectrometer Array"
+
+		`Z-333 "Spark" Fusion Torch`
+		"Inductive Extractor"
+		"Remass Injector" 2
+		"R-360 RCS Thrusters"
+		"Hyperdrive"
+
+	gun "Plasmadyne Scoop"
+	turret "Speckle Turret"
+	turret "Speckle Turret"
+	turret "Green Optical Laser"
+	turret "Green Optical Laser"
+	turret "Green Optical Laser"
+
+
+ship "Modified Tachytia"
+	sprite "ship/avgi tachytia/tachytia"
+		"frame rate" 24
+	thumbnail "thumbnail/avgi tachytia"
+	attributes
+		category "Utility"
+		"cost" 99000000
+		"shields" 6000
+		"hull" 36000
+		"required crew" 600
+		"bunks" 900
+		"mass" 6000
+		"drag" 6
+		"heat dissipation" 0.66
+		"solar heat" 60
+		"fuel capacity" 60000
+		"hull repair rate" 0.3
+		"hull repair energy" 3
+		"cargo space" 1200
+		"outfit space" 1800
+		"weapon capacity" 180
+		"engine capacity" 450
+		"self destruct" 0.9
+		"spinal mount" 1
+		"anchor point" 3
+		weapon
+			"blast radius" 1200
+			"shield damage" 42000
+			"hull damage" 24000
+			"hit force" 12000
+	outfits
+		"Blue Optical Laser" 6
+		"Green Optical Laser" 3
+		"Plasmadyne Scoop"
+
+		"Lantern Fission Core" 3
+		"Photoelectric Lamina"
+		"Ultracapacitor Bank" 6
+		"Specular Deflector" 2
+		"Optical Lasing Generator" 5
+		"Multispectral Scanner" 9
+		"Spectrometer Array" 6
+		"Magnetic Scoop" 3
+		"Concealment Lamina"
+		"Radiative Lamina"
+		"Optical Laser Rifle" 900
+		
+		`A-3600 "Beam" Amat Drive`
+		"Inductive Extractor" 6
+		"Hyperdrive"
+
+	engine -204 -456
+		angle 12
+		zoom 2
+	engine 204 -456
+		angle -12
+		zoom 2
+	engine -177 -426
+		angle 9
+		zoom 2
+	engine 177 -426
+		angle -9
+		zoom 2
+	"steering engine" -6 450
+		angle 90
+		left
+	"steering engine" 6 450
+		angle -90
+		right
+	"steering engine" -36 -324
+		angle 90
+		right
+	"steering engine" 36 -324
+		angle -90
+		left
+	gun 0 -384 "Plasmadyne Scoop"
+	turret -27 162 "Blue Optical Laser"
+	turret 27 162 "Blue Optical Laser"
+	turret -27 -324 "Blue Optical Laser"
+	turret 27 -324 "Blue Optical Laser"
+	turret -42 330 "Blue Optical Laser"
+	turret 42 330 "Blue Optical Laser"
+	turret 0 -3 "Green Optical Laser"
+	turret 0 -360 "Green Optical Laser"
+	turret 0 450 "Green Optical Laser"
+	bay "Drone" -18 420
+		"launch effect" "avgi internal"
+	bay "Drone" 18 420
+		"launch effect" "avgi internal"
+	bay "Drone" -18 432
+		"launch effect" "avgi internal"
+	bay "Drone" 18 432
+		"launch effect" "avgi internal"
+	bay "Drone" -18 447
+		"launch effect" "avgi internal"
+	bay "Drone" 18 447
+		"launch effect" "avgi internal"
+	bay "Drone" -18 459
+		"launch effect" "avgi internal"
+	bay "Drone" 18 459
+		"launch effect" "avgi internal"
+	bay "Fighter" -21 432
+		"launch effect" "avgi internal"
+	bay "Fighter" 21 432
+		"launch effect" "avgi internal"
+	bay "Fighter" -21 420
+		"launch effect" "avgi internal"
+	bay "Fighter" 21 420
+		"launch effect" "avgi internal"
+	bay "Fighter" -21 447
+		"launch effect" "avgi internal"
+	bay "Fighter" 21 447
+		"launch effect" "avgi internal"
+	bay "Fighter" -21 459
+		"launch effect" "avgi internal"
+	bay "Fighter" 21 459
+		"launch effect" "avgi internal"
+
+	leak "leak" 60 15
+	leak "flame" 60 15
+	explode "tiny explosion" 15
+	explode "small explosion" 12
+	explode "medium explosion" 9
+	explode "large explosion" 9
+	explode "huge explosion" 9
+	explode "nuke explosion" 3
+	"final explode" "nuke explosion" 6
+	"final explode" "nuke residue fast" 90
+
+	description "这曾经是一艘 Avgi 亚光速星际飞船，是超光速推进器发现之前建造的最后型号之一。这一时期的大多数星际飞船都使用冲压增强聚变驱动装置，以达到高达 0.25 摄氏度的巡航速度，但 Tachytia 级的设计速度达到 0.4 摄氏度，并使用反物质燃料源来点燃用其巨大的冲压勺收集的推进剂。"
+	description "这艘特殊的飞船从未执行过它的任务，只是在超空间推进器使它变得过时之前才投入使用。现在，它已经进行了广泛的修改，拆除了许多推进剂罐，代之以超空间驱动器、额外的设备空间和几个对接站。冷冻睡眠舱也被宽敞的居住圆筒所取代，使其成为一艘真正的城市船舶。"
+
+
+# Interceptors
+
+ship "Tremoros"
+	plural "Tremoros"
+	sprite "ship/avgi tremoros"
+	thumbnail "thumbnail/avgi tremoros"
+	attributes
+		category "Interceptor"
+		"cost" 600000
+		"shields" 600
+		"hull" 2400
+		"automaton" 1
+		"crew equivalent" 1
+		"threshold percentage" 0.15
+		"mass" 90
+		"drag" 1.5
+		"heat dissipation" 0.72
+		"fuel capacity" 900
+		"cargo space" 12
+		"outfit space" 216
+		"weapon capacity" 60
+		"engine capacity" 69
+		"anchor point" 1
+		weapon
+			"blast radius" 90
+			"shield damage" 720
+			"hull damage" 360
+			"hit force" 720
+	outfits
+		"Speckle Coilgun" 4
+		"Speck Round" 3600
+		"Tiny VLS"
+		`"Nettle" KKV` 27
+		
+		"Ultracapacitor Bank" 5
+		"Multispectral Scanner"
+		
+		"Vapor Nuclear Rocket"
+		"R-180 RCS Thrusters"
+		"Hyperdrive"
+
+	engine 0 51
+		gimbal 6
+		zoom 0.75
+	"reverse engine" -3 -33
+		angle 30
+	"reverse engine" 3 -33
+		angle -30
+	"steering engine" -3 -33
+		angle 90
+		right
+	"steering engine" 3 -33
+		angle -90
+		left
+	"steering engine" -6 45
+		angle 90
+		left
+	"steering engine" 6 45
+		angle -90
+		right
+	gun -6.5 -18 "Speckle Coilgun"
+	gun 6.5 -18 "Speckle Coilgun"
+	gun -6.5 -18 "Speckle Coilgun"
+	gun 6.5 -18 "Speckle Coilgun"
+	turret 0 39 "Tiny VLS"
+
+	leak "flame" 30 90
+	explode "tiny explosion" 12
+	explode "small explosion" 9
+	"final explode" "final explosion small"
+
+	description "震颤级拦截舰是一艘小型自主舰艇，旨在支持巡逻和拦截任务。它源自跨大气层高超音速战斗机，能够在太空和行星大气层中双重作战。由于强调原始加速度，它可以在使用火炮时快速超越任何对手，使其极其难以击中。"
+	description "震颤级还被用作小型商船队的护航，能够在任何可能构成威胁的敌人进入脆弱的民用船只的射程之前拦截它们。"
+
+
+# Light Warships
+
+ship "Prismaios"
+	plural "Prismaios"
+	sprite "ship/avgi prismaios"
+	thumbnail "thumbnail/avgi prismaios"
+	attributes
+		category "Light Warship"
+		licenses
+			"Twilight Guard"
+			"Avgi Torch"
+		"cost" 3600000
+		"shields" 1800
+		"hull" 7200
+		"required crew" 2
+		"bunks" 6
+		"mass" 420
+		"drag" 2.4
+		"heat dissipation" 1.2
+		"solar heat" 4.5
+		"fuel capacity" 1200
+		"cargo space" 36
+		"outfit space" 360
+		"weapon capacity" 120
+		"engine capacity" 105
+		"anchor point" 1
+		weapon
+			"blast radius" 240
+			"shield damage" 1500
+			"hull damage" 900
+			"hit force" 1200
+	outfits
+		"Speckle Turret" 2
+		"Speck Round" 4800
+		"Small VLS"
+		`"Nettle" KKV` 54
+		"Green Optical Laser"
+
+		"Ultracapacitor Bank"
+		"Diffuse Deflector"
+		"Multispectral Scanner"
+		"Magnetic Scoop"
+		"Optical Lasing Generator"
+		"Optical Laser Rifle" 6
+		
+		`Z-333 "Spark" Fusion Torch`
+		"Inductive Extractor"
+		"Remass Injector" 2
+		"R-360 RCS Thrusters"
+		"Hyperdrive"
+
+	engine 0 108
+		gimbal 6
+	"reverse engine" -6 99
+		angle -45
+	"reverse engine" 6 99
+		angle 45
+	"steering engine" -6 -66
+		angle 90
+		right
+	"steering engine" 6 -66
+		angle -90
+		left
+	"steering engine" -3 99
+		angle 90
+		left
+	"steering engine" 3 99
+		angle -90
+		right
+	gun 0 -111
+	gun -9 33
+		angle -90
+		parallel
+	gun 9 33
+		angle 90
+		parallel
+	turret 0 -48 "Small VLS"
+	turret -9 18 "Speckle Turret"
+	turret 9 18 "Speckle Turret"
+	turret 0 90 "Green Optical Laser"
+
+	leak "leak" 30 60
+	leak "flame" 30 90
+	explode "tiny explosion" 12
+	explode "small explosion" 15
+	explode "medium explosion" 15
+	"final explode" "final explosion medium"
+
+	description "Prismaios 级护卫舰是最新的流线型设计，被许多暮光守卫舰长称赞为 Avgi 打击舰队的非常成功的补充。新的建造技术使得这种轻质框架的结构完整性获得了前所未有的提升，使护卫舰能够作为一艘快速、多功能、多用途的战舰在对抗异常者的前线服役。"
+
+
+ship "Prismaios" "Prismaios (Laserstar)"
+	outfits
+		"Green Optical Laser" 2
+		"Blue Optical Laser" 2
+
+		"Lantern Fission Core"
+		"Ultracapacitor Bank" 2
+		"Diffuse Deflector"
+		"Optical Lasing Generator" 2
+		"Multispectral Scanner"
+		"Magnetic Scoop"
+		"Optical Laser Rifle" 6
+		
+		`Z-333 "Spark" Fusion Torch`
+		"Inductive Extractor" 2
+		"Remass Injector"
+		"R-360 RCS Thrusters"
+		"Hyperdrive"
+
+	turret "Green Optical Laser"
+	turret "Blue Optical Laser"
+	turret "Blue Optical Laser"
+	turret "Green Optical Laser"
+
+
+ship "Prismaios" "Prismaios (Orchid)"
+	outfits
+		"Green Optical Laser" 2
+		"Speckle Turret" 2
+		"Speck Round" 4800
+		"External Launch Tube" 2
+		`"Orchid" Nuclear Missile` 12
+
+		"Ultracapacitor Bank"
+		"Diffuse Deflector"
+		"Optical Lasing Generator"
+		"Multispectral Scanner"
+		"Magnetic Scoop"
+		"Optical Laser Rifle" 6
+		
+		`Z-333 "Spark" Fusion Torch`
+		"Inductive Extractor"
+		"Remass Injector" 2
+		"R-360 RCS Thrusters"
+		"Hyperdrive"
+
+	gun
+	gun "External Launch Tube"
+	gun "External Launch Tube"
+	turret "Green Optical Laser"
+	turret "Speckle Turret"
+	turret "Speckle Turret"
+	turret "Green Optical Laser"
+
+
+ship "Interferos"
+	plural "Interferos"
+	sprite "ship/avgi interferos"
+	thumbnail "thumbnail/avgi interferos"
+	attributes
+		category "Light Warship"
+		"cost" 1500000
+		"shields" 900
+		"hull" 4500
+		"automaton" 1
+		"crew equivalent" 3
+		"mass" 270
+		"drag" 5.4
+		"heat dissipation" 0.9
+		"solar heat" 2.7
+		"fuel capacity" 600
+		"cargo space" 12
+		"outfit space" 294
+		"weapon capacity" 102
+		"engine capacity" 66
+		"anchor point" 1
+		weapon
+			"blast radius" 210
+			"shield damage" 900
+			"hull damage" 450
+			"hit force" 900
+	outfits
+		"Green Optical Laser"
+		"Speckle Turret" 2
+		"Speck Round" 4800
+
+		"Ultracapacitor Bank" 2
+		"Diffuse Deflector"
+		"Optical Lasing Generator"
+		"Magnetic Scoop"
+		
+		`Z-333 "Spark" Fusion Torch`
+		"Inductive Extractor"
+		"Remass Injector"
+		"R-180 RCS Thrusters"
+		"Hyperdrive"
+
+	engine 0 99
+		gimbal 6
+	"reverse engine" -6 99
+		angle -30
+	"reverse engine" 6 99
+		angle 30
+	"steering engine" -9 -108
+		angle 90
+		right
+	"steering engine" 9 -108
+		angle -90
+		left
+	"steering engine" -6 99
+		angle 90
+		left
+	"steering engine" 6 99
+		angle -90
+		right
+	gun 0 -114
+	gun -33 -57
+		angle -60
+		parallel
+	gun 33 -57
+		angle 60
+		parallel
+	gun -33 -42
+		angle -60
+		parallel
+	gun 33 -42
+		angle 60
+		parallel
+	turret -21.5 -81 "Speckle Turret"
+	turret 21.5 -81 "Speckle Turret"
+	turret 0 -48 "Green Optical Laser"
+
+	leak "flame" 60 90
+	explode "tiny explosion" 15
+	explode "small explosion" 9
+	explode "medium explosion" 6
+	"final explode" "final explosion medium"
+
+	description "干扰级护卫舰是一艘自主支援舰，其设计易于建造且一次性足以进行大规模生产。为了使前线战舰不必在缠扰区护送商船队，协和号委托进行了这项设计，旨在将其销售许可给独立商船船长。此后，它因其令人印象深刻的大型武器而广受欢迎，但其损耗率却不尽如人意。"
+
+
+ship "Interferos" "Interferos (KKV)"
+	outfits
+		"Green Optical Laser"
+		"Medium VLS" 2
+		`"Nettle" KKV` 216
+
+		"Ultracapacitor Cell" 3
+		"Diffuse Deflector"
+		"Optical Lasing Generator"
+		"Magnetic Scoop"
+		
+		`Z-333 "Spark" Fusion Torch`
+		"Inductive Extractor"
+		"Remass Injector"
+		"R-180 RCS Thrusters"
+		"Hyperdrive"
+
+	turret "Medium VLS"
+	turret "Medium VLS"
+	turret "Green Optical Laser"
+
+
+ship "Interferos" "Interferos (Orchid)"
+	outfits
+		"Green Optical Laser"
+		"External Launch Tube" 4
+		`"Orchid" Nuclear Missile` 24
+
+		"Ultracapacitor Cell" 3
+		"Diffuse Deflector"
+		"Optical Lasing Generator"
+		"Magnetic Scoop"
+		
+		`Z-333 "Spark" Fusion Torch`
+		"Inductive Extractor"
+		"Remass Injector"
+		"R-180 RCS Thrusters"
+		"Hyperdrive"
+
+	gun
+	gun "External Launch Tube"
+	gun "External Launch Tube"
+	gun "External Launch Tube"
+	gun "External Launch Tube"
+	turret
+	turret
+	turret "Green Optical Laser"
+
+# Medium Warships
+
+ship "Diaspersi"
+	sprite "ship/avgi diaspersi"
+	thumbnail "thumbnail/avgi diaspersi"
+	attributes
+		category "Medium Warship"
+		licenses
+			"Twilight Guard"
+			"Avgi Torch"
+		"cost" 4200000
+		"shields" 2400
+		"hull" 14400
+		"required crew" 15
+		"bunks" 36
+		"mass" 810
+		"drag" 6
+		"heat dissipation" 1.2
+		"solar heat" 8.1
+		"fuel capacity" 2400
+		"cargo space" 120
+		"outfit space" 432
+		"weapon capacity" 96
+		"engine capacity" 114
+		"anchor point" 1
+		weapon
+			"blast radius" 360
+			"shield damage" 2400
+			"hull damage" 1800
+			"hit force" 2400
+	outfits
+		"Green Optical Laser" 2
+		"Medium VLS" 2
+		`"Nettle" KKV` 216
+		
+		"Ultracapacitor Bank"
+		"Diffuse Deflector"
+		"Optical Lasing Generator"
+		"Multispectral Scanner" 4
+		"Concealment Lamina"
+		"Deuterium Slush Tank" 3
+		"Magnetic Scoop"
+		"Optical Laser Rifle" 36
+		
+		`Z-333 "Spark" Fusion Torch`
+		"Inductive Extractor"
+		"Remass Injector" 2
+		"R-360 RCS Thrusters"
+		"Hyperdrive"
+
+	engine 0 144
+		gimbal 6
+	"reverse engine" -3 141
+		angle -35
+	"reverse engine" 3 141
+		angle 35
+	"steering engine" -9 -135
+		angle 90
+		right
+	"steering engine" 9 -135
+		angle -90
+		left
+	"steering engine" -3 141
+		angle 90
+		left
+	"steering engine" 3 141
+		angle -90
+		right
+	gun 0 -156
+	gun -18 -9
+		angle -90
+		parallel
+	gun 18 -9
+		angle 90
+		parallel
+	turret 0 -12 "Medium VLS"
+	turret -9 9 "Green Optical Laser"
+	turret 9 9 "Green Optical Laser"
+	turret 0 51 "Medium VLS"
+	bay "Fighter" 0 -63
+		"launch effect" "avgi external"
+		over
+	bay "Fighter" -36 18
+		"launch effect" "avgi external"
+		under
+	bay "Fighter" 36 18
+		"launch effect" "avgi external"
+		under
+	bay "Drone" -21 -75
+		"launch effect" "avgi internal"
+		angle 270
+	bay "Drone" 21 -75
+		"launch effect" "avgi internal"
+		angle 90
+	bay "Drone" -21 -54
+		"launch effect" "avgi internal"
+		angle 270
+	bay "Drone" 21 -54
+		"launch effect" "avgi internal"
+		angle 90
+	bay "Drone" -24 -30
+		"launch effect" "avgi internal"
+		angle 270
+	bay "Drone" 24 -30
+		"launch effect" "avgi internal"
+		angle 90
+	
+	leak "leak" 60 60
+	leak "flame" 60 90
+	leak "big leak" 90 30
+	explode "tiny explosion" 9
+	explode "small explosion" 21
+	explode "medium explosion" 21
+	explode "large explosion" 9
+	"final explode" "final explosion medium"
+
+	description "迪亚帕西级护航航母是一艘轻型航母，能够为小型舰队提供航母作战支持，同时还能够在最少的支持下执行独立打击任务。 Diaspersi 可以护送大型商船队和小型警卫队，可以支持两个战斗无人机联队以及一个大型战斗机联队。"
+
+
+ship "Diaspersi" "Diaspersi (Orchid)"
+	outfits
+		"Green Optical Laser" 2
+		"Speckle Turret"
+		"Speck Round" 2400
+		"External Launch Tube" 2
+		`"Orchid" Nuclear Missile` 12
+		"Ophrys Stockpile" 3
+		`"Ophrys" Nuclear Torpedo` 36
+		
+		"Ultracapacitor Bank"
+		"Diffuse Deflector"
+		"Optical Lasing Generator"
+		"Multispectral Scanner" 3
+		"Concealment Lamina"
+		"Deuterium Slush Tank"
+		"Magnetic Scoop"
+		"Optical Laser Rifle" 36
+		
+		`Z-333 "Spark" Fusion Torch`
+		"Inductive Extractor"
+		"Remass Injector" 2
+		"R-360 RCS Thrusters"
+		"Hyperdrive"
+
+	gun
+	gun "External Launch Tube"
+	gun "External Launch Tube"
+	turret
+	turret "Green Optical Laser"
+	turret "Green Optical Laser"
+	turret "Speckle Turret"
+
+
+ship "Diaspersi" "Diaspersi (UREB)"
+	outfits
+		"UREB Turret"
+		"Green Optical Laser" 2
+		"Small VLS"
+		`"Nettle" KKV` 54
+		
+		"Ultracapacitor Bank"
+		"Specular Deflector"
+		"Optical Lasing Generator"
+		"Multispectral Scanner" 4
+		"Concealment Lamina"
+		"Deuterium Slush Tank" 3
+		"Magnetic Scoop"
+		"Optical Laser Rifle" 36
+		
+		`Z-333 "Spark" Fusion Torch`
+		"Inductive Extractor"
+		"Remass Injector" 2
+		"R-360 RCS Thrusters"
+		"Hyperdrive"
+
+	turret "Small VLS"
+	turret "Green Optical Laser"
+	turret "Green Optical Laser"
+	turret "UREB Turret"
+
+
+ship "Refraktos"
+	plural "Refraktos"
+	sprite "ship/avgi refraktos"
+	thumbnail "thumbnail/avgi refraktos"
+	attributes
+		category "Medium Warship"
+		licenses
+			"Twilight Guard"
+			"Avgi Torch"
+		"cost" 4500000
+		"shields" 3600
+		"hull" 12600
+		"required crew" 12
+		"bunks" 24
+		"mass" 810
+		"drag" 6
+		"heat dissipation" 1.44
+		"solar heat" 8.1
+		"fuel capacity" 1800
+		"cargo space" 60
+		"outfit space" 516
+		"weapon capacity" 150
+		"engine capacity" 180
+		"anchor point" 1
+		weapon
+			"blast radius" 420
+			"shield damage" 880
+			"hull damage" 440
+			"hit force" 1320
+	outfits
+		"Blue Optical Laser" 4
+		"Green Optical Laser" 3
+
+		"Photoelectric Lamina"
+		"Ultracapacitor Bank" 2
+		"Diffuse Deflector"
+		"Optical Lasing Generator" 4
+		"Multispectral Scanner" 2
+		"Magnetic Scoop" 2
+		"Heatsink Partition" 3
+		"Optical Laser Rifle" 24
+		
+		`Z-666 "Zap" Fusion Torch`
+		"Inductive Extractor" 5
+		"Remass Injector" 1
+		"R-360 RCS Thrusters"
+		"Hyperdrive"
+
+	engine 0 150
+		gimbal 6
+	"reverse engine" -9 162
+		angle -30
+	"reverse engine" 9 162
+		angle 30
+	"steering engine" -12 -108
+		angle 90
+		right
+	"steering engine" 12 -108
+		angle -90
+		left
+	"steering engine" -9 162
+		angle 90
+		left
+	"steering engine" 9 162
+		angle -90
+		right
+	gun 0 -162
+	gun -18 -84
+	gun 18 -84
+	gun -24 -33
+		angle -90
+		parallel
+	gun 24 -33
+		angle 90
+		parallel
+	gun -24 -9
+		angle -90
+		parallel
+	gun 24 -9
+		angle 90
+		parallel
+	turret -18 -81 "Blue Optical Laser"
+	turret 18 -81 "Blue Optical Laser"
+	turret -18 -72 "Blue Optical Laser"
+	turret 18 -72 "Blue Optical Laser"
+	turret -21 -60 "Green Optical Laser"
+	turret 21 -60 "Green Optical Laser"
+	turret 0 54 "Green Optical Laser"
+
+	leak "leak" 60 60
+	leak "flame" 60 90
+	leak "big leak" 30 60
+	explode "tiny explosion" 12
+	explode "small explosion" 18
+	explode "medium explosion" 18
+	explode "large explosion" 6
+	"final explode" "final explosion medium"
+
+	description "Refraktos 级激光星号是一种相对较新的后侨民驱逐舰设计，其重点只有一个：定向能武器。虽然其装甲和防护系统相对其尺寸而言较轻，但其膨胀的散热器可以支持一系列令人震惊的进攻性和防御性激光武器的热负荷，使其能够从很远的距离摧毁导弹和小型船只。"
+	description "沿着船体长度建造了一个长桁架，以安装一个令人印象深刻的大型镜面聚变火炬，使雷拉克托号具有躲避对手所需的机动性，直到他们被变成热蒸汽。"
+	description "由于与动能武器和导弹相比，Avgi 激光武器的伤害输出较弱，因此 Refraktos 最常发挥支援作用，为整个舰队提供反导弹覆盖。"
+
+
+ship "Refraktos" "Refraktos (UREB)"
+	outfits
+		"UREB Turret" 2
+		"Green Optical Laser" 3
+
+		"Photoelectric Lamina"
+		"Ultracapacitor Bank" 3
+		"Specular Deflector"
+		"Optical Lasing Generator"
+		"Multispectral Scanner" 2
+		"Magnetic Scoop" 2
+		"Heatsink Partition" 3
+		"Optical Laser Rifle" 24
+		
+		`Z-666 "Zap" Fusion Torch`
+		"Inductive Extractor" 5
+		"Remass Injector" 1
+		"R-360 RCS Thrusters"
+		"Hyperdrive"
+
+	turret "UREB Turret"
+	turret "UREB Turret"
+	turret
+	turret
+	turret "Green Optical Laser"
+	turret "Green Optical Laser"
+	turret "Green Optical Laser"
+
+
+ship "Refraktos" "Refraktos (Excimer)"
+	outfits
+		"Ultraviolet Excimer Laser"
+		"Green Optical Laser" 6
+
+		"Photoelectric Lamina"
+		"Ultracapacitor Bank" 3
+		"Specular Deflector"
+		"Optical Lasing Generator" 2
+		"Multispectral Scanner" 2
+		"Magnetic Scoop" 2
+		"Heatsink Partition"
+		"Optical Laser Rifle" 24
+		
+		`Z-666 "Zap" Fusion Torch`
+		"Inductive Extractor" 5
+		"Remass Injector" 1
+		"R-360 RCS Thrusters"
+		"Hyperdrive"
+
+	turret "Green Optical Laser"
+	turret "Green Optical Laser"
+	turret "Green Optical Laser"
+	turret "Green Optical Laser"
+	turret "Green Optical Laser"
+	turret "Green Optical Laser"
+	turret "Ultraviolet Excimer Laser"
+
+
+ship "Difraktos"
+	plural "Difraktos"
+	sprite "ship/avgi difraktos"
+	thumbnail "thumbnail/avgi difraktos"
+	attributes
+		category "Medium Warship"
+		licenses
+			"Twilight Guard"
+			"Avgi Torch"
+		"cost" 6000000
+		"shields" 6000
+		"hull" 18000
+		"required crew" 15
+		"bunks" 42
+		"mass" 1200
+		"drag" 7.2
+		"heat dissipation" 1.2
+		"solar heat" 1.2
+		"fuel capacity" 1800
+		"cargo space" 60
+		"outfit space" 540
+		"weapon capacity" 252
+		"engine capacity" 144
+		"anchor point" 1
+		weapon
+			"blast radius" 420
+			"shield damage" 4800
+			"hull damage" 3600
+			"hit force" 3600
+	outfits
+		"Green Optical Laser" 2
+		"Speckle Turret" 4
+		"Speck Round" 9600
+		"Medium VLS" 2
+		`"Nettle" KKV` 216
+
+		"Lantern Fission Core"
+		"Ultracapacitor Bank"
+		"Specular Deflector"
+		"Optical Lasing Generator"
+		"Multispectral Scanner" 3
+		"Concealment Lamina"
+		"Magnetic Scoop"
+		"Optical Laser Rifle" 42
+
+		`Z-333 "Spark" Fusion Torch`
+		"Inductive Extractor"
+		"Remass Injector" 2
+		"R-180 RCS Thrusters"
+		"R-360 RCS Thrusters"
+		"Hyperdrive"
+
+	engine 0 141
+		gimbal 6
+	"reverse engine" -9 138
+		angle -35
+	"reverse engine" 9 138
+		angle 35
+	"steering engine" -18 -132
+		angle 90
+		right
+	"steering engine" 18 -132
+		angle -90
+		left
+	"steering engine" -9 138
+		angle 90
+		left
+	"steering engine" 9 138
+		angle -90
+		right
+
+	gun 0 -156
+	gun -21 -75
+		angle -90
+		parallel
+	gun 21 -75
+		angle 90
+		parallel
+	gun -21 -63
+		angle -90
+		parallel
+	gun 21 -63
+		angle 90
+		parallel
+	turret -9 -111 "Speckle Turret"
+	turret 9 -111 "Speckle Turret"
+	turret -9 -87 "Speckle Turret"
+	turret 9 -87 "Speckle Turret"
+	turret -9 -66 "Medium VLS"
+	turret 9 -66 "Medium VLS"
+	turret 0 36 "Green Optical Laser"
+	turret 0 90 "Green Optical Laser"
+	bay "Drone" -21 -21
+		"launch effect" "avgi internal"
+		angle 270
+	bay "Drone" 21 -21
+		"launch effect" "avgi internal"
+		angle 90
+	
+	leak "leak" 60 60
+	leak "flame" 30 90
+	leak "big leak" 60 30
+	explode "tiny explosion" 9
+	explode "small explosion" 24
+	explode "medium explosion" 24
+	explode "large explosion" 12
+	"final explode" "final explosion large"
+
+	description "Difraktos 级巡洋舰是一个多功能平台，能够提供从高性能动能武器战列巡洋舰到导弹巡洋舰或介于两者之间的任何配置。其强大的火炬驱动器用于推动重装甲船体，而不是依靠速度，即使在近距离混战中，Difraktos 也具有良好的生存能力。"
+
+
+ship "Difraktos" "Difraktos (KKV)"
+	outfits
+		"Green Optical Laser" 2
+		"Speckle Turret" 2
+		"Speck Round" 4800
+		"Medium VLS" 4
+		`"Nettle" KKV` 432
+
+		"Ultracapacitor Bank"
+		"Diffuse Deflector"
+		"Optical Lasing Generator"
+		"Multispectral Scanner" 3
+		"Concealment Lamina"
+		"Magnetic Scoop"
+		"Optical Laser Rifle" 42
+		
+		`Z-333 "Spark" Fusion Torch`
+		"Inductive Extractor"
+		"Remass Injector" 2
+		"R-180 RCS Thrusters"
+		"R-360 RCS Thrusters"
+		"Hyperdrive"
+
+	turret "Speckle Turret"
+	turret "Speckle Turret"
+	turret "Medium VLS"
+	turret "Medium VLS"
+	turret "Medium VLS"
+	turret "Medium VLS"
+	turret "Green Optical Laser"
+	turret "Green Optical Laser"
+
+
+ship "Difraktos" "Difraktos (Orchid)"
+	outfits
+		"Green Optical Laser" 3
+		"Speckle Turret" 2
+		"Speck Round" 9600
+		"External Launch Tube" 4
+		`"Orchid" Nuclear Missile` 24
+
+		"Ultracapacitor Bank"
+		"Specular Deflector"
+		"Optical Lasing Generator"
+		"Multispectral Scanner" 3
+		"Concealment Lamina"
+		"Magnetic Scoop"
+		"Optical Laser Rifle" 42
+
+		`Z-333 "Spark" Fusion Torch`
+		"Inductive Extractor"
+		"Remass Injector" 2
+		"R-180 RCS Thrusters"
+		"R-360 RCS Thrusters"
+		"Hyperdrive"
+
+	gun
+	gun "External Launch Tube"
+	gun "External Launch Tube"
+	gun "External Launch Tube"
+	gun "External Launch Tube"
+	turret "Speckle Turret"
+	turret "Speckle Turret"
+	turret
+	turret
+	turret
+	turret
+	turret "Green Optical Laser"
+	turret "Green Optical Laser"
+
+
+ship "Difraktos" "Difraktos (UREB + Orchid)"
+	outfits
+		`"Orchid" Nuclear Missile` 24
+		"Concealment Lamina"
+		"External Launch Tube" 4
+		"Green Optical Laser" 2
+		Hyperdrive
+		"Inductive Extractor"
+		"Lantern Fission Core"
+		"Magnetic Scoop"
+		"Multispectral Scanner" 3
+		"Optical Laser Rifle" 42
+		"Optical Lasing Generator"
+		"R-180 RCS Thrusters"
+		"R-360 RCS Thrusters"
+		"Remass Injector" 2
+		"Specular Deflector"
+		"UREB Turret" 2
+		"Ultracapacitor Bank"
+		`Z-333 "Spark" Fusion Torch`
+
+	gun
+	gun "External Launch Tube"
+	gun "External Launch Tube"
+	gun "External Launch Tube"
+	gun "External Launch Tube"
+	turret "UREB Turret"
+	turret "UREB Turret"
+	turret
+	turret
+	turret
+	turret
+	turret "Green Optical Laser"
+	turret "Green Optical Laser"
+
+
+ship "Difraktos" "Difraktos (UREB)"
+	outfits
+		"Concealment Lamina"
+		"Green Optical Laser" 2
+		"Inductive Extractor" 2
+		"Jump Drive"
+		"Lantern Fission Core"
+		"Magnetic Scoop"
+		"Multispectral Scanner" 3
+		"Optical Laser Rifle" 42
+		"Optical Lasing Generator"
+		"R-180 RCS Thrusters"
+		"R-360 RCS Thrusters"
+		"Remass Injector"
+		"Specular Deflector"
+		"UREB Turret" 4
+		"Ultracapacitor Bank" 2
+		`Z-333 "Spark" Fusion Torch`
+
+	turret "UREB Turret"
+	turret "UREB Turret"
+	turret "UREB Turret"
+	turret "UREB Turret"
+	turret
+	turret
+	turret "Green Optical Laser"
+	turret "Green Optical Laser"
+
+
+# Heavy Warships
+
+ship "Atenuatia"
+	sprite "ship/avgi atenuatia"
+	thumbnail "thumbnail/avgi atenuatia"
+	attributes
+		category "Heavy Warship"
+		licenses
+			"Twilight Guard"
+			"Avgi Torch"
+		"cost" 14400000
+		"shields" 4200
+		"hull" 30000
+		"required crew" 60
+		"bunks" 90
+		"mass" 2700
+		"drag" 18
+		"heat dissipation" 1.2
+		"solar heat" 2.7
+		"fuel capacity" 2400
+		"cargo space" 120
+		"outfit space" 696
+		"weapon capacity" 180
+		"engine capacity" 186
+		"anchor point" 1
+		weapon
+			"blast radius" 540
+			"shield damage" 6400
+			"hull damage" 4800
+			"hit force" 4200
+	outfits
+		"Speckle Turret"
+		"Speck Round" 2400
+		"Blue Optical Laser" 2
+		"Green Optical Laser" 3
+		"Medium VLS" 2
+		`"Nettle" KKV` 216
+		
+		"Ultracapacitor Bank" 3
+		"Specular Deflector"
+		"Optical Lasing Generator" 3
+		"Multispectral Scanner" 6
+		"Deuterium Slush Tank" 3
+		"Magnetic Scoop"
+		"Optical Laser Rifle" 90
+		
+		`Z-666 "Zap" Fusion Torch`
+		"Inductive Extractor" 3
+		"Remass Injector" 3
+		"R-720 RCS Thrusters"
+		"Hyperdrive"
+
+	engine 0 250
+		gimbal 6
+	"reverse engine" -9 264
+		angle -30
+	"reverse engine" 9 264
+		angle 30
+	"steering engine" -90 -252
+		angle 60
+		right
+	"steering engine" 90 -252
+		angle -60
+		left
+	"steering engine" -9 264
+		angle 120
+		left
+	"steering engine" 9 264
+		angle -120
+		right
+	gun 0 -288
+	gun -18 -132
+		angle -90
+		parallel
+	gun 18 -132
+		angle 90
+		parallel
+	gun -15 -114
+		angle -90
+		parallel
+	gun 15 -114
+		angle 90
+		parallel
+	turret 0 -252 "Green Optical Laser"
+	turret 63 -195 "Blue Optical Laser"
+	turret -63 -195 "Blue Optical Laser"
+	turret 0 -105 "Medium VLS"
+	turret 0 -36 "Speckle Turret"
+	turret 0 30 "Medium VLS"
+	turret 0 96 "Green Optical Laser"
+	turret 0 160 "Green Optical Laser"
+	bay "Drone" -24 -234
+		"launch effect" "avgi internal"
+		angle 160
+	bay "Drone" 24 -234
+		"launch effect" "avgi internal"
+		angle 200
+	bay "Drone" -42 -225
+		"launch effect" "avgi internal"
+		angle 160
+	bay "Drone" 42 -225
+		"launch effect" "avgi internal"
+		angle 200
+	bay "Drone" -63 -219
+		"launch effect" "avgi internal"
+		angle 160
+	bay "Drone" 63 -219
+		"launch effect" "avgi internal"
+		angle 200
+	bay "Drone" -18 -216
+		"launch effect" "avgi internal"
+		angle 260
+	bay "Drone" 18 -216
+		"launch effect" "avgi internal"
+		angle 100
+	bay "Drone" -24 -175
+		"launch effect" "avgi internal"
+		angle 160
+	bay "Drone" 24 -175
+		"launch effect" "avgi internal"
+		angle 200
+	bay "Drone" -24 -175
+		"launch effect" "avgi internal"
+		angle 160
+	bay "Drone" 24 -175
+		"launch effect" "avgi internal"
+		angle 200
+	bay "Drone" -46 -165
+		"launch effect" "avgi internal"
+		angle 160
+	bay "Drone" 46 -165
+		"launch effect" "avgi internal"
+		angle 200
+	bay "Drone" -46 -165
+		"launch effect" "avgi internal"
+		angle 160
+	bay "Drone" 46 -165
+		"launch effect" "avgi internal"
+		angle 200
+	bay "Drone" -18 -150
+		"launch effect" "avgi internal"
+		angle 260
+	bay "Drone" 18 -150
+		"launch effect" "avgi internal"
+		angle 100
+	bay "Fighter" 0 -216
+		"launch effect" "avgi external"
+		over
+	bay "Fighter" 0 -216
+		"launch effect" "avgi external"
+		under
+	bay "Fighter" 0 -150
+		"launch effect" "avgi external"
+		over
+	bay "Fighter" 0 -150
+		"launch effect" "avgi external"
+		under
+	bay "Fighter" 0 -117
+		"launch effect" "avgi external"
+		over
+	bay "Fighter" 0 -117
+		"launch effect" "avgi external"
+		under
+
+	leak "leak" 30 60
+	leak "flame" 30 90
+	leak "big leak" 30 30
+	explode "tiny explosion" 36
+	explode "small explosion" 42
+	explode "medium explosion" 45
+	explode "large explosion" 36
+	explode "huge explosion" 6
+	"final explode" "final explosion large"
+
+	description "阿特努阿蒂亚号是一艘 Avgi 舰队航母，是构成其战列舰核心的主力舰。 Atenuatia 拥有六个战斗无人机机翼和两个轰炸机机翼，可以带来惊人的火力。然而，携带这些战斗机库是有代价的，而且就其体型而言，阿特努阿蒂亚可以携带的重型武器相对较少。"
+
+
+ship "Atenuatia" "Atenuatia (Orchid)"
+	outfits
+		"Speckle Turret"
+		"Speck Round" 2400
+		"Blue Optical Laser" 2
+		"Green Optical Laser" 2
+		"External Launch Tube" 2
+		`"Orchid" Nuclear Missile` 12
+		"Ophrys Stockpile" 3
+		`"Ophrys" Nuclear Torpedo` 36
+		
+		"Ultracapacitor Bank"
+		"Specular Deflector"
+		"Optical Lasing Generator" 2
+		"Magnetic Scoop"
+		"Multispectral Scanner" 6
+		"Optical Laser Rifle" 90
+		
+		`Z-666 "Zap" Fusion Torch`
+		"Inductive Extractor" 2
+		"Remass Injector" 4
+		"R-720 RCS Thrusters"
+		"Hyperdrive"
+
+	gun
+	gun "External Launch Tube"
+	gun "External Launch Tube"
+	turret "Green Optical Laser"
+	turret "Blue Optical Laser"
+	turret "Blue Optical Laser"
+	turret
+	turret "Speckle Turret"
+	turret
+	turret
+	turret "Green Optical Laser"
+
+
+# Fighters
+
+ship "Akoustiki"
+	sprite "ship/avgi akoustiki"
+	thumbnail "thumbnail/avgi akoustiki"
+	attributes
+		category "Fighter"
+		"cost" 120000
+		"shields" 180
+		"hull" 1200
+		"required crew" 1
+		"bunks" 6
+		"mass" 60
+		"drag" 1.8
+		"heat dissipation" 0.66
+		"fuel capacity" 120
+		"cargo space" 30
+		"outfit space" 96
+		"weapon capacity" 24
+		"engine capacity" 24
+		weapon
+			"blast radius" 12
+			"shield damage" 240
+			"hull damage" 180
+			"hit force" 120
+	outfits
+		"Speckle Coilgun"
+		"Speck Round" 900
+		
+		"Concentrating Solar Array"
+		"Ultracapacitor Cell" 3
+		"Multispectral Scanner"
+		"Spectrometer Array"
+		"Optical Laser Rifle" 2
+		
+		"Magnetoplasma Drive" 2
+
+	engine -12 18
+	engine 12 18
+	"reverse engine" -9 -15
+		angle -30
+		zoom 0.5
+	"reverse engine" 9 -15
+		angle 30
+		zoom 0.5
+	"steering engine" -9 -15
+		angle 120
+		zoom 0.5
+		right
+	"steering engine" 9 -15
+		angle -120
+		zoom 0.5
+		left
+	"steering engine" -15 12
+		angle 60
+		zoom 0.5
+		left
+	"steering engine" 15 12
+		angle -60
+		zoom 0.5
+		right
+	gun -18 -15 "Speckle Coilgun"
+	gun 18 -15
+
+	leak "leak" 30 60
+	explode "tiny explosion" 9
+
+	description "Akoustiki 远足车辆是实用吊舱的现代版本，这是一种小型个人飞船，旨在帮助维护和修理空间站或运输船及其护航舰。它在轨道上飞翔就像它为卫星提供服务或充当空间站和低重力天体之间的个人运输穿梭机一样常见。磁等离子动力发动机的最新进展也使其成为一种能力强大的采矿船，尽管其载货空间很小。"
+	description "战斗机没有配备超光速引擎。除非您的舰队中有一艘带有战斗机舱的舰艇，否则您无法携带战斗机。"
+
+
+ship "Photikon"
+	sprite "ship/avgi photikon"
+	thumbnail "thumbnail/avgi photikon"
+	attributes
+		category "Fighter"
+		licenses
+			"Twilight Guard"
+		"cost" 180000
+		"shields" 240
+		"hull" 2100
+		"automaton" 1
+		"crew equivalent" 1
+		"threshold percentage" 0.15
+		"mass" 45
+		"drag" 0.6
+		"heat dissipation" 0.72
+		"fuel capacity" 90
+		"outfit space" 90
+		"weapon capacity" 27
+		"engine capacity" 24
+		"radar jamming" 6
+		weapon
+			"blast radius" 24
+			"shield damage" 420
+			"hull damage" 360
+			"hit force" 180
+	outfits
+		"Speckle Turret"
+		"Speck Round" 4800
+		
+		"Concentrating Solar Array"
+		"Ultracapacitor Cell" 3
+		"Multispectral Scanner"
+		
+		"Magnetoplasma Drive"
+
+	engine -9 -15
+		angle 15
+	engine 9 -15
+		angle -15
+	"reverse engine" -9 -15
+		angle -15
+		zoom 0.5
+	"reverse engine" 9 -15
+		angle 15
+		zoom 0.5
+	"steering engine" -9 -15
+		angle 15
+		zoom 0.5
+		right
+	"steering engine" 9 -15
+		angle -15
+		zoom 0.5
+		left
+	"steering engine" -9 -15
+		angle 165
+		zoom 0.5
+		left
+	"steering engine" 9 -15
+		angle 195
+		zoom 0.5
+		right
+	gun -6 -30
+	gun 0 -30
+	gun 6 -30
+	turret 0 -21 "Speckle Turret"
+
+	leak "flame" 30 60
+	explode "tiny explosion" 15
+	"final explode" "final explosion small"
+
+	description "Photikon 鱼雷轰炸机是 Avgi 反舰航母理论的基石。虽然一群“振动”和类似的拦截无人机有可能与主力舰交战，但“光辉”号能够发射击落最大战舰所需的核反舰弹药。通过将核鱼雷置于近距离内，与标准导弹相比，有效载荷在敌方点防御武器中幸存的机会更高。"
+	description "Photikon 也经常被用作火炮平台，安装斑点炮塔而不是其标准武器两枚 Ophrys 鱼雷。"
+	description "战斗机没有配备超光速引擎。除非您的舰队中有一艘带有战斗机舱的舰艇，否则您无法携带战斗机。"
+
+
+ship "Photikon" "Photikon (KKV)"
+	outfits
+		"Small VLS"
+		`"Nettle" KKV` 54
+		
+		"Concentrating Solar Array"
+		"Ultracapacitor Cell" 3
+		"Multispectral Scanner"
+		
+		"Magnetoplasma Drive"
+
+
+ship "Photikon" "Photikon (Ophrys)"
+	outfits
+		"External Launch Rail" 3
+		`"Ophrys" Nuclear Torpedo` 3
+		
+		"Concentrating Solar Array"
+		"Ultracapacitor Cell" 3
+		"Multispectral Scanner"
+		
+		"Magnetoplasma Drive"
+
+
+# Drones
+
+ship "Vibratia"
+	plural "Vibratia"
+	sprite "ship/avgi vibratia"
+	thumbnail "thumbnail/avgi vibratia"
+	attributes
+		category "Drone"
+		licenses
+			"Twilight Guard"
+		"cost" 90000
+		"hull" 1200
+		"automaton" 1
+		"crew equivalent" 1
+		"threshold percentage" 0.12
+		"mass" 24
+		"drag" 0.3
+		"heat dissipation" 0.9
+		"outfit space" 75
+		"weapon capacity" 18
+		"engine capacity" 24
+		"radar jamming" 3
+		weapon
+			"blast radius" 12
+			"shield damage" 240
+			"hull damage" 150
+			"hit force" 120
+	outfits
+		"Speckle Coilgun"
+		"Speck Round" 900
+	
+		"Concentrating Solar Array"
+		"Ultracapacitor Cell"
+		"Multispectral Scanner"
+	
+		"Magnetoplasma Drive"
+
+	engine 0 27
+	"reverse engine" -5 -12
+		zoom 0.5
+	"reverse engine" 5 -12
+		zoom 0.5
+	"steering engine" -5 -12
+		angle 90
+		zoom 0.5
+		right
+	"steering engine" 5 -12
+		angle -90
+		zoom 0.5
+		left
+	"steering engine" -3 24
+		angle 90
+		zoom 0.5
+		left
+	"steering engine" 3 24
+		angle -90
+		zoom 0.5
+		right
+	gun 0 -27 "Speckle Coilgun"
+	gun 0 -27
+
+	explode "tiny explosion" 9
+
+	description "Vibratia Interdictor 是主要的 Avgi 攻击战斗机。虽然个体脆弱，但振颤通常以大群的形式部署，并且足够敏捷，即使在猛烈的火力下也能令人惊讶地生存。"
+	description "无人机没有配备超光速引擎。除非您的舰队中有一艘带有无人机舱的船只，否则您无法携带无人机。"
+
+
+
+ship "Undulon"
+	sprite "ship/avgi undulon"
+	thumbnail "thumbnail/avgi undulon"
+	attributes
+		category "Drone"
+		licenses
+			"Twilight Guard"
+			"Avgi Atomics"
+		"cost" 36000
+		"hull" 600
+		"automaton" 1
+		"crew equivalent" 1
+		"mass" 60
+		"drag" 15
+		"heat dissipation" .45
+		"fuel capacity" 60
+		"outfit space" 84
+		"weapon capacity" 42
+		"engine capacity" 18
+		weapon
+			"blast radius" 12
+			"shield damage" 180
+			"hull damage" 120
+			"hit force" 90
+	outfits
+		"External Launch Tube"
+		`"Orchid" Nuclear Missile` 6
+
+		"Concentrating Solar Cell" 3
+		"Ultracapacitor Cell"
+		"Multispectral Scanner"
+
+		"Magnetoplasma Drive"
+
+	engine -15 3
+		angle 15
+		zoom 0.5
+	engine 15 3
+		angle -15
+		zoom 0.5
+	"reverse engine" -15 -18
+		angle -15
+		zoom 0.5
+	"reverse engine" 15 -18
+		angle 15
+		zoom 0.5
+	"steering engine" -15 -18
+		angle 165
+		zoom 0.5
+		left
+	"steering engine" 15 -18
+		angle 195
+		zoom 0.5
+		right
+	"steering engine" -15 3
+		angle 15
+		zoom 0.5
+		right
+	"steering engine" 15 3
+		angle -15
+		zoom 0.5
+		left
+	gun 0 -29 "External Launch Tube"
+
+	explode "tiny explosion" 12
+
+	description "Undulon 轨道发射井最初被设想为一种廉价的静态防御卫星，只不过是一个能够储存和发射核弹头导弹的管子。随着时间的推移，这种专业化范围不断扩大，现代的 Undulon 系列既能够安装大型固定火炮，又能够携带支持它所需的能源。它们的大部分中空结构为其尺寸提供了大量的内部空间，但也使无人机相当脆弱。"
+	description "人们通常会看到 Undulon 保卫重要的行星和空间站，准备将其原子有效载荷卸载到任何跳入该系统的敌方飞船上。"
+	description "无人机没有配备超光速引擎。除非您的舰队中有一艘带有无人机舱的船只，否则您无法携带无人机。"
+
+
+ship "Optikon"
+	sprite "ship/avgi optikon"
+	thumbnail "thumbnail/avgi optikon"
+	attributes
+		category "Drone"
+		"cost" 54000
+		"hull" 600
+		"automaton" 1
+		"crew equivalent" 1
+		"mass" 30
+		"drag" 1.2
+		"heat dissipation" .9
+		"fuel capacity" 300
+		"outfit space" 60
+		"engine capacity" 24
+		"atmosphere scan" 36
+		"outfit scan power" 42
+		"outfit scan efficiency" 12
+		"cargo scan power" 42
+		"cargo scan efficiency" 12
+		"tactical scan power" 144
+		"asteroid scan power" 36
+		weapon
+			"blast radius" 9
+			"shield damage" 150
+			"hull damage" 90
+			"hit force" 60
+	outfits
+		"Concentrating Solar Cell" 3
+		"Ultracapacitor Cell" 3
+		"Multispectral Scanner"
+		"Spectrometer Array"
+
+		"Magnetoplasma Drive"
+
+	engine 0 21
+	"steering engine" -6 12
+		angle 90
+		left
+	"steering engine" 6 12
+		angle -90
+		right
+
+	explode "tiny explosion" 6
+
+	description "Optikon 传感器平台是超光速推进器发现后不久开发的一系列探索探测器的最新版本。此前，勘测恒星系统需要发射数千个激光驱动的星缕探测器，每个探测器的重量不超过几百克。超光速推进器彻底改变了这种模式，使 Avgi 能够建造大型探测器，旨在快速绘制新可访问的恒星系统。几十年来，随着在恒星系统之间运送它们的任务被转移到专用勘探船（北极星级侦察船的前身）上，这些船逐渐缩小。这使得现代 Optikon 成为一个功能强大且可部署的传感器平台，可用于科学和战斗信息角色。"
+	description "无人机没有配备超光速引擎。除非您的舰队中有一艘带有无人机舱的船只，否则您无法携带无人机。"
+
+
+ship "Sonikis"
+	plural "Sonikis"
+	sprite "ship/avgi sonikis"
+	thumbnail "thumbnail/avgi sonikis"
+	attributes
+		category "Drone"
+		"cost" 60000
+		"hull" 600
+		"automaton" 1
+		"crew equivalent" 1
+		"mass" 24
+		"drag" 0.9
+		"heat dissipation" .72
+		"fuel capacity" 120
+		"cargo space" 60
+		"outfit space" 69
+		"weapon capacity" 18
+		"engine capacity" 24
+		weapon
+			"blast radius" 9
+			"shield damage" 180
+			"hull damage" 120
+			"hit force" 90
+	outfits
+		"Concentrating Solar Array"
+		"Ultracapacitor Cell" 2
+
+		"Magnetoplasma Drive"
+
+	engine -39 -6
+	engine 39 -6
+	"reverse engine" -39 -6
+	"reverse engine" 39 -6
+	"steering engine" -39 -6
+		angle 180
+		left
+	"steering engine" 39 -6
+		angle 180
+		right
+	"steering engine" -39 -6
+		right
+	"steering engine" 39 -6
+		left
+	gun 0 -6
+
+	leak "leak" 30 60
+	explode "tiny explosion" 9
+
+	description "Sonikis 实用无人机是一款廉价的轨道间货运无人机，最初设计用于在空间站和小卫星之间运输模块化货物集装箱。现在大型货船普遍使用它来协助装卸货物，以及在小行星采矿时收集矿石。"
+	description "无人机没有配备超光速引擎。除非您的舰队中有一艘带有无人机舱的船只，否则您无法携带无人机。"
+
+
+ship "Sonikis" "Sonikis (Armed)"
+	outfits
+		"Speckle Coilgun"
+		"Speck Round" 900
+
+		"Concentrating Solar Array"
+		"Ultracapacitor Cell" 2
+		"Spectrometer Array"
+
+		"Magnetoplasma Drive"
+
+
+ship "Sonikis" "Sonikis (Tanker)"
+	outfits
+		"Concentrating Solar Array"
+		"Ultracapacitor Cell" 2
+		"Cryogenic Deuterium Tank" 2
+
+		"Magnetoplasma Drive"

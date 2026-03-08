@@ -1,0 +1,245 @@
+# Copyright (c) 2020 by W1zrad
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program. If not, see <https://www.gnu.org/licenses/>.
+
+mission "Kor Efreti: Cargo"
+	name "递送至<planet>"
+	job
+	repeat
+	description "将 <cargo> 交付给 Kor Efreti 的 <destination>。付款方式为 <payment>。"
+	cargo random 10 2 .18
+	to offer
+		has "wanderers sestor done"
+		random < 50
+	source
+		government "Kor Efret"
+	destination
+		distance 1 8
+		government "Kor Efret" "Wanderer"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		dialog phrase "generic cargo delivery payment"
+		
+mission "Kor Efreti: Cargo [1]"
+	name "递送至<planet>"
+	job
+	repeat
+	description "将 <cargo> 交付给 Kor Efreti 的 <destination>。付款方式为 <payment>。"
+	cargo random 10 2 .14
+	to offer
+		has "wanderers sestor done"
+		random < 20
+	source
+		government "Kor Efret"
+	destination
+		distance 1 8
+		government "Kor Efret" "Wanderer"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 500
+		dialog phrase "generic cargo delivery payment"
+
+mission "Kor Efreti: Food Cargo [0]"
+	name "给<planet>的食物"
+	job
+	repeat
+	description "科尔埃弗雷蒂人需要将一些食物供应转移到另一个星球。将 <cargo> 传送至 <destination>。付款方式为 <payment>。"
+	cargo "Food" 5 3 .16
+	to offer
+		has "wanderers sestor done"
+	source
+		government "Kor Efret"
+		not attributes "station"
+	destination
+		distance 1 8
+		government "Kor Efret"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		dialog phrase "generic cargo delivery payment"
+
+mission "Kor Efreti: Food Cargo [1]"
+	name "给<planet>的食物"
+	job
+	repeat
+	description "科尔埃弗雷蒂人需要将一些食物供应转移到另一个星球。将 <cargo> 传送至 <destination>。付款方式为 <payment>。"
+	cargo "Food" 5 3 .14
+	to offer
+		has "wanderers sestor done"
+		random < 70
+	source
+		government "Kor Efret"
+		not attributes "station"
+	destination
+		distance 1 8
+		government "Kor Efret"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 1000
+		dialog phrase "generic cargo delivery payment"
+
+
+mission "Kor Efreti: Industrial to Wanderers"
+	name "递送至<planet>"
+	job
+	repeat
+	description "科尔埃弗雷蒂没有太多的制造能力，但流浪者可以利用这些材料。将 <cargo> 传送至 <destination>。付款方式为 <payment>。"
+	cargo "Industrial" 5 3 .13
+	to offer
+		has "wanderers sestor done"
+		random < 75
+	source
+		government "Kor Efret"
+	destination
+		distance 2 8
+		government "Wanderer"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 500
+		dialog phrase "generic cargo delivery payment"
+		
+mission "Kor Efreti: Cargo to Wanderers"
+	name "递送至<planet>"
+	job
+	repeat
+	description "科尔埃弗雷蒂没有太多的制造能力，但流浪者可以利用这些材料。在 <destination> 将 <cargo> 交付给流浪者。付款方式为 <payment>。"
+	cargo random 5 4 .12
+	to offer
+		has "wanderers sestor done"
+		random < 60
+	source
+		government "Kor Efret"
+	destination
+		distance 2 8
+		government "Wanderer"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 700
+		dialog phrase "generic cargo delivery payment"
+		
+mission "Kor Efreti: Rush Delivery Food"
+	name "加急送货至 <planet>"
+	job
+	repeat
+	description "<destination> 上的 Kor Efreti 食物供应严重不足。由 <date> 交付 <cargo> 以缓解危机。付款方式为<payment>。"
+	cargo "Food" 10 6 .1
+	deadline
+	to offer
+		has "wanderers sestor done"
+		random < 60
+	source
+		government "Kor Efret"
+		not attributes "station"
+	destination
+		distance 1 8
+		government "Kor Efret"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 2000
+		dialog phrase "generic cargo delivery payment"
+
+mission "Kor Efreti: Passengers [0]"
+	name "飞往 <planet> 的科拉特乘客"
+	job
+	repeat
+	description "将这群 <bunks> Kor Efreti 带到 <destination> 。付款方式为 <payment>。"
+	passengers 3 2 .15
+	to offer
+		has "wanderers sestor done"
+	source
+		government "Kor Efret"
+	destination
+		distance 1 8
+		government "Kor Efret"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment
+		dialog phrase "generic passenger dropoff payment"
+
+mission "Kor Efreti: Passengers [1]"
+	name "飞往 <planet> 的科拉特乘客"
+	job
+	repeat
+	description "将这群 <bunks> Kor Efreti 带到 <destination> 。付款方式为 <payment>。"
+	passengers 3 2 .1
+	to offer
+		has "wanderers sestor done"
+		random < 60
+	source
+		government "Kor Efret"
+		not attributes "station"
+	destination
+		distance 1 8
+		government "Kor Efret"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment
+		payment 500
+		dialog phrase "generic passenger dropoff payment"
+
+mission "Kor Efreti: Settlers"
+	name "科拉特定居者前往<planet>"
+	job
+	repeat
+	description "将这些正在迁移的 <bunks> 科尔·埃弗雷提及其 <cargo> 带到 <destination> 上的新流浪者科拉斯定居点。付款方式为<payment>。"
+	passengers 10 5 .15
+	cargo "supplies" 5 3 .16
+	to offer
+		has "event: wanderers: sabira eseskrai colony"
+		random < 90
+	source
+		government "Kor Efret"
+		not attributes "station"
+	destination "Sabira Eseskrai"
+	on visit
+		dialog phrase "generic cargo and passenger on visit"
+	on complete
+		payment
+		payment 2000
+		dialog "科拉特定居者带着他们的货物慢慢地离开你的船，似乎担心踏入这个曾经死亡的世界。负责的 科拉特 向您做了一个感谢的手势，并将 <payment> 递给您。"
+
+mission "Kor Efreti to Wanderers: Farming"
+	name "传授流浪者农耕方法"
+	job
+	repeat
+	description "带着 <bunks> Kor Efreti 学习 <stopovers> 上的流浪者耕作方法，然后将其返回到 <planet> 。付款方式为<payment>。"
+	passengers 5 1 .2
+	to offer
+		has "wanderers sestor done"
+		random < 70
+	source
+		government "Kor Efret"
+	stopover
+		distance 2 8
+		government "Wanderer"
+	on visit
+		dialog phrase "generic missing stopover or passengers"
+	on stopover
+		dialog `流浪者试图向科拉斯农民解释他们的耕作方法，但语言障碍使其具有挑战性。科拉特人最终了解到了流浪者队所做的一些事情。是时候返回 <destination> 了。`
+	on complete
+		payment 10000 200
+		dialog `当您回来时，科拉特人会以圆周运动的方式将手掌朝向您以示谢意。他们将 <payment> 交给您并让您下船。`

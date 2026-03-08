@@ -1,0 +1,907 @@
+# Copyright (c) 2016 by Michael Zahniser
+# Copyright (c) 2022 by Lia Gerty, EjoThims, Saugia, and Zitchas
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program. If not, see <https://www.gnu.org/licenses/>.
+
+outfit "Generator (Candle Class)"
+	plural "Generators (Candle Class)"
+	category "Power"
+	series "Generators"
+	index 04010
+	cost 493000
+	thumbnail "outfit/small korath generator"
+	"mass" 23
+	"outfit space" -23
+	"energy generation" 3.1
+	"heat generation" 7.0
+	description "这种微型发电机利用一些特别不稳定的核同位素放射性衰变产生的热量产生大量能量。"
+
+outfit "Generator (Furnace Class)"
+	plural "Generators (Furnace Class)"
+	category "Power"
+	series "Generators"
+	index 04020
+	cost 925000
+	thumbnail "outfit/medium korath generator"
+	"mass" 39
+	"outfit space" -39
+	"energy generation" 5.5
+	"heat generation" 13.0
+	description "由于科拉特的设备非常耗电，他们甚至在战斗机和拦截机中也使用放射热发电机，而不是依赖燃料电池或其他类似技术。"
+
+outfit "Generator (Inferno Class)"
+	plural "Generators (Inferno Class)"
+	category "Power"
+	series "Generators"
+	index 04030
+	cost 1877000
+	thumbnail "outfit/large korath generator"
+	"mass" 71
+	"outfit space" -71
+	"energy generation" 10.4
+	"heat generation" 27.0
+	description "由于科拉斯人一贯忽视其技术对环境的影响，他们在这种放射热发生器中加入了一些相当令人震惊的同位素。其大量的能量输出被它产生的热量所抵消。"
+
+outfit "Plasma Core"
+	category "Power"
+	series "Generators"
+	index 04040
+	cost 4188000
+	thumbnail "outfit/plasma core"
+	"mass" 54
+	"outfit space" -54
+	"energy generation" 11.9
+	"heat generation" 36.0
+	description "这种紧凑型聚变反应堆是古老的科拉特设计，一直是他们战争舰队的中流砥柱，直到更大的船只和更强大的武器产生了对更大、更强大的发电机的需求。"
+
+outfit "Double Plasma Core"
+	category "Power"
+	series "Generators"
+	index 04050
+	cost 9321000
+	thumbnail "outfit/double plasma core"
+	"mass" 93
+	"outfit space" -93
+	"energy generation" 22.0
+	"heat generation" 72.0
+	description "该反应堆核心将一对古老而坚固的 科拉特 等离子核心组合到一个封装中。"
+
+outfit "Triple Plasma Core"
+	category "Power"
+	series "Generators"
+	index 04060
+	cost 20460000
+	thumbnail "outfit/triple plasma core"
+	"mass" 169
+	"outfit space" -169
+	"energy generation" 43.6
+	"heat generation" 154.0
+	description "科拉特人为他们最大的主力舰设计了一个比任何同类人类技术都强大得多的聚变反应堆。"
+
+
+
+outfit "Small Heat Shunt"
+	category "Systems"
+	series "Cooling"
+	index 04010
+	cost 180000
+	thumbnail "outfit/small heat shunt"
+	"mass" 7
+	"outfit space" -7
+	"cooling" 13.5
+	description "大多数 科拉特 设备的效率低下，迫使它们变得异常擅长一件事：处理大量废热。"
+
+outfit "Large Heat Shunt"
+	category "Systems"
+	series "Cooling"
+	index 04020
+	cost 790000
+	thumbnail "outfit/large heat shunt"
+	"mass" 24
+	"outfit space" -24
+	"cooling" 54
+	description "如果没有这些强大的冷却系统，大多数科拉斯战舰在开始发射武器后几秒钟内就会过热。"
+
+outfit "Liquid Sodium Cooler"
+	category "Systems"
+	series "Cooling"
+	index 04030
+	cost 1660000
+	thumbnail "outfit/liquid sodium"
+	"mass" 34
+	"outfit space" -34
+	"active cooling" 116
+	"cooling energy" 5.2
+	"energy consumption" 2.4
+	"heat capacity" 680
+	description "这种主动冷却系统使用液态钠冷却回路从船上最热的系统中提取热量。辅助系统消耗适量的电力来连续运行泵并维持最低温度，以防止钠在系统不活动时冻结。"
+
+
+outfit "Systems Core (Tiny)"
+	plural "Systems Cores (Tiny)"
+	category "Systems"
+	series "Shields"
+	index 04010
+	cost 621000
+	thumbnail "outfit/tiny systems core"
+	"mass" 17
+	"outfit space" -17
+	"energy capacity" 1300
+	"shield generation" 0.8
+	"shield energy" 1.2
+	"hull repair rate" 0.1
+	"hull energy" 0.1
+	"hull heat" 0.15
+	description `大多数科拉特战斗机飞行员都放弃了系统核心，更喜欢运行比必要的发电机更大的发电机，并在受到伤害时返回母舰。通常，只有民用小型飞船操作员愿意牺牲足够的火力来安装这种护盾发生器、电容器、维修微型机器人群和计算机来控制它们。`
+
+outfit "Systems Core (Small)"
+	plural "Systems Cores (Small)"
+	category "Systems"
+	series "Shields"
+	index 04020
+	cost 1452000
+	thumbnail "outfit/small systems core"
+	"mass" 31
+	"outfit space" -31
+	"energy capacity" 2600
+	"shield generation" 1.6
+	"shield energy" 2.4
+	"hull repair rate" 0.2
+	"hull energy" 0.2
+	"hull heat" 0.3
+	description `所有科拉特飞船的核心都是系统核心，其中装有飞船的中央计算机、护盾发电机、备用电源和一个小型水库，用于存储、生产和回收小型微型机器人群，可以在飞行时对飞船进行小修。`
+
+outfit "Systems Core (Medium)"
+	plural "Systems Cores (Medium)"
+	category "Systems"
+	series "Shields"
+	index 04030
+	cost 3630000
+	thumbnail "outfit/medium systems core"
+	"mass" 53
+	"outfit space" -53
+	"energy capacity" 5200
+	"shield generation" 3.1
+	"shield energy" 4.6
+	"hull repair rate" 0.4
+	"hull energy" 0.4
+	"hull heat" 0.6
+	description `系统核心配备了强大的计算机、护盾发电机、备用电源和用于修复微型机器人的控制中心，这些微型机器人可以在船舶外部移动并缓慢修复船体的损坏。微型机器人水库能够支持大量的机器人。`
+
+outfit "Systems Core (Large)"
+	plural "Systems Cores (Large)"
+	category "Systems"
+	series "Shields"
+	index 04040
+	cost 9075000
+	thumbnail "outfit/large systems core"
+	"mass" 91
+	"outfit space" -91
+	"energy capacity" 10400
+	"shield generation" 6.0
+	"shield energy" 8.8
+	"hull repair rate" 0.8
+	"hull energy" 0.8
+	"hull heat" 1.2
+	description `这个庞大的计算机库、护盾发电机、电容器和维修微型机器人水库拥有保持最大的科拉斯舰艇处于工作状态所需的一切。`
+
+
+outfit "Fuel Processor"
+	category "Systems"
+	series "Ramscoops"
+	index 04010
+	cost 400000
+	thumbnail "outfit/korath fuel processor"
+	"mass" 14
+	"outfit space" -14
+	"fuel capacity" 200
+	"ramscoop" 2
+	description "燃料处理器是在科拉斯内战后期开发的，当时科拉斯派系试图通过袭击海族来获取补给来满足他们的战争需要。他们的船只在耗尽燃料后往往会陷入困境，无法逃离海军舰队，这促使了这种混合燃料储存和冲压装置的诞生。这些装备现在是银河系中剩余科拉斯人的主要燃料来源。"
+
+
+outfit "Command Center"
+	category "Systems"
+	series "Passenger"
+	index 50
+	cost 437000
+	thumbnail "outfit/command center"
+	"mass" 8
+	"outfit space" -24
+	"bunks" 1
+	"required crew" 1
+	"automaton" -1
+	unplunderable 1
+	description "为了应对最近冲突后留下的机器人战争机器偶尔发起的袭击，Kor Efret 开发了这个最小的、斯巴达式的指挥中心，它可以安装在被捕获的机器人船上，以允许飞行员超越人工智能并与船只的控制装置进行交互。指挥中心只为船长提供一个铺位，因此如果船上有炮塔或其他需要船员的系统，则可能需要更多铺位。"
+
+outfit "Reasoning Node"
+	category "Systems"
+	series "Special Systems"
+	index 04010
+	cost "23000"
+	thumbnail "outfit/reasoning node"
+	"mass" 1
+	"outfit space" -1
+	description "这是某种先进的微型计算机，结合了各种传感器输入和超空间通信中继。据推测，它以某种方式控制着梅雷蒂自动机，或者让它们更容易地相互协调行动。"
+
+outfit "Control Transceiver"
+	category "Systems"
+	series "Special Systems"
+	index 04020
+	cost "7000"
+	thumbnail "outfit/control transceiver"
+	"mass" 1
+	"outfit space" -1
+	description "这是一种小型化的通信设备，可以连接到 Kor Sestor 自动机的所有主要系统，显然是作为远程控制它们的一种方式。通信经过加密和验证，几乎不可能欺骗控制信号。"
+
+
+outfit "Afterburner (Asteroid Class)"
+	plural "Afterburners (Asteroid Class)"
+	category "Engines"
+	series "Afterburners"
+	index 04010
+	"cost" 136000
+	thumbnail "outfit/tiny korath afterburner"
+	"mass" 9
+	"outfit space" -9
+	"engine capacity" -5
+	"fuel capacity" 100
+	"ramscoop" 0.25
+	"afterburner thrust" 20.6
+	"afterburner energy" 0.6
+	"afterburner heat" 6.25
+	"afterburner fuel" 0.075
+	"afterburner effect" "korath afterburner tiny"
+	description "最小的加力燃烧室与燃料处理器一样多。它允许 科拉特 小型飞船操作员将超级驱动器挤入其他系统内飞船中，并完全放弃传统的推进器。"
+	description "科拉特加力燃烧器将过热的超空间燃料直接泵入推进器的等离子流中，从而导致几乎熔化推进器的惊人爆炸。"
+
+outfit "Afterburner (Comet Class)"
+	plural "Afterburners (Comet Class)"
+	category "Engines"
+	series "Afterburners"
+	index 04020
+	"cost" 299000
+	thumbnail "outfit/small korath afterburner"
+	"mass" 19
+	"outfit space" -19
+	"engine capacity" -19
+	"afterburner thrust" 84.3
+	"afterburner energy" 2.25
+	"afterburner heat" 22.75
+	"afterburner fuel" 0.25
+	"afterburner effect" "korath afterburner small"
+	description "将这些加力燃烧室添加到拦截器上可以使其达到荒谬的速度；然而，产生的热量确保它们在任何相当长的一段时间内运行都需要进行认真的冷却。"
+	description "科拉特加力燃烧室将过热的超空间燃料直接泵入推进器的等离子流中，从而产生几乎熔化推进器的惊人爆炸。"
+
+outfit "Afterburner (Lunar Class)"
+	plural "Afterburners (Lunar Class)"
+	category "Engines"
+	series "Afterburners"
+	index 04030
+	"cost" 647000
+	thumbnail "outfit/medium korath afterburner"
+	"mass" 32
+	"outfit space" -32
+	"engine capacity" -32
+	"afterburner thrust" 148.5
+	"afterburner energy" 3.9
+	"afterburner heat" 41.65
+	"afterburner fuel" 0.45
+	"afterburner effect" "korath afterburner medium"
+	description "尽管这些加力燃烧室在燃料使用方面产生了令人难以置信的推力，但安装加力燃烧室的前景却引起了许多安全问题。"
+	description "科拉特加力燃烧室将过热的超空间燃料直接泵入推进器的等离子流中，从而产生几乎熔化推进器的惊人爆炸。"
+
+outfit "Afterburner (Planetary Class)"
+	plural "Afterburners (Planetary Class)"
+	category "Engines"
+	series "Afterburners"
+	index 04040
+	"cost" 1459000
+	thumbnail "outfit/large korath afterburner"
+	"mass" 55
+	"outfit space" -55
+	"engine capacity" -55
+	"afterburner thrust" 265.5
+	"afterburner energy" 7.1
+	"afterburner heat" 79.45
+	"afterburner fuel" 0.8
+	"afterburner effect" "korath afterburner large"
+	"heat capacity" 150
+	description "这些巨大的加力燃烧室有专门的反应室和冷却通风口，以防止燃料等离子体爆炸损坏推进器。"
+	description "科拉特加力燃烧室将过热的超空间燃料直接泵入推进器的等离子流中，从而产生几乎熔化推进器的惊人爆炸。"
+
+outfit "Afterburner (Stellar Class)"
+	plural "Afterburners (Stellar Class)"
+	category "Engines"
+	series "Afterburners"
+	index 04060
+	"cost" 3280000
+	thumbnail "outfit/huge korath afterburner"
+	"mass" 94
+	"outfit space" -94
+	"engine capacity" -94
+	"afterburner thrust" 474.3
+	"afterburner energy" 12.65
+	"afterburner heat" 148
+	"afterburner fuel" 1.45
+	"afterburner effect" "korath afterburner huge"
+	"active cooling" 8
+	"cooling energy" 0.4
+	"heat capacity" 150
+	description "科拉特 最大的加力燃烧室集成了主动冷却系统，由燃料等离子体爆炸提供动力，以防止反应室熔化。"
+	description "科拉特加力燃烧室将过热的超空间燃料直接泵入推进器的等离子流中，从而产生几乎熔化推进器的惊人爆炸。"
+
+effect "korath afterburner tiny"
+	sprite "effect/korath afterburner"
+		scale 0.8
+		"no repeat"
+		"frame rate" 90
+	sound "korath afterburner"
+	"sound category" "afterburner"
+	"lifetime" 7
+	"random angle" 15
+	"random spin" 360
+	"random frame rate" 5
+	"random velocity" 1.
+	"velocity scale" 1
+
+effect "korath afterburner small"
+	sprite "effect/korath afterburner"
+		"no repeat"
+		"frame rate" 60
+	sound "korath afterburner"
+	"sound category" "afterburner"
+	"lifetime" 10
+	"random angle" 15
+	"random spin" 360
+	"random frame rate" 5
+	"random velocity" 1.
+	"velocity scale" 1
+
+effect "korath afterburner medium"
+	sprite "effect/korath afterburner"
+		scale 1.2
+		"no repeat"
+		"frame rate" 45
+	sound "korath afterburner"
+	"sound category" "afterburner"
+	"lifetime" 12
+	"random angle" 15
+	"random spin" 360
+	"random frame rate" 5
+	"random velocity" 1.
+	"velocity scale" 1
+
+effect "korath afterburner large"
+	sprite "effect/korath afterburner"
+		scale 1.4
+		"no repeat"
+		"frame rate" 30
+	sound "korath afterburner"
+	"sound category" "afterburner"
+	"lifetime" 14
+	"random angle" 15
+	"random spin" 360
+	"random frame rate" 5
+	"random velocity" 1.
+	"velocity scale" 1
+
+effect "korath afterburner huge"
+	sprite "effect/korath afterburner"
+		scale 1.6
+		"no repeat"
+		"frame rate" 20
+	sound "korath afterburner"
+	"sound category" "afterburner"
+	"lifetime" 16
+	"random angle" 15
+	"random spin" 360
+	"random frame rate" 5
+	"random velocity" 1.
+	"velocity scale" 1
+
+
+outfit "Engine (Meteor Class)"
+	plural "Engines (Meteor Class)"
+	category "Engines"
+	series "Engines"
+	index 04010
+	"cost" 187000
+	thumbnail "outfit/tiny korath engine"
+	"mass" 18
+	"outfit space" -18
+	"engine capacity" -18
+	"thrust" 15.75
+	"thrusting energy" 1.35
+	"thrusting heat" 2.9
+	"turn" 360
+	"turning energy" 0.65
+	"turning heat" 1.95
+	"flare sprite" "effect/korath flare/tiny"
+		"frame rate" 8
+	"flare sound" "plasma tiny"
+	"steering flare sprite" "effect/korath flare/tiny"
+		"frame rate" 8
+	"steering flare sound" "plasma tiny"
+	description `尽管科拉特对发动机制造的普遍态度始终专注于让事物变得更大、更快、更强大，但流放者发现有必要开发这些发动机，以允许他们的战斗机携带更大的武器或更多的货物，但代价是一定的速度。`
+
+outfit "Bow Drive (Meteor Class)"
+	plural "Bow Drives (Meteor Class)"
+	category "Engines"
+	series "Engines"
+	index 04011
+	"cost" 187000
+	thumbnail "outfit/korath bow drive"
+	"mass" 18
+	"outfit space" -18
+	"engine capacity" -15
+	"weapon capacity" -3
+	"turn" 360
+	"turning energy" 0.65
+	"turning heat" 1.95
+	"reverse thrust" 15.75
+	"reverse thrusting energy" 1.35
+	"reverse thrusting heat" 2.9
+	"steering flare sprite" "effect/korath flare/tiny"
+		"frame rate" 8
+	"reverse flare sprite" "effect/korath flare/tiny"
+		"frame rate" 8
+	"reverse flare sound" "plasma tiny"
+	"steering flare sound" "plasma tiny"
+	description "流星级发动机的这种改进充当反向器，与更强大的基础推进器配合使用时，可以为小型飞船提供全方位的机动性。"
+
+outfit "Reverser (Asteroid Class)"
+	plural "Reversers (Asteroid Class)"
+	category "Engines"
+	series "Engines"
+	index 04022
+	"cost" 113000
+	thumbnail "outfit/tiny korath reverser"
+	"mass" 14
+	"outfit space" -14
+	"engine capacity" -7
+	"weapon capacity" -7
+	"reverse thrust" 20.76
+	"reverse thrusting energy" 1.5
+	"reverse thrusting heat" 3.4
+	"reverse flare sprite" "effect/korath flare/tiny"
+		"frame rate" 8
+	"reverse flare sound" "plasma tiny"
+	description "小行星级反向器提供了适度的推力，为科拉斯船长提供了武器空间，以便在战斗中获得小优势。"
+	description "这台科拉特发动机经过改装，可以部分安装在船舶的武器空间中，使其能够向后推动船舶。"
+
+outfit "Reverser (Comet Class)"
+	plural "Reversers (Comet Class)"
+	category "Engines"
+	series "Engines"
+	index 04032
+	"cost" 249000
+	thumbnail "outfit/small korath reverser"
+	"mass" 24
+	"outfit space" -24
+	"engine capacity" -12
+	"weapon capacity" -12
+	"reverse thrust" 37.53
+	"reverse thrusting energy" 2.8
+	"reverse thrusting heat" 6.5
+	"reverse flare sprite" "effect/korath flare/small"
+		"frame rate" 7.5
+	"reverse flare sound" "plasma small"
+	description "彗星级反向器在科拉斯船长中并不受欢迎，他们发现它与行星级发动机配对有点弱，但又太大，不值得牺牲武器空间。"
+	description "这台科拉特发动机经过改装，可以部分安装在船舶的武器空间中，使其能够向后推动船舶。"
+
+outfit "Reverser (Lunar Class)"
+	plural "Reversers (Lunar Class)"
+	category "Engines"
+	series "Engines"
+	index 04042
+	"cost" 539000
+	thumbnail "outfit/medium korath reverser"
+	"mass" 40
+	"outfit space" -40
+	"engine capacity" -20
+	"weapon capacity" -20
+	"reverse thrust" 66.195
+	"reverse thrusting energy" 4.9
+	"reverse thrusting heat" 11.9
+	"reverse flare sprite" "effect/korath flare/medium"
+		"frame rate" 7
+	"reverse flare sound" "plasma medium"
+	description "该发动机为中型科拉特飞船提供了相当大的反推力，使人类太空中的任何反向器相形见绌，这是它最常见的地方。"
+	description "这台科拉特发动机经过改装，可以部分安装在船舶的武器空间中，使其能够向后推动船舶。"
+
+outfit "Reverser (Planetary Class)"
+	plural "Reversers (Planetary Class)"
+	category "Engines"
+	series "Engines"
+	index 04052
+	"cost" 1216000
+	thumbnail "outfit/large korath reverser"
+	"mass" 68
+	"outfit space" -68
+	"engine capacity" -34
+	"weapon capacity" -34
+	"reverse thrust" 120.0
+	"reverse thrusting energy" 8.9
+	"reverse thrusting heat" 22.7
+	"reverse flare sprite" "effect/korath flare/large"
+		"frame rate" 6.5
+	"reverse flare sound" "plasma large"
+	description "该反向器本质上是一种稍有改动的行星级发动机，可为任何能够安装它的船舶提供巨大的反向推力。"
+	description "这台科拉特发动机经过改装，可以部分安装在船舶的武器空间中，使其能够向后推动船舶。"
+
+outfit "Reverser (Stellar Class)"
+	plural "Reversers (Stellar Class)"
+	category "Engines"
+	series "Engines"
+	index 04062
+	"cost" 2733000
+	thumbnail "outfit/huge korath reverser"
+	"mass" 118
+	"outfit space" -118
+	"engine capacity" -59
+	"weapon capacity" -59
+	"reverse thrust" 224.1
+	"reverse thrusting energy" 15.8
+	"reverse thrusting heat" 42.6
+	"reverse flare sprite" "effect/korath flare/huge"
+		"frame rate" 6
+	"reverse flare sound" "plasma huge"
+	description "Stellar Class 反向器以最大的发动机为蓝本，提供前所未有的反向推力。"
+	description "这台科拉特发动机经过改装，可以部分安装在船舶的武器空间中，使其能够向后推动船舶。"
+
+
+outfit "Thruster (Asteroid Class)"
+	plural "Thrusters (Asteroid Class)"
+	category "Engines"
+	series "Engines"
+	index 04021
+	"cost" 113000
+	thumbnail "outfit/tiny korath thruster"
+	"mass" 14
+	"outfit space" -14
+	"engine capacity" -14
+	"thrust" 20.76
+	"thrusting energy" 1.5
+	"thrusting heat" 3.4
+	"flare sprite" "effect/korath flare/tiny"
+		"frame rate" 8
+	"flare sound" "plasma tiny"
+	description "考虑到它的尺寸，这个小型 科拉特 推进器会产生相当大的踢力。但是，它也消耗了大量的能量。"
+
+outfit "Thruster (Comet Class)"
+	plural "Thrusters (Comet Class)"
+	category "Engines"
+	series "Engines"
+	index 04031
+	"cost" 249000
+	thumbnail "outfit/small korath thruster"
+	"mass" 24
+	"outfit space" -24
+	"engine capacity" -24
+	"thrust" 37.53
+	"thrusting energy" 2.8
+	"thrusting heat" 6.5
+	"flare sprite" "effect/korath flare/small"
+		"frame rate" 7.5
+	"flare sound" "plasma small"
+	description "与大多数 科拉特 技术一样，该推进器的功率由其能量需求和热量输出抵消。"
+
+outfit "Thruster (Lunar Class)"
+	plural "Thrusters (Lunar Class)"
+	category "Engines"
+	series "Engines"
+	index 04041
+	"cost" 539000
+	thumbnail "outfit/medium korath thruster"
+	"mass" 40
+	"outfit space" -40
+	"engine capacity" -40
+	"thrust" 66.195
+	"thrusting energy" 4.9
+	"thrusting heat" 11.9
+	"flare sprite" "effect/korath flare/medium"
+		"frame rate" 7
+	"flare sound" "plasma medium"
+	description "科拉特人有一个可疑的特点，那就是他们所依赖的推进系统比大多数其他物种的武器系统产生更多的废热。"
+
+outfit "Thruster (Planetary Class)"
+	plural "Thrusters (Planetary Class)"
+	category "Engines"
+	series "Engines"
+	index 04051
+	"cost" 1216000
+	thumbnail "outfit/large korath thruster"
+	"mass" 68
+	"outfit space" -68
+	"engine capacity" -68
+	"thrust" 120.0
+	"thrusting energy" 8.9
+	"thrusting heat" 22.7
+	"flare sprite" "effect/korath flare/large"
+		"frame rate" 6.5
+	"flare sound" "plasma large"
+	description "夸格人做事效率很高，他们对科拉特推进系统特别厌恶。"
+
+outfit "Thruster (Stellar Class)"
+	plural "Thrusters (Stellar Class)"
+	category "Engines"
+	series "Engines"
+	index 04061
+	"cost" 2733000
+	thumbnail "outfit/huge korath thruster"
+	"mass" 118
+	"outfit space" -118
+	"engine capacity" -118
+	"thrust" 224.1
+	"thrusting energy" 15.8
+	"thrusting heat" 42.6
+	"flare sprite" "effect/korath flare/huge"
+		"frame rate" 6
+	"flare sound" "plasma huge"
+	description "科拉斯人的一个传说声称，当他们第一次测试最新一代的等离子推进器时，一支关心的夸格舰队接近并自愿帮助科拉斯船员从他们认为是一艘垂死的船上撤离。夸格人惊讶地发现从船尾喷出的火焰实际上是其预定的推进方式。"
+
+outfit "Steering (Asteroid Class)"
+	plural "Steerings (Asteroid Class)"
+	category "Engines"
+	series "Engines"
+	index 04020
+	"cost" 95000
+	thumbnail "outfit/tiny korath steering"
+	"mass" 10
+	"outfit space" -10
+	"engine capacity" -10
+	"turn" 420.0
+	"turning energy" 0.7
+	"turning heat" 2.1
+	"steering flare sprite" "effect/korath flare/tiny"
+		"frame rate" 8
+	"steering flare sound" "plasma tiny"
+	description "科拉特人只在他们最小的船只上使用这些转向系统。"
+
+outfit "Steering (Comet Class)"
+	plural "Steerings (Comet Class)"
+	category "Engines"
+	series "Engines"
+	index 04030
+	"cost" 221000
+	thumbnail "outfit/small korath steering"
+	"mass" 18
+	"outfit space" -18
+	"engine capacity" -18
+	"turn" 853.2
+	"turning energy" 1.4
+	"turning heat" 4.1
+	"steering flare sprite" "effect/korath flare/small"
+		"frame rate" 7.5
+	"steering flare sound" "plasma small"
+	description "这种紧凑型转向系统是 科拉特 技术的典型例子：体积小、功能强大，但效率低得可怜。"
+
+outfit "Steering (Lunar Class)"
+	plural "Steerings (Lunar Class)"
+	category "Engines"
+	series "Engines"
+	index 04040
+	"cost" 473000
+	thumbnail "outfit/medium korath steering"
+	"mass" 30
+	"outfit space" -30
+	"engine capacity" -30
+	"turn" 1584.0
+	"turning energy" 2.5
+	"turning heat" 7.4
+	"steering flare sprite" "effect/korath flare/medium"
+		"frame rate" 7
+	"steering flare sound" "plasma medium"
+	description "科拉特 发动机几乎可以安装在任何船舶上，但除非同时配备一些 科拉特 冷却系统，否则它们的热量输出通常会超过船舶的处理能力。"
+
+outfit "Steering (Planetary Class)"
+	plural "Steerings (Planetary Class)"
+	category "Engines"
+	series "Engines"
+	index 04050
+	"cost" 1077000
+	thumbnail "outfit/large korath steering"
+	"mass" 52
+	"outfit space" -52
+	"engine capacity" -52
+	"turn" 3104.4
+	"turning energy" 4.6
+	"turning heat" 14.2
+	"steering flare sprite" "effect/korath flare/large"
+		"frame rate" 6.5
+	"steering flare sound" "plasma large"
+	description "其他物种可能专注于尽可能有效地将能量转化为推力，而科拉特则努力将尽可能多的能量装入最小的区域。这个转向系统是他们工作的一个经典例子。"
+
+outfit "Steering (Stellar Class)"
+	plural "Steerings (Stellar Class)"
+	category "Engines"
+	series "Engines"
+	index 04060
+	"cost" 2435000
+	thumbnail "outfit/huge korath steering"
+	"mass" 89
+	"outfit space" -89
+	"engine capacity" -89
+	"turn" 6007.5
+	"turning energy" 8.2
+	"turning heat" 26.7
+	"steering flare sprite" "effect/korath flare/huge"
+		"frame rate" 6
+	"steering flare sound" "plasma huge"
+	description "经过数千年的战争，科拉特人开发出了一些真正巨大的战舰。这些转向系统即使是最大的战舰也能在战斗中提供合理的敏捷性。"
+
+outfit "Arkrof GP Hybrid Thruster"
+	category "Engines"
+	series "Engines"
+	index 04071
+	"cost" 165000
+	thumbnail "outfit/tiny efreti thruster"
+	"mass" 19
+	"outfit space" -19
+	"engine capacity" -19
+	"thrust" 28.95
+	"thrusting energy" 2.6
+	"thrusting heat" 3
+	"flare sprite" "effect/efreti flare/tiny"
+		"frame rate" 8
+	"flare sound" "ion tiny"
+	description "Efreti 工程师已经开始不情愿地从他们并不完全受欢迎的夸格守护者那里获取灵感。重力推进的结合增加了该系列发动机的推力输出，但代价是更高的能源消耗。这些是最小的基于重力等离子体的推进器。"
+
+outfit "Farves GP Hybrid Thruster"
+	category "Engines"
+	series "Engines"
+	index 04081
+	"cost" 405000
+	thumbnail "outfit/small efreti thruster"
+	"mass" 33
+	"outfit space" -33
+	"engine capacity" -33
+	"thrust" 53.1
+	"thrusting energy" 5.05
+	"thrusting heat" 5.9
+	"flare sprite" "effect/efreti flare/small"
+		"frame rate" 7.5
+	"flare sound" "ion small"
+	description "被迫退出星际跃迁驱动技术的研究使得埃弗雷蒂工程师除了亚光速推进之外几乎没有什么可以修改的了。由此产生的推进器是这一努力的一个重要例子。将重力推进与更传统的等离子推进器相结合可以缓和这些发动机的热量输出。"
+
+outfit "Gaktem GP Hybrid Thruster"
+	category "Engines"
+	series "Engines"
+	index 04091
+	"cost" 883000
+	thumbnail "outfit/medium efreti thruster"
+	"mass" 57
+	"outfit space" -57
+	"engine capacity" -57
+	"thrust" 97.425
+	"thrusting energy" 9.1
+	"thrusting heat" 11.05
+	"flare sprite" "effect/efreti flare/medium"
+		"frame rate" 7
+	"flare sound" "ion medium"
+	description "这些引擎的设计表明，埃弗雷蒂物理学家似乎比数学上自洽但难以证伪的弦理论猜想走得更远。尽管 Efreti 的资源有限，但这些推进器使他们的发动机能够在小封装中保持传统的 科拉特 对速度的重视，同时保持较低的热量输出。"
+
+outfit "Nelmeb GP Hybrid Thruster"
+	category "Engines"
+	series "Engines"
+	index 04101
+	"cost" 1649000
+	thumbnail "outfit/large efreti thruster"
+	"mass" 86
+	"outfit space" -86
+	"engine capacity" -86
+	"thrust" 156.9
+	"thrusting energy" 14
+	"thrusting heat" 18
+	"flare sprite" "effect/efreti flare/large"
+		"frame rate" 6.5
+	"flare sound" "ion large"
+	description "几个世纪以来，科拉斯物理学家已经了解了量子引力以及将夸克和胶子结合在一起的力的统一性的具体方面。然而，由于 Efreti 的努力相对较新，因此这种技术综合落后于类似的 夸格 技术。"
+	description "这些是埃弗雷蒂提供的最大的重力等离子推进器，因此通常只能在他们的巨型民用船上找到。尽管夸格人体积庞大、推力强劲，但他们仍然对这种设计的低效本质不以为然。"
+
+outfit "Arkrof GP Hybrid Steering"
+	category "Engines"
+	series "Engines"
+	index 04070
+	"cost" 131000
+	thumbnail "outfit/tiny efreti steering"
+	"mass" 12
+	"outfit space" -12
+	"engine capacity" -12
+	"turn" 517.5
+	"turning energy" 1.25
+	"turning heat" 1.3
+	"steering flare sprite" "effect/efreti flare/tiny"
+		"frame rate" 8
+	"steering flare sound" "ion tiny"
+	description "与大多数 科拉特 发动机不同，Efreti 发动机不仅仅依赖于等离子。重力等离子发动机将传统的科拉斯等离子推力与受夸格启发的基于重力的推进相结合。最小的转向装置能够产生很大的扭矩，但代价是更高的能源成本。"
+
+outfit "Farves GP Hybrid Steering"
+	category "Engines"
+	series "Engines"
+	index 04080
+	"cost" 413000
+	thumbnail "outfit/small efreti steering"
+	"mass" 24
+	"outfit space" -24
+	"engine capacity" -24
+	"turn" 1200
+	"turning energy" 2.7
+	"turning heat" 2.95
+	"steering flare sprite" "effect/efreti flare/small"
+		"frame rate" 7.5
+	"steering flare sound" "ion small"
+	description "Efreti 工程师不断努力发展他们对基础物理的理解以及如何将其付诸实践，其重要成果就是这款紧凑型转向系统。它是 科拉特 技术的典型例子，体积小、功能强大，但效率低得可怜。看来夸格对埃弗雷蒂的影响并没有改变住在这里的科拉斯人的基本设计理念。"
+
+
+outfit "Gaktem GP Hybrid Steering"
+	category "Engines"
+	series "Engines"
+	index 04090
+	"cost" 833000
+	thumbnail "outfit/medium efreti steering"
+	"mass" 42
+	"outfit space" -42
+	"engine capacity" -42
+	"turn" 2385
+	"turning energy" 4.9
+	"turning heat" 5.85
+	"steering flare sprite" "effect/efreti flare/medium"
+		"frame rate" 7
+	"steering flare sound" "ion medium"
+	description "在这些混合引力等离子体推进器中，Efreti 科学家和工程师已经开始实例化对量子引力与核力的最新统一理解。"
+	description "除非配备一些 科拉特 动力系统，否则这种 Efreti 转向系统的能耗往往会超过船舶的承受能力。与相同尺寸的其他 科拉特 发动机相比，它们的主要优势是减少热量产生。"
+
+outfit "Nelmeb GP Hybrid Steering"
+	category "Engines"
+	series "Engines"
+	index 04100
+	"cost" 1439000
+	thumbnail "outfit/large efreti steering"
+	"mass" 67
+	"outfit space" -67
+	"engine capacity" -67
+	"turn" 4200
+	"turning energy" 7.85
+	"turning heat" 10
+	"steering flare sprite" "effect/efreti flare/large"
+		"frame rate" 6.5
+	"steering flare sound" "ion large"
+	description "尽管被迫放弃跳跃驱动技术，但在坚定的前进和创新意志的推动下，Efreti 工程师最近开始利用他们的理论知识将重力推进纳入他们更传统的基于聚变的等离子发动机中。"
+	description "这些转向推进器比人们对这么大的 科拉特 发动机的预期更加稳定，这些转向推进器是由 Efreti 开发的，作为引导他们最庞大的船只的一种手段。由于它们通常由最大的科拉斯聚变反应堆提供动力，因此它们的高能量消耗得到了缓和。"
+
+outfit "Thermal Repeater Rifle"
+	category "Hand to Hand"
+	series "H2H"
+	index 04010
+	cost 53000
+	thumbnail "outfit/korath rifle"
+	"capture attack" 1.6
+	"capture defense" 2.4
+	"unplunderable" 1
+	description "这种步枪在科拉特人中很常见，比船型热中继器的问世至少早了两个世纪。由于它使用过热等离子体而不是激光，因此步枪的射击速度很慢，如果不小心，有时会灼伤使用者的手。它通过保证那些被击中的人活不了多久而无法还击来弥补这些挫折。"
+
+outfit "Microbot Defense Station"
+	category "Hand to Hand"
+	series "Fortifications"
+	index 04010
+	cost 53000
+	thumbnail "outfit/microbot defense station"
+	mass 2
+	"outfit space" -3
+	"capture defense" 18
+	illegal 10000000
+	"energy consumption" 0.01
+	"heat generation" 0.1
+	unplunderable 1
+	description `这个阴险的陷阱等待着任何愚蠢到试图捕获科拉特世界飞船的人。入侵者被困在这个气闸门前，在此之前，一团被编程为将有机物分解成营养胶的微型机器人被释放。然后，在机器人被召回时，产生的凝胶会排入下面的桶中。`
+	description `许多种族都认为这种防御手段令人厌恶。引用其受害者经历的痛苦、混乱的死亡、违反与同类相食相关的禁忌以及对微型机器人可能以某种方式“逃脱”的错误恐惧，拥有这些气闸可能会导致巨额罚款。`

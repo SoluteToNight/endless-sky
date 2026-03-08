@@ -1,0 +1,951 @@
+# Copyright (c) 2022 by Saugia
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program. If not, see <https://www.gnu.org/licenses/>.
+
+
+mission "First Contact: Gegno Vi"
+	landing
+	name `<Alien> 交通`
+	description `将您在 <origin> 上协助的 <alien> 运送到地图上指定的位置。`
+	substitutions
+		"<alien>" "alien"
+		"<alien>" "Gegno"
+			has "Giaru Gegno: Quarg Contact: offered"
+		"<Alien>" "Alien"
+		"<Alien>" "Gegno"
+			has "Giaru Gegno: Quarg Contact: offered"
+	source "Var Oti"
+	destination "Dueyu Eitch"
+	clearance
+	passengers 1
+	to offer
+		not "Gegno Genocide Defense: offered"
+		has "First Contact: Quarg: offered"
+	on offer
+		conversation
+			branch "second encounter"
+				has "Giaru Gegno: Quarg Contact: offered"
+			branch "return encounter"
+				has "First Contact: Gegno Vi: deferred"
+			
+			`当你下降到这个看似无人居住的世界的表面时，你启动飞船的雷达系统来扫描表面是否有任何感兴趣的东西。在等待某些东西出现时，你抬起头，瞥见一团尘埃从你右边远处的地面上喷涌而出。你回头望向雷达，检查该方向的表面扫描，但什么也没有出现。当您继续飞行时，几分钟后突然出现另一个尘埃云，但雷达上仍然没有任何东西。你决定将你的船保持在离地表几千米的高度，并花时间仔细观察四周，但除了破裂的岩层和沙谷之外，似乎仍然没有任何值得注意的东西。`
+			`突然，您的雷达系统在地平线上接收到更大的信号，您会看到一个巨大的岩石状结构。一旦你足够接近，该结构开始像一艘船，就像你在附近系统中看到的那样，尽管它一半沉入沙子中。`
+			choice
+				`（在船附近着陆并进行调查。）`
+				`（继续搜索表面。）`
+					goto search
+			`你小心翼翼地将你的飞船降落在附近，穿着环境服，手持手枪离开你的飞船，走向外星飞船。这艘船看起来比你想象的要大一点——大约有火鸟那么大。深棕色的船体似乎是由一种未知的材料制成的，并且有几个看起来像金属的部件，它们都孵化在裂缝中并向外突出。奇怪的是，这艘军舰似乎完好无损，但它与沙子成一定角度的方式表明这艘船已经在那里呆了一段时间了。周围似乎也没有任何活动。你决定返回你的船并再次观察该地区。`
+			`当您继续飞行时，雷达边缘会出现一个不稳定的表面特征。远处可以看到一个巨大的拱形结构，但很快就消失了。你将飞船停在该位置附近并退出进行调查。`
+				goto skip
+			label search
+			`当您继续飞行时，雷达边缘会出现一个不稳定的表面特征。远处可以看到一个巨大的拱形结构，但很快就消失了。你将你的船停在靠近该位置的地方并退出进行调查，确保装备了环境服并收起你的手枪。`
+			label skip
+			`令您惊讶的是，有一个巨大的人形人物站在签名的来源处。你的雷达显示出一些比人形生物更不明确的东西，但站在你面前的是一个巨大的、笨重的生物，它穿着看起来像金属盔甲的东西，挥舞着长矛一样的武器。该人物聚精会神地四处走动，就好像它专注于周围的环境，但似乎对你的存在不感兴趣。这次相遇感觉很奇怪，因为没有立即互动或承认你们的存在。`
+			choice
+				`（走近外星人。）`
+				`（转身回到我的船上。）`
+			`突然，地面开始剧烈震动。你惊慌地拿出你的手枪，但当你回头看外星人时，你发现他们也进入了防御姿态——但不是面向你。一个大胃在你左边的沙子里爆开，从里面出来一个巨大的生物，它的大小是你的数百倍，浑身覆盖着尖刺和鳞片。当它坠落到你右边的沙子上时，你几乎没有时间做出反应，但你瞥见了骑着这头野兽的外星生物，他们用武器刺穿了它。`
+			choice
+				`（立即离开这个星球。）`
+					goto leave
+				`（远离该网站，但继续观看。）`
+					goto watch
+				`（尝试帮助外星人打败野兽。）`
+			label help
+			`你用手枪瞄准野兽，准备开火。当外星人用长矛武器将其击倒时，这头野兽并没有在地表下挖掘，而是继续在原地猛烈撞击。确保你不会意外击中它们，你屏住呼吸，等待合适的时机到来，瞄准该生物的头部。挥舞着的生物开始靠近，你的脉搏开始加速。一阵沙尘直接朝你吹来，一旦沙尘散去，你就可以开火。一发子弹直接飞到了野兽的脸上。`
+			`令你沮丧的是，子弹几乎立即被弹开。你看着巨大的怪物从你身上翻滚，几乎没有跳到空中。怪物冲入你身后的土地，你被风吹得仰面朝天。你再次举起你的手枪。该生物从地面爆炸而出，张开的嘴巴向上指向天空。你双手颤抖，再次瞄准并扣动扳机。`
+			`随之而来的是一声大炮般的巨响，但它肯定不是来自你的武器。你面前的野兽在一团黑烟中坠落，发出一声巨响，将沙子和瓦砾炸得到处都是。一旦你回过神来，你就会看到外星人从这个生物的嘴里走了出来。`
+			choice
+				`（走近外星人。）`
+				`（站起来跑向我的船。）`
+			`在你回过神来之前，你意识到外星人现在离你更近了。不一会儿，外星人就站在你面前，让你可以更好地观察他们。他们比你高很多，体格庞大，而且稍微驼背。看起来很重的金属包围着他们的身体，在任何暴露的地​​方都有看起来粗糙的皮肤和头发。浓密的面部毛发覆盖着他们的脸，在他们像人一样的眼睛上方有一对向内弯曲的角。`
+			`尴尬的沉默随之而来，外星人以一种冷漠的方式上下打量着你。他们发出低沉的咕哝声，并大声哼哼，把手伸进盔甲的缝隙里去抓东西。他们拿出看起来像是某种星图的东西，指向上面的一个位置，对自己做手势，然后慢慢地将设备降低到你的位置。他们似乎想被带到他们物种的行星之一。`
+			choice
+				`（接受他们的请求。）`
+				`（询问他们的要求。）`
+					goto about
+				`（拒绝他们的要求。）`
+					goto deny
+			`你犹豫着拿起设备，转身走向你的船。离开之前，您最后看了一眼背景中的巨大生物。它的头部看起来像龙，但有许多眼睛和长满尖刺的鬃毛。一些小附属物从它的脖子上长出来，使它看起来像蝾螈一样有鳞。早些时候你雷达上的各种特征一定是同类的。外星人瞪着你，然后瞪着那个生物，然后再次转向你，继续朝你的船走去。`
+				accept
+			label about
+			`你试图向外星人询问这次旅行的情况，但他们只是茫然地盯着你几秒钟，然后将星图塞进你的胸口，然后放开。你反应性地接住了它，差点摔倒，然后最后看了一眼背景中的巨大生物。它的头部非常像爬行动物，接近龙，有无数的眼睛和尖刺的鬃毛。它的两端都有一些小附属物，几乎像有鳞的蝾螈。转过身，你发现外星人已经在你前面很远了，你赶紧追赶，这样他们就不会先到你的船了。`
+				accept
+			label deny
+			`处理完所发生的一切后，你摇摇头，拒绝了外星人的请求。转身向船离开时，你突然发现自己脸朝下躺在地上，咳出沙子和灰尘，并听到设备撞到你旁边的地面。沮丧之余，你迅速站起来寻找外星人，他已经在远处向你的飞船行进了。也许拒绝这个请求并背弃一个比你大几倍的存在并不是最好的主意，因为他刚刚击倒了一个比你大数百倍的野兽。你转身最后看了一眼这个巨大的生物。它的头部非常像爬行动物，接近龙，有无数的眼睛和尖刺的鬃毛。绝对是比步行更危险的事情。`
+				accept
+			
+			label watch
+			`你小心翼翼地向你的船撤退，密切注意这个生物，想知道它是否会再次出现以及在哪里出现。仿佛在回答你的询问，地面开始隆隆作响，在你的左边，沙子和瓦砾在野兽在地面上盘旋时喷向空中。在一声响亮的吼叫之后，该生物会发出短促的尖叫声，几乎就像叽叽喳喳一样，只不过比鸟儿的叫声低沉得多。当一些灰尘散去时，你会看到外星人在继续与野兽战斗时剧烈地呼吸。`
+			choice
+				`（帮助外星人。）`
+					goto help
+				`（离开。）`
+					goto leave
+			label leave
+			`随着局势开始失去你的控制，你迅速转身前往你的船，并尽快起飞。你想知道外星人会怎样，因为虽然他们肯定是居住在附近星系的物种的成员，但似乎不会很快为他们提供任何帮助。`
+				depart
+			
+			label "second encounter"
+			`当你下降到这个看似无人居住的世界的表面时，你启动飞船的雷达系统来扫描表面是否有任何感兴趣的东西。在等待某些东西出现时，你抬起头，瞥见一团尘埃从你右边远处的地面上喷涌而出。你回头望向雷达，检查该方向的表面扫描，但什么也没有出现。当您继续飞行时，几分钟后突然出现另一个尘埃云，但雷达上仍然没有任何东西。你决定将你的船保持在离地表几千米的高度，并花时间仔细观察四周，但除了破裂的岩层和沙谷之外，似乎仍然没有任何值得注意的东西。`
+			`突然，您的雷达系统在地平线上接收到更大的信号，您会看到一个巨大的岩石状结构。一旦你足够接近，你就会认出它是杰格诺的一艘战舰，尽管它已经一半沉入沙子里了。`
+			choice
+				`（调查杰格诺号飞船。）`
+					goto investigate
+				`（继续我对表面的搜索。）`
+					goto resume
+			label investigate
+			`你小心地将你的船停在附近。早些时候的大部分微弱雷达信号已经消失在范围之外。你穿着环保服，手持手枪离开飞船，走向杰格诺飞船。`
+			`这艘船看起来比你想象的要大一点——大约有火鸟那么大。深棕色的船体似乎是由一种未知的材料制成的，并且有几个看起来像金属的部件，它们都孵化在缝隙中并向外突出，表明了 Gegno Vi 的野蛮美学。奇怪的是，这艘军舰似乎完好无损，但它与沙子成一定角度的方式表明这艘船已经在这里有一段时间了。它周围似乎没有任何活动，你也没有发现附近有任何生命迹象。你决定返回你的船并再次观察该地区。`
+			label resume
+			`当您继续飞行时，雷达边缘会出现不稳定的信号。远处可以看到一个巨大的拱形结构，但很快就消失了。你把你的飞船停在它的出发地附近，然后出去调查，用你的随身武器穿上你的环境服。`
+			`令你惊讶的是，有一个巨大的人形人物站在你的面前。它看起来一点也不像你在附近的夸格环形世界中看到的杰格诺；它体型庞大、笨重，并且包裹着金属装甲。它的一只手拿着一把长矛一样的武器；根据他们的外表，你猜他们是 Gegno Vi。 Vi 专心地四处走动，专注于周围的环境，但似乎对你的存在不感兴趣。`
+			choice
+				`（接近Vi战士。）`
+				`（转身回到我的船上。）`
+			`突然，地面开始剧烈震动。你惊慌地拿出你的手枪，但当你回头看 Vi 时，你发现他们也进入了防御姿态 - 但不是面向你。一个大胃在你左边的沙子里爆开，从里面出来一个比你大数百倍的巨大生物，浑身布满尖刺和鳞片。当它坠落到你右边的沙子上时，你几乎没有时间做出反应，但你可以看到 Vi 骑着这头野兽，他们用武器刺穿了它。`
+			choice
+				`（从远处观察情况。）`
+					goto observe
+				`（协助Vi打败野兽。）`
+			label assist
+			`你将你的随身武器举到射击位置并等待野兽。它再一次以令人难以置信的方式从沙子里跳出来，但这只野兽并没有在地表下挖回去，而是继续在原地挣扎，而维人则用长矛武器将它击倒。确保你不会意外击中它们，你屏住呼吸，等待合适的时机到来，瞄准该生物的头部。挥舞着的生物开始靠近，你的脉搏开始加速。一阵沙尘直接朝你吹来，一旦沙尘散去，你就可以开火。一发子弹直接飞到了野兽的脸上。`
+			`令你沮丧的是，子弹几乎立即被弹开。你看着巨大的怪物从你身上翻滚，几乎没有跳到空中。怪物冲入你身后的土地，你被风吹得仰面朝天。你再次举起你的手枪。该生物从地面爆炸而出，张开的嘴巴向上指向天空。你双手颤抖，再次瞄准并扣动扳机。`
+			`随之而来的是一声大炮般的巨响，但它肯定不是来自你的武器。你面前的野兽在一团黑烟中坠落，发出一声巨响，将沙子和瓦砾炸得到处都是。一旦你回过神来，你就会看到Vi从这个生物的嘴里走了出来。`
+			choice
+				`（接近 Vi。）`
+				`（站起来跑向我的船。）`
+			`在你回过神来之前，你意识到 Vi 战士现在离你更近了。不一会儿，外星人就站在你面前，让你可以更好地观察他们。他们比你和你见过的其他杰格诺都要高得多，体型极其庞大，并且略微驼背。看起来很重的金属包围着他们的身体，在任何暴露的地​​方都有看起来粗糙的皮肤和头发。浓密的面部毛发覆盖着他们的脸，在他们像人一样的眼睛上方有一对向内弯曲的角。`
+			`虽然众所周知，格格诺人不喜欢外来者，但这个特殊的格格诺人似乎至少承认你。经过一段时间的尴尬和似乎是评判性的沉默后，Vi 毫无兴趣地上下打量着你。他们发出低沉的咕哝声，并大声哼哼，把手伸进盔甲的缝隙里去抓东西。他们拿出看起来像是某种星图的东西，指向上面的一个位置，对自己做手势，然后慢慢地将设备降低到你的位置。看来他们想被带到杰格诺的一颗行星。`
+			choice
+				`（接受他们的请求。）`
+				`（询问他们的要求。）`
+					goto ask
+				`（拒绝他们的要求。）`
+					goto reject
+			`你犹豫着拿起设备，转身走向你的船。离开之前，您最后看了一眼背景中的巨大生物。它的头部看起来像龙，但有许多眼睛和长满尖刺的鬃毛。一些小附属物从它的脖子上长出来，使它看起来像蝾螈一样有鳞。早些时候你雷达上的各种特征一定是同类的。 Vi 战士瞪着你，然后瞪着那个生物，然后再次转向你，继续朝你的船走去。`
+				accept
+			label ask
+			`你试图向杰格诺询问这次旅行的情况，但他们只是茫然地盯着你几秒钟，然后将星图塞进你的胸口，然后放开。你反应性地接住了它，差点摔倒，然后最后看了一眼背景中的巨大生物。它的头部非常像爬行动物，接近龙，有无数的眼睛和尖刺的鬃毛。它的两端都有一些小附属物，几乎像有鳞的蝾螈。转过身，你发现杰格诺号已经在你前面很远了，你赶紧追上来，这样他们就不会先到你的船了。`
+				accept
+			label reject
+			`处理完所发生的一切后，你摇摇头拒绝了杰格诺的请求。转身向船离开时，你突然发现自己脸朝下躺在地上，咳出沙子和灰尘，并听到设备撞到你旁边的地面。沮丧之余，你迅速起身寻找杰格诺，他已经在远处向你的船行进了。也许拒绝这个请求并背弃一个比你大几倍的存在并不是最好的主意，因为他刚刚击倒了一个比你大数百倍的野兽。你转身最后看了一眼这个巨大的生物。它的头部非常像爬行动物，接近龙，有无数的眼睛和尖刺的鬃毛。绝对是比步行更危险的事情。`
+				accept
+			
+			label observe
+			`你小心翼翼地退到更安全的距离，密切注意这个生物，想知道它是否会再次出现以及在哪里出现。仿佛在回答你的询问，地面开始隆隆作响，在你的左边，沙子和瓦砾在野兽在地面上盘旋时喷向空中。在一声响亮的吼叫之后，该生物会发出短促的尖叫声，几乎就像叽叽喳喳一样，只不过比鸟儿的叫声低沉得多。随着一些尘埃散去，你可以看到 Vi 人继续与野兽战斗，呼吸剧烈。`
+			choice
+				`（协助Vi。）`
+					goto assist
+			
+			label "return encounter"
+			`你发现自己再次接近这个沙漠世界，想知道你之前遇到的外星人发生了什么事。知道这个世界是一种危险的本土物种的家园，你在着陆时犹豫不决，并确保远离任何像以前那样的生物的迹象。`
+			choice
+				`（去寻找外星人。）`
+					goto "search again"
+				`（继续。）`
+					defer
+			
+			label "search again"
+			`由于外星飞船的坐标仍在你的飞船计算机的历史记录中，你开始再次寻找它。在您飞往那里的过程中，您的雷达突然发现另一艘船正在接近，您抬头看到了您所看到的同类型的船，然后以更高的高度朝相反方向飞过您。肯定是另一个属于外星物种的飞行员。`
+			choice
+				`（尝试联系船舶。）`
+				`（躲避船。）`
+			`飞船继续在你身后飞走，直到消失。似乎无论驾驶它的人是谁，都不关心帮助地面上的外星人。最终，熟悉的沉船出现在地平线上，你开始在该地区飞行寻找生命迹象，希望外星人还活着。除了雷达边缘沙生物的微弱光点之外，什么也没有出现，你决定跟随它们。`
+			`这些信号不断随机消失并在其他地方重新出现，并且似乎只通向空旷的空间。检查完其中一些后，您的雷达边缘会出现不稳定的运动，与您第一次访问时的情况类似。接近该位置时，你认出了在地表摆动的野兽，并在继续与它战斗之前瞥见了外星人。`
+			choice
+				`（帮助外星人击败该生物。）`
+					goto help
+	
+	on defer
+		set "First Contact: Gegno Vi: deferred"
+
+	on abort
+
+	to fail
+		"reputation: Gegno" < -100
+
+	on fail
+		conversation
+			`尽管知道你正在运输其中一艘，但你还是有意识地决定向 <alien> 船只开火，而你到这个世界的其余旅程都非常尴尬。 <alien> 乘客并没有坐在铺位上，而是在您的驾驶舱内始终紧跟在您身后。你偶尔会转头观察他们的行为，甚至尝试与他们交流，但他们甚至不会朝你的方向看。`
+			`奇怪的是，他们似乎一点也不沮丧，至少在某种程度上你看得出来。不管怎样，紧张气氛变得非常不舒服，但既然你已经登陆了你的船，也许你可以解决这个问题。`
+			choice
+				`（尝试与 <alien> 通信。）`
+			`还没等你转身和他们说话，你就感觉到一股巨大的力量直穿你的躯干，你的身体开始慢慢抬起。你试图说话，但什么也说不出来，你挣扎着头部，转过头发现<alien>已经用他们的矛武器刺穿了你的胸口。当你的视线慢慢消退时，你最后一眼看到的不是仇恨的表情，而是失望的表情。`
+				die
+
+mission "Visit Quarg in Gegno Space"
+	landing
+	name `前往<designated system>`
+	description `按照指示前往 <designated system>。`
+	substitutions
+		"<alien>" "alien"
+		"<alien>" "Gegno"
+			has "Giaru Gegno: Quarg Contact: offered"
+		"<Alien>" "Alien"
+		"<Alien>" "Gegno"
+			has "Giaru Gegno: Quarg Contact: offered"
+		"<aliens>" "aliens"
+		"<aliens>" "Gegno"
+			has "Giaru Gegno: Quarg Contact: offered"
+		"<designated system>" "designated system"
+		"<designated system>" "Giaru Gegno"
+			has "Giaru Gegno: Quarg Contact: offered"
+	source "Dueyu Eitch"
+	destination "Giaru Gegno"
+	to offer
+		has "First Contact: Gegno Vi: done"
+		not "First Contact: Gegno Vi: failed"
+	on offer
+		conversation
+			`你在这里的旅行充满了紧张，一点也不愉快。 <alien> 并没有像平常一样找到座位，而是在驾驶舱中紧靠你身后，在大部分行程中双臂交叉，几乎就像一块不可移动的巨石。偶尔，你会尝试再次与他们沟通以缓解压力，但他们最多只是轻轻地瞥你一眼或低声咕哝。`
+			`当你下降到大气层时，你会看到层层黑暗的烟雾很快显露出巨大的城市，各种灯光高耸入云。这里的船只与你之前看到的船只颜色不同，棕褐色多于深棕色，而且数量也多得多。交通的强度，加上大量的基础设施，表明这里是 <alien> 的家园。在迷失在你面前的奇幻景象之前，<alien> 走到你旁边并举起一只手臂，指着远处一座巨大的工厂式建筑，它从其他塔楼中脱颖而出。您小心地引导您的船到达建筑物，并在<alien>的帮助下找到合适的停靠端口进行着陆。`
+			`当你着陆后，几个与你旁边的外观相似的<aliens>开始向你的船排成队形，他们都携带着各种类型的类似杖的武器。然而，他们并没有表现出任何侵略性的迹象，只是以协调一致的方式坚守自己的位置。您旁边的 <alien> 向您示意了他们之前给您的指南针设备。`
+			choice
+				`（把设备交给他们。）`
+				
+			branch "has met quarg"
+				has "Giaru Gegno: Quarg Contact: offered"
+			branch "hostile quarg"
+				"reputation: Quarg (Gegno)" < 0
+				has "visited system: Aleit"
+			`摆弄它之后，<alien> 会标记一个新位置并将其呈现给您。 “Oukeug”，他们说，并示意你紧急离开。然后他们离开你的船，走向其他人，并进行简短的讨论。几分钟后，另一小群 <aliens> 带着看起来像是某种加油装置的东西到达，经过一分钟左右的摆弄，他们设法将其连接到你的船上。这些<aliens>看起来比其他人更矮更瘦，穿的更多是皮革服装而不是重金属服装 - 但他们的举止同样僵硬。当你的飞船加满燃料后，一直引导你的<alien>就会向天空做出手势。看来你对神秘的 <alien> 家乡的访问必须缩短了。`
+				launch
+			
+			label "has met quarg"
+			`摆弄它之后，Vi 会标记一个新位置并将其呈现给您。 “Oukeug”，他们说，并示意你紧急离开。您查看该位置，发现这是您之前访问过的夸格环形世界。然后他们离开你的船，走向其他人，并进行简短的讨论。几分钟后，另一小群杰格诺带着某种看起来像是某种加油装置的东西抵达，经过一分钟左右的摆弄，他们设法将其连接到你的船上。这些杰格诺人看起来比其他人更矮更瘦，穿的衣服更多是皮革服装而不是重金属服装——但他们的举止同样僵硬。当你的飞船加满燃料后，一直引导你的 Gegno Vi 就会向天空做出手势。看来你对神秘的盖格诺家园的访问必须缩短了。`
+				launch
+			
+			label "hostile quarg"
+			`摆弄它之后，<alien> 会标记一个新位置并将其呈现给您。 “Oukeug”，他们说，并示意你紧急离开。你看了看位置，发现这是附近的夸格环形世界。考虑到你与夸格人的历史，至少可以说，他们可能不会张开双臂欢迎你。 <alien> 突然用肘部戳你，再次示意你起飞。`
+			`您开始准备船舶出发，<alien> 离开您的船舶。他们走向其他人，进行了简短的讨论，另一小群 <aliens> 带着看起来像是某种加油装置的东西到达了。经过一分钟左右的摆弄后，他们设法将其连接到你的船上。这些<aliens>看起来比其他人更矮更瘦，穿的更多是皮革服装而不是重金属服装 - 但他们的举止同样僵硬。一旦你的飞船加满燃料，引导你的<alien>就会指向天空。访问夸格并不是一个选择，因此在可预见的将来似乎不太可能与这些 <aliens> 建立联系。`
+				flee
+
+	npc
+		government "Gegno Vi (Neutral)"
+		personality entering staying
+		system "Heutesl"
+		fleet
+			names "gegno vi"
+			variant
+				"Eclogite" 3
+				"Hornfel" 2
+				"Gneiss" 2
+	npc
+		government "Gegno Scin (Neutral)"
+		personality entering staying
+		system "Heutesl"
+		fleet
+			names "gegno scin"
+			variant
+				"Coesite" 3
+				"长石"
+				"长石"
+				"Halite" 6
+	npc
+		government "Gegno Vi (Neutral)"
+		personality staying
+		system "Heutesl"
+		fleet "Vi Warfleet"
+	npc
+		government "Gegno Scin (Neutral)"
+		personality staying
+		system "Heutesl"
+		fleet "Scin Warfleet"
+
+
+mission "Discover Hostile Quarg"
+	invisible
+	non-blocking
+	landing
+	source "Dueyu Eitch"
+	to offer
+		"reputation: Quarg (Gegno)" < 0
+		has "First Contact: Gegno Vi: done"
+		not "First Contact: Gegno Vi: failed"
+	on enter "Aleit"
+		fail
+		fail "Visit Quarg in Gegno Space"
+		log "Factions" "Gegno" `The Gegno are a humanoid species to the galactic east of the core. According to the Quarg, they are split between the Vi and the Scin, and are not interested in interaction with outsider species.`
+		conversation
+			`一进入系统，映入眼帘的是熟悉的景象——夸格环形世界。不久之后，夸格人就会与你打开一个沟通渠道。 “这里不欢迎你，侵略者。如果不是为了暴力，你到底在寻求什么目的？”`
+			choice
+				`“附近世界的外星人派我来见你。”`
+					goto sent
+				`“我需要帮助与附近的外星人交谈。”`
+			`夸格人的反应很快。 “你不会在我们身上找到这样的帮助。最好不要把自己与这些自称为Gegno的外星人联系起来。不是我们，而是Gegno，不希望接触。你几乎不知道你的行为对Vi或Scin有多大影响，更不用说暴力了。”随后出现了轻微的停顿。 “现在，离开我们的系统。我们会看着的。”`
+			`如果没有夸格人的帮助，在可预见的未来，与这些所谓的“Gegno”的互动似乎不太可能。`
+				decline
+			
+			label "sent"
+			`经过一段长时间的沉默后，夸格人做出了回应。 “我们没有兴趣帮助煽动者。你所说的外星人，他们被称为Gegno，是一个脆弱的物种。他们本身并不渴望接触，因为他们的注意力都集中在Scin和Vi之间的大量内部斗争上。在这种情况下，Gegno在与星际战争贩子的关系中不会得到任何好处，并且强烈警告你避免与他们有联系。现在，离开我们的星系。我们将密切关注。”`
+			`如果没有夸格人的帮助，在可预见的未来，与这些所谓的“Gegno”的互动似乎不太可能。`
+
+mission "Giaru Gegno: Quarg Contact"
+	landing
+	source "Giaru Gegno"
+	to offer
+		not "Gegno Genocide Defense: offered"
+	on offer
+		log "Factions" "Gegno" `The Gegno are a humanoid species to the galactic east of the core, split amongst themselves into branches. One branch is the Gegno Vi, who are spoken of to be strong and forceful brutes. The other is the Gegno Scin, mentioned to be progressers of research and technology. Apart from them, a majority of the Gegno's population consists of complacent civilians.`
+		log `Learned from the Quarg that the Gegno are not interested in interaction with outsider species.`
+		event "gegno space label"
+		conversation
+			branch "has met gegno"
+				has "Visit Quarg in Gegno Space: offered"
+
+			"After jumping through several systems of many alien ships, a Quarg ringworld is a surprisingly familiar sight. From the looks of it, this is a fully complete ringworld, a true sight to behold. Trillions of Quarg probably inhabit this ring, but what's more interesting is that other aliens are also present. They too are humanoid, and the most common figures you come across are either slightly above or below an average human's height. Their skin is a smooth, light gray, and adorned with different sorts of leather that remind you of medieval human clothing."
+			`	The Quarg here move in an unusually quiet and eerie manner. They are dismissive of the other species walking about, who are equally as dismissive of you. The strange atmosphere is eventually broken when a few Quarg start to advance towards you, moving much quicker than the rest. After some unidentifiable discussion and gestures between themselves, one of them motions you to follow them.`
+				goto walking
+			
+			label "has met gegno"
+			action
+				set "gegno: met gegno before quarg"
+
+			`The visual of a complete Quarg Ringworld is drastically different than the alien homeworld you were on before. Such a pristine, advanced structure is quite the opposite of a disorderly industrial civilization. The population of Quarg here must be in the trillions, many times more than the population of the alien homeworld. What's even more interesting is that there are aliens of the kind you met before are here on the ring too. The Quarg must have some kind of relations with them, perhaps through trade, maintenance, or other services. Despite their presence, both they and the Quarg seem to be dismissive of one another. However, a few of the aliens occasionally glance over at you in some form of curiosity.`
+
+			action
+				"gegno: left 夸格" = "开始后的天数"
+			`	Soon enough, a few Quarg start to rush towards you much faster than the others and begin a conversation between themselves. You aren't sure what language they are speaking, but judging by the tones and pronunciations, it sounds similar to the one you've heard the aliens speaking before. After a moment or so, one of them motions you to follow them.`
+			
+			label "walking"
+			`	You walk with the Quarg, occasionally having trouble keeping pace with their silent yet brisk steps, as you head towards an area that appears devoid of the other aliens. Eventually, you are led to a smaller room with two more Quarg in waiting, silently sitting at the end of it. They talk, but this time you can hear a few familiar sounding terms, one being "Huema." Despite speaking to each other for several minutes, the Quarg still look at each other in what you assume is something like bewilderment.`
+			`	One of the Quarg waiting in the room finally turns towards you and motions you to take a seat. Its look of confusion disappears when they turn their gaze back upon you. Meanwhile, the other Quarg that was seated has left the room, along with the ones that first brought you here.`
+			choice
+				`“有问题吗？”`
+			`	The Quarg continues to look at you and bows its head slightly in an apologetic manner, as it seems neither it, nor any other Quarg on this ringworld, can speak your language. You continue to patiently wait in the uneasy silence, withholding your curiosities as almost half an hour goes by.`
+			`	Finally, the silence is broken when the second Quarg from earlier enters the room again. This time, it glares at you much more energetically, and you begin to wonder if your presence really is an issue.`
+			
+			branch "intrigued quarg"
+				has "Visit Quarg in Gegno Space: offered"
+			
+			`	You preemptively begin to stand up, but you are cut short when you see the second Quarg raise its arms outward in a gesture you never thought you'd see from a Quarg. "This must be for you an exhilarating day, young traverser. I strongly imagine this is a first for both of us." It is now obvious that this Quarg is not the same one from earlier, and you begin to see a few differences in its attire and figure. The upbeat rhythm to their speech is not something you would expect of a Quarg.`
+			choice
+				`“我在哪儿？”`
+			`	The Quarg sits down across from you, still gesturing its arms about in a strange manner, albeit slower this time. "You have found yourself in the dwelling of the mighty Gegno, who have rooted their hardy empire here in the great galactic east."`
+				goto "the gegno"
+			
+			label "intrigued quarg"
+			`	"You have astonishingly achieved a wondrous feat, brave traverser," the Quarg says, placing its hands together. It seems that the Quarg are already aware of your encounter on the alien homeworld. In fact, thinking back to it, the looks of interest earlier by other aliens suggests that the word got spread quickly. It then sits down across from you, then raises its arms outward in a gesture you never thought you'd see from a Quarg. "Not significantly often it is that the mighty Gegno interact with daring outsiders."`
+			
+			label "the gegno"
+			choice
+				`“杰格诺？”`
+					goto gegno
+				`“我在周围看到的那些船是属于Gegno的吗？”`
+					goto ships
+			label gegno
+			`	"Yes, the imperious Gegno. A juvenile race, they are, many decades younger than that of you humans. They do not find themselves in the struggle of leadership the same way as others do. Rather, they glorify their pursuit of guidance between one another to share a noble future." You wonder if the Quarg's use of boastful adjectives is because of gaps in its translations, or if it is intentionally speaking that way. Its voice still comes from the lower tones of Quarg speech, clashing with the excited pace it is speaking at.`
+			choice
+				`“他们追求的指导方针是什么？”`
+					goto guidance
+			label ships
+			`	"Indeed, the vessels of such stature represent the robust Gegno. Not in sorrow, but greatness do they pursue their future, bearing the fruit of sacrifice as a trophy to their name."`
+			choice
+				`“牺牲？”`
+					goto sacrifice
+			label guidance
+			`	"The Gegno believe it necessary to pursue what they choose must be, in order to imagine a grand future for themselves. Thus, they have separated into two different branches. One brandishes themselves as the honorable Vi - mightiest of warriors, toughest of kin. They are brutes that see proof of strength being the one and only variable in determining their path. That of the Scin, the more technologically able, believe that only through progression of sciences and discovery will the Gegno prosper."`
+				goto next
+			label sacrifice
+			`	"The Gegno believe it necessary to overwhelmingly sacrifice whatever must be, in order to imagine a future for themselves. Thus, they have separated into two different branches. One brandishes themselves as the honorable Vi - mightiest of warriors, toughest of kin. They are brutes that see proof of strength being the one and only variable in determining their path. That of the Scin, the more technologically able, believe that only through progression of sciences and discovery will the Gegno prosper."`
+			label next
+			choice
+				`“Vi家说得对，生存下去的力量比什么都重要。”`
+					goto vi
+				`“Scin 是对的，技术进步开启了如此多的可能性。”`
+					goto scin
+				`“他们为什么不共同努力，共同创造更美好的未来呢？”`
+					goto together
+			label vi
+			`	"While it is characteristic, such a tremendous proposition is rather dull for a marvelously growing species. Be that as it may, you humans follow this harsh doctrine, though to a much lesser degree than that of the Vi."`
+				goto "wrap up"
+			label scin
+			`	"The pursuit of technology leaves behind many values important to a glorious species' growth, that of which we have seen plentifully."`
+				goto "wrap up"
+			label together
+			`	"Regrettably, most Gegno do not have a drive to pursue their principal future, diluting themselves far into their stagnant present. Segregation of followings was one of few ways to seek motivation beyond the fact."`
+			label "wrap up"
+			choice
+				`“谢谢你提供的信息。”`
+					goto end
+				`“看来你不喜欢他们选择的道路。”`
+			`	The Quarg stands up, but as it does so, you watch as a few marks on its otherwise gray skin shift into blue hues with faint traces of purple, though they fade away shortly after. "It is not in our prosperous grasp to persuade the Gegno, as once we did attempt to. They threaten conflict with us should we interfere, and we have no desire to witness an imperiled uprising of such a sort once more." It pauses for an extended time, then gestures you to stand up as well.`
+			
+			branch "interacted with outsider"
+				has "Visit Quarg in Gegno Space: offered"
+			
+			`	"Similarly, the Gegno do not wish to interact with audacious outsiders. Unfortunately, only a brief history of them we can tell. We cannot advocate virtuous pleasantries between you and them, though you are welcome at this ring should you find yourself here again. Please keep encounters with the Gegno minimal."`
+				goto end
+			
+			label "interacted with outsider"
+			`	"However, it is still quite staggering that the Gegno interacted with an audacious outsider such as yourself." The Quarg pauses again for a moment and takes a longer breath than usual. "Please do be distinctly cautious in encounters with the Gegno. Unfortunately, we cannot advocate virtuous pleasantries between you and them. Only a brief history of them can we tell. Although, you are appreciably welcome at this ring should you find yourself here again."`
+			
+			label end
+			`	The Quarg motions a bow to you, and the first one from earlier escorts you out of the room. It seems associating with these so-called "Gegno" would be difficult, and you will have to deal with their xenophobia for the foreseeable future.`
+				decline
+
+
+mission "Gegno Quarg Direction to Ringworld"
+	name `参观夸格环形世界`
+	landing
+	source
+		near "Aleit" 1 2
+	destination "Giaru Gegno"
+	to offer
+		has "First Contact: Quarg: offered"
+		not "Giaru Gegno: Quarg Contact: offered"
+	on offer
+		conversation
+			`一旦你登陆这个夸格世界，一些夸格就会迅速前往你的飞船。其中一个站在其他人前面，向您招手，而其他人则用您以前从未听过的语言轻声自言自语。夸格人微微鞠躬与你交谈，从它的眼神来看，它们似乎相当困惑。 “Sdi veebyi keies Gegnion？”它会问，这似乎是其他人所说的语言。然后，它会耐心等待你的回应。`
+			choice
+				`（尝试与夸格人交谈。）`
+			`你向夸格人做了自我介绍，然后解释说你听不懂他们的语言。它慢慢地站起来，似乎在思考情况，然后才转向其他人。又聊了几句后，其中一个夸格人走开并拿走了某种装置，把它带回给你。它似乎是某种类型的全息地图。夸格人向附近的一个系统做出手势，然后该系统就会显示夸格人环形世界的全息图。 “Ehsveet Duebyuarr Giaru，Aechman，”它说，然后在你面前鞠躬。`
+			`你也许应该去环形世界参观一下。`
+				accept
+
+
+mission "Giaru Gegno: Revisit"
+	invisible
+	landing
+	source "Giaru Gegno"
+	to offer
+		has "Giaru Gegno: Quarg Contact: offered"
+		has "Visit Quarg in Gegno Space: offered"
+		not "gegno: met gegno before quarg"
+	on offer
+		conversation
+			`你再次到达贾鲁杰格诺，希望找到另一个会说你语言的夸格人。然而这一次，你注意到这个环形世界上的一些杰格诺人在走过时偶尔会向你投来感兴趣的目光。大约一分钟后，一对夸格人接近你，示意你跟随他们。被带回到之前熟悉的房间，之前和你交谈过的夸格人已经平静地坐在桌子的另一端。`
+			`“勇敢的穿越者，你已经取得了惊人的壮举，”夸格人双手合十说道。夸格人似乎已经知道你在外星家园的遭遇。事实上，回想一下，你之前收到的感兴趣的表情表明这个消息传播得很快。 “强大的盖格诺与勇敢的外来者互动的情况并不常见。”`
+			choice
+				`“这是一个巧合。”`
+				`“当我发现他们时，他们似乎遇到了麻烦，所以我帮助了他们。”`
+					goto trouble
+			`“确实，奇怪的巧合确实会奇怪地发生。许多巧合只是转瞬即逝的微妙奇特时刻。”然后夸格人露出了一个柔和的鬼脸。 “有时候，除了产生强大的后果之外，一个人可能是伟大而强大的。杰格诺人已经多次了解到这一点。`
+			label "trouble"
+			`“你确实是一个非常勇敢的人。大多数人都认为不要像你一样跳入令人畏惧的不确定性面前。”夸格人暂时沉思着下一个想法。 “尽管如此，正如杰格诺人在其历史上所做的那样，有些人可能会毫不犹豫地做出重大跳跃。”`
+			
+			action
+				"gegno: left 夸格" = "开始后的天数"
+			`夸格从座位上抬起，你就按照它的要求行动。 “在与杰格诺人的遭遇中请一定要格外小心。如果你谨慎地选择再次访问这里，请务必保持亲切的态度。”当你被带出房间时，你回头看到夸格人在鞠躬。你不禁想知道谈话中它在想什么，但从现在开始你更加小心可能是最好的选择。`
+				decline
+
+mission "Nosy Scin"
+	invisible
+	landing
+	non-blocking
+	source "Giaru Gegno"
+	to offer
+		has "Visit Quarg in Gegno Space: offered"
+		not "First Contact: Gegno Scin: offered"
+		not "Gegno Genocide Defense: offered"
+	to complete
+		never
+	on enter "Aleit"
+		fail
+
+	npc
+		government "Gegno Scin (Neutral)"
+		personality launching mute uninterested
+		system "Aleit"
+		ship "Mica" "Eichpys"
+
+mission "Suspicious Scin"
+	entering
+	name `奇怪的装置`
+	description `一个奇怪的 Gegno 装置突然出现在你的船上，显示 Gegno 空间内一颗行星的坐标。访问这个星球可能会带来一些答案，或者可能是其他东西。`
+	destination "Yiia Iyr"
+	to offer
+		"days since start" - "gegno: left quarg" > 4
+		or
+			and
+				has "gegno: met gegno before quarg"
+				has "Giaru Gegno: Quarg Contact: offered"
+			has "Giaru Gegno: Revisit: offered"
+		not "First Contact: Gegno Scin: offered"
+		not "Gegno Genocide Defense: offered"
+	on offer
+		conversation
+			`当您正在处理自己的事务时，船上的某个地方开始发出微弱的信号。你不确定它是什么，因为它似乎不是来自船本身，所以你决定看一看。经过几分钟寻找罪魁祸首后，你发现了一个小装置，与你在瓦尔奥蒂遇到的杰格诺给你的装置没有太大区别，它被任意推到了你的飞船基础设施的一角。你不知道它是如何或何时到达那里的，但它看起来并不危险。`
+			`除了发出奇怪的信号外，该设备似乎所做的所有事情都是指向杰格诺空间内一颗行星的位置。除了忽略该设备之外，唯一的选择就是访问这个星球，看看是否有针对这种奇怪情况的答案。`
+				accept
+
+	npc
+		government "Gegno Scin (Neutral)"
+		personality staying mute uninterested
+		system "Ilirco"
+		fleet
+			names "gegno scin"
+			variant
+				"鳞石英"
+	on complete
+		clear "gegno: left quarg"
+
+
+mission "First Contact: Gegno Scin"
+	invisible
+	landing
+	deadline 1
+	source "Yiia Iyr"
+	to offer
+		has "Suspicious Scin: offered"
+		not "Gegno Genocide Defense: offered"
+	on offer
+		conversation
+			`在你船上的神秘装置的带领下，你穿过几层厚厚的云层下降到这个世界的表面。当你突破它们并准备着陆时，你会注意到附近搁浅的几艘杰格诺·斯金（Gegno Scin）飞船，通过它们各种绿色图案很容易区分。其中两艘看起来像你在附近星系中看到的军舰，而它们之间的第三艘则是一艘小型航天飞机。 Scin 一定是该装置的负责人，当他们的一艘战舰开始升空并向你的方向驶去时，他们似乎在等待你。`
+			choice
+				`（离开这个星球。）`
+					goto leave
+				`（等等看他们会做什么。）`
+					goto wait
+				`（做好战斗准备。）`
+			`启动你的武器系统，当敌人逼近时，你就做好准备应对敌对的遭遇。 Scin 飞船向您驶来，然后慢慢停在您面前。他们没有发射任何武器，也没有表现出任何攻击性行为，因此他们可能不会寻求冲突。就这样，战舰微微倒退，停了下来。你也决定停止你的船，你想知道这是怎么回事。 Scin 船再次反转，慢慢远离你。看起来他们希望你跟随他们。`
+				goto interaction
+			
+			label wait
+			`将你的船停了下来，你决定等待，看看 Scin 船向你驶来时会做什么。当它慢慢接近时，它的速度也减慢，最终停了下来。稍微一点点，战舰就会开始向后倒转，并在面向你的同时继续远离你。他们似乎并没有对你有所戒备，反而像是在暗示要跟随他们一样。`
+				goto interaction
+
+			label interaction
+			choice
+				`（跟着他们。）`
+					goto follow
+				`（离开。）`
+					goto leave
+			label "leave"
+			action
+				set "gegno: left scin"
+			`	Wary of the Scin warship, you turn around and begin to ascend back into space. The Scin ship advances towards yours, but as it comes closer, it begins to take on an escort formation with you, following you as you leave the planet's atmosphere. You're unsure of what they're doing on the planet or why you've been led to them, but maybe it's better for you to be careful and not get involved.`
+				accept
+
+			label "follow"
+			action
+				set "scin: approached epidote"
+			`	You inch your ship forward in acknowledgment. All of a sudden, the second warship on the ground lifts off and forms up behind you, while the one in front of you turns around and begins to fly off into the distance. You follow them, curious where they might be leading you. To your rear, the remaining shuttle takes off, but instead of following you, it heads off into the atmosphere above.`
+			`	Although this planet initially appeared dull due to the several layers of thick clouds, the surface shows occasional signs of life such as plains of grass or dried-up riverbeds, while patches of low fog cover various other locations. As the flight continues, the two Scin ships slowly start to move around so that one is on either side of you. Up ahead in the distance, a large structure comes into view from behind another wall of fog. After getting a bit closer to it, you make out the familiar green colors of the ships flying with you now. The two warships begin to descend towards what you assume to be a sizable Scin freighter sitting in a large open area of sand.`
+			`	Your previous encounter with a Vi warrior was chaotic and unpredictable, so it might be best to be extra cautious in this situation. As you set your ship down near the vessel, the two warships that guided you here also land nearby and power down. Other than the Gegno ships in front of you, there doesn't seem to be any strange activity on your radar at the moment. Environmental readings of the outside surprisingly indicate conditions safe for a human, but it's better to be safe than sorry. You equip your environment suit and your pistol just in case.`
+			choice
+				`（走近 Scin。）`
+					goto approach
+				`（留在我的船上。）`
+			`	You take one or two steps forward but remain close by your ship, staying alert. The freighter is indeed large - maybe four times the size of a Hauler, or almost twice the size of a Behemoth. An elevator lowers from its undercarriage, and a group of Scin exit the ship, making their way towards you. Their attire is much different than that of the Vi; most of them are wearing what looks like segmented armor with many layers of plates, giving the appearance of scales. One of them, however, has a much lighter armor set focused mainly around their shoulders, with orange robe-like garments underneath. They are slightly thinner than the other Scin. Although they are nowhere near as bulky as the Vi, they all still appear taller than any human. More importantly, they seem far more eager to interact with you, seeing as they left the comfort of their own ship to greet you.`
+			`	Stopping about four meters from you, the Scin in heavier armor drop to the ground on one knee. The one wearing a robe takes a few more steps, then sits on the ground in front you, crossing their legs.`
+			choice
+				`（坐下。）`
+					goto sit
+				`（伸手去拿我的手枪。）`
+					goto reach
+			label "sit"
+			`	You sit down, taking a good look at them. Their skin appears almost bone-like with very faint patterns of light green. Unlike the Vi, they have three small horns and barely any hair at all. They seem just as interested in your appearance, looking you up and down. Another Scin from the freighter walks over, bringing some sort of device and kneeling down next to the robed one, who takes the device and sets it down between you and them. It looks like some sort of tablet or drawing implement.`
+			`	The Scin then reaches their palm out and makes a mark on one half of the display, then turns it to you.`
+			choice
+				`（将我的手放在设备上。）`
+				`（什么也不做。）`
+					goto imagery
+			`	Placing your own palm on the device, you feel it vibrate a little. A detailed wireframe of your hand appears on the other half of the device. The Scin moves the device aside, then extends one arm out showing the top of their hand.`
+			choice
+				`（也伸出我的手臂。）`
+				`（什么也不做。）`
+					goto imagery
+			action
+				set "scin: gestures"
+			`	Reaching with your right hand, the Scin leans forward and carefully examines it, then makes another note on their device. After writing down a few more things, they get up from the ground and gesture strangely towards you, crossing their arms together to form a plus sign toward their left. The other heavier-armored Scin rise from their stances and begin heading back to their ships, and the one in front of you follows behind them.`
+			`	You return to your own ship after the bewildering encounter, wondering what to make of it, and the Scin do not follow you any further.`
+				accept
+
+			label "imagery"
+			`	Turning the device back around, the Scin types some sort of note on it then clears the display. They then begin to draw some sort of picture with one of their fingers. The finished image appears to be a portrait of themselves. "Dueyu Scin," they speak in a low tone. Clearing the image, they draw something that looks like you, albeit a bit out of proportion, then await some sort of answer.`
+			choice
+				`“杜宇人类……？”`
+				`“我是人类。”`
+				`（什么也不说。）`
+					goto quiet
+			`	The Scin looks at you in what you guess to be fascination. They grab the device and draw yet another picture. After setting it down, you recognize the familiar image of a Gegno Vi warrior.`
+			choice
+				`“杰格诺·维？”`
+				`“杜雨薇？”`
+			action
+				set "scin: imagery"
+			`	Looking at you with a confused expression, they draw another portrait that looks like the shorter leather-wearing Gegno from their homeworld, and move that image together with the images of the Vi and the Scin. "Gegno," they say, and begin to think to themselves. A brief moment passes, and they begin drawing on the device again. After they turn it back to you, you see both a green-colored patch and a brown-colored patch. "Vi," the Scin says, pointing to the brown. "Scin," they say, now pointing to the green. Afterwards, they point to the group of the three Gegno portraits. "Gegno."`
+			`	Once they mark down a few more notes, they get up from the ground and begin heading back to their ships. The heavier-armored Scin also rise from their stances and follow behind them.`
+			`	All of a sudden, a gust of sand rushes past from behind you, and you turn around to see three more armored Scin rising from the sand, one of them fairly close to you. Their armor is much different than that of the others, characterized by darker shades, sharper edges, and several gadgets, but what is most notable is their possession of sickle-like blade weapons. It appears the Scin had more control of the situation than you thought, and had you made the wrong choice in the encounter, it's possible you would be on the receiving end of one of those blades.`
+			`	You return to your ship and take off from the planet, but the Scin do not follow you any further.`
+				accept
+			
+			label "quiet"
+			`	They stare at you for a few seconds, then retrieve their device. The Scin sits up more rigidly, giving you a deep look, then tilts their head to the right, followed by an awkward silence.`
+			choice
+				`（我的头也向右倾斜。）`
+				`（把我的头向左倾斜。）`
+				`（什么也不做。）`
+					goto "no thoughts"
+			`	Once you tilt your head, they note down your behavior on the device. Subsequently, they get up from the ground and begin heading back to their ships. The heavier-armored Scin also rise from their stances and follow behind them.`
+			`	All of a sudden, a gust of sand rushes past from behind you, and you turn around to see three more armored Scin rising from the sand, one of them fairly close to you. Their armor is much different than that of the others, characterized by darker shades, sharper edges, and several gadgets, but what is most notable is their possession of sickle-like blade weapons. It appears the Scin had more control of the situation than you thought, and had you made the wrong choice in the encounter, it's possible you would be on the receiving end of one of those blades.`
+			`	You return to your ship and take off from the planet, but the Scin do not follow you any further.`
+				accept
+				
+			label "no thoughts"
+			`	The Scin stares at you for an uncomfortable length of time, then sighs. They reach into their armor and pull out a small firearm, raising it at you.`
+			choice
+				`（伸手去拿我的枪。）`
+				`（举起我的手臂。）`
+			action
+				set "scin: provocative"
+			`As soon as you attempt to move, the first thing you feel is a curved blade around your neck and a wave of sand flying past you. The Scin casually marks another note on their device, then gets up and starts heading back to their ship. Slowly turning your head, your eyes are met with the cold, expressionless look of another Scin's face, who then motions for you to return to your ship. They follow you as you do, continuing to hold the blade to your throat. Two more Scin suddenly appear from the sand along the way, while the others you first met remain at their position. The armor of the Scin escorting you is considerably different from the rest, characterized by darker shades, sharper edges, and several gadgets.`
+			`	Once you are at your ship, they move their blade away from your neck. When you get a better look at it, you realize that the blade is shaped like a sickle as opposed to a sword, meaning there was little chance you could have avoided being decapitated if they chose to use it. You board your ship in a hurry, preparing to take off. It's clear you've overstayed your welcome.`
+				launch
+			
+			label "reach"
+			action
+				set "scin: provocative"
+			`	It is rather alarming that the Scin are comfortable in approaching you casually, and considering how the encounter with the Vi went, anything could happen next. You decide to reach for your pistol, but as soon as you do, the first thing you feel is a curved blade around your neck and a wave of sand flying past you. Slowly turning your head, your eyes are met with the cold, expressionless look of another Scin's face, who then motions for you to return to your ship. They follow you as you do, continuing to hold the blade to your throat. Two more Scin suddenly appear from the sand along the way, while the others you first met remain at their position. The armor of the Scin escorting you is considerably different from the rest, characterized by darker shades, sharper edges, and several gadgets.`
+			`	Once you are at your ship, they move their blade away from your neck. When you get a better look at it, you realize that the blade is shaped like a sickle as opposed to a sword, meaning there was little chance you could have avoided being decapitated if they chose to use it. Boarding your ship in a hurry, you prepare to take off, and you notice the other Scin warship also powering up. It's clear you've overstayed your welcome.`
+				launch
+
+
+			label "approach"
+			action
+				set "scin: entered epidote"
+			`	Walking towards the Scin, you notice the freighter is indeed large - maybe four times the size of a Hauler, or almost two times the size of a Behemoth. As you approach it, an elevator lowers from its undercarriage, and a group of Scin await your arrival. Their attire is much different than that of the Vi; most of them wear what looks like segmented armor with many layers of plates, giving off the appearance of scales. One of them, however, has a much lighter armor set focused mainly around their shoulders, with orange robe-like garments underneath. They are slightly thinner than the other Scin. Although none of them are anywhere near as bulky as the Vi, they all still appear slightly taller than any human. More importantly, they seem far more eager to interact with you, seeing as they are comfortable with you being near their ship.`
+			`	Once you're at the elevator, the Scin in heavier armor escort you onboard. The elevator lifts back into the ship, leading into some sort of spacious internal bay. The Scin in the robe walks off nearby and grabs some sort of device, moving it over to where you stand, and gestures for you to join them.`
+			choice
+				`（加入他们。）`
+				`（伸手去拿我的手枪。）`
+					goto pistol
+			`	You walk over to the device, getting a good look at the robed Scin. Their skin appears almost bone-like with very faint patterns of light green. Unlike the Vi, they have three small horns and barely any hair at all. They seem just as interested in your appearance, looking you up and down. After messing with the device a bit more, the Scin reveals some sort of tablet or drawing implement.`
+			`	The Scin then reaches their palm out and makes a mark on one half of the display, then turns it to you.`
+			choice
+				`（将我的手放在设备上。）`
+				`（什么也不做。）`
+					goto images
+			`	Placing your own palm on the device, you feel it vibrate a little. A detailed wireframe of your hand appears on the other half of the device. The Scin moves the device aside, then extends one arm out showing the top of their hand.`
+			choice
+				`（也伸出我的手臂。）`
+				`（什么也不做。）`
+					goto images
+			action
+				set "scin: gestures"
+			`	As you reach out with your right hand, the Scin leans forward and carefully examines it, then makes another note on their device. After writing down a few more things, they turn to you and gesture strangely, crossing their arms together in a plus-shaped fashion towards their left. The other heavier-armored Scin move closer and escort you back to the elevator and to your ship. Along the way, you notice a few Scin you didn't previously see. Their armor is much different than that of the others, characterized by darker shades, sharper edges, and several gadgets, but what is most notable is their possession of sickle-like blade weapons.`
+			`	Once you return to your ship, the Scin return to theirs, but remain on the planet. Although just as strange, this encounter went far better than the one with the Vi.`
+				accept
+
+			label "images"
+			`	Turning the device back around, the Scin types some sort of note on it then clears the display. They then begin to draw some sort of picture with one of their fingers. The finished image appears to be a portrait of themselves. "Dueyu Scin," they speak in a low tone. Clearing the image, they draw something that looks like you, albeit a bit out of proportion, then await some sort of answer.`
+			choice
+				`“杜宇人类……？”`
+				`“我是人类。”`
+				`（什么也不说。）`
+					goto silence
+			`	The Scin looks at you in what you guess to be fascination. They grab the device and draw yet another picture. After setting it down, you recognize the familiar image of a Gegno Vi warrior.`
+			choice
+				`“杰格诺·维？”`
+				`“杜雨薇？”`
+			action
+				set "scin: imagery"
+			`	Looking at you with a confused expression, they draw another portrait that looks like the shorter leather-wearing Gegno from their homeworld and move that image together with the images of the Vi and the Scin. "Gegno," they say, and begin to think to themselves. A brief moment passes, and they begin drawing on the device again. After turning it back to you, you see both a green-colored patch and a brown-colored patch. "Vie," the Scin enunciates, pointing to the brown. "Sinn," they say, now pointing to the green. Afterwards, they point to the group of the three Gegno portraits. "Gegno."`
+			`	Once they mark down a few more notes, they lower their head, and the other Scin usher you back to the elevator, activating it to lower you back to the surface. You're escorted back to your ship, and along the way are a few Scin you didn't previously see. Their armor is much different than that of the others, characterized by darker shades, sharper edges, and several gadgets, but what is most notable is their possession of sickle-like blade weapons.`
+			`	Once you return to your ship, the Scin return to theirs, but remain on the planet. Although just as strange, this encounter went far better than the one with the Vi.`
+				accept
+
+			label "pistol"
+			action
+				set "scin: provocative"
+			`	The situation you find yourself in is rather precarious - inside an alien species' vessel, surrounded by strange devices - anything could happen next. You decide to reach for your pistol, but as soon as you do, the first thing you feel is a curved blade around your neck. Slowly turning your head, your eyes are met with the cold, expressionless look of yet another Scin's face, whom you didn't see previously. They continue to hold the blade to your throat as they activate the elevator again, lowering you back to the surface. Their armor is considerably different from the rest, characterized by darker shades, sharper edges, and several gadgets.`
+			`	They escort you back to your ship, and along the way, several more Scin stand guard in the same armor. Once you are at your ship, the blade is moved away from your neck. When you get a better look at it, you realize that the blade is shaped like a sickle as opposed to a sword, meaning there was little chance you could have escaped being decapitated if they had chosen to use it. Boarding your ship in a hurry, you prepare to take off, and you notice the other Scin warship also powering up. It's clear you've overstayed your welcome.`
+				launch
+			
+			label "silence"
+			`	The Scin stares at you for an uncomfortable length of time, then sighs. They reach into their armor and pull out a small firearm, raising it at you.`
+			choice
+				`（伸手去拿我的枪。）`
+				`（举起我的手臂。）`
+			action
+				set "scin: provocative"
+			`As soon as you attempt to move, the first thing you feel is a curved blade around your neck. The Scin casually marks another note on their device, then leaves the scene, heading deeper into the vessel. Slowly turning your head, your eyes are met with the cold, expressionless look of yet another Scin's face, whom you haven't seen yet. They continue to hold the blade to your throat as they activate the elevator again, lowering you back to the surface. Their armor is considerably different from the rest, characterized by darker shades, sharper edges, and several gadgets.`
+			`	They escort you back to your ship, and along the way, several more Scin stand guard, wearing the same armor. Once you are at your ship, the blade is moved away from your neck. When you get a better look at it, you realize that the blade is shaped like a sickle as opposed to a sword, meaning there was little chance you could have escaped being decapitated if they chose to use it. You board your ship in a hurry, preparing to take off. It's clear you've overstayed your welcome.`
+				launch
+
+	npc
+		to spawn
+			not "scin: gestures"
+			not "scin: provocative"
+		government "Gegno Scin"
+		personality launching uninterested
+		system "Ilirco"
+		fleet
+			names "gegno scin"
+			variant
+				"柯石英"
+	npc
+		to spawn
+			not "scin: gestures"
+			has "scin: provocative"
+		government "Gegno Scin (Combative)"
+		personality launching
+		system "Ilirco"
+		fleet
+			names "gegno scin"
+			variant
+				"Coesite" 2
+
+
+mission "Gegno Exploration Nudge"
+	landing
+	name `寻找与 Gegno 互动的方法`
+	description `虽然盖格诺人似乎对你整体不感兴趣，但可能还有其他机会在他们的空间里遇到他们，以了解更多关于他们的信息。`
+	source "Yiia Iyr"
+	to offer
+		has "Suspicious Scin: offered"
+		not "Gegno Genocide Defense: offered"
+	to complete
+		never
+	to fail
+		has "Gegno Exploration Nudge Remover: done"
+	on enter
+		conversation
+			branch provocative
+				has "scin: provocative"
+			`当你离开行星的大气层时，Scin 飞船会与你一起打破编队并分道扬镳。虽然 Gegno 可能总体上对与你交往不感兴趣，但你遇到的少数 Scin 似乎对某些能力感兴趣。可能还有其他机会在他们所在的空间的其他地方遇到 Gegno 并更多地了解他们。`
+			`尽管如此，最好还是听听夸格人的说法并谨慎行事。`
+				accept
+			
+			label provocative
+			`跟随你离开星球的 Scin 飞船在向你开火之前几乎没有犹豫，很可能因为你在遭遇中选择与他们合作而感到愤怒。尽管如此，如果他们把你带到他们那里，他们一定对你有某种兴趣，这意味着可能有其他可能性在他们空间的其他地点与杰格诺打交道。`
+			`尽管如此，杰格诺人已经对外来者产生了疑虑。听听夸格人关于谨慎行事的说法可能是个好主意，特别是如果这会导致敌对遭遇的话。`
+				accept
+
+# Fails above mission once the proper conditions are met so that it doesn't float in the mission panel.
+mission "Gegno Exploration Nudge Remover"
+	invisible
+	landing
+	non-blocking
+	source "Yiia Iyr"
+	destination "Giaru Gegno"
+	to offer
+		has "Suspicious Scin: offered"
+		not "Gegno Genocide Defense: offered"
+	to complete
+		has "gegno: encounters"
+
+
+# Gegno Superheavy Missions
+
+mission "Vi Augen"
+	invisible
+	non-blocking
+	transition
+	source
+		system "Kiluit"
+	destination "Earth"
+	on offer
+		# Fail the old version of this mission from prior to v0.10.1.
+		fail "Stationed Augen"
+	npc save
+		on kill
+			set "dead augen"
+		government "Gegno Vi"
+		personality heroic vindictive staying
+		system "Kiluit"
+		ship "Augen" "Vytii Yrrlausei"
+	to complete
+		never
+
+
+# Gegno Genocide Trigger
+
+mission "Gegno Genocide Defense"
+	invisible
+	landing
+	to offer
+		"reputation: Gegno" < -10
+	to complete
+		never
+	on offer
+		fail "First Contact: Gegno Vi"
+		fail "Visit Quarg in Gegno Space"
+		fail "Vi Augen"
+		fail "Gegno Anticipation"
+		fail "Gegno Intervention"
+		fail "Acquiescence"
+		"reputation: Gegno" = -1000
+		"reputation: Gegno Vi" = -1000
+		"reputation: Gegno Scin" = -1000
+		event "gegno: unified defense"
+		conversation
+			branch "corroboration provocation"
+				or
+					has "Gegno Anticipation: failed"
+					has "Gegno Intervention: failed"
+
+			`As soon as you land your ship, you suddenly receive an incoming hail. "It was incredibly unwise to engage in the unnecessary destruction of noncombatants belonging to a species not of your own." You recognize the voice belonging to that of a Quarg, though it sounds quite displeased. "A species that is still learning from themselves is vulnerable to outside influence, and your aggressive actions against civilians of the Gegno have resulted in needless events."`
+			choice
+				`“这是一场意外！”`
+				`“你在说什么？”`
+					goto what
+				`“我不在乎。”`
+					goto care
+			`	"It is greatly unlikely for violence upon unarmed victims to be accidental. Regardless of the cause, the effect has already occurred. The Gegno have banded together under one flag in an effort to deter any more outside interference. You are no longer welcome in their space, and you are advised not to visit again, lest the Gegno show you the same belligerent behavior you have exhibited to their citizens."`
+				accept
+			label "what"
+			`	"Your behavior has caused the Gegno to unite their fleets and deter any more presence from outsiders. It is a great shame. The time they would use to resolve their inner conflicts is now wasted upon hostility towards strangers due to your negligence. You are no longer welcome in Gegno space, and if you dare visit again, the Gegno will demonstrate the same treatment you gave their citizens."`
+				accept
+			label "care"
+			`	The Quarg makes an unpleasant sound - one you have not heard from any Quarg before. "Should you be seen in Gegno space once more, expect the same sentiment."`
+				accept
+
+			label "corroboration provocation"
+			branch "corroboration provocation homeworld"
+				has "flagship planet: Dueyu Eitch"
+			`As soon as you land your ship, you suddenly receive an incoming hail. "It was incredibly unwise to fire upon guardians of the Gegno homeworld." The voice belongs to that of a Quarg, though it sounds quite displeased. "They simply were present to quell unease of your foreign involvement, yet you chose hostility above their most sacred of planets. You shall find yourself no longer welcome in Gegno space, as well as at the end of our patience."`
+			choice
+				`“我担心他们会用舰队攻击我！”`
+				`“我不在乎。”`
+					goto care
+			`	"Your concerns matter not when weighed against those of an entire species. As a result of such behavior, the Gegno have banded together to unite their fleets and deter any more presence from outsiders. It is a great shame. The time they would use to resolve their inner conflicts is now wasted upon hostility towards strangers due to your negligence. Leave Gegno space, for you no longer have reason to be here."`
+				accept
+
+			label "corroboration provocation homeworld"
+			`Following your assault on the Gegno fleet, you still attempt to land on the Gegno homeworld, but a large number of hostile ships are already guarding the planet's surface. Suddenly, you receive an incoming hail, though not from the Gegno.`
+			`	"It was incredibly unwise to fire upon guardians of the Gegno homeworld." The frigid voice belongs to that of a Quarg, though it sounds quite displeased. "They simply are present to quell unease of your foreign involvement, yet you chose hostility with them above the most sacred of planets." A Quarg ship then appears from the horizon, quickly flying over to your ship as you receive another hail. "You shall find yourself no longer welcome in Gegno space, as well as at the end of our patience."`
+			`	Without giving pause, the Quarg ship escorts you back into the atmosphere, and the Gegno ships hesitantly pull back for the time being. As you leave the planet, they hail you one last time. "Your actions will have certainly caused instability with the Gegno. Your best course of action is to leave this space at once. We shall be watching." After that, the ship disappears.`
+				launch
+
+	npc
+		government "Gegno Vi"
+		to spawn
+			has "event: gegno: unified defense"
+		to despawn
+			has "dead augen"
+		personality heroic vindictive staying
+		system "Heutesl"
+		ship "Augen" "Vytii Yrrlausei"
+
+
+# Mission for if the player has clearance on a Gegno world despite having provoked civilians.
+
+mission "Gegno Unwelcoming"
+	landing
+	invisible
+	source
+		government "Gegno" "Gegno Vi" "Gegno Scin"
+	to offer
+		"reputation: Gegno" < 0
+	on offer
+		conversation
+			`地球表面有一大群外星人在迎接你，尽管他们似乎不太高兴欢迎你来到他们的世界——事实上，有几个你无法快速确定数量的小队冲向你，他们配备了看起来很先进的战斗装备和武器。与此同时，无数的船只开始排成队形从天而降。`
+				to display
+					not "Giaru Gegno: Quarg Contact: offered"
+			`你会在星球表面受到一大群杰格诺人的欢迎，尽管他们似乎不太高兴欢迎你来到他们的世界 - 事实上，几个你无法快速确定数量的小队冲向你，配备了​​看起来很先进的战斗装备和武器。与此同时，无数属于维派和斯辛派的船只开始从上空排成队形降落。`
+				to display
+					has "Giaru Gegno: Quarg Contact: offered"
+			`在袭击平民后故意降落在这里可能不是最明智的计划。没有任何谈话的余地，因为他们立即开始攻击，你尽全力击退尽可能多的人。虽然你能够用手枪击退几人，但你最终会不知所措，而你经历的最后一件事就是上半身一阵冰冷、尖锐的疼痛。`
+				die
+
+
+# Gegno Hunter Fleets
+
+mission "Gegno Hunter Fleets"
+	landing
+	invisible
+	non-blocking
+	repeat
+	to offer
+		has "Gegno Genocide Defense: offered"
+		not "Gegno Hunter Fleets: active"
+	to complete
+		never
+	npc save
+		government "Gegno"
+		personality nemesis heroic vindictive
+		system
+			government "Gegno"
+		fleet
+			names "gegno united"
+			variant
+				"Gneiss" 3
+				"Hornfel" 2
+				"Hornfel (Heavy Weapons)" 2
+				"Eclogite" 5
+				"Feldspar" 3
+				"Halite" 18
+				"Felsic" 3
+				"Coesite" 5
+	npc save
+		government "Gegno"
+		personality nemesis heroic vindictive
+		system
+			government "Gegno"
+		fleet
+			names "gegno united"
+			variant
+				"Feldspar" 2
+				"Halite" 12
+				"Gneiss" 4
+				"Felsic" 4
+				"Coesite" 4
+				"Eclogite" 3
+	npc save
+		government "Gegno"
+		personality nemesis heroic vindictive
+		system
+			government "Gegno"
+		fleet
+			names "gegno united"
+			variant
+				"Feldspar" 3
+				"Halite" 18
+				"Gneiss" 2
+				"Hornfel" 3
+				"角菲尔（重型武器）"
+				"Eclogite" 3
+				"Coesite" 6
+
+
+# Gegno Vi Duels
+
+mission "Gegno Vi Duels"
+	minor
+	landing
+	invisible
+	repeat
+	deadline 9
+	source
+		near "Ookmya" 100
+	to offer
+		random < 60
+	to complete
+		never
+	npc provoke
+		system "Ookmya"
+		government "Gegno Vi (Duelist A)"
+		personality heroic unconstrained uninterested staying ramming
+		fleet
+			names "gegno vi"
+			variant
+				"纯铜岩"
+		conversation "干扰决斗"
+	npc provoke
+		system "Ookmya"
+		government "Gegno Vi (Duelist B)"
+		personality heroic unconstrained uninterested staying ramming
+		fleet
+			names "gegno vi"
+			variant
+				"纯铜岩"
+		conversation "干扰决斗"
+
+conversation "干扰决斗"
+	action
+		"reputation: Gegno Vi" -= 1
+		"reputation: Gegno Vi (Duelist A)" -= 0.1
+		"reputation: Gegno Vi (Duelist B)" -= 0.1
+	`你开始收到来自 Gegno Vi 飞船的大量冰雹，语气非常严重。考虑到他们的船只现在在你的雷达上表现出敌意，你似乎打破了对他们来说相当重要的传统。`

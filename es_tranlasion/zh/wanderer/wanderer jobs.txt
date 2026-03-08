@@ -1,0 +1,891 @@
+# Copyright (c) 2014 by Michael Zahniser
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program. If not, see <https://www.gnu.org/licenses/>.
+
+mission "Wanderer Workers [0]"
+	name "流浪者工人前往<planet>"
+	job
+	repeat
+	description `这些 <bunks> 流浪者工人需要前往 <destination> 的交通。他们将支付您 <payment> 让您带他们去那里。`
+	passengers 5 5 .1
+	to offer
+		has "language: Wanderer"
+		random < 70
+		not "event: eastern evacuation"
+	source
+		not attributes "evacuation"
+		government "Wanderer"
+	destination
+		distance 2 8
+		attributes "factory" "urban"
+		not attributes "evacuation"
+		government "Wanderer"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment
+		payment 10000
+		dialog phrase "generic passenger dropoff payment"
+
+mission "Wanderer Workers [1]"
+	name "流浪者工人前往<planet>"
+	job
+	repeat
+	description `这些 <bunks> 流浪者工人需要前往 <destination> 的交通。他们将支付您 <payment> 让您带他们去那里。`
+	passengers 5 3 .08
+	to offer
+		has "language: Wanderer"
+		random < 60
+	source
+		not attributes "evacuation"
+		government "Wanderer"
+	destination
+		distance 2 8
+		attributes "factory" "urban"
+		not attributes "evacuation"
+		government "Wanderer"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment
+		payment 15000
+		dialog phrase "generic passenger dropoff payment"
+
+mission "Wanderer Farmers [0]"
+	name "流浪者农民到<planet>"
+	job
+	repeat
+	description `这些 <bunks> 流浪者农民需要前往 <destination> 的交通。他们将支付您 <payment> 让您带他们去那里。`
+	passengers 5 5 .1
+	to offer
+		has "language: Wanderer"
+		random < 70
+		not "event: eastern evacuation"
+	source
+		not attributes "evacuation"
+		government "Wanderer"
+	destination
+		distance 2 8
+		attributes "farming"
+		not attributes "evacuation"
+		government "Wanderer"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment
+		payment 10000
+		dialog phrase "generic passenger dropoff payment"
+
+mission "Wanderer Farmers [1]"
+	name "流浪者农民到<planet>"
+	job
+	repeat
+	description `这些 <bunks> 流浪者农民需要前往 <destination> 的交通。他们将支付您 <payment> 让您带他们去那里。`
+	passengers 5 3 .05
+	to offer
+		has "language: Wanderer"
+		random < 60
+		not "event: eastern evacuation"
+	source
+		not attributes "evacuation"
+		government "Wanderer"
+	destination
+		distance 2 8
+		attributes "farming"
+		not attributes "evacuation"
+		government "Wanderer"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment
+		payment 15000
+		dialog phrase "generic passenger dropoff payment"
+
+mission "Wanderer Younglings [0]"
+	name "流浪者幼崽到<planet>"
+	job
+	repeat
+	description `这些 <bunks> 流浪者幼崽正在寻找前往 <destination> 的交通工具，以了解有关流浪者地形改造过程的更多信息。与他们同行的成人将支付您 <payment> 。`
+	passengers 5 8 .2
+	to offer
+		has "language: Wanderer"
+		random < 60
+		not "event: eastern evacuation"
+	source
+		not attributes "evacuation"
+		government "Wanderer"
+	destination
+		distance 2 8
+		not attributes "evacuation"
+		government "Wanderer"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment
+		payment 10000
+		dialog `幼崽们离开你的飞船，在太空港与另一群流浪者会合。在追随幼崽之前，成年流浪者会感谢你并递给你 <payment> 。`
+
+mission "Wanderer Younglings [1]"
+	name "流浪者幼崽到<planet>"
+	job
+	repeat
+	description `这些 <bunks> 流浪者幼崽正在寻找前往 <destination> 的交通工具，以了解有关流浪者地形改造过程的更多信息。与他们同行的成人将支付您 <payment> 。`
+	passengers 5 5 .1
+	to offer
+		has "language: Wanderer"
+		random < 50
+		not "event: eastern evacuation"
+	source
+		not attributes "evacuation"
+		government "Wanderer"
+	destination
+		distance 2 8
+		not attributes "evacuation"
+		government "Wanderer"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment
+		payment 10000
+		dialog `幼崽们离开你的飞船，在太空港与另一群流浪者会合。在追随幼崽之前，成年流浪者会感谢你并递给你 <payment> 。`
+
+mission "Wanderer Scientists (Pollution) [0]"
+	name "<planet> 的污染激增"
+	job
+	repeat
+	description `这些 <bunks> 流浪者科学家希望在 <date> 之前带着他们的 <cargo> 到达 <destination>，以调查大气污染物的奇怪峰值。付款金额为 <payment>。`
+	passengers 4 4 .1
+	cargo "scientific equipment" 5 2 .1
+	deadline
+	to offer
+		has "language: Wanderer"
+		random < 30
+		not "event: eastern evacuation"
+	source
+		not attributes "evacuation"
+		government "Wanderer"
+	destination
+		distance 2 8
+		attributes "mining" "oil" "factory"
+		not attributes "evacuation"
+		government "Wanderer"
+	on visit
+		dialog phrase "generic cargo and passenger on visit"
+	on complete
+		payment 15000 180
+		dialog "您祝愿 <planet> 上的科学家们好运，因为他们将科学设备从您的船上运走，并向您支付了 <payment> 的费用。"
+
+mission "Wanderer Scientists (Pollution) [1]"
+	name "<planet> 的污染激增"
+	job
+	repeat
+	description `这些 <bunks> 流浪者科学家希望在 <date> 之前带着他们的 <cargo> 到达 <destination>，以调查大气污染物的奇怪峰值。付款金额为 <payment>。`
+	passengers 4 4 .05
+	cargo "scientific equipment" 5 2 .1
+	deadline
+	to offer
+		has "language: Wanderer"
+		random < 20
+		not "event: eastern evacuation"
+	source
+		not attributes "evacuation"
+		government "Wanderer"
+	destination
+		distance 2 8
+		attributes "mining" "oil" "factory"
+		not attributes "evacuation"
+		government "Wanderer"
+	on visit
+		dialog phrase "generic cargo and passenger on visit"
+	on complete
+		payment 20000 180
+		dialog "您祝愿 <planet> 上的科学家们好运，因为他们将科学设备从您的船上运走，并向您支付了 <payment> 的费用。"
+
+mission "Wanderer Scientists (Phenomenon) [0]"
+	name "<planet> 上的自然现象"
+	job
+	repeat
+	description `这些 <bunks> 流浪者科学家希望与 <cargo> 一起在 <date> 到达 <destination>，观察一种罕见的自然现象。付款金额为 <payment>。`
+	passengers 4 4 .1
+	cargo "scientific equipment" 5 2 .1
+	deadline
+	to offer
+		has "language: Wanderer"
+		random < 30
+		not "event: eastern evacuation"
+	source
+		not attributes "evacuation"
+		government "Wanderer"
+	destination
+		distance 2 8
+		not attributes "evacuation"
+		government "Wanderer"
+	on visit
+		dialog phrase "generic cargo and passenger on visit"
+	on complete
+		payment 15000 180
+		dialog "您祝愿 <planet> 上的科学家们好运，因为他们将科学设备从您的船上运走，并向您支付了 <payment> 的费用。"
+
+mission "Wanderer Scientists (Phenomenon) [1]"
+	name "<planet> 上的自然现象"
+	job
+	repeat
+	description `这些 <bunks> 流浪者科学家希望与 <cargo> 一起在 <date> 到达 <destination>，观察一种罕见的自然现象。付款金额为 <payment>。`
+	passengers 4 4 .05
+	cargo "scientific equipment" 5 2 .1
+	deadline
+	to offer
+		has "language: Wanderer"
+		random < 20
+		not "event: eastern evacuation"
+	source
+		not attributes "evacuation"
+		government "Wanderer"
+	destination
+		distance 2 8
+		not attributes "evacuation"
+		government "Wanderer"
+	on visit
+		dialog phrase "generic cargo and passenger on visit"
+	on complete
+		payment 20000 180
+		dialog "您祝愿 <planet> 上的科学家们好运，因为他们将科学设备从您的船上运走，并向您支付了 <payment> 的费用。"
+
+mission "Wanderer Biologists [0]"
+	name "在 <planet> 发现新动物"
+	job
+	repeat
+	description `这些 <bunks> 流浪者生物学家希望带着他们的 <cargo> 前往 <destination> 研究最近发现的动物物种。付款金额为 <payment>。`
+	passengers 4 4 .1
+	cargo "scientific equipment" 5 2 .1
+	to offer
+		has "language: Wanderer"
+		random < 60
+	source
+		not attributes "evacuation"
+		government "Wanderer"
+		near "Ka'ch'chrai" 100
+	destination
+		distance 2 8
+		not attributes "evacuation"
+		government "Wanderer"
+	on visit
+		dialog phrase "generic cargo and passenger on visit"
+	on complete
+		payment
+		payment 15000
+		dialog "您祝愿生物学家在 <planet> 上好运，因为他们将科学设备带离您的船并向您支付 <payment>。"
+
+mission "Wanderer Biologists [1]"
+	name "在 <planet> 发现新动物"
+	job
+	repeat
+	description `这些 <bunks> 流浪者生物学家希望带着他们的 <cargo> 前往 <destination> 研究最近发现的动物物种。付款金额为 <payment>。`
+	passengers 4 4 .05
+	cargo "scientific equipment" 5 2 .1
+	to offer
+		has "language: Wanderer"
+		random < 50
+	source
+		not attributes "evacuation"
+		government "Wanderer"
+	destination
+		distance 2 8
+		not attributes "evacuation"
+		government "Wanderer"
+	on visit
+		dialog phrase "generic cargo and passenger on visit"
+	on complete
+		payment
+		payment 20000
+		dialog "您祝愿生物学家在 <planet> 上好运，因为他们将科学设备带离您的船并向您支付 <payment>。"
+
+mission "Wanderer Botanists [0]"
+	name "在 <planet> 发现新植物"
+	job
+	repeat
+	description `这些 <bunks> 流浪者植物学家希望带着他们的 <cargo> 前往 <destination> 研究最近发现的植物物种。付款金额为 <payment>。`
+	passengers 4 4 .1
+	cargo "scientific equipment" 5 2 .1
+	to offer
+		has "language: Wanderer"
+		random < 60
+	source
+		not attributes "evacuation"
+		government "Wanderer"
+		near "Ka'ch'chrai" 100
+	destination
+		distance 2 8
+		not attributes "evacuation"
+		government "Wanderer"
+	on visit
+		dialog phrase "generic cargo and passenger on visit"
+	on complete
+		payment
+		payment 15000
+		dialog "您祝愿植物学家在 <planet> 上好运，因为他们将科学设备从您的船上运走，并向您支付了 <payment> 的费用。"
+
+mission "Wanderer Botanists [1]"
+	name "在 <planet> 发现新植物"
+	job
+	repeat
+	description `这些 <bunks> 流浪者植物学家希望带着他们的 <cargo> 前往 <destination> 研究最近发现的植物物种。付款金额为 <payment>。`
+	passengers 4 4 .05
+	cargo "scientific equipment" 5 2 .1
+	to offer
+		has "language: Wanderer"
+		random < 50
+	source
+		not attributes "evacuation"
+		government "Wanderer"
+	destination
+		distance 2 8
+		not attributes "evacuation"
+		government "Wanderer"
+	on visit
+		dialog phrase "generic cargo and passenger on visit"
+	on complete
+		payment
+		payment 20000
+		dialog "您祝愿植物学家在 <planet> 上好运，因为他们将科学设备从您的船上运走，并向您支付了 <payment> 的费用。"
+
+mission "Wanderer Harvest [0]"
+	name "<planet> 收获食物"
+	job
+	repeat
+	description `将这些 <bunks> 流浪者带到 <destination> 协助收获食物。付款方式为 <payment>。`
+	passengers 5 3 .02
+	to offer
+		has "language: Wanderer"
+		random < 50
+	source
+		not attributes "evacuation"
+		government "Wanderer"
+		near "Ka'ch'chrai" 100
+	destination
+		distance 2 8
+		attributes "farming"
+		not attributes "evacuation"
+		government "Wanderer"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment
+		payment 15000
+		dialog "您祝愿流浪者队在 <planet> 好运并收取 <payment> 的付款。"
+
+mission "Wanderer Harvest [1]"
+	name "<planet> 收获食物"
+	job
+	repeat
+	description `将这些 <bunks> 流浪者带到 <destination> 协助收获食物。付款方式为 <payment>。`
+	passengers 5 3 .01
+	to offer
+		has "language: Wanderer"
+		random < 40
+	source
+		not attributes "evacuation"
+		government "Wanderer"
+		near "Ka'ch'chrai" 100
+	destination
+		distance 2 8
+		attributes "farming"
+		not attributes "evacuation"
+		government "Wanderer"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment
+		payment 20000
+		dialog "您祝愿流浪者队在 <planet> 好运并收取 <payment> 的付款。"
+
+mission "Wanderer Invasive Species [0]"
+	name "隔离入侵物种"
+	job
+	repeat
+	description `这些 <bunks> 流浪者需要带着他们的 <cargo> 到达 <stopovers> 以遏制入侵动物物种。在 <date> 之前将流浪者连同动物一起归还给 <origin>，费用为 <payment>。`
+	passengers 4 4 .1
+	cargo "containers" 5 2 .1
+	deadline
+	to offer
+		has "language: Wanderer"
+		random < 30
+		not "event: eastern evacuation"
+	source
+		not attributes "evacuation"
+		government "Wanderer"
+	stopover
+		distance 2 8
+		not attributes "evacuation"
+		government "Wanderer"
+	on stopover
+		dialog `流浪者们带着他们的设备迅速离开你的船，以遏制入侵动物。大约一个小时后，他们带着笼子返回您的船上，并将笼子放入您的货舱中。现在返回<origin>进行付款。`
+	on visit
+		dialog phrase "generic missing stopover or cargo and passengers"
+	on complete
+		payment 25000 200
+		dialog `释放动物后，<bunks> 流浪者会感谢您协助他们将动物归还给 <planet>，并将 <payment> 交给您。`
+
+mission "Wanderer Invasive Species [1]"
+	name "隔离入侵物种"
+	job
+	repeat
+	description `这些 <bunks> 流浪者需要带着他们的 <cargo> 到达 <stopovers> 以遏制入侵植物物种。在 <date> 之前将流浪者连同植物归还给 <origin>，并支付 <payment> 的费用。`
+	passengers 4 4 .1
+	cargo "containers" 5 2 .1
+	deadline
+	to offer
+		has "language: Wanderer"
+		random < 30
+	source
+		not attributes "evacuation"
+		government "Wanderer"
+		near "Ka'ch'chrai" 100
+	stopover
+		distance 2 8
+		not attributes "evacuation"
+		government "Wanderer"
+	on stopover
+		dialog `流浪者们带着他们的设备迅速离开你的飞船，以遏制入侵植物。大约一个小时后，他们带着装在某种容器中的植物返回你的船，并将其放入你的货舱。现在返回<origin>进行付款。`
+	on visit
+		dialog phrase "generic missing stopover or cargo and passengers"
+	on complete
+		payment 30000 200
+		dialog `将植物交给其他流浪者在其他地方种植后，<bunks> 流浪者都会感谢您协助他们将植物保留在 <planet> 上，并将 <payment> 交给您。`
+
+
+
+phrase "wanderer cargo delivery payment"
+	word
+		`You drop off your cargo of <commodity>. The Wanderers thank you and you collect your payment of <payment>.`
+
+mission "Wanderer Cargo [0]"
+	name "递送至<planet>"
+	job
+	repeat
+	description `将 <cargo> 传送至 <destination>。付款方式为 <payment>。`
+	cargo random 4 4 .2
+	to offer
+		has "language: Wanderer"
+		random < 70
+		not "event: eastern evacuation"
+	source
+		not attributes "evacuation"
+		government "Wanderer"
+	destination
+		distance 2 8
+		not attributes "evacuation"
+		government "Wanderer"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 2000
+		dialog phrase "wanderer cargo delivery payment"
+
+mission "Wanderer Cargo [1]"
+	name "递送至<planet>"
+	job
+	repeat
+	description `将 <cargo> 传送至 <destination>。付款方式为 <payment>。`
+	cargo random 4 4 .17
+	to offer
+		has "language: Wanderer"
+		random < 60
+	source
+		not attributes "evacuation"
+		government "Wanderer"
+		near "Ka'ch'chrai" 100
+	destination
+		distance 2 8
+		not attributes "evacuation"
+		government "Wanderer"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 4000
+		dialog phrase "wanderer cargo delivery payment"
+
+mission "Wanderer Cargo [2]"
+	name "递送至<planet>"
+	job
+	repeat
+	description `将 <cargo> 传送至 <destination>。付款方式为 <payment>。`
+	cargo random 4 4 .15
+	to offer
+		has "language: Wanderer"
+		random < 50
+		not "event: eastern evacuation"
+	source
+		not attributes "evacuation"
+		government "Wanderer"
+	destination
+		distance 2 8
+		not attributes "evacuation"
+		government "Wanderer"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 6000
+		dialog phrase "wanderer cargo delivery payment"
+
+mission "Wanderer Cargo [3]"
+	name "递送至<planet>"
+	job
+	repeat
+	description `将 <cargo> 传送至 <destination>。付款方式为 <payment>。`
+	cargo random 4 4 .12
+	to offer
+		has "language: Wanderer"
+		random < 40
+	source
+		not attributes "evacuation"
+		government "Wanderer"
+	destination
+		distance 2 8
+		not attributes "evacuation"
+		government "Wanderer"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 8000
+		dialog phrase "wanderer cargo delivery payment"
+
+mission "Wanderer Cargo [4]"
+	name "递送至<planet>"
+	job
+	repeat
+	description `将 <cargo> 传送至 <destination>。付款方式为 <payment>。`
+	cargo random 4 4 .1
+	to offer
+		has "language: Wanderer"
+		random < 30
+	source
+		not attributes "evacuation"
+		government "Wanderer"
+	destination
+		distance 2 8
+		not attributes "evacuation"
+		government "Wanderer"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 10000
+		dialog phrase "wanderer cargo delivery payment"
+
+
+mission "Wanderer Rush Delivery [0]"
+	name "加急送货至 <planet>"
+	job
+	repeat
+	description `由 <date> 将 <cargo> 递送至 <destination>。付款方式为<payment>。`
+	cargo random 10 8 .1
+	deadline
+	to offer
+		has "language: Wanderer"
+		random < 50
+		not "event: eastern evacuation"
+	source
+		not attributes "evacuation"
+		government "Wanderer"
+	destination
+		distance 2 8
+		not attributes "evacuation"
+		government "Wanderer"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 32000
+		dialog phrase "wanderer cargo delivery payment"
+
+mission "Wanderer Rush Delivery [1]"
+	name "加急送货至 <planet>"
+	job
+	repeat
+	description `由 <date> 将 <cargo> 递送至 <destination>。付款方式为<payment>。`
+	cargo random 10 12 .1
+	deadline
+	to offer
+		has "language: Wanderer"
+		random < 40
+	source
+		not attributes "evacuation"
+		government "Wanderer"
+		near "Ka'ch'chrai" 100
+	destination
+		distance 2 8
+		not attributes "evacuation"
+		government "Wanderer"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 40000
+		dialog phrase "wanderer cargo delivery payment"
+
+mission "Wanderer Rush Delivery [2]"
+	name "加急送货至 <planet>"
+	job
+	repeat
+	description `由 <date> 将 <cargo> 递送至 <destination>。付款方式为<payment>。`
+	cargo random 10 15 .1
+	deadline
+	to offer
+		has "language: Wanderer"
+		random < 30
+	source
+		not attributes "evacuation"
+		government "Wanderer"
+	destination
+		distance 2 8
+		not attributes "evacuation"
+		government "Wanderer"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 44000
+		dialog phrase "wanderer cargo delivery payment"
+
+mission "Wanderer Rush Delivery [3]"
+	name "加急送货至 <planet>"
+	job
+	repeat
+	description `由 <date> 将 <cargo> 递送至 <destination>。付款方式为<payment>。`
+	cargo random 10 18 .1
+	deadline
+	to offer
+		has "language: Wanderer"
+		random < 20
+	source
+		not attributes "evacuation"
+		government "Wanderer"
+	destination
+		distance 2 8
+		not attributes "evacuation"
+		government "Wanderer"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 50000
+		dialog phrase "wanderer cargo delivery payment"
+
+
+mission "Wanderer Bulk Delivery [0]"
+	name "批量递送至<planet>"
+	job
+	repeat
+	description `将 <cargo> 传送至 <destination>。付款方式为 <payment>。`
+	cargo random 30 4 .1
+	to offer
+		has "language: Wanderer"
+		random < 50
+		not "event: eastern evacuation"
+	source
+		not attributes "evacuation"
+		government "Wanderer"
+	destination
+		distance 2 8
+		not attributes "evacuation"
+		government "Wanderer"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 10000
+		dialog phrase "wanderer cargo delivery payment"
+
+mission "Wanderer Bulk Delivery [1]"
+	name "批量递送至<planet>"
+	job
+	repeat
+	description `将 <cargo> 传送至 <destination>。付款方式为 <payment>。`
+	cargo random 40 6 .1
+	to offer
+		has "language: Wanderer"
+		random < 40
+	source
+		not attributes "evacuation"
+		government "Wanderer"
+		near "Ka'ch'chrai" 100
+	destination
+		distance 2 8
+		not attributes "evacuation"
+		government "Wanderer"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 14000
+		dialog phrase "wanderer cargo delivery payment"
+
+mission "Wanderer Bulk Delivery [2]"
+	name "批量递送至<planet>"
+	job
+	repeat
+	description `将 <cargo> 传送至 <destination>。付款方式为 <payment>。`
+	cargo random 50 10 .1
+	to offer
+		has "language: Wanderer"
+		random < 30
+	source
+		not attributes "evacuation"
+		government "Wanderer"
+	destination
+		distance 2 8
+		not attributes "evacuation"
+		government "Wanderer"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 20000
+		dialog phrase "wanderer cargo delivery payment"
+
+
+mission "Wanderer Captured Unfettered"
+	name "不受限制地捕获到 <planet>"
+	job
+	repeat
+	description "将 <bunks> 俘获的不受束缚的士兵运送到 <planet> 。为了防止它们造成任何麻烦，您需要合适的设施来运输它们。付款方式为 <payment>。"
+	passengers 3
+	source
+		not attributes "evacuation"
+		government "Wanderer"
+	destination
+		distance 2 8
+		not attributes "evacuation"
+		government "Wanderer"
+	to offer
+		has "language: Wanderer"
+		not "event: wanderers: the eye opens"
+		random < 20
+	to accept
+		has "outfit (installed): Brig"
+	on complete
+		payment 50000 180
+		dialog "一旦您登陆 <planet> ，几名身穿制服的流浪者就会将无拘无束的囚犯赶出您的船。您收到了 <payment> 的付款。"
+
+mission "Wanderer Governor Transport"
+	name "调节至 <planet>"
+	job
+	repeat
+	description "由 <date> 将当地总督运送到 <planet> 的首都。他们期望舒适的旅程和合适的设施。付款方式为 <payment>。"
+	passengers 1
+	deadline
+	source
+		government "Wanderer"
+		not attributes "evacuation"
+		near "Ka'ch'chrai" 1 10
+	destination "Vara K'chrai"
+	to offer
+		has "language: Wanderer"
+		has "Wanderers Solifuge Recon 2: done"
+		random < 10
+	to accept
+		has "outfit (installed): Luxury Accommodations"
+	on complete
+		payment 75000 220
+		dialog phrase "generic passenger dropoff payment"
+
+
+mission "Wanderer Kor Efreti: Equipment"
+	name "递送至<planet>"
+	job
+	repeat
+	description "将 <cargo> 交付给 <destination> 上的 Kor Efreti。付款方式为 <payment>。"
+	cargo "Equipment" 5 3 .15
+	to offer
+		has "wanderers sestor done"
+		random < 70
+	source
+		government "Wanderer"
+	destination
+		distance 2 8
+		government "Kor Efret"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 8000
+		dialog phrase "generic cargo delivery payment"
+
+mission "Wanderer Kor Efreti: Cargo [0]"
+	name "递送至<planet>"
+	job
+	repeat
+	description "将 <cargo> 交付给 <destination> 上的 Kor Efreti。付款方式为 <payment>。"
+	cargo random 5 4 .12
+	to offer
+		has "wanderers sestor done"
+		random < 40
+	source
+		government "Wanderer"
+	destination
+		distance 2 8
+		government "Kor Efret"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 6000
+		dialog phrase "generic cargo delivery payment"
+
+mission "Wanderer Kor Efreti: Cargo [1]"
+	name "递送至<planet>"
+	job
+	repeat
+	description "将 <cargo> 交付给 <destination> 上的 Kor Efreti。付款方式为 <payment>。"
+	cargo random 5 4 .10
+	to offer
+		has "wanderers sestor done"
+		random < 15
+	source
+		government "Wanderer"
+	destination
+		distance 2 8
+		government "Kor Efret"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 9000
+		dialog phrase "generic cargo delivery payment"
+
+mission "Wanderers to Kor Efreti"
+	name "调查 Kor Efreti 世界"
+	job
+	repeat
+	description "将 <bunks> 流浪者科学家、植物学家和地形改造专家带到 <stopovers> 的 Kor Efret 世界并返回。付款方式为 <payment>。"
+	passengers 5 1 .2
+	to offer
+		has "Wanderers: Tour 7: done"
+		random < 70
+	source
+		government "Wanderer"
+	stopover
+		distance 2 8
+		government "Kor Efret"
+		not attributes "station"
+	on visit
+		dialog phrase "generic missing stopover or passengers"
+	on stopover
+		dialog `流浪者队环游地球，调查科尔埃弗雷特世界面临的环境问题。他们试图向陪伴他们的科拉特人指出具体的事情，但效果并不理想。几个小时后，他们收集了足够的数据并准备回家。`
+	on complete
+		payment 35000 300
+		dialog `当您返回时，流浪者感谢您带他们前往 Kor Efreti，并在下船前将 <payment> 交给您。`

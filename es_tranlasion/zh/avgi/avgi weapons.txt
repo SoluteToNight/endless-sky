@@ -1,0 +1,1026 @@
+# Copyright (c) 2023 by Azure
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program. If not, see <https://www.gnu.org/licenses/>.
+
+
+# Kinetic Weapons:
+
+outfit "Speck Round"
+	category "Ammunition"
+	series "Ammunition"
+	index 07010
+	cost 6
+	thumbnail "outfit/speck round"
+	"mass" 0.003
+	"speck capacity" -1
+	description "这些密集缠绕的金属玻璃弹能够通过超高速撞击造成大量动能伤害，但很容易被动量排斥护盾系统阻止。"
+
+
+outfit "Speck Magazine"
+	category "Ammunition"
+	series "Ammunition"
+	index 07011
+	cost 12000
+	thumbnail "outfit/speck magazine"
+	"mass" 2.4
+	"outfit space" -6
+	"speck capacity" 1200
+	ammo "Speck Round"
+	description "虽然斑点线圈炮在其内部弹匣中携带大量弹药，但对于较长的探险或补给行动，Avgi 会使用这些紧凑的弹药库。"
+
+
+outfit "Speckle Coilgun"
+	category "Guns"
+	series "Guns"
+	index 07010
+	cost 32000
+	thumbnail "outfit/speckle coilgun"
+	"mass" 6.3
+	"outfit space" -9
+	"weapon capacity" -9
+	"energy capacity" 90
+	"gun ports" -1
+	"speck capacity" 900
+	weapon
+		"sound" "speckle"
+		ammo "Speck Round"
+		"fire effect" "speckle fire"
+		"inaccuracy" 0.9
+		"velocity override" 30
+		"reload" 18
+		"burst reload" 6
+		"burst count" 3
+		"cluster"
+		"firing energy" 36
+		"firing heat" 30
+		"firing force" 12
+		"submunition" "Speck"
+	description "这种紧凑的线圈炮发射一束超高速射弹，当电容器通过一系列线圈放电时，在磁能行波上加速它们。斑点主要为无人机和小型船只设计，虽然相对简单，但却是一种致命的武器。"
+	description "由于其射程有限，当一艘舰艇能够潜行到足够接近敌人并使其受到攻击时，斑点就会发光，并开始撕裂装甲和船体。然而，它对盾牌的有效性要有限得多，盾牌可以相对轻松地摆脱其大规模驱动轮。"
+	description "该武器的弹药可以在任何装备商处补充。"
+		to display
+			has "gamerule: universal ammo restocking"
+	
+
+outfit "Speckle Turret"
+	category "Turrets"
+	series "Turrets"
+	index 07020
+	cost 90000
+	thumbnail "outfit/speckle turret"
+	"mass" 18.6
+	"outfit space" -24
+	"weapon capacity" -24
+	"energy capacity" 180
+	"turret mounts" -1
+	"speck capacity" 1800
+	weapon
+		"sound" "speckle"
+		ammo "Speck Round" 2
+		"hardpoint sprite" "hardpoint/speckle turret"
+		"hardpoint offset" 9
+		"fire effect" "speckle fire"
+		"inaccuracy" 1.2
+		"velocity override" 30
+		"reload" 18
+		"burst reload" 6
+		"burst count" 3
+		"cluster"
+		"turret turn" 3
+		"firing energy" 72
+		"firing heat" 60
+		"firing force" 24
+		"submunition" "Speck"
+			"offset" -3 0
+		"submunition" "Speck"
+			"offset" 3 0
+	description "斑点线圈炮的这种变体专为中型船舶设计，将一对线圈炮安装在灵活的炮塔上。其紧凑的尺寸甚至可以容纳更小的舰艇，使其成为中程战斗的多功能选择。"
+	description "当然，动能武器本质上有限的射程和速度使得斑点炮塔无法与 Avgi 使用的一些远程武器相匹配，但它所能释放的强大火力可以使其对近距离目标造成致命伤害。"
+	description "该武器的弹药可以在任何装备商处补充。"
+		to display
+			has "gamerule: universal ammo restocking"
+
+
+outfit "Speck"
+	weapon
+		sprite "projectile/speck"
+			"scale" 0.5
+			"frame rate" 30
+			"no repeat"
+		"hit effect" "speck impact"
+		"velocity" 30
+		"random velocity" 0.6
+		"lifetime" 24
+		"random lifetime" 3
+		"shield damage" 24
+		"hull damage" 48
+		"hit force" 18
+
+
+effect "speckle fire"
+	sprite "effect/emp torpedo fire"
+		"scale" 0.75
+		"random start frame"
+		"frame rate" 60
+	"lifetime" 3
+	"random angle" 30
+
+effect "speck impact"
+	sprite "effect/bullet impact"
+		"no repeat"
+		"frame rate" 60
+	"lifetime" 9
+	"random angle" 30
+	"velocity scale" -.06
+
+outfitter "Speck Round Restock"
+	to sell
+		has "gamerule: universal ammo restocking"
+		or
+			has "outfit: Speckle Coilgun"
+			has "outfit: Speckle Turret"
+			has "outfit: Speck Magazine"
+	location
+		attributes "outfitter"
+	stock
+		"Speck Round"
+
+
+
+# Energy Weapons:
+
+
+outfit "Optical Lasing Generator"
+	category "Systems"
+	series "Special Systems"
+	index 07010
+	cost 1200000
+	thumbnail "outfit/optical lasing generator"
+	"mass" 30
+	"outfit space" -30
+	"lasing power" 3
+	description "单片半导体二极管板用于有效泵浦掺杂光纤线轴。数百公里长的卷曲光纤充当激光介质，具有产生强光束所需的功率，并且可以进行增益切换以产生各种频率的脉冲。产生的激光可以转换为多种波长，可以轻松地通过光纤或镜子将其传送到船上的多个炮塔，从而无需将重型激光发生器放置在炮塔本身附近的任何地方。"
+	description "线圈中产生的光的波长可以通过交换二极管和光纤掺杂剂来改变，从而使光学激光发生器能够支持多达三个绿色光学激光器或单个蓝色光学激光器。"
+
+
+outfit "Green Optical Laser"
+	category "Turrets"
+	series "Anti-Missile"
+	index 07010
+	cost 90000
+	thumbnail "outfit/green optical laser"
+	"mass" 6
+	"outfit space" -6
+	"weapon capacity" -6
+	"turret mounts" -1
+	"optical jamming" .6
+	"lasing power" -1
+	weapon
+		"hardpoint sprite" "hardpoint/green optical laser"
+		"hardpoint offset" 3
+		"sound" "optical laser"
+		"fire effect" "green laser glare"
+		"die effect" "laser ejecta" 4
+		"die effect" "green laser reflection" 30
+		"die effect" "green laser scattering"
+		"anti-missile" 2
+		"velocity" 1200
+		"lifetime" 1
+		"firing energy" 3
+		"firing heat" 6
+	description "这种轻型炮塔可以从激光发生器接收光束，然后将光束组合并聚焦以产生适合瞄准和摧毁导弹的强光束。与典型的脉冲射击人类反导弹系统不同，该炮塔的精确光学系统似乎旨在将光束长时间保持在极远距离的目标上，使其更适合从远处防御和支持其他船只。"
+	description "转塔本身仅包含合成、聚焦和瞄准光束所需的光学器件，从而允许在其他地方产生激光。因此，需要一个光学激光发生器来运行这个炮塔，提供足够的功率来支持三个绿色激光器。"
+
+effect "green laser glare"
+	sprite "effect/green optical laser glare"
+		"frame rate" 3
+		"random start frame"
+		"rewind"
+	"lifetime" 1
+	"absolute angle" 0
+
+effect "green laser reflection"
+	sprite "effect/typhoon fire"
+		"frame rate" 30
+		"random start frame"
+		scale 0.25
+	"lifetime" 3
+	"random lifetime" 3
+	"random velocity" -24
+
+effect "green laser scattering"
+	sprite "effect/heavy laser impact"
+		"frame rate" 30
+		"random start frame"
+	"lifetime" 1
+	"velocity scale" 0
+
+
+outfit "Blue Optical Laser"
+	category "Turrets"
+	series "Turrets"
+	index 07010
+	licenses
+		"Twilight Guard"
+	cost 120000
+	thumbnail "outfit/blue optical laser"
+	"mass" 12
+	"outfit space" -12
+	"weapon capacity" -12
+	"turret mounts" -1
+	"lasing power" -2
+	weapon
+		"hardpoint sprite" "hardpoint/blue optical laser"
+		"hardpoint offset" 3
+			"frame rate" 3
+		"sound" "optical laser"
+		"fire effect" "blue laser glare"
+		"hit effect" "laser ejecta" 6
+		"hit effect" "blue laser reflection" 60
+		"hit effect" "blue laser scattering"
+		"velocity" 1500
+		"lifetime" 1
+		"reload" 1
+		"inaccuracy" 0.6
+		"turret turn" 6
+		"firing energy" 6
+		"firing heat" 12
+		"shield damage" 4.2
+		"hull damage" 6
+		"heat damage" 6
+		"damage dropoff" 0 1500
+		"dropoff modifier" 0
+	description "这种轻型炮塔可以从激光发生器接收光束，然后将光束组合并聚焦以产生强烈的光束，非常适合损坏其他船只。通过每秒脉冲数千次，光束可以在目标材料中产生热冲击和机械冲击，从而增强其钻穿装甲的能力。与其他一些物种使用的先进光束武器不同，这种激光会受到衍射效应的影响，导致其伤害随着距离的增加而减弱，同时也使其变得不可见。然而，精确的光学器件允许光束在特殊范围内瞄准，尽管激光到达的边缘会受到轻微的损坏。"
+	description "转塔本身仅包含合成、聚焦和瞄准光束所需的光学器件，从而允许在其他地方产生激光。因此，需要一个光学激光发生器来运行这个炮塔，提供足够的功率来支持单个蓝色激光器。"
+
+effect "blue laser glare"
+	sprite "effect/blue optical laser glare"
+		"frame rate" 3
+		"random start frame"
+		"rewind"
+	"lifetime" 1
+	"absolute angle" 0
+
+effect "blue laser reflection"
+	sprite "effect/skylance impact"
+		"random start frame"
+		"scale" 0.125
+	"lifetime" 1
+	"random lifetime" 3
+	"random velocity" -90
+	"velocity scale" -0.0003
+
+effect "blue laser scattering"
+	sprite "effect/skylance impact"
+		"frame rate" 3
+		"scale" 0.5
+	"lifetime" 3
+	"velocity scale" 0
+
+
+outfit "Ultraviolet Excimer Laser"
+	series "Avgi: Beams"
+	index 30
+	category "Turrets"
+	licenses
+		"Twilight Guard"
+	cost 120000
+	thumbnail "outfit/unknown"
+	"mass" 120
+	"outfit space" -60
+	"weapon capacity" -30
+	"engine capacity" -30
+	"thrusting heat" 24
+	"turret mounts" -1
+	"magnetic nozzle" -2
+	weapon
+		# "hardpoint sprite" "hardpoint/uv excimer laser"
+		"hardpoint offset" 3
+			"frame rate" 3
+		"sound" "optical laser"
+		"fire effect" "uv laser glare"
+		"hit effect" "laser ejecta" 6
+		"hit effect" "laser explosion"
+		"hit effect" "uv laser reflection" 60
+		"hit effect" "uv laser scattering"
+		"velocity" 2100
+		"lifetime" 1
+		"reload" 1
+		"inaccuracy" 1.8
+		"turret turn" 0.9
+		"firing energy" 24
+		"firing heat" 60
+		"firing fuel" 0.24
+		"shield damage" 24
+		"hull damage" 18
+		"heat damage" 18
+		"hit force" 3
+		"damage dropoff" 0 2100
+		"dropoff modifier" 0
+
+effect "uv laser glare"
+	sprite "effect/uv excimer laser glare"
+		"frame rate" 3
+		"random start frame"
+		"rewind"
+	"lifetime" 0
+	"absolute angle" 0
+
+effect "uv laser reflection"
+	sprite "effect/skylance impact"
+		"start frame" 2
+		"no repeat"
+		"scale" 0.25
+	"lifetime" 1
+	"random lifetime" 3
+	"random velocity" -90
+	"velocity scale" -0.0003
+
+effect "uv laser scattering"
+	sprite "effect/distancer"
+		"frame rate" 3
+		"scale" 0.5
+	"lifetime" 3
+	"velocity scale" 0
+
+effect "laser ejecta"
+	sprite "effect/static"
+		"no repeat"
+		"frame rate" 20
+		scale 0.75
+	"random lifetime" 3
+	"random angle" 30
+	"random spin" 15
+	"random velocity" -12
+	"velocity scale" -0.003
+
+effect "laser explosion"
+	sprite "effect/pwave impact"
+		"no repeat"
+		"frame rate" 12
+	sound "explosion tiny"
+	"lifetime" 18
+	"random angle" 9
+	"random spin" 3
+	"velocity scale" -.0003
+
+
+outfit "Ultrarelativistic Electron Beam"
+	category "Guns"
+	series "Guns"
+	index 07020
+	cost 3000000
+	thumbnail "outfit/unknown"
+	"mass" 90
+	"outfit space" -90
+	"weapon capacity" -90
+	"gun ports" -1
+	weapon
+		sound "slicer"
+		"fire effect" "electron flare"
+		"firing energy" 540
+		"firing heat" 180
+		"firing scramble" 4.5
+		"reload" 18
+		"burst count" 1
+		"inaccuracy" 3
+			"narrow"
+		"velocity override" 300
+		"piercing" 0.3
+		"submunition" "TeV Electron Bunch" 180
+
+outfit "TeV Electron Bunch"
+	weapon
+		sprite "effect/mhd spark"
+			"frame rate" 15
+			"no repeat"
+		"hit effect" "bremsstrahlung"
+		"hit effect" "nuclear spallation"
+		"velocity" 300
+		"random velocity" -240
+		"lifetime" 9
+		"random lifetime" 3
+		"inaccuracy" 0.6
+		"shield damage" 1.2
+		"hull damage" 1.8
+		"scrambling damage" 0.006
+		"piercing" 0.3
+		"penetration count" 3
+
+
+outfit "UREB Turret"
+	category "Turrets"
+	series "Turrets"
+	index 07010
+	cost 3000000
+	thumbnail "outfit/ureb turret"
+	"mass" 60
+	"outfit space" -45
+	"weapon capacity" -60
+	"turret mounts" -1
+	weapon
+		"hardpoint sprite" "hardpoint/ureb turret"
+		"hardpoint offset" 21
+		sound "slicer"
+		"fire effect" "electron flare"
+		"firing energy" 60
+		"firing heat" 90
+		"turret turn" 0.3
+		"reload" 6
+		"burst reload" 3
+		"burst count" 30
+		"inaccuracy" 3
+			"narrow"
+		"velocity override" 300
+		"piercing" 0.15
+		"submunition" "GeV Electron Bunch" 180
+
+outfit "GeV Electron Bunch"
+	weapon
+		sprite "effect/mhd spark"
+			"frame rate" 15
+			"no repeat"
+		"hit effect" "bremsstrahlung"
+		"hit effect" "nuclear spallation"
+		"velocity" 300
+		"random velocity" -210
+		"lifetime" 12
+		"random lifetime" 3
+		"inaccuracy" 0.6
+		"shield damage" 0.12
+		"hull damage" 0.15
+		"scrambling damage" 0.003
+		"piercing" 0.15
+		"penetration count" 3
+
+
+effect "bremsstrahlung"
+	sprite "effect/skylance impact"
+		"frame rate" 30
+		"no repeat"
+		scale 0.5
+	"random lifetime" 6
+	"velocity scale" 0.3
+
+effect "nuclear spallation"
+	sprite "effect/detainer sparks"
+		"frame rate" 60
+		"no repeat"
+		scale 0.5
+	"random angle" 15
+	"random spin" 15
+	"random lifetime" 12
+	"random velocity" -6
+	"velocity scale" -0.03
+
+effect "electron flare"
+	sprite "effect/pwaveflare"
+		"frame rate" 60
+		"random start frame"
+	"lifetime" 1
+	"velocity scale" 1
+
+
+# Missiles:
+
+
+outfit "External Launch Rail"
+	category "Secondary Weapons"
+	series "Secondary Weapons"
+	index 07010
+	licenses
+		"Avgi Atomics"
+	cost 90000
+	thumbnail "outfit/external launch rail"
+	"mass" 6
+	"outfit space" -9
+	"weapon capacity" -9
+	"gun ports" -1
+	"ophrys capacity" 1
+	weapon
+		sprite "projectile/orchid terminal"
+			"scale" 0.5
+		sound "nuke"
+		ammo `"Ophrys" Nuclear Torpedo`
+		"stream"
+		icon "icon/orchid"
+		"fire effect" "torpedo fire"
+		"firing energy" 30
+		"firing heat" 15
+		"firing force" 600
+		"reload" 360
+		"velocity" 6
+		"lifetime" 3
+		"turn" 90
+		"homing"
+		"optical tracking" 0.72
+		"range override" 600
+		"stream"
+		"submunition" "Ophrys Terminal"
+	description "该塔外部安装了一枚鱼雷，利用小型电磁弹射器将其有效载荷抛向附近的目标。"
+
+
+outfit "External Launch Tube"
+	category "Secondary Weapons"
+	series "Secondary Weapons"
+	index 07020
+	licenses
+		"Twilight Guard"
+	cost 450000
+	thumbnail "outfit/external launch tube"
+	"mass" 6
+	"outfit space" -24
+	"weapon capacity" -24
+	"gun ports" -1
+	"orchid capacity" 6
+	weapon
+		sprite "projectile/orchid inactive"
+			"scale" 0.5
+		sound "nuke"
+		ammo `"Orchid" Nuclear Missile`
+		icon "icon/orchid"
+		"fire effect" "sidewinder fire"
+		"fire effect" "speckle fire"
+		"inaccuracy" 1.2
+		"velocity" 6
+		"lifetime" 15
+		"range override" 6000
+		"reload" 180
+		"firing energy" 60
+		"firing heat" 30
+		"drag" 3
+		"radar tracking" 0.9
+		"homing"
+			"leading"
+			"throttle control"
+		"missile strength" 18
+		"stream"
+		"submunition" "Orchid Active"
+	description "这是一种大型发射装置，能够携带和部署大型火炬驱动导弹和鱼雷。采用标准化设计，可兼容多种Avgi火炬导弹。基于线圈炮的弹射系统允许导弹以相当大的初始速度进行部署。"
+
+
+outfit "Tiny VLS"
+	"display name" "Vertical Launch Array (9)"
+	category "Secondary Weapons"
+	series "Secondary Weapons"
+	index 07030
+	licenses
+		"Twilight Guard"
+	cost 36000
+	thumbnail "outfit/tiny vls"
+	"mass" 3
+	"outfit space" -9
+	"weapon capacity" -9
+	"turret mounts" -1
+	"nettle capacity" 27
+	weapon
+		"hardpoint sprite" "hardpoint/tiny vls"
+		sprite "projectile/nettle"
+			"scale" 0.5
+		sound "bounce"
+		ammo `"Nettle" KKV`
+		icon "icon/nettle"
+		"fire effect" "sidewinder fire"
+		"inaccuracy" 360
+		"velocity" 3
+		"lifetime" 30
+		"range override" 3600
+		"reload" 60
+		"burst reload" 9
+		"burst count" 3
+		"turret turn" 0.000001
+		"firing energy" 3
+		"firing heat" 1.5
+		"drag" .024
+		"infrared tracking" 0.6
+		"optical tracking" 0.6
+		"homing"
+			"leading"
+			"throttle control"
+		"missile strength" 9
+		"submunition" "Nettle Active"
+	description "这个微型垂直发射系统包含九个独立的发射单元，每个发射单元占据一吨的装备空间。与中小型 Avgi 导弹兼容，单元的内容可以轻松交换以适应特定的任务。该阵列的紧凑占地面积使其适合无人机和战斗机，尽管该系统仍然需要炮塔安装。"
+	description "垂直发射系统可实现快速、多功能的导弹部署，但作为双发射器和弹匣，无法提供单独的导弹存储。"
+	description "该武器的弹药可以在任何装备商处补充。"
+
+outfit "Small VLS"
+	"display name" "Vertical Launch Array (18)"
+	category "Secondary Weapons"
+	series "Secondary Weapons"
+	index 07031
+	licenses
+		"Twilight Guard"
+	cost 108000
+	thumbnail "outfit/small vls"
+	"mass" 6
+	"outfit space" -18
+	"weapon capacity" -18
+	"turret mounts" -1
+	"nettle capacity" 54
+	weapon
+		"hardpoint sprite" "hardpoint/small vls"
+		sprite "projectile/nettle"
+			"scale" 0.5
+		sound "bounce"
+		ammo `"Nettle" KKV`
+		icon "icon/nettle"
+		"fire effect" "sidewinder fire"
+		"inaccuracy" 360
+		"velocity" 3
+		"lifetime" 30
+		"range override" 3600
+		"reload" 30
+		"burst reload" 9
+		"burst count" 6
+		"turret turn" 0.000001
+		"firing energy" 3
+		"firing heat" 1.5
+		"drag" .024
+		"infrared tracking" 0.6
+		"optical tracking" 0.6
+		"homing"
+			"leading"
+			"throttle control"
+		"missile strength" 9
+		"submunition" "Nettle Active"
+	description "这种小型垂直发射系统包含 18 个呈矩形阵列的独立发射单元。该系统设计灵活，可以使用各种小型或中型导弹。由于其表面占地面积较大，发射器需要安装炮塔才能安全地部署导弹。"
+	description "垂直发射系统可实现快速、多功能的导弹部署，但作为双发射器和弹匣，无法提供单独的导弹存储。"
+	description "该武器的弹药可以在任何装备商处补充。"
+
+outfit "Medium VLS"
+	"display name" "Vertical Launch Array (36)"
+	category "Secondary Weapons"
+	series "Secondary Weapons"
+	index 07032
+	licenses
+		"Twilight Guard"
+	cost 216000
+	thumbnail "outfit/medium vls"
+	"mass" 12
+	"outfit space" -36
+	"weapon capacity" -36
+	"turret mounts" -1
+	"nettle capacity" 108
+	weapon
+		"hardpoint sprite" "hardpoint/medium vls"
+		sprite "projectile/nettle"
+			"scale" 0.5
+		sound "bounce"
+		ammo `"Nettle" KKV`
+		icon "icon/nettle"
+		"fire effect" "sidewinder fire"
+		"inaccuracy" 360
+		"velocity" 3
+		"lifetime" 30
+		"range override" 3600
+		"reload" 15
+		"burst reload" 9
+		"burst count" 12
+		"turret turn" 0.000001
+		"firing energy" 3
+		"firing heat" 1.5
+		"drag" .024
+		"infrared tracking" 0.6
+		"optical tracking" 0.6
+		"homing"
+			"leading"
+			"throttle control"
+		"missile strength" 9
+		"submunition" "Nettle Active"
+	description "这种中型垂直发射系统包含 36 个平行排列的独立发射单元。各种中小型 Avgi 导弹均与发射单元兼容，并且可以轻松互换。该系统专为快速垂直冷启动而设计，需要一个与炮塔安装座相当的开放空间才能正常运行。"
+	description "垂直发射系统可实现快速、多功能的导弹部署，但作为双发射器和弹匣，无法提供单独的导弹存储。"
+	description "该武器的弹药可以在任何装备商处补充。"
+		to display
+			has "gamerule: universal ammo restocking"
+
+
+outfit `"Nettle" KKV`
+	category "Ammunition"
+	series "Ammunition"
+	index 07020
+	cost 450
+	thumbnail "outfit/nettle kkv"
+	"mass" 0.15
+	"nettle capacity" -1
+	description "荨麻导弹是一种廉价的单级动能杀伤弹，专为不需要核弹头的情况而设计。它们的有效载荷只不过是钨棒、八氮立方推进器组件和机头安装的传感器阵列，可以以最低的成本批量制造。当接近目标时，导弹会展开成数十根细钨棒，形成一个锥形的作用区域。虽然只有一小部分有效载荷真正击中目标，但弹丸云很难完全消除。"
+	description "Nettle KKV 是垂直发射阵列的弹药；如果没有垂直发射阵列来存储它们，您将无法购买或使用 Nettle KKV。"
+
+
+outfit "Nettle Active"
+	weapon
+		sprite "projectile/nettle"
+			"scale" 0.5
+		"hit effect" "missile hit"
+		"die effect" "nettle split" 30
+		"lifetime" 300
+		"split range" 180
+		"acceleration" 0.27
+		"drag" .03
+		"turn" 6
+		"homing"
+			"leading"
+			"throttle control"
+		"infrared tracking" 0.6
+		"optical tracking" 0.6
+		"shield damage" -81
+		"hull damage" -108
+		"missile strength" 12
+		"submunition" "Nettle Flecks" 18
+
+outfit "Nettle Flecks"
+	plural "Nettle Flecks"
+	weapon
+		sprite "projectile/fleck"
+			"frame rate" 15
+			"no repeat"
+			scale 0.5
+		"die effect" "missile death"
+		"hit effect" "fleck impact"
+		"inaccuracy" 15
+			narrow
+		"lifetime" 60
+		"random lifetime" 30
+		"random velocity" 6
+		"shield damage" 9
+		"hull damage" 12
+		"hit force" 36
+
+effect "nettle split"
+	sprite "effect/emp spark"
+		"no repeat"
+		"frame rate" 60
+	sound "clink"
+	"lifetime" 60
+	"random angle" 180
+	"random velocity" 15
+
+effect "fleck impact"
+	sprite "effect/bombardment impact"
+		"no repeat"
+		"frame rate" 30
+	"lifetime" 9
+	"random angle" 30
+	"random spin" 30
+	"random velocity" 3
+	"velocity scale" -.12
+
+outfitter "Nettle Restock"
+	to sell
+		has "gamerule: universal ammo restocking"
+		or
+			has "outfit: Tiny VLS"
+			has "outfit: Small VLS"
+			has "outfit: Medium VLS"
+	location
+		attributes "outfitter"
+	stock
+		`"Nettle" KKV`
+
+
+outfit `"Orchid" Nuclear Missile`
+	category "Ammunition"
+	series "Ammunition"
+	index 07030
+	licenses
+		"Avgi Atomics"
+	cost 300000
+	thumbnail "outfit/orchid missile"
+	"mass" 9
+	"orchid capacity" -1
+	description "与人类不同，阿夫吉人对于在太空使用核武器并没有强烈的禁忌。对他们来说，核武器只是另一种工具，尽管能量密度特别高，但需要时才使用。它们是 Avgi 对抗异常者的王牌，这是他们能够可靠地打破先进护盾并雾化装甲的唯一武器。"
+	description "这种特殊的导弹携带强大的热核弹头，这是一种分级装置，其当量重量比远高于人类开发的任何武器。它似乎是核装置几个世纪发展的产物，而不是人类长期放弃核武器研究的产物。"
+	description "兰花导弹是外部发射管的弹药；如果没有外部发射管来存放它们，您将无法购买或使用兰花导弹。"
+
+
+outfit "Orchid Active"
+	weapon
+		sprite "projectile/orchid inactive"
+			"scale" 0.5
+		"hit effect" "thermonuclear flash"
+		"hit effect" "prompt radiation" 30
+		"hit effect" "fission fragments" 240
+		"die effect" "missile death"
+		"lifetime" 15
+		"drag" 3
+		"turn" 3
+		"homing"
+		"radar tracking" 0.9
+		"submunition" "Orchid Boost"
+		"missile strength" 36
+
+outfit "Orchid Boost"
+	weapon
+		sprite "projectile/orchid boost"
+			"scale" 0.5
+			"frame rate" 3
+			"rewind"
+		"hit effect" "thermonuclear flash"
+		"hit effect" "prompt radiation" 30
+		"hit effect" "fission fragments" 240
+		"die effect" "nettle split" 30
+		"lifetime" 180
+		"acceleration" 0.3
+		"drag" 0.018
+		"turn" 3
+		"homing"
+			"leading"
+			"throttle control"
+		"radar tracking" 0.9
+		"split range" 300
+		"submunition" "Orchid Coast"
+		"submunition" "Orchid Boost Stage Expended"
+		"missile strength" 36
+
+outfit "Orchid Coast"
+	weapon
+		sprite "projectile/orchid coast"
+			"scale" 0.5
+		"hit effect" "thermonuclear flash"
+		"hit effect" "prompt radiation" 30
+		"hit effect" "fission fragments" 240
+		"die effect" "missile death"
+		"lifetime" 180
+		"acceleration" 0.03
+		"drag" 0.006
+		"turn" 1.5
+		"homing"
+			"leading"
+			"throttle control"
+		"radar tracking" 0.9
+		"split range" 1200
+		"submunition" "Orchid Divert"
+		"missile strength" 24
+
+outfit "Orchid Divert"
+	weapon
+		sprite "projectile/orchid divert"
+			"scale" 0.5
+			"frame rate" 3
+			"rewind"
+		"hit effect" "thermonuclear flash"
+		"hit effect" "prompt radiation" 30
+		"hit effect" "fission fragments" 240
+		"die effect" "nettle split" 30
+		"lifetime" 300
+		"acceleration" 0.3
+		"drag" 0.018
+		"turn" 3
+		"homing"
+			"leading"
+			"throttle control"
+		"radar tracking" 0.9
+		"split range" 600
+		"submunition" "Orchid Terminal"
+		"submunition" "Orchid Divert Stage Expended"
+		"missile strength" 24
+
+outfit "Orchid Terminal"
+	weapon
+		sprite "projectile/orchid terminal"
+			"scale" 0.5
+		"hit effect" "thermonuclear flash"
+		"hit effect" "prompt radiation" 30
+		"hit effect" "fission fragments" 240
+		"die effect" "missile death"
+		"lifetime" 180
+		"acceleration" 0.12
+		"drag" 0.012
+		"trigger radius" 90
+		"blast radius" 180
+		"shield damage" 12000
+		"hull damage" 18000
+		"hit force" 6000
+		"missile strength" 18
+
+outfit "Orchid Boost Stage Expended"
+	weapon
+		sprite "projectile/orchid boost stage"
+			"scale" 0.5
+		"die effect" "missile death"
+		"lifetime" 300
+		"fade out" 60
+		"velocity" -18
+		"random velocity" 3
+		"inaccuracy" 30
+		"drag" 1.2
+		"shield damage" 300
+		"hull damage" 600
+		"hit force" 900
+		"missile strength" 12
+
+outfit "Orchid Divert Stage Expended"
+	weapon
+		sprite "projectile/orchid divert stage"
+			"scale" 0.5
+		"die effect" "missile death"
+		"lifetime" 300
+		"fade out" 60
+		"velocity" -12
+		"random velocity" 3
+		"inaccuracy" 30
+		"drag" 1.2
+		"shield damage" 300
+		"hull damage" 600
+		"hit force" 900
+		"missile strength" 12
+
+
+outfit `"Ophrys" Nuclear Torpedo`
+	category "Ammunition"
+	series "Ammunition"
+	index 07040
+	licenses
+		"Avgi Atomics"
+	cost 90000
+	thumbnail "outfit/ophrys torpedo"
+	"mass" 3
+	"ophrys capacity" -1
+	description "Ophrys 是一种源自兰花核导弹的最小制导核鱼雷。与兰花号的末级在前面添加了一层烧蚀装甲差不多，它甚至可以让小型无人机对主力战舰构成可信的威胁。"
+	description "与 Avgi 所使用的核导弹不同，Ophrys 携带的推进剂仅足以对其弹道进行小幅调整。相反，它依赖于携带它的轰炸机的速度，以独立的推进能力换取足够的装甲，以提高在其终端路径上的反导弹火力中的生存几率。"
+	description "Ophrys 鱼雷是用于外部发射轨道的弹药；如果没有外部发射导轨或 Ophrys 储存库来存储它们，您将无法购买或使用 Ophrys 鱼雷。"
+
+
+outfit "Ophrys Stockpile"
+	category "Ammunition"
+	series "Ammunition"
+	index 07041
+	licenses
+		"Avgi Atomics"
+	cost 210000
+	thumbnail "outfit/ophrys stockpile"
+	"mass" 6
+	"outfit space" -24
+	"cargo space" -18
+	"required crew" 3
+	"ophrys capacity" 12
+	ammo `"Ophrys" Nuclear Torpedo`
+	description "这个远程操作的装弹舱专供航母使用，可以快速为停靠的战斗机或无人机补充 Ophrys 鱼雷。大量的鱼雷库存使航母能够在需要补给之前支持多次出动。"
+	description "补货系统需要一小群专家的监督，以确保装载过程中不会发生任何事故。"
+
+
+outfit "Ophrys Terminal"
+	weapon
+		sprite "projectile/orchid terminal"
+			"scale" 0.5
+		"hit effect" "thermonuclear flash"
+		"hit effect" "prompt radiation" 30
+		"hit effect" "fission fragments" 240
+		"die effect" "missile death"
+		"lifetime" 240
+		"acceleration" 0.006
+		"drag" 0.0003
+		"turn" 6
+		"homing"
+		"optical tracking" 0.72
+		"trigger radius" 30
+		"blast radius" 90
+		"shield damage" 12000
+		"hull damage" 18000
+		"hit force" 6000
+		"missile strength" 72
+
+effect "avgi missile exhaust"
+	sprite "effect/avgi flare/rcs"
+		"random start frame"
+		"scale" 0.5
+
+effect "thermonuclear flash"
+	sprite "effect/explosion/nuke"
+		"no repeat"
+		"frame rate" 20
+		"scale" 2.5
+	sound "explosion nuke"
+	"lifetime" 15
+	"random angle" 360
+	"random spin" 5
+	"random velocity" 1
+	"velocity scale" .3
+
+effect "prompt radiation"
+	sprite "effect/explosion/huge"
+		"no repeat"
+		"frame rate" 15
+	"lifetime" 36
+	"random angle" 360
+	"random spin" 6
+	"random velocity" 12
+	"velocity scale" 0.3
+
+effect "fission fragments"
+	sprite "effect/finisher sparks"
+		"no repeat"
+		"frame rate" 10
+	"lifetime" 60
+	"random angle" 360
+	"random spin" 6
+	"random velocity" 6
+	"velocity scale" 0.3

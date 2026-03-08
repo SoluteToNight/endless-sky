@@ -1,0 +1,362 @@
+# Copyright (c) 2017 by Michael Zahniser
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program. If not, see <https://www.gnu.org/licenses/>.
+
+mission "Pirate Occupation [0]"
+	name `海盗占领<system>`
+	minor
+	repeat
+	description `一小群海盗占领了<system>，当地政府已请求帮助。击败系统中的海盗并在<date>之前登陆<planet>，获得<payment>的报酬。`
+	deadline
+	to offer
+		random < 5
+		"combat rating" > 100
+	source
+		not government "Pirate"
+		attributes "south" "rim"
+	destination
+		not government "Pirate" "Quarg"
+		distance 2 3
+		attributes "south"
+	npc
+		government "Militia"
+		personality heroic
+		fleet "Small Militia"
+	npc
+		government "Militia"
+		personality heroic staying
+		system destination
+		fleet "Small Militia"
+	npc evade
+		government "Pirate"
+		personality heroic staying target harvests plunders
+		system destination
+		fleet "Small Southern Pirates" 3
+	on offer
+		conversation "海盗职业"
+	on visit
+		dialog phrase "generic pirate fleet battle on visit"
+	on complete
+		payment 100000
+		dialog phrase "generic pirate attack payment dialog"
+
+mission "Pirate Occupation [1]"
+	name `海盗占领<system>`
+	minor
+	repeat
+	description `一伙海盗占领了<system>，当地政府已请求帮助。击败系统中的海盗并在<date>之前登陆<planet>，获得<payment>的报酬。`
+	deadline
+	to offer
+		random < 5
+		"combat rating" > 200
+	source
+		not government "Pirate"
+		attributes "south" "rim"
+	destination
+		not government "Pirate" "Quarg"
+		distance 2 3
+		attributes "south"
+	npc
+		government "Militia"
+		personality heroic
+		fleet "Small Militia" 2
+	npc
+		government "Militia"
+		personality heroic staying
+		system destination
+		fleet "Small Militia"
+	npc evade
+		government "Pirate"
+		personality heroic staying target harvests plunders
+		system destination
+		fleet "Small Southern Pirates" 2
+		fleet "Large Southern Pirates"
+	on offer
+		conversation "海盗职业"
+	on visit
+		dialog phrase "generic pirate fleet battle on visit"
+	on complete
+		payment 150000
+		dialog phrase "generic pirate attack payment dialog"
+
+mission "Pirate Occupation [2]"
+	name `海盗占领<system>`
+	minor
+	repeat
+	description `一大群海盗已经占领了<system>，当地政府已请求帮助。击败系统中的海盗并在<date>之前登陆<planet>，获得<payment>的报酬。`
+	deadline
+	to offer
+		random < 5
+		"combat rating" > 300
+	source
+		not government "Pirate"
+		attributes "south" "rim"
+	destination
+		not government "Pirate" "Quarg"
+		distance 2 3
+		attributes "south"
+	npc
+		government "Militia"
+		personality heroic
+		fleet "Large Militia"
+		fleet "Small Militia"
+	npc
+		government "Militia"
+		personality heroic staying
+		system destination
+		fleet "Small Militia"
+	npc evade
+		government "Pirate"
+		personality heroic staying target harvests plunders
+		system destination
+		fleet "Large Southern Pirates" 3
+	on offer
+		conversation "海盗职业"
+	on visit
+		dialog phrase "generic pirate fleet battle on visit"
+	on complete
+		payment 200000
+		dialog phrase "generic pirate attack payment dialog"
+
+conversation "海盗职业"
+	`突然，当飞行员跑向他们的船只时，你会听到外面有人大声喊叫：“<destination> 被海盗舰队占领！他们正在请求任何能够在 <date> 之前到达那里并加入防御的有战斗力的船只提供帮助！”如果你协助<planet>的当局，他们可能会给你丰厚的报酬，但这也可能是你自己被杀的一个简单方法。`
+	choice
+		`（不要参加战斗。）`
+			decline
+		`（加入防御舰队。）`
+	`一些民兵飞行员聚集在一起帮助击退海盗袭击。你加入他们，为即将到来的战斗做好准备……`
+		accept
+
+
+
+mission "Sketchy Cargo [0]"
+	name "递送至<planet>"
+	job
+	repeat
+	description "将 <tons> 的货物运送至 <destination>。付款方式为 <payment>。"
+	cargo "unlabeled cargo" 5 2 .1
+	to offer
+		random < 15
+	source
+		attributes "south"
+	destination
+		distance 2 10
+		attributes "south"
+	on accept
+		dialog `你按照任务中指定的指示来到一个看起来废弃的仓库，并在没有标签的板条箱中找到了你的货物。当您将其装载到船上时，您会感觉到自己正在被监视。`
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment 0 160
+		dialog "您将未贴标签的货物扔到与您提货的仓库不太相似的仓库中。在最后一个板条箱从您的船上移走后，一名身穿斗篷的男子将 <payment> 递给您。"
+
+mission "Sketchy Cargo [1]"
+	name "递送至<planet>"
+	job
+	repeat
+	description "将 <tons> 的货物运送至 <destination>。付款方式为 <payment>。"
+	cargo "unlabeled cargo" 25 2 .05
+	to offer
+		random < 10
+	source
+		attributes "south"
+	destination
+		distance 2 10
+		attributes "south"
+	on accept
+		dialog `你按照任务中指定的指示来到一个看起来废弃的仓库，并在没有标签的板条箱中找到了你的货物。当您将其装载到船上时，您会感觉到自己正在被监视。`
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment 0 160
+		dialog "您将未贴标签的货物扔到与您提货的仓库不太相似的仓库中。在最后一个板条箱从您的船上移走后，一名身穿斗篷的男子将 <payment> 递给您。"
+
+
+
+mission "Sketchy Passenger [0]"
+	name "前往 <planet> 的客运交通"
+	job
+	repeat
+	description "将 <fare> 带到 <destination> 。付款方式为 <payment>。"
+	passengers 2 10 .9
+	to offer
+		random < 15
+	source
+		attributes "south"
+	destination
+		distance 2 10
+		attributes "south"
+		not attributes "station"
+	on accept
+		dialog `你很难找到乘客，但经过近一个小时的寻找，你终于找到了他们。当他们跟着你回到你的船上时，你听到他们互相窃窃私语，但你听不清他们在说什么。`
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment 2000 160
+		dialog "您的乘客要求您在远离繁忙的太空港中心的地方着陆。他们把<payment>交给你，然后以相当快的速度冲出你的飞船，离开太空港。"
+
+mission "Sketchy Passenger [1]"
+	name "前往 <planet> 的客运交通"
+	job
+	repeat
+	description "将 <fare> 带到 <destination> 。付款方式为 <payment>。"
+	passengers 2 10 .7
+	to offer
+		random < 10
+	source
+		attributes "south"
+	destination
+		distance 2 10
+		attributes "south"
+		not attributes "station"
+	on accept
+		dialog `你很难找到乘客，但经过近一个小时的寻找，你终于找到了他们。当他们跟着你回到你的船上时，你听到他们互相窃窃私语，但你听不清他们在说什么。`
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment 2000 160
+		dialog "您的乘客要求您在远离繁忙的太空港中心的地方着陆。他们把<payment>交给你，然后以相当快的速度冲出你的飞船，离开太空港。"
+
+mission "Delta V Shipment [0]"
+	name "运送至<planet>"
+	description "将 <cargo> 运送到 <destination>，这里是 Delta V 公司的总部，该公司是南环一家主要的导弹和发动机制造公司。付款方式为 <payment>。"
+	cargo "alloys" 5 2 .1
+	job
+	repeat
+	to offer
+		random < 10
+		has "landing access: Solace"
+	source
+		near Pherkad 2 15
+		attributes factory
+		not government "Pirate"
+	destination Solace
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment 0 160
+		dialog phrase "generic cargo delivery payment"
+
+mission "Delta V Shipment [1]"
+	name "运送至<planet>"
+	description "将 <cargo> 运送到 <destination>，这里是 Delta V 公司的总部，该公司是南环一家主要的导弹和发动机制造公司。付款方式为 <payment>。"
+	cargo Electronics 5 2 .1
+	job
+	repeat
+	to offer
+		random < 10
+		has "landing access: Solace"
+	source
+		near Pherkad 2 15
+		attributes factory
+		not government "Pirate"
+	destination Solace
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment 0 160
+		dialog phrase "generic cargo delivery payment"
+
+mission "Tarazed Shipyards Shipment [0]"
+	name "运送至<planet>"
+	description "将 <cargo> 运送到 <planet>，这是塔拉兹造船厂 (Tarazed Shipyards) 的所在地，该造船厂是南方最大的造船公司之一。付款方式为 <payment>。"
+	cargo "weapons" 5 2 .1
+	job
+	repeat
+	to offer
+		random < 10
+		has "landing access: Wayfarer"
+	source
+		near Tarazed 2 10
+		attributes factory
+	destination Wayfarer
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment 0 160
+		dialog phrase "generic cargo delivery payment"
+
+mission "Tarazed Shipyards Shipment [1]"
+	name "运送至<planet>"
+	description "将 <cargo> 运送到 <planet>，这是塔拉兹造船厂 (Tarazed Shipyards) 的所在地，该造船厂是南方最大的造船公司之一。付款方式为 <payment>。"
+	cargo "Ship Alloys" 5 2 .1
+	job
+	repeat
+	to offer
+		random < 10
+		has "landing access: Wayfarer"
+	source
+		near Tarazed 2 10
+		attributes factory mining
+	destination Wayfarer
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment 0 160
+		dialog phrase "generic cargo delivery payment"
+
+mission "Tarazed Shipyards Shipment [2]"
+	name "运送至<planet>"
+	description "将 <cargo> 运送到 <planet>，这是塔拉兹造船厂 (Tarazed Shipyards) 的所在地，该造船厂是南方最大的造船公司之一。付款方式为 <payment>。"
+	cargo "Ship Systems" 5 2 .1
+	job
+	repeat
+	to offer
+		random < 10
+		has "landing access: Wayfarer"
+	source
+		near Tarazed 2 10
+		attributes factory mining
+	destination Wayfarer
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment 0 160
+		dialog phrase "generic cargo delivery payment"
+
+mission "Tarazed Systems Shipment [0]"
+	name "运送至<planet>"
+	description "将 <cargo> 运送到 <planet>，这是 Tarazed Systems 的总部，Tarazed Systems 是南方人类空间备受尊敬的服装制造商和设计师。付款方式为 <payment>。"
+	cargo "alloys" 5 2 .1
+	job
+	repeat
+	to offer
+		random < 10
+		has "landing access: Wayfarer"
+	source
+		near Tarazed 2 10
+		attributes factory mining
+	destination Wayfarer
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment 0 160
+		dialog phrase "generic cargo delivery payment"
+
+mission "Tarazed Systems Shipment [1]"
+	name "运送至<planet>"
+	description "将 <cargo> 运送到 <planet>，这是 Tarazed Systems 的总部，Tarazed Systems 是南方人类空间备受尊敬的服装制造商和设计师。付款方式为 <payment>。"
+	cargo Electronics 5 2 .1
+	job
+	repeat
+	to offer
+		random < 10
+		has "landing access: Wayfarer"
+	source
+		near Tarazed 2 10
+		attributes factory
+	destination Wayfarer
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment 0 160
+		dialog phrase "generic cargo delivery payment"

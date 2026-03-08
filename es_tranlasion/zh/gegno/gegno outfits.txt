@@ -1,0 +1,1133 @@
+# Copyright (c) 2022 by Saugia
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program. If not, see <https://www.gnu.org/licenses/>.
+
+# Power:
+
+outfit "R01 Skirmish Battery"
+	plural "R01 Skirmish Batteries"
+	category "Power"
+	series "Batteries"
+	index 06010
+	licenses
+		"Gegno Civilian"
+	cost 5900
+	thumbnail "outfit/skirmish battery"
+	"mass" 12
+	"outfit space" -12
+	"energy capacity" 4506
+	description `冲突电池是杰格诺船上非常常见的装备。它们要么是比升级到更大的反应堆更便宜的替代方案，要么是可能需要短时高能爆发的反应堆的一个很好的补充。`
+
+
+outfit "R02 Battlezone Battery"
+	plural "R02 Battlezone Batteries"
+	category "Power"
+	series "Batteries"
+	index 06020
+	licenses
+		"Gegno Civilian"
+	cost 12600
+	thumbnail "outfit/battlezone battery"
+	"mass" 23
+	"outfit space" -23
+	"energy capacity" 8987
+	description `战区电池主要用于杰格诺号的中程战舰，拥有中等电量以进行长时间交战。它们也非常适合大型船舶作为缓冲器，为更耗能的系统提供动力。`
+
+
+outfit "R03 Warforge Battery"
+	plural "R03 Warforge Batteries"
+	category "Power"
+	series "Batteries"
+	index 06030
+	licenses
+		"Gegno Civilian"
+	cost 27800
+	thumbnail "outfit/warforge battery"
+	"mass" 41
+	"outfit space" -41
+	"energy capacity" 16646
+	description `Warforge 电池多年来已经证明了其作为大型、坚固的电池组的实用性。它们支持从杰格诺飞船发射的同样大的齐射，并帮助维持发动机使用的多余动力。`
+
+
+outfit "R04 Crusade Battery"
+	plural "R04 Crusade Batteries"
+	category "Power"
+	series "Batteries"
+	index 06040
+	licenses
+		"Gegno Civilian"
+		"Vi Evocati"
+		"Vi Centurion"
+		"Vi Lord"
+	cost 44700
+	thumbnail "outfit/crusade battery"
+	"mass" 70
+	"outfit space" -70
+	"energy capacity" 28140
+	description `作为安装在耗电的杰格诺船上最大的电池，远征电池拥有巨大的能量，比废电池在近两分钟内产生的能量还要多。然而，Gegno 在随着尺寸增加密度方面效率较低。因此，这些电池通常只用在始终需要这种动力储备的船舶上，而大多数其他船舶只是堆叠多个较小的电池，以便根据需要更方便地安装或拆卸。`
+
+
+outfit "C3 Scrap Cell"
+	category "Power"
+	series "Generators"
+	index 06010
+	licenses
+		"Gegno Civilian"
+	cost 47000
+	thumbnail "outfit/scrap cell"
+	"mass" 25
+	"outfit space" -25
+	"energy generation" 1.4
+	"heat generation" 2
+	description `废料电池是一种小型放射热发生器，可产生有限的能量。它仅用于 Gegno 的小型船只，或与其耗能较少的内部构件配合使用。`
+
+
+outfit "C7 Brawl Cell"
+	category "Power"
+	series "Generators"
+	index 06020
+	licenses
+		"Gegno Civilian"
+	cost 64000
+	thumbnail "outfit/brawl cell"
+	"mass" 39
+	"outfit space" -39
+	"energy generation" 2.7
+	"heat generation" 3.4
+	description `在开发 C7 Brawl Cell 时，Gegno 决定扩大较小的 C3 Scrap Cell 的规模。不幸的是，新设计变得如此之高，以至于杰格诺很难将其安装到他们的一些船上，要求他们将整个东西转向侧面。这种设计仍然适用于 Gegno，但随着新型发电机变得更加紧凑和高效，它可能会被逐步淘汰。`
+
+
+outfit "C17 Warzone Core"
+	category "Power"
+	series "Generators"
+	index 06030
+	licenses
+		"Gegno Civilian"
+	cost 1620000
+	thumbnail "outfit/warzone core"
+	"mass" 87
+	"outfit space" -87
+	"energy generation" 10.2
+	"heat generation" 22.9
+	description `当盖格诺人的城市发展到足以需要核技术时，他们就开始开发核技术。战区核心是一个中型核裂变反应堆，是大多数杰格诺大型飞船的合适动力源，尽管它似乎缺乏许多你期望在人类核反应堆上找到的故障保护装置。`
+
+
+outfit "C27 Campaign Core"
+	category "Power"
+	series "Generators"
+	index 06040
+	licenses
+		"Gegno Civilian"
+		"Vi Evocati"
+		"Vi Centurion"
+		"Vi Lord"
+	cost 3672000
+	thumbnail "outfit/campaign core"
+	"mass" 145
+	"outfit space" -145
+	"energy generation" 19.9
+	"heat generation" 46.3
+	description `为了为最大的船舶及其耗能系统和发动机提供动力，杰格诺号根据其一代船舶时代的早期原型设计了战役聚变反应堆。它至今仍在使用，并且效率足以满足最大的杰格诺战舰的要求，但仅仅看看它就会引起安全问题。`
+
+
+outfit "I70 Ameliorate Cell"
+	category "Power"
+	series "Generators"
+	index 06050
+	licenses
+		"Gegno Civilian"
+		"Scin Hoplologist"
+		"Scin Architect"
+	cost 57000
+	thumbnail "outfit/ameliorate cell"
+	"mass" 27
+	"outfit space" -27
+	"energy capacity" 2520
+	"energy generation" 1.4
+	"heat generation" 2.9
+	description `I70 Cell 是 Scin 为其岩盐战斗机设计的更小、更紧凑的动力系统。它具有足够的能量产生和能力，可以在短时间内为石盐推进器及其武器提供燃料。不幸的是，作为副作用，还会产生更多的多余热量。`
+
+
+# Engines:
+
+outfit "RG15 Torch Thruster"
+	category "Engines"
+	series "Engines"
+	index 06011
+	licenses
+		"Gegno Civilian"
+	cost 17000
+	thumbnail "outfit/small torch thruster vi"
+	"mass" 31
+	"outfit space" -31
+	"engine capacity" -31
+	"thrust" 17.355
+	"thrusting energy" 0.7
+	"thrusting heat" 1.5
+	"flare sprite" "effect/vi flare/small"
+		"frame rate" 2.5
+	"flare sound" "ion torch small"
+	description `RG15 离子火炬推进器是 Gegno Vi 最小的火炬推进器，几乎只出现在 Slate 上。它的效率有些低下，比大多数类似尺寸的推进器更重，产生更多的热量，但消耗的能量略少。`
+
+
+outfit "RG15 Torch Steering"
+	category "Engines"
+	series "Engines"
+	index 06010
+	licenses
+		"Gegno Civilian"
+	cost 15000
+	thumbnail "outfit/small torch steering vi"
+	"mass" 25
+	"outfit space" -25
+	"engine capacity" -25
+	"turn" 430.5
+	"turning energy" 0.4
+	"turning heat" 0.85
+	"steering flare sprite" "effect/vi flare/small"
+		"frame rate" 2.4
+	"steering flare sound" "ion torch small"
+	description `该转向系统适用于最小的 Gegno Vi 船舶。然而，一些盖格诺飞行员用它来廉价地补充他们的主舵机。`
+
+
+outfit "RG18 Torch Thruster"
+	category "Engines"
+	series "Engines"
+	index 06021
+	licenses
+		"Gegno Civilian"
+	cost 38000
+	thumbnail "outfit/medium torch thruster vi"
+	"mass" 51
+	"outfit space" -51
+	"engine capacity" -51
+	"thrust" 30.6
+	"thrusting energy" 1.25
+	"thrusting heat" 2.9
+	"flare sprite" "effect/vi flare/medium"
+		"frame rate" 2.4
+	"flare sound" "ion torch medium"
+	description `RG18 是 Gegno Vi 使用的中等大型推进器。离子炬推进器与人类离子推进器类似，但其爆炸性废气导致它们运行得更热。然而，它们需要的能量也略少。`
+
+
+outfit "RG18 Torch Steering"
+	category "Engines"
+	series "Engines"
+	index 06020
+	licenses
+		"Gegno Civilian"
+	cost 32000
+	thumbnail "outfit/medium torch steering vi"
+	"mass" 39
+	"outfit space" -39
+	"engine capacity" -39
+	"turn" 784.5
+	"turning energy" 0.65
+	"turning heat" 1.5
+	"steering flare sprite" "effect/vi flare/medium"
+		"frame rate" 2.4
+	"steering flare sound" "ion torch medium"
+	description `RG18转向系统对于其动力转向系统来说相当大。许多 Gegno Vi 船只至少安装这些装置，以便能够转动已经很重的船只。`
+
+
+outfit "RG3 Torch Thruster"
+	category "Engines"
+	series "Engines"
+	index 06031
+	licenses
+		"Gegno Civilian"
+		"Vi Evocati"
+		"Vi Centurion"
+		"Vi Lord"
+	cost 84000
+	thumbnail "outfit/large torch thruster vi"
+	"mass" 83
+	"outfit space" -83
+	"engine capacity" -83
+	"thrust" 54
+	"thrusting energy" 2.2
+	"thrusting heat" 5.4
+	"flare sprite" "effect/vi flare/large"
+		"frame rate" 2.3
+	"flare sound" "ion torch large"
+	description `RG3 离子火炬推进器源自为早期 Gegno 一代船舶提供动力的大型推进器，是 Gegno 最大的推进器，也是仍在使用的最古老的推进器。尝试使用这些发动机的小型船舶通常会导致自身过热。`
+
+
+outfit "RG3 Torch Steering"
+	category "Engines"
+	series "Engines"
+	index 06030
+	licenses
+		"Gegno Civilian"
+		"Vi Evocati"
+		"Vi Centurion"
+		"Vi Lord"
+	cost 70000
+	thumbnail "outfit/large torch steering vi"
+	"mass" 64
+	"outfit space" -64
+	"engine capacity" -64
+	"turn" 1506
+	"turning energy" 1.15
+	"turning heat" 2.8
+	"steering flare sprite" "effect/vi flare/large"
+		"frame rate" 2.3
+	"steering flare sound" "ion torch large"
+	description `RG3 火炬推进器是 Gegno 太空中使用的最古老的转向系统，只能安装在最大的 Gegno 船只上，因此很少见。`
+
+
+outfit "SC-1 Plasma Engines"
+	plural "SC-1 Plasma Engines"
+	category "Engines"
+	series "Engines"
+	index 06040
+	licenses
+		"Gegno Civilian"
+		"Scin Hoplologist"
+		"Scin Architect"
+	cost 21200
+	thumbnail "outfit/tiny plasma engines scin"
+	"mass" 21
+	"outfit space" -21
+	"engine capacity" -21
+	"thrust" 9.825
+	"thrusting energy" 0.4
+	"thrusting heat" 1
+	"flare sprite" "effect/scin flare/tiny"
+		"frame rate" 0.6
+	"flare sound" "scplasma tiny"
+	"turn" 240
+	"turning energy" 0.35
+	"turning heat" 0.8
+	"steering flare sprite" "effect/scin flare/tiny"
+		"frame rate" 0.6
+	"steering flare sound" "scplasma tiny"
+	description `为了为微型岩盐框架提供动力，Gegno Scin 开发了这种更小的发动机系统。基于更大的等离子推进器，这些发动机比 Vi 更大、更慢的离子发动机效率要高得多，后者永远不会紧凑或轻到足以在战斗机上运行。`
+
+
+outfit "SC-12 Plasma Thruster"
+	category "Engines"
+	series "Engines"
+	index 06051
+	licenses
+		"Gegno Civilian"
+		"Scin Adjutant"
+	cost 20900
+	thumbnail "outfit/small plasma thruster scin"
+	"mass" 25
+	"outfit space" -25
+	"engine capacity" -25
+	"thrust" 20.31
+	"thrusting energy" 0.85
+	"thrusting heat" 2.25
+	"flare sprite" "effect/scin flare/small"
+		"frame rate" 0.5
+	"flare sound" "scplasma small"
+	description `Scin 没有在 Vi 的离子炬设计上进行开发，而是开始研究基于等离子体的推进器。它们更紧凑，重量更轻，并且产生更大的推力。然而，由于离子炬在推力中排出了部分热量，因此更稳定、更强大的 SC 推进器往往会运行得更热。`
+
+
+outfit "SC-12 Plasma Steering"
+	category "Engines"
+	series "Engines"
+	index 06050
+	licenses
+		"Gegno Civilian"
+		"Scin Adjutant"
+	cost 17000
+	thumbnail "outfit/small plasma steering scin"
+	"mass" 19
+	"outfit space" -19
+	"engine capacity" -19
+	"turn" 445.5
+	"turning energy" 0.45
+	"turning heat" 1.15
+	"steering flare sprite" "effect/scin flare/small"
+		"frame rate" 0.5
+	"steering flare sound" "scplasma small"
+	description `新型 SC 等离子发动机使 Gegno Scin 舰艇能够智取对手。 Vi 飞船可能需要很长时间才能完成的事情，在 Scin 飞船上只需片刻即可完成。`
+
+
+outfit "SC-14 Plasma Thruster"
+	category "Engines"
+	series "Engines"
+	index 06061
+	licenses
+		"Gegno Civilian"
+		"Scin Adjutant"
+	cost 52500
+	thumbnail "outfit/medium plasma thruster scin"
+	"mass" 45
+	"outfit space" -45
+	"engine capacity" -45
+	"thrust" 39.6
+	"thrusting energy" 1.7
+	"thrusting heat" 4.95
+	"flare sprite" "effect/scin flare/med"
+		"frame rate" 0.4
+	"flare sound" "scplasma medium"
+	description `SC-14 级推进器为 Scin 的普通炮艇或运输机提供动力，为他们的舰艇提供可靠的速度。它们可以以合理的效率快速推动任何中型船舶前进。`
+
+
+outfit "SC-14 Plasma Steering"
+	category "Engines"
+	series "Engines"
+	index 06060
+	licenses
+		"Gegno Civilian"
+		"Scin Adjutant"
+	cost 41500
+	thumbnail "outfit/medium plasma steering scin"
+	"mass" 34
+	"outfit space" -34
+	"engine capacity" -34
+	"turn" 957
+	"turning energy" 1
+	"turning heat" 2.95
+	"steering flare sprite" "effect/scin flare/med"
+		"frame rate" 0.4
+	"steering flare sound" "scplasma medium"
+	description `SC-14 级转向系统比 SC-12 发动机更大，是 Gegno 空间中最强大的转向系统之一，使 Scin 甚至可以比 Vi 同行更快地重新定位最大的船只。`
+
+
+outfit "SC-15 Plasma Thrusters"
+	plural "SC-15 Plasma Thrusters"
+	series "Engines"
+	index 06070
+	category "Engines"
+	licenses
+		"Gegno Civilian"
+		"Scin Hoplologist"
+		"Scin Architect"
+	cost 170400
+	thumbnail "outfit/large plasma engines scin"
+	"mass" 112
+	"outfit space" -112
+	"engine capacity" -112
+	"thrust" 72.9
+	"thrusting energy" 3.1
+	"thrusting heat" 9.5
+	"flare sprite" "effect/scin flare/large"
+		"frame rate" 0.3
+	"flare sound" "scplasma large"
+	"reverse thrust" 22.75
+	"reverse thrusting energy" 1.45
+	"reverse thrusting heat" 4.45
+	"reverse flare sprite" "effect/scin flare/large"
+		"frame rate" 0.3
+	"reverse flare sound" "scplasma large"
+	description `Gegno Scin 在 SC-14 级发动机系统的基础上又向前迈出了一步，将反向推力和前进推力整合到单个发动机中。为了部署 SC-15，Scin 必须围绕推进器设计最大的船只，而不是稍后安装。在与 Gegno Vi 的前向重型战舰交战时，逆转能力尤其重要。`
+
+# Weapons:
+
+outfit "Irate Cannon"
+	category "Guns"
+	series "Guns"
+	index 06010
+	licenses
+		"Gegno Civilian"
+		"Vi Evocati"
+	cost 12000
+	thumbnail "outfit/irate cannon"
+	"mass" 12
+	"outfit space" -12
+	"weapon capacity" -12
+	"gun ports" -1
+	weapon
+		sprite "projectile/irate"
+		sound "irate"
+		"fire effect" "irate fire"
+		"live effect" "irate smoke" 12
+		"hit effect" "tiny explosion"
+		"inaccuracy" 2
+		"velocity" 22
+		"lifetime" 15
+		"reload" 20
+		"firing energy" 1
+		"firing heat" 9
+		"shield damage" 6
+		"hull damage" 16
+		"hit force" 60
+	description `愤怒加农炮是一种基本的加农炮技术，可以发射由浓缩废金属制成的爆炸性射弹，使其能够有效对抗装甲。它们的射击速度相当快，但仅靠一门大炮几乎不足以造成任何有意义的伤害，这就是为什么它们经常被发现聚集在一起。`
+
+
+outfit "Irate Cannon Turret"
+	category "Turrets"
+	series "Turrets"
+	index 06010
+	licenses
+		"Gegno Civilian"
+		"Vi Evocati"
+	cost 30000
+	thumbnail "outfit/irate turret"
+	"mass" 28
+	"outfit space" -28
+	"weapon capacity" -28
+	"turret mounts" -1
+	"required crew" 2
+	weapon
+		sprite "projectile/irate"
+		"hardpoint sprite" "hardpoint/irate"
+		"hardpoint offset" -0.8 12
+		sound "irate"
+		"fire effect" "irate fire"
+		"live effect" "irate smoke" 12
+		"hit effect" "tiny explosion"
+		"inaccuracy" 2
+		"turret turn" 3.6
+		"velocity" 22
+		"lifetime" 15
+		"reload" 10
+		"firing energy" 1
+		"firing heat" 9
+		"shield damage" 6
+		"hull damage" 16
+		"hit force" 60
+	description `虽然 Irate Cannon 炮塔最初几乎没有什么用处，因为 Vi 舰艇有足够的空间在炮塔座上放置更大口径的武器，但随着 Vi 制造武器空间更有限的小型舰船，这种炮塔变得更受欢迎。为了弥补单门火炮原始火力的不足，炮塔在旋转平台上安装了两门火炮，将单门火炮的射速提高了一倍。`
+
+effect "irate fire"
+	sprite "effect/irfire"
+		"frame rate" 40
+		"no repeat"
+	"lifetime" 5
+	
+effect "irate smoke"
+	sprite "effect/smoke"
+		"scale" 0.1
+		"no repeat"
+		"frame rate" 20
+	"lifetime" 2
+	"random spin" 6
+	"random angle" 360
+	"random velocity" 1
+	"velocity scale" 0.4
+
+
+outfit "Choleric Cannon"
+	category "Guns"
+	series "Guns"
+	index 06020
+	licenses
+		"Gegno Civilian"
+		"Vi Evocati"
+		"Vi Centurion"
+	cost 45000
+	thumbnail "outfit/choleric cannon"
+	"mass" 37
+	"outfit space" -37
+	"weapon capacity" -37
+	"gun ports" -1
+	weapon
+		sprite "projectile/choleric"
+		sound "choleric"
+		"fire effect" "choleric fire"
+		"live effect" "choleric smoke" 24
+		"hit effect" "small explosion"
+		"inaccuracy" 2
+		"velocity" 11
+		"lifetime" 55
+		"reload" 100
+		"firing energy" 65
+		"firing heat" 222
+		"shield damage" 106
+		"hull damage" 311
+		"hit force" 270
+	description `胆汁大炮的口径比愤怒大炮更高，可发射更大、更慢的子弹，对船体造成明显的损害。然而，由于大炮的性质，它与其他盖格诺武器一样，对于任何类型的防护都非常无效。`
+
+
+outfit "Choleric Cannon Turret"
+	category "Turrets"
+	series "Turrets"
+	index 06020
+	licenses
+		"Gegno Civilian"
+		"Vi Evocati"
+		"Vi Centurion"
+	cost 112500
+	thumbnail "outfit/choleric turret"
+	"mass" 42
+	"outfit space" -42
+	"weapon capacity" -42
+	"turret mounts" -1
+	"required crew" 2
+	weapon
+		sprite "projectile/choleric"
+		"hardpoint sprite" "hardpoint/choleric"
+		"hardpoint offset" 15
+		sound "choleric"
+		"fire effect" "choleric fire"
+		"live effect" "choleric smoke" 24
+		"hit effect" "small explosion"
+		"inaccuracy" 2
+		"turret turn" 2.2
+		"velocity" 9
+		"lifetime" 55
+		"reload" 80
+		"firing energy" 65
+		"firing heat" 222
+		"shield damage" 106
+		"hull damage" 311
+		"hit force" 270
+	description `安装在炮塔上的胆汁炮更具毁灭性，无需将目标保持在船前即可进行射击。它可以持续对目标的船体造成伤害，并且拥有多个炮塔，任何无防护罩的船只在受到足够大的轰炸后都被迫撤退，以免被摧毁。`
+	
+effect "choleric fire"
+	sprite "effect/chfire"
+		"frame rate" 25
+		"no repeat"
+	"lifetime" 7
+
+effect "choleric smoke"
+	sprite "effect/smoke"
+		"scale" 0.1
+		"no repeat"
+		"frame rate" 18
+	"lifetime" 16
+	"random spin" 6
+	"random angle" 360
+	"random velocity" 0.5
+	"velocity scale" 0.4
+	
+
+outfit "Ballistic Cannon"
+	category "Guns"
+	series "Guns"
+	index 06030
+	licenses
+		"Gegno Civilian"
+		"Vi Evocati"
+		"Vi Centurion"
+		"Vi Lord"
+	cost 128000
+	thumbnail "outfit/ballistic cannon"
+	"mass" 96
+	"outfit space" -96
+	"weapon capacity" -96
+	"gun ports" -1
+	weapon
+		sprite "projectile/ballistic"
+		sound "ballistic"
+		"fire effect" "ballistic fire"
+		"live effect" "ballistic smoke" 36
+		"hit effect" "ballistic hit"
+		"inaccuracy" 3
+		"velocity" 8
+		"lifetime" 100
+		"reload" 120
+		"firing energy" 252
+		"firing heat" 566
+		"shield damage" 181
+		"hull damage" 970
+		"hit force" 540
+		"stream"
+		"missile strength" 18
+	description `杰格诺 Vi 弹道炮超越其姊妹炮，成为杰格诺领域中口径最高的武器。每发炮弹都能对目标暴露的船体造成巨大伤害。由于这些大炮的尺寸和威力，它们的炮弹的装填时间和行进速度都很慢。因此，它们通常可以被更快或更小的飞行器躲避，但如果能够大量装备，它们可以形成致命的火墙。`
+
+
+outfit "Ballistic Cannon Turret"
+	category "Turrets"
+	series "Turrets"
+	index 06030
+	licenses
+		"Gegno Civilian"
+		"Vi Evocati"
+		"Vi Centurion"
+		"Vi Lord"
+	cost 320000
+	thumbnail "outfit/ballistic turret"
+	"mass" 120
+	"outfit space" -120
+	"weapon capacity" -120
+	"turret mounts" -1
+	"required crew" 3
+	weapon
+		sprite "projectile/ballistic"
+		"hardpoint sprite" "hardpoint/ballistic"
+		"hardpoint offset" 10
+		sound "ballistic"
+		"fire effect" "ballistic fire"
+		"live effect" "ballistic smoke" 36
+		"hit effect" "ballistic hit"
+		"inaccuracy" 3
+		"turret turn" 0.4
+		"velocity" 8
+		"lifetime" 100
+		"reload" 100
+		"firing energy" 328
+		"firing heat" 537
+		"shield damage" 181
+		"hull damage" 970
+		"hit force" 540
+		"missile strength" 18
+	description `作为 Gegno Vi 军械库中最大口径的火炮，弹道炮需要大量的工作才能安装在即使是最大的船上。要想将其中一门大炮安装在炮塔上，就需要一个巨大的、带有自己的通风口的自我维持底座，前提是有船员来操作它。弹道炮塔将破坏力与可调瞄准相结合，是 Vi 战舰中最致命的武器。`
+
+effect "ballistic fire"
+	sprite "effect/balfire"
+		"frame rate" 15
+		"no repeat"
+	"lifetime" 25
+
+effect "ballistic hit"
+	sprite "effect/explosion/medium"
+		"frame rate" 15
+		"no repeat"
+	sound "explosion huge"
+	"lifetime" 36
+	"random angle" 360
+	"random frame rate" 5
+	"random velocity" 1
+	"random spin" 5
+	"velocity scale" 0.4
+	
+effect "ballistic smoke"
+	sprite "effect/smoke"
+		"scale" 0.1
+		"no repeat"
+		"frame rate" 10
+	"lifetime" 30
+	"random spin" 6
+	"random angle" 360
+	"random velocity" 0.5
+	"velocity scale" 0.01
+
+outfit "Astuit Battery"
+	category "Turrets"
+	series "Turrets"
+	index 06040
+	licenses
+		"Gegno Civilian"
+		"Scin Adjutant"
+	cost 42000
+	thumbnail "outfit/astuit"
+	"mass" 28
+	"outfit space" -28
+	"weapon capacity" -28
+	"turret mounts" -1
+	weapon
+		sprite "projectile/astuit"
+		"hardpoint sprite" "hardpoint/astuit"
+		"hardpoint offset" 8
+		sound "astuit"
+		"hit effect" "astuit hit"
+		"inaccuracy" 5
+		"turret turn" 2.6
+		"velocity" 8
+		"lifetime" 44
+		"reload" 6
+		"firing energy" 10
+		"firing heat" 25.5
+		"shield damage" 8.8
+		"hull damage" 9.4
+	description "Gegno Scin 是第一个将等离子技术发展到可用于战斗的 Gegno，尽管这种技术的能量需求仍然很大。阿斯图伊特电池的工作原理与人类能量冲击波非常相似，以高射速发射小型凝聚等离子体射弹。炮塔上安装有四枚 Astuit Blaster，它会产生持续不断的伤害，并且随着时间的推移，伤害会不断增加，尽管每个射弹都会造成轻微伤害。"
+
+effect "astuit hit"
+	sprite "effect/ast hit"
+		"no repeat"
+		"frame rate" 30
+	"lifetime" 6
+	"velocity scale" .001
+
+
+outfit "Acuit Artillery"
+	plural "Acuit Artillery"
+	category "Turrets"
+	series "Turrets"
+	index 06050
+	licenses
+		"Gegno Civilian"
+		"Scin Hoplologist"
+	cost 244000
+	thumbnail "outfit/acuit"
+	"mass" 81
+	"outfit space" -81
+	"weapon capacity" -81
+	"turret mounts" -1
+	"required crew" 1
+	weapon
+		sprite "projectile/acuit"
+			"random start frame"
+		"hardpoint sprite" "hardpoint/acuit"
+		"hardpoint offset" 14
+		"hit effect" "acuit hit"
+		sound "acuit"
+		"inaccuracy" 3
+		"turret turn" 1
+		"velocity" 18
+		"lifetime" 60
+		"reload" 60
+		"firing energy" 195
+		"firing heat" 306
+		"shield damage" 195
+		"hull damage" 332
+		"hit force" 60
+	description `随着对等离子和能量武器的更好掌握，Gegno Scin 开发了一种更大的爆能武器，安装在长石载体上，作为对抗 Gegno Vi 的巨大火炮武器。 Acuit 炮塔的射程超过了 Gegno 空间中的大多数武器，同时也具有更高的射速，使它们成为非常有效的轰炸武器。`
+
+effect "acuit hit"
+	sprite "effect/acuit hit"
+		"frame rate" 18
+		"no repeat"
+	"lifetime" 18
+	"velocity scale" -0.004
+
+
+outfit "Acumen Bolt Cannon"
+	category "Guns"
+	series "Guns"
+	index 06040
+	licenses
+		"Gegno Civilian"
+		"Scin Hoplologist"
+	cost 58000
+	thumbnail "outfit/acumen"
+	"mass" 15
+	"outfit space" -33
+	"weapon capacity" -33
+	"gun ports" -1
+	weapon
+		sprite "projectile/neutron bolt"
+			"scale" 0.5
+		"hit effect" "neutron explosion"
+		sound "neutron bolt"
+		"inaccuracy" 9
+		"velocity" 5
+		"lifetime" 62
+		"reload" 20
+		"turn" 4
+		"firing energy" 26
+		"firing heat" 66
+		"shield damage" 46
+		"hull damage" 60
+		"hit force" 129
+	description `为了进一步推进他们在能源武器方面的研究，Gegno Scin 最近设计了 Acumen Bolt Cannon——一种概念验证的中子炮，可以发射危险的等离子球，能够对装甲和护盾造成相当大的伤害。`
+	description `虽然 Acumen 等离子箭比 Astuit 爆能炮弹威力更大，但更难准确发射，行进速度更慢，并且需要更多能量来发射。`
+
+effect "neutron explosion"
+	sprite "effect/explosion/neutron"
+		"no repeat"
+		"frame rate" 15
+	sound "explosion tiny"
+	"lifetime" 20
+	"random angle" 360
+	"random frame rate" 5
+	"random spin" 1
+	"random velocity" .2
+	"velocity scale" .4
+
+
+outfit "Guile Pulse Laser"
+	category "Guns"
+	series "Guns"
+	index 06050
+	licenses
+		"Gegno Civilian"
+		"Scin Hoplologist"
+	cost 31000
+	"thumbnail" "outfit/guile pulse laser"
+	"mass" 15
+	"outfit space" -15
+	"weapon capacity" -15
+	"gun ports" -1
+	weapon
+		"sprite" "projectile/guile pulse laser"
+			"frame rate" 6
+		sound "guile pulse"
+		"hit effect" "heavy laser impact"
+		"inaccuracy" 0.2
+		"velocity" 150
+		"lifetime" 1
+		"reload" 6
+		"burst count" 3
+		"burst reload" 1
+		"firing energy" 8.2
+		"firing heat" 6.7
+		"shield damage" 12.4
+		"hull damage" 20.2
+		"cluster"
+	description `Guile 脉冲激光器是 Scin 等离子武器技术的最新实验进展。这种武器发射的不是快速发射的等离子弹，而是仅持续短暂的集中能量脉冲。每一次爆炸几乎都会在瞬间对目标船造成强大的打击，而狡猾激光的持续火力对缓慢移动的目标非常有效。`
+	description `Guile 脉冲激光器有明显的缺点，因为它们会快速消耗能量并在每次发射时产生显着的热量。与光束型武器不同，它们无法持续输出，并且射程相当短。`
+
+
+outfit "Excavator"
+	category "Guns"
+	series "Guns"
+	index 06060
+	licenses
+		"Gegno Civilian"
+	cost 500000
+	"thumbnail" "outfit/excavator"
+	"mass" 42
+	"outfit space" -42
+	"weapon capacity" -42
+	"gun ports" -1
+	"drill port" -1
+	"drill lock" 1
+	weapon
+		sound "excavator"
+		"hit effect" "excavate"
+		"inaccuracy" 90
+		"velocity" 20
+		"lifetime" 1
+		"reload" 1
+		"range override" 50
+		"firing energy" 4
+		"firing heat" 72
+		"shield damage" 6
+		"hull damage" 14
+		"minable damage" 104
+		"prospecting" 145
+		"hit force" -6
+	description `挖掘机是由 Gegno 设计的大型钻机，可以有效地从小行星上挖出材料。这些类型的钻井系统仅出现在专门为其设计的船舶上，因为它们需要大量基础设施才能发挥作用。`
+
+effect "excavate"
+	sprite "effect/smoke"
+		"no repeat"
+	sound "explosion tiny"
+	"lifetime" 20
+	"random angle" 360
+	"random frame rate" 5
+	"random spin" 2
+	"random velocity" 0.4
+	"velocity scale" -0.01
+
+
+outfit "Burrower"
+	category "Guns"
+	series "Guns"
+	index 06070
+	licenses
+		"Gegno Civilian"
+		"Gegno Driller"
+	cost 326000
+	"thumbnail" "outfit/burrower"
+	"mass" 32
+	"outfit space" -28
+	"weapon capacity" -28
+	"gun ports" -1
+	"drill spar" -1
+	weapon
+		sound "drill"
+		"hardpoint sprite" "hardpoint/burrower"
+		"hardpoint offset" 14
+		"hit effect" "burrow"
+		"inaccuracy" 0.4
+		"velocity" 30
+		"lifetime" 1
+		"reload" 1
+		"range override" 56
+		"velocity override" 22
+		"firing energy" 1.8
+		"firing heat" 24
+		"shield damage" .4
+		"hull damage" 6
+		"minable damage" 3
+		"prospecting" 10.5
+		"hit force" 6
+	description `与较大的挖掘机钻系统相比，掘进机更长、更薄、更精确，尽管它们的威力远不及大型挖掘机钻系统。挖掘者可以更仔细地开采小行星，并在此过程中保留更多材料。这些钻机不是围绕基础系统建造宇宙飞船，而是更加紧凑，并且安装在自持式钻杆上，从而减少了所需的内部空间和机械。`
+	description `除了枪口之外，该采矿设备还需要钻杆口才能安装。`
+
+effect "burrow"
+	sprite "effect/smoke"
+		"no repeat"
+		"scale" 0.25
+	sound "explosion tiny"
+	"lifetime" 12
+	"random angle" 360
+	"random frame rate" 5
+	"random spin" 2
+	"random velocity" 0.5
+	"velocity scale" -0.01
+
+
+outfit "Ion Torch"
+	category "Guns"
+	series "Guns"
+	index 06080
+	licenses
+		"Gegno Civilian"
+		"Gegno Driller"
+	cost 410000
+	"thumbnail" "outfit/ion torch"
+	"mass" 36
+	"outfit space" -32
+	"weapon capacity" -32
+	"gun ports" -1
+	"drill spar" -1
+	"reverse thrust" 6.9
+	"reverse thrusting energy" 0.4
+	"reverse thrusting heat" 0.9
+	weapon
+		"sprite" "projectile/torch"
+			"frame rate" 15
+			"scale" 0.75
+		"inaccuracy" 0.4
+		"velocity" 50
+		"lifetime" 1
+		sound "ion torch"
+		"hardpoint sprite" "hardpoint/ion torch"
+		"hardpoint offset" 10
+		"hit effect" "burning spark"
+		"reload" 1
+		"range override" 74
+		"velocity override" 12
+		"firing energy" 2.3
+		"firing heat" 46.2
+		"shield damage" 1.2
+		"hull damage" 1
+		"heat damage" 90
+		"minable damage" 6
+	description `离子火炬基于 RG 系列火炬发动机，是一种独特类型的实用采矿武器，可将原本具有爆炸性的废气集中成更薄、更强大的耀斑。更受控制的火焰类似于加热的刀片，可以更精确地处理。与积极研磨小行星的挖掘机相反，离子炬可以更准确、更安全地从小行星上清除材料。此外，耀斑可以调低以用作临时反向推进器。`
+	description `除了枪口之外，该采矿设备还需要钻杆口才能安装。`
+
+
+outfit "Savagery Bludgeon"
+	category "Guns"
+	series "Guns"
+	index 06090
+	cost 10000
+	licenses
+		"Vi Evocati"
+	thumbnail "outfit/unknown"
+	"mass" 10
+	"outfit space" -10
+	"weapon capacity" -10
+	"gun ports" -1
+	"unplunderable" 1
+	weapon
+		"hit effect" "bludgeon impact"
+		"inaccuracy" 360
+		"velocity" 30
+		"lifetime" 1
+		"reload" 40
+		"shield damage" 8
+		"hull damage" 40
+		"hit force" 750
+	description `野蛮大棒是一种类似狼牙棒的武器，被发现卡在杰格诺·维的杜尼特决斗者船上。它们在决斗期间被用作近战公羊和格斗的近战武器。然而，除此之外，它们几乎没有任何用途，因为它们只会划伤较大的船体，几乎不会对任何屏蔽的东西造成凹痕。`
+	
+effect "bludgeon impact"
+	sound "bludgeon impact"
+
+
+
+# Hand to Hand Weapons
+
+outfit "Savagery Pike"
+	category "Hand to Hand"
+	series "H2H"
+	index 06010
+	licenses
+		"Vi Evocati"
+		"Vi Centurion"
+	cost 13000
+	thumbnail "outfit/savagery pike"
+	"capture attack" .9
+	"capture defense" .9
+	"unplunderable" 1
+	description `这是维族战士正式入伍时赠送给他们的一种类似长矛的仪式武器。前端有几根又长又锋利的长矛，可以轻松刺穿敌人，后端是一门内置大炮，最多可以发射两发爆炸弹。维族很少使用炮弹，除非他们认为绝对有必要击败敌人或应对意外的外部因素。`
+
+outfit "Irate Carronade"
+	category "Hand to Hand"
+	series "Fortifications"
+	index 06010
+	licenses
+		"Vi Centurion"
+	cost 39000
+	thumbnail "outfit/irate carronade"
+	"mass" 3
+	"outfit space" -3
+	"capture defense" 3.7
+	"unplunderable" 1
+	description `将舰对舰火炮小型化并随意将其推入小型临时路障中并不是安装登船防御系统的最安全方法。尽管如此，大型盖格诺战舰的硬装甲船体仍具有足够的弹性来部署愤怒的短炮。任何人或任何东西，在不知不觉中接近安装了该设备的走廊时，都可能会成为附近墙壁上的新油漆层。`
+	
+outfit "Plasmasickle"
+	category "Hand to Hand"
+	series "H2H"
+	index 06020
+	licenses
+		"Scin Hoplologist"
+	cost 11000
+	thumbnail "outfit/plasmasickle"
+	"capture attack" .7
+	"capture defense" .6
+	"unplunderable" 1
+	description `等离子镰刀是专门用于近距离战斗的武器。结合了 Scin 最近开发的等离子技术，刀片被加热到高温，使其能够切割坚硬的目标。只有精选的 Scin 船员小组配备了这些设备，但他们经过良好的培训，能够有效地使用它们。`
+
+outfit "Plasma Grenades"
+	plural "Plasma Grenades"
+	category "Hand to Hand"
+	series "H2H"
+	index 06030
+	licenses
+		"Scin Hoplologist"
+	cost 60000
+	thumbnail "outfit/plasma grenades"
+	"capture attack" 1.9
+	"capture defense" 1.2
+	"unplunderable" 1
+	description `随着更多基于等离子体的武器的发展，Scin 发明了他们自己类型的手榴弹，利用等离子体产生强大的爆炸。它们能够有效地清除大群敌人，并且比不可预测的破片手榴弹的危险性更小，这使得它们在防御用途上更加可靠。这些手榴弹保存在奇怪的磁性存储设备中，以防止它们意外爆炸 - 除了极少数情况。`
+	
+
+
+# Special Outfits
+
+outfit "Gegno Civilian License"
+	category "Licenses"
+	series "Licenses"
+	index 06010
+	thumbnail "outfit/unknown"
+	description "你已被接受为名义上的杰格诺公民，为杰格诺种族提供福利，并被授予使用他们的民用技术的权利。"
+
+outfit "Gegno Driller License"
+	category "Licenses"
+	series "Licenses"
+	index 06020
+	thumbnail "outfit/unknown"
+	description "Gegno 现在认可您的足智多谋和能力，能够提供超出可接受的工作成果。您已被授予使用他们的采矿技术的权利。"
+
+outfit "Vi Lord License"
+	category "Licenses"
+	series "Licenses"
+	index 06050
+	thumbnail "outfit/unknown"
+	description "Vi 军事高层的大多数人都将你视为可敬的敌人和实现他们野心的无价资产。维护最大的 Vi 船只的责任现在就在您的掌握之中。"
+	
+outfit "Vi Centurion License"
+	category "Licenses"
+	series "Licenses"
+	index 06040
+	thumbnail "outfit/unknown"
+	description "在Vi的Evocati中，你已经证明了自己是战斗中强大的领导者和成功的判断力运用者。您有兴趣即可使用 Vi 的部分军事武库。"
+
+outfit "Vi Evocati License"
+	category "Licenses"
+	series "Licenses"
+	index 06030
+	thumbnail "outfit/unknown"
+	description "杰格诺·维人承认你是一名忠诚于他们事业的战士，并看到了你的用处。低级 Vi 技术现在可供您休闲使用。"
+
+outfit "Scin Hoplologist License"
+	category "Licenses"
+	series "Licenses"
+	index 06070
+	thumbnail "outfit/unknown"
+	description "在 Gegno Scin 眼中，你的智力是最令人向往的，而你的奖励就是使用先进的 Scin 武器。"
+
+outfit "Scin Architect License"
+	category "Licenses"
+	series "Licenses"
+	index 06080
+	thumbnail "outfit/unknown"
+	description "为了表明你对 Scin 的建设性努力有利，你现在被允许操作他们最先进的船只。"
+
+outfit "Scin Adjutant License"
+	category "Licenses"
+	series "Licenses"
+	index 06060
+	thumbnail "outfit/unknown"
+	description "你所做出的富有成效的行为提高了Gegno Scin的利益，他们授权你购买他们最基本的技术。"

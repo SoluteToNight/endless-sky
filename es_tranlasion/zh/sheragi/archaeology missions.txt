@@ -1,0 +1,1719 @@
+# Copyright (c) 2014 by Michael Zahniser
+# Copyright (c) 2020 by @Karirawri
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program. If not, see <https://www.gnu.org/licenses/>.
+
+mission "Deep Archaeology 1"
+	name "深层考古学"
+	description "让这位考古学家在 <destination> 下车，然后前往深渊中的米德加德收集一些样本。"
+	minor
+	source
+		attributes "paradise" "north" "near earth"
+		near Miaplacidus 1 20
+	destination Vinci
+	to offer
+		random < 15
+		"combat rating" > 15
+	passengers 1
+	
+	on offer
+		conversation
+			`当你穿过太空港时，一个穿着昂贵西装的男人向你走来。 “请原谅，船长，”他说。 “我想知道你是否愿意私下谈论一个非常有利可图的工作机会。”`
+			choice
+				`“这是违法的事情吗？”`
+				`“当然，我们回到我的船上谈谈吧。”`
+					goto ship
+			`“并不违法，”他说，“但它可以帮助揭露一个具有巨大影响的秘密。一个某些人不想知道的秘密。”`
+			`“好吧，”你说，“让我们回到我的船上，我会听你说完。”`
+			label ship
+			`你带他回到你的船上。 “我是一名考古学家，”他解释道，“研究太空时代的早期历史。特别是一系列关于与外星物种接触的持久民间故事。其中许多故事都与我们称为深渊的银河区域有关。我需要有人前往米德加德，从那里的古代遗址取回一些样本。”`
+			choice
+				`“你为什么不能亲自去那里？”`
+				`“什么样的样本？这会给我带来麻烦吗？”`
+					goto samples
+			`“好吧，这么说吧，我让自己在深处变得有些不受欢迎了，”他说。 “问太多问题了。如果有人看到我在米德加德走来走去，他们可能会要求我立即离开。”`
+			`你说：“那么，你要求我做的工作会让我同样不受欢迎吗？”`
+			label samples
+			`“如果你很谨慎，就不会，”他说。 “我需要来自某个村庄的两个样本。一个很简单：来自一棵活树或最近死亡的树的木材。任何树都可以。”`
+			`他停顿了一分钟，然后继续。 “另一个更……敏感。米德加德有一个历史遗址，一座古老的教堂。请注意，他们在官方旅游指南上没有发布任何内容。我需要建造教堂的木材的一小部分样本。一小块碎片就足够了。”`
+			choice
+				`“当然，如果这符合科学的利益，我可以这么做。”`
+					goto yes
+				`“你要我破坏历史遗迹？”`
+			`“我只需要最微小的样本，”他说，“也许是一块已经剥落的木头碎片，或者来自木材磨损和开裂的地方。我们从该样本中发现的东西可能非常重要。”`
+			choice
+				`“抱歉，这对我来说听起来有点太阴暗了。”`
+					decline
+				`“好吧，我愿意这么做。”`
+			label yes
+			`“谢谢你，”他说。 “相信我，这可以给我们一些非常重要的信息。我需要你先把我送到芬奇号，去见一些科学家。一旦你拿到了样本，我们就可以在芬奇号上见面。”`
+				accept
+	on visit
+		dialog `您降落在 <planet> 上，但意识到携带考古学家的护卫尚未进入系统。最好离开并等待。`
+
+
+
+mission "Deep Archaeology 2"
+	landing
+	name "深层考古学"
+	description "前往<destination>，从一座古老的教堂和附近生长的树木中采集木纤维样本。"
+	source Vinci
+	destination Midgard
+	to offer
+		has "Deep Archaeology 1: done"
+	
+	on offer
+		conversation
+			`您在 <origin> 送考古学家（他还没有告诉您他的名字）。 “记住，”他说，“我只需要一小块碎片。只要确保它确实来自大楼，而不是最近的东西。”`
+				accept
+
+
+
+mission "Deep Archaeology 3"
+	landing
+	name "深层考古学"
+	description "带着您从 <origin> 教堂取回的木材样本返回 <destination>。"
+	source Midgard
+	destination Vinci
+	to offer
+		has "Deep Archaeology 2: done"
+	
+	on offer
+		conversation
+			`按照考古学家给您的地图，您前往 <origin> 的山中小村庄，口袋里装着两个装有样品的信封。当你接近教堂时，你从路边的一棵树上折下一根枯树枝，将其放入第一个信封中，然后将其装进口袋。收集了一份样本，还有一份待处理。`
+			`教堂本身与您以前见过的任何建筑都不一样，显然非常古老，由粗糙的木材建造，古老且饱经风霜。令人惊讶的是，前门开着，你可以听到里面传来音乐声。`
+			choice
+				`（走进教堂。）`
+					goto inside
+				`（从外部取样。）`
+				`（在我遇到麻烦之前放弃这个任务并离开。）`
+					decline
+			`你在建筑物的外面走来走去，直到发现一个角落，木头最近被磨损，有几根毛发松散地垂下来。你小心翼翼地把碎片捡起来，放进第二个信封里。然后，您返回您的船。尽管没有人跟踪你，但你无法摆脱被监视的感觉。`
+				accept
+			label inside
+			`这座教堂仍然必须用于举行仪式：前面点燃了蜡烛，一个穿着白色法衣的男人正在演奏风琴。长椅上坐着几个人，低着头。你尽量不引人注目，加入了他们，环顾四周雕刻华丽的柱子和木板。这里的空气里弥漫着焚香和发霉的木头的味道。`
+			choice
+				`（取样。）`
+				`（放弃这个任务，然后离开。）`
+					decline
+			`你假装在祈祷，跪在地上，拿起你的小刀，从你面前的长凳底角上刮掉最细小的一条。它在长凳的深色风化木材上留下了一个白色的小疤痕。你把样本装进口袋，再等几分钟，然后离开并走回太空港。虽然没有人跟踪你，但你无法摆脱被监视的感觉。`
+				accept
+	
+	npc
+		personality waiting
+		government "Deep Security"
+		ship "Raven (Afterburner)" "D.S.S. Wyrd"
+		on kill
+			set "dps wyrd dead"
+	
+	npc
+		personality waiting
+		system "Aspidiske"
+		government "Deep Security"
+		ship "Raven (Afterburner)" "D.S.S. Skuld"
+		on kill
+			set "dps skuld dead"
+	
+	npc
+		personality waiting
+		system "Gomeisa"
+		government "Deep Security"
+		ship "Raven (Afterburner)" "D.S.S. Verthandi"
+		on kill
+			set "dps verthandi dead"
+	
+	on complete
+		payment 200000
+		log `Agreed to take a piece of wood from a church on Midgard for an archaeologist. Carbon dating suggests that the church was built many centuries before the discovery of the hyperdrive.`
+		conversation
+			`你回到实验室，在那里你放下了匿名考古学家。您到达后不久，他就出现并热切地收集了两个样品，并为您的麻烦支付了 <payment> 的费用。 “但是，”他说，“请坚持足够长的时间来了解结果。”他把两个信封递给实验室技术人员，然后说：“给你，约翰，看一下，让我们知道你发现了什么。”`
+			`实验室技术人员离开后，他解释道，“你看，碳 12 和碳 14 的比例因世界而异，因此只有在有对照样本进行比较的情况下才能进行准确的年代测定。只有少数考古研究在深海进行过，而且这些研究都很草率 - 他们使用地球碳比例的标准表而不是确定当地的浓度。”`
+			choice
+				`（等等看看结果如何。）`
+			`大约三十分钟后，约翰再次出现，看上去有些震惊。 “你从哪里得到这些样本的？”他问道。`
+			`“没关系，”考古学家说。 “你的结果是什么？”`
+			`“第二个样品注入了某种油或焦油，”他说。 “清漆。因此它来自家具或建筑物。人造物品。对照样品的同位素比例与地球不同，所以除非你和我玩游戏，否则这些样品不是来自地球。”`
+			`“继续，”考古学家说。`
+			`“然而，”实验室技术人员说，“再次假设这两个样本来自同一个星球，第二个样本的年龄在一千五百到两千五百年之间。这意味着它比超光速引擎的发现至少早了五个世纪。所以我再问你一次，你从哪里得到这些样本的？”他的声音提高了。`
+			`“很有趣，不是吗？”考古学家说。 “<last> 队长，如果您想帮助我们查清真相，请确保您有足够的空间和一些设备，并在太空港与我们会合。”`
+
+
+
+mission "Deep Archaeology 4"
+	name "深层考古学"
+	description "带着一些用于地下测绘的专用设备返回<destination>。"
+	source Vinci
+	destination Midgard
+	to offer
+		has "Deep Archaeology 3: done"
+	cargo "mapping equipment" 4
+	passengers 2
+	
+	on offer
+		log "People" "Albert Foster" `An archaeologist who is famous for using dubious methods: he has been banned from Quarg space for trying to collect an alloy sample from their ringworld, and is rumored to have also been involved in a scheme involving dinosaur fossils and an illegal genetic resequencer. He is currently based on Vinci, on the edge of the Paradise sector.`
+		conversation
+			`你在一个太空港酒吧里找到了实验室技术人员约翰，旁边还有一位考古学家，他说：“我想我应该自我介绍一下。阿尔伯特·福斯特。你可能听说过我。”事实上，你已经看到了：大约十年前，他因试图从夸格空间收集合金样本失败而被赶出夸格空间而成为头条新闻。`
+			`“我们购买了一些用于重力场测绘的设备，”他说，“除了非常灵敏的雷达阵列之外。我们希望绘制教堂周围区域的地图，看看是否有任何古代定居点的迹象。你愿意帮助我们吗？”`
+			choice
+				`“当然，我很乐意帮助解开这个谜团。”`
+				`“抱歉，我不能。我担心我们会让深渊里的人生气。”`
+					decline
+			`“太棒了，”艾伯特说。 “我们只需要飞越 <planet> ，看看我们的雷达会发现什么。”`
+				accept
+	on visit
+		dialog `您降落在 <planet> 上，但意识到您的护送人员携带艾伯特、约翰和测绘设备尚未进入系统。最好离开并等待。`
+
+
+
+mission "Deep Archaeology 5"
+	landing
+	name "深层考古学"
+	description "躲避追赶你的船只并返回<destination>。"
+	source Midgard
+	destination Vinci
+	to offer
+		has "Deep Archaeology 4: done"
+	cargo "mapping equipment" 4
+	passengers 2
+	
+	on offer
+		conversation
+			`当 John 校准他的仪器时，您在 <origin> 表面的高空巡航。 “抱歉花了这么长时间，”他说，“重力传感器出现了某种故障，扰乱了我的测量结果。”`
+			`“什么样的故障？”艾伯特问道。`
+			`“只是一个传感器伪影，”他说，“某种回声。不，等等……”他的声音逐渐减弱，开始转动仪器上的旋钮，然后脸色变得非常苍白。`
+			`艾伯特回头看着显示器，但显然不明白他在看什么。 “那是什么？”他问道。`
+			`“这不是传感器故障，”约翰说。 “这是一个人造奇点。”`
+			choice
+				`“某种非法研究？”`
+					goto illegal
+				`“什么？”`
+					goto what
+			label illegal
+			`“不，不违法，”艾伯特说。 “没有必要制定针对它们的法律，原因很简单，没有人知道如何制造它们。那是外星技术，非常先进。”`
+				goto attack
+			label what
+			`“一个微型黑洞，”约翰说。 “一种外星能源。比人类创造的任何东西都要复杂得多。也就是说，除非深海有人找到了对外星技术进行逆向工程的方法。”`
+			label attack
+			`突然，您船上的雷达上闪烁着警告灯。三艘飞船已经从星球表面起飞，正朝你驶来。 “我们离开这里吧，”艾伯特说。 “返回<planet>！”`
+				launch
+	
+	npc
+		personality heroic
+		government "Deep"
+		ship "Raven (Afterburner)" "D.S.S. Wyrd"
+		to despawn
+			has "dps wyrd dead"
+	npc
+		personality heroic
+		government "Deep"
+		ship "Raven (Afterburner)" "D.S.S. Skuld"
+		to despawn
+			has "dps skuld dead"
+	npc
+		personality heroic
+		government "Deep"
+		ship "Raven (Afterburner)" "D.S.S. Verthandi"
+		to despawn
+			has "dps verthandi dead"
+	npc
+		personality heroic
+		government "Deep"
+		ship "Corvette (Speedy)" "D.S.S. Wyrdson"
+		to despawn
+			not "dps wyrd dead"
+	npc
+		personality heroic
+		government "Deep"
+		ship "Corvette (Speedy)" "D.S.S. Skuldson"
+		to despawn
+			not "dps skuld dead"
+	npc
+		personality heroic
+		government "Deep"
+		ship "Corvette (Speedy)" "D.S.S. Verthandison"
+		to despawn
+			not "dps verthandi dead"
+	
+	on visit
+		dialog `您降落在 <planet> 上，但意识到您的护送人员携带艾伯特、约翰和测绘设备尚未进入系统。最好离开并等待。`
+	on complete
+		payment 300000
+		log `Returned to Midgard with Albert Foster, the archaeologist, to map the area around the church. The instruments discovered what looked like an artificial singularity. Got chased away by Deep ships before being able to look closer.`
+		conversation
+			`当您安全降落在 <planet> 的太空港时，您松了一口气。 “好吧，那是怎么回事？”你问。`
+			`“老实说，我不知道，”阿尔伯特说。 “不过，我可以告诉你我的怀疑。历史书实际上并没有说深海第一次有人定居的时间。第一次有记录的深海探险是在24世纪，他们发现了几个已经在该地区建立的人类殖民地，声称可以追溯到太空飞行的黎明。但我认为第一批定居者在那之前很久就被带到了那里。通过外星飞船带到了那里。”`
+			branch pug
+				or
+					has "FWC Pug 2: offered"
+					has "FW Pug 3: offered"
+			choice
+				`“什么目的？”`
+					goto purpose
+				`“什么外星人？夸格人？”`
+					goto aliens
+			label pug
+			choice
+				`“什么目的？”`
+					goto purpose
+				`“你认为那是巴哥犬吗？”`
+					goto surprise
+			label purpose
+			`“我不确定，”他说。 “但我第一次对深海感兴趣是在研究阿尔法战争时。我相信你知道这段历史，人类是如何几乎被我们自己通过基因工程创造出来的精神变态的‘超级’人类所奴役的。当时，深海突然实现了一次不可思议的技术飞跃，使他们能够制造出比阿尔法强大得多的武器和船只，并赢得了对他们的战争。”`
+				goto end
+			label aliens
+			`“深海里有关于‘精灵’的流行民间故事，”艾伯特说。 “瘦弱、苍白、优雅的生物，有着蓝色的血液。”`
+			`约翰皱起眉头。 “血蓝血。那么夸格人就不是了。他们的肺很奇怪，但他们的血液利用血红蛋白来输送氧气，就像我们的一样。”`
+				goto end
+			label surprise
+			`艾伯特和约翰困惑地对视了一秒，然后艾伯特说道：“入侵人类太空的外星人？”`
+			`约翰似乎认真思考了这个问题，然后说道：“这确实是一个有趣的联系。我不知道我们怎么没有想到这一点。从我听到的关于它们的描述来看，它们几乎与深海中关于‘精灵’的民间故事完全吻合。”`
+			`“瘦弱、苍白、出身高贵，是吗？好吧，我想你可能已经想明白了，<last> 船长，”艾伯特回答道。`
+			choice
+				`“那太好了，但这对我们意味着什么？”`
+					goto dangerous
+				`“据我了解，他们已经存在了一段时间，并且提到了过去对深海的干扰。”`
+			`“那么，如果哈巴狗承认过去曾‘干扰’过深海，那么我们就有充分的理由相信它们符合我们目前对这里时间线的了解，”艾伯特回答道。 “不幸的是，我们不能直接询问哈巴狗到底做了什么或什么时候做的，但仅仅知道它们在这里的存在就有助于我们的研究。”`
+				goto final
+			label dangerous
+			`“没有立即发生的事情，”约翰说，“但尽管如此，了解这里事件的时间表至少是有用的。”`
+			`“确实，”阿尔伯特回答道，“仅仅知道他们在这里的存在就有助于我们的研究。”`
+				goto final
+			label end
+			`阿尔伯特继续说道，“我认为，一种未知的外来物种从一开始就参与了深海事件，而且也许今天仍然参与其中。我认为至少一些深海居民都知道这一点。”`
+			label final
+			choice
+				`“那么，我们现在该怎么办？”`
+				`“我们怎样才能找到更多的信息呢？”`
+			`“好吧，”他说，“不幸的是，船长，他们会监视你。我必须寻找其他人来进行下一阶段的研究。但如果我有任何进一步的发现，我会随时通知你。”`
+			`这是你工作的一个令人不满意的结论，还有很多问题没有得到解答。但为了弥补这一点，Albert 向您支付了 <payment> 作为您的服务费用。 “你会再次收到我的消息，”他保证道。`
+
+
+
+ship "Timer Ship"
+	attributes
+		category "Game Mechanics"
+		"heat dissipation" 1
+		"hull" 3
+		"hull repair rate" .001
+		"mass" 100
+		"drag" 5
+		"automaton" 1
+		"thrust" 10
+		"turn" 600
+	outfits
+		"Timer Weapon"
+	gun 0 0
+
+outfit "Timer Weapon"
+	category "Guns"
+	thumbnail "outfit/unknown"
+	"gun ports" -1
+	weapon
+		"velocity" 10
+		"lifetime" 2
+		"reload" 100
+		"blast radius" 10
+		"split range" 200
+		"submunition" "Timer Submunition"
+
+outfit "Timer Submunition"
+	weapon
+		"lifetime" 20
+		"trigger radius" 200
+		"blast radius" 20
+		"hull damage" .15
+		"no damage scaling"
+
+mission "Sad Archie"
+	landing
+	invisible
+	non-blocking
+	to offer
+		has "There Might Be Riots part 3B: done"
+	destination "Zug"
+	
+	timer 7200 3600
+		"activation requirements"
+			system "Ildaria"
+			idle
+			uncloaked
+			peaceful
+		on timeup
+			conversation
+				`当你的飞船漂流穿过伊尔达利亚周围的尘埃云时，你突然想到这一定是《那里可能有骚乱》中的乌尔里希告诉你的“沿着边缘的云星”。想起他的故事，你闭上眼睛，尝试冥想。但相反，你只是睡着了。`
+				scene "scene/eso0"
+				`你梦想着离开这个星系并返回楚格，但当你降落在那里时，一切都不同了：你记忆中的城市消失了，取而代之的是其他具有奇怪建筑的城市，居住着巨大的龙状生物。`
+				`时间在加速，你会看到龙城不断成长和扩张。你会看到一座城市被巨大的熔岩流掩埋，星际飞船像一群苍蝇一样在它周围嗡嗡作响，将人员和货物运送到安全的地方。其他城市都被战争摧毁了，然后龙族突然全部消失了，他们的城市也空了。建筑物倒塌，森林夺回土地。`
+				`然后你醒来，发现自己回到了你的飞船，在伊达利亚星系。诡异的。`
+	
+	on complete
+		log `Experienced a strange vision while drifting in the Ildaria system that looked like the fall of a civilization of dragon-people. The terrain on the planet of Zug looks strikingly similar to this vision.`
+		conversation
+			branch tmbr
+				has "Deep Archaeology 5: done"
+			action
+				set "archaeology after TMBR"
+			label tmbr
+			`当你降落在楚格时，你突发奇想，调出一张行星的地质图，发现你在伊尔达里亚星系中漂流时所梦想的地理位置与真实情况惊人地接近。甚至在你看到熔岩流掩埋一座城市的地方，还露出了一块巨大的玄武岩。不过，你的飞船的传感器无法知道它下面有什么。`
+
+
+
+mission "Rim Archaeology Reminder"
+	landing
+	non-blocking
+	name "福斯特的帮助？"
+	description "前往<destination>，看看阿尔伯特·福斯特能否帮助揭开楚格的谜团。"
+	source
+		not planet "Vinci"
+	destination "Vinci"
+	to offer
+		has "archaeology after TMBR"
+		has "Deep Archaeology 5: done"
+	on offer
+		conversation
+			`当你的飞船停泊在 <origin> 时，你回想起你在伊尔达利亚经历过的外星文明的景象，以及你所看到的地形与楚格的风景有何相似之处。也许阿尔伯特·福斯特可以帮助您进一步调查。`
+				accept
+
+
+
+mission "Rim Archaeology 1"
+	landing
+	name "<planet> 上的考古"
+	description "将著名考古学家阿尔伯特·福斯特带到<destination>，寻找古代外星文明的迹象。"
+	source "Vinci"
+	destination "Zug"
+	passengers 1
+	blocked `You consider telling Albert Foster about your findings on Zug, but realize that you don't have a bunk free to take him there! Return when you have free space.`
+	to offer
+		has "Sad Archie: done"
+		has "Deep Archaeology 5: done"
+		or
+			not "archaeology after TMBR"
+			has "Rim Archaeology Reminder: offered"
+	
+	on offer
+		conversation
+			`这个星球是考古学家阿尔伯特·福斯特的实验室，他派你去执行一项从深海星球收集样本的任务。你想说服他在环星系中寻找古代外星文明的迹象吗？`
+			choice
+				`（当然！）`
+				`（现在不行。）`
+					defer
+			branch recent
+				has "archaeology after TMBR"
+			`福斯特似乎很高兴见到你。 “已经有一段时间了，<first>。最近有什么东西引起了你的注意吗？”`
+				goto interest
+			label recent
+			`福斯特对你的到来感到有些惊讶。 “抱歉，自从我们上次谈话以来，我在深海中还没有取得任何进展。除非你有别的事情要告诉我？”`
+			label interest
+			`你尽力激起他的兴趣，但又不说任何让他认为你疯了的话，但他显然不买账。 “我很抱歉，”他说，“但我不会仅仅因为你有‘预感’就组织一次探险。所以除非你愿意告诉我你的信息来源，否则我不感兴趣。”在你走进他的办公室之前，他将注意力转回到他正在阅读的数据板上。`
+			choice
+				`“我宁愿不说。”`
+				`“我做了一个关于楚格龙人的梦。”`
+					goto dream
+				`“我认为一个心灵感应的外星人对我说话了。”`
+					goto telepath
+			`“那我宁愿不帮你，”他说，头也没从数据板上抬起来。`
+			choice
+				`“我做了一个关于楚格龙人的梦。”`
+				`“我认为一个心灵感应的外星人对我说话了。”`
+					goto telepath
+			label dream
+			`“你有一个梦想，”他说。 “抱歉，不。众所周知，空气学考古学是不可靠的。”从他的语气来看，你认为他是在讽刺。`
+			choice
+				`“我认为一个心灵感应的外星人对我说话了。”`
+					goto telepath
+			label telepath
+			`你以为他会嘲笑你，但他却震惊得把手里的数据板掉了下来。 “执政官？”他说。 “你到底是怎么和其中一个纠缠在一起的？”你给他讲故事，他会专心地听。`
+			`“这是可行的，”他说。 “我们从夸格人那里听到了传言，十万年前，环缘地区曾经存在过一个外星文明。当然，没有任何迹象——他们留下的任何文物都被自然元素摧毁了，或者可能是被故意移除的。但如果一座城市被熔岩包裹着，那么即使在这么长的时间范围内，也能保留它的痕迹。”`
+			`福斯特打了几个电话取消了即将到来的计划，然后带着一大堆地质测量工具出现在你的船上。 “我们去看看吧，”他说。`
+				accept
+	
+	on visit
+		dialog `您降落在 <planet> 上，但意识到您携带阿尔伯特的护卫尚未进入系统。最好离开并等待。`
+	on complete
+		log `Found the archaeologist Albert Foster and told him about the vision of the dragon-people on Zug. Foster suggested that the vision was the doing of an Archon. He discovered a buried city under the lava flows on Zug; perhaps the vision was a real view of the past.`
+		conversation
+			`你将你的船降落在熔岩流上，阿尔伯特·福斯特启动了他的测量设备。 “这将向我展示我们下方不同岩石层的密度剖面，”他说。当他逐渐将仪器调到越来越深的层次时，屏幕上出现了一些不规则的白点。`
+			choice
+				`“那些是什么？”`
+				`（保持安静，让他集中注意力。）`
+					goto scan
+			`“空气袋，”他说，“其中一些充满了地下水。没有什么异常。”`
+			label scan
+			`当扫描到达地表以下约三十米时，视野突然发生变化……`
+			scene "scene/geoscan"
+			`“伟大的燃烧的太阳！”福斯特说。 “下面有东西！三角形的道路。那不是人类城市。”你们俩都盯着显示器看了一分钟，然后福斯特说：“我需要申请一些许可证。如果你愿意帮忙拿一些我们需要的其他东西，一个小时后到太空港来见我。”`
+
+
+
+mission "Rim Archaeology 2A"
+	name "考古设备"
+	description "从 <destination> 获取一些挖掘设备，然后将其返回楚格的挖掘地点。"
+	source "Zug"
+	destination "Crossroads"
+	to offer
+		has "Rim Archaeology 1: done"
+	
+	on offer
+		conversation
+			`当你见到福斯特时，他告诉你，“这会很棘手。我们必须挖掘二十米厚的固体玄武岩板才能到达这些废墟。我们必须快速工作，否则我的竞争对手会听到我们正在做的事情并先发制人。但我们也必须小心翼翼地工作，否则我们会损坏下面的东西。爆破是行不通的。我认为辛迪加的一些露天采矿设备可以完成这项工作，不过，你能从 <planet> 捡起大约二十吨或三十吨的重型机械吗？”`
+			choice
+				`“当然。”`
+					accept
+				`“抱歉，我没时间帮忙了。”`
+			`他似乎难以置信。 “没有时间参与可能是过去百年最伟大的发现之一？如果这就是阻碍你的原因，你也会因为你的服务而得到丰厚的报酬。”`
+			choice
+				`“好的，我去<planet>取你的装备。”`
+					accept
+				`“抱歉，我只是没兴趣。”`
+					decline
+
+
+
+mission "Rim Archaeology 2B"
+	landing
+	name "考古设备"
+	description "将此挖掘设备交付给 <destination> 。"
+	source "Crossroads"
+	destination "Zug"
+	cargo "Excavation equipment" 28
+	to offer
+		has "Rim Archaeology 2A: done"
+	blocked "You do not have enough cargo space to carry the equipment for Albert Foster's archaeological dig. Return here when you have at least 28 tons of space free."
+	
+	on offer
+		conversation
+			`当您到达 <origin> 时，阿尔伯特·福斯特请求的挖掘机已经在太空港等着您。它们是您所见过的最大的陆地车辆：一辆卡车，配有巨大的齿形砂轮，用于切割石头，以及一台前端装载机，用于运走松散的石头。您几乎无法将它们穿过货舱入口。`
+				accept
+	
+	on visit
+		dialog `您降落在 <planet> 上，但意识到携带挖掘设备的护送人员尚未进入系统。最好离开并等待。`
+	on complete
+		payment 300000
+
+
+
+mission "Rim Archaeology 3A"
+	landing
+	name "考古设备"
+	description "从 <destination> 获取一些挖掘设备，然后将其返回楚格的挖掘地点。"
+	source "Zug"
+	destination "Asgard"
+	to offer
+		has "Rim Archaeology 2B: done"
+	
+	on offer
+		conversation
+			`您将挖掘机放在楚格的挖掘现场，并收到三十万信用点的付款。福斯特已经标出了他想要挖掘的位置，并完成了更详细的地质扫描。 “我们将从一条狭窄的沟渠开始，”他告诉你，“然后从那里向外扩展。当然，它需要足够宽，以包括车辆的坡道，所以我们仍然需要移动大量岩石。当我们进入最后五米左右时，我担心研磨机的振动可能会造成太大的破坏性。所以，接下来我需要一些来自 <planet> 的激光挖掘设备。”`
+			`你同意去拿设备，他开始指挥工作人员开始挖掘。`
+				accept
+
+
+
+mission "Rim Archaeology 3B"
+	landing
+	name "考古设备"
+	description `将此挖掘设备交付给 <destination> 。确保登陆时“Oxyrhynchus”号船不在系统中。`
+	source "Asgard"
+	destination "Zug"
+	cargo "Laser excavation equipment" 17
+	to offer
+		has "Rim Archaeology 3A: done"
+	blocked "You do not have enough cargo space to carry the equipment for Albert Foster's archaeological dig. Return here when you have <capacity>."
+	
+	on offer
+		conversation
+			`再次强调，福斯特需要的装备在您着陆时就在等着您。这是一辆载有发电机和末端装有激光炮的铰接臂的卡车。你不禁想象如果它在货舱内发生故障并开始点火会发生什么，但交付它的工程师向你保证它有许多多余的安全装置。`
+			`等待您的还有一条来自 Foster 的加密消息：“您好，<first>。有人告诉我，我的一位竞争对手 Sibyl Greythatch 一直在四处打听，试图找出我的挖掘地点在哪里。她是一名古物窃贼 - 抢劫考古遗址并在黑市上出售文物。我认为我在 <origin> 上购买的设备可能引起了她的注意。如果是这样，她的船 Oxyrhynchus，会跟踪你的，除非你确定你已经摇动了她。”`
+				accept
+	
+	npc evade
+		government "Independent (Killable)"
+		personality waiting
+		ship "Marauder Falcon (Engines)" "Oxyrhynchus"
+	
+	on visit
+		dialog
+			`当您接近楚格时，您在雷达上注意到福斯特警告您的那艘船一直在跟踪您：奥克西林科斯号。你降落在主太空港，以避免将她带到挖掘地点。在交付设备之前，您需要动摇她的追求。`
+	
+	on complete
+		payment 300000
+
+
+
+mission "Rim Archaeology 4A"
+	landing
+	name "运送一名外星生物学家"
+	description "前往夸格站 <destination> 并会见一位异种生物学家，他将帮助解释阿尔伯特·福斯特挖掘现场的发现。"
+	source "Zug"
+	destination "Lagrange"
+	to offer
+		has "Rim Archaeology 3B: done"
+	
+	on offer
+		conversation
+			`当你回到挖掘地时，福斯特的战壕已经有近十米深了。你告诉他你在扫描仪上看到了俄克喜林库斯，但你能够逃避它。 “干得好，”他说。 “现在，我们需要一位外星生物学家来帮助我们理解我们的发现。我的一个朋友，阿米莉亚·李，在过去十年左右的时间里一直生活在夸格环形世界，她同意来参观挖掘，并看看夸格能告诉我们关于这个古老的外星文明的信息。另外，这是你运输激光切割机的费用。”他又给了你三十万积分。`
+			`你同意去接她，然后他回来监督挖掘工作。`
+				accept
+
+
+
+mission "Rim Archaeology 4B"
+	landing
+	name "运送一名外星生物学家"
+	description `将异种生物学家阿米莉亚·李和她的夸格人朋友亚蒂斯运送到楚格的挖掘地点。`
+	source "Lagrange"
+	destination "Zug"
+	passengers 2
+	to offer
+		has "Rim Archaeology 4A: done"
+	blocked "You will need <capacity> to transport the xenobiologist that Albert Foster asked you to fetch. Return here when you have space available."
+	
+	on offer
+		conversation
+			`阿米莉亚·李在太空港与你会面，同行的还有一个夸格人，他比平常矮一点，但仍然足够高，比你高。 “<last>队长？”她说。 “让我介绍一下我的朋友 Yarthis Amorthee Dek-Farsook Nai，”她说。 “亚蒂斯将陪同我们前往现场。”`
+			choice
+				`“没问题，欢迎登机！”`
+					goto welcome
+				`“我们真的需要让夸格人直接参与其中吗？”`
+			`对于不习惯解读他们表情的人类眼睛来说，夸格人几乎总是显得冷酷而严肃。但雅蒂斯显得特别严肃，因为它说：“你正在墓地里挖掘，船长。必须有人在场，确保死者得到应有的尊重。”`
+			label welcome
+			`当他们俩登上你的船时，阿米莉亚热情地与你聊天。 “一个环形世界可以维持超过一万亿的人口，”她说，“所以夸格人需要长名字才能明确地识别自己。”她继续询问有关挖掘进展的问题，使用了如此多的技术术语，有时听起来她在说夸格语言而不是你们自己的语言。显然她对外星社会的研究非常了解，而且你会惊讶地发现她实际上出生在海空间，是第一批定居在那里的人类的孙女。`
+				accept
+	
+	npc
+		government Merchant
+		personality waiting
+		system Dabih
+		ship "Marauder Arrow (Engines)" "Naukratis"
+	
+	on visit
+		dialog `您降落在 <planet> 上，但意识到载有 Amelia 和 Yarthis 的护卫尚未进入系统。最好离开并等待。`
+	on complete
+		payment 200000
+
+
+
+mission "Rim Archaeology 5A"
+	landing
+	name "保卫楚格"
+	description "赶走攻击楚格的海盗，或者至少分散他们的注意力，让援军赶到。"
+	source "Zug"
+	to offer
+		has "Rim Archaeology 4B: done"
+	
+	on offer
+		conversation
+			`当你降落时，福斯特热情地向阿米莉亚打招呼，但似乎对雅西斯在这里也不太热情。挖掘工作已接近目标深度，在沟渠的最深处，他们现在正在用激光切割石块并将其从坑中吊出，而不仅仅是磨碎岩石。 “再次感谢，队长，”他递给你一张价值二十万积分的筹码，说道。`
+			`当福斯特带着你们三人参观挖掘场时，一名工人跑了过来。 “福斯特先生，”他说，“紧急民兵频道上有大量的交通。我认为地球正在受到攻击。”`
+			`福斯特咒骂着，抬头看着天空，仿佛期待着海盗随时俯冲下来，偷走他的珍贵文物。 “<last> 队长，”他说道，“我们必须不惜一切代价阻止这些海盗进入挖掘区，否则他们可能会毁掉无价的信息。你能协助保卫地球吗？”`
+			choice
+				`“当然。”`
+					goto end
+				`“我的船不是军舰。”`
+			`“然后站起来，带领他们绕圈，直到援军到来，”他说。 “我不管你怎么做，只要让上面的人有事就行。”`
+			label end
+			`当你跑向你的船时，你看到亚蒂斯拿出某种通讯设备并对它说话。也许夸格人也会加入这场战斗......`
+				launch
+	
+	npc evade
+		government Pirate
+		personality heroic waiting
+		ship "Marauder Falcon (Weapons)" "Akhetaten"
+		ship "Marauder Splinter (Weapons)" "Itjtawy"
+		ship "Marauder Firebird (Weapons)" "Tanis"
+		ship "Marauder Leviathan (Weapons)" "Buhen"
+		ship "Marauder Manta (Weapons)" "Athribis"
+		ship "Marauder Quicksilver (Weapons)" "Philae"
+		ship "Marauder Raven (Weapons)" "Esna"
+		dialog `最后一批海盗袭击者已被赶走。是时候着陆并检查挖掘是否有任何损坏。`
+	
+	npc
+		government Quarg
+		system "Gamma Corvi"
+		personality heroic
+		ship "Quarg Wardragon" "Gloref Esa Kurayi"
+	
+	on visit
+		dialog
+			`你尝试在挖掘地点附近着陆，但海盗船仍在附近盘旋。在返回查看福斯特之前最好先解决掉他们。`
+	
+	on complete
+		payment 400000
+		event "rim archaeology results" 97
+		log `With the help of a Quarg ship, fought off a group of antique thieves looking to rob the archaeological site that Albert Foster dug up. Foster will need some time to study what he has found and release the results of his findings.`
+		conversation
+			`挖掘现场冒出滚滚浓烟。担心最坏的情况，你着陆后发现其中一名海盗发射的一枚导弹摧毁了工人居住的一间小屋，但幸运的是当时里面没有人。福斯特感到震惊，但仍然致力于完成工作。 “我们还需要几个月的时间才能挖掘出足够多的东西，以便能够公布任何发现，”他说，“但雅蒂斯告诉我，夸格人将在项目的剩余时间内在这里驻扎一艘战龙，以防止任何进一步的谋杀。”福斯特给了你最后一笔报酬：四十万信用点，以奖励你帮助击退海盗。 “当消息公开时，我一定会赞扬你的帮助，”他说。`
+
+
+
+mission "Rim Archaeology 5B"
+	landing
+	invisible
+	non-blocking
+	source Zug
+	to offer
+		has "Rim Archaeology 5A: done"
+	npc kill
+		government Quarg
+		personality heroic staying uninterested
+		ship "Quarg Wardragon" "Gloref Esa Kurayi"
+
+
+
+event "rim archaeology results"
+	planet Zug
+		add attributes "tourism"
+		description `楚格是一个宜人的世界，拥有连绵起伏的丘陵、肥沃的田野和一些小海洋。数亿人居住在这里，每天都有更多的移民抵达，速度几乎快于建筑业跟上他们的速度。除了大城市外，许多人居住在较小的农村，这使得这里成为该地区为数不多的工业和农业真正自给自足的世界之一。`
+		description `楚格最大的工业是 Southbound 造船厂。然而，随着一些关于失落文明的非凡考古发现，楚格突然也成为了游客的热门目的地。`
+
+
+
+mission "Rim Archaeology 6"
+	landing
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Independent" "Neutral"
+		near "Sol" 100
+		attributes spaceport
+	to offer
+		has "event: rim archaeology results"
+	on offer
+		log "Factions" "Sheragi" `Recent archaeological discoveries on Zug, a planet in the southern rim of human space, have turned up evidence of a lost alien civilization. The Quarg say that the ruins were left behind by a species called the Sheragi.`
+		conversation
+			`当你向太空港交通管制员报出你的名字时，他会说：“等等，你是 <first> <last> 队长？你现在成了新闻焦点！”`
+			`您着陆后发现阿尔伯特·福斯特（Albert Foster）发布了有关楚格挖掘的初步报告。熔岩流下的废墟，果然是一座外星城市。这些房屋建造规模巨大，大部分门口至少有十米高。更重要的是，一些建筑物在街道层面上没有外门，只有面向阳台或内部庭院的门，这支持了居民能够飞行的理论。留下的大部分文物只是日常用品，事实上技术似乎不如当今人类社会先进，但科学家们正在热切地研究这些文物，以收集有关这些外星人如何生活的线索。`
+			`夸格人在其他时候似乎很愿意与人类分享他们的知识，但令人惊讶的是，他们对有关这个失落文明的信息却保持沉默。除了告诉福斯特外星人被称为“Sheragi”之外，他们唯一的评论就是含糊地警告说，如果人类坚持发展战争武器，他们的结局就会像“Sheragi”一样。由此，福斯特推测，外星文明很可能是因为内战而被毁灭的，而不是因为自然灾害或其他物种的攻击。`
+			`它可能不会给人类技术带来任何重大进步，但这次挖掘将为未来几年银河系的历史提供线索，你可以为自己在其中发挥的作用而感到自豪。`
+				decline
+
+
+
+mission "Sheragi Archaeology: The Box 1"
+	landing
+	name "雪拉吉地堡"
+	description "访问 <destination> 的阿尔伯特·福斯特 (Albert Foster)，看看他有什么发现。"
+	source
+		near "Zubeneschamali" 1 100
+	destination "Zug"
+	
+	to offer
+		has "event: rim archaeology results"
+		has "First Contact: Unfettered: offered"
+		has "main plot completed"
+		random < 4
+	
+	on offer
+		dialog
+			`您收到了来自考古学家阿尔伯特·福斯特的编码信息，您帮助他发现了楚格神秘的谢拉吉遗址。他似乎很兴奋。`
+			`“<first>！已经有一段时间了，不是吗？还记得雪拉吉挖掘场吗？我们刚刚在这里发现了一些令人难以置信的东西。请来楚格拜访我。我想我不能相信其他任何人。”`
+
+
+
+mission "Sheragi Archaeology: The Box 2"
+	landing
+	name "神秘的盒子"
+	description "将神秘盒子交给 <destination> 上值得信赖的科学家。"
+	source "Zug"
+	destination "Vinci"
+	
+	to offer
+		has "Sheragi Archaeology: The Box 1: done"
+	
+	on offer
+		conversation
+			`你降落在挖掘现场，发现阿尔伯特已经在等你，看着你下降。船门一打开，他就会向您打招呼。`
+			`“你好，<first>！你想参观一下博物馆吗？”`
+			choice
+				`“博物馆？什么博物馆？”`
+				`“当然，我很想看看你发现了什么。”`
+					goto eager
+				`“请告诉我什么如此重要。”`
+					goto hurry
+			`“你不知道吗？挖掘现场现在开放了一个博物馆，里面摆满了有趣的文物。我们把它变成了一个旅游陷阱。来，跟我来，我带你去看。”`
+			label eager
+			`当他带你进入古城遗址时，你趁机追上，谈论他迄今为止所取得的“小”发现，尽管他坚持保留他带你来这里的原因是一个惊喜。他带你来到一处被揭露的雪拉吉建筑，跳过入口前排起的长队，发现房间里摆满了陈列柜里的各种文物。`
+			`看到这么多像古代地球上的史前工具一样古老的技术设备很奇怪，其中大多数都已经破旧不堪，如果不是展示柜旁边的描述，你甚至无法想象它们的用途。最完整的遗物之一是一座像天评之龙一样飞行的雪拉吉小金属雕像，可能是某个活动的奖杯，也可能只是当时流行人物的雕塑。现在不可能知道，但有一件事是肯定的：这是对他们外貌最忠实的再现。这个人物几乎与你在伊达利亚梦中看到的人物完美匹配。当你转过头看看这座房子的门有多高，然后再回头看看雕像时，你就会意识到它们一定有多大。很难想象他们的宇宙飞船必须有多大才能容纳这么大的生物。`
+			choice
+				`“这是一个令人印象深刻的收藏。”`
+			`“是啊！不过，这还不是今天最吸引你的地方。跟我来吧。”`
+			`游览结束后，他会带您前往另一座建筑，该建筑位于禁止公众进入的区域。`
+				goto "off limit"
+			label hurry
+			`“开门见山？公平地说，我也很渴望，不过以后一定要来参观一下博物馆。里面有很多有趣的东西。”`
+			`当他带你进入古城废墟时，你趁机跟上，谈论他迄今为止所取得的“小”发现，例如描绘雪拉吉曾经面貌的雕像。 “如果我们没有发现类似的东西，我们也许永远不会知道它们的外观。但这些小发现并不是今天对你的主要吸引力，”阿尔伯特笑着说道。他带你进入一栋未遮盖的 Sheragi 建筑，该建筑位于禁止公众进入的区域。`
+			label "off limit"
+			`“这里是！”`
+			`房间内有一条深入地下的隧道，但阿尔伯特将注意力集中在一个大保险箱上。当他打开它时，他开始解释情况。`
+			`“所以，据我们所知，雪拉吉在一场灾难性的战争中消亡了。我们的一名实习生建议我们调查地下深处，检查是否有军事设施或掩体，尽管我们之前的扫描没有显示任何有趣的东西，所以我们允许她摆弄探地雷达。你不相信吗，泥土下面有一些有角度的金属碎片。显然是人造的。嗯……雪拉吉制造的，在这种情况下。所以我们挖了更深入，发现我们只能假设是一个掩体，有被强大的动能武器击中的迹象，尽管有损坏，我们仍然可以从碎片中抢救出一些文物。”`
+			`阿尔伯特打开保险箱，向你展示了一个饱经风霜的红色金属立方体，每边约四分之一米。他与重量作斗争，但还是设法把它放在地板上。`
+			`“这似乎是某种数据存储设备。它与我们认为曾经是计算机的东西相连，但在潮湿的土壤下度过了数千年之后，其他任何东西都无法挽救。根据这个东西的坚固程度，一些数据可能会像时间胶囊一样幸存下来。”`
+			`“我在芬奇有一个联系人，他可能会解决这个问题，这就是你进来的地方。你记得约翰，对吗？我不能离开挖掘地点，但我也没有其他我可以信任的人来携带如此珍贵的文物。你能帮我把它带到那里吗？”`
+			choice
+				`“当然，我会把立方体拿给他。”`
+					goto take
+				`“约翰又是谁？”`
+				`“我很抱歉，但这听起来比我为你做的所有其他工作都要粗略。夸格人非常明确地说，有些东西是不应该被发现的。”`
+					goto sketchy
+			`“哦，你不记得他了？他是我们调查米德加德教堂时和我们一起工作的科学家。他拥有调查这个立方体所需的所有奇特设备。”`
+				goto "final choice"
+			label sketchy
+			`“什么？”他似乎难以置信。 “走了这么远，你就抛弃我了？知识本身并不危险。这个立方体可能是打开失落的亿万历史的钥匙，打开我们做梦也想不到的雪拉吉秘密！”`
+			label "final choice"
+			choice
+				`“好吧，我这就去给他。”`
+				`“抱歉，但我不会跨越那条线。”`
+					decline
+			label take
+			`“灿烂！”`
+			`你把立方体放在一个不起眼的背包里，然后把它带回你的船上。艾伯特给了你一个地址，你可以在那里运送立方体，并提到你将在运输后获得报酬，并祝你旅途愉快。`
+				accept
+	
+	on complete
+		payment 500000
+		event "cube stolen" 20 30
+		log `Took a mysterious Sheragi data cube that Albert Foster dug up on Zug to a trusted friend on Vinci. John will take some time to see how exactly it works, and send a message when it's done.`
+		conversation
+			`你到达芬奇号并将立方体带到福斯特给你的地址。你发现约翰一直在等你。 “这么说，福斯特又不怀好意了，是吗？”当他让你进入他的实验室时，他笑了。`
+			choice
+				`“看来这次我们不会遇到麻烦了。”`
+				`“我自己有点担心，但我确信他知道自己在做什么。”`
+			`你把装有立方体的背包放在桌子上，然后打开它。`
+			`“好吧，他付钱让我帮忙做这件事，所以对我来说没问题。并不是每个人都能亲眼目睹他亲眼所见的奇特事物。我的意思是，一个人造奇点……”他的声音逐渐减弱，回忆起你们三个在深海中的冒险经历。`
+			`约翰继续检查立方体。他足够强大，可以毫无问题地拿起它，并从不同的角度观察它，试图找到一些可以连接的端口。他找到了一个，但它已经严重损坏，任何使用它的尝试都将徒劳无功。他将立方体放入机器中，对物体进行更深入的扫描，并耐心地盯着屏幕，看着它静静地工作。`
+			`“是的，这似乎是某种数据存储设备……它很坚固，就像一个黑匣子，所以我们似乎可以从中恢复一些数据。不过，这将需要很长时间。”`
+			`“多久？”你问。`
+			`“可能要几个月。这取决于这东西有多陌生，以及它是否加密，但到那时我至少应该弄清楚这里是否有任何可恢复的数据。”`
+			`约翰说，一旦他的结果出来，他会给你发消息，然后你们分道扬镳，回到你的船上。`
+
+event "cube stolen"
+
+
+
+mission "Sheragi Archaeology: The Box 3"
+	landing
+	name "信息经销商"
+	description "从 <destination> 海盗世界的信息经纪人那里发现盒子的下落。"
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Independent" "Neutral"
+		near "Sol" 100
+		attributes spaceport
+	destination "Stormhold"
+	
+	to offer
+		has "event: cube stolen"
+	
+	on offer
+		conversation
+			`你接到约翰打来的紧急电话，他已经在神秘的雪拉吉黑匣子上工作了大约一个月。`
+			`“<last> 队长！我有一些坏消息和一些更糟糕的消息。您想先听哪一个？”`
+			choice
+				`“坏消息。”`
+					goto bad
+				`“更糟糕的消息。”`
+					goto worse
+			label bad
+			`“坏消息是，这比我想象的要复杂得多。我发现盒子里的数据保存了下来，而且过了这么久仍然可以恢复，但这需要一些我们还没有的专门硬件和知识。”`
+			`“那么更坏的消息呢？”你问。`
+			`“嗯……有些人在夜间入侵了我的实验室，偷走了我正在研究的很多东西。谢天谢地，我的保险涵盖了其中的大部分，而且我仍然保留着大部分笨重的昂贵设备，但是盒子……它已经不见了。”`
+				goto "what now"
+			label worse
+			`“嗯……有些人在夜间入侵了我的实验室，偷走了很多我正在研究的东西。谢天谢地，我的保险涵盖了大部分，而且我仍然保留着大部分昂贵的设备，但是盒子……它不见了。”`
+			`“那么坏消息呢？”你问。`
+			`“不太坏的消息是，这比我想象的要复杂得多。我发现盒子里的数据幸存下来，并且在这么长时间后仍然可以恢复，但这需要一些我们还没有的专门硬件和知识。”`
+			label "what now"
+			`你的心沉了下去。 “我们现在该怎么办？你知道在哪里可以找到这个盒子吗？你联系执法部门了吗？”`
+			`“我已经尽力了，但如果像我怀疑的那样强制这样做，警察就不会提供帮助，而且这个盒子现在可能已经不在世界上了。但是......如果你手头有一些现金，并且你愿意付出额外的努力来找回盒子，也许有办法。”`
+			choice
+				`“你是什么意思？”`
+					goto info
+				`“你是想敲诈我吗？”`
+			`“什么？不，当然不！你认为我会偷自己的作品吗？让我解释一下。`
+			label info
+			`“阿尔伯特的方法……至少可以说是不标准的，我们曾经和某个人打过交道。一个住在风暴要塞的信息贩子。性格粗略，似乎几乎到处都有线人，什么都知道。这个人被称为玛蒙。如果你想找到盒子，与玛蒙打交道可能是你最好的选择。”`
+			choice
+				`“谢谢你，我看看能不能找到这个财神人。”`
+				`“我很抱歉，但我认为这不会有什么好处。最好忘记立方体。”`
+					decline
+			`“了解他们的方法，他们很可能会先找到你。但不要惊慌，他们本身并不是……邪恶的。小心一点，好吗？”`
+				accept
+	
+	to complete
+		never
+
+
+
+mission "Sheragi Archaeology: The Box 4"
+	landing
+	name "寻找神器"
+	description "对抗在 <destination> 偷走立方体的雇佣兵。"
+	source "Stormhold"
+	destination "Watcher"
+	
+	to offer
+		has "Sheragi Archaeology: The Box 3: offered"
+		
+	on offer
+		conversation
+			branch visited
+				has "visited mammon"
+			`尽管当地人对你表现出明显的敌意，你还是安全地进入了风暴要塞的大气层。当你下降到一半时，一个机械化的、经过调制的声音向你招呼。`
+			`“我听说你在找我，<first> <last>，”另一端的人说道。`
+			
+			choice
+				`“你是谁？你怎么知道我的名字？”`
+					goto who
+				`“你做到了？怎么做到的？”`
+			`“在我的行业中，我必须知道一切。这包括任何潜在客户的身份，比如你自己。否则你还希望如何找到我呢？`
+				goto intro
+			
+			label who
+			`神秘人笑道。`
+			`“看来我比你更了解你自己了。我当然就是你要找的人。`
+			
+			label intro
+			`“玛蒙，信息供应商。为您服务。”这个声音不祥地说道。 “亲自来见我，讨论您正在寻找的具体内容。”连接中断，您收到坐标，降落在看似随机的位置，该位置似乎位于海中央。`
+			``
+			`在暴风雨的条件下，你到达了一个偏僻的坐标。你开始怀疑自己是否收到了正确的坐标，直到一艘巨大的潜艇从海浪中出现。这是一艘巨大的船只，当灯光引导您降落在甲板上时，您会注意到，尽管您的船很大，但它可以舒适地放置在甲板上，并通过磁力锁自动固定到位。穿着西装的武装人员包围着您的船，一旦您下船，其中两个人就会引导您进去。你被带进一间光线昏暗的房间，天花板上有一张银河全息图，还有一张桌子，桌子后面坐着一个戴着兜帽的人。`
+			`“我们到了，远离窥探。请坐，”他们说。他们的声音有一种奇怪的语气，没有明显的性别，带有嘶嘶声和喉音，直到你坐下来，你才会注意到一个爬行动物的鼻子从引擎盖里伸出来。你不知道这是自然的还是极端的身体改造。`
+			choice
+				`“你是一个……”`
+				`（什么也不说。）`
+					goto middle
+			`他们笑着打断了你的话。 “算了。你需要窃取整个行星才能获得这些信息。”`
+			
+			label middle
+			`“让我们谈谈重要的事情吧。你想找到那件外星神器，是吗？”你点头回应。 “我有你需要的信息。寻找丢失的物品是我提供的最琐碎的服务，但和所有事情一样，它是有代价的。`
+			`“一千万积分，”他们说。 “没有商量的余地。不要尝试任何有趣的事情。”`
+			
+			branch cash
+				"credits" >= 10000000
+			choice
+				`“什么？我没有那么多钱！”`
+					goto "no money"
+				`“这么贵啊，这么琐碎的服务，难道就不能打折吗？”`
+					goto haggle
+			
+			label visited
+			`您回到风暴要塞并收到与玛蒙会面的新坐标。你想拜访他们吗？`
+			choice
+				`（是的。）`
+				`（不。）`
+					defer
+			`你沿着新的坐标，再次到达海上的一个随机地点，再次在暴风雨的条件下，这似乎是这个星球上的常态。潜艇浮出水面，你着陆，然后再次跟随人们来到玛蒙的房间。`
+			`“欢迎回来，”他们说。`
+			`“我希望你准备好付款。”`
+			
+			label question
+			branch cash
+				"credits" >= 10000000
+			branch haggled
+				has "haggled"
+			choice
+				`“你应该知道，我没有那么多闲钱。”`
+					goto "no money"
+				`“你准备好给我折扣了吗？”`
+					goto haggle
+			label haggled
+			choice
+				`“你应该知道，我没有那么多闲钱。”`
+					goto "no money"
+				`“你告诉我我想要什么，这样我就不会炸毁你的船和你的海盗朋友，怎么样？”`
+					goto threat
+
+			label cash
+			branch "haggled cash"
+				has "haggled"
+			choice
+				`“我需要考虑一下，给我一些时间。”`
+					goto time
+				`“光是提供信息就花了很多钱。你能便宜点吗？”`
+					goto haggle
+				`“这是钱。”`
+					goto pay
+			label "haggled cash"
+			choice
+				`“我需要考虑一下，给我一些时间。”`
+					goto time
+				`“你告诉我我想要什么，这样我就不会炸毁你的船和你的海盗朋友，怎么样？”`
+					goto threat
+				`“这是钱。”`
+					goto pay
+
+			label "no money"
+			`	"I know you don't. I can arrange for the payment to be made in different ways. Organ donation, prostitution, volunteering as a test subject... We'll need an appraisal first, though."`
+			`	You politely decline.`
+			`	"Come back to me when you have it, then, and I shall provide you with the information. We have all the time in the universe. Until you die, or someone decides to destroy the cube, that is."`
+				goto exit
+			
+			label time
+			`	"Come back when you're ready, then. We have all the time in the universe. Until you die, or someone decides to destroy the cube, that is. It's all up to you."`
+			
+			label exit
+			`	They gesture, and the men promptly and diligently escort you back out to your ship.`
+				defer
+			
+			label haggle
+			action
+				set "haggled"
+			`	Mammon doesn't look pleased.`
+			`	"What part of non-negotiable did you not understand? You're pushing your luck, Captain <last>. I didn't expect you to be such a petty money pincher."`
+				goto question
+
+			label threat
+			`	Mammon just smiles, displaying sharp teeth and licking them with a forked tongue, more entertained than intimidated.`
+			`	"Really? You think you can intimidate me? It's your funeral, human. If you were smart, you would know that my power far exceeds yours, especially in my own home. You know I can't let you leave here alive now. It would set a bad precedent for me. Safety is my top priority."`
+			`	You look around, and the men in suits are pointing guns at you. Alien guns. Before you can react, Mammon shoots you from under the table, fatally injuring your abdomen. Your half conscious body is dragged out of the submarine, and your ship being shredded to pieces by alien weapons is the last thing you see.`
+				die
+			
+			label pay
+			`	You slide the credit chips to Mammon, but they decline it, grinning with their sharp teeth.`
+			`	"Don't worry about paying right now. I only needed you to agree to the deal. I will withdraw the credits in the future, when I desire.`
+			`	"Now that we're done with that, the artifact you're looking for has been taken by some mercenaries. It seems to me that your friend messed with the wrong people, but I digress. That is not the information you paid for."`
+			`	Mammon lifts their hands to the holographic map of the galaxy in the ceiling. It zooms in, filling up the entire room with stars. In front of you, you recognize the border between the Deep and the Dirt Belt.`
+			`	"They have kept the artifact for themselves to sell on the black market, and their base of operations is right... here. Algieba."`
+			`	The hologram zooms further in on Watcher, one of the system's moons, and continues until it finally stops over a large forest.`
+			`	"You will find them on this uninhabited moon. They are hiding out in this forest, and the artifact is with them. The exact coordinates will be forwarded to your ship. Expect hostilities."`
+			`	You thank Mammon for the service and get up to leave.`
+			`	"See you, Captain <last>. Remember I always do."`
+				accept
+	
+	on defer
+		set "visited mammon"
+	
+	on accept
+		set "paid mammon"
+		event "mammon impatient" 240
+		fail "Sheragi Archaeology: The Box 3"
+
+event "mammon impatient"
+
+
+
+mission "Mammon Payment"
+	landing
+	invisible
+
+	to offer
+		random < 10
+		or
+			has "Sheragi Archaeology: Epilogue: done"
+			has "event: mammon impatient"
+		has "paid mammon"
+		"credits" >= 12000000
+
+	on offer
+		payment -10000000
+		conversation
+			`您收到一条消息，通知您有一笔非常大的交易：1000 万积分。有了它，一条消息只包含爬行动物眼睛标志的图像。看来玛蒙的船员已经撤回了你同意支付的有关雪拉吉黑匣子信息的费用。`
+				decline
+
+
+
+mission "Sheragi Archaeology: The Box 5"
+	landing
+	name "神器之战"
+	description "摧毁雇佣军舰队，然后降落在 <planet> 上。"
+	source "Watcher"
+	
+	to offer
+		has "Sheragi Archaeology: The Box 4: done"
+	
+	on offer
+		conversation
+			`你到达了无人居住的守望者卫星，并侦察了玛蒙发给你的坐标周围的区域。在空地上发现篝火升起的烟雾相对容易，但当你走近调查时，你会惊讶地发现几艘大船起飞迎接你，抛弃了用来隐藏在树林中的绿色防水布。看起来他们真的不希望你在这里。`
+				launch
+	
+	npc disable
+		government "Bounty Hunter"
+		personality unconstrained launching nemesis heroic plunders harvests target marked
+			confusion 20
+		system "Algieba"
+		fleet "Marauder fleet VIII"
+		dialog `你成功地击败了整个雇佣军舰队。你现在登陆他们的营地并恢复立方体应该没有问题。`
+	
+	on visit
+		conversation
+			`你试图躲避雇佣军船只并快速攻击他们的营地，但船只跟随你穿过大气层，地面人员开始向你射击。在通行证上轰炸它意味着你有摧毁立方体的风险。你别无选择，只能回到太空消灭雇佣军舰队。`
+				launch
+
+
+
+mission "Sheragi Archaeology: The Box 6a"
+	landing
+	invisible
+	source "Watcher"
+	destination "Vinci"
+	
+	to offer
+		has "Sheragi Archaeology: The Box 5: done"
+	
+	on offer
+		conversation
+			`你要登陆，留在地面上的少数雇佣兵举着一面临时的白旗向你的船行进。数十名看上去强硬的男女穿着制服但手无寸铁地走近。他们保持冷静和有条理。看来这些人都不是普通的罪犯。`
+			`“我们知道我们什么时候输了，”其中一人用扩音器向你的船大喊。 “你想要什么？”`
+			choice
+				`（射击他们。）`
+					goto shoot
+				`（与他们交谈。）`
+			
+			`你着陆并小心翼翼地打开舱门与他们交谈。`
+			`“你为谁工作？你偷的立方体在哪里？”你问。`
+			`“这么说那个旧东西是你的了？”前面的一位女士说道。 “我知道这个任务很粗略……我们是雇佣兵。我们受雇于那些长相奇特的人，他们付给我们很高的报酬来偷走它，但当我们带着它回来时，他们只是扫描了它并告诉我们处理掉它。说数字副本没问题，遇到麻烦就应该得到足够的报应。我们不知道他们是谁，我们不问问题。现在可能会改变。`
+			`“想要这个立方体，饶了我们就可以了，不值得我们的命。”`
+			choice
+				`（饶了他们吧。）`
+					goto spare
+				`（开火。）`
+					goto fire
+			
+			label fire
+			`由于感到不信任，你立即关闭舱门并在他们散开时回到你的船。`
+			
+			label shoot
+			action
+				set "burned white flag"
+			`你不顾他们的投降，将你的船转向他们并向这支小部队开火。用舰载机枪对付地面人员实在是太过分了，他们根本没有机会。他们曾经站立的地方现在已经变成了一片闷烧的空地，森林大火正在开始蔓延。`
+			`你进入营地，射击所有隐藏的雇佣兵，并掠夺他们的帐篷。你会在筹码和贵重物品中找到数十万的积分，最终，你也会找到立方体。拿着它，你回到你的船，准备把它带回给约翰。`
+				decline
+			
+			label spare
+			`“成交。把它交给我，”你说。`
+			`当他们中的一个去拿东西时，你在一种令人不安的沉默中等待，观察他们的一举一动，同时他们也观察你的一举一动。最终，离开去拿立方体的年轻人回来了，并将其交给了你。你检查它，确认它就是你正在寻找的神器。`
+			`“你拿到了，现在走吧。我们不会再妨碍你了。”之前说话的女人说道，其他雇佣兵开始解散，回到自己的帐篷。`
+			`有了立方体在你的怀里，你就没有理由留在这里了。你回到你的船，准备把它带回给约翰。`
+				accept
+	
+	on decline
+		payment 926621
+
+
+
+mission "Sheragi Archaeology: The Box 6b"
+	landing
+	name "盒子被找回"
+	description "通过 <destination> 将多维数据集带回给 John。"
+	source "Watcher"
+	destination "Vinci"
+	
+	to offer
+		has "Sheragi Archaeology: The Box 5: done"
+	
+	on complete
+		conversation
+			`你再次带着神秘的盒子，前往约翰的实验室。他让你进去，你告诉他你刚刚经历的事情。`
+			`“所以，报应，是吗？你认为上次是来自深海的官员对我们生气了？或者也许是福斯特在那个挖掘场的竞争对手？我应该预见到这一点。”`
+			`“可能，”你说。 “我想不出还有什么其他原因。”`
+			`“至少你把它拿回来了。但我不知道继续在这里工作是否明智，而且我不能离开地球几个月而不产生任何后果。我什至不知道如何读取这些数据。”`
+			`“那么，你碰巧还有另一个可以提供帮助的可疑联系人吗？”你问。`
+			`“不幸的是没有。现在我们似乎正在与时间赛跑。如果夸格人愿意与我们合作并为我们提供破解这个盒子所需的信息就好了……”`
+			`	As soon as you hear that phrase, it suddenly hits you. You've met the Hai up north, and you heard from the Unfettered that they've met the Sheragi many millennia ago. Perhaps the Hai could be able to help.`
+			`“我想我知道该怎么做了。你不是唯一一个在陌生的地方有联系的人。”`
+			`你拿起你的东西，把立方体放回背包里。`
+			`“好吧，我希望我能研究得更久一些，但如果你有线索，那就值得追寻。我相信你完成后会把立方体还给我自己或艾伯特。祝你好运，队长。别惹太多麻烦。”`
+
+
+
+mission "Sheragi Archaeology: The Box 6c"
+	landing
+	name "海知识"
+	description "询问海族是否了解更多有关雪拉吉的信息。"
+	source "Vinci"
+	destination "Allhome"
+	
+	to offer
+		has "Sheragi Archaeology: The Box 6b: done"
+
+
+
+mission "Sheragi Archaeology: The Box 7a"
+	landing
+	name "银河历史博物馆"
+	description "前往<destination>参观海银河历史博物馆。"
+	source "Allhome"
+	destination "Mirrorlake"
+	
+	to offer
+		has "Sheragi Archaeology: The Box 6c: done"
+	
+	on offer
+		conversation
+			`你在太空港周围打听，直到找到一位海族导游。你问他是否有地方可以找到有关雪拉吉的更多信息。`
+			`“人类知道它们？我很惊讶。这是古老的历史。如果有什么地方可以找到更多关于它们的信息，那就是 <planet> 上的银河历史博物馆。”`
+			`您感谢向导并返回您的飞船，绘制了前往 <system> 系统的航线。`
+				accept
+
+
+
+mission "Sheragi Archaeology: The Box 7b"
+	landing
+	name "海文化部"
+	description "登陆 <destination> 与文化部通话。"
+	source "Mirrorlake"
+	destination "Hai-home"
+	clearance
+	
+	to offer
+		has "Sheragi Archaeology: The Box 7a: done"
+	
+	on offer
+		conversation
+			`到达镜湖后，你打听了一会儿，最后有人带你去了银河历史博物馆：一个巨大且非常重要的地方，但令人惊讶的是并不是一个非常受欢迎的旅游景点。大多数海人不太喜欢回顾过去，大多数人类也不知道这个地方的存在。博物馆工作人员很惊讶地看到一张人脸，当你漫步时，你会觉得自己吸引了当地人的注意力，而不是展品本身。`
+			`这个地方有一个非常不寻常的建筑，隐约类似于地球上的古希腊，但显然不是基于任何人类设计。金属、混凝土、玻璃和塑料的点缀为其设计增添了现代气息。展览室从构成建筑大部分的长走廊中分出。房间的布置使得您在博物馆中漫步时，历史会倒退，最近发生的事件在前面，最早发生的事件在后面。`
+			branch alphas
+				has "Wanderers: Alpha Surveillance A: done"
+			
+			`您进入的一个房间以一幅壁画为主，描绘了海族与人类接触的历史。你会注意到壁画中的第一批人类有着绿色的皮肤。你所知道的唯一绿皮肤的人类是阿尔法。壁画似乎显示阿尔法从海中偷了一些东西，随后发生了一系列战斗，最后显示阿尔法撤退到虫洞中。然后飞船通过虫洞返回，只是这一次载着正常的人类。壁画中的海一开始显得很担心，但很明显，友谊很快就建立起来了。`
+			`令人惊讶和不幸的是，海族与人类的第一次接触是与阿尔法族接触。`
+				goto continue
+			
+			label alphas
+			`您进入的一个房间以一幅壁画为主，描绘了海族与人类接触的历史。正如桧山治大使告诉你的那样，一切都从阿尔法开始。壁画似乎显示阿尔法从海中偷了一些东西，随后发生了一系列战斗，最后显示阿尔法撤退到虫洞中。然后飞船通过虫洞返回，只是这一次载着正常的人类。壁画中的海一开始显得很担心，但很明显，友谊很快就建立起来了。`
+			
+			label continue
+			`当你继续沿着过道漫步时，你会发现一些专门用于科拉斯袭击、他们的内战以及与他们的第一次接触的房间，还有对无拘无束者起源的非常诗意的叙述。再深入一点，你会发现更多的章节：一个长篇详细介绍了几个不同世界的海族文化以及它们如何随着时间的推移而变化，另一个是关于曾经居住在现在人类空间的一部分的海族政府的垮台以及撤回一小片领土的决定，一个是关于夸格环形世界的完成，一个是关于海族在帝国阶段的贸易和军事文化，还有一个看起来非常严峻的房间是关于海族内战的。最后，经过很长的步行，你到达了几乎位于过道尽头的一个房间，讲述着Sheragi的历史。`
+			choice
+				`（继续进入雪拉吉房间。）`
+			`您在这里看到的内容比阿尔伯特·福斯特的小博物馆所希望展示的内容要丰富得多。里面有当时雪拉吉军官的照片，以及他们的名字和角色。还提供了有关他们的文化、生物学以及他们与海人的明显冲突的详细信息。房间中央有一尊巨大的双足龙雕像，高约8米，大得天花板都抬高了。其脚下的牌匾上的铭文表明它是真人大小的雪拉吉的复制品。一个较小的交互式全息显示器显示了它们的生物学和行为的详细信息。文化样本很少，但这表明他们生活在军事精英统治下，军事精英将力量和领导力看得高于一切。`
+			`你会看到他们船只的图片和粗略蓝图，其中一些描绘了由大型战舰组成的可怕舰队。它们拥有棱角分明的多层装甲，其重量足以与现代海舰的强度相媲美。如果你的测量转换是正确的，他们的飞船比人类太空中的任何其他飞船都要大，甚至让海军航母都相形见绌。其中一些展示了同样令人印象深刻的未知能力的脊椎加农炮，残酷的描述表明它们对雪拉吉的灭绝负有责任——雪拉吉是一种大规模杀伤性武器，掌握在一个好战且不成熟的物种手中，并且不小心使用了它们。`
+			`当你环顾房间时，一位策展人走近你，用你自己的语言，尽管口音很重。`
+			`“悲伤，不是吗？我认为他们的航天历史上从未有过平静的时光。”`
+			choice
+				`“遗憾的是他们不得不如此关注冲突。他们看起来很有能力。”`
+				`“他们活得快，死得早，留下的尸体好看。”`
+					goto approve
+			`“好吧，我们又不是能说话的人。当时，我们海族也是一个麻烦不断的物种。我们甚至尝试过入侵雪拉吉的领地。也许如果我们成功了，他们可能会联合起来对抗共同的敌人，甚至可能以我们自己的代价渡过叛逆期。`
+				goto next
+			label approve
+			`馆长笑起来很有海派特色。`
+			`“这是一种说法。我不能否认，即使对于当时的海族来说，他们的工程规模也是一个奇迹，而我们的文明已经很古老了。有些东西与规模成正比，他们别无选择，只能建造得更大。但这仍然是一种耻辱。想象一下，这样的能力被用于和平。`
+			label next
+			`“不管怎么说，这里很少见到人脸，更有趣的是他们盯着雪拉吉文物。你怎么会来这里？”`
+			`你解释了最近在楚格发现的遗址。`
+			`“哦哦，对了。他们曾经居住在人类太空的一部分，现在被称为边缘。你在寻找什么特别的东西吗？”`
+			`“我想了解更多关于 Sheragi 电脑的信息，”你回答道。`
+			`“嗯，电脑。雪拉吉人的硬件是经久耐用的。非常坚固的电子设备，有冗余，设计得能够承受射击并生存。但是，我仍然怀疑它们能否存活几千年。如果你想确定他们的硬件过去是如何工作的，有一些古代海从他们那里偷来的文件和手册。”`
+			`“它们出售吗？”你询问。`
+			`“你想买一份文件的副本吗？现在？我很好奇。你真的找到了仍然有效的东西吗？”`
+			choice
+				`“我们发现了一种似乎仍在运行的存储设备。一个黑匣子。”`
+					goto truth
+				`“我只是好奇。研究他们的技术可能会让我们改进我们的技术。”`
+			`“我明白了。不过我必须警告你，追随注定灭绝的物种的脚步只能让你走这么远。`
+				goto end
+			label truth
+			`您生成在全息垫上找到的立方体的图像。馆长凝视着它，然后慢慢地转向你，眼中充满怜悯。`
+			`“这个盒子是红色的，”他温柔地说。 “我曾经读过一篇关于人类色盲患病率的论文，但是——”`
+			`为了节省时间，您打断了馆长的讲话，并解释说“黑匣子”在人类术语中是指用于在发生灾难性故障时收集和保存飞行数据的设备。`
+			`他似乎意识到了这一点。 “你说雪拉吉‘黑匣子’？这是一个令人难以置信的发现！不过，要小心它所包含的信息。它们是注定要失败的物种。你们人类难道没有关于被诅咒的盒子的传说吗？那是什么……潘多拉魔盒？`
+			label end
+			`“无论如何……我无权向你出售文件，我只是在这里照顾文物。将雪拉吉技术提供给人类可能会是一个非常官僚的过程。我建议你通过海之家联系文化部。”`
+			`你感谢他的帮助，然后返回太空港，为可能会很长的会议做好心理准备。`
+				accept
+
+	on complete
+		"reputation: Hai" += 10
+		"reputation: Hai (Wormhole Access)" += 10
+		"reputation: Hai Merchant" += 10
+		"reputation: Hai Merchant (Human)" += 10
+		"reputation: Hai Merchant (Sympathizers)" += 10
+		conversation
+			`到达海家后，你设法联系了文化部，表达了你有兴趣获得雪拉吉文件和手册的兴趣。搁置一段时间后，您将与他们见面。`
+			`你做好准备，前往外交部所在地的市政厅，会见海官员，他们由几名外交官陪同。你们都坐在圆桌旁。你向他们描述雪拉吉遗址的发现，他们开始询问更多，对遗址的保存状况以及发现了什么文物感到好奇。他们看起来很兴奋。`
+			`“这是一个独特的机会！即使我们的物种在几千年前……积极接触，我们海族也从未有机会近距离研究雪拉吉城市。短暂的小冲突和外交会议就像我们的祖先一样近距离。`
+			`“然而，你会明白，我们不能简单地向你出售你所要求的文件。相反，我们向你提出了一个建议：我们物种之间的合作，这样海族和人类就能以比经济更重要的方式互惠互利。”`
+			`有了这个机会，你告诉他们在挖掘现场发现的雪拉吉黑匣子，以及解密它并揭露其秘密的可能性。`
+			`“使用适当的工具，我们可以对其进行解码。但作为回报，我们也希望获得内容的副本，并更多地了解您的发现。”`
+			choice
+				`“等等，我不能付点钱请人帮忙吗？”`
+				`“对我来说听起来很公平。”`
+					goto accept
+			`“这对我们来说也是一个很好的学习机会，<last> 队长。我们不会从你那里拿走任何东西，相反，这是一个互惠互利的结果。”`
+			`你思考了一下你的选择。没有他们的帮助，你无法解决这个难题。你已经走了这么远，所以你同意。`
+			label accept
+			`“出色的！”海惊呼道。`
+			`他们又和你聊了一会儿，外交领导人暂时告辞去打电话。过了一会儿他回来了。`
+			`“我们已经安排了一支非常有能力的考古学家团队，几个小时后在太空港与您会面。他们专门研究雪拉吉文物。我建议您为三名乘客腾出空间，并为他们的设备腾出一些货物。”`
+			`您感谢他们的帮助，然后离开大楼，准备在太空港与您的新团队会面。`
+
+
+
+mission "Sheragi Archaeology: The Box 8"
+	name "组建团队"
+	description "带领 亥族 考古学家前往 <destination> 与艾伯特·福斯特会面。"
+	source "Hai-home"
+	destination "Zug"
+	passengers 3
+	cargo "Archaeological Equipment" 1
+	blocked `You arrive at the spaceport, but then you realize your ships don't have enough free bunks or cargo space required to bring the archaeologist team with you. You manage to contact them, and in an embarrassing conversation ask them to wait for you while you make sure you're ready.`
+	
+	to offer
+		has "Sheragi Archaeology: The Box 7b: done"
+	
+	on offer
+		conversation
+			`你会遇到海考古学家，他们将陪伴你前往人类太空，这是一支全女性团队。他们向您介绍自己为 Eyama、Rakei 和 Desyo。`
+			`Eyama 是一位专门研究 Sheragi 语言的语言学家。她用龙的喉音和奇怪的语调开玩笑地向你打招呼。`
+			`Rakei 是一名考古工程师，她一看到这个立方体就立刻喜欢上了它，并检查了它的结构。`
+			`最后，Desyo 是一位研究外星软件的异种编程专家，并且似乎对 Sheragi 代码有着丰富的经验。显然，博物馆雪拉吉室的展示都是用这种异国语言进行的，公众看不到。`
+			`简单介绍后，他们各自拿起自己的设备并将其装载到您的船的货舱中。一切就绪后，Rakei 向您走来。`
+			`“我们想见见在环缘地区发现废墟的人类考古学家。你能带我们去那里吗？我们将沿途开始检查立方体。我想当我们到达那里时，我们会有一些东西可以做。”`
+				accept
+	
+	on visit
+		dialog phrase "generic cargo and passenger on visit"
+	on complete
+		event "cube decoded" 40 50
+		log "People" "Desyo" `A brilliant Hai xenoprogramming expert, Desyo specializes in Sheragi code and software. She is more interested in technology and electronics than people and often coordinates the work in the Hai archaeologist team, despite her introversion and lack of hierarchy. Her dedication is the grease that keeps that machine running.`
+		log "People" "Rakei" `Rakei is an engineering expert specializing in archaeological artifacts, but also very interested in new and unusual technology, often nerding out with Desyo over the latest scientific papers. She is part of the Hai archaeologist team tasked to uncover the mystery of the Sheragi black box.`
+		log "People" "Eyama" `Uncaring about formalities and seriousness, you wouldn't guess Eyama is an accomplished linguist specializing in Sheragi language. She also has an interest in culture and sociology in general, and has a lot more knowledge about human culture than you would expect from a Hai, or even most humans. Her work with the Hai archaeologist team is invaluable to deciphering Sheragi mysteries and maintaining their relationship with human partners.`
+		conversation
+			`这是一次漫长的旅行，几乎跨越了半个银河系。海族考古学家非常友好和蔼可亲，每次他们取得新突破时都会向您提供最新消息。在此期间，之前被认为无法穿透的立方体已被拆卸和清洁。经过亿万年腐烂成一堆氧化电线和粘糊糊的部件已被识别并移除以替代等效部件，盒子及其电路的蓝图已开始成形。`
+			`你一着陆，就给阿尔伯特·福斯特打电话，当你说你已经得到了外星考古学家的帮助时，他不相信你。然后你寻找海三人，弄清楚他们如何在人类世界中不被注意到。你会惊讶地发现 Eyama 穿着长长的、深色但色彩鲜艳的人类服装，搭配同样超大的连帽衫和大手帕。你知道这套衣服很受现在年轻人的欢迎，他们普遍被上一代人视为不良少年。此外，她还为她的海伙伴们携带了另外两套。它很好地隐藏了她的身体，但代价是让她看起来像个小男孩，而海人相对较短的身材也无济于事。`
+			`“请叫我 Deus ex Machina 小姐，因为我提前从家乡的商人那里买了这些。完美的伪装。人类永远不会注意到。我看起来怎么样？”`
+			choice
+				`“这……很聪明。它很好地隐藏了你。”`
+				`“嗯，确实有效，但你看起来像个孩子。”`
+					goto child
+			`“对吧？我什至可以把尾巴藏到连帽衫后面！”她高兴地转着圈。`
+				goto anyway
+			label child
+			`“那还不错吧？反正我一直认为自己心态年轻！”她咯咯地笑了一声。`
+			label anyway
+			`“无论如何，你能带我们去福斯特先生的博物馆吗？我们会拿走立方体并向他详细介绍。”`
+			`你同意了，当他们都准备好后，你就前往挖掘地点。令人惊讶的是，如果三海走在你身后远一点，他们并不会受到太多奇怪的目光。当你到达博物馆时，他们立即打破了他们的性格，因为看到展品而感到非常兴奋。然而，这可能会让旁观者松一口气，因为他们通常会认为这类孩子会破坏无价的文物。`
+			`最后，你到达了阿尔伯特的工作室。他停止从一个看起来曾经是电视机的物体上刷掉一层层硬化的土壤，并惊讶地看着你和三个“孩子”。海族人脱下了兜帽和头巾，让他的下巴差点掉到地上。`
+			`“我该死。海真的存在！”他惊呼道。`
+			`“我们当然知道，”Eyama 笑着说。 “你没听过所有的故事吗？”`
+			`“我有疑虑。商人通常不是最有信誉的来源。”他微笑着。 “我是考古学家阿尔伯特·福斯特，很高兴认识你们。”`
+			`他们自我介绍，很快谈话就变成了一种行话，连阿尔伯特都难以理解。他们谈论盒子和他们的发现，而艾伯特则谈论挖掘现场发现的历史以及对雪拉吉日常生活和文化的见解。你关上门以确保没有其他人在偷听。`
+			`“我们已经成功打开了盒子，并且正在制作它的蓝图，”德西奥说。 “一旦完成，我们也许能够重建破碎的部分并恢复数据。我们已经有了关于他们的硬件如何工作的文档。”`
+			`“问题是，现在这是一次合作。如果您与我们分享您的发现，我们将为您提供帮助，”Rakei 继续说道。`
+			`“对我来说听起来是一笔公平的交易，”阿尔伯特说。 “我们稍后会安排细节。<first>，非常感谢您的帮助。我们将继续研究这件神器，完成后我们会向您发送消息。”`
+			`你向阿尔伯特、拉基、​​埃亚玛和德西奥道别，然后回到你的船上。然而，当你走回船上时，你感到肩膀上有一只沉重的手。你回头一看，惊讶地发现了一个夸格人。亚蒂斯来到这个星系是为了看守雪拉吉挖掘场。`
+			choice
+				`“我没想到会在这里见到你。”`
+				`“我可以帮你吗？”`
+			`“我注意到你的朋友发现了一个雪拉吉黑匣子，并保守了它的秘密。我很清楚你们的种族对我们不信任，但请理解我们只是为了防止灭绝。我被告知不要干涉，但我必须建议你小心它的内容。你会被引导到更多关于雪拉吉的记忆，并一睹它们的毁灭。但你所发现的东西应该被视为只不过是一个奇怪的东西，而不是可以复制或模仿的东西。”`
+			`它转过身来，没有再说什么，就离开了你。`
+
+event "cube decoded"
+
+
+
+mission "Sheragi Archaeology: The Emerald Sword 1"
+	landing
+	name "黑匣子解码"
+	description "拜访楚格的阿尔伯特·福斯特。"
+	source
+		near "Zubeneschamali" 1 100
+	destination "Zug"
+	
+	to offer
+		has "event: cube decoded"
+	
+	on offer
+		dialog
+			`当您收到阿尔伯特·福斯特发来的新编码消息时，您仍在进行飞行后检查。`
+			`“你好<first>。我有一些好消息！我们已经解码了黑匣子里的内容。你应该来楚格拜访我们；我们有很多东西要告诉你！”`
+
+
+
+mission "Sheragi Archaeology: The Emerald Sword 2"
+	landing
+	name "翡翠剑"
+	description "为楚格带来额外的跳跃驱动器。"
+	source "Zug"
+	to offer
+		has "Sheragi Archaeology: The Emerald Sword 1: done"
+	
+	on offer
+		conversation
+			`你到达楚格，联系阿尔伯特和三位海考古学家并按照他们的指示，在一家冰淇淋店找到他们。他们仍然穿着年轻的衣服，但甚至不再用头巾遮住脸了。令人惊讶的是，看到这一幕似乎没有人感到太痛苦。 Rakei向你挥手，然后站起来，爪子里拿着冰淇淋朝你走来。`
+			`“你好<first>！看来我们的伪装效果比预期的要好。这里的人类认为我们穿着戏服。显然年轻人喜欢装扮成外星人？”她困惑地说。`
+			`“我有一种感觉，我们很适合融入毛茸茸的人群，”江山自豪地回答道。`
+			`“这是一次有趣的文化交流。人类太空对我们来说可能是一个很棒的度假胜地。但我们还没有去度假。我们有一个谜团需要解开，”她继续说道。`
+			`你们和大家一起坐在附近公园的长凳上，公园里几乎空无一人，德西奥接起了谈话。`
+			`“所以，值得庆幸的是，黑匣子里的文件是雪拉吉的标准文件。一旦我们成功读取它们，解码起来并不困难。”`
+			choice
+				`“里面装的是什么？”`
+			`德西奥回答道：“全是舰队动向数据和军事战略细节。这个系统显然位于其中一个派系领土的边界。在记录的最后时刻，一支大型运输舰队进入了该系统，没有武装的船只。他们后面有军舰追击。不知道他们当时的想法，但立即派遣了一支军事舰队消灭了两支舰队。一艘特殊的船只，埃亚马将其名字翻译为“翡翠剑”，开始表现出行为当接到命令时，它会不规律地开火，并错过了几次射击，直到它最终停止并逃跑，然而，最有趣的是，当它逃跑时，它逃向了一个意想不到的方向，远离了任何超航道。”`
+			`艾伯特继续说道，“我们认为他们想要逃离战斗。这些是被战争的恐怖伤痕累累的士兵，他们刚刚奉命攻击我们认为是难民的人。翡翠剑号是一艘大船，可能有同样多的船员，而且从运动数据来看，它的引擎也非常强大，可能能够在谢拉吉的一生内跨越星际距离。这有一些有趣的含义。这艘船正朝着一颗名为氐宿一的恒星移动。其意义不足以在图中显示出来。”星图，但我们进行了调查，那里有一颗可能适合居住的行星，但我们认为他们未能殖民它，但这艘船可能仍然在那里，但事实是，没有办法做到这一点。”`
+			`“除非你有跳动能力，”拉基补充道。 “你确实有一个，不是吗？”`
+			choice
+				`“我愿意。”`
+				`“以前有，但现在不再了。”`
+					goto "not anymore"
+			`“这太完美了！你认为你能再得到一个吗？如果我们要去那里，而船的残骸仍然在那里，我们将需要一个安装在翡翠剑上并将其带回家。”`
+				goto return
+			label "not anymore"
+			`“你卖了？”她难以置信地回答。 “你怎么能卖掉如此无价的技术？好吧，我希望有一种方法可以在没有技术的情况下获得更多技术，因为下一阶段我们需要两个。一个用于你的船，另一个用于翡翠剑，如果它的残骸还在那里的话。”`
+			label return
+			`“我能得到什么回报？”你问。`
+			`“名誉和财富，我的朋友。如果这艘船还在那里，我认为你应该保留它，”阿尔伯特回答道。 “你帮了我很多忙，为了破译这个黑匣子，你不辞劳苦又回来了。给我们一些时间来召集船员来调查系统并帮助整修飞船，同时，去为翡翠剑准备一个跳跃驱动器。一旦你拿到了它就回来找我们。”`
+			choice
+				`“你就给我了？这不是无价之宝吗？”`
+					goto "ask keep ship"
+				`“谢谢。”`
+					accept
+			label "ask keep ship"
+			`艾伯特回答道，“嗯，是的，但我觉得它在你手中比坐在<origin>上等待在海盗袭击期间被散火摧毁要舒服得多。除此之外，虽然自由世界努力工作并且在这里比海军拥有更强大的存在，但他们无法阻止每个可能对这艘船感兴趣的人。至少对你来说它是一个移动目标。”`
+				accept
+	
+	to complete
+		never
+
+
+
+
+event "zubenelhakrabi discovered"
+	system "Zubenelhakrabi"
+		remove hidden
+
+mission "Sheragi Archaeology: The Emerald Sword 3"
+	landing
+	name "翡翠剑"
+	description "寻找翡翠剑。"
+	source "Zug"
+	destination "Valley of the Damned"
+	cargo "Outfitting Equipment" 50
+	passengers 150
+	blocked `You arrive to make the preparations to jump to Zubenelhakrabi, but Albert stops you. "Captain, the Emerald Sword is an alien ship, and we have no idea how many people we will need to man it, so I've taken the liberty of hiring some extra crew on top of the specialist team. We're going to need 150 additional crew to help, including us, and 50 tons of cargo to take our materials and the spare jump drive."`
+	
+	to offer
+		has "Sheragi Archaeology: The Emerald Sword 2: active"
+	
+	on offer
+		require "Jump Drive" 2
+		conversation
+			`你有一个备用的跳跃驱动器。你想把它交给阿尔伯特的船员吗？`
+			choice
+				`（是的。）`
+				`（不。）`
+					defer
+			`您给阿尔伯特打电话，并安排与他会面以计划下一步。他出现在你的船上，向你打招呼，然后开始装载一些设备以及你带来的跳跃驱动器。他组建了一支约150人的船员队伍，其中包括一支由造船厂工人组成的专业团队、大量经验丰富的船员、他本人以及三位海考古学家，他们一回到船上就轻松地卸下了伪装。`
+			`“ <first>，见见那些将帮助我们揭开翡翠剑命运的人。我刚刚向他们介绍了情况和我们计划做什么。除了跳跃驱动器之外，我们还将携带一些专用工具，这将使我们能够在我们可以登陆的任何世界中修理和装备这艘船。这可能看起来很多人，但如果我们想要恢复一艘废弃的船，我怀疑我们只需要这么多人。如果你准备好走吧，这是去祖本内尔哈克拉比的坐标。”`
+			`你感谢阿尔伯特，并为前往未知的航行做好准备。`
+				accept
+	
+	on accept
+		fail "Sheragi Archaeology: The Emerald Sword 2"
+		outfit "Jump Drive" -1
+		event "zubenelhakrabi discovered"
+		"reputation: Sheragi" = 1
+
+	on enter "Zubenelhakrabi"
+		conversation
+			`去祖本内尔哈克拉比的旅程完全正常而平静。当你到达时，简单的扫描显示该系统的恒星并不引人注目，正接近其主序阶段的末尾。在围绕它运行的行星中，其中一颗位于宜居带，并显示出明显的生命迹象，在云层下覆盖着深绿色的斑点。`
+			scene "scene/emeraldswordderelict"
+			`你还找到了翡翠剑，但奇怪的是，它不在地球上，而是在太空中漂流。这是一艘采用棱角设计的巨大船，其最引人注目的特征是一门巨大的大炮穿过船的中心。它太大了，甚至可以围绕它建造一艘船。你只能想知道它的力量。值得庆幸的是，您不必费尽心思找到方法；这艘船处于惰性状态，被遗弃，由于缺乏维护而被毁，并被遗弃在微陨石阵雨和腐烂中。如果看向错误的方向，它似乎可能会崩溃……幸运的是，您拥有适合这项工作的合适人员。`
+			`但在你开始接近这艘船之前，一种奇怪的感觉笼罩着你。首先，一种被更伟大的东西注视着的感觉。然后，你的胸口一片空白，一种无法摆脱的深深的恐惧。一个想法在你的脑海中形成，但它不是你自己的：`
+			`「你来了，人类。这是雪拉吉在灭绝前的最后抵抗。你最好不要打扰这个纪念之地。」当“灭绝”和“记忆”的想法被一种难以形容的感觉打断时，你会感到一阵强烈的颤抖。仿佛有一股寒意深入骨髓。`
+			choice
+				`“你是谁？”`
+					goto who
+				`“这……这是什么感觉？”`
+			`停顿了一下。被注视的感觉变得强烈，就好像你正在被专心研究一样。`
+			`“人类会称之为……恐惧、遗憾、失落。你正站在一个失落文明的最后一个未受破坏的墓地里。`
+			label who
+			`“我是这个地点的守护者。我也是引导你们走向埋葬城市的人，所以你们的种族将见证并留意那些长期屈服于自己愚蠢的人们的教训。我并不想让你们走到这一步。`
+			`“这里就是雪拉吉的终结之地。驱使他们灭绝的工具早已不复存在。我们亲眼目睹了他们将这些工具扔进了这颗恒星的心脏。”`
+			choice
+				`“你是说这艘船？它的武器系统似乎完好无损。”`
+					goto cannon
+				`“什么工具？”`
+			`“那些能够削弱整个世界生命价值的人。”`
+				goto next
+			label cannon
+			`“那艘船只是一个遗物，它的武器只是一个小饰品。杀死Sheragi的武器是不分青红皂白的。他们为自己做出的非理性决定，没有判断风险。”`
+			label next
+			`如上所述，你会被一些不属于你的记忆所困扰，这些记忆不够清晰，让你无法确定到底发生了什么，但你可以在其中感受到地狱般的恐慌。`
+			`那个声音继续说道：“我知道你在这里寻求什么。你所渴望的饰品与你自己的人类标准无关。但如果你想拥有它，那就拿走它。向那些在这里死去的人表示敬意，吸取他们的教训，我会允许的。也许看到那艘船会提醒活着的种族那些来来往往的人……以及，尽管他们取得了伟大的成就，但他们发动战争的决定如何将他们变成了墓地、遗迹、记忆……和尘埃。”`
+			`那声音，以及随之而来的压倒性的情绪，就像来时一样神秘地消失了。德西奥目睹了你对着虚空说话，他问你是否感觉还好。好像没有其他人听到过。`
+
+	npc assist
+		government "Sheragi"
+		personality derelict mute pacifist
+		system "Zubenelhakrabi"
+		ship "Emerald Sword" "Emerald Sword"
+		conversation
+			`你与翡翠剑对接，船员们开始在海考古学家的指导下仔细寻找进入的方法。里面没有任何气氛，因为生命维持系统早已失效。`
+			`在修补尽可能多的微陨石洞后，您可以使用飞船自身的生命维持系统来恢复翡翠剑的大气层，并将飞船的电源连接到它，以使飞船的系统发挥最低限度的功能。一旦处于可呼吸状态，船员就会登船并开始工作。新鲜加压的气氛，你不禁会觉得它闻起来像坟墓。`
+			`福斯特将船员分成不同的小组，探索这艘巨大的船只并报告他们的发现。 “我们可能会在这里待一段时间。不知道我们需要多长时间才能让这个东西再次运行。毕竟已经有几千年了，”他说。福斯特立即开始检查船上众多雪拉吉遗骸之一，而埃亚玛、拉基和德西奥则各自带着自己的小组探索这艘船。`
+			`半小时内，整艘船都挤满了船员，他们正在努力研究这艘船（以及船上先前居民的遗骸）并试图让它投入运行。`
+			label exploration
+			choice
+				`（寻找福斯特，看看他在做什么。）`
+					to display
+						not "saes: spoke with foster"
+				`（寻找江山，看看她在做什么。）`
+					goto eyama
+					to display
+						not "saes: spoke with eyama"
+				`（寻找 Rakei，看看她在做什么。）`
+					goto rakei
+					to display
+						not "saes: spoke with rakei"
+				`（寻找德西奥，看看她在做什么。）`
+					goto desyo
+					to display
+						not "saes: spoke with desyo"
+				`（返回我的船并等待翡翠剑发挥作用。）`
+					goto end
+			
+			action
+				set "saes: spoke with foster"
+			`你会在一个房间里找到福斯特，这个房间似乎已经扩大到超出了原来的大小，并被改造成某种农业设施。一排排干涸的土壤，其养分早已消失，上面悬挂着太阳灯。当福斯特的大多数船员都忙着研究农场本身时，他的注意力似乎集中在靠墙的一具木乃伊化的雪拉吉尸体上。你注意到尸体上有一个假肢，它比它的宿主保存得更好。`
+			`“到目前为止你发现了什么？”你问福斯特。`
+			`福斯特一开始没有回应，所以你开始再次问你的问题，但他很快转身看着你，然后又看向尸体。 “抱歉，我正忙着做白日梦。我们发现了什么。我们发现了什么……”福斯特环视房间，声音逐渐变弱。 “你听到那撞击声了吗？”`
+			choice
+				`“什么撞击声？”`
+				`“我什么也没听到。”`
+			`“奇怪。我问过这里的其他人，但他们也没有听到任何消息……总之，我们发现了很多惊人的东西。这个农场只是冰山一角。考虑到翡翠剑必须能够在亚光速穿越星际空间的长途飞行中幸存下来，船员们必须让飞船自我维持也就不足为奇了。我相信我们可以从这艘飞船上学到很多技术。但我们也发现了很多……令人不安的事情……”他的声音再次减弱。`
+			`“这些尸体讲述着故事，<last>。可怕的故事。进入该区域的船的入口被焊接关闭。该区域之外的几乎所有尸体都是骷髅，而里面的尸体，比如这具尸体，则被制成木乃伊。我最好的猜测是，在到达这里后的某个时候，他们意识到即使有这样的设施，他们也会在适当的时候耗尽食物。”福斯特跪下，靠近尸体。 “我对这一切有非常生动的想象，几乎就好像我当时就在那里，但这一切发生得太快了……他们在绝望中互相攻击。一小群人决定切断其余人的食物供应，让他们挨饿。然后这里的人靠着剩下的东西生活，直到生命维持系统耗尽。`
+			`“在我这些年里，我从来没有像现在这样感受到工作对我的影响。看到这一切，我感到非常不寻常……情绪激动。”福斯特转身背对你，擦去眼中的泪水。`
+			choice
+				`“你完全有权利情绪化。我们有了一个惊人但悲惨的发现。”`
+				`“当我们到达星系时，执政官跟我说话了。也许它也对你产生了影响。”`
+					goto archon
+				`“你认为这是因为我们所做的事情可能是错误的吗？我们现在基本上是在盗墓。”`
+					goto wrong
+			
+			`“是的。是的，我们有，”福斯特说，听起来比以前更乐观。 “令人惊奇，但悲惨。但是，令人惊奇，”他重复道，仿佛试图让自己放心。`
+				goto "foster end"
+			
+			label archon
+			`福斯特一提到执政官就紧张地笑了起来。 “也许吧，”他说，然后停顿了一下。 “不。我认为这种情况的严重性不言而喻。”`
+				goto "foster end"
+			
+			label wrong
+			`“我在这里跳跃时也有同样的想法，”福斯特说。 “但我们现在已经陷得太深，无法回头了。”`
+			
+			label "foster end"
+			`福斯特站起来，离开尸体。 “我应该回去探索飞船的其余部分。整天盯着尸体是没有用的。”`
+			`你离开该区域，发现挡住进入该区域的大门正靠在墙上。福斯特提到，门已被焊接关闭，因此工作人员一定以某种方式将其拆除以调查该区域。您注意到门中间有一个大凹痕。你不确定这是因为船员进入了该设施，还是因为船上以前的居民试图闯入。`
+				goto exploration
+			
+			label eyama
+			action
+				set "saes: spoke with eyama"
+			`你发现江山正在调查船上的生活区，它由长长的大厅组成，两侧排列着双层房间。许多门已经打开，这表明江山已经经历了其中的许多门。她从其中一间双层床房间里出来后，注意到了你。 “<last>队长！是什么风把你吹到这里来的？”她问。`
+			`“我想知道你是否发现了一些有趣的事情，”你回答道。`
+			`“哦，不。没什么，”她说道，听起来有些失望。 “到目前为止，我发现的房间基本上都是空的。我本以为他们会把个人物品放在铺位上，但看起来他们没有。或者也许他们因为某种原因被搬走了。”`
+			`江山走到走廊的隔壁。不过，门通向一个更大的房间，而不是另一个双层床房间。从与双层床房间的距离来看，你可能会认为这是一个休息区或自助餐厅，但它的内容却表明并非如此。墙壁上贴满了雪拉吉的文字和绘画，地板上散落着各种奇形怪状的物品。`
+			`“这是……”江山说道，当她靠近墙上的一处文字时，声音逐渐减弱。`
+			choice
+				`“那是什么？”`
+			
+			`江山把手放在字上，开始说话。这些声音与她第一次向你打招呼时用的喉音相匹配。她在每次发出声音后都会停顿一下，就像在读单个单词或字符一样。 “这是雪拉吉字母表，”她的声音充满敬畏。然后她的注意力转移到其他地方写作。她读完后为您翻译。 “上面写着，‘雷克拉怜悯我们。’”字迹旁边是墙上的雪拉吉手印，这是散布在大房间里的众多手印之一。江山把手按在上面，几乎盖住了它。 “这是一只年轻的手。”`
+			choice
+				`“为什么这一切都在这里？”`
+					goto young
+				`“雷卡拉是谁？”`
+
+			`	"From what we know, Rekla was a divine warrior among the Sheragi. Sheragi legends stated that she united the warring Sheragi tribes and led them all to the stars.`
+			label young
+			`	"This ship has to have traveled between the stars for many of your years in order to reach this system without a hyperdrive. The engines are powerful, so it perhaps took them 120 years to arrive here. Many of the Sheragi would have survived the trip, but would be very old when they arrived. This would have made it difficult for them to colonize the planet."`
+			choice
+				`“所以他们需要在来这里的路上繁殖？”`
+				`“这是否意味着这是一个日托中心？”`
+					goto daycare
+			
+			`	"Yes. At least one, maybe two generations of Sheragi could have been born in that time."`
+				goto walls
+			
+			label daycare
+			`	Eyama walks over to one of the objects on the ground and picks it up. "These are toys. So yes. This does seem to have been converted into a daycare."`
+			
+			label walls
+			`	Eyama stands up and looks toward the walls. "And these wall writings were used to teach them. These handprints are theirs. There are hundreds of them. And some of these words are their final prayers." Eyama seems to go into a trance as she walks around the room glancing at the many writings on the wall.`
+			`	As Eyama wanders the room, you begin looking at the objects on the ground. One of them catches your eye; a book of massive proportions, slightly over twice the length and width of your average human book, although you imagine it would be perfectly-sized for a young Sheragi. You try to open the book but find that the covers are locked together, and the lock won't budge.`
+			`	"Eyama, check this out," you say, snapping her out of her trance.`
+			`	"Oh, a book?" she asks. She picks up the book and tries to open it herself. Without hesitating she reaches over to the lock and just pulls it right off before swinging open the massive cover.`
+			choice
+				`“你是怎么解锁的？”`
+				`“它说什么？”`
+					goto diary
+			`	"It was locked?" Eyama asks with a puzzled look on her face before immediately turning her attention back to the book.`
+			
+			label diary
+			`	She skims the pages. "This is a diary. It seems to be written by an adolescent Sheragi who was born on the ship. They talk about how they've never seen a planet or star up close before, but the adults on board tell them stories of a promised land that they are traveling to. It seems that they were close when this was written, perhaps only a few weeks away from the system."`
+			`	She flips through the pages, getting further into the diary. "When they arrived at the system, they stayed in orbit around the planet. The author doesn't know everything that was going on, but there appeared to have been arguments over whether to land."`
+			`	She then flips more pages. "Some of the Sheragi left to go to the planet, while others stayed behind. It doesn't sound like the split was amiable."`
+			`	She continues to flip through the pages as they eventually turn blank. She then goes back and stops on the last written page. "Part of the remaining crew locked themselves in the hydroponic farm wing of the ship, leaving the rest of the crew with limited amounts of food. 'I'm scared and I don't know what to do.'" Eyama stops reading and closes the book, looking teary eyed. "That was the last line."`
+			`	Eyama wipes a tear from her face. "A sad story, but there are plenty of sad stories in this place. No use in lingering on this one." Eyama puts the book under her arm and walks out into the hallway, going back to checking the living quarters.`
+				goto exploration
+			
+			label rakei
+			action
+				set "saes: spoke with rakei"
+			`	As you are looking for Rakei, you hear a low hum begin emanating through the ship, followed by the dim glow of the emergency lights being replaced by the bright main lights. You eventually find Rakei with her crew walking through the halls of the underbelly of the ship. "Greetings, Captain," she says. "Is there something you need?"`
+			`	"Have you found anything interesting down here?" you ask.`
+			`	"Nothing out of the ordinary," she responds. "We just finished getting the power back online. We had to swap out some parts that look like they broke of old age. Seems like the power generation was active until the end.`
+			`	"It turns out that the power generation and engines are all one unit, so I guess that's how they were able to make such powerful engines. We're heading to the life support systems now to make sure they're online so that you can safely disconnect your ship."`
+			`	You follow her to the life support systems of the ship, a massive unit designed to scrub carbon dioxide out of the ship's atmosphere, keep the oxygen levels balanced, and warn about any potential leaks in the ship. Rakei finds the main control panel and begins tapping away at it. "Need to make sure this doesn't kill us when we turn it on." After a short while of working on the panel she simply flips a switch, turning it on.`
+			`	"Huh," she says. "That was a bit too easy."`
+			`	"What do you mean?" you ask.`
+			`	"Well we needed to fix the power generation because of how it broke from use, but the life support systems are working just fine."`
+			choice
+				`“你认为发电会先于生命维持系统失效吗？”`
+				`“也许有人关闭了生命维持系统。”`
+					goto purposeful
+			`	"That could be the case, but life support systems are usually the first set of components that need to be repaired or replaced on any ship as it ages, so maybe someone turned them off before the power generation failed."`
+				goto follow
+			label purposeful
+			`	"That could be the case. Life support systems are usually the first set of components that need to be repaired or replaced on any ship as it ages, so someone turning them off is one way they could work when the power didn't."`
+			label follow
+			`	Rakei looks like her eyes are suddenly drawn to something across the room. You follow her gaze and spot an open doorway, different than the one you entered from. The doorway leads to a sealed airlock. Rakei accesses a panel next to the airlock to see that the other side is pressurized and opens it.`
+			`	On the other side of an airlock you find a large room with what looks like a runway going down the middle, leading to a shielded opening to the void of space. On either side of the room are three hangar bays. You spot that each of the hangars has a ship within it except for one.`
+			`	"Fighters," Rakei says as she approaches one of them and begins examining it. "These look like interesting pieces of technology. I wonder how the Sheragi were able to even fit into one." She runs her hand along the hull of the fighter and sees some Sheragi writing on the side. "'Onyx Chariot.' That's its name."`
+			choice
+				`“你能读懂吗？”`
+					goto read
+				`“我以为 Eyama 是语言学家。”`
+			`	"She is. I guess she's rubbed off on me."`
+				goto fighter
+			label read
+			`	"It looks like it."`
+			label fighter
+			`	Rakei hops onto the top of the fighter, looking for a way in. She finds a hatch and opens it, looking shocked at what she sees. "Wait. I think these fighters are autonomous. I'm not seeing any signs of a life support system, or even a way that a Sheragi could pilot this. There's barely even enough room for a younger Sheragi to fit in here. If the Sheragi couldn't have piloted these then why is there one missing?"`
+			`	Rakei closes the hatch and hops down from the fighter. "We still need to get other systems working before the ship is fully functional, so we can take a look at these fighters later. And maybe we'll find the missing fighter on the planet."`
+				goto exploration
+			
+			label desyo
+			action
+				set "saes: spoke with desyo"
+			`	You find Desyo in the cockpit of the ship, overseeing a crew attempting to take control of the ship's computer systems. Makeshift scaffolding has been put in place just so that the crew can reach the controls. "Hello there, Captain," Desyo greets you as you walk in through the massive doorway. "Is there anything I can help you with?"`
+			`	"I'm just curious as to what you've found," you respond.`
+			`	"Not much yet. We've only just finished putting up these structures so that we can properly access the ship's controls. Now we're looking over them to find a main access point of sorts. From there, we can take control of the ship."`
+			`	"Desyo, you might want to see this," one of the crew members shouts. You follow Desyo over to the crew member, who has found a compartment under one of the consoles. Inside, among a mess of Sheragi components, lays a black box that looks exactly like the one that brought you here, and in pristine condition compared to it as well.`
+			`	Desyo excitedly removes the black box from the compartment, detaching it from the ship's electronics and attaching it to a computer of her own. "There's no telling what information we'll be able to find with this! Having this ship's black box will tell us everything about it, from its journey in Zubeneschamali all the way to when the ship lost power!"`
+			choice
+				`“你认为我们可以找到另一艘船来探索吗？”`
+				`“就这样插入真的是个好主意吗？”`
+					goto "bad idea"
+			
+			`	"I don't believe that this box would have any information that would lead us to another ship. But, there's only one way to find out," Desyo says as she begins decrypting the black box.`
+				goto explodes
+			
+			label "bad idea"
+			`	"If you're thinking that this could infect my computer with a virus as a countermeasure, I've already dealt with that. We had to develop a firewall to combat a virus that was in the other black box," Desyo says as she begins decrypting the black box.`
+			
+			label explodes
+			`	As Desyo begins extracting information from the box, you begin hearing a strange noise akin to a tea kettle. The noise begins to increase in volume and you pinpoint that it is coming from the box itself, which is now emitting strange white particles and a wave of heat. Others have seemed to notice this as well and have already moved behind cover. "Odd. Never seen that happen before," Desyo says. Before you can move, somebody pulls you and Desyo away from the box. The box suddenly gives off a loud popping noise and parts fly everywhere in an explosion.`
+			choice
+				`“有人受伤了吗？”`
+				`“上次的事情也是这样吗？”`
+					goto last
+			
+			`	Your question is met with a chorus of "No, I'm fine," "All good over here," and various other affirmations of safety from the crew.`
+				goto "desyo end"
+			
+			label last
+			`	Desyo looks at you like you're some kind of alien. "No, nothing like the sort. Don't you think I would have expected that if it had?"`
+			
+			label "desyo end"
+			`	Everyone comes out from behind their cover to look at the aftermath. Luckily, no one seems to have been hurt. Desyo walks over to the large scorch mark on the floor left behind by the explosion. "I have no idea what could have caused such an explosion to occur," she exclaims.`
+			`	"How's your computer doing?" you ask.`
+			`	Desyo finds the computer on the other side of the room with a severely cracked screen, but somehow still functional. "Sturdy piece of hardware, isn't it?" she jokes. She begins tapping away at the keys as she squints at the screen. "I can still make out some of what I was able to pull from the cube. It looks like... that cube had some information on a weapon. Some sort of... chemical weapon? It seems to include... mention of coordinates. But that's all I was able to get. Whatever coordinates they were are lost to time."`
+			`	The crew are still standing around in shock as Desyo fiddles with her damaged computer. She looks up to see everyone staring at her. "Well, let's get back to work. We're not going to make any progress just standing around."`
+				goto exploration
+			label end
+			`	You return to your ship, and after a few hours Foster contacts you saying that the ship is in operational condition. It'll need to be landed on the planet in this system so that the jump drive can be installed, though.`
+		
+	on visit
+		dialog `当你降落在这个陌生的世界时，你会发现并不是所有的事情都被解释清楚了！最好确保翡翠剑号已经登上，并且没有船员或货物被护送出星系。`
+
+
+
+mission "Sheragi Archaeology: Epilogue"
+	landing
+	name "翡翠剑"
+	description "返回楚格。"
+	source "Valley of the Damned"
+	destination "Zug"
+	passengers 150
+	cargo "Outfitting Equipment" 25
+	to offer
+		has "Sheragi Archaeology: The Emerald Sword 3: done"
+	on offer
+		give ship "Emerald Sword (Fixed)" "Emerald Sword"
+		give ship "Black Diamond" "Stormheart"
+		give ship "Black Diamond" "Onyx Chariot"
+		give ship "Black Diamond" "Firebrand"
+		give ship "Black Diamond" "Frostherald"
+		give ship "Black Diamond" "Ivory Talon"
+		give ship "Black Diamond" "Skeleton Key"
+		conversation
+			`当您进入外星世界的大气层时，您开始对空气质量进行扫描，以确定呼吸是否安全。你很快就会明白为什么雪拉吉会在太空中灭亡；大气中含有高浓度的氯气，除了那些似乎在这里奇迹般进化的生物之外，对所有生物都是致命的。 “以防万一”带来的环保服在这里非常有用。如果你不带它们，长时间呼吸的话，空气中的空气会不健康，短期内也会非常不舒服。`
+			`你花了一些时间寻找合适的着陆点——一个足够高的地方，可以逃脱大气中最高浓度的氯气，但又足够平坦，可以着陆。您的扫描仪最终会发现高出地面的平坦台面。事实证明，雪拉吉人也发现了这个完全相同的地点；当你登陆时，你会发现平顶山上有一个大型定居点的废墟。`
+			`在废墟中，你发现了一艘看起来像一艘覆盖着树叶的小船。 “那一定是失踪的战斗机，”拉基说。`
+			branch skip
+				has "saes: spoke with rakei"
+			`看到你的困惑，她解释道：“我们在翡翠剑上发现了五名战士，但还有空间容纳六名。我们认为最后一名可能在地球上。”`
+			label skip
+			`“嗯，事情发生了很大的转变，”福斯特看着废墟说道。`
+			choice
+				`“你没想到会在这里发现什么？”`
+				`“你认为我们能找到还活着的人吗？”`
+					goto alive
+			`“在看到船上发生的事情之后就不会了，”他回答道。`
+				goto landing
+			label alive
+			`“几千年后？我没有屏住呼吸，”他回答道。`
+			label landing
+			`你将你的船降落在翡翠剑旁边，船员们开始将重型设备从你的船上运输到翡翠剑，以完成其功能并安装跳跃驱动器。`
+			`福斯特和埃亚马穿上环保服。 “想和我们一起调查废墟吗，<first>？”福斯特问道。 “拉基和德西奥将留在这里完成船上的工作。”`
+			choice
+				`“当然，我会一起去的。”`
+				`“不，我宁愿在这里等。”`
+					goto end
+			`你与福斯特和埃亚玛一起前往定居点。废墟所剩无几，但经过这么长时间，仍然超出了人们的预期。这些建筑物都相互连接，以避免外部大气的影响。它们是由玻璃、废料和一种黄白色塑料制成的，与这里动物的甲壳是用同样的塑料制成的。非常幸运的是，这个星球上的年轻生命似乎仍然无法分解这些物质，留下的废墟只能任由天气和地质过程的摆布。随着时间的推移，它们似乎被融化成形状并建造成墙壁，使建筑物呈现出圆形、不合时宜的外观，就像用现代材料制成的泥屋一样。里面到处都是从天花板到地面挂着的窗帘和破布的残骸。仔细检查后发现，这些抹布上含有微量的奇异化学物质，这些化学物质很可能与空气中的氯发生反应，以保持内部空气的透气性。`
+			`你遇到的较小的房间似乎只是家庭住宅，内部结构简单，单间，而较大的房间则有其他用途，比如似乎是一间教室、一个存放许多不同物种外骨骼的动物甲壳储藏室、一个带有太阳能烤箱残骸的公共厨房，最引人注目的是一个孵化场，里面散布着相对较小的床、巢和临时玩具。大多数房间都散落着骷髅和遗骸，从最大的狩猎采集者到最小的年轻人，这是一个严峻的场景，表明一些未知的灾难一下子结束了他们的生命。即便如此，地表的雪拉吉显然比翡翠剑中的雪拉吉存活的时间要长得多，或许已经存在了很多代。如果船靠岸的话，他们也许就能活到今天。`
+			`福斯特记录并拍摄他所看到的一切。虽然你以为他看到这一切会很兴奋，就像他在楚格调查雪拉吉遗迹时一样，但他的心情却极其阴郁。`
+			`在其中一个房间里，江山发现一具年轻的雪拉吉骷髅躺在地上，看起来他们死时正在伸手去拿什么东西。埃亚马跪在骷髅旁边，伸出手去触碰它的手。 “别这样，”福斯特在房间的另一边说道，阻止了埃亚玛的动作。 “我们需要不受干扰地离开这个地方。我们夺走这艘船已经做的够多了。”江山站起来，没有说话，但给了福斯特一个理解的表情。`
+			`在废墟中呆了足够的时间后，你与福斯特和埃亚马一起返回船上。`
+			label end
+			`翡翠剑号的最后修复工作几乎需要一整天的时间，工作人员轮班工作才能完成工作。一旦飞船修补完毕并且所有系统都正常运行，跳跃驱动器就安装好了。在翡翠剑的制作过程中，拉基派出一个小组取回了最后一架战斗机并将其送回船上。现在剩下要做的就是让飞船进入轨道并返回 <planet> 。`
+				accept
+	on visit
+		dialog `您已到达 <planet>，但并非所有考古设备都已恢复！最好离开并等待你的护卫到达这个星系。`
+	on complete
+		log `Obtained an ancient Sheragi warship whose name translates to the Emerald Sword. It was crewed by mutineers that fled from their civil war and escaped into interstellar space. Found orbiting a disconnected star, it is an impressively large ship, fit for the equally large Sheragi. The ship's main weapon is a fusion-pumped gamma-ray laser called the 'Dragonflame Cannon.' Despite the relatively primitive outfits, it's still a very capable war machine due to its size.`
+		conversation
+			`你那艘充满异国情调的新船吸引了码头工人的大量注意力，部分原因是它是独一无二的、前所未见的，但更可能是因为它配备了前所未有的大炮。艾伯特和海考古学家花了一天的大部分时间来更详细地检查这艘船并打捞尸体，现在它已经在一个合适的太空港中，他们可以使用更复杂的设备。一切都在一个特别忙碌的下午完成，随着夜幕降临，船内巨大的规模允许安装更多的楼层，为您提供更多的居住空间。`
+			`你和阿尔伯特以及半伪装的三海一起回到以前的同一个公园，手里拿着冰淇淋，爪子握着，以纪念新获得的东西。`
+			`“那是一艘令人印象深刻的船，”你提到。`
+			`“确实如此，”德西奥说。 “我以前从未见过这么大的大炮。”`
+			choice
+				`“我想知道它是如何运作的。”`
+					goto works
+				`“她就是这么说的。”`
+			`德西奥不明白，但埃亚玛突然笑了起来。 “经典的人类笑话。你看，这意味着——”`
+			`“天啊，别解释了，”艾伯特打断道。 “那太糟糕了。不过她是对的，这不是你每天都能看到的东西。你知道它是如何运作的吗？”`
+			label works
+			`在这方面知识更丰富的 Rakei 做出了回应。 “这是一种聚变泵浦伽马射线激光器，简称GRASER。该装置概念简单，但所涉及的成本和所有东西的比例使得开发变得不切实际，更不用说使用它在许多文明中可能会被视为战争罪，从而使研发变得不值得。它本质上是使用核闪光来驱动激光束，穿透并熔化一切。令人着迷，但我希望你只将它用于维持和平目的。”`
+			`Eyama补充道，“我一直将其称为龙焰大炮。我认为它是合适的，尽管从技术上讲它不是化学意义上的火焰。人类传说中的龙可以喷火，尽管Sheragi不太可能真正做到这一点，但这门大炮足以弥补这一点。”`
+			choice
+				`“你认为我使用它会带来麻烦吗？”`
+					goto trouble
+				`“它不会炸毁我自己的船吧？”`
+			`拉基笑了。 “别担心，雪拉吉已经做好了功课。他们使用了简单的材料，这意味着大炮可以进行维护和修理，使其结构继续保持坚固。无论如何，许多部件都是活跃的，而且它们基本上只在 GRASER 开火的短时间内存在。我只建议不要在近距离射击。”`
+				goto catch
+			label trouble
+			`“我认为你不会，只要你不把它发射到一颗行星上。它不会像神经毒气那样造成不必要的痛苦，也不会像核弹那样不分青红皂白。这是一束聚焦光束。它会直接在任何受到其愤怒影响的船只上戳出洞。”`
+			label catch
+			`“那有什么问题吗？”你问。`
+			`“它会消耗大量能量。我的意思是很多。而且每次射击都会如此。没有任何一个反应堆能够让它以尽可能快的速度射击。如果你想重新装备那艘军舰并仍然使用大炮，那么预计在电池和反应堆上投入大量资金。”`
+			`德西奥补充道，“另外，别以为你现在就无敌了。那艘船上的护盾矩阵非常原始。几乎不存在。船体很坚固，但不要太依赖它。如果人类技术尝试的话，可能会做得更好。无意冒犯。”`
+			`“那你现在打算做什么？”你问他们。`
+			`江山回应道。 “我们会继续和阿尔伯特合作。这两个书呆子喜欢科技和船只，但我对这座被掩埋的城市所拥有的文物宝库更感兴趣。更不用说这里的人类非常有趣了！”`
+			`你们都吃完了冰淇淋，继续聊了一会儿，然后才告别并返回船上。到明天，它将处于完全工作状态，准备好进入无尽的虚空。`

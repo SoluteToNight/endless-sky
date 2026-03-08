@@ -1,0 +1,272 @@
+# Copyright (c) 2014 by Michael Zahniser
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program. If not, see <https://www.gnu.org/licenses/>.
+
+outfit "Supercapacitor"
+	category "Power"
+	series "Batteries"
+	index 01010
+	cost 1500
+	thumbnail "outfit/supercapacitor"
+	"mass" 2
+	"outfit space" -2
+	"energy capacity" 750
+	description "有了足够强大的发电机，许多船只根本不需要电池。一个例外是射弹武器，它通常需要远远超过发电机产生的能量爆发。超级电容器为这些武器提供足够的能量存储，而不需要安装笨重的电池组。"
+
+outfit "LP036a Battery Pack"
+	category "Power"
+	series "Batteries"
+	index 01020
+	cost 6000
+	thumbnail "outfit/tiny battery"
+	"mass" 10
+	"outfit space" -10
+	"energy capacity" 4000
+	description "如果发电机的瞬时功率输出高于其系统的总能耗，船舶可以在没有电池的情况下运行，但电池可以在不需要时储存能量，从而使用更小、更便宜的发电机。"
+
+outfit "LP072a Battery Pack"
+	category "Power"
+	series "Batteries"
+	index 01030
+	cost 14000
+	thumbnail "outfit/small battery"
+	"mass" 20
+	"outfit space" -20
+	"energy capacity" 8800
+	description "该电池组的能量容量是最基本型号的两倍以上，使您的舰艇能够在能量耗尽之前进行更长时间的战斗。一些飞行员甚至会安装这些发电机来代替任何发电机，相信他们可以在电池电量耗尽之前到达目的地星球并充电，但这是一个冒险的提议。"
+
+outfit "LP144a Battery Pack"
+	category "Power"
+	series "Batteries"
+	index 01040
+	cost 32000
+	thumbnail "outfit/medium battery"
+	"mass" 40
+	"outfit space" -40
+	"energy capacity" 19200
+	description "这种中型电池组适用于需要偶尔齐射大功率武器而不耗尽能量的船舶。与所有电池组一样，如果战斗持续时间足够长以至于电池耗尽，那么依赖电池是有风险的。"
+
+outfit "LP288a Battery Pack"
+	category "Power"
+	series "Batteries"
+	index 01050
+	cost 54000
+	thumbnail "outfit/large battery"
+	"mass" 60
+	"outfit space" -60
+	"energy capacity" 31200
+	description "这是一种大型电池组，专为船舶而设计，这些船舶可能偶尔有高电力需求，但不希望与更强大的船舶发电机相关的费用或热量。"
+
+outfit "LP576a Battery Pack"
+	category "Power"
+	series "Batteries"
+	index 01060
+	cost 80000
+	thumbnail "outfit/huge battery"
+	"mass" 80
+	"outfit space" -80
+	"energy capacity" 46000
+	description "对于大多数需要这么多电力的船舶来说，更大的发电机比这种尺寸的电池更有意义。然而，电池组的优点是不产生热量，因此，如果一些船长不希望经常或长时间参加战斗，他们会使用电池组来代替强大的发电机。"
+
+
+outfit "KP-6 Photovoltaic Panel"
+	category "Power"
+	series "Solar"
+	index 01010
+	cost 7000
+	thumbnail "outfit/tiny photovoltaic"
+	"mass" 3
+	"outfit space" -2
+	"solar collection" .1
+	description "这种早期的商业光伏系统是人类第一个星际贸易网络背后的驱动力。它坚固耐用且模块化，可以用螺栓固定在任何船体上，甚至可以看到人类太空最偏远的部分。"
+
+outfit "KP-6 Photovoltaic Array"
+	category "Power"
+	series "Solar"
+	index 01020
+	cost 60000
+	thumbnail "outfit/small photovoltaic"
+	"mass" 24
+	"outfit space" -16
+	"solar collection" 1.1
+	description "KP-6 的紧凑模块化非常适合创建更大的太阳能收集阵列。这款原始的 Korunak Photovoltaics 模型配备了太阳能跟踪器，使其能够更好地利用可用的光线。"
+
+
+outfit "nGVF-AA Fuel Cell"
+	category "Power"
+	series "Generators"
+	index 01010
+	cost 35000
+	thumbnail "outfit/tiny fuel cell"
+	"mass" 20
+	"outfit space" -20
+	"energy generation" 1.2
+	"heat generation" 1.9
+	description "自太空时代开始以来，燃料电池一直是最便宜、最常见的星际飞船电源。该模型只能为非常小的或缓慢的船只提供足够的动力。"
+
+outfit "nGVF-BB Fuel Cell"
+	category "Power"
+	series "Generators"
+	index 01020
+	cost 47000
+	thumbnail "outfit/small fuel cell"
+	"mass" 30
+	"outfit space" -30
+	"energy generation" 1.9
+	"heat generation" 2.9
+	description "这是最小燃料电池的一个进步，除了发动机之外，还可以提供足够的能量来为几支小枪提供动力。"
+
+outfit "nGVF-CC Fuel Cell"
+	category "Power"
+	series "Generators"
+	index 01030
+	cost 72000
+	thumbnail "outfit/medium fuel cell"
+	"mass" 40
+	"outfit space" -40
+	"energy generation" 2.6
+	"heat generation" 3.8
+	description "这是一种中型燃料电池，设计足以满足大型民用船舶和小型军舰的需求，同时仍然比更先进的发电机选项更便宜。"
+
+outfit "nGVF-DD Fuel Cell"
+	category "Power"
+	series "Generators"
+	index 01040
+	cost 118000
+	thumbnail "outfit/large fuel cell"
+	"mass" 60
+	"outfit space" -60
+	"energy generation" 4.1
+	"heat generation" 5.7
+	description "这是一个相对较大的燃料电池。其他发电机可以产生更多能量并适合更小的空间，但它们要昂贵得多。因此，不经常参加战斗的大型民用船舶通常配备这些燃料电池。"
+
+outfit "nGVF-EE Fuel Cell"
+	category "Power"
+	series "Generators"
+	index 01050
+	cost 177000
+	thumbnail "outfit/huge fuel cell"
+	"mass" 80
+	"outfit space" -80
+	"energy generation" 5.9
+	"heat generation" 7.8
+	description "这是现有的最大的燃料电池，比一些核反应堆大，但价格便宜得多。许多预算紧张的船长愿意忍受其中的一种，直到他们能够筹集到更有效的资金。"
+
+
+outfit "RT-I Radiothermal"
+	category "Power"
+	series "Generators"
+	index 01060
+	cost 300000
+	thumbnail "outfit/small radiothermal"
+	"mass" 45
+	"outfit space" -45
+	"energy generation" 4.4
+	"heat generation" 18
+	description "放射热发电机从放射性同位素中收集热量并将其转化为电能。它们比燃料电池更强大，但也会产生相对较高的热量。"
+
+outfit "S3 Thermionic"
+	category "Power"
+	series "Generators"
+	index 01070
+	cost 360000
+	thumbnail "outfit/small thermionic"
+	"mass" 55
+	"outfit space" -55
+	"energy generation" 5.0
+	"heat generation" 12
+	description "热离子放射性同位素发生器被设计为放射热发生器的冷却运行替代品。"
+
+outfit "NT-200 Nucleovoltaic"
+	category "Power"
+	series "Generators"
+	index 01080
+	cost 570000
+	thumbnail "outfit/small nucleovoltaic"
+	"mass" 65
+	"outfit space" -65
+	"energy generation" 7.2
+	"heat generation" 15
+	description "核伏发电机是一种相对较新的发电机技术，它从放射性同位素源的衰变中收集能量并将其直接转化为电能。它们是最强大的发电机，依赖于核衰变而不是活跃的核链式反应。"
+
+
+outfit "Dwarf Core"
+	category "Power"
+	series "Generators"
+	index 01090
+	cost 800000
+	thumbnail "outfit/dwarf core"
+	"mass" 36
+	"outfit space" -36
+	"energy generation" 4.8
+	"heat generation" 14
+	description "矮核是一种小型核反应堆，小到足以安装在任何比战斗机还大的舰艇上。它是由深空设计的，旨在与耗电的原子发动机配合使用。"
+
+outfit "Fission Reactor"
+	category "Power"
+	series "Generators"
+	index 01100
+	cost 1500000
+	thumbnail "outfit/fission"
+	"mass" 65
+	"outfit space" -65
+	"energy generation" 9.4
+	"heat generation" 25
+	description "早在太空时代到来之前，裂变反应堆就一直是大型军舰的支柱。如今的模型非常安全和高效，但一些飞行员仍然觉得它们令人不安。"
+
+outfit "Breeder Reactor"
+	category "Power"
+	series "Generators"
+	index 01110
+	cost 2500000
+	thumbnail "outfit/breeder"
+	"mass" 80
+	"outfit space" -80
+	"energy generation" 12.8
+	"heat generation" 35
+	description "增殖反应堆是一种更高效的裂变反应堆，它捕获反应堆产生的一些中子辐射，并用它来浓缩更多的燃料。当然，它们也因此变得更大、更昂贵。"
+
+outfit "Fusion Reactor"
+	category "Power"
+	series "Generators"
+	index 01120
+	cost 5000000
+	thumbnail "outfit/fusion"
+	"mass" 100
+	"outfit space" -100
+	"energy generation" 18.2
+	"heat generation" 40
+	description "二十一世纪末实用聚变能的发明催生了一个繁荣富足的新时代。几个世纪后，发电机的尺寸已减小，但通常仍仅用于主力战舰。"
+
+outfit "Armageddon Core"
+	category "Power"
+	series "Generators"
+	index 01130
+	cost 9000000
+	thumbnail "outfit/core"
+	"mass" 130
+	"outfit space" -130
+	"energy generation" 24.2
+	"heat generation" 70
+	description "世界末日核心旨在满足共和国海军最大战舰的极端电力需求。其中一台发电机的成本比整个小型船舶船队的成本还要高。"
+
+outfit "Stack Core"
+	category "Power"
+	series "Generators"
+	index 01140
+	cost 4500000
+	thumbnail "outfit/stack core"
+	"mass" 140
+	"outfit space" -140
+	"energy generation" 22.9
+	"heat generation" 55
+	description "堆栈核心是由自由世界创建的，主要作为他们的无畏舰的动力来源。它是一种裂变反应堆，因此效率低于海军的聚变技术，但生产成本也低得多。"

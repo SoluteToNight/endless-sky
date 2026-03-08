@@ -1,0 +1,2158 @@
+# Copyright (c) 2022 by Arachi-Lover
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program. If not, see <https://www.gnu.org/licenses/>.
+
+mission "Lunarium Initial Log"
+	invisible
+	non-blocking
+	landing
+	to offer
+		has "Lunarium introduced"
+	on offer
+		log "Factions" "Lunarium Redoubt" "The Lunarium Redoubt is a resistance movement within the Coalition that is opposed to the Heliarchs, aiming to free it from their rule."
+		fail
+
+mission "Lunarium: Smuggling: Charity 1"
+	name "慈善运送"
+	description "作为慈善活动的一部分，向 <destination> 提供 <cargo> 爱心包。"
+	minor
+	cargo "charity supplies" 22
+	source
+		near "3 Spring Rising" 1 6
+		not government "Heliarch"
+	destination "Fourth Shadow"
+	to offer
+		random < 55
+		has "Coalition: First Contact: done"
+		not "joined the heliarchs"
+		not "Lunarium: Questions: active"
+		not "Lunarium: Quarg Interview: active"
+		not "Lunarium: Join: active"
+		not "assisting heliarchy"
+	on offer
+		conversation
+			branch chiree
+				has "joined the lunarium"
+			`一个穿着蓝色制服的基梅克向你走来。 “美好的一天，船长。你有兴趣帮助一些慈善工作吗？”她问。`
+			choice
+				`“什么样的慈善工作？”`
+				`“抱歉，我现在很忙。”`
+					decline
+			`“许多基梅克世界已经变得非常繁荣，但仍然落后于我们的一些行星，”她解释道。 “<planet> 的人民非常贫穷，他们缺乏计算机和通讯器等许多便利设施。为了帮助他们，我们更幸运的是，我们提供了许多物资。我们需要船长将他们运送到 <planet>。我们可以为<payment> 提供帮助，”她最后说道，看着你的船。`
+			choice
+				`“我很乐意帮助你。把补给品装到我的船上。”`
+				`“这是一个崇高的事业，但抱歉，我不是一名货运司机。”`
+					decline
+			`她的嘴发出一种叽叽喳喳、咔哒声。 “我很感激，船长。能够支付给你和其他一些工作一样的报酬，我们可能做不到，但我知道你会帮助很多人。对此，我向你保证。”`
+			`她向一些穿着类似制服的工人发出信号，几分钟后他们就会把货箱带到你的船上。她解释说，她的更多同事已经在 <planet> 上与更多队长一起工作，并建议您到达后寻找他们。她再次感谢您，并祝您 <planet> 旅途愉快。`
+				accept
+			label chiree
+			action
+				log "People" "Chiree" `One of the things Chiree does for the Lunarium is to maintain and operate a "charity" in Kimek space, both to help the less fortunate of the Coalition and also obfuscate the Lunarium's activities from the Heliarchs and their agents.`
+			`一个穿着蓝色制服的基梅克向你走来，你认出她是奇丽，你在加入他们时遇到的月之馆领袖。她要求私下交谈，你们两个就进了船。 “好多了，”舱门关闭后她说道。 “向你解释这份工作会更容易，如果能自由而真实地谈论它，我可以。`
+			`“我和其他成员认为，Kimek 空间中的某种‘慈善机构’。我们收到的捐款是真实而诚实的，我们很高兴帮助我们地区有需要的人。但是，这也是 Lunarium 某些货物转运的一个很好的掩护。希望在这方面获得您的帮助，我们愿意。”`
+			choice
+				`“我要运送什么？”`
+				`“抱歉，我现在没空。”`
+					decline
+			`“这一次是定期交付。您将运输一些科技和生活用品到 <planet>，一个更贫穷的世界。希望立即用您宝贵的援助来承担危险的走私任务，我们不会，所以帮助您与慈善机构建立背景，我们会的。为此您只支付 <payment>，您会的，但向您保证以后会提供更多的赏金，我愿意。”`
+			choice
+				`“好吧，我会尽力而为。”`
+				`“我实际上有一些更紧迫的任务需要完成，抱歉。”`
+					decline
+			`她的嘴发出一种叽叽喳喳、咔哒声。 “好，很好，尽快把货送过来，我这就去。”她离开你的船，向一些穿着类似制服的工人发出信号，几分钟后他们就把货箱带到你的船上。她解释说，她的更多同事已经在 <planet> 上与更多队长一起工作，并建议您到达后寻找他们。她再次感谢您，并祝您 <planet> 旅途愉快。`
+				accept
+	on accept
+		"assisting lunarium" ++
+		log "Agreed to help a Kimek charity by transporting some supplies to one of their poorer worlds."
+	on visit
+		dialog `您降落在 <planet> 上，但意识到您携带慈善物资的护送人员尚未进入此系统。最好离开并等待。`
+	on complete
+		"assisting lunarium" --
+		payment 44000
+		conversation
+			branch chiree
+				has "joined the lunarium"
+			`你找到当地的慈善工作者，他们开始从你的船上卸下物资。当他们快要完成时，你会收到给你这份工作的 Kimek 发来的信息。`
+			`“我很感谢你的服务，船长。对你来说，这份工作看起来很简单，但这些运送对那些有需要的人来说是很大的帮助。再次联系你，我们会的，如果你有兴趣提供更多帮助，”她说。工作人员完成后，他们会将 <payment> 交给您，并将板条箱移至 Kimek 排队接收物资的建筑物。其他工人继续从抵达的船上卸下更多货物。`
+				decline
+			label chiree
+			`你找到当地的慈善工作者，他们开始从你的船上卸下物资。当他们快要完成时，你会收到 Chiree 发来的信息。`
+			`“这是一项简单的工作，队长，但仍然很重要。我们还有更多的工作等着你，所以请你留意 Kimek 空间中的更多成员，我愿意。”工作人员完成后，他们会将 <payment> 交给您，并将板条箱移至 Kimek 排队接收物资的建筑物。其他工人继续从抵达的船上卸下更多货物。`
+	on fail
+		"assisting lunarium" --
+
+mission "Lunarium: Smuggling: Charity 2"
+	name "慈善运送"
+	description "将 <cargo> 和 <bunks> 医生带到 <destination>，以帮助地球上正在遭受严酷冬季条件的可怜的 Kimek。"
+	passengers 5
+	cargo "charity supplies" 39
+	source
+		near "5 Winter Above" 1 4
+	destination "Into White"
+	to offer
+		random < 60
+		has "Lunarium: Smuggling: Charity 1: done"
+		not "joined the heliarchs"
+		not "Lunarium: Questions: active"
+		not "Lunarium: Quarg Interview: active"
+		not "Lunarium: Join: active"
+		not "assisting heliarchy"
+	on offer
+		conversation
+			branch chiree
+				has "joined the lunarium"
+			`当您穿过 <origin> 的太空港时，一个穿着蓝色制服的 Kimek 看到您并接近您。你认出她是一位慈善工作者，她让你向第四影的可怜的基梅克世界运送一些物资。`
+			`“我们又见面了，<last>队长！还有一些慈善工作，你有兴趣吗？”`
+			choice
+				`“我很乐意。你需要我做什么？”`
+				`“抱歉，慈善机构支付的钱不多，而我需要现金。”`
+					decline
+			`“<planet> 是一个越来越冷的世界。许多人离开了这个星球，但希望放弃自己的家园，但那里的许多 Kimek 却不愿意，”她解释道。 “许多人缺乏适合恶劣天气的冬季服装，降雪导致了许多人失业，因此我们正在提供各种外套和保暖衣物。”`
+			`她慢慢地抬起一条腿，与另外五条腿挣扎着站稳，然后向一群穿着同样蓝色制服的基梅克人挥手致意。他们来找你，她继续。 “我们 Kimek 不适合如此寒冷的气候，所以容易生病，<planet> 上的许多人也会生病。同意帮助他们，这些优秀的医生做到了，”她指着 <bunks> Kimek 医生说道，他们都向你点头致意，并做了一些腿部运动。 “我们收到了更多的奖励资金，为了感谢您持续提供的帮助，我们支付的金额比上次要多。我们希望能够为您提供足够的补偿，以弥补这方面的帮助，<payment> 希望能够做到。”`
+			`一些工作人员将 <cargo> 带到您的船上，而您则向 <bunks> Kimek 医生展示他们的床位。在这里见到你们的 Kimek 祝你们 <planet> 旅途顺利，然后继续与其他一些船长交谈。`
+				accept
+			label chiree
+			`当您穿过 <origin> 的太空港时，一个穿着蓝色制服的 Kimek 看到您并接近您。你很快就认出了 Chiree，并示意她跟着你进入你的船。 “谢谢你，船长，”你们俩进去后她说道。 “我为你准备了另一份‘慈善’工作。这次是和一些乘客一起。”`
+			choice
+				`“又是正常分娩吗？”`
+				`“抱歉，我没有兴趣再帮忙做这种工作了。”`
+					decline
+			`“不，”她很快回答。 “嗯，不完全是。<planet> 上的公民需要更多的冬衣。他们也需要医生来对抗寒冷带来的许多疾病。在那里运送 <bunks> 的乘客，你也愿意。医生，其中两人是。前往那里帮助治疗医院里的病人。至于其他三人......我们的“研究人员”，描述他们的最好方式是。当然，如果被问到，请说他们中的所有 <bunks>是医生，你必须这样做。”`
+			choice
+				`“好，我这就带他们过去。”`
+				`“抱歉，我没有兴趣再帮忙做这种工作了。”`
+					decline
+			`她离开你的船，并与附近一群 <bunks> 的其他 Kimek（你想象一下是你的乘客）会面，然后让一些工人将货物装载到你的船上。当你遇到基梅克人时，他们会用点头和一些腿部动作来简单地打招呼，货物准备好后，你将他们带到他们的铺位上。`
+			`“你会为这份工作支付 <payment> 的。祝你一路平安，船长。”Chiree 在离开前说道。`
+				accept
+	on accept
+		"assisting lunarium" ++
+	on visit
+		dialog `您降落在 <planet> 上，但意识到您携带慈善物资的护送人员和 Kimek 医生尚未进入该系统。最好离开并等待。`
+	on complete
+		"assisting lunarium" --
+		payment 132000
+		conversation
+			branch chiree
+				has "joined the lunarium"
+			`当你着陆时，更多穿着蓝色制服的工人正在等待，尽管这些制服由极其厚重、笨重的外套组成。他们将板条箱从你的船上取出，同时医生被引导到医院大楼，当工作人员完成后，<payment> 会转移给你。他们感谢您的帮助，并要求您如果想继续提供帮助，请在 Kimek 世界中寻找他们。`
+				decline
+			label chiree
+			`当你着陆时，更多穿着蓝色制服的工人正在等待，尽管这些制服由极其厚重、笨重的外套组成。他们将板条箱从你的船上取出，同时“医生”被引导到医院大楼，当工作人员完成工作后，<payment> 会被转移给你。他们感谢你的帮助，并在即将离开时靠近，悄悄地请求你在基梅克空间北部的世界中寻找更多成员。`
+	on fail
+		"assisting lunarium" --
+
+mission "Lunarium: Smuggling: Charity 3"
+	name "慈善运送"
+	description "将 <cargo> 带到 <destination>"
+	cargo "charity supplies" 46
+	source
+		near "14 Pole" 3 7
+	destination "Remote Blue"
+	to offer
+		random < 80
+		has "Lunarium: Smuggling: Charity 2: done"
+		not "joined the heliarchs"
+		not "Lunarium: Questions: active"
+		not "Lunarium: Quarg Interview: active"
+		not "Lunarium: Join: active"
+		not "assisting heliarchy"
+	on offer
+		conversation
+			branch chiree
+				has "joined the lunarium"
+			`一群 Kimek 在太空港向你走来。他们都穿着您一直帮助运送物资和人员的慈善机构的蓝色制服。 “你好，<last> 队长，”其中一人说道。 “你以前帮助过我们的慈善机构，你有兴趣做更多的工作，是吗？”`
+			choice
+				`“你需要我做什么？”`
+				`“抱歉，我没兴趣再帮忙了。”`
+					decline
+			`“<planet> 的阿拉奇人和萨里德人缺乏许多他们喜欢的饮食选择，”他们解释道。 “从外星订购就足够了，他们中的穷人没有，所以给他们寄了一个爱心包裹，我们的团队就是。”`
+			`他们向您展示机库附近的一堆集装箱和板条箱，然后您将它们装载到您的船上。 “一旦到达 <planet>，我们就会支付给您 <payment>。感谢您的帮助，我们会的，队长。”他们祝你旅途平安，然后消失在太空港大厅里。`
+				accept
+			label chiree
+			`一群 Kimek 在太空港向你走来。他们都穿着奇里“慈善”团体的蓝色制服，一旦他们靠近，其中一个就会向你的船发出信号。你得到提示，然后把他们带上船。 “还有更多的工作等着你，Chiree 有。到 <planet>”，其中之一在你关闭舱门的那一刻就开始了。 “她准备了一项重要的工作。一项只有你能做的工作。支付 <payment> 将 <cargo> 运送到 <planet>，你就会的，到了那里，告诉你有关主要任务的详细信息，她就可以。”`
+			choice
+				`“明白了，我马上过去。”`
+				`“抱歉，但我认为这一行不适合我。”`
+					decline
+			`他们点点头，然后你们就离开了你们的船。他们向您展示机库附近的一堆集装箱和板条箱，并将它们装载到您的货舱中。`
+				accept
+	on accept
+		"assisting lunarium" ++
+	on complete
+		"assisting lunarium" --
+		payment 261000
+	on fail
+		"assisting lunarium" --
+
+mission "Lunarium: Smuggling: Grenades"
+	name "手榴弹走私"
+	description "将 100 颗碎片手榴弹从人类空间带到 <destination> 。"
+	landing
+	source "Remote Blue"
+	destination "Mebla's Portion"
+	to offer
+		has "Lunarium: Smuggling: Charity 3: done"
+		not "joined the heliarchs"
+		not "assisting heliarchy"
+	on offer
+		log "Been providing transport services for a charity that is actually the Lunarium, a resistance group within the Coalition aiming to free it from the Heliarchs' rule. Some of the work was genuinely charity, apparently, but some was to support the resistance."
+		set "Lunarium introduced"
+		conversation
+			`你把装满慈善物品的板条箱扔下来，太空港的工作人员开始把它们装上车辆，运送给穷人。其中一名工作人员将 261,000 积分转入您的账户，感谢您的帮助。`
+			branch chiree
+				has "joined the lunarium"
+			`当他们移动最后几个板条箱时，你听到后面有快速的敲击声，当你转身调查时，基梅克抓住了你。还有一些人加入进来，用一些黑色的麻袋蒙住你的头，一旦他们限制住你，就开始推搡你。你大声呼救，但没有人来。当 Kimek 人带你游览这座城市时，他们会不断地推拉你。几分钟后，你听到一些门在你身后关上，绑架者强迫你进入某个狭窄的房间或隔间。你试图站直，但头撞到了天花板。很快你就会发现自己正处于一部下降的电梯中，当它停下来时，你又要多走一会儿。最后，Kimek 让您坐下并取下您头上的麻袋。`
+			`内部让你想起办公楼或呼叫中心；几个基梅克在小隔间里工作，大多数人检查电脑屏幕，而其他人则对着通讯器说话。你回头看向你认为自己来自的地方，看到走廊尽头有一个短电梯的入口。拐角处，一位您认识的 Kimek 走过来坐在您对面，他是第一个就慈善任务事宜与您联系的 Kimek。一群穿着蓝色制服的基梅克跟着她，他们带着一个板条箱：你运到这里的板条箱之一。 “请原谅我们让您感到不舒服，船长，”她说道，此时工人们打开了板条箱，露出了里面塞着的几把赫利亚克枪。 “我希望说话能避开别人的窥探，我做到了。放心吧，你可以伤害你，我们不会。”`
+			choice
+				`“你想从我处得到些什么？”`
+					goto want
+				`“这就是我一直在做的‘慈善工作’？走私武器？”`
+			`“第一次？不，第四影确实需要帮助，我们必须做适当的慈善工作，如果我们希望保持这种伪装，”她解释道。 “第二次，真正运送冬季服装时，你们只是……医生，你们运送的基梅克中的三个不是。这一次，你们帮助了我们的事业。”`
+			label want
+			`她向身穿蓝色制服的基梅克人发出信号，他们来到她身边，小心翼翼地照顾她的一些腿根部。您会听到“咔哒”一声，然后是“啪”的一声。他们将假肢从她的身体上拉开，移除了左侧最靠近头部的“腿”，以及右侧距离头部最远的“腿”。她左侧的 Kimek 作用于她的中腿，这表明它也是假肢。 “工厂事故，”她一边说，一边把头转向右侧。 “英勇的赫利亚克在巡逻，向少年基梅克开火，”她指着自己的左侧。 “我想要自己的枪，以确保他们不再有腿，但我失去了。不过，我的团队需要一些……更稀有的装备。帮助我们获得这些装备，只有你可以。”`
+			choice
+				`“你们组的？”`
+					goto group
+				`“什么样的装备？”`
+					goto equipment
+				`“如果我拒绝呢？”`
+			`“然后再把麻袋放在你头上，我们会的，然后带回你的船上，你会的，”她说。 “伤害你，我们不会。告诉我们，你可以，但不太……愿意在这里调查，大多数Heliarchs都是这样。”`
+				goto equipment
+			label group
+			`“你一定在新闻中听说过我们吗？恐怖分子、强盗、不法之徒、罪犯……Heliarchs给我们起了很多绰号。”她看着箱子里的武器。 “这就是月球堡垒。我们不是一群暴徒，或者不管他们怎么称呼我们。我们是试图从 Heliarchs 手中拯救我们的联盟。”`
+			label equipment
+			`两个 Kimek 走过你坐的桌子，朝电梯走去。坐在你前面的 Kimek 目送他们离开，保持沉默。 “我不是罪犯，当这两个人输掉的时候，”她指着左边的存根。 “确保Heliarchs永远不会再这样做，我们会的。非常感谢您的帮助。”她要求将板条箱中的一件武器放在桌子上，并用腿轻敲它。 “这些爆炸威力很大，但我们需要一些更广泛、影响更广泛的设备。炸药。你可以从人类太空为我们找一些手榴弹。”`
+			choice
+				`“好吧，我帮你，你需要多少手榴弹？”`
+					goto accept
+				`“不，我不想参与这件事。带我回到我的船上。”`
+			`“<payment>。我们愿意付给你两倍的费用，”你起身时她说道。 “你可以赚很多钱，如果帮助我们，你就这么做。”`
+			choice
+				`“好吧。有多少手榴弹？”`
+				`“不，让我回到我的船上。”`
+					goto decline
+			label accept
+			`她的下颌咬合了几秒钟。 “100个盒子。带到<planet>，它们一定是。确切的坐标，到达后，你会收到。”当另一个基梅克重新戴上假肢时，她停了下来。 “Chiree，我的名字是。希望你能为我们提供很多帮助，<last> 队长。”`
+			`她回到那群奇怪的小隔间里，你身后的基梅克让你站起来，把麻袋放回你的头上。再次乘坐令人不快的狭窄电梯，又推拉你的身体后，他们把你送回了船上。麻袋从你的头上被拿下来，基梅克就走开了，就像什么都没发生一样。机库周围似乎没有人注意到任何异常情况。`
+				accept
+			label decline
+			`她深呼吸了一会儿，然后要求另一个基梅克重新戴上假肢。 “很好，”她说，然后走回奇怪的小隔间组。你身后的 Kimek 让你站起来，把麻袋放回你的头上。再次乘坐令人不快的狭窄电梯，又推拉你的身体后，他们把你送回了船上。麻袋从你的头上被拿下来，基梅克就走开了，就像什么都没发生一样。机库周围似乎没有人注意到任何异常情况。`
+				decline
+			label chiree
+			`当他们从你的货舱里搬走板条箱时，一个熟悉的基梅克向你走来：这是奇里，当地的月球馆领袖。 “在你的船上说话，可以吗，船长？”您将她带入 <ship> ，然后她继续。 “既然是我们中的一员，你现在，帮忙获取一些装备，就想拜托你了。”`
+			choice
+				`“什么样的装备？”`
+					goto equipment2
+				`“这个‘慈善’工作只是为了让我来这里吗？”`
+			`“这最后一个？是的，我想谈论这个远离窥探的眼睛，我做到了，”她说。 “第四影的人们确实需要帮助。真正的慈善工作，我们仍然需要执行，如果要继续伪装，我们想要。第二个……好吧，正如你所知，医生，三个基梅克人不是。”`
+			label equipment2
+			`她解释说，你带来的板条箱里装满了Heliarch突击枪，旨在为这里的成员提供更好的武器。 “几十年来我们一直利用慈善机构作为走私手段，”她解释道。 “但是很难获得，更大的Heliarch服装是。很难秘密运输。你有能力离开，所以从外面带进服装，你可以。”她告诉你月球馆需要一些炸药，它们可以相对轻松地复制，并在登船行动中用来对抗赫利亚奇。他们被告知，距离联盟不远，有人类世界出售破片手榴弹，这可以完成这项工作。 “你必须带 100 盒去<planet>，”她说。 “付出两倍的代价，你就会，<payment>。”`
+			`她身上的通讯器发出蜂鸣声，她得到消息说工作人员已经完成了走私枪支的卸载。她告诉你，一旦你到达 <planet> ，你就会收到投递手榴弹的坐标，并祝你好运。`
+				accept
+	on accept
+		"assisting lunarium" ++
+		log "Agreed to acquire some grenades for the Lunarium from human space. They've offered to pay quite well."
+	on visit
+		dialog `您已于 <planet> 抵达，但尚未携带所需的所有手榴弹。确保在着陆前将它们全部放入您的货物中。`
+	on complete
+		"assisting lunarium" --
+		outfit "Fragmentation Grenades" -100
+		payment 3400000
+		conversation
+			`当您接近标准坞站时，显示器上会弹出一条消息，告诉您前往城市边缘。您按照指示进行操作，发现自己身处数十个仓库的中间。另一条消息到达并要求您卸下手榴弹并将其带到特定的仓库。当收到此信息时，您注意到一些阿拉奇人已经带着一些货物装载机抵达您的船外，似乎在等待您开始移动走私的武器。你打开舱门，帮助他们尽快将手榴弹箱从你的船上取出并放入指定的仓库，担心有人会看到你。门开着，楼梯旁还有几个阿拉奇在里面等着。他们什么也没对你说，只是拿着手榴弹箱，将它们从货物装载机上抬起，然后一个箱一个箱地带下楼梯。`
+			`当您完成最后一张后，其中一位 Arachi 会给您一些信用筹码，总共价值 <payment>。 “如果需要更多此类交付，请与您联系，我们会的，”他们带着最后一个手榴弹箱前往时说道。您返回您的船，然后前往通常的机库。`
+	on fail
+		"assisting lunarium" --
+
+mission "Lunarium: Smuggling: AM"
+	name "反导弹走私"
+	description "将三个重型反导弹炮塔带到 <destination> 。"
+	landing
+	source
+		attributes arach
+		not planet "Mebla's Portion"
+	destination "Fourth Shadow"
+	to offer
+		has "Lunarium: Smuggling: Grenades: done"
+		random < 25 + 4 * "assisted lunarium" * "assisted lunarium"
+		not "joined the heliarchs"
+		not "assisting heliarchy"
+	on offer
+		conversation
+			`着陆后不久，一只阿拉克就会接近你的船，等待你出来。当你这样做时，她会拿出一枚Heliarch徽章。 “请原谅我的这次闯入，你必须的，<last> 船长，但我已经下令检查你的船了。”她走进你的船，在你说什么之前冲到驾驶舱，并要求你到达那里后关上门。她的目光在室内看了一会儿，然后靠近你。 “你以前帮助过月球馆提供物资，”她低声说道。 “我们需要更多这样的服务。我们需要防御Heliarch导弹的手段，所以我被派去向你们索要三座最大的人类反导弹炮塔。”`
+			choice
+				`“我该带他们去哪里？”`
+				`“我不确定人类反导弹对你们的导弹是否有效。”`
+					goto effective
+			`“他们一定是被带到了 <destination> 。那里的工厂数量众多，而且都很相似。我们希望能够秘密生产我们自己的工厂。”`
+				goto accept
+			label effective
+			`“它们的机制越简单，我们复制它们的速度就越快，”她说。 “足够强大，足以阻止终结者，我希望他们……将炮塔带到<destination>，你必须这样做。”`
+			label accept
+			`她要了你的显示器，并在调整了控制装置一分钟后，将一个小型圆形设备插入其中。 “让我们能够更轻松地联系你，这将是。该设备完全由一个单独的网络访问。它只是一种接收我们消息的手段。在其硬件上留下痕迹，通信不会，并且无法自行访问网络。追溯到我们，你不会，除非在我们通信期间被 Heliarchs 抓住，”她解释道。 “将货物运送到 <planet> 后，您可以向您发送更多任务信息，我们会的。祝您好运，谢谢您，队长。”一旦“检查”完成，她就会离开你的船并匆匆离开。`
+				accept
+	on accept
+		"assisting lunarium" ++
+		log "Agreed to smuggle three of the largest human anti-missile turrets to the Lunarium. They hope to reverse-engineer them to defend against Heliarch weaponry, though the effectiveness of human designs here is dubious."
+		log "Given what appears to be some sort of communication device by a Lunarium representative to facilitate easier contact."
+	on visit
+		dialog `您已于 <planet> 抵达，但尚未携带所需的所有反导弹炮塔。确保在着陆前将它们全部装入货物。`
+	on complete
+		"assisting lunarium" --
+		outfit "Heavy Anti-Missile Turret" -3
+		payment 900000
+		conversation
+			`当您准备降落到 <planet> 时，您的显示器会发出响亮的蜂鸣声，表明您有消息。该消息详细说明了如何完成交付。假装你正在运输重型工厂设备，你停在一个大型自动化基地附近的停机坪上。龙门起重机将转塔移至地面，将其放置在货运平台上，然后将其拉入大型仓库。完成所有操作后，您会看到 <payment> 已添加到您的帐户中。`
+			`你再次看着你的显示器，看到一条消息，解释说如果你想进一步提供帮助，月球馆很乐意拿走更多走私设备的副本。该消息详细说明他们已经准备了一种将其任务整合到您的工作委员会中的方法。只要有空，安装在您船上的设备就会将它们包含在您的常规工作列表中。`
+	on fail
+		"assisting lunarium" --
+
+mission "Lunarium: Smuggling: Torpedoes"
+	landing
+	name "鱼雷走私"
+	description "将两个鱼雷和两个台风发射器以及每个可以携带的最大弹药带到 <destination> 。"
+	source
+		attributes kimek
+		not planet "Fourth Shadow"
+		not planet "Into White"
+	destination "Into White"
+	to offer
+		has "Lunarium: Smuggling: AM: done"
+		has "event: deep sky tech available"
+		random < 30 + 4 * "assisted lunarium" * "assisted lunarium"
+		not "joined the heliarchs"
+		not "assisting heliarchy"
+	on offer
+		conversation
+			`一旦你降落在 <origin> 上，插入你飞船的 Lunarium 成员的小子弹就会安静地发出嘟嘟声。你的显示器开始闪烁，最终变成某种消息传递界面。几秒钟过去了，一些文字弹出。 “你好，舰长！Chiree，是的。我们再次需要你的‘交付服务’。我们被告知，人类已经开发了一些自己的鱼雷，虽然不像终结者那么危险，但仍然为我们提供了针对 Heliarch 船只所急需的攻击力，他们会的。他们没有发布反导弹防御系统，所以这些武器对我们来说是一个巨大的恩惠。”`
+			`阅读该消息后，您会在显示器底部看到一个闪烁的圆圈，提示您进行某种回复。`
+			choice
+				`“你需要什么武器？”`
+				`“我要把武器送到哪里？”`
+			`您输入消息，几乎立即得到回复； Chiree 的假肢似乎并没有抵消多条腿同时打字的优势。 “我们需要两个‘鱼雷发射器’和两个‘台风发射器’，以及装满它们的弹药。一定要把它们带到<planet>。那里是我们最充足的鱼雷设施。一旦你把它们送到那里，你就会收到<payment>。”`
+			`当显示器恢复正常时，接口闪烁，圆形驱动器停止发出蜂鸣声。`
+				accept
+	on accept
+		"assisting lunarium" ++
+		log "Agreed to provide the Lunarium with some Torpedo and Typhoon Launchers. The lack of anti-missile systems on Heliarch ships means missile technology will be highly beneficial for the Lunarium."
+	on visit
+		dialog `您已于 <planet> 抵达，但尚未携带所需的所有发射器和弹药。确保在着陆前将它们全部放入您的货物中。`
+	on complete
+		"assisting lunarium" --
+		outfit "Torpedo Launcher" -2
+		outfit "Typhoon Launcher" -2
+		outfit "Torpedo" -60
+		outfit "Typhoon Torpedo" -60
+		payment 1852000
+		conversation
+			`显示器再次发出蜂鸣声，屏幕上出现一些坐标。你跟着他们，来到了靠近山脚的一片雪地。穿上厚重的冬装，你打开舱门，发现几艘萨利德正在等你，准备从你的船上取出发射器和弹药。 “这些应该会给我们带来更好的战斗机会，”其中一位在将 <payment> 递给您时告诉您，而其他人则致力于将发射器及其弹药从您的船上取出。 “这些终结者不如他们自己的终结者那么强大，但仍然能很好地伤害他们的船体，他们应该这样做。”`
+			choice
+				`“你确定他们不会在这里找到你吗？”`
+					goto find
+				`“为什么他们的舰艇没有反导？”`
+			`她似乎对这个问题感到困惑，然后她的脸就像想起了什么一样闪闪发光。 “是的，你不熟悉我们的历史，”她开始说道。 “事实证明，Heliarchs开发了他们的武器库来对抗夸格人，虽然有可能，但击落他们的射弹是一项太艰巨的任务。因此，他们更喜欢更具进攻性的炮塔，他们在历史上就是这样做的。”`
+				goto end
+			label find
+			`“这是一个平静的世界，但许多直升机巡逻队却无法做到这一点，”她解释道。 “我们在这里隐藏了很多东西很长时间。继续隐藏，我希望我们可以。”`
+			label end
+			`最后一枚鱼雷被从你的船上带出，萨利德人开始将它们带入通向山的洞穴内。付钱给你的萨利德再次感谢你，然后跟在其他人后面。你回到你的船，把它飞到机库，希望能找到一些热的东西喝。`
+	on fail
+		"assisting lunarium" --
+
+mission "Lunarium: Smuggling: Heat"
+	landing
+	name "激烈的走私"
+	description "将两个等离子炮塔和十个火焰喷射器运送到 <destination> 。"
+	source
+		attributes saryd
+		not planet "Secret Sky"
+	destination "Secret Sky"
+	to offer
+		has "Lunarium: Smuggling: Torpedoes: done"
+		has "event: flamethrower available"
+		random < 30 + 4 * "assisted lunarium" * "assisted lunarium"
+		not "joined the heliarchs"
+		not "assisting heliarchy"
+	on offer
+		conversation
+			`当你着陆时，月球馆的设备再次开始发出蜂鸣声，你的显示器会闪烁到与上次相同的消息屏幕。 “你好，船长。Chiree，是的。谢谢你的鱼雷，我必须，已经在努力生产更多像它们一样的鱼雷了，我们是这样。赢得我们的战斗，然而，他们自己不会，所以请你再次帮助我们，我。收到消息，我们有，更多的人类开发的武器。快速加热船只，他们可以，因此对对抗Heliarch攻击有很大帮助，他们会的。”`
+			choice
+				`“你需要我做什么？”`
+					goto accept
+				`“你‘收到消息’了？从谁那里？谁告诉你这些武器的？”`
+			`对于之前打字的速度，Chiree 花了很长时间才回答。屏幕上首先出现的内容是“知道这一点，我们不知道”。 “我们是在几个世纪前第一次联系的。不确定，如果值得信赖的话，我们仍然是这样，但他们所提供的信息总是正确的。第一个给我们带来人类服装的人，你不是；无论他们是谁，几十年前他们就给我们带来了一些人类的装甲和枪支。看，他们的船从来没有出现过，只有板条箱和集装箱，我们发现了。”`
+			choice
+				`“那你为什么这么信任这些神秘线人呢？”`
+				`“不管怎样，你只要告诉我你需要我做什么就可以了。”`
+					goto accept
+			`“因为他们总是帮助我们，而我们也迫切需要帮助，”她立即反驳道。 “他们给了我们一个战斗的机会，”她补充道。`
+			label accept
+			`她很快又打出了另一条信息。 “这将是一次更大的交付，所以我们需要一个好的藏身之处。到<destination>，你必须携带两个‘等离子炮塔’和十个‘火焰喷射器’。支付<payment>，你会的。”`
+			`蜂鸣声停止，显示器屏幕恢复正常。`
+				accept
+	on accept
+		"assisting lunarium" ++
+		log "Agreed to bring the Lunarium some Plasma Turrets and Flamethrowers. They seem to believe heat damage will be effective against Heliarch ships."
+	on visit
+		dialog `您已于 <planet> 抵达，但尚未携带所需的所有等离子炮塔和火焰喷射器。确保在着陆前将它们全部放入您的货物中。`
+	on complete
+		"assisting lunarium" --
+		outfit "Plasma Turret" -2
+		outfit "Flamethrower" -10
+		payment 5880000
+		conversation
+			`当你进入行星的大气层时，你会情不自禁地注意到行星的大部分地区都被浓浓的雾气覆盖。当你思考这样一个奇怪的事情时，你收到一条消息，引导你降落在一个岩石海滩上，一艘大型货运驳船正在那里等待。走下你的船，你会遇到一些 Saryds，他们拥有合适的设备，可以将等离子炮塔和火焰喷射器从你的货舱中取出。他们行动十分匆忙，在将炮塔从你的船上运走时将<payment>交给你，然后将一个又一个的火焰喷射器从你的船上运走。`
+			`“我们感谢您对我们共同努力的参与，<last>，”其中一位在快要完成时说道。 “如果信息属实，这些武器将给我们带来巨大的好处。”`
+			choice
+				`“你确定这个星球是一个合适的藏身之处吗？它似乎并不完全与世隔绝。”`
+				`“炮塔和火焰喷射器究竟有何帮助？”`
+					goto heat
+			`他对你的问题微笑。 “许多秘密都隐藏在迷雾之中，”他说道，仿佛这是一句格言。 “即使是大多数萨瑞德人也不知道，这个星球的某些部分是这样的。武器会隐藏得很好。担心它们，你不需要。”`
+				goto end
+			label heat
+			`“如果要与Heliarchs作战，我们就需要在对抗他们强大的船只时占据优势，”他解释道。 “当长时间战斗，接近其热量极限时，他们的船只会受到严重削弱，我们希望这些武器能够。”`
+			label end
+			`当最后一艘火焰喷射器被装载到驳船上时，他会向你告别，然后和其他人一起上船扬帆离开。起锚后几分钟内，驳船就完全被地球上始终存在的雾气包围。你进入你的船，前往通常的机库。`
+	on fail
+		"assisting lunarium" --
+
+mission "Lunarium: Smuggling: Reactors"
+	landing
+	name "反应堆走私"
+	description "将一个世界末日核心、一个聚变反应堆和一个增殖反应堆带到 <destination> 。为了避免大规模直升机巡逻的风险，您必须在每个月的第五天之前交付它们。"
+	source
+		attributes arach
+		not planet "Mebla's Portion"
+	destination "Mebla's Portion"
+	to offer
+		has "Lunarium: Smuggling: Heat: done"
+		random < 40 + 4 * "assisted lunarium" * "assisted lunarium"
+		not "joined the heliarchs"
+		not "assisting heliarchy"
+	on offer
+		conversation
+			`降落在 <origin> 上时，Lunarium 的设备再次开始发出蜂鸣声。当您收到 Chiree 的消息时，显示器的屏幕会发生变化。 “％ID_1％舰长，我有一个对你来说更复杂的任务。如果要与Heliarch战舰作战，我们的船只将需要一些更好的发电设备，我们是。批量生产更简单，人类应该如此，但只有在％ID_2％上，才存在足够大的设施。”`
+			choice
+				`“这有什么问题吗？我已经把手榴弹送到了那个星球了。”`
+				`“<planet> 有什么变化吗？”`
+			`“这些发电机比你带给我们的其他设备更大，”下一条消息说。 “‘世界末日核心’、‘聚变反应堆’和‘增殖反应堆’，我们需要的是，但需要很长时间才能移动这么大的部件，它会的。风险被看到，我们不能，所以只有在某些日子里，它们可能会被交付。每个月都会切换，轮换巡逻队会这样做。新的巡逻队通常会在第五次到达，所以在第五次之前的那个窗口期间交付，反应堆必须是。为此付给你丰厚的报酬，我们会的， <payment>。”`
+			`她退出后，蜂鸣声停止，您的显示器屏幕恢复正常。`
+				accept
+	on accept
+		"assisting lunarium" ++
+		log "The Lunarium will need more power than the Coalition solar panels and fuel cells can provide to take on the Heliarchs. Agreed to provide them samples of human shipboard nuclear reactors to reproduce to this end."
+	on visit
+		dialog `您降落在 <planet> 上，但没有收到当地 Lunarium 成员的任何指示。系统中可能有一个或多个反应堆不在您身边，或者您已经过了交付窗口。你应该准备在五号之前将三个反应堆引入，然后再试一次。`
+	to complete
+		day < 5
+	on complete
+		"assisting lunarium" --
+		outfit "Armageddon Core" -1
+		outfit "Fusion Reactor" -1
+		outfit "Breeder Reactor" -1
+		payment 33000000
+		"assisted lunarium" ++
+		log "After delivering some nuclear reactors, Chiree says she won't make further contact via the usual communicator, but others of the Lunarium on Coalition worlds may offer similar work."
+		log "Factions" "Lunarium Redoubt" "Apparently, some Arach Houses are not entirely happy with the status of the Coalition under the Heliarchs, and so they help fund the Lunarium."
+		conversation
+			`当您登陆时，当地的月球馆联系人会将您引导至远离任何城市的地点。您将被带到一个巨大的洞穴入口附近，那里的山谷已经被地球上典型的暴雨所覆盖。数十个 Arachi 和 Kimek 正在等着你，一旦你着陆，他们就会使用笨重的货物装载机小心地从你的船上取出每个反应堆，慢慢地将它们带入洞穴。他们对你负责带给他们的每个反应堆重复这个缓慢而艰巨的过程。`
+			`大多数不负责移动反应堆的人都全副武装，小心翼翼地监视着天空，偶尔还会打开通讯器，寻找任何可能接近的螺旋星舰的迹象。一个多小时后，当最后一个反应堆最终从你的货舱中取出时，其中一个 Arachi 会向你走来并递给你 <payment> ，感谢你为他们的事业所做的服务。 “这是很多钱，但反应堆应该是值得的。”`
+			choice
+				`“你从哪里得到这么多钱？”`
+				`“你打算用这些反应堆做什么？把它们安装到这里的船上真的很难。”`
+					goto reactors
+			`“我们存在的消息，Heliarchs 被压抑、扭曲，他们对我们行动的版本是，但足以赶走我们的支持者，但事实并非如此，”他说。 “不完全……高兴，一些阿拉克之家在事情的发展方向上是高兴的。帮助资助我们，他们确实这么做了。”`
+				goto end
+			label reactors
+			`“太阳能电池板和燃料电池不适合战斗。来对抗Heliarchs，我们最终会的，所以我们需要更好的武器发电，”他说，然后指着太空港的方向。 “Heliarch反应堆效率更高，但是太难偷了。太冒险了。它们只为我们的设施提供能源。经过研究和复制，以便在我们的船上使用，你带给我们的反应堆将会是这样的。”`
+			label end
+			`他们向你告别并进入洞穴，然后你回到了船上。当你降落在城市机库时，安装在显示器中的设备会再次发出蜂鸣声，并显示来自 Chiree 的消息。 “<last> 队长，你帮了我们很大的忙。我可能不会再像这样联系你，但你会找到更多走私工作的机会。非常感谢，你给我们带来的更多设备都会得到，当然，我们也会支付丰厚的报酬。”她退出，嘟嘟声停止了。`
+	on fail
+		"assisting lunarium" --
+
+
+
+mission "House Bebliss 1-A"
+	name "与贝布利斯家族会面"
+	description "前往<destination>，贝布利斯家族的成员希望在那里讨论工作机会。"
+	minor
+	to offer
+		random < 15
+		has "license: Coalition"
+		not "joined the heliarchs"
+		not "assisting heliarchy"
+		# This mission is to offer when the player has the Epilogue for whatever character of FW, Navy or Syndicate stays in Deneb.
+		# When the Navy and Syndicate campaigns get in, they'll need their own versions of missions 2 through 7 written.
+		or
+			has "FW Epilogue: Freya: offered"
+	source
+		government "Coalition"
+		not planet "Factory of Eblumab"
+	destination "Factory of Eblumab"
+	on offer
+		conversation
+			`一只阿拉克在太空港前拦住你，并邀请你到当地的酒吧享用免费餐点。 “我的雇主给你准备了一份商业计划书。”`
+			choice
+				`“很好，带路吧。”`
+					goto bar
+				`“你不能告诉我详细情况吗？我不饿。”`
+			`他似乎有些失望，但还是同意了。 “我是来自伟大的贝布利斯家族的使者。我的雇主表示希望见到你，因为你会为他们的一个项目提供巨大的帮助。”`
+			choice
+				`“他们想要什么？”`
+				`“他们有没有提到我会得到多少钱？”`
+			`“我不知道这些具体细节，但我确信，他们会回答你的任何问题。我的上级对你的足智多谋很感兴趣，”他说。 “在 <destination> 上，他们等待。现在，我告诉你，他们只想与你交谈。提出报价。如果你不感兴趣，就再向你施加压力，他们不会。”`
+			choice
+				`“很公平。告诉他们我会去那里听听他们的意见。”`
+				`“我不会特意只是为了听到工作机会。告诉他们下次亲自来。”`
+					decline
+			`他快速地点点头，并给了你一些坐标。 “这些会带你去庄园。感谢你的理解，贝布利斯家族。”他跑开，走进一座办公楼，通知他的上级，你将前往 <planet> 。`
+			label bar
+			`你跟着他走进店里点了一些东西。 “那么，谈生意吧，”他说。 “我是来自伟大的贝布利斯家族的使者。我的雇主表示希望见到你，因为你会为他们的一个项目提供巨大的帮助。”`
+			choice
+				`“他们想要什么？”`
+				`“他们有没有提到我会得到多少钱？”`
+			`“我不知道这些具体细节，但我确信，他们会回答你的任何问题。我的上级对你的足智多谋很感兴趣，”他说。 “在 <destination> 上，他们等待。现在，我告诉你，他们只想与你交谈。提出报价。如果你不感兴趣，就再向你施加压力，他们不会。”`
+			choice
+				`“很公平。告诉他们我会去那里听听他们的意见。”`
+				`“我不会特意只是为了听到工作机会。告诉他们下次亲自来。”`
+					decline
+			`他快速地点点头，并给了你一些坐标。 “这些会带你去庄园。感谢你的理解，贝布利斯家族。”他很快喝完酒，然后离开酒吧，向上级报告您将前往 <planet>。`
+				accept
+	on accept
+		"assisting lunarium" ++
+	on complete
+		"assisting lunarium" --
+	on fail
+		"assisting lunarium" --
+
+mission "House Bebliss 1-B"
+	name "与贝布利斯家族会面"
+	description "前往 <destination> ，支持 Lunarium 的 Arach House 代表希望在那里讨论工作机会。"
+	to offer
+		random < 75
+		has "House Bebliss 1-A: declined"
+		not "joined the heliarchs"
+		not "assisting heliarchy"
+	source
+		attributes arach
+		not planet "Factory of Eblumab"
+	destination "Factory of Eblumab"
+	on offer
+		conversation
+			`在前往太空港的路上，你被两个似乎是阿拉奇商人的人拦住了，周围有六名身材高大的阿拉奇人。 “根据您的要求，我们亲自来了，队长。”两名穿着奇装异服的人之一说道。`
+			choice
+				`“我的要求？你在说什么？”`
+				`“你们找错人了。你们两个我都不认识。”`
+				`“贝布利斯家族，对吧？谢谢你终于抽出了时间。”`
+					goto remember
+			`“对我们的员工来说，就是你所说的，”他们回答道。 “你要求‘下次亲自来’。”`
+			label remember
+			`他们“邀请”您跟随您进入一家看起来昂贵的餐厅，提供典型的阿拉克美食。笨重的Arachi并没有给你太多的选择，阻止你去其他地方，只有当你坐下来时才会放松。两位 Arachi 商人表示，他们会为你的餐费付钱，尽管你在菜单上找不到太多吸引人口味的东西。`
+			`“通常情况下，人们会更加……尊重我们家族的此类要求，但我们可能会像对待阿拉克人一样仓促地接近一位人类船长，”其中一个人一边浏览着菜单一边说道。 “众议院仍然感兴趣，所以为了满足您的要求，我们来了。”`
+			`“也就是说，对你的帮助感兴趣，”另一个人继续说道，同时示意其中一名保镖去找服务员。 “我们有一份对你来说很重要的工作。”`
+			choice
+				`“好吧，我对你感兴趣。这份工作是做什么的？”`
+				`“好吧，如果你这么想让我和你一起工作，为什么不直接告诉我这份工作是什么？”`
+				`“抱歉，我知道你特意亲自来见我，但我在联盟空间之外还有紧急事务。”`
+					goto decline
+				`“第二次机会，第十次机会，我真的不在乎你给我多少次，我没兴趣。”`
+					goto decline
+			`“多说，这里我们不能，”他回答道。 “如果你有兴趣，去<destination>，你一定要去。那里，是我们家族的私人庄园。”`
+			`“我们可以说，它涉及最近的人类事件。您参与的事件，”另一个人说道，并给您提供了他们在 <planet> 上的庄园的一些坐标。`
+			`服务员来了，他们推荐了一些菜肴，因为你没有从菜单上选择任何东西。然而，其他桌子上传来的气味告诉你要拒绝，所以你礼貌地离开了餐厅。看来要想知道这些 Arachi 想要什么，唯一的方法就是前往 <destination> 。`
+				accept
+			label decline
+			`他们两个盯着你看了一会儿，让你感到非常不舒服，但从来没有做出任何回应或确认。你试图走开并离开餐厅，但他们的保镖挡住了你。桌子上的两个阿拉奇之一似乎咕哝了一声，然后示意警卫让你通过。您离开餐厅，然后返回您的船。`
+				decline
+	on accept
+		"assisting lunarium" ++
+	on complete
+		"assisting lunarium" --
+	on fail
+		"assisting lunarium" --
+
+mission "House Bebliss 2-FW"
+	name "寻找芙蕾雅"
+	description "前往<destination>寻找芙蕾雅，看看她是否愿意让贝布利斯家族的成员与她一起研究哈巴狗文物。"
+	landing
+	to offer
+		not "joined the heliarchs"
+		not "assisting heliarchy"
+		or
+			has "House Bebliss 1-A: done"
+			has "House Bebliss 1-B: done"
+	source "Factory of Eblumab"
+	destination "Pugglemug"
+	on offer
+		conversation
+			`您按照给定的坐标降落在山顶的一组私人机库上。附近有一座庄园，上面覆盖着一个类似于太空港城市上空的圆顶。你会受到阿拉奇管家和女仆的接待，他们穿着整洁、保存完好的制服，并跟随其中一位进入宅邸。`
+			`他们把你带到一个又大又宽的房间，三个阿拉奇全神贯注地研究散落在桌子上的原理图和蓝图。`
+			`“<first><last>队长！”仆人宣布您到来后，其中一位会来迎接您。 “招待如此精致的客人，真是一次难得的机会。想喝一杯吗？”不等回应，一名女仆就送来了一个盘子，里面有几个杯子，你惊喜地发现银盘里飘出熟悉的咖啡和茶的味道。您注意到拼盘中间还有一些酒精饮料和白开水。`
+			`“很难复制，其中一些人类饮料是，但对于一位特殊的客人，我们至少可以做到，”另一个人走近，示意你选择其中一种饮料，同时示意另一位女仆给他和另外两个人拿一些自己的饮料。`
+			choice
+				`“谢谢你，但是你到底为什么这么想跟我说话呢？”`
+				`“你让我来这里是为了一份工作，什么工作？”`
+			branch lunarium
+				has "joined the lunarium"
+			`“我们代表着伟大的贝布利斯家族。维护当地的超空间通信网络，我们的家族负责。”他一边说，一边在杯子里摇晃着饮料，然后喝了一口。`
+			`另一个插了进来。“我们研究超空间链接已经有几千年了。最近，我们一直在寻找这种现象的应用，这将有助于联盟。”`
+				goto choice
+			label lunarium
+			`“值得信赖，你是。Chiree 向我们保证了这一点。”那个仍在蓝图旁的 Arach 插话道。“我们是月球馆的守护天使，”她夸口道。 “保护他们免受Heliarchs的侵害，我们对通信网络的干预确实如此。为了更好地实现这一目的，我们必须进一步研究这个领域。”`
+			label choice
+			`你旁边的另一个阿拉克仍然在定期小口地轻轻地摇晃着他的饮料，问道：“我们已经获得了有关人类太空中某种冲突的知识。你被外星人入侵了吗？拥有这种技术的外星人吗？”`
+			choice
+				`“是的，他们叫帕格。”`
+					goto pug
+				`“等等，你怎么知道这件事？”`
+			`“知道这一点，Heliarchs知道，所以我们已经了解了。”`
+			`“我们伟大的家族拥有许多资源，”坐在桌子旁的阿拉克补充道。 “获取这些信息对于我们来说是微不足道的。”`
+			choice
+				`“我明白了。嗯，是的，我们被称为哈巴狗的外星人入侵了。”`
+					goto pug
+				`“那么众天体是怎么知道的呢？”`
+			branch "lunarium 2"
+				has "joined the lunarium"
+			`“在‘​​他们的’空间里，不是吗？你被他们的飞船扫描了。你的飞行记录和银河系地图被巧妙地收集起来，”她说完，看着你和另外两个人，等待你的回答。`
+				goto "pug reveal"
+			label "lunarium 2"
+			`“在‘​​他们的’空间里，不是吗？你被他们的飞船扫描了。你的飞行记录、你的银河系地图都被巧妙地收集起来，”她最后说道。 “当然，登记任何这样的日志，你的船不会，当执行任务或只是像这样来见我们时，你是。允许他们轻易找到我们的基地，我们不能。但是，我离题了。请船长，我们对这些外星人很感兴趣，我们非常感兴趣。”她用一条腿向你做了个手势，其他贝布利斯成员则热切地看着你。`
+			label "pug reveal"
+			choice
+				`“人类空间被一种称为哈巴狗的物种入侵。”`
+			label pug
+			`值得庆幸的是，当你说“哈巴狗”这个词时，那些正在喝饮料的人并没有那么接近，否则你需要一套新衣服。其中一人示意女仆清理他们同时吐出的口水，蓝图上的阿拉克终于走近了。`
+			`“他们被称为‘哈巴狗’吗？”她问道，身后的女仆正在快速擦地板。你确认后，她就叫来仆人，要求他们准备一艘船。她向贝布利斯家族的另外两名成员低声说了些什么，但翻译设备没有听清，然后开始收拾她的物品。 “我请求你原谅我，队长，但我必须立即离开。”`
+			`她离开后，另外两个人中的一个要求提供更多细节，所以你向他们简要介绍了巴哥犬的入侵以及人类如何成功击退他们。他们要求你进一步详细描述当弗雷娅使用引力子发射器和反射器连接回其他人类系统时，你必须击退帕格波的时刻。`
+			`“很有希望，这个弗雷亚女人听起来很有希望。你知道她的位置，是吗，队长？”`
+			`你说她可能还在 <destination> 上，当你最后一次见到她时，她正在研究哈巴狗在地球上留下了什么文物。`
+			`“队长，你能和这个女人谈谈吗？如果愿意和我们一起工作，她会得到很大的回报，你也会得到。”`
+			choice
+				`“我去跟她谈谈，看看我能做些什么。”`
+				`“抱歉，但我不想让她卷入联盟的事务来打扰她。”`
+					goto decline
+			`他们感谢你，然后前往另一个房间让你稍等。其中一名女仆为你提供另一种人类饮料的选择，而那个拿着贝布利斯家族成员正在品尝的饮料的拼盘的人像一尊雕像一样站在角落里。`
+			choice
+				`（品尝一些人类饮料。）`
+					goto human
+				`（要一杯 Arach 饮料。）`
+					goto arach
+				`（请等待我的主人回来。）`
+			`你礼貌地拒绝了饮料，女仆向你点了点头，默默地回到自己的岗位上，像其他人一样站着。你走到桌子前看图纸，看到画着许多图表，角落里有类似计算的符号，但你看不懂上面写的是什么。你尽可能坐在你认为相当于扶手椅的 Arach 上，环视房间几分钟。`
+				goto accept
+			label human
+			`虽然贝布利斯家族似乎对你关于哈巴狗的谈论感到惊讶，但他们似乎对人类的饮料太了解了。咖啡虽然不太浓，但仍然保留着独特的微苦味。这种茶看起来像是甘菊茶，它的舒缓效果就像你记得上次喝茶时一样。除了桃汁外，各种可用的果汁都具有天然的甜味，您避免使用桃汁，因为它的稠度似乎比果汁更接近布丁，并且当您倾斜杯子时会渗出嘴唇。`
+				goto accept
+			label arach
+			`你向拿着Arach饮料的女仆挥手，她惊讶地看着另一个女仆。她试图向您解释，她不确定这些饮料是否适合人类饮用。不管怎样，你坚持，所以她不情愿地走过去，递给你一个杯子。你把它拿到鼻子前，一股浓郁的香气扑鼻而来。这种饮料的味道奇怪地类似于你在一夜长眠后醒来时口干舌燥的感觉。你小心地啜饮了一些，一旦液体接触到你的舌头，就把杯子从你的嘴里拿开。甜味带着刺痛感，在口腔中流过时，仿佛轻轻咬住舌头。吞下它后，你的喉咙会感到令人担忧的麻木感，持续几秒钟。你把杯子放回盘子上，女仆们就走开了。大约一分钟后，您开始努力睁开眼睛。你的周围环境突然变得比以前明亮得多，就好像天花板上的灯光不知何故增强了它们的输出，而你周围一切事物的颜色都使它们的图像变得锐利。你闭上眼睛几分钟来确定方向，一切似乎都恢复正常了。`
+			label accept
+			`当你的主人回来时，他们会给你一个小手提箱之类的东西。 “我们已经将我们的提案翻译成你们的语言，”其中一位说道。 “你必须把它带给芙蕾雅小姐。我们充满希望，她愿意与我们分享研究材料。”`
+			branch "lunarium 3"
+				has "joined the lunarium"
+			`“里面还有某些……研究论文。她可能会认为这是一份礼物，”另一个人补充道。`
+				goto end
+			label "lunarium 3"
+			`“里面还有某些……研究论文。她可能会认为这是一份礼物，”另一个人补充道。 “还有，队长，最后一件事。要意识到我们这样做是为了向她解释这一切，不可避免地要告诉联盟的芙蕾雅小姐，你会的。只是，我必须要求你透露有关月宫的任何信息，你没有。Heliarchs定期访问一个与人类接壤的世界，我们没有办法剔除他们在那里获得的信息。如果你对堡垒保密，那会更安全。”`
+			label end
+			`他们说他们将在庄园里等待她的回应，并让仆人护送你回到船上。`
+				accept
+			label decline
+			`他们惊讶地盯着你看了一会儿，互相看了几眼。他们叹息。 “很好，可以理解，”其中一位说道。他们要了更多的饮料，并让一些仆人护送你回到船上。`
+				decline
+	on accept
+		"assisting lunarium" ++
+	on complete
+		"assisting lunarium" --
+	on fail
+		"assisting lunarium" --
+
+mission "House Bebliss 3-FW"
+	name "向自由世界讲述联盟的情况"
+	description "和 Freya 一起前往 <destination> 并告诉 JJ 你所了解到的有关联盟的所有信息。"
+	landing
+	to offer
+		has "House Bebliss 2-FW: done"
+		not "assisting heliarchy"
+	source "Pugglemug"
+	destination "Bourne"
+	passengers 1
+	blocked `You have reached <origin>, but you need <capacity> in order to take on the next mission. Return here when you have the required space free.`
+	on offer
+		conversation
+			`你环顾四周寻找弗雷娅，请当地码头工人为你指明研究哈巴狗技术的人的方向。他们会带你去一个更安静、人烟更少的地方，那里已经建立了一些仓库大楼。有些漆成通常的辛迪加颜色，有些由几名海军士兵看守，自由世界的旗帜在您进入的入口处飘扬。在里面，你可以看到一群人围着哈巴狗留下的各种文物。他们中的一些人正在运行看起来很复杂的测试，但似乎他们主要是在讨论下一步如何处理这些工件。其中一个引力子发射器位于入口对面，一半完好，一半被拆除，一群科学家在里面戳戳机器。`
+			`当芙蕾雅看到你时，她正在发射器附近的梯子上。她很快从栖息处跳下来，向你跑来。 “<first>！很高兴再次见到你。是什么风把你吹到这里来的？”你告诉她你有一些重要的事情要讨论，她让你跟着她到一个像办公室一样的房间，里面装满了工具和组件。`
+			branch lunarium
+				has "joined the lunarium"
+			label "don't tell"
+			`你向她介绍了联盟的概况，解释了三个种族、Heliarchs以及他们与夸格人的战斗，以及贝布利斯家族是谁，完成后把手提箱递给她。`
+				goto suitcase
+			label lunarium
+			choice
+				`（告诉她一切，包括月球馆。）`
+				`（不要提月球馆。）`
+					goto "don't tell"
+			`你向她简要介绍了联盟的情况，解释了三个种族、日光君王和他们与夸格人的战斗、月月堡垒和他们推翻日光君王制度的意图，以及贝布利斯家族在其中扮演的角色，当你完成后把手提箱递给她。`
+			label suitcase
+			`“好吧，至少这些人在问他们是否可以入侵我们，”她一边开玩笑一边把手提箱放在桌子上，打开它。 “三个外星物种，嗯？甚至在战争之前，我们就从这些系统中接收到了一些退化的无线电信号，所以我认为那里有人。”她开始读贝布利斯家族为她准备的信息，一开始就皱起了眉头。 “这不是你写的，是吗？”你摇摇头。 “是这么想的。这句话……很乱？”`
+			choice
+				`“哦，那个。你习惯了。”`
+				`“当你亲自与他们交谈时，情况还不错。”`
+			`她奇怪地看了这条信息，说了句“如果你这么说的话”，然后继续读它。 “如果这个‘贝布利斯家族’像他们声称的那样先进，我不知道我能帮他们做些什么，但他们愿意与我分享他们的知识作为回报，所以我不会抱怨。如果不出意外的话，这将是一次与巨型蜘蛛一起工作的经历。”`
+			choice
+				`“所以你同意让他们和你一起研究哈巴狗文物吗？”`
+				`“那我可以回去告诉他们你同意了吗？”`
+			`“这件事你跟其他人说过了吗？”芙蕾雅问，你告诉她你没有。 “阿隆多、JJ……他们需要了解这个‘联盟’，”Freya 继续说道，“即使他们无意入侵我们。JJ 目前驻扎在 <planet>，所以我会传话给他，我们将前往那里与他会面。你可以在那里向我们提供整个情况以及你发现的所有细节。”`
+			`你跟着她走出房间，她告诉那里的工作人员她将和你一起前往 <planet> 与 JJ 讨论一些事情。他们祝你旅途愉快，然后你走出大楼，进入仓库附近的一个小住宅区，这是为工人在此逗留期间建造的。当 Freya 给 JJ 发消息时，你帮她收拾东西，然后你们两个就前往你们的船了。 “完成后，你可以去捡起这些 Arachi 并把它们带到这里。在我们前往 <planet> 的路上，当你离开去取它们时，我将有一些时间看看他们寄给我的东西。”`
+			`进入飞船后，您将她带到她的铺位，并绘制 <destination> 的航线。`
+				accept
+	on accept
+		"assisting lunarium" ++
+	on visit
+		dialog `您降落在 <planet> 上，但意识到携带 Freya 的护卫尚未进入系统。最好出发并等待它的到来。`
+	on complete
+		"assisting lunarium" --
+	on fail
+		"assisting lunarium" --
+
+mission "House Bebliss 4-FW"
+	name "对贝布利斯家族的答复"
+	description "返回 <destination> 告诉贝布利​​斯家族弗雷娅已同意他们的提议。"
+	landing
+	to offer
+		has "House Bebliss 3-FW: done"
+		not "assisting heliarchy"
+	source "Bourne"
+	destination "Factory of Eblumab"
+	on offer
+		conversation
+			`着陆时，JJ 正在等待你们两个，他穿着胸前挂着各种奖牌和荣誉的制服。他与弗雷娅握手打招呼，然后转向你。 “很高兴从芙蕾雅那里得知你要停下来拜访我们。好吧，直到她开始说你如何掌握了一些‘关键’信息，”他一边说，一边握着你的手，轻轻地叹了口气。 “暂时从管理舰队中休息一下就到此为止了。”`
+			choice
+				`“抱歉。我也很高兴见到你，JJ。”`
+					goto nice
+				`“好吧，当涉及到这些外星人时，你不需要太担心任何‘批评’的事情。希望如此。”`
+			`“希望吗？等等，外星人？！”他的表情既有忧虑的表情，也有严肃的表情。 “我们去我的办公室谈谈吧。我猜这会是一个很长的故事。”`
+			label nice
+			`他招呼你跟随他乘坐交通班车，最终将你带到一座高耸的政府大楼。当你走近时，你会发现主庭院里挂着许多不同颜色的旗帜，所有这些旗帜都围绕着自由世界的旗帜。 “行星旗帜，”当你们俩走出航天飞机时，JJ 说道。 “我们的一些行星最近创建了自己的行星，一些更外交的人士决定将它们建立在主要政府大楼周围。”让旗帜在微风中飘扬，你们三人走进大楼，乘电梯上升，到达一层，旁边有几个房间，电梯对面有一个较大的房间。你进入更大的房间，看到一张漂亮的木桌，JJ 走向它，坐在它后面，而 Freya 则坐在沙发上。`
+			`“好吧，我们到了。<last> 队长，您发现的‘关键信息’是什么？”`
+			branch lunarium
+				has "joined the lunarium"
+			choice
+				`“还有一些外星人。”`
+					goto standard
+				`“我希望你们都不怕蜘蛛。”`
+					goto standard
+			label lunarium
+			choice
+				`（解释一切，包括月球馆。）`
+					goto tell
+				`（不要提月球馆。）`
+			label standard
+			`当你向 JJ 解释你所了解到的关于联盟的一切时，JJ 静静地听着。你拿出一张自由世界的地图，向他和芙蕾雅展示了联盟空间的大致区域以及它与自由世界领土的边界。当你指着地图时，你会告诉他们这三个物种、Heliarchs 以及他们如何夺取三个夸格环。最终你到达了阿拉克家族，并解释说贝布利斯家族是那些希望和芙蕾雅一起研究哈巴狗文物的人。`
+			`当你说完之后，JJ第一个开口了。 “到目前为止，我们与这些外星人的相处似乎比与哈巴狗相处得更好。他们试图表现得外交化是件好事，但考虑到过去的经验，我不确定让公众了解他们是否是一个好主意。至少现在是这样。”`
+			`“他们有跳跃驱动器吗？”芙蕾雅问道。你点点头，但说他们不能自己做。 “好吧，只要他们的库存不是太多，我们就不会有太大麻烦。”`
+			`“除非他们拿走了三枚夸格人戒指，”JJ插话道，“他们打败了夸格人？那么他们比夸格人更强？更先进？”他问道。`
+			choice
+				`“不，但是他们的船还是比人类的船坚固很多。”`
+				`“不，但它们的数量确实超过了人类——所有人类。”`
+			`“夸格人永远不会放弃他们的戒指，你知道一个戒指里有多少夸格人吗？他们不可能就这样失去三个夸格人，”弗雷亚说。 “他们会想要回那些戒指，这是肯定的。”`
+			`“我们就在这个‘联盟’和塔拉兹附近的夸格人之间。” JJ指着地图。 “如果他们决定去拿回戒指，而我们的邻居决定在夸格人在他们的主场袭击他们之前使用他们的跳跃驱动器创建一个缓冲区......”`
+			`他们沉默了一会儿，然后JJ又开始说话。 “如果夸格人已经等了六千年，那么他们可能还会再等几千年。现在重要的是我们了解这些外星人，这意味着我们必须开始思考这一切的可能结果以及它们对自由世界意味着什么。如果我们现在开始准备，也许我们会很幸运，我们不会陷入任何其他战争；特别是涉及夸格人的战争。”`
+				goto accept
+			label tell
+			`当你向 JJ 解释你所了解到的关于联盟的一切时，JJ 静静地听着。你拿出一张自由世界的地图，向他和芙蕾雅展示了联盟空间的大致区域以及它与自由世界领土的边界。当你指着地图时，你会告诉他们这三个物种、Heliarchs 以及他们如何夺取三个夸格环。最终你到达了阿拉克家族，并解释说贝布利斯家族是那些希望和芙蕾雅一起研究哈巴狗文物的人。你还告诉他们关于月宫的事，解释该组织的行动和他们推翻赫利亚政府的愿望，以及贝布利斯家族在帮助他们方面扮演的角色。`
+			`当你说完之后，JJ第一个开口了。 “到目前为止，我们与这些外星人的相处似乎比与哈巴狗相处得更好。他们试图表现得外交化是件好事，但考虑到过去的经验，我不确定让公众了解他们是否是一个好主意。至少现在是这样。”他停顿了一下，然后直接对你讲话。 “你想帮助他们的这个抵抗组织，真是……大胆。考虑到自由世界自己的历史，我们有些同情，但听起来他们的机会比我们更糟糕。”`
+			`“无论他们的政府是什么，也无论它是否被推翻，都不会改变他们就在我们家门口，”弗雷亚说。 “他们有跳跃驱动器吗？”她问。你点点头，但说他们不能自己做。 “好吧，只要他们的库存不是太多，我们就不会有太大麻烦。”`
+			`“除非他们拿走了三枚夸格人戒指，”JJ插话道，“他们打败了夸格人？那么他们比夸格人更强？更先进？”他问道。`
+			choice
+				`“不，但是他们的船还是比人类的船坚固很多。”`
+				`“不，但它们的数量确实超过了人类——所有人类。”`
+			`“夸格人永远不会放弃他们的戒指，你知道一个戒指里有多少夸格人吗？他们不可能就这样失去三个夸格人，”弗雷亚说。 “他们会想要拿回这些戒指，无论哪个派系持有它们。”`
+			`“我们就在这个‘联盟’和塔拉兹附近的夸格人之间。” JJ指着地图。 “如果他们决定去拿回戒指，而我们的邻居决定在夸格人在他们的主场袭击他们之前使用他们的跳跃驱动器创建一个缓冲区......”`
+			`“好吧，如果 <first> 和这个‘月球堡垒’成功了，据我所知，情况可能不会如此，”芙蕾雅说道。`
+			`“如果他们不这样做呢？然后一个人试图帮助他们所在空间的叛军推翻他们。一个为自由世界工作的人，”JJ 回应道。 “我不是责怪你，<first>，但我们不知道如果你失败了，这些‘Heliarchs’会做什么。如果他们弄清楚如何制造自己的跳跃驱动器，或者更糟糕的是，学习如何像哈巴狗那样切断我们的系统……”`
+			`他们沉默了一会儿，然后芙蕾雅又开始说话。 “如果这个反叛组织从未出现，我们最终可能会陷入Heliarchs和夸格之间的战争。如果他们成功了，我们至少不需要担心这一点。如果他们失败了，Heliarchs对人类进行报复，我们会向夸格寻求帮助。至少，有<first>帮助这些叛军，我们就有机会不会陷入Heliarchs和夸格之间的战争。”`
+			`JJ想了一会儿。 “这很公平，但仍然令人担忧。”`
+			label accept
+			`JJ 打了几个电话，安排了一些会议，将你告诉他的事情告知自由世界官员，然后与你和芙蕾雅一起出发。你去了镇中心附近的一家舒适的餐厅，弗雷娅在那里向你讲述了她最近在天津四的工作，而 JJ 则对他在处理巡逻队方面遇到的一些麻烦感到遗憾。他还评论了最近拜访音乐学院的 Katya 和 Ijs。他们都一直要求你讲述更多关于跳跃驱动器的旅行，以及你所看到的银河系。你尽力描述你见过的恒星和去过的行星，以及你遇到的外星野生动物。一开始你担心这些故事可能会引起你餐桌上的一些注意，但服务员和其他顾客似乎并不太在意；他们要么不理你，要么只是因为你喝了太多酒而忽略了你。你在黄昏时离开，Freya 说她会帮助 JJ 与自由世界官员进行一些会谈，然后会自己找到返回 Deneb 的路。你向他们道别，然后返回你的船。你现在应该返回 <planet> 并告诉贝布利​​斯家族弗雷娅已经同意了他们的提议。`
+				accept
+	on accept
+		"assisting lunarium" ++
+	on complete
+		"assisting lunarium" --
+	on fail
+		"assisting lunarium" --
+
+mission "House Bebliss 5-FW"
+	name "跳蜘蛛"
+	description "获取一个备用的跳跃驱动器并将其带到 <destination> ，贝布利斯家族的代表将把它安装在他们的一艘船上。"
+	landing
+	to offer
+		has "House Bebliss 4-FW: done"
+		not "assisting heliarchy"
+	source "Factory of Eblumab"
+	destination "Ablub's Invention"
+	on offer
+		conversation
+			`降落在阿拉克纺锤旁边，你操纵你的船前往贝布利斯家族的庄园，并再次受到女仆和管家的欢迎。他们带你到一个房间，里面有上次的三个 Arachi。`
+			`“她同意和我们一起工作，是吗，队长？”他们问。`
+			`你告诉他们弗雷娅已经同意与他们合作并让他们研究她在天津四收集的哈巴狗文物。你还解释说，她要求你首先向自由世界通报联盟的情况。`
+			`“这是可以理解的。这是一个不寻常的请求，来自一个未知的组织。”他们让一些仆人开始把几十个行李袋搬到外面。 “如果芙蕾雅小姐同意的话，我们就去那个星球‘天津四’去见她。”`
+			choice
+				`“你打算怎么做？”`
+				`“你有跳跃驱动器吗？”`
+			`“我们家族可以从赫利亚克斯那里收集到很多信息。然而，获得跳跃驱动器要困难得多。甚至拥有一个跳跃驱动器也有风险，”他们解释道。 “在这方面协助我们，你必须，船长。将跳跃驱动器带到 <destination> ，你必须。为我们的一艘船配备它，我们会的。接收 <payment> ，你会的。”`
+			choice
+				`“为什么我不能亲自带你去天津？”`
+					goto myself
+				`“但你刚才说拥有它是有风险的。”`
+			`“确实。保留它，我们不会，”另一位回应道。 “一旦结束，我们和你的朋友弗雷亚的生意就结束了，我们已经把跳跃驱动器还给你了，我们愿意。”`
+				goto accept
+			label myself
+			`“我们会在那里呆几个月，虽然你的朋友弗雷娅同意帮助我们，但他对我们的存在感到不安，其他人类也可能会感到不安，”他们回答道。 “因此，她没有容纳我们的问题，但我们会使用我们的船作为基地。”`
+			label accept
+			`你跟着他们到了外面，看到他们登上了主轴，前往 <destination> 。你登上自己的船，然后返回城市码头，准备在你有备用的跳跃驱动器时在 <planet> 与他们会面。`
+				accept
+	on accept
+		"assisting lunarium" ++
+	on visit
+		dialog `您降落在 <planet> 上，但您尚未携带所需的额外跳跃驱动器。确保在着陆前将其放入您的货物中。`
+	to complete
+		"outfit: Jump Drive" >= 2
+	on complete
+		"assisting lunarium" --
+		outfit "Jump Drive" -1
+		payment 1500000
+		conversation
+			`当您接近 <planet> 表面时，会自动选择一些坐标。你跟随他们到达另一个私人区域，尽管它看起来更像是工厂或仓库而不是庄园。角落里，伊德里斯家族的几面旗帜和横幅完全展示出来。贝布利斯家族的纺锤已在那里登陆，当你在它旁边登陆时，跟随你前往天津四的成员就会来到你的船上。一些工人从你的船上拆下跳跃驱动器并开始将其安装到主轴上。当驱动器准备就绪时，贝布利斯家族的船员会将 <payment> 交给您。`
+			`“一旦准备好离开，你就应该在主太空港与我们会面，”其中一位说道。`
+	on fail
+		"assisting lunarium" --
+
+mission "House Bebliss 6-FW"
+	name "贝布利斯伴游屋"
+	description "与贝布利斯家族的代表一起护送飞船前往<destination>，他们打算在那里与芙蕾雅一起进行超空间链接的研究。"
+	to offer
+		has "House Bebliss 5-FW: done"
+		not "assisting heliarchy"
+	source "Ablub's Invention"
+	destination "Pugglemug"
+	on offer
+		conversation
+			`当你进入太空港时，贝布利斯之家的一名员工立即发现了你，并引导你前往他们声称是这里最顶级的餐厅之一。众议院议员正在里面等候，他们是该机构内唯一的顾客。当您到达时，他们已经点了餐，他们会主动提出从菜单上为您购买任何您想要的东西。然而，看到其他桌子上精选的“异国菜肴”后，您决定拒绝他们的提议。`
+			`“我们的船已经准备好起飞了，”其中一人一边说，一边准备餐巾纸，服务员把点的菜送到餐桌上。 “带我们去你朋友所在的世界吧，你必须这么做。”`
+			`另一个咬了一口看起来像山羊腿的东西，尽管更骨感，然后说道：“我们和船员已经准备好隐藏我们的存在了。你不必担心这一点。”`
+			`“飞船有额外的燃料。应该足以到达地球，”他们中的最后一个告诉你。你在餐厅停留的时间出人意料地短，因为阿拉奇人只用了几分钟就吃完了全套饭菜。你们一起离开，陪同他们前往机库，在那里您可以看到他们的主轴降落在 <ship> 旁边。他们登上了它，并表示一旦你离开，他们将跟随你的船，并且你可以在你方便的时候尽早起飞。`
+				accept
+	on accept
+		"assisting lunarium" ++
+	npc accompany save
+		personality escort timid
+		government "Coalition"
+		ship "Arach Spindle (Jump Drive)" "Toopy Mogrup"
+	on visit
+		dialog `您已到达 <planet>，但把贝布利斯家族的飞船落在后面了！最好离开并等待他们到达这里。`
+	on complete
+		"assisting lunarium" --
+		event "bebliss research fw" 80 100
+		payment 930000
+		conversation
+			`当你的两艘船即将登陆时，你联系了芙蕾雅并告诉她阿拉奇这次和你在一起。她告诉你降落在自由世界的仓库附近，也就是你上次见到她的地方，并说她会在那里等着迎接他们。`
+			`当你到达时，你在船外等待，而贝布利斯家族的船则保持舱门关闭。他们似乎打算在逗留期间一直呆在那里，很可能是担心他们的出现会引起其他人类的骚动。`
+			`几分钟后，芙蕾雅到达，你们两个接近纺锤号的舱口。一旦贝布利斯家族确信附近没有好奇的旁观者，舱门就会打开，你们两个进入飞船。虽然你现在已经习惯了阿拉克飞船，但当你在飞船内移动时，芙蕾雅的眼睛会在内部扫视。您想象她一直想问您一些有关模型的技术问题。当您到达驾驶舱时，贝布利斯家族的成员会迎接您。尽管你之前已经告诉过她关于它们的事情，但可以理解的是，芙蕾雅在第一次看到阿拉奇时会惊讶一两秒，但很快就摆脱了这种恐惧，自信地走上前去迎接他们。 “你好，我叫弗雷娅·温特斯。我听说你对我们在这个世界上发现的哈巴狗文物很感兴趣。”尽管最初见到它们时感到震惊，但对于第一次与巨型蜘蛛交谈的人来说，她处理得令人惊讶地好。`
+			`“确实如此。我们伟大的贝布利斯家族几千年来一直致力于研究超空间航道，”一位阿拉奇人说道。 “当告诉我们您的成就时，<last> 队长知道我们需要亲自调查您的工作，我们做到了。”`
+			`当她和贝布利斯家族的成员讨论如何互相帮助研究这里的文物时，她很快就习惯了翻译盒奇怪的语言怪癖。一名工作人员一边说话一边走近您，并将 <payment> 递给您。 “谢谢你们的安全护送，这是，”他们低声说道。`
+			`芙蕾雅和他们的谈话持续了将近一个小时。他们最终决定将一些文物转移到他们船上的货舱，这样一些研究就可以在那里进行，而不会有被看到的风险。贝布利斯家族的代表感谢她的接待，你跟着她回到外面。`
+			`舱门关闭后，她问道：“这是他们的一艘货船？”`
+			choice
+				`“是的，虽然这不是他们最大的。”`
+				`“他们是平民，所以买不到他们所在空间的军舰。”`
+			`“对于同等规模的船舶来说，它肯定比我们自己的大多数货船要精简得多。”她转身，走近船，伸出双手去触碰它。 “看起来它有一些非常坚固的装甲板……”`
+			choice
+				`“你认为他们会很好地藏在这里吗？”`
+				`“你认为他们在这里会安全吗？”`
+					goto safe
+				`“共和国和辛迪加呢？你能告诉这里的团队关于阿拉奇的事情吗？”`
+					goto tell
+			`“嗯，<planet> 的人口确实激增，但目前还远不是旅游热点，”她回答道。 “只要他们坚守在那艘船上，就不会有人知道他们在这里。”`
+				goto end
+			label safe
+			`“<planet> 距离索尔足够近，我们经常会有海军舰队飞过这里，而且它距离海盗据点足够远，我们很少会遇到海盗袭击这里。他们会没事的。”`
+				goto end
+			label tell
+			`“这取决于 JJ、阿隆多和其他与伯恩和参议院有更多关系的人来决定。我想一旦他们将你告诉我们的一切整理成一份报告，我们就会与共和国和辛迪加分享。不过，最好避免立即向公众公布；由于哈巴狗入侵，外星人的关系仍然很紧张。”`
+			label end
+			`她离开了船，你们俩悠闲地走回自由世界的仓库，边走边聊天。 “我需要去告诉我的团队，我们正在将一些货物转移到 Southbound 的新实验货轮上。我更愿意自己告诉他们发生了什么事 - 这会让事情变得容易得多 - 但我想我会再等一会儿。我想看看我是否可以先对这些外星人有一个很好的了解。也许另一场科学对话会有所帮助。如果发生什么情况，我会联系你。安全旅行，<first>。”`
+			`你说再见，然后前往你的船。看起来，贝布利斯家族可能需要几个月甚至几年的时间才能从这次旅行中得到他们想要的信息。`
+	on fail
+		"assisting lunarium" --
+
+event "bebliss research fw"
+
+mission "House Bebliss 7-FW"
+	name "众议院总是获胜"
+	description "前往 <destination> ，贝布利斯家族的成员将在那里归还您提供给他们的跳跃驱动器，并支付您协助他们的费用。"
+	landing
+	to offer
+		has "event: bebliss research fw"
+		not "assisting heliarchy"
+	source
+		near "Sol" 100
+		not planet "Pugglemug"
+	destination "Ablub's Invention"
+	on offer
+		conversation
+			`当您降落在 <origin> 时，您会收到来自 Freya 的消息。 “你好<first>！我希望你一切顺利。过去的几个月在这里......至少可以说很有趣。与Arachi的合作帮助我们找到了有关哈巴狗文物的问题的答案，这总是会带来更多的问题。Arachi有点奇怪，但与他们一起工作很有趣。我认为他们会在这里呆至少一年，考虑到他们用他们的货轮带来了多少集装箱和大板条箱的补给品，但是看起来他们已经想家了，所以我们今天告别了，他们让我联系你，并说他们会在一个名为“<system>”的系统中等待向你付款并归还他们借来的跳跃驱动器，队长。”`
+			`当您阅读完该消息后，您将绘制一条前往 <destination> 的路线。`
+				accept
+	on accept
+		"assisting lunarium" ++
+	on complete
+		"assisting lunarium" --
+		"assisted lunarium" ++
+		outfit "Jump Drive" 1
+		payment 2000000
+		conversation
+			`当您降落在 <planet> 时，坐标将再次出现在您的屏幕上，引导您前往您向贝布利斯家族交付跳跃驱动器的同一座建筑物。他们的Arach Spindle停靠在那里，与Freya一起工作的成员来到了你的船上。 “<last>队长！”当您走下舱门时，其中一位会向您打招呼。 “收到芙蕾雅小姐的消息了，相信你收到了？非常有成效，我们共同的努力。”`
+			`“不幸的是，我们不能在那里停留更长时间，”另一位插话道。 “但我们不可能离开太久。贝布利斯家族需要我们在这里。”`
+			`他们将 <payment> 交给你，以感谢你的帮助，而工人们则从他们的主轴上取下跃迁驱动器，并将其放入你的船上。阿拉奇人再次感谢你们，并最后一次道别，登上他们的纺锤离开地球。`
+	on fail
+		"assisting lunarium" --
+
+
+
+mission "Lunarium: Evacuation 1"
+	name "接学生"
+	description "在 <date> 前前往 <destination> 接 <bunks> 名学生和老师，并将他们带回他们的家乡第二常春星球。"
+	minor
+	deadline 10
+	passengers 35
+	"apparent payment" 386730
+	source
+		not government "Heliarch"
+		near "3 Spring Rising" 1 5
+	destination "Fourth Shadow"
+	to offer
+		random < 55
+		has "Coalition: First Contact: done"
+		not "joined the heliarchs"
+		not "assisting heliarchy"
+	on offer
+		conversation
+			`几个 Kimek 在太空港入口处拦住你。 “你好，船长。我们在一家旅游公司工作，雇佣了整个联盟的数十艘船。我们的船长有兴趣雇用你的服务。你看，我们的一艘船在最后期限上遇到了一些麻烦，她会因为帮助公司而付给你丰厚的报酬。她在那个尖塔里等着，”他们一边说，一边指着停在离你不远的一艘船。`
+			choice
+				`“好吧，我看看能不能帮忙。”`
+					goto alright
+				`“你就不能亲自给我指路吗？”`
+				`“抱歉，我现在没空。”`
+					decline
+			`其中一个基梅克将双腿缩得更靠近自己的身体一会儿。 “事实上，我们只是在执行自己的任务时差点迟到。我们是另一艘船的船员；只是被告知要联系你寻求帮助，我们是。她太忙于管理舰队的其他成员了。”`
+			`另一位人士补充道：“对我们来说，这是一个非常忙碌的季节。” “具体细节，还有你的补偿，队长会的。”`
+			choice
+				`“好吧，我看看能不能帮忙。”`
+				`“抱歉，我现在没空。”`
+					decline
+			label alright
+			`其中一个带你到尖塔，当你们两个前往那里时发送一条消息，舱门在你到达时立即打开。他们感谢你的帮助，然后赶紧登上自己的船离开。你走上尖塔的坡道，遇到了公司里的一些基梅克，他们向你打招呼，并引导你穿过船。穿过走廊的一半时，他们停下来并要求你在那里等候。另一名 Kimek 携带着近十几种不同的设备从侧廊中出现，这群人开始用这些设备拍打并绕着你的身体转圈。你问他们在做什么，但他们不回应。当你周围的每台机器都发出蜂鸣声和叽叽喳喳声后，Kimek 似乎很满意，他们会继续前进。令人惊讶的是，他们没有把你带到驾驶舱，而是带到其中一个铺位，一个基梅克正在与一个萨里德人交谈。一旦她看到你在那里，Kimek 就会看一眼 Saryd，然后和其他人一起离开，只剩下你们两个。`
+			branch lunarium
+				has "joined the lunarium"
+			`萨雷德人已中年，头发稀少，胡须浓密。 “你好，人类朋友。<first> <last> 你的名字是，对吗？”你点点头。 “我为你们所经历的安全措施感到抱歉，你们必须这样做。你们看，最近我病得很重，虽然在 Kimek 或 Arach 的员工和乘客周围通常都很好，但我希望尝试用我的健康来对抗 Saryd 或人类疾病，但我没有。但是，来听听我的不幸，你们没有。我叫 Elirom，是这家公司的所有者。对于那些希望休闲或工作旅行的人，我们提供舒适的船只，”他解释道。 “我们的一艘船遇到了一些麻烦。原本应该在学校旅行结束后将 <bunks> 学生和老师运送回第二常磐，但现在他们正在等待船上故障设备的维修。学生们必须被 <date> 接走，以免错过他们的考试，但其他地方很忙，我们的其他船正在忙。请代替我们接他们，好吗？我们公司的 <payment>，你会收到。”`
+			choice
+				`“当然可以，我从哪里接他们呢？”`
+				`“抱歉，我已经不感兴趣了。”`
+					decline
+			`“他们正在等待 <planet>。通知他们等待您的船，我会的。记住，他们必须在 <date> 之前被接走。”他轻轻弯曲前腿，鞠躬，感谢你同意提供帮助，并请求其中一只基梅克回来护送你出去。他们会在您出去时对设备重复同样繁琐的搜索过程，并在最终完成时祝您好运。`
+				accept
+			label lunarium
+			`中年人，头上稀疏的头发和浓密的胡须，你很快就认出萨利德是埃里隆，你在遥远的蓝色上遇到的月球领导人之一。 “你好<last>队长，很高兴见到你。请原谅我复杂的安全措施，你一定要一直听他们在……”他一边低头看一边用一只手擦着另一只手。 “在 <planet> 各地寻找我们的成员，Heliarch 飞船在。我收到消息，他们将在 <date> 到达那里，更多的惩罚者也会。如果他们在疏散我们的成员之前到达那里，我们担心我不可能拯救他们，这将成为。仍在等待一艘船，其中 <bunks> 正在，并在惩罚者抵达 <date> 之前返回那里，我们的其他船不会。船长，你一定要补偿你，我会的。”`
+			choice
+				`“当然，我马上就过去。”`
+					goto accept
+				`“他们就不能在惩罚者离开之前保持低调吗？”`
+			`“不，不，”他摇摇头。 “找出他们的答案，他们会的。他们总是这样做。”他的目光四处游移，后退了一步。他反复眨眼一秒钟，然后回头看着你。 “我已经看到了他们对俘虏所做的一切，队长。如果他们还留在那里，发现他们会在那里，并且还会损失 <bunks>，我会的。”`
+			label accept
+			`他让其中一名基梅克回来护送你出去，但在你离开房间之前，他补充道，“他们是学生和他们的老师。从学校旅行中接他们，在他们被取消后，原来的运输船做到了，你会。把他们带回第二常春郡进行测试，你会的。原运输船的船长要求你这样做，你会的。”他催促你尽快去那里接他们，Kimek 会把你带出去，在走廊里重复同样的安全搜查，然后为你打开舱门。他们祝你好运，并在你离开后立即再次关闭舱门。`
+				accept
+	on accept
+		"assisting lunarium" ++
+	on visit
+		dialog `您降落在 <planet> 上，但意识到您为学生提供 <bunks> 铺位的护送人员尚未到达系统。最好离开并等待。`
+	on complete
+		"assisting lunarium" --
+	on fail
+		"assisting lunarium" --
+
+mission "Lunarium: Evacuation 2"
+	name "运送学生"
+	description "现在您已经接走了 <bunks> 的学生和老师，将他们带回他们的家乡星球 <destination> 。"
+	passengers 33
+	landing
+	source "Fourth Shadow"
+	destination "Second Viridian"
+	to offer
+		has "Lunarium: Evacuation 1: done"
+		not "joined the heliarchs"
+		not "assisting heliarchy"
+	on offer
+		conversation
+			`在你着陆后不久，一队基梅克（Kimek），中间有一些萨瑞德（Saryd）和阿拉奇（Arachi），会接近你的船。这些一定是学生。他们携带的行李很少，一旦你打开舱门，他们就会登上你的船。考虑到他们都很年轻，你很难猜出哪些是老师。当最后一个人进来后，你向外面看了一会儿，一脸困惑。只有 <bunks> 进来，而不是 Elirom 提到的 35。`
+			branch lunarium
+				has "joined the lunarium"
+			choice
+				`“你们不是有35个人吗？”`
+				`（什么也不说。）`
+					goto accept
+			`他们中的许多人对这个问题皱起了眉头，一些基梅克人开始发出一些没有节奏的、低沉的咔嗒声。一名萨利兹前来关闭舱门。 “肯定是联系你的人弄错了，”她说。 “在这里，我们所有人都在。”`
+				goto accept
+			label lunarium
+			choice
+				`“你们不是有35个人吗？”`
+				`（什么也不说。）`
+					goto accept
+			`他们中的许多人对这个问题皱起了眉头，一些基梅克人开始发出一些没有节奏的、低沉的咔嗒声。一名萨利兹前来关闭舱门。 “不再是了……”她说。`
+			label accept
+			`他们告诉您他们已准备好离开，并要求您尽快前往 <destination>。`
+				accept
+	on accept
+		"assisting lunarium" ++
+	on visit
+		dialog `您降落在 <planet> 上，但意识到您携带 <bunks> 学生的护送人员尚未进入该系统。最好离开并等待。`
+	on complete
+		"assisting lunarium" --
+		payment 386730
+		conversation
+			`当地的一些基梅克人正在开着交通工具等待学生们。一旦你下船，他们就会给你<payment>，其中一个似乎会在每个下船的学生的列表上打勾。最后一个离开后，他继续看了你的船几秒钟，然后看了看进入车辆的学生。他划了两行，感谢你的帮助。回到你的飞船内，你接到 Elirom 打来的电话。`
+			branch lunarium
+				has "joined the lunarium"
+			`“<last>！谢谢你的帮助，我必须这么做，”他说。 “当我们依赖承包商时，这可能会很困难。我们的客户通常更喜欢乘坐我公司的船只旅行。我很高兴，你们中的 35 艘船只没有出现任何问题。如果我们的日常运输遇到任何问题，我可能会再次请求你们的服务。”`
+			choice
+				`“当然可以，帮忙解决这个问题是没有问题的。”`
+					goto end
+				`“实际上只有<bunks>。”`
+			`“只是……哦，我……”他停顿了几秒钟，声音有些沙哑。 “机长，请原谅我，看来我错了。我把乘客人数和另一个客户的人数搞混了。下次我会多加注意的。”他再次感谢你，然后结束了通话。`
+				accept
+			label lunarium
+			`“<last>！毫不夸张地说，你是一个救星，”他说。 “我还在处理其他疏散工作，所以我不能亲自到场感谢你们，但我知道我对你们拯救这 35 人深表感激。当我们需要更多帮助来救援成员时，我会再次与你们联系。”`
+			choice
+				`“当然，我很乐意再次提供帮助。”`
+					goto end
+				`“只有<bunks>在等我。”`
+			`半分钟在沉默中过去。 “我明白了。无论如何，我很感谢你救了其他人，”他挂断电话时说道。`
+				accept
+			label end
+			`“感谢你愿意帮助我们，我愿意，船长。直到我们再次见面。”他再次感谢你并结束了通话。`
+	on fail
+		"assisting lunarium" --
+
+mission "Lunarium: Evacuation 3"
+	name "接载沙漠牧场主"
+	description "前往 <destination>，在 <date> 之前接走 <bunks> 牧场主，并将他们带回他们的世界：流沙。"
+	deadline 8
+	passengers 47
+	"apparent payment" 748300
+	source
+		not government "Heliarch"
+		near "Silver Bell" 1 4
+	destination "Chosen Nexus"
+	to offer
+		random < 60
+		has "Lunarium: Evacuation 2: done"
+		not "joined the heliarchs"
+		not "assisting heliarchy"
+	on offer
+		conversation
+			branch lunarium
+				has "joined the lunarium"
+			`绕着太空港走了几分钟，你会遇到一对 Saryd。 “<last>队长？以前在我们公司工作过，曾经帮助过运送一群学生，曾经。”你点点头。 “我们又遇到了令人不安的情况。再帮助我们一次，好吗？”他们指着基梅克尖塔（Kimek Spire），想必就是你上次登上的那个尖塔，停在当地码头的边缘。`
+			choice
+				`“当然可以，带路吧。”`
+					goto talk
+				`“我现在对那种工作不感兴趣，抱歉。”`
+			`“你确信这一点，是吗？船长愿意为你的持续服务支付优厚的报酬。改变你的想法，<payment> 吗？”`
+			choice
+				`“转念一想，我现在就喜欢一份运输工作。”`
+				`“我只是没兴趣再和你一起工作了，不。”`
+					decline
+			label talk
+			`你再次被带到尖塔，但只有萨利德人和你一起进来，这与上次的基梅克人不同。你们都被护送穿过走廊，并接受设备的搜查，最后才被带到 Elirom。他向你打招呼，感谢你的到来，“我们遇到了更多问题，所以公司再次需要承包商的帮助。”`
+			`“一些 Arach 牧场主与我们签订了前往 <planet> 的运输合同。他们试图在流沙沙漠上开办长牛生意，并希望从 <planet> 一家著名银行获得贷款，以开始对他们所在的牧场进行新的扩建。<bunks> 他们总共是牧场主和他们的员工。只是……”他停顿了一会儿，仿佛在考虑什么。 “很难，Arachi 有时会很困难。一旦发现他们最初来自竞争对手 Arach House，他们原来的运输船的船长拒绝与他一起返回，他们就这样做了。让我们在 <date> 之前找到新的运输工具，他们在取消我们之前就这样做了。”`
+			`他说一旦牧场主回到流沙，你就会收到 <payment>，并敦促你在 <date> 之前赶到 <destination>，这样阿拉奇人就不会取消运输。他祝你好运，然后你就被带出了船。和你一起进去的萨利德们留在里面，而尖塔在你离开后不久就离开了。`
+				accept
+			label lunarium
+			`绕着太空港走了几分钟，你会遇到一对 Saryd。 “<last>队长？以前在我们公司工作过，曾经帮助过运送一群学生，曾经。”你点点头。 “我们又遇到了令人不安的情况。再帮助我们一次，好吗？”他们指着基梅克尖塔（Kimek Spire），想必就是你上次登上的那个尖塔，停在当地码头的边缘。`
+			`你跟随他们到达尖塔，他们也跟着你进来，这与上次的 Kimek 不同。在你们最终被带到 Elirom 之前，你们都被护送穿过走廊，并接受安全设备的搜查。 “你好，队长，很高兴见到你，”他向你打招呼。 “我收到了有关更多 Heliarch 舰队活动的消息。他们正在前往 <destination> ，以协助持续搜寻我们的成员。他们应该在 <date> 之前到达那里，所以我迫切需要一艘船来营救仍在地球上的一些 <bunks> 。我会付钱给你 <payment> 。”`
+			choice
+				`“我马上就去那里。”`
+					goto end
+				`“你如何不断获取这些舰队的信息？”`
+			`他整理了一下自己的思绪，然后回答道：“贝布利斯家族和伊德里斯家族一起合作，为我们提供秘密、快速的数据。信息是从他们那里传来的。但是，信息不是由他们发现的。有人……也许有什么东西，正在监视赫利亚克斯。不是我们的。”他又停了下来。 “我自己也怀疑过，一开始我也怀疑过。但是，从来没有错，这些信息几乎就像……”他的声音逐渐减弱。`
+			label end
+			`“成员们试图冒充牧场主。在前往 <planet> 的旅途中，他们与原来的交通工具发生了争执。如果你被拦住了，告诉他们，你应该这样做。记住，<date>。希望当你到达时他们仍然在那里，所有 <bunks> 都在。”他祝你好运，然后你被带出了船，而发现你留在里面的萨利德人。在你离开它后不久，你就会看到尖塔起飞并离开地球。`
+				accept
+	on accept
+		"assisting lunarium" ++
+	on visit
+		dialog `您降落在 <planet> 上，但意识到您为牧场主提供 <bunks> 铺位的护送人员尚未抵达系统。最好离开并等待。`
+	on complete
+		"assisting lunarium" --
+	on fail
+		"assisting lunarium" --
+
+mission "Lunarium: Evacuation 4"
+	name "运输牧场主"
+	description "将 <bunks> 牧场主带入他们的世界 <destination> 。"
+	passengers 47
+	landing
+	source "Chosen Nexus"
+	destination "Shifting Sand"
+	to offer
+		has "Lunarium: Evacuation 3: done"
+		not "joined the heliarchs"
+		not "assisting heliarchy"
+	on offer
+		conversation
+			`你着陆后不久，牧场主们就会到达机库，其中大多数是阿拉奇人，中间还有一些萨里德人和基梅克人。他们进入你的飞船，<bunks> 都在场。`
+			branch lunarium
+				has "joined the lunarium"
+			`“我们已经准备好出发了，”一名阿拉克告诉你，而其他大多数人都在寻找自己的床铺。`
+			choice
+				`“知道了，我们很快就出发。”`
+					goto accept
+				`“这笔贷款进展如何？”`
+			`“什么？”她用困惑的眼神看着你，直到另一个阿拉克轻轻地敲打她的一条腿。 “啊，是的，贷款。好吧。同意给我们所需的金额，他们已经同意了。”她回头看着另一个阿拉克，对方也盯着她看了一会儿。 “好吧，我们都很累了，船长，所以到我的铺位去吧，我会的。”`
+				goto accept
+			label lunarium
+			`“我以为我们会被抛在后面，”你关上舱门后，一位阿拉克告诉你。 “快点去<planet>，你应该这么做。冒着被Heliarchs‘检查’的风险，我们不能。”`
+			choice
+				`“知道了，我们很快就出发。”`
+					goto accept
+				`“大家都在吗？”`
+			`“谢天谢地，是的。这次我们没有失去任何人，”她说。 “Heliarchs 在 <origin> 这样的世界上进行的搜索不那么野蛮。我们成功地避开了它们。或者，至少，我希望如此。”`
+			choice
+				`“好吧，我很高兴每个人都安全。我们很快就会离开。”`
+					goto accept
+				`“你是什么意思？像这样的世界有什么不同？”`
+			`“什么？这不是很明显吗？在萨雷德领地，我们在。来吧，准备离开，我们在。”`
+			label accept
+			`他们都搬到自己的铺位上，您为 <destination> 设置了航线。`
+				accept
+	on accept
+		"assisting lunarium" ++
+	on visit
+		dialog `您降落在 <planet> 上，但意识到您与 <bunks> 牧场主的护送尚未抵达系统。最好离开并等待。`
+	on complete
+		"assisting lunarium" --
+		payment 748300
+		conversation
+			`阿拉奇人，以及分散的少数萨瑞德人和基梅克人，准备在你着陆时离开你的船，并在每个人离开时简短地感谢你。似乎是带头的阿拉奇人给了你们更多的告别，聊了一会儿，直到他们看到基梅克尖塔——你们都猜是埃利隆的船——靠近。他们咕哝了一声，然后和其他人一起离开了。您进入尖塔并与 Elirom 会面，他将 <payment> 交给您，同时通过船外的一个摄像头观看队伍乘坐运输工具离开。`
+			branch lunarium
+				has "joined the lunarium"
+			choice
+				`“他们见到你似乎不太高兴。”`
+					goto happy1
+				`“你怎么会在这里？我以为你雇佣我是因为你没有可用的船只。”`
+			`“嗯？啊，好吧，回到我遇见你的地方，其中一艘船做到了。尽管如此，还是无法及时去接牧场主，非常感谢你的服务，公司再次感谢你，”他解释道。 “我把自己的运输工作委托给那艘船，我这样做了，因为我希望亲自向牧场主道歉。我担心，他们不会听到我的解释。”`
+				goto end
+			label happy1
+			`“看来是这样，确实如此。”他叹了口气。 “嗯，从他们的角度来看，这是可以理解的。我应该对我派谁来运送他们更加小心。”`
+				goto end
+			label lunarium
+			choice
+				`“他们见到你似乎不太高兴。”`
+					goto happy2
+				`“你怎么会在这里？我以为你联系我是因为你没有可用的船只。”`
+			`“目前，我没有，而且我的船也不会及时救援他们，”他解释道。 “在我的第一艘船返回后来到这里，我做到了。希望我必须亲自向他们道歉，尽管看起来他们不会听到任何道歉......”`
+				goto end
+			label happy2
+			`“不，他们不是。”他叹了口气。 “我曾经是一名天穹领主。仲裁者。高阶。许多堡垒成员都认为我不值得信任，现在仍然如此。想想看，他们中的一些人确实如此，我曾经是那些给他们家庭带来悲剧的人。”随着越来越多的运输机到来，他继续看着这群人逐渐减少，直到最后一批运输机消失在太空港村里。 “我希望他们错了。”`
+			label end
+			`他感谢您再次提供帮助，并表示如果需要更多帮助，他会与您联系。`
+	on fail
+		"assisting lunarium" --
+
+mission "Lunarium: Evacuation 5"
+	name "接移民"
+	description "由 <date> 前往 <destination> 接载正在寻求在 Ablub 发明上开始新生活的 <bunks> 移民。"
+	deadline 7
+	passengers 116
+	landing
+	source
+		near "Ablub" 1 3
+	destination "Cool Forest"
+	to offer
+		random < 85
+		has "Lunarium: Evacuation 4: done"
+		has "ship attribute: jump drive"
+		not "joined the heliarchs"
+		not "assisting heliarchy"
+	on offer
+		payment 1387562
+		conversation
+			branch lunarium
+				has "joined the lunarium"
+			`您在降落 <origin> 后几秒钟就会接到电话。这是埃利隆（Elirom）打来的，他是萨里德（Saryd），他让你帮忙运送他公司的一些客户。 “<last> 队长！我们再次需要您的帮助，”他开始说道。 “雇用我们把他们带到 Ablub 发明的新家，一些来自 <destination> 的移民做到了。总共 <bunks>。只是……”他低下头，嘴巴张着嘴说不出话来。 “我们为他们安排的船长生病了。本来他们应该在 <date> 之前离开，但我们不能及时赶到 <planet>。不过，你是一个跳跃驱动器。现在帮助我们，只有你能做到，船长。”`
+			choice
+				`“我很乐意提供帮助。我会尽快前往那里。”`
+					goto glad
+				`“他们就不能再等一会儿，让你再派一艘船吗？”`
+				`“抱歉，我现在很忙。”`
+			`“请，队长。一旦他们安全抵达，我会回答你所有的问题。”他在靠近摄像头的地方快速打字，然后您会收到通知，总计 <payment> 刚刚转入您的帐户。 “为了把他们带到安全的地方，你会付出更多的代价。为了阿布卢布的发明，你必须把他们带来。我已经传话让他们等你了。最后一次帮助我们吧，请这样做，<last>。”他看了你一会儿，然后轻轻鞠了一躬，然后就下线了。`
+				accept
+			label glad
+			`他松了口气，然后快速在靠近摄像头的地方打字，然后您会收到通知，总共 <payment> 刚刚转入您的帐户。 “一旦移民安全了，你会得到更多的报酬。把他们带回阿布卢布的发明，你必须的。我会传话让他们期待你。”他轻轻鞠了一躬，然后退出。`
+				accept
+			label lunarium
+			`您在降落 <origin> 后几秒钟就会接到电话。这是来自 Elirom 的，他不失时机地给你下一个任务。 “这是一件特别紧急的事情。正在寻找我们在 <planet> 上的成员，Heliarchs 已经找到了。已经找到了，有几十个，甚至更多 <date> 的 Heliarchs 也会到达。及时赶到，我们的船都做不到，距离太远了。拥有一个跳跃引擎，不过，你有。营救剩下的 <bunks>，你必须。”他在一端连续输入了一些内容，然后您看到 <payment> 已转入您的帐户。 “一旦安全回到阿布卢布的发明上，我会给你更多。如果被赫利亚克阻止，你会……”他的声音减弱了一会儿，你可以听到马蹄越来越急促、重复地敲击地板的声音。 “如果你被拦住了，告诉他们，你会运送移民到阿布卢布发明的新家。他们受伊德里斯家族雇用，已经这么做了。”他敦促您立即前往 <destination>，祝您好运，然后注销。`
+				accept
+	on accept
+		"assisting lunarium" ++
+	on visit
+		dialog `您降落在 <planet> 上，但意识到您为移民提供 <bunks> 铺位的护送人员尚未抵达系统。最好离开并等待。`
+	on complete
+		"assisting lunarium" --
+	on fail
+		"assisting lunarium" --
+		conversation
+			`Elirom 会在您着陆后与您联系。`
+			branch lunarium
+				has "joined the lunarium"
+			`“我听说我能及时赶上运输，但你没有，船长，”他用比你已经习惯的语气严厉得多的语气说道。 “这份工作对我们来说确实很重要。对我们帮助很大，你有，但担心我不再一起工作，我们不会了。再见。”`
+			`在你能够解释你的延误之前，他就下线了。`
+				decline
+			label lunarium
+			`“为什么你不在，<last>？输给了Heliarchs，现在他们都输了！”他敲着桌子，摇晃着他那头的相机。 “你本来应该准时到达的，你本来是为了救他们而去的。你怎么能这样抛弃他们呢？”他似乎用萨里德语咒骂。`
+			`他花了几分钟冷静下来，然后再次开口。 “原谅我，队长。你帮了我们很多忙，也很欣赏你之前的英勇行为，但这次依赖你是错误的，我是。”`
+			`在你询问其他拯救他们的方法之前，他就退出了。`
+
+mission "Lunarium: Evacuation 6"
+	name "运输移民"
+	description "将 <bunks> 移民带到他们位于 <destination> 的新家。"
+	passengers 91
+	landing
+	source "Cool Forest"
+	destination "Ablub's Invention"
+	to offer
+		has "Lunarium: Evacuation 5: done"
+		not "joined the heliarchs"
+		not "assisting heliarchy"
+	on offer
+		conversation
+			`当你的船降落在机库的那一刻，你已经可以看到一大群萨利兹在等待。当你打开舱门时，它们一次冲进数十个，你会在中间抓住一些基梅克和阿拉奇，努力跟上疾驰的人群。当所有人都进入车内后，您可以对乘客进行计数：116 人中只有 <bunks> 登机。你向外望去，发现没有其他人来到你的船上。一位年长的 Saryds 接近你，按下按钮关闭舱门。 “我们必须离开，”他说。回顾萨里德的人群，许多成年人都在安慰他们的孩子。尤其是一名萨里德女孩的抽泣声盖过了其他女孩的声音。`
+			branch lunarium
+				has "joined the lunarium"
+			choice
+				`“我被告知有 116 个人需要我去接。我们只有 <bunks> 。”`
+				`“好的，几分钟后我们就出发。”`
+					goto launch
+			`他眯起眼睛，双手握成拳头，然后又松开。 “你只得到<bunks>。现在就带我们离开这里，或者亲自驾驶你的飞船，我会的。”`
+				goto launch
+			label lunarium
+			choice
+				`“明白了，几分钟后我们就出发。”`
+					goto launch
+				`“其他人呢？”`
+			`他回头看向哭泣的女孩，双手微微颤抖地握紧了拳头。他转过身来看着你，张了张嘴，似乎想说什么，但什么也没说出来。他回到人群中，朝那个年轻女孩走去。`
+			label launch
+			`您帮助每个人都入座，完成后出发前往 <destination>。`
+				launch
+	on accept
+		"assisting lunarium" ++
+	on visit
+		dialog `您降落在 <planet> 上，但意识到您与 <bunks> 移民的护送尚未抵达系统。最好离开并等待。`
+	on complete
+		"assisting lunarium" --
+		set "Lunarium introduced"
+		"assisted lunarium" ++
+		payment 7149832
+		conversation
+			`当你进入行星的领空时，你会收到一条来自 Elirom 的消息，向你传递一些坐标并指示你降落在那里，而不是这里的通常港口。你来到了草原中央的一座建筑群，中心有一座蓝色的金属建筑。当你下来准备登陆时，你会看到 Elirom 自己的船停泊在那里。`
+			`一进入船舱，乘客就冲出船，向等待他们的一些人打招呼并拥抱他们。其中一位名叫艾利隆（Elirom）的人尚未走下坡道，就在尖塔上害羞地看着。陪伴哭泣的萨利德女孩的年长萨利德一看到他，就暂时离开了她的身边，快步朝埃利隆走去。他抓住他的肩膀，用萨里德语喊了些什么，但没有翻译听懂。当他松开肩膀时，他又回去陪伴女孩，而埃利隆则留在原地。你走向他，这促使他把手伸进口袋，抓起一堆信用筹码，递给你。 总共<payment>。 “告诉你我做到了，你的报酬会很高。”`
+			branch lunarium
+				has "joined the lunarium"
+			choice
+				`“他们为什么这么激动？”`
+				`“你和你的公司究竟发生了什么？”`
+			`他注视着你的眼睛几秒钟，然后长时间地凝视着天空。 “来吧。在船里谈谈，我们应该。”你们两个进去，一名 Kimek 船员关上了舱门。你来到他的铺位，他坐下来开始说道：“一家运输公司，我不拥有。我根本没有任何公司。运送学生、牧场主、移民，你不是。”他专注地看着你。 “拯救生命，你一直在做的就是拯救他们，”他指着走廊舱门的方向。`
+			choice
+				`“拯救他们？拯救什么？”`
+					goto what
+				`“我只是将它们从一个星球飞到另一个星球。”`
+			`“这样做拯救了他们的生命，”他回答道。 “事实是，我派你及时到达行星，我的其他飞船不会，但由于合同，我们并不着急。在寻找他们时，Heliarchs在，在路上，惩罚者舰队也在。被俘虏，如果你先于你到达，所有你救出的人都会是那些惩罚者。”`
+				goto reveal
+			label what
+			`“哎呀，Heliarchs。我们所谓的‘保护者’。偏执的、自封的屠夫在擂台深处的房间里……”他看着地面，脸上写满了厌恶。 “几个世纪以来，他们一直在掠夺我们。无论他们发明和崇拜什么疯狂的行为，他们都会为他们的行为辩护。”`
+			label reveal
+			choice
+				`“Heliarchs正在寻找他们？那么他们……你们都是罪犯？”`
+				`“你是谁？”`
+			`“伊利隆，我是。出生于沙罗。在那里长大，从小就对Heliarchs着迷。当我成年时，我加入了立宪民主党人学院。为日政司服务了67年，在最终正确的事情之前，我做到了。在那些年的最后18年里，我是一名仲裁者。”他双手合十，仿佛要让它们暖和起来。 “月之堡垒，我随后加入了。他们属于那个群体，那些被营救的人，你也属于那个群体。或者，至少，他们的父母……属于那个群体。”他叹了口气。 “罪犯、不法之徒……无论Heliarchs如何称呼我们，只是为了从他们手中拯救我们的联盟。把人们从他们对恐怖分子的模拟追捕中拯救出来，我的工作就是。相信我，你可能不会。选择看到我们，你可以，就像Heliarchs所做的那样。不过，在这样做的过程中，改变了他们所做的事情，改变了我所看到的事情，改变了……”他的声音逐渐减弱。 “但我已经对他们死了几十年了。”`
+			choice
+				`“你想让我加入你们的队伍去对抗Heliarchs，是吗？”`
+					goto join
+				`“死了？什么意思？”`
+			`他思考了几分钟，常常张开嘴，好像决定说话，但最终又回过头来思考该说什么。 “当我决定……逃亡时，我做了一些工作来掩盖我逃离驻地设施的事。在迫使……一场旨在抹去我所有痕迹的事件之后，我逃亡并躲在民用船上一段时间，直到被月球馆发现。”他轻轻一笑。 “我以为我对他们的模式和方法有足够的了解，我足以找到他们。首先找到我，他们确实做到了。我被录取了，从那以后我一直在帮助他们。”`
+			choice
+				`“你在哪个机构工作？”`
+				`“出事了？你做了什么？”`
+			`他的眼睛在你的问题上闪烁，与你的问题锁定在一起。他移开视线，重新看向地面。 “走吧，我真的必须。我会向那些被你救出的人讲话。尝试安抚并重新安置他们。”`
+			label join
+			`他起身准备离开。 “再次直接请求你的帮助，我可能很长一段时间都不会，但仍然需要帮助拯救我们的成员，我们会的。非常感激，我们会的，如果在我们需要的时候再次帮助我们，你会的。”他伸出手臂，与你握手，然后跟着你走出尖塔。他快速小跑进入中央建筑，然后你前往你的飞船并飞向主太空港。`
+				accept
+			label lunarium
+			choice
+				`“他好像生你的气了。”`
+					goto angry
+				`“我只能得到<bunks>。”`
+			`“我知道。”他叹了口气。 “确保我明白这一点，那位老人明白了。”`
+				goto end
+			label angry
+			`“他就是这样。确实是一件很难经历的事情。习惯了这种粗鲁的谈话，我已经成长了。”`
+			label end
+			`他靠近你，弯下腰，小声说话。 “再次直接请求你的帮助，我可能很长一段时间都不会，但仍然需要帮助拯救我们的成员，我们一直都是。非常感激，我们会的，如果在我们需要的时候再次帮助我们，你会的。”他退后一步，伸出手臂与你握手。离开之前，他看了看天空。 “你应该避开阳光，<last>。”他再次感谢你们，然后离开并陪伴获救的成员进入中央大楼。`
+	on fail
+		"assisting lunarium" --
+
+
+
+mission "Lunarium: Propaganda 1"
+	name "弘扬文化"
+	description "将 Tummug 带到 <destination> ，他将在那里与其他人会面，在全球范围内传播一组宣传海报。"
+	minor
+	passengers 1
+	cargo "promotional posters" 1
+	source
+		near "Ancient Hope" 2 5
+	destination "Bright Echo"
+	to offer
+		random < 50
+		has "Coalition: First Contact: done"
+		not "joined the heliarchs"
+		not "assisting heliarchy"
+	on offer
+		conversation
+			branch lunarium
+				has "joined the lunarium"
+			`<origin> 的太空港看起来与通常的萨里德港不同：几张带有某种徽章或标志的大海报散落在各处，一些掉到地上，另一些仍然粘在墙上。当你拿起其中一个以便更好地观察时，一只阿拉克接近了你。 “您是 <last> 队长，是吗？”你点点头。 “Tummug，我被称为。引起你的注意，我看到我们的海报上有。我是推广新文化节和电影的团体的一员。有时这是一项令人厌烦的任务，甚至是重复性的，但总是值得的，最终，帮助传播新艺术作品的信息是。”`
+			choice
+				`“这些是做什么用的？”`
+				`“你需要我的帮助，我接受吗？”`
+					goto help
+			`你给他看了你拿起的海报，上面有两个新月图形“吞下”一颗黑色的九角星的图像。他看了一会儿，然后回答道：“啊，是‘双蚀’戏剧表演。星光大学的一群学生最近取得了成功。请原谅我，我帮忙透露了这么多的戏剧和电影，我忘记了它们的确切形象。”`
+			label help
+			`他要海报，当你递给他时，他拿出某种喷雾剂。他将其用在海报的空白端和最近的墙上，然后将其放回原处。 “我已经完成了这里的工作。我需要前往 <planet>，因为我的同事正在等我帮忙传播更多海报。带我去那里，好吗？付给你 <payment>，我会的。”`
+			choice
+				`“当然可以，我带你去我的船吧。”`
+				`“我现在不去那里，抱歉。”`
+					decline
+			`你给了他你的船的泊位，他告诉你他会在出发前不久在那里与你会面。在您到达 <ship> 几分钟后，您看到他靠近了，推着一个“装满了海报”的小板条箱，他在您帮助他将其装载到您的货物中时解释道。当你完成后，你带他到他的铺位，并准备旅行。`
+				accept
+			label lunarium
+			`<origin> 的太空港看起来与通常的萨里德港不同：几张带有某种徽章或标志的大海报散落在各处，一些掉到地上，另一些仍然粘在墙上。拿起其中一个仔细观察，您会发现该符号是月球堡垒的符号，两颗月亮吞没了黯淡的太阳。 “<last> 队长，是否有任何非法行为？”你转身看到一只阿拉克站在那里，看着你。你认出他是图姆格（Tummug），你在遥远的蓝色上遇到的月球领导人之一。 “我们可以在你的船上谈谈吗？”你把他带到<ship>，并密封舱口。 “我就是散布反对众星制的宣传材料。这就是你发现的那些海报的目的，”他解释道。 “这不是最好的招募策略，但我可以在不冒太多成员风险的情况下做到这一点。有时间吗？你需要交通工具去 <planet> 继续工作，我是。”`
+			choice
+				`“当然，我们马上就走。”`
+				`“抱歉，我现在不走那条路。”`
+					decline
+			`“首先，我必须拿到商品，”他在离开你的船时说道。几分钟后，他回来了，推着一个小板条箱，“里面装满了海报”，他在你帮他把它装进货物时解释道。完成后，你带他到自己的铺位，并为任务做好准备。`
+				accept
+	on accept
+		"assisting lunarium" ++
+	on visit
+		dialog `您降落在 <planet> 上，但意识到携带 Tummug 和海报的护送人员尚未到达系统。最好离开并等待。`
+	on complete
+		"assisting lunarium" --
+		payment 288000
+		conversation
+			`由于您仍在处理着陆程序，Tummug 正在将海报分成几个较小的堆。 “确保每个人都有同样数量的海报，我必须。让他们中的任何一个松懈，我都不会，”他开玩笑说。你的飞船降落在机库，Tummug 递给你 <payment> 。他打了个电话，一分钟又一分钟，一些萨利德开始来到你的船上。你打开舱门，他开始向每个进来的人分发一堆海报。这些海报并不完全相同，尽管所有海报的图像几乎都是相同的：一颗黑色的九角星，摇摇欲坠。`
+			branch lunarium
+				has "joined the lunarium"
+			choice
+				`“那这些海报有什么用呢？”`
+				`“真的需要那么多海报吗？”`
+					goto many
+			`他因你的问题而停了下来。 “它们是用来做什么的？哦，那个……我想它叫‘破碎的冬日之星’？这些海报是用来演戏剧的？”他向其中一位萨利德人询问，并伸出双腿将那堆海报递给他们。萨利德看着他，然后是你，然后点点头。 “我听说沙罗受到了很大的打击。”`
+				goto end
+			label lunarium
+			choice
+				`“这些图像到底有什么帮助？”`
+				`“真的需要那么多海报吗？”`
+					goto many
+			`“他们闪耀的金色太阳是赫利亚克权力的象征。调暗或破坏太阳已经成为一种禁忌。甚至可以受到惩罚。因此，通过调暗和破坏太阳，希望我们能让萨利德人有兴趣找出为什么有人会这样做，海报就是这样做的，”他解释道。`
+				goto end
+			label many
+			`“这是人口较多的萨瑞德行星之一，”他回答道。 “当然，从较小的角度来看，按照阿拉赫或基梅克的标准，这座城市可能是大的，但仍然足够大，足以容纳许多海报，确实如此。”`
+			label end
+			`他把最后两堆中的一堆交给了最后一个萨里德，并为自己抓起了最后一堆。 “现在，帮他们贴海报，我会的。如果有兴趣进一步帮助我们，我会在太空港与您会面。您必须确保有几十个额外的铺位，”他在离开飞船时说道。`
+	on fail
+		"assisting lunarium" --
+
+mission "Lunarium: Propaganda 2"
+	name "弘扬文化"
+	description "将 Tummug 和他的同事带到 <destination> ，在那里他们将在地球上散布一些横幅。"
+	passengers 11
+	cargo "promotional banners" 1
+	blocked "You need <capacity> in order to take on the next mission. Return here when you have the required space free."
+	source "Bright Echo"
+	destination "Factory of Eblumab"
+	to offer
+		has "Lunarium: Propaganda 1: done"
+		not "joined the heliarchs"
+		not "assisting heliarchy"
+	on offer
+		conversation
+			`和以前一样，你会发现当地的太空港装饰着图姆格的各种海报，有些贴满了墙壁，有些已经贴在地板上了。它们要么被拆下来，要么就是没有正确地粘在墙上。大多数当地人只是看了一眼，然后继续做自己的事情；只有少数人聚集在一些海报附近，也许正在讨论这些图像。另一方面，一些太空港清洁工人却漫不经心地把它们拿下来，尽管他们似乎并不太关心得到所有的海报。`
+			branch lunarium
+				has "joined the lunarium"
+			`你发现图姆格和一些萨里德在一家咖啡馆里等你。 “你准备好再次帮助我们了吗，队长？”当你坐下时他问道。`
+			choice
+				`“我们现在要去哪里？”`
+					goto where
+				`“大家都到了吗？按照你说的，我确保有一些空的铺位。”`
+			`“啊，谢谢队长。是的，我们所有 <bunks> 的人，这次你将负责运输，”他回答道。 “我希望带来更多的帮助，但取消了其他一些人的帮助。这里还有一些工作，他们必须做。”`
+			label where
+			`他用一条腿搭在下颌上，做出一种近乎沉思的姿势。 “我们会去我家。<destination>。举办一场著名的 Arachi 晚会，一些当地人是，我们的任务是帮助他们吸引注意力。我们在 <planet> 上支付过 <payment> 一次，你也会的。”`
+			`你们都离开了咖啡馆，图姆格和其他十个人跟着你们去了你们的船。他们带来 <cargo> ，并在自己的铺位上安顿下来。`
+				accept
+			label lunarium
+			`你发现图姆格和一些萨里德在一家咖啡馆里等你。他一看到你就站了起来，萨利德一家跟着他出了酒店。 “我们应该在你的船上谈谈，”他一靠近就说道。你们都前往机库并进入你们的船，一些萨利德人前往其他地方去接你们要携带的货物。 “我们中的一些人遇到了一些麻烦。我们离开<planet>。我在那里出生和长大，所以对这座城市的布局更加熟悉。我们中的一些人被抓的可能性较小，这是应该的。为他们提供一个躲藏一段时间的地方，我们会的。”`
+			choice
+				`“我们不应该帮助那些被抓到的人吗？”`
+				`“好吧，等其他人回来了我们就离开。”`
+					goto back
+			`“被抓住了？他们没有被抓住，”他说。 “他们遇到过麻烦，但还没有被抓住。至少我没听说过。”他停了下来，望向机库。 “他们没有到达集合点，但我没有看到任何逮捕或处决的消息。最有可能的是，他们躲藏起来以避免可能看到他们的巡逻队。”`
+			label back
+			`几分钟后，Saryd 带着 <cargo> 返回。一旦它安全地进入你的货舱，你就将图姆格和其他人带到他们的铺位上。`
+				accept
+	on accept
+		"assisting lunarium" ++
+	on visit
+		dialog `您降落在 <planet> 上，但意识到携带 Tummug、他的同事和横幅的护送人员尚未到达系统。最好离开并等待。`
+	on complete
+		"assisting lunarium" --
+		payment 576000
+		conversation
+			`和以前一样，当你完成着陆程序时，Tummug 将横幅分成小堆。在第一批 Saryd 带着他们的一堆东西离开之前，他会给你 <payment>，一些当地的 Arachi 和他们一起拿起横幅分发到当地社区。 “我们会在太空港再次见到你的，”图姆格在分发完横幅后说道。看着他自己的那堆东西，你会看到一幅图像被一条从上到下的锐线分割开来，左边画着阿拉克在烈日下倒塌的图画，而右边画着在月光下快乐晚餐的图画。一些 Arach 语言的信息写在底部，两张图像的下方。`
+			branch lunarium
+				has "joined the lunarium"
+			choice
+				`“这说什么？”`
+				`“好吧，几个小时后我就在太空港接你。”`
+					goto end
+			`“这个？‘双胞胎’双船’是一部……主要是喜剧的戏剧，”他解释道。 “两个Arach主角在外表上几乎一模一样，但都是一个伟大家族的富有成员，其中一个是，虽然只是便宜地运输到一个有更好工作的世界，另一个却想要。在同一个星球上，彼此不知情，与两个不同的Kimek船长预订通道，他们这样做。只是，两个Kimek也很相似，并且驾驶相同型号的船，Kimek Thistle，他们这样做。带到一个灼热的，陈旧的Saryd工厂世界里，富有的阿拉克是，而工人则受到强大的家族的热烈欢迎。”在进一步深入情节之前，他控制住了自己。 “嗯，呃，就像我说的，它主要是一部喜剧。我想它可能不太有趣。”`
+				goto end
+			label lunarium
+			choice
+				`“这说什么？”`
+				`“好吧，几个小时后我就在太空港接你。”`
+					goto end
+			`“读一下《打倒暴君之家！》确实如此。”他说。当他注意到你不知道这意味着什么时，他继续说道，“它是 日政司 的 Arach 昵称。数千年前首次使用它，当时 Heliarchs 变得更加严格，更加宽松。禁止，这个表达是，但仍然是众所周知的，它的含义是。”`
+			label end
+			`他准备离开，并告诉你在太空港与他会面之前腾出大约十吨的货物空间并保留五个可用的铺位。然后他走下舱门，消失在城市里。`
+	on fail
+		"assisting lunarium" --
+
+mission "Lunarium: Propaganda 3"
+	name "弘扬文化"
+	description "将 Tummug 和他的 Arachi 同事以及他们的 <cargo> 带到 <destination> 。"
+	passengers 5
+	cargo "flyers and skywriting material" 10
+	blocked "You need <capacity> in order to take on the next mission. Return here when you have the required space free."
+	source "Factory of Eblumab"
+	destination "Sandy Two"
+	to offer
+		has "Lunarium: Propaganda 2: done"
+		not "joined the heliarchs"
+		not "assisting heliarchy"
+	on offer
+		conversation
+			`<origin> 上的太空港显示的横幅比您预期的要少，只有少数散布在墙壁上。一名阿拉克人离开工作大楼，看到第一条横幅时就倒抽一口冷气，把它取下来扔进垃圾箱。他们似乎愣了一下，然后匆匆环顾四周，然后就匆匆离开了。另一只阿拉克对另一面旗帜也有类似的反应，但沉思了一下后，不再理会它并走开了。`
+			`当你评估完当地对图姆格旗帜的接受程度后，你就去找他。最终你到达了一个车间，他正在与另外四个 Arachi 交谈，他们正在研究一些小型机器人，这些机器人与 Arach 船体修复系统中使用的机器人没有太大区别。唯一的区别似乎是 Arachi 正在通过远程控制来测试“翅膀”。 “<last>队长！”当图姆格注意到你时，他会惊呼。 “我必须道歉，因为我们没有在太空港等你。我们当时正忙着测试原型。”`
+			branch lunarium
+				has "joined the lunarium"
+			choice
+				`“你测试什么？”`
+				`“那些机器人是做什么用的？”`
+			`“它们是遥控无人机。”他向其中一名阿拉奇人索要控制器，然后开始让机器人在你周围飞行。 “我们测试了向它们发出的命令的精度和响应时间。它们对于我们的下一次冒险至关重要。”他将机器人从你身边移开，按下控制器上的按钮，机器周围的几个小隔间就会打开，并渗出微红色的烟雾。 “接下来我们要去<destination>。这是一个人口稠密的世界，用海报覆盖整个城市是不可能的。使用这些机器人在空中书写我们的信息，我们会的。”他将控制器交还给 Arach，然后走到你面前，展示了一张小到可以放在你手掌里的传单，上面有一些 Kimek 语言的短信。 “将它们扔到主城上空很有用，它们也将如此。”`
+			choice
+				`“好吧，我希望机器人工作顺利。我会帮你把它们带到我的船上。”`
+					goto accept
+				`“那上面写着什么？”`
+			`他把传单拉回来，仔细地看着。 “它应该是……‘最热的夏天’和‘对所有人的吸引力’。”这是一部 Kimek 电影。我不太习惯阅读 Kimek，但这些是由我们的一些 Kimek 同事设计的，所以这里没有问题，应该有。”他回头看着机器人。 “只要保持天空文字正确，我们就需要。”`
+				goto accept
+			label lunarium
+			`他向其中一名阿拉奇人发出信号，他们从你身边走过，关上车间的门窗。 “我们接下来要去<destination>。这个世界人口太多，我们无法用海报或横幅覆盖所有地面。使用机器人，我们会的。”他向其中一位阿拉奇人索要控制器，并将机器人拉近你的距离。他按下一个按钮，无人机周围的几个隔间就会打开，释放出微红色的烟雾。 “我们会用空中文字留下我们的信息，”他一边说，一边将控制器交还给 Arachi。他走近你，给你看了一张小到可以放在你手掌里的传单，上面有一些用基梅克语写的短信。 “用它们在主要太空港城市周围投放这些东西，我们也会的。”`
+			choice
+				`“这样是不是太冒险了？天灵们不是很容易就能找到你吗？”`
+					goto risky
+				`“那上面写着什么？”`
+			`“这个的意思是‘无主的太阳’，而另一个的意思是‘我们为我们的人民制定的法律’，”他说，一边用一条腿尖指着一个粗体符号，一边说第一个“我们的”。他去解释它们的含义。 “所有联盟明星的领主，Heliarchs都这样称呼自己。当被夺取友谊之戒时，当形成时，日政司在Saryd的大多数领域都更加先进和经验丰富。他们把‘他们的’戒指变成了政府所在地，他们在胜利所带来的天真的欣快感中，被欺骗采用了Saryd法律体系，当时的Kimek和Arachi是。Saryd的判决，萨里德的惩罚。”他看着你，拖着几条腿在地板上走，就像在抓地一样。 “阿拉奇人中最年长的人只活了萨里德人一生的四分之一。对于他们所有的人口来说，只有几十个基梅克能活过一个世纪。对他们来说，即使是相对较小的萨里德人的句子，即赫利亚奇人的句子，也只有他们一生的三分之一。”他慢慢地将传单揉皱。 “在死去已久的萨利德领主的法律统治下，我们仍然……”`
+				goto accept
+			label risky
+			`“我和 Elirom 谈过了。Heliarch 正在四处移动舰队，因为其他星系会分散他们的注意力，我们的一些团队已经做好了准备，”他解释道。 “地球上的船只越来越少，而且我们很快就会发现，所以他们不太可能找到我们，确实如此。”`
+			label accept
+			`Tummug 告诉其他 Arachi 收拾剩下的机器人和传单，并陪你到你的船。几分钟后，阿拉奇人拖着推车来了，车上装满了无人机、传单和用于天空书写的红色烟雾罐。你带来这里的萨瑞德人追随他们，带来越来越多的马车。 Tummug 说一旦他们到达 <planet> ，你就会得到 <payment> ，然后搬到他的铺位上，其他 Arachi 也跟着跟着。`
+				accept
+	on accept
+		"assisting lunarium" ++
+	on visit
+		dialog `您降落在 <planet> 上，但意识到您的护卫携带 Tummug、他的同事和空中书写材料尚未到达系统。最好离开并等待。`
+	on complete
+		"assisting lunarium" --
+		payment 491000
+		conversation
+			`这次，当你着陆时，图姆格不会继续将传单分成不同的堆。 “我们已经把它们安排在盒子里了，”他说。他引导你降落在远离城市的工厂之一的一个孤独的机库中。着陆后，几名 Kimek 进入机库，开始将传单和空中书写无人机装回工厂，大概是为了确保它们都处于工作状态。 Tummug 将 <payment> 交给您，感谢您将它们带到这里。`
+			branch lunarium
+				has "joined the lunarium"
+			`“现在，队长，我们将驾驶无人机飞越城市。我们只是在这里关注它们可能存在的任何问题，并修复它们，”他解释道。 “为了更好地欣赏表演，你应该回到离城市更近的主机库。一旦结束，我们就在太空港与你会面。我们需要更多的货舱和铺位。”您前往您的船，然后将其飞回城市。`
+				goto end
+			label lunarium
+			`“现在<last>，我们在这里应该很安全，但即使现在Heliarch飞船减少了，也不应该停留在这里。如果追踪到这里，控制无人机的信号已经准备好放弃设施并逃跑，每个人都准备好了，”他解释道。 “稍后在太空港与你见面，我们需要更多的货舱和铺位。”您前往您的船，然后将其飞回城市。`
+			label end
+			`花了将近半个小时，你观察<planet>的天空，直到无人机的第一个迹象出现：它们太小了，你无法从你所在的位置看到，但你看到成堆的红色烟雾在天空中迅速成长为 Kimek 字母，以螺旋柱和弧形出现，用小而分散的点将字母分开。人群堵塞了街道，基梅克望向窗外，有些人甚至聚集在公寓楼顶上凝视这些信息。当无人机完成任务后，Tummug 在传单上向您展示的信息已完全形成，无人机会短暂休息。当他们返回时，当第一组消息开始消散时，他们开始处理另一组消息。经过几次重复和又一次停顿后，传单开始在城市街道上如雨点般落下，当地的基梅克人好奇地捡起它们并互相讨论。 “雨”持续了几分钟，然后无人机开始飞往城市的其他地方，你就看不到它们了。`
+			`现在把注意力集中在人群和他们的接待上，你会发现基梅克人分裂了：几乎到处都在激烈讨论，其中许多人似乎赞成展示，而另一些人则大喊大叫并做手势要求发布信息，将传单扔到地上并踩在上面。地面上的赫利亚克特工尽最大努力分隔人群并维持秩序，但与基梅克的庞大数量作斗争。然而，就在无人机消失后不久，赫利亚克战舰就在大气层中狂暴地飞翔，飞快地撕毁了天空的文字，朝着工厂的方向而去。一些船只在地面上留下了更多的特工，随着人员的增加，Heliarchs 现在成功地阻止了人群的内斗，并开始清理街道。`
+				decline
+	on fail
+		"assisting lunarium" --
+
+mission "Lunarium: Propaganda 4"
+	name "弘扬文化"
+	description "将 Tummug、他的同事和他们的 <cargo> 带到 <destination> 。"
+	passengers 18
+	cargo "promotional posters" 12
+	blocked "You need <capacity> in order to take on the next mission. Return here when you have the required space free."
+	source "Sandy Two"
+	destination "Warm Slope"
+	to offer
+		has "Lunarium: Propaganda 3: done"
+		not "joined the heliarchs"
+		not "assisting heliarchy"
+	on offer
+		conversation
+			`Tummug 很快就会在太空港找到你。他带着用无人机帮助他的 Arachi 接近你，还有一些 Saryd 和 Kimek，他们都跟在他后面猛冲。 “这次我不会耽误你太久了，<last> 队长，”他说道。 “我们正在前往 <destination>。我已经安排好了我们需要带到你们船上的东西。”`
+			branch lunarium
+				has "joined the lunarium"
+			`然后他拉扯你的衣服，好像要求你稍微鞠躬，同时他自己也伸了个懒腰。 “赶紧走，我们必须走！”他低声说道。`
+			`当你带着他们跑回你的船上时，你尽最大努力跟上，在那里他们帮助其他人将装满促销海报的盒子和板条箱装进你的货舱。奇怪的是，你看不到无人机早些时候从上面撒下的任何传单，也看不到任何在航天港周围的屏幕上显示天空文字的视频。一旦货物全部装进你的船，Tummug 就会过来告诉你，你将收到这份工作的 <payment>，然后和其他人一起冲进你的船。`
+				accept
+			label lunarium
+			`他简单地环顾四周，然后说道：“今天很忙，所以我们应该赶紧回你的船上。否则，很难找到可用的装载机。”`
+			`跑回你的飞船，你发现之前在城市中下雨的传单完全消失了，太空港周围的任何屏幕上也没有任何天空文字的重播。图姆格和负责无人机工作的阿拉奇都在队伍中，但他们急于登上你的飞船让你感到不安。你们都帮助更多的成员将装满海报的盒子和板条箱搬进你的飞船，完成后与图姆格和其他人一起进入飞船。 “现在就离开，我们必须离开。太多的关注，无人机表演似乎赢得了我们的关注，”他告诉你。 “我们在 <planet> 向您支付一次 <payment> 费用，我会的。走吧。”他们都走向自己的床位，而你则走向驾驶舱，启动引擎。`
+				launch
+	on accept
+		"assisting lunarium" ++
+	on visit
+		dialog `您降落在 <planet> 上，但意识到您的护卫携带 Tummug、他的同事和海报尚未到达系统。最好离开并等待。`
+	on complete
+		"assisting lunarium" --
+		set "Lunarium introduced"
+		"assisted lunarium" ++
+		payment 894000
+		conversation
+			`Tummug 为您提供了<payment>，并开始与其他人一起打开板条箱和盒子。当你打开舱门时，他们只打开了一些板条箱，但看起来他们已经从机库召唤了几名萨里德来帮助卸下剩余的箱子并将它们转移到其他地方。你走近图姆格，他仍在翻看海报。海报上印有萨雷兹、基梅克和阿拉奇被监禁并囚禁在铁链制成的笼子里的图像。仔细观察，你会发现这些“链条”是由圆环制成的，就像赫利亚克斯使用的那样。你的目光转向图姆格，他正在回头看着你。`
+			branch lunarium
+				has "joined the lunarium"
+			choice
+				`“这些到底是做什么用的？”`
+					goto for
+				`“我认为Heliarchs不会非常赞同这些。”`
+			`“他们不认可我们的任何工作，”他回答道。 “喜欢对你撒谎，我没有，船长，但是在我们从 <origin> 拿到箱子和板条箱之前告诉你我们是谁，这是有风险的。”`
+				goto question
+			label for
+			`“确实，我们有通过海报、横幅和传单作为宣传手段进行传播。只是，它们不是针对某些电影或其他媒体。对螺旋体的攻击，它们都是让人们思考的手段，这样我们就可以招募他们。我们从 <origin> 获得的东西将会对此提供很大帮助。”`
+			label question
+			choice
+				`“你在那些箱子里带了什么？武器？”`
+				`“你是谁？”`
+					goto who
+			`“证据。证据。他们的罪行没有受到惩罚，对自己的叛国罪。基梅克工厂世界确实拥有无数亿美元，也是许多赫利阿奇们毫无意义的逮捕的理由。他们把失踪当作工伤事故，但他们保留记录，并追踪他们始终是被捕获的‘罪犯’。我们的目标，那些记录。那里描述了许多人的下落或命运。”`
+			label who
+			`他沉默了一会儿，将目光集中在图像上，然后在递给你一张海报时将注意力集中在你的图像上。 “我的队伍被称为月球堡垒。Heliarchs 在他们的广播中善意地给我们起绰号为叛军和亡命之徒。你帮助了我们，<last>，并以其他你能做到的方式帮助我们更多。”他停了下来，目光仍然盯着你。 “不要把Heliarchs视为恩人。他们会毁掉我们，但如果我们无法阻止他们。”`
+				goto end
+			label lunarium
+			`“我想这是不言自明的吧？”他说道，然后从盒子里拿起最后几张。 “我们当然会在行星上传播这些信息，但更有价值的是未开封的盒子和板条箱中的信息。”`
+			choice
+				`“什么信息？”`
+					goto information
+				`“这就是你之前急着离开的原因吗？”`
+			`“希望我们有，这足以分散空中文字和传单的雨点，这样其他人就可以安全地闯入并窃取数据，”他叹了口气解释道。 “我们错了。让他们到处巡逻，我们之前的宣传工作显然做到了。躲起来一段时间，他们需要这样做。”`
+				goto end
+			label information
+			`“我们偷走了许多‘失踪’者的命运或下落的文件、记录数据。在基梅克工厂世界中，Heliarchs将它们作为工伤事故注销是很常见的事情。我们会彻底调查这些数据，也许会发现他们的监狱或太平间的坐标，我们终于可以做到。”`
+			label end
+			`他感谢你的帮助，并带着剩下的海报离开了你的船。稍后你去检查太空港和城市的部分地区，但没有找到图姆格、他的同事或任何海报。`
+	on fail
+		"assisting lunarium" --
+
+
+
+mission "Lunarium: Combat Training 1"
+	name "训练营"
+	description "将 <bunks> Lunarium 成员及其 <cargo> 带到 <destination> ，他们将在那里购买一些船只并用它们与海盗作战，以训练他们的战斗策略。"
+	minor
+	passengers 54
+	cargo "supplies" 9
+	source
+		attributes arach
+	destination "Zug"
+	to offer
+		random < 65
+		has "ship attribute: jump drive"
+		or
+			has "Lunarium: Propaganda 4: done"
+			has "Lunarium: Evacuation 6: done"
+			has "Lunarium: Smuggling: Reactors: done"
+		and
+			or
+				not "event: fw suppressed Greenrock"
+				has "event: fw abandoned Greenrock"
+			not "joined the heliarchs"
+			not "assisting heliarchy"
+	on offer
+		conversation
+			`在太空港闲逛了一段时间后，你注意到有几十个人正前往机库，特别是在看起来像你的飞船的方向。数量大致相等的 Kimek 和 Arachi，还有一些 Saryd，他们站在 <ship> 前面，环顾四周，好像在寻找它的船长。当你走近它们时，其中一只基梅克人会见你并为他们的群体发言，它的胸部和腹部比同种动物中的普通人要细长。`
+			branch lunarium
+				has "joined the lunarium"
+			`“你来了，<last> 队长，”她向你打招呼。 “Pyakri，我的名字是，正在寻找你们的运输服务，我和我的朋友们。我们在你们的船上谈谈，可以吗？我希望在那里讨论细节。”`
+			choice
+				`“当然可以，让我去拿舱门。”`
+				`“你必须离开，我现在不载任何乘客。”`
+					decline
+			`你带她上船，当你关上舱门时她会继续。 “谢谢队长。现在，协助我的一些同事，你已经有了，是吗？”她等着你回答，但看到你困惑的表情，又继续解释。 “月球堡垒？你以前帮助过我们，即使你事先不知道所有的细节。假设我做了那件事，大多数人都听说我们是罪犯或类似的人，你一定也这么做了。他们的宣传很小，Heliarchs是。建议你值得信赖，有些人帮助过你，所以有可能，继续进行一项我一直在计划的特殊努力。”`
+			choice
+				`“你需要帮助的‘努力’是什么？”`
+					goto help
+				`“你的朋友只是在我做完之后才告诉我我到底在做什么。我不想再帮助你了。”`
+			`“为什么？你有兴趣帮助Heliarchs，是吗？我们的一些成员与他们一起工作过。仲裁者Elirom，其中之一，是。最高级别之一，也就是说，仅次于执政官本身，”她回答道，离你越来越近。 “联盟很快就会变得更好。要推翻众星制将会很困难。它非常强大，非常感谢任何帮助。当然，一旦我们摆脱了他们，那些在我们需要的时候帮助我们的人就会得到适当的奖励。”`
+			choice
+				`“那么我需要做什么来帮助你呢？”`
+					goto help
+				`“你为什么想打倒Heliarchs？在我看来，联盟在他们的领导下表现得很好。”`
+				`“无论你和你的朋友输赢，我都不想参与其中。我不会帮助你们。”`
+					decline
+			`“当然，你只是接触到了日政司的宣传。当前Heliarchs的成就，我们所拥有的繁荣并不是，而进一步的繁荣，他们肯定也不是！”惊呼过后，她连忙放慢了呼吸，平静了下来。 “他们已经变得偏执了。几千年来，联盟中没有人见过夸格人，但他们认为自己见过，他们的目的就是与夸格人战斗。树敌，俘虏自己的人民，他们曾经这样做过。没有任何警告或原因的公开逮捕，夜间失踪……”她稍微后退了一步，下颌发出低沉的嘀嗒声。 “如果你不感兴趣，我会离开，但我们需要帮助，队长。”`
+			choice
+				`“具体帮忙什么？”`
+				`“我很抱歉，但对我来说，进一步帮助你们的团队听起来太冒险了。”`
+					decline
+			label help
+			`“与 Heliarch 飞船作战是很困难的，但我们最终还是需要与它们作战，”她解释道。 “我们的大多数成员在战争方面都不是很……经验丰富，因为我们避免了任何船只战斗。考虑到你拥有跳跃驱动器，认为我们做到了将我们的一些地区舰队领导人带到人类太空，你可以。在那里训练对抗人类海盗，我们可以。”`
+			choice
+				`“好吧，我帮你，你带了多少人？”`
+				`“我很抱歉，但对我来说，进一步帮助你们的团队听起来太冒险了。”`
+					decline
+			`你的回答让她精神振奋。 “我们的队伍一共<bunks>。希望在人类空间引起骚动，我们不这样做，所以带上<cargo>来维持我们自己一段时间，我们。完全避免离开飞船，我们会的。”`
+				goto accept
+			label lunarium
+			`你认出她是月岛军事领导人皮亚克利（Pyakri），你在遥远的蓝色上见过她，并把她带上你的船来交谈。 “我一直在寻找你，<last> 队长。我确实需要你的帮助，以进行某种训练。”`
+			choice
+				`“你需要什么帮助？”`
+					goto with
+				`“我不太擅长训练别人，你确定需要我的帮助吗？”`
+			`她的下颌快速地咬合在一起，听起来几乎就像节奏中的钟声。 “至少在大多数情况下，你不会接受训练，”她解释道。 “我们的许多地区舰队领导者就在外面等着。我们需要的是你的跳跃驱动器和你的一些知识。”她又叽叽喳喳地叫起来。`
+			label with
+			`“非常……缺乏，我们的大多数成员都缺乏船对船战斗的专业知识。希望测试一些战术，领导者们这样做，以便更好地向他们手下的成员解释。当然，为此挑战Heliarchs是危险的，所以我们想到了针对人类海盗的训练。为此，你会带我们到人类空间。我们总共有<bunks>，并带来<cargo>来维持我们自己，而不需要离开船只并引起骚动，我们会的。”`
+			label accept
+			`她要求你打开舱门，然后人群中又进来了一些人。他们要你提供地图，然后询问最近的海盗活动中心。你指着肖拉（Shaula）的格林罗克（Shaula），这是南部人类空间最大的海盗世界，告诉他们这是最危险的海盗世界之一。然后他们询问南方是否有任何主要造船厂，您将他们指向 <planet> 上的 Southbound Shipyards 和 Wayfarer 上的 Tarazed Corporation。经过一番辩论后，他们认为 <planet> 距离联盟较近，因此在他们需要快速返回时会是更好的选择，并决定将其作为目的地。 “我希望我们能带来足够的积分来购买几艘战舰，”皮亚克里评论道。他们将 <cargo> 带到您的船上，然后您将他们带到他们的铺位上。`
+				accept
+	on accept
+		"assisting lunarium" ++
+	on visit
+		dialog `您已到达 <planet> ，但您带来 Pyakri 和其他 Lunarium 成员及其补给品的护卫尚未进入系统。最好离开并等待他们。`
+	on complete
+		"assisting lunarium" --
+	on fail
+		"assisting lunarium" --
+
+mission "Lunarium: Combat Training 2"
+	name "实战测试"
+	description "护送 Pyakri 的舰队前往 <waypoints> ，并帮助他们在那里与海盗舰队作战，开始训练。确保所有月球飞船都幸存下来。完成后返回<origin>。"
+	landing
+	source "Zug"
+	waypoint "Shaula"
+	to offer
+		has "Lunarium: Combat Training 1: done"
+		not "joined the heliarchs"
+		not "assisting heliarchy"
+	on offer
+		conversation
+			`一旦你着陆，Pyakri 和其他一些 Lunarium 成员就会来到你的驾驶舱，你向他们展示一个显示器，上面有当地造船厂出售的船舶列表。你尽你所能回答他们关于船只的能力、优势和缺陷的问题。您还可以向他们展示 <origin> 上可用的服装，以防他们想要更改任何船舶装载。与其他人讨论了几分钟后，并返回查看一些船只的页面后，Pyakri 要求你帮助她购买 1 艘堡垒、3 艘阿戈斯和 4 艘快艇。`
+			choice
+				`“你确定不想要更多的堡垒吗？它们非常坚固，你们在里面都会更安全。”`
+				`“那么你要如何真正进入飞船呢？我以为你想对人类保密。”`
+					goto secret
+			`“Heliarch 飞船比我们现有的要耐用得多。每个人都意识到危险，为了更好地了解在更脆弱的飞船中生存的方法，我们必须与它们进行练习。”`
+				goto help
+			label secret
+			`“我们不能在外面呆太久，所以我们需要让船只靠近这里。不过，我们应该先等待夜幕降临，因为这样更容易快速潜入购买的船只。”`
+			label help
+			`你帮助她完成交易，给出 Southbound 造船厂界面的基本概要，并要求将船只带到 <ship> 旁边的机库。 “你帮了很大的忙，船长。至关重要的是，如果我们是人类舰队的话，这将是。在与该地区的客户沟通时要小心，我必须小心。”你的脸上露出了一些困惑，她进一步解释了她的计划。 “在了解了与你一起打击人类海盗的要点后，我们就开始了，作为赏金猎人工作，我们会的。赚足够的钱来回报你的服务，我打算这样做。即使类似于在联盟领域工作，人类赏金也需要与客户进行最少的沟通，我们仍然可以。”`
+			choice
+				`“嗯，我相信你会掌握其中的窍门的。”`
+					goto accept
+				`“你确定这是个好主意吗？因为你想避免人们注意到你。”`
+			`“什么？哦，你担心翻译人员，是吗？是的，有时听起来像机器人，他们可以，但不会妨碍我们，那会。我们已经准备好了翻译软件来处理短信。我们既不会看到也不会听到，”她吹捧道。`
+			choice
+				`“我更担心……说话方式会泄露你的秘密。”`
+				`“好吧，如果你认为你会没事的话，那当然。”`
+					goto accept
+			`“图案？”她困惑地看着你，于是你解释了联盟翻译盒的怪癖。你让她在同一个翻译软件的帮助下，在你的显示器上简单地输入一些内容，然后在翻译成你的语言时向她指出混乱的单词。 “我们的翻译一直都是这样吗？”她难以置信地问道。你点点头，出于某种羞耻或愤怒的行为，她将双腿靠近自己的身体，同时用双腿不规则地敲击地面。 “他们确实可以完美地从人类语言进行翻译，而且联盟语言之间没有问题……之前报道过，这个问题不是。对Heliarchs来说不是，对我们来说也不是！这是一种尴尬……”她叹了口气，张开双腿恢复正常。 “一旦掌权，我们就会与 Oobat 讨论如何修复它们，我会的。现在，希望我会需要与人类进行大量交流，但我们不会。”`
+			label accept
+			`一旦所有购买的船只都停在你自己的附近，你就给她另一个清单，这次是工作委员会。你帮助她了解赏金狩猎工作的布局，并给她一些关于定位有赏金的船只的提示。夜幕降临后几个小时，你会发现机库变得不再那么热闹，只有夜班工人在活动。你打开舱门并确保海岸畅通无阻，然后与月球元素成员一起前往停在距离你自己的船最近的堡垒。分配到该船的成员进入舱口，包括 Pyakri，你和其他人重复这个过程，前往你面前的 Argosies。在最后一次之后，您将快速前往每艘快船，最后在完成后返回您的船。现在每个人都在自己的船上，你要求一些工人帮助将物资转移到舱口附近。一旦工人离开，月球馆的工作人员就会开始将货物搬进去，然后你前往堡垒与皮亚克里会面。`
+			`你会发现飞船的内部已经在进行修改，许多阿拉奇人使用各种腿将电线固定到位，因为他们将人类控制板和钥匙替换为他们更习惯的版本。 Pyakri 在驾驶舱内，一边查看屏幕上的手册（已翻译成 Kimek 语言）一边测试许多控制装置。 “啊，你好，船长。运作良好，计划已经完成，但我们没有。至少希望如此，我愿意。”她打开了一张地图，指向一颗你认为是 <waypoints> 的星星。 “我们已经接受了我们的第一份工作。既然你在打击人类海盗方面经验丰富，在第一场战斗中请求你的帮助，我必须。告诉我工作机会，在这个系统中赏金是。快点去面对他们，我们应该在逃跑之前，他们已经。跟着你的船去那里，我们会的。”你从一艘船走到另一艘船，提醒每一位船长在即将到来的战斗中要小心，然后进入你自己的船。这次训练的目的是为了增加月之馆的战斗经验和战术，如果他们中的一些人在第一次战斗中就死了，那么事情肯定不会顺利，所以你应该尽量让他们都活着。`
+				accept
+	on accept
+		"assisting lunarium" ++
+		event "lunarium training: shaula empty"
+	on visit
+		dialog `您降落在 <planet> 上，但您尚未完成任务。要么是月球馆的部分船只尚未进入系统，要么是<waypoints>中的部分海盗船尚未被击败。一切就绪后返回。`
+	npc accompany save
+		government "Lunarium (Hidden)"
+		personality escort
+		ship "Bastion" "Procellarum"
+		ship "Argosy" "Ingenii"
+		ship "Argosy" "Serenitatis"
+		ship "Argosy" "Undarum"
+		ship "Clipper" "Doloris"
+		ship "Clipper" "Oblivionis"
+		ship "Clipper" "Temporis"
+		ship "Clipper" "Veris"
+	npc kill
+		personality heroic staying
+		government "Pirate"
+		system "Shaula"
+		ship "Falcon" "Leuschner"
+		ship "Osprey" "Abulfeda"
+		ship "Modified Argosy" "Taruntius"
+		ship "Manta" "Necho"
+	on complete
+		"assisting lunarium" --
+		event "lunarium training: shaula back to normal"
+		event "lunarium training done" 96 148
+		conversation
+			`当您着陆时，Pyakri 通过显示屏上的短信与您联系。 “你帮了很大的忙，船长！更多……身经百战，如果你能称呼他们的话，和我一起的船员们，士气有很大问题，我没有，但仍然让我担心，海盗们。习惯了人类船只，我们还没有，所以驾驶它们足以与这样的舰队作战，我们不能。现在还不能。现在指导我们完成了第一场战斗，你必须自己工作一段时间——接受更小、更简单的赏金——我们会的。再次联系你，我会的，一旦完成训练，我们就可以了。”`
+	on fail
+		"assisting lunarium" --
+
+event "lunarium training: shaula empty"
+	system "Shaula"
+		remove fleet "Small Southern Pirates"
+		remove fleet "Large Southern Pirates"
+		remove fleet "Small Core Pirates"
+		remove fleet "Large Core Pirates"
+		remove fleet "Small Northern Pirates"
+		remove fleet "Large Northern Pirates"
+		remove fleet "Large Militia"
+		remove fleet "Large Free Worlds"
+
+event "lunarium training: shaula back to normal"
+	system "Shaula"
+		add fleet "Small Southern Pirates" 500
+		add fleet "Large Southern Pirates" 800
+		add fleet "Small Core Pirates" 4000
+		add fleet "Large Core Pirates" 7000
+		add fleet "Small Northern Pirates" 5000
+		add fleet "Large Northern Pirates" 9000
+		add fleet "Large Free Worlds" 9000
+
+event "lunarium training done"
+
+mission "Lunarium: Combat Training 3"
+	name "拿起皮亚克里"
+	description "Pyakri 和其他 53 名 Lunarium 成员已经完成了人类太空训练。前往 <planet> ，他们在那里等待被接走并带回联盟。"
+	landing
+	source
+		near "Aldhibain" 1 100
+	destination "Glaze"
+	to offer
+		has "event: lunarium training done"
+		not "joined the heliarchs"
+		not "assisting heliarchy"
+	on offer
+		conversation
+			`当你着陆时，你的显示器会切换到消息界面，一些文字很快就会涌入。“船长，你好。Pyakri，是的。在过去的几个月里，我们与许多人类海盗作战，并设法练习和磨练舰队的行动，我们已经做到了。回到联盟中的其他人身边，我们现在必须，所以再次需要你的帮助，我们会的。等待<planet>，我们会的。”消息结束，您的显示器恢复正常。您在 <destination> 上设置了一个标记，以便稍后前往那里并接载 Lunarium 成员。`
+				accept
+	on accept
+		"assisting lunarium" ++
+	on complete
+		"assisting lunarium" --
+	on fail
+		"assisting lunarium" --
+
+mission "Lunarium: Combat Training 4"
+	name "归来"
+	description "将 <bunks> Lunarium 成员带回联盟，前往 <destination>。"
+	passengers 54
+	landing
+	blocked "You need <capacity> in order to take on the next mission. Return here when you have the required space free."
+	source "Glaze"
+	destination "Factory of Eblumab"
+	to offer
+		has "Lunarium: Combat Training 3: done"
+		not "joined the heliarchs"
+		not "assisting heliarchy"
+	on offer
+		payment 3000000
+		conversation
+			`Pyakri 的舰队降落在 <ship> 周围的停机坪上，他们向您发送消息说他们将等待夜幕降临登上您的船。与此同时，他们专注于移除物体和工具，并取消对船只的改造，以免暴露他们的存在。太阳落山后，你注意到他们打开了舱门，所以你打开自己的舱门，帮助他们快速、安静地潜入你的船。也许是因为他们已经习惯了人类空间，或者也许他们根本不在乎，因为他们要永远回家了，这一次他们表现得不那么谨慎，尽管你仍然想象不到有人看到他们。`
+			`当所有人都进入你的飞船后，Pyakri 就会接近你并给你一些总计价值 <payment> 的信用筹码。 “尝试将舰队分成一段时间，我们这样做了，所以我们也采取了一些更简单、回报较少的赏金，”她解释道。 “但是，希望我们能赚到足够的钱来支付你的服务费用。”`
+			choice
+				`“你和海盗打得够好吗？”`
+					goto pirates
+				`“说实话，我很惊讶你没有失去任何人。你买的一些船并不是专门为战斗而设计的。”`
+			`她快速地咬了咬下颌。 “我们的也不是。我的意思是，联军舰艇。我们的民用舰艇是由较弱的材料制成的，护盾矩阵不那么复杂，武器装备的空间也较小。有了这些知识，我就故意选择较脆弱一侧的舰艇进行这次训练。我们专注于与较重的人类舰艇作战，以模拟耐用性和火力方面的差异，”她解释道。 “当然，对于Heliarch飞船来说，差距要大得多，但无论如何，这都是一次有用的经历。”`
+				goto accept
+			label pirates
+			`“我不会说谎，前几个月很困难。我们非常习惯联盟，习惯我们的设备，所以忘记了我们做了很多次，他们自己没有船体修复能力，船只有。”她把两条前腿放在头上几次，好像羞愧地拂过头顶。 “我们很幸运，没有造成人员伤亡。至少，这是一种在战斗中即兴救援的好方法，这一切都是如此。”她说完，抬起头。`
+			label accept
+			`您再次帮助他们联系当地造船厂并安排出售他们的船队。该过程完成并且工人们完成了对船只的带走后，Pyakri 告诉您他们已准备好返回联盟，前往 <destination> ，从那里他们将返回各自的基地并与 Lunarium 新兵分享他们的新经验。您帮助 Pyakri 和其他人到他们的铺位，并为 <planet> 设置路线。`
+				accept
+	on accept
+		"assisting lunarium" ++
+	on visit
+		dialog `您已到达 <planet> ，但您带来 Pyakri 和其他 Lunarium 成员的护卫尚未进入系统。最好离开并等待他们。`
+	on complete
+		"assisting lunarium" --
+		"assisted lunarium" ++
+		conversation
+			`着陆后不久，几组人会来迎接一些月球成员并护送他们到他们的船上。他们立即离开，而剩下的成员则直接前往城市。 “其他人还没有收到我们返回的消息，所以在这里等待更多的船只将他们带到他们通常运行的星球，他们会的，”皮亚克里解释道。`
+			branch lunarium
+				has "joined the lunarium"
+			`“你帮了很大的忙，船长。正常地互相训练，就像在演习中一样，我们不能，因为有被Heliarchs发现我们的风险，它会。也不是很有用，因为与我们自己的战舰一样弱，我们不会。”她看着其他人，准备自己进城。 “知道我加入了我们，你没有，船长。你的选择是，是否帮助我们进一步做，帮助Heliarchs，或者只是离开，不再回来。只是，问你我愿意，在决定之前仔细考虑一下，你必须。”说完，她便告别了，跟着其他人进了城。`
+				accept
+			label lunarium
+			`“幸运的是，我们加入了我们，你加入了，％ID_0%队长。多年来我一直想在实战中尝试一些战术，但当然，在不冒整个行动风险的情况下在这里这样做，我们做不到。希望我这样做可以增强我们下级的信心，我们最近获得的经验将会。”她嘱咐你们出行小心，然后告别，跟随其他人进城。`
+	on fail
+		"assisting lunarium" --
+
+
+
+mission "Lunarium: Questions"
+	name "月球会议"
+	description "现在您已经进一步帮助了月球馆，前往 <destination> ，在那里您被邀请与他们的领导人会面，他们为您安排了一项特殊任务。"
+	minor
+	landing
+	source
+		government "Coalition"
+		not planet "Remote Blue"
+	destination "Remote Blue"
+	to offer
+		has "ship attribute: jump drive"
+		or
+			"assisted lunarium" >= 5
+			and
+				"coalition jobs" >= 70
+				"assisted lunarium" == 4
+			and
+				"coalition jobs" >= 100
+				"assisted lunarium" == 3
+		"reputation: Quarg" >= 0
+		not "joined the heliarchs"
+		not "assisting heliarchy"
+		not "assisting lunarium"
+	to complete
+		not "assisting heliarchy"
+	to fail
+		or
+			has "joined the heliarchs"
+			"reputation: Quarg" < 0
+	on offer
+		conversation
+			`当您准备降落在 <origin> 时，您的显示器开始发出低沉的嗡嗡声，然后停止，然后再次启动。这种情况持续了近一分钟，直到弹出一条消息。 “<last> 船长，感谢您对我们事业的一贯帮助，我们的同志们要相信您。我们对您的持续支持感兴趣，以便我们共同能够解放联盟。您必须来 <destination>。我们的领导人会与您会面，以便您可以与他们讨论一项重要任务。您的船上有一个可用的铺位，您应该这样做。”`
+			`当您读完后，该消息很快就会中断。您的显示器恢复正常，并且听不到嗡嗡声。您在地图上标记了<planet>。`
+				accept
+	on visit
+		dialog `你目前正在协助众星制。如果您想加入月球馆，请取消或完成您为他们安排的任何任务。`
+
+mission "Lunarium: Quarg Interview"
+	name "采访"
+	description "与来自 Lunarium 的 Arach 外交官 Oobat 一起前往 <destination>，尝试与夸格人谈论他们对当前联盟的想法。"
+	passengers 1
+	landing
+	blocked "You need <capacity> in order to take on the next mission. Return here when you have the required space free."
+	source "Remote Blue"
+	destination "Lagrange"
+	to offer
+		has "Lunarium: Questions: done"
+		not "joined the heliarchs"
+		not "assisting heliarchy"
+	on offer
+		conversation
+			`在 <origin> ，月球馆的领导人正在等你。您想与他们见面并正式加入月球馆吗？考虑到他们反对日政司的原因，这无疑会让你走上与日政司发生冲突的道路。`
+			choice
+				`（是的。）`
+				`（还没有。）`
+					defer
+				`（不。我根本不想支持月球馆。）`
+					decline
+			`你离开你的船，发现一对 Kimek 正在等你。 “跟随我们到集合点，你会的。”其中一位说道，你答应了，并在与他们一起穿过城市时尽量保持低调。你到达了市中心附近的一个地区，街区简陋，摩天大楼很少，然后走进一家似乎是 Kimek 的餐厅。你继续跟着两位 Kimek 走过忙碌的桌子和 Kimek 顾客，当你走到后面时，他们都在看着你。`
+			`乘坐电梯，您会向下移动几层。你到达了一些向阿拉奇代表团开放的大门，六名身材魁梧的阿拉奇包围着一位穿着蓝色“裙子”、周围有白色线条的年轻、衣着精美的女士。 “哦，终于到了，是吗？”当你走出电梯时，她过来迎接你。 “ <first> <last> ，是吗？我对我们最近的新成员很感兴趣，因此决定参加一次这次会议。Lobmab Bebliss 女士，我是，我们伟大家族的族长，也是月球馆的捐助者。”她向你迈出了一条腿，就像是某种古老的阿拉克手势。不确定如何回应，你尽最大努力鞠躬，当她把腿拉回靠近身体时，这似乎让她感到满意。 “然而，我必须承认，最不方便的是，在保持低调的情况下走这么远。当你是最伟大的阿拉克家族的首领时，很难就这样消失。希望我所做的一切都是值得的，你的贡献是。”`
+			choice
+				`“我会尽我所能提供帮助。”`
+					goto leaders
+				`“听起来你对月球事业做出了很多贡献。你是如何帮助抵抗运动的？”`
+			`“是的，观察得很好。我的房子已经确保了月球堡垒的安全，使其免遭赫利亚奇的眼睛和耳朵的窥探。在我的领导下，保证他们不会发现我们的交易——没有涉及你的交易——”她用得意的语气说道。`
+			label leaders
+			`陪你到这里的 Kimek 要求你继续前行。洛布玛布和她的保镖带路穿过繁忙的小隔间和走廊，数十名基梅克在电脑和屏幕前工作，仿佛监视着整个城市。在似乎是建筑群主要通道的尽头，你穿过一个门口，发现月神馆的领导人围坐在一张桌子旁。你被带到一个座位上，当洛布玛布最后进来时，一名保镖宣布：“洛布玛布·贝布利斯女士，我们伟大家族的领袖。”`
+			`餐桌上的其他人面面相觑，其中一位一直陪伴着你下船的基梅克在走向洛布马布之前静静地叹了口气。 “非常欢迎您，Lobmab 女士，”他一边说，一边开始一一指着领导者，从您左边的 Kimek 开始。 “你们的主人，Chiree 是我们当地部队的首领，也是我们许多行动的组织者。她从小就与赫利亚克斯作战。”他继续以顺时针方向指向它们，现在位于 Chiree 的左侧。 “同样地，图姆格几十年来一直在帮助我们，为我们的团体传播信息，并向人们带来关于螺旋体的真相。另一位杰出的阿拉奇，对即将讨论的任务至关重要，那就是奥巴特。她是一位勤奋的语言学家，也是一位有抱负的外交官。我相信你和皮亚克里已经在一起工作了？她是我们最高级的民兵军官之一。”他停顿了一下，看着洛布马布，几乎像是在等待他对其他人的介绍获得批准。她只是点点头，然后他继续前进。 “还有……艾利隆。一位著名的萨瑞德·赫利亚克仲裁者，一个多世纪前叛逃了。从那时起，他就一直为我们提供建议。”他等她说话，然后再次回头看着桌子并指着你。 “哦，当然。<first> <last>，人类，给了我们很大的帮助，今天加入我们，谁是。”`
+			`洛布玛布对这些介绍感到满意，坐了下来，这让基梅克一家松了口气。 “洛布玛布女士，我们非常感谢您抽出时间来参加这次会议，”奇里说。 “<last> 队长的一项特殊任务，我们已经完成，并且希望所有领导人都在场讨论它，我们做到了。但是，首先，欢迎我们的新成员，我们必须这样做，”她看着你说道。 “你有什么问题要问我们吗，队长？”`
+			label questions
+			choice
+				`“如果你们真的能打倒Heliarchs，你们打算怎么做？”`
+					to display
+						not "lunarium questions: takedown"
+				`“在某个时候你需要与Heliarchs战斗。你有能力做到这一点吗？”`
+					to display
+						not "lunarium questions: fightthem"
+					goto fight
+				`“我是唯一一个帮助你的外人吗？”`
+					to display
+						not "lunarium questions: outsider"
+					goto outsiders
+				`“你如何支付这一切费用？”`
+					to display
+						not "lunarium questions: money"
+					goto pay
+				`“我现在没事了，那你需要我来完成这个任务怎么样？”`
+					goto task
+			action
+				set "lunarium questions: takedown"
+			`“重建，首先我们需要重建，”奇里回答道。 “他们会竭尽全力保住权力，因此我们预计联盟党将遭受巨大损失。”`
+			`“一旦一切恢复正常，我们就应该专注于让民众放心。这将会是一个更好的改变，并有助于确保每个人都意识到这一点，贝布利斯家族会的，”洛布马布插话道。“我们会赚回他们从我们身上夺走的东西。”`
+			`贝布利斯家族的族长说完后，奇里继续说道。 “毫无意义，如果我们的斗争再次在那些圈子里腐败，我们几千年后的继任者将成为我们的继任者。建立透明度措施和手段，以确保绝对权力，执政官没有，我们会。”`
+				goto questions
+			label fight
+			action
+				set "lunarium questions: fightthem"
+			`“我不会试图欺骗你。至少可以说，我们处于极大的劣势，”皮亚克里回答道。 “我们的船只更弱，我们吹嘘的武器也远没有那么强大。主要是人类设计。由于更简单，更容易在我们拥有的工厂中生产，所以它们是。而且缺乏经验，部队确实……”`
+			`当她继续列出月球馆与你的对手相比的不足之处时，桌子周围的气氛很快就变暗了。 Elirom 站起来，双手放在桌子上以引起注意。 “他们并不比我们聪明。向你保证，我可以。我们在很多领域都想要，是的，但只是因为他们囤积了我们最好的材料。我们已经准备了一些更致命的武器。蓝图已经完成。我们只是缺乏合适的材料。当获得这些材料时，我们可以继续改革我们的军火库，也许还会生产一些更好的船只。”`
+			`“假设我这样做，打算告诉我去哪里攻击这些材料，你会吗？”皮亚克里一边站起来一边问道。 “我的人会再次被‘不可预见的’抓住吗？又被你忘了提到的阿拉克营抓住了吗？”`
+			`显然，埃利罗姆对这个问题感到措手不及，他看了她几秒钟，然后重新坐下来。`
+				goto questions
+			label outsiders
+			action
+				set "lunarium questions: outsider"
+			`在几秒钟内，他们只是交换眼神看着你的问题，直到 Lobmab 开口说话。 “贝布利斯已经收到了几个世纪以来来自某个来源的传输和信息。告诉我们他们有Heliarch活动、舰队调动、训练演习、宣传计划。这些信息总是与他们的预测完全正确。还向我们指出了装备储藏室——里面装着以前在联盟中找不到的装备——他们有。人类武器、蓝图、工厂零件……”`
+			`“无论谁做这件事，我们都不知道，”埃利罗姆说。 “我是一名仲裁者，虽然我知道很多事情，但仍然不让我知道，一些关键信息是。这些信息可能来自其中一位领事。尽管很难偷走跳跃驱动器来带入武器，但即使对领事来说也是如此。”他停了下来，眼神中充满了死寂，轻咬着一根手指。 “我们还从消息中收到了……实验的消息。某种方式的程序来接管尸体……停止在擂台上进行的任何事情，我们必须这样做。”`
+				goto questions
+			label pay
+			action
+				set "lunarium questions: money"
+			`桌子上的其他人同时看向 Lobmab，促使她做出解释。 “贝布利斯家族在我们的历史中积累了巨大的财富。作为我们对月球馆慷慨帮助的一部分，我们提供了几乎所有的财务方面的帮助。”`
+			`她停了下来，其他人仍然看着她，仿佛期待着更多的事情。她保持沉默，于是奇丽回头看着你，继续说道，“也代替我们从普朗塔布家族借了一些贷款，贝布利斯家族和伊德里斯家族都这么做了。普朗塔布的银行家们对我们的事业并不是非常热衷，但他们和我们一样有兴趣驱逐赫利亚克斯，即使他们会见我们或与我们交谈，他们也从不这样做。”`
+				goto questions
+			label task
+			action
+				clear "lunarium questions: fightthem"
+				clear "lunarium questions: money"
+				clear "lunarium questions: outsider"
+				clear "lunarium questions: takedown"
+			`图姆格绕着桌子转了一圈，在回答之前将一些文件的副本交给了其他领导人。 “Heliarch宣传的中心点之一，就是对夸格人的恐惧。数千年来，这被用来证明他们的预算和他们对囤积军队的痴迷是合理的。欧巴特想出了一种方法来减轻对民众的影响。”`
+			`有了这个提示，Oobat 进一步推进了计划。 “六千年来，在联盟的太空中都没有看到过夸格人的飞船。很可能他们已经离开了我们的战争，与赫利亚克斯不同。如果证明夸格人对与我们发动战争缺乏兴趣，我们已经将其传播给人们，我们可以。考虑到船长的足智多谋，并且拥有跳跃引擎，我认为我们做到了，获得该证据的最佳方式就是与夸格人会面。”她抓起其中一份文件，指着它。 “我希望你们大家都能回顾一下这些问题。我们应该小心他们的措辞。一旦完成，我们就登上 <last> 船长的船，我会的。在人类空间与夸格人会面，我们必须，”她看着你说道。 “你以前见过夸格人吗，船长？”`
+			branch "met quarg"
+				has "First Contact: Quarg: offered"
+			choice
+				`“不，抱歉。我从来没有时间参观他们的世界或戒指。”`
+				`“我只在图片和视频中见过它们。”`
+			`「啊，真是可惜了。好吧，我想这次旅行对我们来说都是第一次。」`
+				goto accept
+			label "met quarg"
+			choice
+				`“是的。他们可能有点奇怪，但他们一直对我很好。”`
+				`“是的，可悲的是。他们令人讨厌而且居高临下。”`
+					goto "quarg bad"
+			`“很高兴听到这个消息。希望我愿意为我提供这种治疗，他们确实愿意。”`
+				goto accept
+			label "quarg bad"
+			`桌子把文件统一收起来，在你回答后看着你。 “我明白了……好吧，至少配合采访，我们希望他们会。”`
+			label accept
+			`月球馆领导人花了一个小时左右的时间仔细研究了采访中提出的问题，决定放弃一些问题，并添加一些新问题。一直以来，艾利隆都忧心忡忡地询问欧巴特是否确信这个想法。 “请原谅我，如果我听起来像一个Heliarch，但离开是危险的。知道我们不这样做，夸格人在他们的领土上看到来自联盟的人的反应。”`
+			`“我明白，但我会的。与夸格人不同的是，它会无缘无故地发动攻击，”她回答道。 “如果情况最糟，请相信 <last> 队长有能力确保我们逃脱。”领导们对面试问题进行了长时间的讨论，直到就其完整性达成共识。他们祝你和 Oobat 好运，然后你们俩就被护送出建筑群回到你们的船上。在那里，Oobat 询问您在人类空间中进行此类采访的最佳地点，您指向 <destination> ，夸格人正在那里构建他们的环形世界。 “那么我们必须去那里。我会在你的照顾下，船长。”您带她到她的床位，并绘制了前往 <planet> 的路线。`
+				accept
+	on accept
+		"assisting lunarium" ++
+	to fail
+		"reputation: Quarg" < 0
+	on visit
+		dialog `您已到达 <planet> ，但您携带 Oobat 的护卫尚未进入系统。最好离开并等待。`
+	on complete
+		"assisting lunarium" --
+	on fail
+		"assisting lunarium" --
+
+mission "Lunarium: Join"
+	name "报告回来"
+	description "既然你和 Oobat 已经采访了夸格人，请返回 <destination>，向 Lunarium 领导人通报事情进展情况。"
+	landing
+	source "Lagrange"
+	destination "Remote Blue"
+	passengers 1
+	to offer
+		has "Lunarium: Quarg Interview: done"
+	on offer
+		conversation
+			`一旦你停靠在 <origin> ，你就去看看 Oobat，他正在准备某种形式的相机，同时排练面试问题。 “请稍等，队长，我马上就准备好，”她说。你走出你的船，标记你看到的第一个夸格人。`
+			`“我能帮你什么忙，人类？”它说。`
+			choice
+				`“我从联盟带来了一只阿拉克。她想采访夸格人。”`
+				`“我和一个来自联盟，月神殿的小队在一起，他们正在与Heliarchs作战。他们想和你谈谈，并派了一名外交官和我一起。”`
+			`它保持沉默，瞥了一眼你的船。 “我明白了，”它说。 “你在这里等一下，我会带一个可以就此事发言的人来。”它快步离开，并与沿途的其他夸格人简短地交谈，他们来到你的船上等待。当你等待时，乌巴特从你的船上出来，造成了一个小场面，因为一些访问空间站的人类看到一只巨大的蜘蛛而惊慌失措。其他人走近，对未知的外星人感兴趣，或者可能认为她是某种形式的道具。不过 Oobat 并没有太在意他们，而是专注于你们两个附近的夸格人，并观察远处的其他人。`
+			`你周围的夸格人阻止了目瞪口呆的人类靠近，几分钟后，穿着褪色浅灰色长袍的夸格人来迎接你。 “你好，人类。还有……”`
+			`“噢巴特，我的名字是，”她说。 “我是月球堡垒的成员，这是联盟中为对抗Heliarchs而创建的一个团体。<last>队长帮助了我们很多，现在他们把我带到了这里，因为想问你一些关于你对联盟的看法的问题，我的团队就是这么做的。”`
+			`夸格人盯着你们两个看了几秒钟，然后蹲到与你们齐平的高度。 “很好。你有什么问题吗？”`
+			`她把相机递给你，打开它，并要求你在找到合适的角度后尽可能保持相机静止。然后，她将翻译器远程连接到它，以便音频拾取夸格的翻译响应。 “好吧，那我们就开始吧。至于联盟成立的原因，你是打算再次与我们作战吧？”`
+			`它想了一会儿，然后回答道：“不。我们从来没有打算打仗。是古老的萨利德人、基梅克人和阿拉奇人与我们作战。我们不是交战民族。”`
+			`Oobat 似乎对答案很满意，然后继续下一个。她询问夸格人大约十分钟，询问他们在联盟之外的活动以及他们与人类和其他物种的关系。她甚至让你稍微移动相机来展示当地人类与夸格人的互动，因为夸格人将与人类打交道与与联盟物种打交道进行比较。奥巴特从一个问题转到另一个问题，就像在检查清单中一样，直到找到最后一个。 “我们差不多完成了。非常感谢你们的回答。我只是最后一件事，安抚家乡的人们。有兴趣回来拿回戒指，是吗？”`
+			`“当然，”它毫不犹豫地说。 “戒指是我们的家。我的家。”奥巴特显然没有预料到这个答案，困惑地看着你。`
+			choice
+				`“几千年过去了，你还对那些戒指念念不忘吗？”`
+				`“如果你想让他们回来，为什么现在还不回来？”`
+					goto why
+			`“徘徊在……‘那些’戒指上？我们的戒指。我们的家，”它回答道。 “你就这么容易忘记你的吗？”夸格人交叉一只手臂，抓住它的肩膀，在背部弯曲时低下头。一些皮肤开始变得漆黑，它把另一只手臂举到头上，好像很痛苦。`
+				goto accept
+			label why
+			`“因为那会迫使一场战斗。这三个……这些Heliarchs，不会听。他们从来没有听过，”它回答道，交叉一只手臂抓住它的肩膀，在背部弯曲时低下头。一些皮肤开始变得漆黑，它把另一只手臂举到头上，好像很痛苦。`
+			label accept
+			`现在气氛已经变了，周围已经看不到人类了。更多夸格人开始围着你的船转圈，眼睛盯着 Oobat。离你最近的人小心翼翼地看着接受采访的人，就像在等待什么征兆一样，它的全身都变色了。 Oobat 仍然看着你，脸上写满了困惑和担忧。`
+			choice
+				`“我认为这对于采访来说就足够了。”`
+				`“我们该离开了。现在。”`
+			`她点点头，再次向夸格人快速说了一声“谢谢”，然后转身回到你的飞船里。然而夸格人阻止了她，迅速伸出一只手臂抓住了她的一条腿。慢慢地，它的皮肤又恢复了之前的灰蓝色，平静下来。 “如果你成功了，请允许我回家。”你周围的夸格人散去，接受采访的人再次站起来，回到空间站的其他区域。`
+			`你和 Oobat 一起登上了你的船，然后把相机还给了她。 “总的来说，一切顺利，”她一边说，一边浏览着加速的镜头，并在夸格人做出反应的某些时刻停了下来。 “然而，这并不是我们对最后一个问题的预期。我想 Elirom 会很失望。”她告诉您她将对素材进行一些基本编辑，并表示您可以返回 <planet> 。`
+				accept
+	on accept
+		"assisting lunarium" ++
+	on visit
+		dialog `您已到达 <planet> ，但您携带 Oobat 的护卫尚未进入系统。最好离开并等待。`
+	on complete
+		"assisting lunarium" --
+		set "joined the lunarium"
+		set "language: Coalition"
+		event "first lunarium unlock"
+		conversation
+			`当你和 Oobat 到达 Lunarium 建筑群时，Chiree、Elirom 和 Tummug 会回来欢迎你。 “告诉你我做到了，他们会安全回来的，”图姆格对埃利隆说。 “那么，足够好用在我们的努力中，是吗？”`
+			`Oobat 向他们展示了录音，当他们聆听夸格人的声音时，他们的脸上明显露出满意的表情。然而，当最后一个问题出现时，气氛变得阴暗。结束后，艾利隆站起来，走向最近的墙壁，用一只手臂猛击墙壁。 Chiree 叹了口气，转向 Tummug，“这些镜头还值得使用吗？”`
+			`“直到那个？是的，当然。需要编辑它以获得更清晰、更快的视频，我们确实这样做，但这将是一个伟大的作品，”他说。 “虽然最后一部分，按照我们的预期进行，但事实并非如此。”`
+			`“只要证明Heliarchs是正确的，最后一个问题就可以了，”埃利隆插话道。“没关系，如果一千次录像反驳了他们的叙述，那确实如此。即使有一件事，选择和旋转作为他们可以做到的证据，但努力将是徒劳的。”他停顿了一下，然后再次撞到墙上，但用力较小。 “再玩一次，可以吗？” Oobat 答应了，并再次播放录音。 Elirom 在视频播放过程中暂停了几次，打开一个设备写下一些笔记。完成后，他将最后一部分重复了几次，似乎对夸格不断变化的颜料特别感兴趣。 “缟玛瑙黑……”他大声思考，“这种颜色的情感是什么？”又重复了几次后，他才从恍惚中清醒过来，把纸条递给了 Oobat。 “没错，他们是关于夸格人想要夺回戒指的……遗憾的是，我们不能用这一点来对付他们。不过，也许，如果他们对戒指感兴趣的话，他们在这么长时间后仍然感兴趣……”`
+			`他没有再说什么就退出了，让其他人对他的突然离开感到困惑。 “必须立即吸收很多东西，尤其是对他来说。毕竟，他曾经是一位螺旋圣主，”图姆格说道。 “我们应该努力完善这段视频，并准备好向公众发布。”`
+			`奥巴特同意了，两人准备带着录像离开。 “这次旅行是一次独特的经历，船长。希望我能再次合作，我们很快就会这么做。”`
+			choice
+				`“这里也一样。这与我平常的工作不同，工作是拍摄相机之类的。”`
+				`“什么时候都可以。只是，下次我们再找一些正常的人来采访吧。”`
+			`她咯咯地笑着，点点头，然后离开了房间，跟着图姆格走出了月球馆建筑群。`
+			branch heliarch
+				has "assisted heliarch"
+			`Chiree 走近你，递给你一个小盒子。你拿起它，粗略地检查了一下，发现它是联盟的翻译设备之一。 “你现在是我们中的一员了，你应该能够在没有其他人帮助的情况下理解我们所说的话，”她说。 “我们仍在为对赫利亚克进行重大攻击做好准备。我们将与他们进行一场艰难的战斗，一路走来。希望，我是，在你的帮助下，当时机成熟时，我们可以指望。”`
+				goto end
+			label heliarch
+			`你看向 Chiree，看到她用右腿尖擦着最前面的左腿，好像在清理什么东西。一旦她完成，你会看到各种螺栓和金属纹理显露出来。 “我在赫利亚奇的攻击中失去了两条腿，我确实这么做了。我已经习惯了假肢，但那一天却从我的记忆中消失了。”她盯着你。 “意识到，我们之前帮助了Heliarchs，你有。询问具体细节，我没有，因为想知道，我没有。无害的工作，它可能是。或者，帮助他们残害像我这样的其他人，你可能有。”她走近你，递给你一个小盒子：联盟的翻译设备之一。 “你现在是我们中的一员了。听到你这边对赫利亚克斯有更多的援助，我不会的。”`
+			label end
+			`您道别后，您将被护送出大楼并返回您的飞船。带你到那里的基梅克和你一起短暂进入飞船，并告诉你他们已经向联盟的主要基地发出了关于你加入的消息。有人告诉你，你会在他们的秘密服装店里找到一些新服装。 “在城市的不同部分，有时甚至在整个其他城市，我们的商店都在，但迄今为止已经证明，它们不会受到赫利亚克巡逻队的影响。”他们为您提供了一份简短的行星清单，您可以在其中找到他们的旅行用品商，以及如何到达和进入每个行星的坐标和说明。`
+			`当他们离开时，你开始摆弄翻译设备，弄清楚如何配置它来翻译每种语言。使用本地传输和广播对其进行半小时左右的测试后，您的速度相当快，以至于您可以在一秒钟内多次更改它翻译的语言或翻译的语言。`
+			`月之馆可能还需要很长一段时间才能准备好拿起武器对抗Heliarchs，所以现在你认为你可以通过调查他们可能为你做的小工作来提供帮助。`
+	on fail
+		"assisting lunarium" --
+
+event "first lunarium unlock"
+	planet "Remote Blue"
+		outfitter "Lunarium Basics"
+	planet "Fourth Shadow"
+		outfitter "Lunarium Basics"
+	planet "Into White"
+		outfitter "Lunarium Basics"
+	planet "Secret Sky"
+		outfitter "Lunarium Basics"
+	planet "Shifting Sand"
+		outfitter "Lunarium Basics"
+	planet "Mebla's Portion"
+		outfitter "Lunarium Basics"
+	planet "Refuge of Belugt"
+		outfitter "Lunarium Basics"
+
+
+
+# Patch for if the player joined both Heliarch and Lunarium prior to a fix.
+mission "Coalition Intro Join Patch"
+	landing
+	invisible
+	to offer
+		has "joined the lunarium"
+		has "joined the heliarchs"
+		has "event: first lunarium unlock"
+		has "event: first heliarch unlock"
+		has "license: Heliarch"
+	on offer
+		conversation
+			`（由于一个意外的错误，您已经加入了联盟的月宫派系和星宫派系。请选择您喜欢加入哪一边。）`
+			choice
+				`（站在圣天使一边。）`
+					goto "heliarch"
+				`（站在月球馆一边。）`
+
+			action
+				clear "license: Heliarch"
+				clear "joined the heliarchs"
+				event "fix: chose lunarium"
+			`	(You've sided with the Lunarium.)`
+				decline
+
+			label "heliarch"
+			action
+				clear "joined the lunarium"
+				event "fix: chose heliarchs"
+			`	(You've sided with the Heliarchs.)`
+				decline
+
+event "fix: chose heliarchs"
+	planet "Remote Blue"
+		remove outfitter "Lunarium Basics"
+	planet "Fourth Shadow"
+		remove outfitter "Lunarium Basics"
+	planet "Into White"
+		remove outfitter "Lunarium Basics"
+	planet "Secret Sky"
+		remove outfitter "Lunarium Basics"
+	planet "Shifting Sand"
+		remove outfitter "Lunarium Basics"
+	planet "Mebla's Portion"
+		remove outfitter "Lunarium Basics"
+	planet "Refuge of Belugt"
+		remove outfitter "Lunarium Basics"
+
+event "fix: chose lunarium"
+	planet "Ring of Friendship"
+		remove outfitter "Heliarch Basics"
+	planet "Ring of Power"
+		remove outfitter "Heliarch Basics"
+	planet "Ring of Wisdom"
+		remove outfitter "Heliarch Basics"
+	planet "Saros"
+		remove outfitter "Heliarch Basics"
+	planet "Ahr"
+		remove outfitter "Heliarch Basics"
+	planet "Ki Patek Ka"
+		remove outfitter "Heliarch Basics"
+	planet "Belug's Plunge"
+		remove outfitter "Heliarch Basics"
+	planet "Stronghold of Flugbu"
+		remove outfitter "Heliarch Basics"
+	planet "Delve of Bloptab"
+		remove outfitter "Heliarch Basics"
+	planet "Far Home"
+		remove outfitter "Heliarch Basics"
+	planet "Dwelling of Speloog"
+		remove outfitter "Heliarch Basics"
+	planet "Blue Interor"
+		remove outfitter "Heliarch Basics"
+	planet "Sandy Two"
+		remove outfitter "Heliarch Basics"
+	planet "Second Rose"
+		remove outfitter "Heliarch Basics"

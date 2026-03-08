@@ -1,0 +1,1073 @@
+# Copyright (c) 2015-2016 by Michael Zahniser
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program. If not, see <https://www.gnu.org/licenses/>.
+
+ship "Earth Shaper"
+	sprite "ship/earth shaper"
+	thumbnail "thumbnail/earth shaper"
+	attributes
+		category "Light Freighter"
+		licenses
+			Wanderer
+		"cost" 500000
+		"hull" 3300
+		"automaton" 1
+		"mass" 35
+		"drag" .95
+		"heat dissipation" .86
+		"fuel capacity" 300
+		"cargo space" 27
+		"outfit space" 59
+		"engine capacity" 26
+		"atmosphere scan" 100
+		weapon
+			"blast radius" 10
+			"shield damage" 100
+			"hull damage" 150
+			"hit force" 250
+	outfits
+		"Small Biochemical Cell"
+		
+		"Type 1 Radiant Thruster"
+		"Type 1 Radiant Steering"
+		"Hyperdrive"
+		
+	engine -9 30
+	engine 9 30
+	explode "tiny explosion" 20
+	explode "small explosion" 10
+	description "地球塑造者是流浪者用来采矿、探索、测量和地形改造的无人机。"
+
+
+
+ship "Flycatcher"
+	sprite "ship/flycatcher"
+	thumbnail "thumbnail/flycatcher"
+	attributes
+		category "Drone"
+		licenses
+			Wanderer
+		"cost" 830000
+		"hull" 4700
+		"automaton" 1
+		"mass" 40
+		"drag" .6
+		"heat dissipation" .9
+		"outfit space" 86
+		"weapon capacity" 28
+		"engine capacity" 26
+		weapon
+			"blast radius" 10
+			"shield damage" 100
+			"hull damage" 150
+			"hit force" 250
+	outfits
+		"Wanderer Anti-Missile"
+		
+		"Small Biochemical Cell" 2
+		
+		"Type 1 Radiant Thruster"
+		"Type 1 Radiant Steering"
+		
+	engine -9 28
+	engine 9 28
+	turret 0 4
+	explode "tiny explosion" 30
+	explode "small explosion" 20
+	description "流浪者使用捕蝇器无人机来保证他们的恒星系统的安全。捕蝇器本身并不携带武器，而是只携带一个反导弹炮塔来保卫其他船只。"
+	description "无人机没有配备超光速引擎。除非您的舰队中有一艘带有无人机舱的船只，否则您无法携带无人机。"
+
+
+
+ship "Summer Leaf"
+	plural "Summer Leaves"
+	sprite "ship/summer leaf"
+	thumbnail "thumbnail/summer leaf"
+	attributes
+		category "Light Warship"
+		licenses
+			Wanderer
+		"cost" 9500000
+		"shields" 14400
+		"hull" 6700
+		"required crew" 6
+		"bunks" 15
+		"mass" 174
+		"drag" 3.0
+		"heat dissipation" .7
+		"fuel capacity" 800
+		"cargo space" 41
+		"outfit space" 320
+		"weapon capacity" 84
+		"engine capacity" 103
+		weapon
+			"blast radius" 70
+			"shield damage" 700
+			"hull damage" 350
+			"hit force" 1050
+	outfits
+		"Sunbeam" 2
+		
+		"Yellow Sun Reactor"
+		"Small Biochemical Cell"
+		"Bright Cloud Shielding"
+		"Wanderer Ramscoop"
+		
+		"Type 3 Radiant Thruster"
+		"Type 3 Radiant Steering"
+		"Hyperdrive"
+		
+	engine -18 64
+	engine 18 64
+	gun -29 -9
+	gun 29 -9
+	explode "tiny explosion" 40
+	explode "small explosion" 20
+	explode "medium explosion" 10
+	"final explode" "final explosion small"
+	description "夏日之叶主要被流浪者用作轻型运输工具，但它在战斗中也非常有效。"
+
+
+
+ship "Autumn Leaf"
+	plural "Autumn Leaves"
+	sprite "ship/autumn leaf"
+	thumbnail "thumbnail/autumn leaf"
+	attributes
+		category "Light Warship"
+		licenses
+			Wanderer
+		"cost" 12500000
+		"shields" 18700
+		"hull" 7400
+		"required crew" 8
+		"bunks" 13
+		"mass" 228
+		"drag" 3.5
+		"heat dissipation" .67
+		"fuel capacity" 800
+		"cargo space" 35
+		"outfit space" 361
+		"weapon capacity" 103
+		"engine capacity" 117
+		weapon
+			"blast radius" 80
+			"shield damage" 800
+			"hull damage" 400
+			"hit force" 1200
+	outfits
+		"Sunbeam" 2
+		"Wanderer Anti-Missile"
+		
+		"White Sun Reactor"
+		"Bright Cloud Shielding"
+		"Wanderer Ramscoop"
+		
+		"Type 3 Radiant Thruster"
+		"Type 4 Radiant Steering"
+		"Hyperdrive"
+		
+	engine -18 64
+	engine 18 64
+	gun -25 -22
+	gun 25 -22
+	turret 0 28
+	explode "tiny explosion" 50
+	explode "small explosion" 30
+	explode "medium explosion" 20
+	"final explode" "final explosion small"
+	description "秋叶号是以流浪者夏叶号轻型战舰为基础的，但尺寸稍大，战斗装备也更好。与流浪者号和平时期的舰艇不同，它除了固定火炮的端口外还配备了炮塔支架。"
+
+ship "Autumn Leaf" "Autumn Leaf (Heavy)"
+	outfits
+		"Sunbeam" 2
+		"Moonbeam Turret"
+		
+		"White Sun Reactor"
+		"Bright Cloud Shielding"
+		
+		"Type 3 Radiant Thruster"
+		"Type 4 Radiant Steering"
+		"Hyperdrive"
+
+
+
+ship "Strong Wind"
+	sprite "ship/strong wind"
+	thumbnail "thumbnail/strong wind"
+	attributes
+		category "Medium Warship"
+		licenses
+			"Wanderer"
+		"cost" 16100000
+		"shields" 28500
+		"hull" 19600
+		"required crew" 17
+		"bunks" 39
+		"mass" 561
+		"drag" 6.6
+		"heat dissipation" .5
+		"fuel capacity" 600
+		"cargo space" 68
+		"outfit space" 493
+		"weapon capacity" 198
+		"engine capacity" 114
+		"asteroid scan power" 100
+		"atmosphere scan" 100
+		"tactical scan power" 25
+		weapon
+			"blast radius" 200
+			"shield damage" 2000
+			"hull damage" 1000
+			"hit force" 3000
+	outfits
+		"Sunbeam" 4
+		"Thunderhead Launcher" 2
+		"Thunderhead Missile" 100
+		"Thunderhead Storage Array"
+		
+		"White Sun Reactor"
+		"Dark Storm Shielding"
+		"Wanderer Ramscoop" 2
+		
+		"Type 3 Radiant Thruster"
+		"Type 4 Radiant Steering"
+		"Hyperdrive"
+		
+	engine -30 127
+	engine 30 127
+	gun -64 13 "Sunbeam"
+	gun 64 13 "Sunbeam"
+	gun -57 21 "Sunbeam"
+	gun 57 21 "Sunbeam"
+	gun -32 57 "Thunderhead Launcher"
+	gun 32 57 "Thunderhead Launcher"
+	explode "small explosion" 60
+	explode "medium explosion" 40
+	explode "large explosion" 20
+	"final explode" "final explosion medium"
+	description "强风号最初是为科学和探索而设计的，但最近流浪者们修改了设计，使其可以用作战舰。"
+
+
+
+ship "Heavy Gust"
+	sprite "ship/heavy gust"
+	thumbnail "thumbnail/heavy gust"
+	attributes
+		category "Medium Warship"
+		licenses
+			"Wanderer Military"
+		"cost" 17600000
+		"shields" 35200
+		"hull" 21200
+		"required crew" 22
+		"bunks" 34
+		"mass" 598
+		"drag" 7.4
+		"heat dissipation" .45
+		"fuel capacity" 600
+		"cargo space" 52
+		"outfit space" 534
+		"weapon capacity" 224
+		"engine capacity" 132
+		"tactical scan power" 75
+		weapon
+			"blast radius" 220
+			"shield damage" 2200
+			"hull damage" 1100
+			"hit force" 3300
+	outfits
+		"Sunbeam" 4
+		"Thunderhead Launcher" 2
+		"Thunderhead Missile" 100
+		"Thunderhead Storage Array"
+		"Wanderer Anti-Missile"
+		
+		"White Sun Reactor"
+		"Dark Storm Shielding"
+		"Wanderer Ramscoop"
+		
+		"Type 4 Radiant Thruster"
+		"Type 4 Radiant Steering"
+		"Hyperdrive"
+		
+	engine -35 130
+	engine 35 130
+	gun -66 17 "Sunbeam"
+	gun 66 17 "Sunbeam"
+	gun -59 23 "Sunbeam"
+	gun 59 23 "Sunbeam"
+	gun -38 54 "Thunderhead Launcher"
+	gun 38 54 "Thunderhead Launcher"
+	turret 0 27 "Wanderer Anti-Missile"
+	explode "small explosion" 70
+	explode "medium explosion" 45
+	explode "large explosion" 22
+	"final explode" "final explosion medium"
+	description "强阵风是强风的进一步改进，为了战斗目的进行了更大幅度的调整，但牺牲了其前身的大部分和平时期的实用性。经过这些修改，重型阵风变得更快、更致命，将原来的民用框架推向了极限。"
+
+ship "Heavy Gust" "Heavy Gust (Moonbeam)"
+	outfits
+		"Sunbeam" 4
+		"Moonbeam" 2
+		"Moonbeam Turret"
+		
+		"Blue Sun Reactor"
+		"Dark Storm Shielding"
+		
+		"Type 4 Radiant Thruster"
+		"Type 4 Radiant Steering"
+		"Hyperdrive"
+		
+
+ship "Tempest"
+	sprite "ship/tempest"
+	thumbnail "thumbnail/tempest"
+	attributes
+		category "Medium Warship"
+		licenses
+			"Wanderer Military"
+		"cost" 19700000
+		"shields" 42100
+		"hull" 25900
+		"required crew" 38
+		"bunks" 53
+		"mass" 830
+		"drag" 9.6
+		"heat dissipation" 0.42
+		"fuel capacity" 600
+		"cargo space" 47
+		"outfit space" 607
+		"weapon capacity" 271
+		"engine capacity" 122
+		weapon
+			"blast radius" 280
+			"shield damage" 2800
+			"hull damage" 1400
+			"hit force" 4200
+	outfits
+		"Sunbeam" 2
+		"Thunderhead Launcher" 2
+		"Thunderhead Missile" 80
+		"Dual Sunbeam Turret"
+		"Wanderer Anti-Missile" 2
+		
+		"Yellow Sun Reactor" 2
+		"Dark Storm Shielding"
+		"Wanderer Ramscoop"
+		
+		"Type 4 Radiant Thruster"
+		"Type 4 Radiant Steering"
+		"Hyperdrive"
+	
+	engine -22 129
+	engine 22 129
+	gun -16 -100 "Sunbeam"
+	gun 16 -100 "Sunbeam"
+	gun -21 -83 "Thunderhead Launcher"
+	gun 21 -83 "Thunderhead Launcher"
+	turret 0 -37 "Dual Sunbeam Turret"
+	turret -32 87 "Wanderer Anti-Missile"
+	turret 32 87 "Wanderer Anti-Missile"
+	explode "small explosion" 80
+	explode "medium explosion" 50
+	explode "large explosion" 25
+	"final explode" "final explosion medium" 1
+	description "为了应对无拘无束的入侵，流浪者已经开始从他们的档案中挖掘古代战舰设计并将其重新投入生产。暴风雨号是他们数万年来制造的第一艘专门建造的战舰。"
+
+ship "Tempest" "Tempest (Heavy)"
+	outfits
+		"Sunbeam" 4
+		"Dual Sunbeam Turret"
+		"Wanderer Anti-Missile" 2
+		
+		"White Sun Reactor"
+		"Red Sun Reactor"
+		"Dark Storm Shielding"
+		"Outfits Expansion"
+		"Wanderer Ramscoop"
+		
+		"Type 3 Radiant Thruster"
+		"Type 4 Radiant Steering"
+		"Type 2 Radiant Steering"
+		"Hyperdrive"
+	
+	turret "Dual Sunbeam Turret"
+	turret "Wanderer Anti-Missile"
+	turret "Wanderer Anti-Missile"
+
+ship "Tempest" "Tempest (Missile)"
+	outfits
+		"Thunderhead Launcher" 4
+		"Thunderhead Missile" 220
+		"Thunderhead Storage Array" 3
+		"Dual Sunbeam Turret" 2
+		
+		"White Sun Reactor"
+		"Small Biochemical Cell"
+		"Dark Storm Shielding"
+		"Wanderer Ramscoop"
+		"Outfits Expansion"
+		
+		"Type 4 Radiant Thruster"
+		"Type 4 Radiant Steering"
+		"Hyperdrive"
+	
+	turret
+	turret "Dual Sunbeam Turret"
+	turret "Dual Sunbeam Turret"
+
+ship "Tempest" "Tempest (Moonbeam)"
+	outfits
+		"Sunbeam" 2
+		"Moonbeam" 2
+		"Dual Sunbeam Turret"
+		"Moonbeam Turret" 2
+		
+		"Blue Sun Reactor"
+		"Dark Storm Shielding"
+		"Wanderer Heat Sink"
+		"Wanderer Ramscoop"
+		
+		"Type 4 Radiant Thruster"
+		"Type 4 Radiant Steering"
+		"Hyperdrive"
+	
+	gun "Moonbeam"
+	gun "Moonbeam"
+	gun "Sunbeam"
+	gun "Sunbeam"
+	turret "Dual Sunbeam Turret"
+	turret "Moonbeam Turret"
+	turret "Moonbeam Turret"
+
+
+
+ship "Derecho"
+	sprite "ship/derecho"
+	thumbnail "thumbnail/derecho"
+	attributes
+		category "Heavy Warship"
+		licenses
+			"Wanderer Military"
+		"cost" 30500000
+		"shields" 53200
+		"hull" 32700
+		"required crew" 53
+		"bunks" 82
+		"mass" 1475
+		"drag" 14.8
+		"heat dissipation" 0.36
+		"fuel capacity" 500
+		"cargo space" 56
+		"outfit space" 796
+		"weapon capacity" 342
+		"engine capacity" 164
+		weapon
+			"blast radius" 340
+			"shield damage" 3400
+			"hull damage" 1700
+			"hit force" 5100
+	outfits
+		"Sunbeam" 2
+		"Thunderhead Launcher" 2
+		"Thunderhead Missile" 80
+		"Dual Sunbeam Turret" 2
+		"Wanderer Anti-Missile" 2
+		
+		"Blue Sun Reactor"
+		"Red Sun Reactor"
+		"Dark Storm Shielding"
+		"Bright Cloud Shielding"
+		"Wanderer Heat Sink"
+		"Wanderer Ramscoop"
+		
+		"Type 4 Radiant Thruster"
+		"Type 1 Radiant Thruster"
+		"Type 4 Radiant Steering"
+		"Type 3 Radiant Steering"
+		"Hyperdrive"
+		
+	engine -16 177
+	engine 16 177
+	gun -12 -156 "Sunbeam"
+	gun 12 -156 "Sunbeam"
+	gun -17 -134 "Thunderhead Launcher"
+	gun 17 -134 "Thunderhead Launcher"
+	turret -28 -45 "Dual Sunbeam Turret"
+	turret 28 -45 "Dual Sunbeam Turret"
+	turret -38 95 "Wanderer Anti-Missile"
+	turret 38 95 "Wanderer Anti-Missile"
+	explode "small explosion" 40
+	explode "medium explosion" 70
+	explode "large explosion" 50
+	explode "huge explosion" 20
+	"final explode" "final explosion large" 1
+	description "就像等待表达自己的潜在基因一样，如何在太空发动战争的知识已经在数百代流浪者中传承下来。基于他们的一项古老设计，Derecho 兼具敏捷性和原始火力，非常适合他们目前瞬息万变的形势。"
+
+ship "Derecho" "Derecho (Turret)"
+	outfits
+		"Dual Sunbeam Turret" 4
+		
+		"Blue Sun Reactor"
+		"Red Sun Reactor"
+		"Dark Storm Shielding"
+		"Bright Cloud Shielding"
+		"Wanderer Heat Sink"
+		"Wanderer Ramscoop"
+		
+		"Type 4 Radiant Thruster"
+		"Type 2 Radiant Thruster"
+		"Type 4 Radiant Steering"
+		"Type 2 Radiant Steering"
+		"Hyperdrive"
+
+ship "Derecho" "Derecho (Tough)"
+	outfits
+		"Sunbeam" 4
+		"Dual Sunbeam Turret" 2
+		
+		"Blue Sun Reactor"
+		"Yellow Sun Reactor"
+		"Dark Storm Shielding" 2
+		"Wanderer Ramscoop"
+		"Outfits Expansion"
+		
+		"Type 4 Radiant Thruster"
+		"Type 4 Radiant Steering" 2
+		"Hyperdrive"
+	
+	turret "Dual Sunbeam Turret"
+	turret "Dual Sunbeam Turret"
+	turret
+	turret
+
+ship "Derecho" "Derecho (Moonbeam)"
+	outfits
+		"Sunbeam" 2
+		"Moonbeam" 2
+		"Dual Sunbeam Turret" 2
+		"Moonbeam Turret" 2
+		
+		"Blue Sun Reactor"
+		"Red Sun Reactor"
+		"Dark Storm Shielding"
+		"Bright Cloud Shielding"
+		"Wanderer Heat Sink"
+		"Wanderer Ramscoop"
+		
+		"Type 4 Radiant Thruster"
+		"Type 1 Radiant Thruster"
+		"Type 4 Radiant Steering"
+		"Type 3 Radiant Steering"
+		"Hyperdrive"
+	
+	gun "Moonbeam"
+	gun "Moonbeam"
+	gun "Sunbeam"
+	gun "Sunbeam"
+	turret "Moonbeam Turret"
+	turret "Moonbeam Turret"
+	turret "Dual Sunbeam Turret"
+	turret "Dual Sunbeam Turret"
+
+
+
+ship "Hurricane"
+	sprite "ship/hurricane"
+	thumbnail "thumbnail/hurricane"
+	attributes
+		category "Heavy Warship"
+		licenses
+			"Wanderer Military"
+		"cost" 39100000
+		"shields" 72400
+		"hull" 46500
+		"required crew" 76
+		"bunks" 117
+		"mass" 2414
+		"drag" 23.2
+		"heat dissipation" 0.29
+		"fuel capacity" 500
+		"cargo space" 98
+		"outfit space" 960
+		"weapon capacity" 428
+		"engine capacity" 140
+		weapon
+			"blast radius" 400
+			"shield damage" 4000
+			"hull damage" 2000
+			"hit force" 6000
+	outfits
+		"Sunbeam" 6
+		"Dual Sunbeam Turret" 2
+		"Wanderer Anti-Missile" 2
+		
+		"Blue Sun Reactor"
+		"White Sun Reactor"
+		"Dark Storm Shielding" 2
+		"Wanderer Heat Sink"
+		"Wanderer Ramscoop"
+		
+		"Type 4 Radiant Thruster"
+		"Type 4 Radiant Steering"
+		"Type 2 Radiant Steering"
+		"Hyperdrive"
+		
+	engine -23 181
+	engine 23 181
+	gun -68 5
+	gun 68 5
+	gun -85 21
+	gun 85 21
+	gun -62 32
+	gun 62 32
+	turret -27 -80 "Dual Sunbeam Turret"
+	turret 27 -80 "Dual Sunbeam Turret"
+	turret 0 -33
+	turret -39 140 "Wanderer Anti-Missile"
+	turret 39 140 "Wanderer Anti-Missile"
+	explode "small explosion" 20
+	explode "medium explosion" 80
+	explode "large explosion" 70
+	explode "huge explosion" 30
+	"final explode" "final explosion large" 1
+	description "飓风并不是为了速度、优雅或多功能而建造的，而是为了一个简单的目的：足够耐用以充当后卫，在足够长的时间内吸收敌人的攻击，以使其守护的舰队逃脱。"
+
+ship "Hurricane" "Hurricane (Turret)"
+	outfits
+		"Dual Sunbeam Turret" 5
+		
+		"Blue Sun Reactor" 2
+		"Dark Storm Shielding" 2
+		"Wanderer Heat Sink"
+		"Outfits Expansion" 2
+		"Wanderer Ramscoop"
+		
+		"Type 4 Radiant Thruster"
+		"Type 2 Radiant Thruster"
+		"Type 4 Radiant Steering"
+		"Hyperdrive"
+
+ship "Hurricane" "Hurricane (Tough)"
+	outfits
+		"Sunbeam" 2
+		"Thunderhead Launcher" 4
+		"Thunderhead Missile" 160
+		"Dual Sunbeam Turret" 2
+		"Wanderer Anti-Missile" 2
+		
+		"Blue Sun Reactor"
+		"White Sun Reactor"
+		"Dark Storm Shielding" 4
+		"Wanderer Ramscoop"
+		"Outfits Expansion" 2
+		
+		"Type 4 Radiant Thruster"
+		"Type 1 Radiant Thruster"
+		"Type 4 Radiant Steering"
+		"Type 1 Radiant Steering"
+		"Hyperdrive"
+
+	gun "Sunbeam"
+	gun "Sunbeam"
+	gun "Thunderhead Launcher"
+	gun "Thunderhead Launcher"
+	gun "Thunderhead Launcher"
+	gun "Thunderhead Launcher"
+	turret "Dual Sunbeam Turret"
+	turret "Dual Sunbeam Turret"
+	turret
+	turret "Wanderer Anti-Missile"
+	turret "Wanderer Anti-Missile"
+
+ship "Hurricane" "Hurricane (Moonbeam)"
+	outfits
+		"Sunbeam" 2
+		"Moonbeam" 4
+		"Dual Sunbeam Turret" 2
+		"Moonbeam Turret" 3
+		
+		"Blue Sun Reactor"
+		"White Sun Reactor"
+		"Dark Storm Shielding" 2
+		"Wanderer Heat Sink" 2
+		"Wanderer Ramscoop"
+		
+		"Type 4 Radiant Thruster"
+		"Type 4 Radiant Steering"
+		"Type 2 Radiant Steering"
+		"Hyperdrive"
+	
+	gun "Moonbeam"
+	gun "Moonbeam"
+	gun "Sunbeam"
+	gun "Sunbeam"
+	gun "Moonbeam"
+	gun "Moonbeam"
+	turret "Moonbeam Turret"
+	turret "Moonbeam Turret"
+	turret "Moonbeam Turret"
+	turret "Dual Sunbeam Turret"
+	turret "Dual Sunbeam Turret"
+
+
+
+ship "Cool Breeze"
+	sprite "ship/cool breeze"
+	thumbnail "thumbnail/cool breeze"
+	attributes
+		category "Interceptor"
+		licenses
+			"Wanderer Military"
+		"cost" 4530000
+		"shields" 7700
+		"hull" 3100
+		"required crew" 1
+		"bunks" 3
+		"mass" 86
+		"drag" 2.1
+		"heat dissipation" .79
+		"fuel capacity" 400
+		"cargo space" 14
+		"outfit space" 192
+		"weapon capacity" 41
+		"engine capacity" 62
+		weapon
+			"blast radius" 36
+			"shield damage" 360
+			"hull damage" 180
+			"hit force" 540
+	outfits
+		"Moonbeam" 2
+		
+		"Red Sun Reactor"
+		"Bright Cloud Shielding"
+		
+		"Type 2 Radiant Thruster"
+		"Type 3 Radiant Steering"
+		"Hyperdrive"
+	
+	engine -10 47
+	engine 10 47
+	gun -15 -10
+	gun 15 -10
+	explode "tiny explosion" 30
+	explode "small explosion" 10
+	"final explode" "final explosion small"
+	description "这是流浪者队几千年来建造的第一艘船，设计为由一名飞行员而不是船员操作。驾驶它们的大多是年轻战士，他们渴望通过在战斗中赢得个人荣耀来证明自己的勇气。"
+
+ship "Cool Breeze" "Cool Breeze (Sunbeam)"
+	outfits
+		"Sunbeam"
+		
+		"Red Sun Reactor"
+		"Bright Cloud Shielding"
+		
+		"Type 3 Radiant Thruster"
+		"Type 2 Radiant Steering"
+		"Hyperdrive"
+
+
+
+ship "Winter Gale"
+	sprite "ship/winter gale"
+	thumbnail "thumbnail/winter gale"
+	attributes
+		category "Light Warship"
+		licenses
+			"Wanderer Military"
+		"cost" 14100000
+		"shields" 22400
+		"hull" 14800
+		"required crew" 14
+		"bunks" 23
+		"mass" 455
+		"drag" 7.3
+		"heat dissipation" .54
+		"fuel capacity" 600
+		"cargo space" 28
+		"outfit space" 478
+		"weapon capacity" 171
+		"engine capacity" 120
+		weapon
+			"blast radius" 120
+			"shield damage" 1200
+			"hull damage" 600
+			"hit force" 1800
+	outfits
+		"Moonbeam" 4
+		"Sunbeam" 2
+		"Wanderer Anti-Missile"
+		
+		"White Sun Reactor"
+		"Dark Storm Shielding"
+		
+		"Type 3 Radiant Thruster"
+		"Type 4 Radiant Steering"
+		"Type 3 Radiant Steering"
+		"Hyperdrive"
+		
+	engine -13 94
+	engine 13 94
+	gun -15 -55 "Moonbeam"
+	gun 15 -55 "Moonbeam"
+	gun -20 -48 "Moonbeam"
+	gun 20 -48 "Moonbeam"
+	gun -41 -10 "Sunbeam"
+	gun 41 -10 "Sunbeam"
+	turret 0 -28 "Wanderer Anti-Missile"
+	explode "tiny explosion" 20
+	explode "small explosion" 40
+	explode "medium explosion" 30
+	"final explode" "final explosion medium"
+	description "冬风号是由流浪者们设计的，作为他们现有轻型巡逻舰的更坚固、装备更好的替代品。大风的大量武器挂载点使其足够灵活，可以重新配置以面对各种各样的敌人。"
+
+ship "Winter Gale" "Winter Gale (Heavy)"
+	outfits
+		"Sunbeam" 4
+		"Moonbeam Turret"
+		
+		"White Sun Reactor"
+		"Dark Storm Shielding"
+		
+		"Type 3 Radiant Thruster"
+		"Type 1 Radiant Thruster"
+		"Type 4 Radiant Steering"
+		"Type 1 Radiant Steering"
+		"Hyperdrive"
+		
+	engine -13 94
+	engine 13 94
+	gun "Sunbeam"
+	gun "Sunbeam"
+	gun "Sunbeam"
+	gun "Sunbeam"
+	gun
+	gun
+	turret "Moonbeam Turret"
+
+ship "Winter Gale" "Winter Gale (Missile)"
+	outfits
+		"Thunderhead Launcher" 4
+		"Thunderhead Missile" 160
+		"Moonbeam" 2
+		"Wanderer Anti-Missile"
+		
+		"White Sun Reactor"
+		"Dark Storm Shielding"
+		
+		"Type 4 Radiant Thruster"
+		"Type 4 Radiant Steering"
+		"Hyperdrive"
+		
+	engine -13 94
+	engine 13 94
+	gun "Thunderhead Launcher"
+	gun "Thunderhead Launcher"
+	gun "Thunderhead Launcher"
+	gun "Thunderhead Launcher"
+	gun "Moonbeam"
+	gun "Moonbeam"
+	turret "Wanderer Anti-Missile"
+
+
+
+ship "Deep River"
+	sprite "ship/deep river"
+	thumbnail "thumbnail/deep river"
+	attributes
+		category "Heavy Freighter"
+		licenses
+			Wanderer
+		"cost" 18300000
+		"shields" 17600
+		"hull" 47500
+		"required crew" 13
+		"bunks" 22
+		"mass" 1362
+		"drag" 14.6
+		"heat dissipation" .4
+		"fuel capacity" 500
+		"cargo space" 1140
+		"outfit space" 363
+		"weapon capacity" 177
+		"engine capacity" 83
+		weapon
+			"blast radius" 280
+			"shield damage" 2800
+			"hull damage" 1400
+			"hit force" 4200
+	outfits
+		"Thunderhead Launcher" 6
+		"Thunderhead Missile" 320
+		"Thunderhead Storage Array" 4
+		
+		"Large Biochemical Cell"
+		"Bright Cloud Shielding"
+		"Wanderer Ramscoop"
+		
+		"Type 2 Radiant Thruster"
+		"Type 3 Radiant Steering"
+		"Hyperdrive"
+		
+	engine 53 345 .7
+	engine 0 345
+	engine -53 345 .7
+	gun -56 -217
+	gun 56 -217
+	gun -40 -217
+	gun 40 -217
+	gun -18 -217
+	gun 18 -217
+	explode "small explosion" 80
+	explode "medium explosion" 60
+	explode "large explosion" 30
+	explode "huge explosion" 20
+	"final explode" "final explosion large"
+	description "Deep River 是一艘模块化货船，设计用于在可拆卸吊舱中运输货物。"
+
+ship "Deep River" "Deep River 0"
+	sprite "ship/deep river 0"
+	add attributes
+		"mass" -620
+		"drag" -3.1
+		"cargo space" -1140
+
+ship "Deep River" "Deep River 1"
+	sprite "ship/deep river 1"
+	add attributes
+		"mass" -496
+		"drag" -2.48
+		"cargo space" -912
+
+ship "Deep River" "Deep River 2"
+	sprite "ship/deep river 2"
+	add attributes
+		"mass" -372
+		"drag" -1.86
+		"cargo space" -684
+
+ship "Deep River" "Deep River 3"
+	sprite "ship/deep river 3"
+	add attributes
+		"mass" -248
+		"drag" -1.24
+		"cargo space" -456
+
+ship "Deep River" "Deep River 4"
+	sprite "ship/deep river 4"
+	add attributes
+		"mass" -124
+		"drag" -.62
+		"cargo space" -228
+
+ship "Deep River Transport"
+	sprite "ship/deep river"
+	thumbnail "thumbnail/deep river"
+	attributes
+		category "Space Liner"
+		licenses
+			Wanderer
+		"cost" 18300000
+		"shields" 17600
+		"hull" 47500
+		"required crew" 13
+		"bunks" 166
+		"mass" 1339
+		"drag" 14.6
+		"heat dissipation" .39
+		"fuel capacity" 500
+		"cargo space" 74
+		"outfit space" 321
+		"weapon capacity" 114
+		"engine capacity" 83
+		weapon
+			"blast radius" 280
+			"shield damage" 2800
+			"hull damage" 1400
+			"hit force" 4200
+	outfits
+		"Wanderer Anti-Missile" 4
+		
+		"Yellow Sun Reactor"
+		"Dark Storm Shielding"
+		"Wanderer Ramscoop"
+		
+		"Type 2 Radiant Thruster"
+		"Type 4 Radiant Steering"
+		"Hyperdrive"
+		
+	engine 53 345 .7
+	engine 0 345
+	engine -53 345 .7
+	turret -36 -205 "Wanderer Anti-Missile"
+	turret 36 -205 "Wanderer Anti-Missile"
+	turret -36 330 "Wanderer Anti-Missile"
+	turret 36 330 "Wanderer Anti-Missile"
+	explode "small explosion" 80
+	explode "medium explosion" 60
+	explode "large explosion" 30
+	explode "huge explosion" 20
+	"final explode" "final explosion large"
+	description "这是一艘被改装成难民运输船的深河货船。"
+
+
+
+ship "Riptide"
+	sprite "ship/riptide"
+	thumbnail "thumbnail/riptide"
+	attributes
+		category "Space Liner"
+		licenses
+			Wanderer
+		"cost" 21120000
+		"shields" 38600
+		"hull" 22350
+		"required crew" 47
+		"bunks" 233
+		"mass" 994
+		"drag" 11
+		"heat dissipation" .47
+		"fuel capacity" 800
+		"cargo space" 164
+		"outfit space" 488
+		"weapon capacity" 98
+		"engine capacity" 186
+		weapon
+			"blast radius" 260
+			"shield damage" 2600
+			"hull damage" 1300
+			"hit force" 3900
+	outfits
+		"Sunbeam Turret"
+		"Wanderer Anti-Missile" 2
+		
+		"White Sun Reactor"
+		"Bright Cloud Shielding"
+		"Wanderer Ramscoop"
+		
+		"Type 4 Radiant Thruster"
+		"Type 2 Radiant Thruster"
+		"Type 4 Radiant Steering"
+		"Type 3 Radiant Steering"
+		"Hyperdrive"
+	engine 30 165
+	engine -30 165
+	turret 0 -28 "Sunbeam Turret"
+	turret 40 110 "Wanderer Anti-Missile"
+	turret -40 110 "Wanderer Anti-Missile"
+	explode "small explosion" 60
+	explode "medium explosion" 40
+	explode "large explosion" 20
+	"final explode" "final explosion medium"
+	description "激流号是一艘专用运输船，旨在取代临时深河货轮，后者被改装成用于难民疏散的运输船。虽然不如深河号耐用，但激流号比深河号更灵活，同时能够承载更多乘客。"

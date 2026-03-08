@@ -1,0 +1,416 @@
+# Copyright (c) 2017 by Michael Zahniser
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program. If not, see <https://www.gnu.org/licenses/>.
+
+mission "Drought Relief"
+	name `<planet> 抗旱`
+	job
+	repeat
+	description `<destination> 的农业世界目前正在经历干旱。由 <date> 将 <cargo> 送到地球，以供 <payment> 使用。`
+	cargo "drought relief supplies" 25 2 .05
+	deadline
+	to offer
+		random < 10
+	source
+		government "Republic"
+		not attributes "farming"
+	destination
+		distance 3 10
+		attributes "dirt belt"
+		attributes "farming"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment 10000 160
+		dialog "您将 <commodity> 的货物交付并收取 <payment> 的付款。 <planet> 市民向您表示感谢并向您告别。"
+
+
+mission "To Remembrance Day celebration [0]"
+	name `阵亡将士纪念日庆祝活动`
+	job
+	repeat
+	description `由 <date> 将 <fare> 带到 <destination>，参加 2 月 19 日的阵亡将士纪念日庆祝活动。付款方式为<payment>。`
+	passengers 4 4 .5
+	deadline
+	to offer
+		or
+			and
+				random < 20
+				month == 12
+				day >= 21
+			and
+				random < 30
+				month == 1
+			and
+				random < 10
+				month == 2
+				day < 19
+	to fail
+		month * 100 + day >= 219
+	source
+		attributes "dirt belt"
+	destination
+		distance 3 15
+		attributes "dirt belt"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment 1000 180
+		dialog "您祝您的 <passengers> 在 <planet> 一切顺利。孩子们涂着绿色颜料从你的船上跑下来，父母付给你 <payment> 。"
+
+
+mission "To Remembrance Day celebration [1]"
+	name `阵亡将士纪念日庆祝活动`
+	job
+	repeat
+	description `由 <date> 将 <cargo> 交付给 <destination>，为 2 月 19 日的阵亡将士纪念日庆祝活动做准备。付款方式为<payment>。`
+	cargo random 5 2 .1
+	deadline
+	to offer
+		or
+			and
+				random < 40
+				month == 12
+				day >= 21
+			and
+				random < 60
+				month == 1
+			and
+				random < 20
+				month == 2
+				day < 19
+	to fail
+		month * 100 + day >= 219
+	source
+		attributes "dirt belt"
+	destination
+		distance 3 15
+		attributes "dirt belt"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment 1000 180
+		dialog `太空港工作人员已经在阵亡将士纪念日盛装打扮，将 <commodity> 的货物从您的船上卸下，并向您支付 <payment> 的款项。`
+
+mission "To Remembrance Day celebration [2]"
+	name `阵亡将士纪念日庆祝活动`
+	job
+	repeat
+	description `由 <date> 将 <cargo> 交付给 <destination>，为 2 月 19 日的阵亡将士纪念日庆祝活动做准备。付款方式为<payment>。`
+	cargo random 5 2 .1
+	deadline
+	to offer
+		or
+			and
+				random < 40
+				month == 12
+				day >= 21
+			and
+				random < 60
+				month == 1
+			and
+				random < 20
+				month == 2
+				day < 19
+	to fail
+		month * 100 + day >= 219
+	source
+		attributes "dirt belt"
+	destination
+		distance 3 15
+		attributes "dirt belt"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment 1000 180
+		dialog `太空港工作人员已经在阵亡将士纪念日盛装打扮，将 <commodity> 的货物从您的船上卸下，并向您支付 <payment> 的款项。`
+
+
+mission "To Remembrance Day celebration [3]"
+	name `阵亡将士纪念日庆祝活动`
+	job
+	repeat
+	description `由 <date> 将 <fare> 带到 <destination>，参加 2 月 19 日的阵亡将士纪念日庆祝活动。付款方式为<payment>。`
+	passengers 20 4 .15
+	deadline
+	to offer
+		random < ( "passenger space" - 30 ) * 2
+		or
+			and
+				random < 20
+				month == 12
+				day >= 21
+			and
+				random < 90
+				month == 1
+			and
+				random < 30
+				month == 2
+				day < 19
+	to fail
+		month * 100 + day >= 219
+	source
+		attributes "dirt belt"
+	destination
+		distance 3 15
+		attributes "dirt belt"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment 200000 120
+		dialog "您祝您的 <passengers> 在 <planet> 一切顺利。孩子们涂着绿色颜料从你的船上跑下来，父母付给你 <payment> 。"
+
+
+mission "From Remembrance Day celebration [0]"
+	name `从阵亡将士纪念日回来`
+	job
+	repeat
+	description `阵亡将士纪念日庆祝活动结束后，将 <fare> 带回 <destination>。付款方式为 <payment>。`
+	passengers 4 4 .5
+	to offer
+		or
+			and
+				random < 25
+				month == 2
+				day > 19
+			and
+				random < 15
+				month == 3
+			and
+				random < 10
+				month == 4
+				day < 20
+	source
+		attributes "dirt belt"
+	destination
+		distance 3 15
+		attributes "dirt belt"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment
+		payment 1000
+		dialog `您的乘客感谢您将其归还给 <planet>，您也收到了 <payment> 的付款。`
+
+
+mission "From Remembrance Day celebration [1]"
+	name `从阵亡将士纪念日回来`
+	job
+	repeat
+	description `阵亡将士纪念日庆祝活动结束后，将 <fare> 带回 <destination>。付款方式为 <payment>。`
+	passengers 4 4 .3
+	to offer
+		or
+			and
+				random < 20
+				month == 2
+				day > 19
+			and
+				random < 10
+				month == 3
+			and
+				random < 5
+				month == 4
+				day < 20
+	source
+		attributes "dirt belt"
+	destination
+		distance 3 15
+		attributes "dirt belt"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment
+		payment 1000
+		dialog `您的乘客感谢您将其归还给 <planet>，您也收到了 <payment> 的付款。`
+
+
+mission "From Remembrance Day celebration [2]"
+	name `从阵亡将士纪念日回来`
+	job
+	repeat
+	description `阵亡将士纪念日庆祝活动结束后，将 <fare> 带回 <destination>。付款方式为 <payment>。`
+	passengers 20 4 .15
+	to offer
+		random < ( "passenger space" - 30 ) * 2
+		or
+			and
+				random < 60
+				month == 2
+				day > 19
+			and
+				random < 30
+				month == 3
+			and
+				random < 15
+				month == 4
+				day < 20
+	source
+		attributes "dirt belt"
+	destination
+		distance 3 15
+		attributes "dirt belt"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment 120000 100
+		dialog `您的乘客感谢您将其归还给 <planet>，您也收到了 <payment> 的付款。`
+
+
+mission "Food Convoy [0]"
+	name `运往 <planet> 的食品车队`
+	job
+	repeat
+	deadline
+	description `<npc> 的船长率领一小队运送食物的船只，将向您支付 <payment>，让您在 <date> 护送他们前往 <destination>。`
+	to offer
+		random < 30
+		"combat rating" > 30
+	source
+		attributes "dirt belt"
+	destination
+		distance 2 8
+		attributes "near earth" "paradise" "core"
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+			confusion 20
+		system destination
+		fleet "Small Northern Pirates"
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+			confusion 20
+		system destination
+		fleet "Small Northern Pirates"
+	npc
+		government "Pirate"
+		personality nemesis entering harvests plunders
+			confusion 20
+		system destination
+		fleet "Small Northern Pirates"
+	npc
+		government "Pirate"
+		personality nemesis staying harvests plunders
+			confusion 20
+		system destination
+		fleet "Small Northern Pirates" 2
+	
+	npc accompany save
+		government "Merchant"
+		personality escort timid
+		"cargo settings"
+			commodities "Food"
+		fleet
+			names "civilian"
+			variant
+				"Freighter" 3
+	on complete
+		payment 100000
+		dialog "<npc> 的船长感谢您安全护送他们的船只，并向您支付 <payment> 。"
+	on visit
+		dialog phrase "generic arrived-without-npc dialog"
+
+
+mission "Food Convoy [1]"
+	name `运往 <planet> 的食品车队`
+	job
+	repeat
+	deadline
+	description `<npc> 的船长率领一支运送食物的船队，将支付您 <payment>，让您护送他们在 <date> 到达 <destination>。`
+	to offer
+		random < 25
+		"combat rating" > 60
+	source
+		attributes "dirt belt"
+	destination
+		distance 3 9
+		attributes "near earth" "paradise" "core"
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+		system destination
+		fleet "Large Northern Pirates"
+	npc
+		government "Pirate"
+		personality nemesis entering harvests plunders
+		system destination
+		fleet "Small Northern Pirates"
+	npc
+		government "Pirate"
+		personality nemesis staying harvests plunders
+		system destination
+		fleet "Large Northern Pirates"
+	
+	npc accompany save
+		government "Merchant"
+		personality escort timid
+		"cargo settings"
+			commodities "Food"
+		fleet
+			names "civilian"
+			variant
+				"Behemoth"
+				"Freighter" 2
+	on complete
+		payment 160000
+		dialog "<npc> 的船长感谢您安全护送他们的船只，并向您支付 <payment> 。"
+	on visit
+		dialog phrase "generic arrived-without-npc dialog"
+
+
+mission "Food Convoy [2]"
+	name `运往 <planet> 的食品车队`
+	job
+	repeat
+	deadline
+	description `<npc> 的船长率领着一大群运载食物的船只，将向您支付 <payment>，让您在 <date> 护送他们前往 <destination>。`
+	to offer
+		random < 15
+		"combat rating" > 90
+	source
+		attributes "dirt belt"
+	destination
+		distance 4 10
+		attributes "near earth" "paradise" "core"
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+		system destination
+		fleet "Small Northern Pirates"
+		fleet "Large Northern Pirates"
+	npc
+		government "Pirate"
+		personality nemesis entering harvests plunders
+		system destination
+		fleet "Large Northern Pirates"
+	npc
+		government "Pirate"
+		personality nemesis staying harvests plunders
+		system destination
+		fleet "Small Northern Pirates"
+		fleet "Large Northern Pirates"
+	
+	npc accompany save
+		government "Merchant"
+		personality escort timid
+		"cargo settings"
+			commodities "Food"
+		fleet
+			names "civilian"
+			variant
+				"Behemoth" 2
+	on complete
+		payment 220000
+		dialog "<npc> 的船长感谢您安全护送他们的船只，并向您支付 <payment> 。"
+	on visit
+		dialog phrase "generic arrived-without-npc dialog"

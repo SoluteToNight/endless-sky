@@ -1,0 +1,659 @@
+# Copyright (c) 2015-2016 by Michael Zahniser
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program. If not, see <https://www.gnu.org/licenses/>.
+
+outfit "Sunbeam"
+	category "Guns"
+	series "Guns"
+	index 09020
+	licenses
+		"Wanderer Outfits"
+	cost 1390000
+	thumbnail "outfit/sunbeam"
+	"mass" 34
+	"outfit space" -34
+	"weapon capacity" -34
+	"gun ports" -1
+	weapon
+		sprite "projectile/sunbeam/sunbeam"
+			"frame rate" 30
+		sound "sunbeam"
+		"hit effect" "sunbeam impact"
+		"inaccuracy" .2
+		"velocity" 540
+		"lifetime" 1
+		"reload" 1
+		"firing energy" 5.2
+		"firing heat" 6.2
+		"shield damage" 7.2
+		"hull damage" 3.0
+		"heat damage" 12.1
+	description "流浪者并没有投入太多时间来开发武器技术，而是更愿意将注意力集中在更具建设性的努力上。然而，他们制造的少数武器既高效又致命。"
+
+effect "sunbeam impact"
+	sprite "effect/sunbeam impact"
+		"frame rate" 30
+		"random start frame"
+	"lifetime" 3
+	"random angle" 360
+	"random spin" 360
+	"random velocity" 4
+	"velocity scale" -.0001
+
+outfit "Sunbeam Turret"
+	category "Turrets"
+	series "Turrets"
+	index 09020
+	licenses
+		"Wanderer Outfits"
+	cost 1970000
+	thumbnail "outfit/sunbeam turret"
+	"mass" 46
+	"outfit space" -46
+	"weapon capacity" -46
+	"turret mounts" -1
+	"required crew" 1
+	weapon
+		sprite "projectile/sunbeam/sunbeam"
+			"frame rate" 30
+		"hardpoint sprite" "hardpoint/sunbeam turret"
+		"hardpoint offset" -2.0 12.0
+		sound "sunbeam"
+		"hit effect" "sunbeam impact"
+		"inaccuracy" .2
+		"turret turn" 1.8
+		"velocity" 540
+		"lifetime" 1
+		"reload" 1
+		"firing energy" 5.2
+		"firing heat" 6.2
+		"shield damage" 7.2
+		"hull damage" 3.0
+		"heat damage" 12.1
+	description "当流浪者慢慢应对从和平时期到与无拘无束的海族日益激烈的冲突的过渡时，他们已经开始建造能够携带炮塔武器的船只。由于阳光号的体型巨大，这个炮塔只能承载其中一个。"
+
+outfit "Dual Sunbeam Turret"
+	category "Turrets"
+	series "Turrets"
+	index 09030
+	licenses
+		"Wanderer Outfits"
+	cost 3720000
+	thumbnail "outfit/dual sunbeam turret"
+	"mass" 83
+	"outfit space" -83
+	"weapon capacity" -83
+	"turret mounts" -1
+	"required crew" 2
+	weapon
+		sprite "projectile/sunbeam/2x sunbeam"
+			"frame rate" 30
+		"hardpoint sprite" "hardpoint/dual sunbeam turret"
+		"hardpoint offset" 12.
+		sound "sunbeam"
+		"hit effect" "sunbeam impact" 2
+		"inaccuracy" .2
+		"turret turn" 1
+		"velocity" 540
+		"lifetime" 1
+		"reload" 1
+		"firing energy" 10.4
+		"firing heat" 12.4
+		"shield damage" 14.4
+		"hull damage" 6.0
+		"heat damage" 24.2
+	description "该炮塔装有一对流浪者阳光。对于任何能够满足其能源需求的船舶来说，它都是一种极其强大的武器。"
+
+outfit "Moonbeam"
+	category "Guns"
+	series "Guns"
+	index 09010
+	licenses
+		"Wanderer Outfits"
+	cost 760000
+	thumbnail "outfit/moonbeam"
+	"mass" 19
+	"outfit space" -19
+	"weapon capacity" -19
+	"gun ports" -1
+	weapon
+		sprite "projectile/moonbeam"
+			"random start frame"
+		sound "moonbeam"
+		"fire effect" "moonbeam fleck"
+		"hit effect" "moonbeam impact"
+		"inaccuracy" 2.0
+		"velocity" 490
+		"lifetime" 1
+		# A full cycle is 45 frames. Beam is active 56% of the time.
+		"reload" 1.8
+		"burst count" 25
+		"burst reload" 1
+		"firing energy" 5.4
+		"firing heat" 1.8
+		"shield damage" 4.8
+		"hull damage" 8.4
+	description "由于他们的阳光光束对于科拉特无人机的厚重装甲不是很有效，流浪者开发了一种新的光束武器，对于对抗船体装甲更加有效。"
+
+effect "moonbeam fleck"
+	sprite "effect/moonbeam fleck"
+		"frame rate" 10
+	"lifetime" 7
+	"random velocity" 30
+	"velocity scale" 1
+
+effect "moonbeam impact"
+	sprite "effect/moonbeam impact"
+		"frame rate" 30
+	"lifetime" 7
+	"random angle" 360
+	"random velocity" 2
+	"velocity scale" -.002
+
+outfit "Moonbeam Turret"
+	category "Turrets"
+	series "Turrets"
+	index 09010
+	licenses
+		"Wanderer Outfits"
+	cost 1730000
+	thumbnail "outfit/moonbeam turret"
+	"mass" 35
+	"outfit space" -35
+	"weapon capacity" -35
+	"turret mounts" -1
+	"required crew" 1
+	weapon
+		sprite "projectile/moonbeam"
+			"random start frame"
+		"hardpoint sprite" "hardpoint/moonbeam turret"
+		"hardpoint offset" 9.
+		sound "moonbeam"
+		"fire effect" "moonbeam fleck"
+		"hit effect" "moonbeam impact"
+		"inaccuracy" 2.0
+		"turret turn" 2.2
+		"velocity" 490
+		"lifetime" 1
+		# A full cycle is 36 frames. Beam is active 83% of the time.
+		"reload" 1.2
+		"burst count" 30
+		"burst reload" 1
+		"firing energy" 5.4
+		"firing heat" 1.8
+		"shield damage" 4.8
+		"hull damage" 8.4
+	description "该炮塔仅携带一个月光武器，但其工作周期增加，因此它可以比无炮塔版本多造成 50% 的伤害。"
+
+outfit "Wanderer Anti-Missile"
+	category "Turrets"
+	series "Anti-Missile"
+	index 09010
+	licenses
+		"Wanderer Outfits"
+	cost 850000
+	thumbnail "outfit/wanderer anti-missile"
+	"mass" 24
+	"outfit space" -24
+	"weapon capacity" -24
+	"turret mounts" -1
+	weapon
+		"hardpoint sprite" "hardpoint/wanderer anti-missile"
+		"hardpoint offset" 6.
+		"hit effect" "wanderer anti-missile"
+		"anti-missile" 40
+		"velocity" 360
+		"lifetime" 1
+		"reload" 20
+		"firing energy" 50
+		"firing heat" 12
+	description "为了防御无拘无束的海使用的跟踪吊舱，流浪者开发了一种强力的反导弹系统，可以用一发子弹将几乎所有导弹从天空中击落。"
+
+effect "wanderer anti-missile"
+	sprite "effect/wanderer anti-missile"
+		"no repeat"
+		"frame rate" 6
+	sound "heavy anti-missile"
+	"sound category" "anti-missile"
+	"lifetime" 31
+	"velocity scale" 1
+
+outfit "Thunderhead Launcher"
+	category "Secondary Weapons"
+	series "Secondary Weapons"
+	index 09010
+	licenses
+		"Wanderer Outfits"
+	cost 450000
+	thumbnail "outfit/thunderhead launcher"
+	"mass" 14
+	"outfit space" -26
+	"weapon capacity" -26
+	"gun ports" -1
+	"thunderhead capacity" 40
+	weapon
+		sprite "projectile/thunderhead"
+			"no repeat"
+			"frame rate" .1
+		sound "thunderhead"
+		ammo "Thunderhead Missile"
+		icon "icon/thunderhead"
+		"submunition" "Thunderhead" 5
+		"split range" 600
+		"fire effect" "meteor fire"
+		"die effect" "missile death"
+		"hit effect" "medium explosion"
+		"inaccuracy" 10
+		"velocity" 4
+		"lifetime" 400
+		"reload" 75
+		"firing energy" 18
+		"firing heat" 36
+		"acceleration" 1.1
+		"drag" .1
+		"turn" 2
+		"homing"
+			"leading"
+			"throttle control"
+		"infrared tracking" .9
+		"radar tracking" .6
+		"missile strength" 12
+	description "雷头导弹是流浪者独创性的一个典型例子，每枚雷头导弹都携带五个能够独立跟踪的子弹药。即使目标能够击落或躲避其中的一些，剩余的导弹碎片仍然会找到它们的目标。"
+	description "该武器的弹药可以在任何装备商处补充。"
+		to display
+			has "gamerule: universal ammo restocking"
+
+outfit "Thunderhead Missile"
+	category "Ammunition"
+	series "Ammunition"
+	index 09010
+	cost 1800
+	thumbnail "outfit/thunderhead"
+	mass .3
+	"thunderhead capacity" -1
+	description "雷头集束炸弹是远程漫游者导弹，当接近目标时会分裂成五个快速灵活的子弹药。每个发射器最多可容纳 40 个。"
+
+outfit "Thunderhead"
+	weapon
+		sprite "projectile/thunderhead fragment"
+			"no repeat"
+			"frame rate" .1
+		"die effect" "missile death"
+		"hit effect" "small explosion"
+		"inaccuracy" 90
+		"velocity" 2
+		"lifetime" 400
+		"acceleration" 1.4
+		"drag" .1
+		"turn" 3
+		"homing"
+			"leading"
+			"throttle control"
+		"optical tracking" .9
+		"radar tracking" .6
+		"shield damage" 110
+		"hull damage" 80
+		"hit force" 225
+		"missile strength" 3
+
+outfit "Thunderhead Storage Array"
+	category "Ammunition"
+	series "Ammunition"
+	index 09011
+	licenses
+		"Wanderer Outfits"
+	cost 36000
+	thumbnail "outfit/thunderhead storage"
+	"mass" 2
+	"outfit space" -8
+	"thunderhead capacity" 20
+	ammo "Thunderhead Missile"
+	description "Thunderhead 存储阵列用于存储 Thunderhead 发射器的额外弹药。"
+
+outfitter "Thunderhead Missile Restock"
+	to sell
+		has "gamerule: universal ammo restocking"
+		or
+			has "outfit: Thunderhead Launcher"
+			has "outfit: Thunderhead Storage Array"
+	location
+		attributes "outfitter"
+	stock
+		"Thunderhead Missile"
+
+outfit "Small Biochemical Cell"
+	category "Power"
+	series "Generators"
+	index 09010
+	licenses
+		"Wanderer Outfits"
+	cost 230000
+	thumbnail "outfit/small biochemical"
+	"mass" 17
+	"outfit space" -17
+	"energy generation" 1.28
+	"heat generation" 1.12
+	"energy capacity" 7500
+	description "这个微型发电机从一系列微生物的代谢副产品中获取能量，这些微生物是流浪者专门为此目的而设计的。"
+
+outfit "Large Biochemical Cell"
+	category "Power"
+	series "Generators"
+	index 09020
+	licenses
+		"Wanderer Outfits"
+	cost 940000
+	thumbnail "outfit/large biochemical"
+	"mass" 63
+	"outfit space" -63
+	"energy generation" 4.96
+	"heat generation" 3.92
+	"energy capacity" 30000
+	description "流浪者是不寻常且高效技术的大师。该生物反应器由产生少量电荷的微生物培养物提供燃料。"
+
+outfit "Red Sun Reactor"
+	category "Power"
+	series "Generators"
+	index 09030
+	licenses
+		"Wanderer Outfits"
+	cost 3800000
+	thumbnail "outfit/red sun"
+	"mass" 47
+	"outfit space" -47
+	"energy generation" 8.3
+	"heat generation" 13
+	"energy capacity" 1100
+	description "流浪者最近开始生产这种小型反应堆，作为向他们的战舰挤出更多能源的一种方式。"
+
+outfit "Yellow Sun Reactor"
+	category "Power"
+	series "Generators"
+	index 09040
+	licenses
+		"Wanderer Outfits"
+	cost 7500000
+	thumbnail "outfit/yellow sun"
+	"mass" 82
+	"outfit space" -82
+	"energy generation" 15.2
+	"heat generation" 21
+	"energy capacity" 2600
+	description "这是流浪者队设计的紧凑型核反应堆。除了发电之外，它还能够储存少量的能量。"
+
+outfit "White Sun Reactor"
+	category "Power"
+	series "Generators"
+	index 09050
+	licenses
+		"Wanderer Outfits"
+	cost 13900000
+	thumbnail "outfit/white sun"
+	"mass" 127
+	"outfit space" -127
+	"energy generation" 24.85
+	"heat generation" 32
+	"energy capacity" 6700
+	description "白日号是一个大型核反应堆，流浪者用它来为他们的强风战舰提供动​​力。"
+
+outfit "Blue Sun Reactor"
+	category "Power"
+	series "Generators"
+	index 09060
+	licenses
+		"Wanderer Outfits"
+	cost 21500000
+	thumbnail "outfit/blue sun"
+	"mass" 152
+	"outfit space" -152
+	"energy generation" 31.3
+	"heat generation" 39
+	"energy capacity" 8900
+	description "随着流浪者开始生产重型战舰，需要越来越大的反应堆核心来为它们提供动力。"
+
+
+outfit "Bright Cloud Shielding"
+	category "Systems"
+	series "Shields"
+	index 09010
+	licenses
+		"Wanderer Outfits"
+	cost 220000
+	thumbnail "outfit/bright cloud"
+	"mass" 19
+	"outfit space" -19
+	"shield generation" 1.5
+	"shield energy" 3.0
+	description "这种小型流浪者护盾发生器能够以相当快的速度为船舶的护盾充电，但它也比其他一些护盾发生器消耗更多的能量。"
+
+outfit "Dark Storm Shielding"
+	category "Systems"
+	series "Shields"
+	index 09020
+	licenses
+		"Wanderer Outfits"
+	cost 800000
+	thumbnail "outfit/dark storm"
+	"mass" 41
+	"outfit space" -41
+	"shield generation" 3.5
+	"shield energy" 7.0
+	description "这种流浪者护盾发生器可以比任何人体护盾技术更快地恢复船只的护盾强度，但在给护盾充电时，它也会消耗更多的能量。"
+
+outfit "Wanderer Ramscoop"
+	category "Systems"
+	series "Ramscoops"
+	index 09010
+	licenses
+		"Wanderer Outfits"
+	cost 460000
+	thumbnail "outfit/wanderer ramscoop"
+	"mass" 7
+	"outfit space" -7
+	"ramscoop" 4
+	description "流浪者船的设计目的是即使在无人居住的空间中行驶时也能实现自给自足，而其紧凑而高效的冲压铲是实现自给自足的关键部分。"
+
+
+outfit "Wanderer Heat Sink"
+	category "Systems"
+	series "Cooling"
+	index 09010
+	licenses
+		"Wanderer Outfits"
+	cost 94000
+	thumbnail "outfit/wanderer heat sink"
+	"mass" 12
+	"outfit space" -12
+	"cooling" 19
+	description "大多数 漫游者 系统都非常高效，无需辅助冷却。因此，他们最近为重型战舰增加冷却的尝试有些初级。"
+
+
+outfit "Type 1 Radiant Thruster"
+	category "Engines"
+	series "Engines"
+	index 09011
+	licenses
+		"Wanderer Outfits"
+	"cost" 135000
+	thumbnail "outfit/tiny radiant thruster"
+	"mass" 12
+	"outfit space" -12
+	"engine capacity" -12
+	"thrust" 13.2
+	"thrusting energy" 0.55
+	"thrusting heat" 0.85
+	"cooling" 1.5
+	"flare sprite" "effect/wanderer flare/tiny"
+		"frame rate" 12
+	"flare sound" "plasma tiny"
+	description "这是最小的漫游者发动机。与所有发动机一样，它的工作原理部分是散发多余的热量，因此它还可以作为船舶的冷却器。"
+
+outfit "Type 2 Radiant Thruster"
+	category "Engines"
+	series "Engines"
+	index 09021
+	licenses
+		"Wanderer Outfits"
+	"cost" 390000
+	thumbnail "outfit/small radiant thruster"
+	"mass" 27
+	"outfit space" -27
+	"engine capacity" -27
+	"thrust" 31.95
+	"thrusting energy" 1.3
+	"thrusting heat" 2.4
+	"cooling" 3.6
+	"flare sprite" "effect/wanderer flare/small"
+		"frame rate" 14
+	"flare sound" "plasma small"
+	description "流浪者发动机的工作原理是将船上多余的热量转移到废气等离子体中。当不提供推力时，发动机仍充当冷却系统。"
+
+outfit "Type 3 Radiant Thruster"
+	category "Engines"
+	series "Engines"
+	index 09031
+	licenses
+		"Wanderer Outfits"
+	"cost" 750000
+	thumbnail "outfit/medium radiant thruster"
+	"mass" 42
+	"outfit space" -42
+	"engine capacity" -42
+	"thrust" 52.92
+	"thrusting energy" 2.2
+	"thrusting heat" 4.3
+	"cooling" 6.5
+	"flare sprite" "effect/wanderer flare/medium"
+		"frame rate" 16
+	"flare sound" "plasma medium"
+	description "大多数这种尺寸的发动机都会产生大量的热量，但流浪者号已经开发出一种利用发动机本身排出船舶多余热量的方法，在此过程中产生额外的推进力。"
+
+outfit "Type 4 Radiant Thruster"
+	category "Engines"
+	series "Engines"
+	index 09041
+	licenses
+		"Wanderer Outfits"
+	"cost" 1370000
+	thumbnail "outfit/large radiant thruster"
+	"mass" 65
+	"outfit space" -65
+	"engine capacity" -65
+	"thrust" 87
+	"thrusting energy" 3.7
+	"thrusting heat" 7.6
+	"cooling" 11.7
+	"flare sprite" "effect/wanderer flare/large"
+		"frame rate" 18
+	"flare sound" "plasma large"
+	description "这是流浪者队开发的最大的发动机。其极其高效的设计使其即使在发射时也能冷却您的飞船。"
+
+outfit "Type 1 Radiant Steering"
+	category "Engines"
+	series "Engines"
+	index 09010
+	licenses
+		"Wanderer Outfits"
+	"cost" 115000
+	thumbnail "outfit/tiny radiant steering"
+	"mass" 9
+	"outfit space" -9
+	"engine capacity" -9
+	"turn" 271.5
+	"turning energy" .3
+	"turning heat" 0.6
+	"cooling" 1.0
+	"steering flare sprite" "effect/wanderer flare/tiny"
+		"frame rate" 12
+	"steering flare sound" "plasma tiny"
+	description "漫游者s 使用这种微型转向系统为他们的无人驾驶采矿和测量无人机提供动力。"
+
+outfit "Type 2 Radiant Steering"
+	category "Engines"
+	series "Engines"
+	index 09020
+	licenses
+		"Wanderer Outfits"
+	"cost" 325000
+	thumbnail "outfit/small radiant steering"
+	"mass" 20
+	"outfit space" -20
+	"engine capacity" -20
+	"turn" 714
+	"turning energy" .7
+	"turning heat" 1.5
+	"cooling" 2.1
+	"steering flare sprite" "effect/wanderer flare/small"
+		"frame rate" 14
+	"steering flare sound" "plasma small"
+	description "这款小型 漫游者 转向系统即使在不使用时也会排出船舶多余的热量，使其可以兼作冷却系统。"
+
+outfit "Type 3 Radiant Steering"
+	category "Engines"
+	series "Engines"
+	index 09030
+	licenses
+		"Wanderer Outfits"
+	"cost" 590000
+	thumbnail "outfit/medium radiant steering"
+	"mass" 30
+	"outfit space" -30
+	"engine capacity" -30
+	"turn" 1237.5
+	"turning energy" 1.2
+	"turning heat" 2.6
+	"cooling" 3.9
+	"steering flare sprite" "effect/wanderer flare/medium"
+		"frame rate" 16
+	"steering flare sound" "plasma medium"
+	description "流浪者队在他们的中型船上使用了这种转向系统。除了转动你的船外，它还能够排出大量的热量。"
+
+outfit "Type 4 Radiant Steering"
+	category "Engines"
+	series "Engines"
+	index 09040
+	licenses
+		"Wanderer Outfits"
+	"cost" 1100000
+	thumbnail "outfit/large radiant steering"
+	"mass" 47
+	"outfit space" -47
+	"engine capacity" -47
+	"turn" 2199
+	"turning energy" 2.0
+	"turning heat" 4.5
+	"cooling" 6.7
+	"steering flare sprite" "effect/wanderer flare/large"
+		"frame rate" 18
+	"steering flare sound" "plasma large"
+	description "这是流浪者队出售的最大的转向系统。"
+
+outfit "Wanderer Outfits License"
+	category "Licenses"
+	series "Licenses"
+	index 09010
+	thumbnail "outfit/wanderer outfits license"
+	description "这个形状奇特的盘子里保存着一系列保存完好的哨兵裙草种子，这是一种敏感而强大的物种，流浪者在最初的地球化努力中使用它来衡量世界对他们的方法的反应如何。每颗种子都有一个内置的世代限制，确保草在几个生命周期后就会消失，这样它就不会与本地植物群竞争。这些种子象征着地球化和善意的开始，赋予它们的主人购买流浪者服装的权利。"
+
+outfit "Wanderer License"
+	category "Licenses"
+	series "Licenses"
+	index 09020
+	thumbnail "outfit/wanderer license"
+	description "完好无损的琥珀壳内，这棵高贵守望木的绿叶树枝 - 传闻来自流浪者最初的家乡星球 - 象征着他们的自豪和喜悦，以及一个星球的全面复兴。虽然这棵树的大小无与伦比，令人敬畏，但即使是最轻微的气候变化也很脆弱，因此这样一个标本的生长成熟被视为生态系统治愈的标志。作为和平的象征，类似于地球的橄榄枝，它赋予持有者购买非军事流浪者舰船的权利。"
+
+outfit "Wanderer Military License"
+	category "Licenses"
+	series "Licenses"
+	index 09030
+	thumbnail "outfit/wanderer military license"
+	description "流浪者队的历史并非没有艰辛和失败。这根枯萎的树枝在青铜模具中永垂不朽，让人回想起流浪者无法拯救世界的时代，尽管他们技术精湛，但当比他们更强大的人积极寻求破坏时，他们无法阻止破坏。他们所珍视的象征——贵族沃克伍德的陷落，现在代表着一个庄严的誓言：当和平失败时，他们也必须准备战斗。为了与流浪者并肩作战，这张许可证允许他们使用他们最伟大的战舰。"

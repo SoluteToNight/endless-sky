@@ -1,0 +1,346 @@
+# Copyright (c) 2015 by Michael Zahniser
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program. If not, see <https://www.gnu.org/licenses/>.
+
+mission "FW Epilogue: Ijs and Katya"
+	landing
+	source "Winter"
+	to offer
+		has "free worlds plot completed"
+	
+	on offer
+		conversation
+			`您位于 <origin> ，这里是自由世界音乐学院的所在地，Ijs 是该音乐学院的一名教授。你想去看望他，看看他过得怎么样吗？`
+			choice
+				`（是的。）`
+				`（现在不行。）`
+					defer
+			`在校园目录中查找 Ijs 时，您会注意到其他内容：卡蒂亚也在目录中列出，作为“公民学和经济学客座教授”。你给 Ijs 打电话，询问他和 Katya 是否愿意与你共进晚餐，他们欣然同意。`
+			`当您在餐厅与他们会合时，卡蒂亚说：“很高兴再次见到您，<first>。”`
+			`“更不用说，”Ijs 说，“有借口去学生中心以外的地方吃饭真是太好了。生活对你怎么样，<first>？”`
+			choice
+				`“我怀念我们一起工作时的兴奋，但除此之外，生活还是很棒的。”`
+					goto excitement
+				`“适应平民生活有点困难。”`
+					goto adjust
+				`“我想探索银河系的其他部分，但显然游戏的这一部分还没有完全实现。”`
+					goto game
+			
+			label excitement
+			`“我理解这种感觉，”卡蒂亚说。 “但是，请提醒自己，这就是我们为之奋斗的目标。为了和平。为了一个没有人担心自己生命安全的世界。”`
+				goto end
+			
+			label adjust
+			`“告诉我吧，”卡蒂亚笑着说。 “我简直不敢相信我现在是一名教授。或者至少，作为一名教授。但是经过这么多的战斗，这么多时间的孤独和监禁，对我来说，终于能够放松，放弃银河系没有我就会崩溃的想法，这感觉很好。”`
+				goto end
+			
+			label game
+			`“哎呀，”艾吉斯说，“现在你已经做到了，第四堵墙就消失了。”`
+			`卡蒂亚笑了。 “嗯，人类太空之外已经有很多东西可以看，我相信你可以在外面以及离家更近的地方找到更多的事情要做。如果你如此渴望探索银河系的更多部分，<first>，或者发现它提供的新冒险，也许你应该自愿帮助创作故事来填充它。毕竟这是一款开源游戏，它依赖像你这样的人来将它变为现实。”`
+				goto end
+			
+			label end
+			`你们的晚餐来了，你们一起吃饭，回忆旧时光，度过了一个愉快的夜晚。在内战时期，卡蒂亚和艾吉斯都不是轻易微笑的人。然而现在，他们的神情完全不同了，平静而满足。令人振奋的是，在经历了所有的混乱之后，他们至少找到了幸福的结局。`
+			`突然你意识到，在你周围，餐厅工作人员正在清扫地板，把椅子放在桌子上：现在是打烊时间了，而你是最后一个到店的人。 “嗯，<first>，”Ijs 说道，“你能过来真是太好了，我祝你在星际之旅中一切顺利。如果你看到其他人，请向他们问好。”你祝愿他们一切顺利，然后返回你的船。`
+				decline
+
+
+
+mission "FW Epilogue: Alondo"
+	landing
+	source "Bourne"
+	to offer
+		has "free worlds plot completed"
+		or
+			not "Paradise Fortune 3: done"
+			has "Paradise Fortune 4: offered"
+	
+	on offer
+		conversation
+			`当你准备降落在伯恩时，你收到了一条来自阿隆多的消息。 “<first>！”他说。 “我刚刚听说你在系统里，想一起喝杯酒，聊聊旧事吗？”`
+			choice
+				`“当然，我很乐意。”`
+				`“抱歉，我现在很忙。”`
+					defer
+			`您在当地的一家酒吧遇见了阿隆多。他告诉你，自从战争结束和理事会解散以来，他的生活仍然很充实：他被任命负责自由世界外交使团，其主要工作似乎是确保所有单个行星都感觉他们的担忧正在被倾听。 “这意味着大量的旅行，”他说，“以及与重要人物的大量美食。他们总是有兴趣听我讲述战争时期的故事。”`
+			`你告诉阿隆多一些关于战争结束后你所做的事情。 “当然，”他说，“你正在银河系旅行。我从一开始就知道你不是那种会很快在一个星球上扎根的人。”`
+			`阿隆多接着描述了自由世界参议院的一些内部运作，以及构成政府支柱的共同防御安排。 “有一段时间，”他说，“感觉官僚主义太多，我们什么也做不了，但现在它终于开始按照我们所有人想象的方式运作。能够参与新政府的诞生，我感到非常荣幸。”`
+			choice
+				`“像一个真正的官僚一样说话。”`
+					goto bureaucrat
+				`“我真的希望自由世界能够实现我们最初的正义和平等愿景。”`
+					goto vision
+			
+			label bureaucrat
+			`“这很公平，”他说，“但我确实相信我们在这里创建的政府不太容易出现他们在共和国仍在挣扎的不平等现象。”`
+				goto end
+			
+			label vision
+			`“我也是，”他说。 “我们有一个良好的开端，但话又说回来，当年的共和国也是如此。”`
+				goto end
+			
+			label end
+			`他沉默了一会儿，然后说道：“我想这就是为什么我仍然在最困难的时候留在这里，而不是只是在某个地方定居下来，把公共生活抛在脑后。我不相信社会或政府会自然而然地变好，或者不费吹灰之力就保持良好。所以，当我们开始偏离我们最初的愿景时，我会在这里发声。”`
+			`你们坐下来聊了很长一段时间，回忆起过去的时光。然后，你祝他工作顺利，他会告诉你只要你在该地区就可以过来打个招呼。你返回你的船。`
+				decline
+
+
+
+mission "FW Epilogue: Freya"
+	landing
+	source "Pugglemug"
+	to offer
+		has "free worlds plot completed"
+	
+	on offer
+		conversation
+			`当你降落在 <origin> 上时，你会进入这座城市进行一些探索，看看海军和其他追随他们来到这里的人是否有运气解开这个地方的秘密。一些空置的公寓似乎已经成为人们真正的居住区，主街上甚至还开设了几家商店。`
+			`在其中一间商店里，你遇到了芙蕾雅。 “<first>！”她说。 “很高兴再次见到你。我听说议会任命你为正式的战争英雄什么的。比当通缉犯要好得多，是吧？”`
+			choice
+				`“是的，这真是一种荣幸。”`
+					goto honor
+				`“是的，现在没人想杀我，我很难知道该怎么办。”`
+					goto kill
+			
+			label honor
+			`“对。记住，如果没有我，这一切都不会发生，好吗？并不是说我有成为英雄的愿望；那种公众关注几乎是我最糟糕的噩梦。”`
+				goto next
+			
+			label kill
+			`“好吧，我相信你能找到一些有趣的事情做，”她说。 “去打击一些海盗。或者成为一名商业大亨并变得非常富有。随你的船而定。”`
+				goto next
+			
+			label next
+			`“关于帕格，你发现了什么？”你问。`
+			`“不多，”她说。 “虫洞似乎并没有通向他们真正的家；这只是另一个转移注意力的东西。当然，真正的突破是我们能否在他们留下的东西中找到一些关于如何建造更多我们自己的跳跃驱动器的线索。但到目前为止，我们甚至无法弄清楚如何在原来没有的地方创建新的超空间链接。我开始认为我们使用的那些引力子发射器只是又一个游戏 - 一个玩具，而不是真正的东西。不是创造的东西我的意思是，首先是这些链接，除非它们是由有耐心等待一百万年才能发挥作用的人创建的。”`
+			choice
+				`“你还发现其他有趣的技术吗？”`
+					goto technology
+				`“还有更多关于哈巴狗是谁以及他们想要什么的暗示吗？”`
+					goto pug
+			
+			label technology
+			`“有一些，”她说。 “他们留下的一切都像是，嗯……一个教育玩具。就像一些缺席的父母留下了一套超级先进的化学装置给他们的孩子玩。这就是我们在这里发现的所有文物的感觉——不像哈巴狗会使用的真实物品，而是像他们给我们的一个简化模型，帮助我们弄清楚。他们留下的一切，我确信他们是故意留下的，因为它可以教给我们一些他们想让我们知道的东西，同时保守他们所有真正的秘密。你继续前进，而我还在这里玩他们的游戏。”`
+				goto end
+			
+			label pug
+			`“不多，”她说。 “这个世界——感觉就像你去朋友家做客，他们花了一整天的时间为你打扫卫生。这不像一个人的家是你不请自来的。没有什么不合时宜的。任何东西都放在某个地方，都是他们想让你看到的。他们留下了一些奇怪的技术，但所有这些都像玩具、拼图……我不知道，就像他们为我们设计的一个教育游戏。你们其余的人都感动了继续，而我仍然在这里玩他们的游戏。”`
+				goto end
+			
+			label end
+			choice
+				`“你听起来很沮丧。”`
+				`“你知道，战争已经结束了，你想放松就可以了。”`
+			`“我知道，我知道，”她说。 “我抱怨，但我真的没有其他地方愿意去。即使我们在这里发现的一切只不过是他们想让我们发现的东西，这仍然是我现在可能正在做的最有趣的工作。所以，不要为我感到难过。真的。”`
+			branch surname
+				has "last name: Winters"
+			`你们又聊了一会儿，她告诉你，如果他们找到了哈巴狗动机的根源，她一定会与你联系。 “在那之前，”她说，“祝你旅途愉快。我希望银河系永远不会用尽办法给你带来惊喜。”`
+				decline
+
+			label surname
+			`	"By the way, can I ask you something, <first>? About you? Sorry if this is rather abrupt. I've been too busy to talk during the war."`
+			choice
+				`“当然。那是什么？”`
+					goto permitted
+				`“抱歉，我希望你不这么做。”`
+					goto conclusion
+			
+			label permitted
+			`	"Do you happen to know anyone named Lavinia? Married to someone named Marcus?"`
+			`	Both names sound oddly familiar, but you can't remember where you heard them.`
+			choice
+				`“我想是的，但我需要一分钟才能确切地记住是谁。”`
+					goto heritage
+				`“不，我不。”`
+				
+			label denial
+			`	"Oh, okay. I think I've been mistaken, then. Never mind."`
+				goto conclusion
+			label heritage
+			`	You try to recall exactly where you've heard those names before, racking your brain for any information on these vaguely familiar names, then all of a sudden, it hits you. Marcus and Lavinia were two of your great-grandparents. You wonder why someone you've never met until around the time you joined the Free Worlds is suddenly asking about your ancestors. Maybe she was thinking of a different Marcus and Lavinia.`
+			`	"Yeah, I do know a Marcus and Lavinia, but they're my great-grandparents. Are you sure you're asking the right person?" you ask.`
+			`	"Oh my God," Freya says. "I can't believe it."`
+			`	"What?"`
+			`	"I think we're related. Second cousins. Marcus and Lavinia Winters are also my great-grandparents."`
+			choice
+				`“真的吗？”`
+					goto disbelief
+				`“那么，你好，表弟。很高兴认识你。”`
+					goto joke
+			label disbelief
+			`	"Yeah, I can hardly believe it myself. I think it's nice, though. A pleasant surprise." You agree.`
+				goto conclusion
+
+			label joke
+			`	"Heh. Nice to meet you, too. Looks like we brought some prestige to the Winters family name, haven't we, cousin?"`
+			`	You both laugh at her reply.`
+			`	"Never thought I'd go about saving the galaxy with a second cousin I'd never met," she continues, "but in a war where some previously-unknown hyperlane-manipulating aliens intervene to try and make both sides unite, I guess anything's possible."`
+
+			label conclusion
+			`	You talk for a while longer, and she tells you she'll be sure to be in touch if they ever get to the root of the Pug's motivation. "Until then," she says, "good luck in your travels. I hope the galaxy never runs out of ways to surprise you."`
+				decline
+
+
+
+mission "FW Epilogue: Danforth"
+	landing
+	source "Farpoint"
+	to offer
+		has "free worlds plot completed"
+		not "Wanderers: Alpha Surveillance E: offered"
+	
+	on offer
+		conversation
+			`您想顺便过来看看丹福斯海军上将的近况吗？`
+			choice
+				`（是的。）`
+				`（现在不行。）`
+					defer
+			
+			branch checkmate1
+				has "free worlds checkmate"
+			`丹福斯很高兴见到你。 “<last>队长！”他说。 “很高兴再次看到你回到我的树林里。有趣的是，你会认为随着战争的结束，他们会解散守誓者，因为整个共和国与自由世界和平相处，我们不再需要遵守任何誓言。但是，守誓者因我们对抗哈巴狗和辛迪加的角色而闻名，现在每个人都想加入我们的部门。”`
+				goto choice
+			
+			label checkmate1
+			`丹福斯很高兴见到你。 “<last>队长！”他说。 “很高兴再次看到你回到我的树林里。有趣的是，你可能会认为随着战争的结束，他们会解散守誓者，因为整个共和国与自由世界和平相处，我们不再需要遵守任何誓言。但是，守誓者因我们对抗哈巴狗的作用而闻名，现在每个人都想加入我们的部门。”`
+			
+			label choice
+			choice
+				`“很高兴看到你仍然沉浸在事情的最深处，先生！”`
+					goto thick
+				`“现在我们和平相处，海军正在做什么工作？”`
+					goto work
+			
+			label thick
+			`“哦，你敢打赌我是，”他说。 “你知道，我永远不会从海军退役。我计划在我死的那天仍然服役。”`
+				goto next
+			
+			label work
+			`“这正是我们一开始就报名参加的工作，”他说。 “保护手无寸铁的人，维护和平，帮助耗尽燃料的愚蠢新手飞行员。”`
+				goto next
+			
+			label next
+			`“海盗们有给你添麻烦吗？”你问。`
+			`“有一点，”他说。 “我们这个地区的海盗仍然太多，部分原因是自由世界大多将他们赶出南方。随着战争的拖延，当我们所有的舰队都忙于其他地方时，海盗变得更加强大和大胆，但现在我们开始再次控制他们。”`
+			
+			branch checkmate2
+				has "free worlds checkmate"
+			`然后他倾身向前，语气更加平静地说：“当然，你我都知道海盗并不是主要威胁。就在我们说话的时候，乌鸦已经渗透到辛迪加世界了，我的其他几位最优秀的情报官员也已经开始渗透。辛迪加希望我们相信他们已经清除了他们队伍中的所有坏苹果，但我们仍然在密切关注他们。”`
+				goto end
+			
+			label checkmate2
+			`然后他倾身向前，更加平静地说：“请注意，海军仍然关注着自由世界。仅仅因为签订了和平条约，并不意味着你可以永远保留核武器。”`
+			
+			label end
+			`在你们又聊了一会儿之后，丹福斯祝你好运，然后送你上路。 “如果我们将来需要您的帮助，我会与您联系，”他说。`
+				decline
+
+
+
+mission "FW Epilogue: Edward"
+	landing
+	name `武器测试`
+	description `一艘配备新武器的测试船正在 <planet> 周围的轨道上运行。战斗并禁用它（但不要登上或摧毁它！），然后着陆，向巴米·爱德华提供有关其性能的反馈。`
+	source "Rust"
+	to offer
+		has "free worlds plot completed"
+	on offer
+		conversation "爱德华结语"
+	npc disable save
+		government "Test Dummy"
+		personality disables heroic staying
+		ship "Leviathan (Plasma Repeater)" "Hunk"
+	on decline
+		event "plasma repeater advanced" 95
+	on complete
+		log `Assisted Barmy Edward with another weapon test: this time, an impressive upgrade to the Plasma Cannon. Increased fire rate, even at lower damage per hit, comes out with better overall results.`
+		event "plasma repeater advanced" 45
+		conversation "爱德华结语"
+
+
+
+conversation "爱德华结语"
+	branch completed
+		has "FW Epilogue: Edward: done"
+	`当你完成着陆程序时，你回想起在战争最激烈的时候来这里协助一些新武器的测试。您想了解首席工程师 Barmy Edward 的情况吗？`
+	choice
+		`（是的。）`
+		`（不。）`
+			defer
+	scene "scene/loc0"
+	`你把你的名字告诉接待员，她会带你去一个机库，在那里你会找到巴米·爱德华，他正在研制一种看起来像改装的等离子炮的武器。当他注意到你时，他会从工作中站起来，热情地握着你的手。 “啊，<last>。已经太久了！对我来说多么幸运！我实际上只是在对一个新原型进行最后的润色。你不会太忙而无法帮助我进行一些实际测试，是吗？”`
+	choice
+		`“我对此不太确定。你想让我做什么？”`
+		`“成为实验武器的目标？直接告诉我你需要什么！”`
+	`“与我们过去的测试相比，并没有什么特别之处，”他回答道。 “你会在轨道上找到一艘我们的飞船，编号为<npc>。它配备了一些新武器。你的任务是战斗并使其失效，告诉我们你对其战斗能力的看法，并传输你的飞船日志，以便我们分析战斗情况。”`
+	choice
+		`“好吧，我想看在旧情的份上，我可以帮忙。”`
+		`“抱歉，我只是想看看你过得怎么样。”`
+			goto catchup
+	`他转向你，傻笑起来。 “我们已经重新启用了退役的这艘船，所以它不是顶级的，但尽量将它保持完整以供将来使用。明白吗？”`
+	choice
+		`“当然！我会处理的。”`
+	`“太棒了，”他搓着双手说道，脸上露出高兴的表情。他显然很期待听到你对他最新发明的看法。`
+		accept
+	label catchup
+	`“我明白了。好吧，我确信我们可以找到其他人来完成这项任务。无论如何，<last> 队长，我向你保证，这种新武器在过时的等离子加农炮的基础上有了很大的改进。这将使 Kraz Cyber​​netics 跻身大联盟！”`
+	`“<first>，我们离开这里怎么样？我今天的工作已经完成，而且我知道一家家常的小酒吧，距离酒店只有很短的步行路程。”`
+	choice
+		`“当然。现在不用再担心战争了。”`
+	`“哈！嗯，当然，战争让我们大家都很忙。”他带着你走出工厂，同时讲述了一个对工程师来说一定很幽默的轶事。`
+		goto combined
+	
+	label completed
+	scene "scene/plasma scene"
+	`你前往机库与巴米·爱德华会面，发现他正在摆弄你第一次进入时看到的改装等离子炮。 “你看，它运行得更热，”他解释道。 “但结果令人印象深刻。”`
+	choice
+		`“那是等离子炮吗？还是别的东西？”`
+			goto what
+		`“它没有赢得任何损坏记录，这是肯定的。”`
+			goto damage
+	label what
+	`“嘿，我们已经有一段时间没有看到对大炮的良好升级了，”他说。 “那是等离子中继器。当然，要对无数傻瓜都未能改进的东西进行更好的迭代并不容易。”`
+	`“什么时候可以发售？”你问。`
+		goto available
+	label damage
+	`“嗯，你是击退哈巴狗的受人尊敬的船长之一，”他说。 “我们的想法是，通过缩小过热等离子体的螺栓，我们可以将更多的爆炸卸载到目标上。对所述目标的影响会导致热量更快积聚，当然还会造成损坏。大型船舶通常会比小型船舶更长时间地抵御这些影响，但这一直是原始设计中的一个值得注意的问题。此外，中继器更令人印象深刻。”`
+	`“这是一个独特的方向，”你回答道。 “它们还可以出售吗？”`
+	label available
+	`“多亏了你们，几个月后就会有货了，”他回答道。 “我确信我们的武器已经过了有用的阶段，但话又说回来，并不是每个人都有跳跃驱动器。”他笑了。 “我们喝点酒庆祝一下怎么样？我知道离这里不远有一家古色古香的小酒吧。”`
+	choice
+		`“我有时间，我们庆祝一下吧！”`
+		`“我会转达这一点的，但很高兴能了解你的情况。”`
+			decline
+	
+	label combined
+	branch start
+		not "start: default"
+	`你跟着巴米走进酒吧。尽管脸上还沾着油污，他还是融入了人群。你们都站在吧台前点了饮料。巴米的命令让你措手不及，他注意到了你的表情。 “什么？用手干活的人，到了一定年纪就不能喝酒了？”你们咯咯笑起来，并讲述了你们早年生活的故事。他讲述了自己年轻时如何在星空中经历过一些激动人心的冒险，但发现自己的热情在于修补和寻找改进过时设备的方法。`
+	`他惊讶地发现你来自新波士顿。 “你真的来自那个死水星球吗？我很惊讶你能够逃离那里的喧闹。我自己能逃出来就很幸运了！”`
+	choice
+		`“等等，你也是新波士顿人？”`
+		`“那里并不完美，但至少地面上没有那么吵闹。”`
+			goto end
+		`“一切都不像现在了。整个宇宙都在我面前！”`
+			goto end
+	`“你不会想到会遇到来自你自己出生星球的人吧？”他咯咯笑起来。 “我想是小星系。”`
+		goto end
+	label start
+	`你跟着巴米走进酒吧。尽管脸上还沾着油污，他还是融入了人群。你们都站在吧台前点了饮料。巴米的命令让你措手不及，他注意到了你的表情。 “什么？用手干活的人，到了一定年纪就不能喝酒了？”你们咯咯笑起来，并讲述了你们早年生活的故事。他向您讲述了他在新波士顿泥土地带世界的成长经历，以及他年轻时如何在明星之间经历过一些激动人心的冒险，但他发现自己的热情在于修补和寻找改进过时设备的方法。`
+	label end
+	`你们都非常高兴地听到彼此的早年生活，但在经历了一个漫漫长夜的来来回回的故事之后，你们最终结束了这次访问。你告别并返回你的船。`
+		decline
+
+event "plasma repeater advanced"
+	outfitter "Kraz Advanced"
+		"Plasma Repeater"

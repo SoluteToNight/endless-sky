@@ -1,0 +1,3709 @@
+# Copyright (c) 2014 by Michael Zahniser
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program. If not, see <https://www.gnu.org/licenses/>.
+
+color "illegal job: selected" .875 .5 .5 0.
+color "illegal job: unselected" .75 .25 .25 0.
+color "illegal job: unavailable" .625 .125 .125 0.
+
+
+mission "Cargo Smuggling [0]"
+	name "走私至 <planet>"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	job
+	repeat
+	infiltrating
+	description "在不被行星执法部门扫描或抓获的情况下将 <cargo> 偷运到 <destination>。付款方式为 <payment>。"
+	cargo "Illegal Cargo" 5 2 .1
+	illegal 40000 `In addition to the fine, your illegal cargo is confiscated. The pirates won't be happy to hear about this.`
+	stealth
+	to offer
+		or
+			"reputation: Pirate" > -100
+			"combat rating" > 150
+	source
+		government "Pirate"
+	destination
+		distance 4 6
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Pirate"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on abort
+		"reputation: Pirate" -= 1
+		dialog phrase "generic aborted pirate cargo mission"
+	on fail
+		"reputation: Pirate" -= 1
+	on complete
+		"pirate jobs" ++
+		payment 4000 300
+		dialog phrase "generic completed pirate cargo mission"
+
+mission "Cargo Smuggling [1]"
+	name "走私至 <planet>"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	job
+	repeat
+	infiltrating
+	description "在不被行星执法部门扫描或抓获的情况下将 <cargo> 偷运到 <destination>。付款方式为 <payment>。"
+	cargo "Illegal Cargo" 5 2 .1
+	illegal 50000 `In addition to the fine, your illegal cargo is confiscated. The pirates won't be happy to hear about this.`
+	stealth
+	to offer
+		random < 90
+		or
+			"reputation: Pirate" > -100
+			"combat rating" > 150
+	source
+		government "Pirate"
+	destination
+		distance 4 8
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Pirate"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on abort
+		"reputation: Pirate" -= 1
+		dialog phrase "generic aborted pirate cargo mission"
+	on fail
+		"reputation: Pirate" -= 1
+	on complete
+		"pirate jobs" ++
+		payment 4000 300
+		dialog phrase "generic completed pirate cargo mission"
+
+mission "Cargo Smuggling [2]"
+	name "走私至 <planet>"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	job
+	repeat
+	infiltrating
+	description "在不被行星执法部门扫描或抓获的情况下将 <cargo> 偷运到 <destination>。付款方式为 <payment>。"
+	cargo "Illegal Cargo" 5 2 .1
+	illegal 64000 `In addition to the fine, your illegal cargo is confiscated. The pirates won't be happy to hear about this.`
+	stealth
+	to offer
+		random < 70
+		or
+			"reputation: Pirate" > -100
+			"combat rating" > 150
+	source
+		government "Pirate"
+	destination
+		distance 4 10
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Pirate"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on abort
+		"reputation: Pirate" -= 1
+		dialog phrase "generic aborted pirate cargo mission"
+	on fail
+		"reputation: Pirate" -= 1
+	on complete
+		"pirate jobs" ++
+		payment 5000 300
+		dialog phrase "generic completed pirate cargo mission"
+
+mission "Cargo Smuggling [3]"
+	name "走私至 <planet>"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	job
+	repeat
+	infiltrating
+	description "在不被行星执法部门扫描或抓获的情况下将 <cargo> 偷运到 <destination>。付款方式为 <payment>。"
+	cargo "Illegal Cargo" 5 2 .1
+	illegal 80000 `In addition to the fine, your illegal cargo is confiscated. The pirates won't be happy to hear about this.`
+	stealth
+	to offer
+		random < 60
+		or
+			"reputation: Pirate" > -100
+			"combat rating" > 150
+	source
+		government "Pirate"
+	destination
+		distance 5 12
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Pirate"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on abort
+		"reputation: Pirate" -= 1
+		dialog phrase "generic aborted pirate cargo mission"
+	on fail
+		"reputation: Pirate" -= 1
+	on complete
+		"pirate jobs" ++
+		payment 6000 300
+		dialog phrase "generic completed pirate cargo mission"
+
+
+
+mission "Drug Running [0]"
+	name "药品运行至<planet>"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	job
+	repeat
+	infiltrating
+	description "在不被行星执法部门扫描或抓获的情况下，从 <cargo> 跑到 <destination>。付款方式为 <payment>。"
+	cargo "Illegal Substances" 5 2 .1
+	illegal 75000 `In addition to the fine, your illegal cargo is confiscated. The pirates won't be happy to hear about this.`
+	to offer
+		random < 80
+		or
+			"reputation: Pirate" > -50
+			"combat rating" > 400
+	source
+		government "Pirate"
+	destination
+		distance 4 10
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Pirate"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on abort
+		"reputation: Pirate" -= 1
+		dialog phrase "generic aborted pirate cargo mission"
+	on fail
+		"reputation: Pirate" -= 1
+	on complete
+		"pirate jobs" ++
+		payment 5000 375
+		dialog phrase "generic completed pirate cargo mission"
+
+mission "Drug Running [1]"
+	name "药品运行至<planet>"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	job
+	repeat
+	infiltrating
+	description "运行 <cargo> 到 <destination>。如果执法部门抓住您，您将被罚款 46,000 积分。付款方式为 <payment>。"
+	cargo "Illegal Substances" 5 2 .1
+	illegal 92000 `In addition to the fine, your illegal cargo is confiscated. The pirates won't be happy to hear about this.`
+	stealth
+	to offer
+		random < 70
+		or
+			"reputation: Pirate" > -50
+			"combat rating" > 400
+	source
+		government "Pirate"
+	destination
+		distance 4 12
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Pirate"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on abort
+		"reputation: Pirate" -= 1
+		dialog phrase "generic aborted pirate cargo mission"
+	on fail
+		"reputation: Pirate" -= 1
+	on complete
+		"pirate jobs" ++
+		payment 5000 375
+		dialog phrase "generic completed pirate cargo mission"
+
+mission "Drug Running [2]"
+	name "药品运行至<planet>"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	job
+	repeat
+	infiltrating
+	description "在不被行星执法部门扫描或抓获的情况下，从 <cargo> 跑到 <destination>。付款方式为 <payment>。"
+	cargo "Illegal Substances" 5 2 .1
+	illegal 110000 `In addition to the fine, your illegal cargo is confiscated. The pirates won't be happy to hear about this.`
+	stealth
+	to offer
+		random < 60
+		or
+			"reputation: Pirate" > -50
+			"combat rating" > 400
+	source
+		government "Pirate"
+	destination
+		distance 5 14
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Pirate"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on abort
+		"reputation: Pirate" -= 1
+		dialog phrase "generic aborted pirate cargo mission"
+	on fail
+		"reputation: Pirate" -= 1
+	on complete
+		"pirate jobs" ++
+		payment 7000 375
+		dialog phrase "generic completed pirate cargo mission"
+
+mission "Drug Running [3]"
+	name "药品运行至<planet>"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	job
+	repeat
+	infiltrating
+	description "在不被行星执法部门扫描或抓获的情况下，从 <cargo> 跑到 <destination>。付款方式为 <payment>。"
+	cargo "Illegal Substances" 5 2 .1
+	illegal 130000 `In addition to the fine, your illegal cargo is confiscated. The pirates won't be happy to hear about this.`
+	stealth
+	to offer
+		random < 50
+		or
+			"reputation: Pirate" > -50
+			"combat rating" > 400
+	source
+		government "Pirate"
+	destination
+		distance 6 16
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Pirate"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on abort
+		"reputation: Pirate" -= 1
+		dialog phrase "generic aborted pirate cargo mission"
+	on fail
+		"reputation: Pirate" -= 1
+	on complete
+		"pirate jobs" ++
+		payment 9000 375
+		dialog phrase "generic completed pirate cargo mission"
+
+
+
+mission "Bulk Cargo Smuggling [0]"
+	name "批量走私至<planet>"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	job
+	repeat
+	infiltrating
+	description "在不被行星执法部门扫描或抓获的情况下将 <cargo> 偷运到 <destination>。付款方式为 <payment>。"
+	cargo "Illegal Cargo" 25 2 .1
+	illegal 47000 `In addition to the fine, your illegal cargo is confiscated. The pirates won't be happy to hear about this.`
+	stealth
+	to offer
+		random < 70
+		or
+			"reputation: Pirate" > -50
+			"combat rating" > 400
+	source
+		government "Pirate"
+	destination
+		distance 4 8
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Pirate"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on abort
+		"reputation: Pirate" -= 1
+		dialog phrase "generic aborted pirate cargo mission"
+	on fail
+		"reputation: Pirate" -= 1
+	on complete
+		"pirate jobs" ++
+		payment 7000 300
+		dialog phrase "generic completed pirate cargo mission"
+
+mission "Bulk Cargo Smuggling [1]"
+	name "批量走私至<planet>"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	job
+	repeat
+	infiltrating
+	description "在不被行星执法部门扫描或抓获的情况下将 <cargo> 偷运到 <destination>。付款方式为 <payment>。"
+	cargo "Illegal Cargo" 25 2 .1
+	illegal 130000 `In addition to the fine, your illegal cargo is confiscated. The pirates won't be happy to hear about this.`
+	stealth
+	to offer
+		random < 60
+		or
+			"reputation: Pirate" > -50
+			"combat rating" > 400
+	source
+		government "Pirate"
+	destination
+		distance 4 12
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Pirate"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on abort
+		"reputation: Pirate" -= 1
+		dialog phrase "generic aborted pirate cargo mission"
+	on fail
+		"reputation: Pirate" -= 1
+	on complete
+		"pirate jobs" ++
+		payment 10000 300
+		dialog phrase "generic completed pirate cargo mission"
+
+mission "Bulk Cargo Smuggling [2]"
+	name "批量走私至<planet>"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	job
+	repeat
+	infiltrating
+	description "在不被行星执法部门扫描或抓获的情况下将 <cargo> 偷运到 <destination>。付款方式为 <payment>。"
+	cargo "Illegal Cargo" 25 2 .1
+	illegal 172000 `In addition to the fine, your illegal cargo is confiscated. The pirates won't be happy to hear about this.`
+	stealth
+	to offer
+		random < 40
+		or
+			"reputation: Pirate" > -50
+			"combat rating" > 400
+	source
+		government "Pirate"
+	destination
+		distance 4 16
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Pirate"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on abort
+		"reputation: Pirate" -= 1
+		dialog phrase "generic aborted pirate cargo mission"
+	on fail
+		"reputation: Pirate" -= 1
+	on complete
+		"pirate jobs" ++
+		payment 15000 300
+		dialog phrase "generic completed pirate cargo mission"
+
+
+
+mission "Bulk Drug Running [0]"
+	name "散装药品运行至 <planet>"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	job
+	repeat
+	infiltrating
+	description "在不被行星执法部门扫描或抓获的情况下，从 <cargo> 跑到 <destination>。付款方式为 <payment>。"
+	cargo "Illegal Substances" 25 2 .1
+	illegal 172000 `In addition to the fine, your illegal cargo is confiscated. The pirates won't be happy to hear about this.`
+	stealth
+	to offer
+		random < 50
+		or
+			"reputation: Pirate" > -25
+			"combat rating" > 1100
+	source
+		government "Pirate"
+	destination
+		distance 4 12
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Pirate"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on abort
+		"reputation: Pirate" -= 1
+		dialog phrase "generic aborted pirate cargo mission"
+	on fail
+		"reputation: Pirate" -= 1
+	on complete
+		"pirate jobs" ++
+		payment 10000 375
+		dialog phrase "generic completed pirate cargo mission"
+
+mission "Bulk Drug Running [1]"
+	name "散装药品运行至 <planet>"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	job
+	repeat
+	infiltrating
+	description "在不被行星执法部门扫描或抓获的情况下，从 <cargo> 跑到 <destination>。付款方式为 <payment>。"
+	cargo "Illegal Substances" 25 2 .1
+	illegal 200000 `In addition to the fine, your illegal cargo is confiscated. The pirates won't be happy to hear about this.`
+	stealth
+	to offer
+		random < 40
+		or
+			"reputation: Pirate" > -25
+			"combat rating" > 1100
+	source
+		government "Pirate"
+	destination
+		distance 5 14
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Pirate"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on abort
+		"reputation: Pirate" -= 1
+		dialog phrase "generic aborted pirate cargo mission"
+	on fail
+		"reputation: Pirate" -= 1
+	on complete
+		"pirate jobs" ++
+		payment 15000 375
+		dialog phrase "generic completed pirate cargo mission"
+
+mission "Bulk Drug Running [2]"
+	name "散装药品运行至 <planet>"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	job
+	repeat
+	infiltrating
+	description "在不被行星执法部门扫描或抓获的情况下，从 <cargo> 跑到 <destination>。付款方式为 <payment>。"
+	cargo "Illegal Substances" 25 2 .1
+	illegal 240000 `In addition to the fine, your illegal cargo is confiscated. The pirates won't be happy to hear about this.`
+	stealth
+	to offer
+		random < 30
+		or
+			"reputation: Pirate" > -25
+			"combat rating" > 1100
+	source
+		government "Pirate"
+	destination
+		distance 6 16
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Pirate"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on abort
+		"reputation: Pirate" -= 1
+		dialog phrase "generic aborted pirate cargo mission"
+	on fail
+		"reputation: Pirate" -= 1
+	on complete
+		"pirate jobs" ++
+		payment 20000 375
+		dialog phrase "generic completed pirate cargo mission"
+
+
+
+mission "Stealth Cargo Smuggling (North) [0]"
+	name "运往 <planet> 的高度非法货物"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	job
+	repeat
+	infiltrating
+	description "运行 <cargo> 到 <destination>。如果你被行星执法部门扫描或抓获，后果可能会很严重。付款方式为 <payment>。"
+	cargo "Highly Illegal Cargo" 5 2 .1
+	illegal 260000 `In addition to the fine, your illegal cargo is confiscated. The pirates won't be happy to hear about this.`
+	stealth
+	to offer
+		random < 40
+		"reputation: Pirate" > -10
+		"combat rating" > 1100
+	source
+		government "Pirate"
+		attributes "north pirate"
+	destination
+		distance 3 12
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Pirate"
+	npc
+		government Republic
+		personality heroic waiting
+		system
+			distance 3
+		fleet
+			names "republic small"
+			variant
+				"Gunboat"
+	npc
+		government Republic
+		personality heroic waiting
+		system destination
+		fleet
+			names "republic small"
+			variant
+				"Gunboat"
+	npc
+		government Republic
+		personality heroic staying
+		system destination
+		fleet
+			names "republic small"
+			variant
+				"Gunboat"
+	on abort
+		"reputation: Pirate" -= 1
+		dialog phrase "generic aborted pirate cargo mission"
+	on fail
+		"reputation: Pirate" -= 1
+		"reputation: Republic" -= 5
+		"reputation: Navy (Oathkeeper)" -= 5
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		"pirate jobs" ++
+		payment 50000 300
+		"reputation: Pirate" += 5
+		dialog phrase "generic completed highly illegal pirate cargo mission"
+
+mission "Stealth Cargo Smuggling (North) [1]"
+	name "运往 <planet> 的高度非法货物"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	job
+	repeat
+	infiltrating
+	description "运行 <cargo> 到 <destination>。如果你被行星执法部门扫描或抓获，后果可能会很严重。付款方式为 <payment>。"
+	cargo "Highly Illegal Cargo" 5 2 .1
+	illegal 350000 `In addition to the fine, your illegal cargo is confiscated. The pirates won't be happy to hear about this.`
+	stealth
+	to offer
+		random < 20
+		"reputation: Pirate" > -10
+		"combat rating" > 1100
+	source
+		government "Pirate"
+		attributes "north pirate"
+	destination
+		distance 4 14
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Pirate"
+	npc
+		government Republic
+		personality heroic waiting
+		system
+			distance 3 5
+		fleet
+			names "republic small"
+			variant
+				"Gunboat"
+	npc
+		government Republic
+		personality heroic waiting
+		system
+			distance 2 4
+		fleet
+			names "republic small"
+			variant
+				"Gunboat"
+	npc
+		government Republic
+		personality heroic waiting
+		system
+			distance 3
+		fleet
+			names "republic small"
+			variant
+				"Gunboat"
+	npc
+		government Republic
+		personality heroic waiting
+		system destination
+		fleet
+			names "republic small"
+			variant
+				"Gunboat"
+	npc
+		government Republic
+		personality heroic waiting entering
+		system destination
+		fleet
+			names "republic small"
+			variant
+				"Gunboat"
+	npc
+		system destination
+		personality heroic staying
+		government Republic
+		fleet "Navy Surveillance"
+	on abort
+		"reputation: Pirate" -= 3
+		dialog phrase "generic aborted pirate cargo mission"
+	on fail
+		"reputation: Pirate" -= 3
+		"reputation: Republic" -= 5
+		"reputation: Navy (Oathkeeper)" -= 5
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		"pirate jobs" ++
+		payment 75000 450
+		"reputation: Pirate" += 5
+		dialog phrase "generic completed highly illegal pirate cargo mission"
+
+mission "Stealth Cargo Smuggling (Core) [0]"
+	name "运往 <planet> 的高度非法货物"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	job
+	repeat
+	infiltrating
+	description "运行 <cargo> 到 <destination>。如果你被行星执法部门扫描或抓获，后果可能会很严重。付款方式为 <payment>。"
+	cargo "Highly Illegal Cargo" 5 2 .1
+	illegal 260000 `In addition to the fine, your illegal cargo is confiscated. The pirates won't be happy to hear about this.`
+	stealth
+	to offer
+		random < 40
+		"reputation: Pirate" > -10
+		"combat rating" > 1100
+	source
+		government "Pirate"
+		attributes "core pirate"
+	destination
+		distance 3 12
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Pirate"
+	npc
+		government Syndicate
+		personality heroic waiting
+		system
+			distance 3
+		fleet
+			names "syndicate small"
+			variant
+				"Quicksilver (Scanner)"
+	npc
+		government Syndicate
+		personality heroic waiting
+		system destination
+		fleet
+			names "syndicate small"
+			variant
+				"Quicksilver (Scanner)"
+	npc
+		government Syndicate
+		personality heroic staying
+		system destination
+		fleet
+			names "syndicate small"
+			variant
+				"Quicksilver (Scanner)"
+	on abort
+		"reputation: Pirate" -= 3
+		dialog phrase "generic aborted pirate cargo mission"
+	on fail
+		"reputation: Pirate" -= 3
+		"reputation: Syndicate" -= 5
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		"pirate jobs" ++
+		payment 50000 450
+		"reputation: Pirate" += 5
+		dialog phrase "generic completed highly illegal pirate cargo mission"
+
+mission "Stealth Cargo Smuggling (Core) [1]"
+	name "运往 <planet> 的高度非法货物"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	job
+	repeat
+	infiltrating
+	description "运行 <cargo> 到 <destination>。如果你被行星执法部门扫描或抓获，后果可能会很严重。付款方式为 <payment>。"
+	cargo "Highly Illegal Cargo" 5 2 .1
+	illegal 350000 `In addition to the fine, your illegal cargo is confiscated. The pirates won't be happy to hear about this.`
+	stealth
+	to offer
+		random < 20
+		"reputation: Pirate" > -10
+		"combat rating" > 1100
+	source
+		government "Pirate"
+		attributes "core pirate"
+	destination
+		distance 4 14
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Pirate"
+	npc
+		government Syndicate
+		personality heroic waiting
+		system
+			distance 3 5
+		fleet
+			names "syndicate small"
+			variant
+				"Quicksilver (Scanner)"
+	npc
+		government Syndicate
+		personality heroic waiting
+		system
+			distance 2 4
+		fleet
+			names "syndicate small"
+			variant
+				"Quicksilver (Scanner)"
+	npc
+		government Syndicate
+		personality heroic waiting
+		system
+			distance 3
+		fleet
+			names "syndicate small"
+			variant
+				"Quicksilver (Scanner)"
+	npc
+		government Syndicate
+		personality heroic waiting
+		system destination
+		fleet
+			names "syndicate small"
+			variant
+				"Quicksilver (Scanner)"
+	npc
+		government Syndicate
+		personality heroic waiting entering
+		system destination
+		fleet
+			names "syndicate small"
+			variant
+				"Quicksilver (Scanner)"
+	npc
+		government Syndicate
+		personality heroic staying
+		system destination
+		fleet
+			names "syndicate small"
+			variant
+				"Quicksilver (Scanner)" 2
+	on abort
+		"reputation: Pirate" -= 3
+		dialog phrase "generic aborted pirate cargo mission"
+	on fail
+		"reputation: Pirate" -= 3
+		"reputation: Syndicate" -= 5
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		"pirate jobs" ++
+		payment 75000 450
+		"reputation: Pirate" += 5
+		dialog phrase "generic completed highly illegal pirate cargo mission"
+
+mission "Stealth Cargo Smuggling (South) [0]"
+	name "运往 <planet> 的高度非法货物"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	job
+	repeat
+	infiltrating
+	description "运行 <cargo> 到 <destination>。如果你被行星执法部门扫描或抓获，后果可能会很严重。付款方式为 <payment>。"
+	cargo "Highly Illegal Cargo" 5 2 .1
+	illegal 260000 `In addition to the fine, your illegal cargo is confiscated. The pirates won't be happy to hear about this.`
+	stealth
+	to offer
+		random < 40
+		"reputation: Pirate" > -10
+		"combat rating" > 1100
+	source
+		government "Pirate"
+		attributes "south pirate"
+	destination
+		distance 4 12
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Pirate"
+	npc
+		government Militia
+		personality heroic waiting
+		system
+			distance 3
+		fleet
+			names "militia capital"
+			variant
+				"Bastion (Scanner)"
+	npc
+		government Militia
+		personality heroic waiting
+		system destination
+		fleet
+			names "militia capital"
+			variant
+				"Bastion (Scanner)"
+	npc
+		government Militia
+		personality heroic staying
+		system destination
+		fleet
+			names "militia capital"
+			variant
+				"Bastion (Scanner)"
+	on abort
+		"reputation: Pirate" -= 3
+		dialog phrase "generic aborted pirate cargo mission"
+	on fail
+		"reputation: Pirate" -= 3
+		"reputation: Free Worlds" -= 5
+		"reputation: Militia" -= 5
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		"pirate jobs" ++
+		payment 50000 450
+		"reputation: Pirate" += 5
+		dialog phrase "generic completed highly illegal pirate cargo mission"
+
+mission "Stealth Cargo Smuggling (South) [1]"
+	name "运往 <planet> 的高度非法货物"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	job
+	repeat
+	infiltrating
+	description "运行 <cargo> 到 <destination>。如果你被行星执法部门扫描或抓获，后果可能会很严重。你需要在远离太空港的地方着陆，否则你可能会被抓住。付款方式为 <payment>。"
+	cargo "Highly Illegal Cargo" 5 2 .1
+	illegal 350000 `In addition to the fine, your illegal cargo is confiscated. The pirates won't be happy to hear about this.`
+	stealth
+	to offer
+		random < 20
+		"reputation: Pirate" > -10
+		"combat rating" > 1100
+	source
+		government "Pirate"
+		attributes "south pirate"
+	destination
+		distance 4 14
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Pirate"
+	npc
+		government Militia
+		personality heroic waiting
+		system
+			distance 3 5
+		fleet
+			names "militia capital"
+			variant
+				"Bastion (Scanner)"
+	npc
+		government Militia
+		personality heroic waiting
+		system
+			distance 2 4
+		fleet
+			names "militia capital"
+			variant
+				"Bastion (Scanner)"
+	npc
+		government Militia
+		personality heroic waiting
+		system
+			distance 3
+		fleet
+			names "militia capital"
+			variant
+				"Bastion (Scanner)"
+	npc
+		government Militia
+		personality heroic waiting
+		system destination
+		fleet
+			names "militia capital"
+			variant
+				"Bastion (Scanner)"
+	npc
+		government Militia
+		personality heroic waiting entering
+		system destination
+		fleet
+			names "militia capital"
+			variant
+				"Bastion (Scanner)"
+	npc
+		government Militia
+		personality heroic staying
+		system destination
+		fleet
+			names "militia capital"
+			variant
+				"Bastion (Scanner)" 2
+	on abort
+		"reputation: Pirate" -= 3
+		dialog phrase "generic aborted pirate cargo mission"
+	on fail
+		"reputation: Pirate" -= 3
+		"reputation: Free Worlds" -= 5
+		"reputation: Militia" -= 5
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		"pirate jobs" ++
+		payment 75000 450
+		"reputation: Pirate" += 5
+		dialog phrase "generic completed highly illegal pirate cargo mission"
+
+
+
+mission "Stealth Drug Running (North) [0]"
+	name "<planet> 高度非法药物"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	job
+	repeat
+	infiltrating
+	description "运行 <cargo> 到 <destination>。如果你被行星执法部门扫描或抓获，后果可能会很严重。付款方式为 <payment>。"
+	cargo "Highly Illegal Substances" 5 2 .1
+	illegal 350000 `In addition to the fine, your illegal cargo is confiscated. The pirates won't be happy to hear about this.`
+	stealth
+	to offer
+		random < 30
+		"reputation: Pirate" > 0
+		"combat rating" > 1100
+	source
+		government "Pirate"
+		attributes "north pirate"
+	destination
+		distance 3 12
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Pirate"
+	npc
+		government Republic
+		personality heroic waiting
+		system
+			distance 3
+		fleet
+			names "republic small"
+			variant
+				"Gunboat"
+	npc
+		government Republic
+		personality heroic waiting
+		system destination
+		fleet
+			names "republic small"
+			variant
+				"Gunboat"
+	npc
+		government Republic
+		personality heroic staying
+		system destination
+		fleet
+			names "republic small"
+			variant
+				"Gunboat"
+	on abort
+		"reputation: Pirate" -= 3
+		dialog phrase "generic aborted pirate cargo mission"
+	on fail
+		"reputation: Pirate" -= 3
+		"reputation: Republic" -= 5
+		"reputation: Navy (Oathkeeper)" -= 5
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		"pirate jobs" ++
+		payment 75000 550
+		"reputation: Pirate" += 5
+		dialog phrase "generic completed highly illegal pirate cargo mission"
+
+mission "Stealth Drug Running (North) [1]"
+	name "<planet> 高度非法药物"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	job
+	repeat
+	infiltrating
+	description "运行 <cargo> 到 <destination>。如果你被行星执法部门扫描或抓获，后果可能会很严重。付款方式为 <payment>。"
+	cargo "Highly Illegal Substances" 5 2 .1
+	illegal 500000 `In addition to the fine, your illegal cargo is confiscated. The pirates won't be happy to hear about this.`
+	stealth
+	to offer
+		random < 15
+		"reputation: Pirate" > 0
+		"combat rating" > 1100
+	source
+		government "Pirate"
+		attributes "north pirate"
+	destination
+		distance 4 14
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Pirate"
+	npc
+		government Republic
+		personality heroic waiting
+		system
+			distance 3 5
+		fleet
+			names "republic small"
+			variant
+				"Gunboat"
+	npc
+		government Republic
+		personality heroic waiting
+		system
+			distance 2 4
+		fleet
+			names "republic small"
+			variant
+				"Gunboat"
+	npc
+		government Republic
+		personality heroic waiting
+		system
+			distance 3
+		fleet
+			names "republic small"
+			variant
+				"Gunboat"
+	npc
+		government Republic
+		personality heroic waiting
+		system destination
+		fleet
+			names "republic small"
+			variant
+				"Gunboat"
+	npc
+		government Republic
+		personality heroic waiting entering
+		system destination
+		fleet
+			names "republic small"
+			variant
+				"Gunboat"
+	npc
+		government Republic
+		personality heroic staying
+		system destination
+		fleet "Navy Surveillance"
+	on abort
+		"reputation: Pirate" -= 3
+		dialog phrase "generic aborted pirate cargo mission"
+	on fail
+		"reputation: Pirate" -= 3
+		"reputation: Republic" -= 5
+		"reputation: Navy (Oathkeeper)" -= 5
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		"pirate jobs" ++
+		payment 100000 550
+		"reputation: Pirate" += 5
+		dialog phrase "generic completed highly illegal pirate cargo mission"
+
+mission "Stealth Drug Running (Core) [0]"
+	name "<planet> 高度非法药物"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	job
+	repeat
+	infiltrating
+	description "运行 <cargo> 到 <destination>。如果你被行星执法部门扫描或抓获，后果可能会很严重。付款方式为 <payment>。"
+	cargo "Highly Illegal Substances" 5 2 .1
+	illegal 350000 `In addition to the fine, your illegal cargo is confiscated. The pirates won't be happy to hear about this.`
+	stealth
+	to offer
+		random < 30
+		"reputation: Pirate" > 0
+		"combat rating" > 1100
+	source
+		government "Pirate"
+		attributes "core pirate"
+	destination
+		distance 3 12
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Pirate"
+	npc
+		government Syndicate
+		personality heroic waiting
+		system
+			distance 3
+		fleet
+			names "syndicate small"
+			variant
+				"Quicksilver (Scanner)"
+	npc
+		government Syndicate
+		personality heroic waiting
+		system destination
+		fleet
+			names "syndicate small"
+			variant
+				"Quicksilver (Scanner)"
+	npc
+		government Syndicate
+		personality heroic staying
+		system destination
+		fleet
+			names "syndicate small"
+			variant
+				"Quicksilver (Scanner)"
+	on abort
+		"reputation: Pirate" -= 3
+		dialog phrase "generic aborted pirate cargo mission"
+	on fail
+		"reputation: Pirate" -= 3
+		"reputation: Syndicate" -= 5
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		"pirate jobs" ++
+		payment 75000 550
+		"reputation: Pirate" += 5
+		dialog phrase "generic completed highly illegal pirate cargo mission"
+
+mission "Stealth Drug Running (Core) [1]"
+	name "<planet> 高度非法药物"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	job
+	repeat
+	infiltrating
+	description "运行 <cargo> 到 <destination>。如果你被行星执法部门扫描或抓获，后果可能会很严重。付款方式为 <payment>。"
+	cargo "Highly Illegal Substances" 5 2 .1
+	illegal 500000 `In addition to the fine, your illegal cargo is confiscated. The pirates won't be happy to hear about this.`
+	stealth
+	to offer
+		random < 15
+		"reputation: Pirate" > 0
+		"combat rating" > 1100
+	source
+		government "Pirate"
+		attributes "core pirate"
+	destination
+		distance 4 14
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Pirate"
+	npc
+		government Syndicate
+		personality heroic waiting
+		system
+			distance 3 5
+		fleet
+			names "syndicate small"
+			variant
+				"Quicksilver (Scanner)"
+	npc
+		government Syndicate
+		personality heroic waiting
+		system
+			distance 2 4
+		fleet
+			names "syndicate small"
+			variant
+				"Quicksilver (Scanner)"
+	npc
+		government Syndicate
+		personality heroic waiting
+		system
+			distance 3
+		fleet
+			names "syndicate small"
+			variant
+				"Quicksilver (Scanner)"
+	npc
+		government Syndicate
+		personality heroic waiting
+		system destination
+		fleet
+			names "syndicate small"
+			variant
+				"Quicksilver (Scanner)"
+	npc
+		government Syndicate
+		personality heroic waiting entering
+		system destination
+		fleet
+			names "syndicate small"
+			variant
+				"Quicksilver (Scanner)"
+	npc
+		government Syndicate
+		personality heroic staying
+		system destination
+		fleet
+			names "syndicate small"
+			variant
+				"Quicksilver (Scanner)" 2
+	on abort
+		"reputation: Pirate" -= 3
+		dialog phrase "generic aborted pirate cargo mission"
+	on fail
+		"reputation: Pirate" -= 3
+		"reputation: Syndicate" -= 5
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		"pirate jobs" ++
+		payment 100000 550
+		"reputation: Pirate" += 5
+		dialog phrase "generic completed highly illegal pirate cargo mission"
+
+mission "Stealth Drug Running (South) [0]"
+	name "<planet> 高度非法药物"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	job
+	repeat
+	infiltrating
+	description "运行 <cargo> 到 <destination>。如果你被行星执法部门扫描或抓获，后果可能会很严重。付款方式为 <payment>。"
+	cargo "Highly Illegal Substances" 5 2 .1
+	illegal 350000 `In addition to the fine, your illegal cargo is confiscated. The pirates won't be happy to hear about this.`
+	stealth
+	to offer
+		random < 30
+		"reputation: Pirate" > 0
+		"combat rating" > 1100
+	source
+		government "Pirate"
+		attributes "south pirate"
+	destination
+		distance 4 12
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Pirate"
+	npc
+		government Militia
+		personality heroic waiting
+		system
+			distance 3
+		fleet
+			names "militia capital"
+			variant
+				"Bastion (Scanner)"
+	npc
+		government Militia
+		personality heroic waiting
+		system destination
+		fleet
+			names "militia capital"
+			variant
+				"Bastion (Scanner)"
+	npc
+		government Militia
+		personality heroic staying
+		system destination
+		fleet
+			names "militia capital"
+			variant
+				"Bastion (Scanner)"
+	on abort
+		"reputation: Pirate" -= 3
+		dialog phrase "generic aborted pirate cargo mission"
+	on fail
+		"reputation: Pirate" -= 3
+		"reputation: Free Worlds" -= 5
+		"reputation: Militia" -= 5
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		"pirate jobs" ++
+		payment 75000 550
+		"reputation: Pirate" += 5
+		dialog phrase "generic completed highly illegal pirate cargo mission"
+
+mission "Stealth Drug Running (South) [1]"
+	name "<planet> 高度非法药物"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	job
+	repeat
+	infiltrating
+	description "运行 <cargo> 到 <destination>。如果你被行星执法部门扫描或抓获，后果可能会很严重。付款方式为 <payment>。"
+	cargo "Highly Illegal Substances" 5 2 .1
+	illegal 500000 `In addition to the fine, your illegal cargo is confiscated. The pirates won't be happy to hear about this.`
+	stealth
+	to offer
+		random < 15
+		"reputation: Pirate" > 0
+		"combat rating" > 1100
+	source
+		government "Pirate"
+		attributes "south pirate"
+	destination
+		distance 4 14
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Pirate"
+	npc
+		government Militia
+		personality heroic waiting
+		system
+			distance 3 5
+		fleet
+			names "militia capital"
+			variant
+				"Bastion (Scanner)"
+	npc
+		government Militia
+		personality heroic waiting
+		system
+			distance 2 4
+		fleet
+			names "militia capital"
+			variant
+				"Bastion (Scanner)"
+	npc
+		government Militia
+		personality heroic waiting
+		system
+			distance 3
+		fleet
+			names "militia capital"
+			variant
+				"Bastion (Scanner)"
+	npc
+		government Militia
+		personality heroic waiting
+		system destination
+		fleet
+			names "militia capital"
+			variant
+				"Bastion (Scanner)"
+	npc
+		government Militia
+		personality heroic waiting entering
+		system destination
+		fleet
+			names "militia capital"
+			variant
+				"Bastion (Scanner)"
+	npc
+		government Militia
+		personality heroic staying
+		system destination
+		fleet
+			names "militia capital"
+			variant
+				"Bastion (Scanner)" 2
+	on abort
+		"reputation: Pirate" -= 3
+		dialog phrase "generic aborted pirate cargo mission"
+	on fail
+		"reputation: Pirate" -= 3
+		"reputation: Free Worlds" -= 5
+		"reputation: Militia" -= 5
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		"pirate jobs" ++
+		payment 100000 550
+		"reputation: Pirate" += 5
+		dialog phrase "generic completed highly illegal pirate cargo mission"
+
+
+
+mission "Wanted Passenger [0]"
+	name "通缉个人<planet>"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	job
+	repeat
+	infiltrating
+	description "这希望个人希望在不被当地执法部门抓获的情况下达到 <destination>。他们还希望随身携带 <cargo> 。付款方式为 <payment>。"
+	passengers 1
+	cargo "battle trophies" 1
+	illegal 50000 `Upon scanning your vessel, law enforcement notice the criminal that you have on board. Entering your ship to detain them, they find the criminal in the corner of one of the rooms of your ship, clutching their battle trophies and screaming "you'll never take them from me!" After a short confrontation, they carry the criminal out and leave you with a small fine. This doesn't help to establish your reputation as a reliable, no-questions-asked transporter.`
+	stealth
+	to offer
+		or
+			"reputation: Pirate" > -100
+			"combat rating" > 400
+	source
+		government "Pirate"
+	destination
+		distance 2 10
+		government "Republic" "Free Worlds" "Syndicate" "Neutral"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on abort
+		"reputation: Pirate" -= 1
+		dialog phrase "generic aborted pirate passenger mission"
+	on fail
+		"reputation: Pirate" -= 1
+	on complete
+		"pirate jobs" ++
+		payment 30000 300
+		dialog "您的 <passengers> 坚持要求您降落在太空港的边缘以避免被发现。您着陆后，他们会向您支付 <payment>，然后迅速拿走他们的东西并离开您的船。"
+
+mission "Wanted Passengers [1]"
+	name "通缉个人<planet>"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	job
+	repeat
+	infiltrating
+	description "这些 <bunks> 通缉犯希望在不被当地执法部门抓获的情况下到达 <destination>。他们还希望随身携带 <cargo> 。付款方式为<payment>。"
+	passengers 2 10 .9
+	cargo "credit chips" 1
+	illegal 75000 `Upon scanning your vessel, law enforcement notices the criminals that you have on board. Entering your ship to detain them, they find the criminals busy scooping their credits into the airlock, hoping that no one can have them. The officers quickly detain the criminals and carry them off along with the rest of the credits, leaving you with a moderately sized fine. This doesn't help to establish your reputation as a reliable, no-questions-asked transporter.`
+	stealth
+	to offer
+		random < 75
+		"reputation: Pirate" > -50
+		"combat rating" > 1100
+	source
+		government "Pirate"
+	destination
+		distance 2 10
+		government "Republic" "Free Worlds" "Syndicate" "Neutral"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on abort
+		"reputation: Pirate" -= 1
+		dialog phrase "generic aborted pirate passenger mission"
+	on fail
+		"reputation: Pirate" -= 1
+	on complete
+		"pirate jobs" ++
+		payment 20000 300
+		dialog "您的 <passengers> 坚持要求您降落在太空港的边缘以避免被发现。您着陆后，他们会向您支付 <payment>，然后迅速拿走他们的东西并离开您的船。"
+	
+mission "Wanted Passengers [2]"
+	name "通缉个人<planet>"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	job
+	repeat
+	infiltrating
+	description "这些 <bunks> 通缉犯希望在不被当地执法部门抓获的情况下到达 <destination>。他们还希望随身携带 <cargo> 。付款方式为<payment>。"
+	passengers 2 10 .9
+	cargo "customized weapons" 1
+	illegal 75000 `Upon scanning your vessel, law enforcement notices the criminals that you have on board. Entering your ship to detain them, the criminals begin firing down the hallways with their customized weapons. Immediately met with tear gas, the criminals did not put up too much of a fight. The officers carry the criminals out and leave you with a moderate fine and a few laser marks in the halls of your ship. This doesn't help to establish your reputation as a reliable, no-questions-asked transporter.`
+	stealth
+	to offer
+		random < 50
+		"reputation: Pirate" > -50
+		"combat rating" > 1100
+	source
+		government "Pirate"
+	destination
+		distance 2 10
+		government "Republic" "Free Worlds" "Syndicate" "Neutral"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on abort
+		"reputation: Pirate" -= 1
+		dialog phrase "generic aborted pirate passenger mission"
+	on fail
+		"reputation: Pirate" -= 1
+	on complete
+		"pirate jobs" ++
+		payment 20000 300
+		dialog "您的 <passengers> 坚持要求您降落在太空港的边缘以避免被发现。您着陆后，他们会向您支付 <payment>，然后迅速拿走他们的东西并离开您的船。"
+
+mission "Wanted Passengers [3]"
+	name "通缉个人<planet>"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	job
+	repeat
+	infiltrating
+	description "这些 <bunks> 通缉犯希望在不被当地执法部门抓获的情况下到达 <destination>。他们还希望随身携带 <cargo> 。付款方式为<payment>。"
+	passengers 2 10 .9
+	cargo "aged wine" 1
+	illegal 75000 `Upon scanning your vessel, law enforcement notice the criminals that you have on board. Entering your ship to detain them, they find them all passed out in their bunks rooms, having drank too much of the wine that they had brought with them. After carrying the criminals out, they give you a moderate fine and leave. This doesn't help to establish your reputation as a reliable, no-questions-asked transporter.`
+	stealth
+	to offer
+		random < 25
+		"reputation: Pirate" > -50
+		"combat rating" > 1100
+	source
+		government "Pirate"
+	destination
+		distance 2 10
+		government "Republic" "Free Worlds" "Syndicate" "Neutral"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on abort
+		"reputation: Pirate" -= 1
+		dialog phrase "generic aborted pirate passenger mission"
+	on fail
+		"reputation: Pirate" -= 1
+	on complete
+		"pirate jobs" ++
+		payment 20000 300
+		dialog "您的 <passengers> 坚持要求您降落在太空港的边缘以避免被发现。您着陆后，他们会向您支付 <payment>，然后迅速拿走他们的东西并离开您的船。"
+
+
+
+mission "Highly Wanted Passenger (North)"
+	name "<planet> 的银河罪犯"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	job
+	repeat
+	infiltrating
+	description "该罪犯受到银河系所有执法机构的通缉，需要将其 <cargo> 安全运送到 <destination>。报酬高得惊人，高达 <payment> ，但运送这样的人可能会带来很多麻烦。"
+	passengers 1
+	cargo "stolen navy secrets" 1
+	illegal 300000 `Law enforcement rush their way onto your ship through the airlocks, suited head to toe in armor and armed to the teeth. Your passenger is quickly made to surrender and is hauled off in cuffs. The officers consider detaining you as well, but eventually decide to minimize their paperwork by only issuing a fine. This doesn't help to establish your reputation as a reliable, no-questions-asked transporter.`
+	stealth
+	to offer
+		random < 15
+		"reputation: Pirate" > 10
+		"combat rating" > 3000
+	source
+		government "Pirate"
+		attributes "north pirate"
+	destination
+		distance 4 14
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Pirate"
+	npc
+		government Republic
+		personality heroic waiting
+		fleet
+			names "republic small"
+			variant
+				"Gunboat"
+	npc
+		government Republic
+		personality heroic waiting
+		system
+			distance 3 5
+		fleet
+			names "republic small"
+			variant
+				"Gunboat"
+	npc
+		government Republic
+		personality heroic waiting
+		system
+			distance 2 4
+		fleet
+			names "republic small"
+			variant
+				"Gunboat"
+	npc
+		government Republic
+		personality heroic waiting
+		system
+			distance 3
+		fleet
+			names "republic small"
+			variant
+				"Gunboat"
+	npc
+		government Republic
+		personality heroic waiting
+		system destination
+		fleet
+			names "republic small"
+			variant
+				"Gunboat"
+	npc
+		government Republic
+		personality heroic waiting entering
+		system destination
+		fleet
+			names "republic small"
+			variant
+				"Gunboat"
+	npc
+		government Republic
+		personality heroic staying
+		system destination
+		fleet "Navy Surveillance"
+	on abort
+		"reputation: Pirate" -= 3
+		dialog phrase "generic aborted pirate passenger mission"
+	on fail
+		"reputation: Pirate" -= 3
+		"reputation: Republic" -= 5
+		"reputation: Navy (Oathkeeper)" -= 5
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		"pirate jobs" ++
+		payment 200000 1000
+		"reputation: Pirate" += 5
+		dialog "您在主城外着陆，以避免您的乘客被看到的任何机会。他们在向您支付 <payment> 后拿走自己的东西并离开您的船。"
+
+mission "Highly Wanted Passenger (Core)"
+	name "<planet> 的银河罪犯"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	job
+	repeat
+	infiltrating
+	description "该罪犯受到银河系所有执法机构的通缉，需要将其 <cargo> 安全运送到 <destination>。报酬高得惊人，高达 <payment> ，但运送这样的人可能会带来很多麻烦。"
+	passengers 1
+	cargo "stolen banking records" 1
+	illegal 300000 `Law enforcement rush their way onto your ship through the airlocks, suited head to toe in armor and armed to the teeth. Your passenger is quickly made to surrender and is hauled off in cuffs. The officers consider detaining you as well, but eventually decide to minimize their paperwork by only issuing a fine. This doesn't help to establish your reputation as a reliable, no-questions-asked transporter.`
+	stealth
+	to offer
+		random < 15
+		"reputation: Pirate" > 10
+		"combat rating" > 3000
+	source
+		government "Pirate"
+		attributes "core pirate"
+	destination
+		distance 4 14
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Pirate"
+	npc
+		government Syndicate
+		personality heroic waiting
+		fleet
+			names "syndicate small"
+			variant
+				"Quicksilver (Scanner)"
+	npc
+		government Syndicate
+		personality heroic waiting
+		system
+			distance 3 5
+		fleet
+			names "syndicate small"
+			variant
+				"Quicksilver (Scanner)"
+	npc
+		government Syndicate
+		personality heroic waiting
+		system
+			distance 2 4
+		fleet
+			names "syndicate small"
+			variant
+				"Quicksilver (Scanner)"
+	npc
+		government Syndicate
+		personality heroic waiting
+		system
+			distance 3
+		fleet
+			names "syndicate small"
+			variant
+				"Quicksilver (Scanner)"
+	npc
+		government Syndicate
+		personality heroic waiting
+		system destination
+		fleet
+			names "syndicate small"
+			variant
+				"Quicksilver (Scanner)"
+	npc
+		government Syndicate
+		personality heroic waiting entering
+		system destination
+		fleet
+			names "syndicate small"
+			variant
+				"Quicksilver (Scanner)"
+	npc
+		government Syndicate
+		personality heroic staying
+		system destination
+		fleet
+			names "syndicate small"
+			variant
+				"Quicksilver (Scanner)" 2
+	on abort
+		"reputation: Pirate" -= 3
+		dialog phrase "generic aborted pirate passenger mission"
+	on fail
+		"reputation: Pirate" -= 3
+		"reputation: Syndicate" -= 5
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		"pirate jobs" ++
+		payment 200000 1000
+		"reputation: Pirate" += 5
+		dialog "您在主城外着陆，以避免您的乘客被看到的任何机会。他们在向您支付 <payment> 后拿走自己的东西并离开您的船。"
+
+mission "Highly Wanted Passenger (South)"
+	name "<planet> 的银河罪犯"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	job
+	repeat
+	infiltrating
+	description "该罪犯受到银河系所有执法机构的通缉，需要将其 <cargo> 安全运送到 <destination>。报酬高得惊人，高达 <payment> ，但运送这样的人可能会带来很多麻烦。"
+	passengers 1
+	cargo "prototype technology" 1
+	illegal 300000 `Law enforcement rush their way onto your ship through the airlocks, suited head to toe in armor and armed to the teeth. Your passenger is quickly made to surrender and is hauled off in cuffs. The officers consider detaining you as well, but eventually decide to minimize their paperwork by only issuing a fine. This doesn't help to establish your reputation as a reliable, no-questions-asked transporter.`
+	stealth
+	to offer
+		random < 15
+		"reputation: Pirate" > 10
+		"combat rating" > 3000
+	source
+		government "Pirate"
+		attributes "south pirate"
+	destination
+		distance 4 14
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Pirate"
+	npc
+		government Militia
+		personality heroic waiting
+		fleet
+			names "militia capital"
+			variant
+				"Bastion (Scanner)"
+	npc
+		government Militia
+		personality heroic waiting
+		system
+			distance 3 5
+		fleet
+			names "militia capital"
+			variant
+				"Bastion (Scanner)"
+	npc
+		government Militia
+		personality heroic waiting
+		system
+			distance 2 4
+		fleet
+			names "militia capital"
+			variant
+				"Bastion (Scanner)"
+	npc
+		government Militia
+		personality heroic waiting
+		system
+			distance 3
+		fleet
+			names "militia capital"
+			variant
+				"Bastion (Scanner)"
+	npc
+		government Militia
+		personality heroic waiting
+		system destination
+		fleet
+			names "militia capital"
+			variant
+				"Bastion (Scanner)"
+	npc
+		government Militia
+		personality heroic waiting entering
+		system destination
+		fleet
+			names "militia capital"
+			variant
+				"Bastion (Scanner)"
+	npc
+		government Militia
+		personality heroic staying
+		system destination
+		fleet
+			names "militia capital"
+			variant
+				"Bastion (Scanner)" 2
+	on abort
+		"reputation: Pirate" -= 3
+		dialog phrase "generic aborted pirate passenger mission"
+	on fail
+		"reputation: Pirate" -= 3
+		"reputation: Free Worlds" -= 5
+		"reputation: Militia" -= 5
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		"pirate jobs" ++
+		payment 200000 1000
+		"reputation: Pirate" += 5
+		dialog "您在主城外着陆，以避免您的乘客被看到的任何机会。他们在向您支付 <payment> 后拿走自己的东西并离开您的船。"
+
+
+
+mission "Slave Transport [0]"
+	name "将从站转移到 <planet>"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	job
+	repeat
+	infiltrating
+	description "<planet> 上的海盗从当地军阀手中购买了奴隶。将安全单元中的这些 <bunks> 从属设备传输到 <payment> 的 <destination>。在整个银河系，奴隶制都会被判处死刑，所以这可能是一项危险的工作。"
+	passengers 2 10 .9
+	illegal -1
+	to offer
+		random < 25
+		"reputation: Pirate" > 0
+		"combat rating" > 1100
+	to accept
+		has "outfit (installed): Brig"
+	source
+		government "Pirate"
+	destination
+		distance 4 30
+		government "Pirate"
+	on abort
+		"reputation: Pirate" -= 9
+		dialog phrase "generic aborted pirate slave mission"
+	on fail
+		"reputation: Pirate" -= 9
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		"pirate jobs" ++
+		payment 75000 800
+		dialog phrase "generic completed pirate slave mission"
+
+mission "Slave Transport [1]"
+	name "将从站转移到 <planet>"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	job
+	repeat
+	infiltrating
+	description "<planet> 上的海盗从当地军阀手中购买了奴隶。将安全单元中的这些 <bunks> 从属设备传输到 <payment> 的 <destination>。在整个银河系，奴隶制都会被判处死刑，所以这可能是一项危险的工作。"
+	passengers 2 10 .9
+	illegal -1
+	to offer
+		random < 25
+		"reputation: Pirate" > 0
+		"combat rating" > 1100
+	to accept
+		has "outfit (installed): Brig"
+	source
+		government "Pirate"
+	destination
+		distance 4 30
+		government "Pirate"
+	on abort
+		"reputation: Pirate" -= 9
+		dialog phrase "generic aborted pirate slave mission"
+	on fail
+		"reputation: Pirate" -= 9
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		"pirate jobs" ++
+		payment 75000 800
+		dialog phrase "generic completed pirate slave mission"
+
+mission "Slave Transport [2]"
+	name "将从站转移到 <planet>"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	job
+	repeat
+	infiltrating
+	description "<planet> 上的海盗从当地军阀手中购买了奴隶。将安全单元中的这些 <bunks> 从属设备传输到 <payment> 的 <destination>。在整个银河系，奴隶制都会被判处死刑，所以这可能是一项危险的工作。"
+	passengers 2 10 .9
+	illegal -1
+	to offer
+		random < 25
+		"reputation: Pirate" > 0
+		"combat rating" > 1100
+	to accept
+		has "outfit (installed): Brig"
+	source
+		government "Pirate"
+	destination
+		distance 4 30
+		government "Pirate"
+	on abort
+		"reputation: Pirate" -= 9
+		dialog phrase "generic aborted pirate slave mission"
+	on fail
+		"reputation: Pirate" -= 9
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		"pirate jobs" ++
+		payment 75000 800
+		dialog phrase "generic completed pirate slave mission"
+
+
+
+mission "Bulk Slave Transport [0]"
+	name "将从站转移到 <planet>"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	job
+	repeat
+	infiltrating
+	description "<planet> 上的海盗从当地军阀手中购买了奴隶。将安全单元中的这些 <bunks> 从属设备传输到 <payment> 的 <destination>。在整个银河系，奴隶制都会被判处死刑，所以这可能是一项危险的工作。"
+	passengers 10 4 .1
+	illegal -1
+	to offer
+		random < 15
+		"reputation: Pirate" > 0
+		"combat rating" > 3000
+	to accept
+		has "outfit (installed): Brig"
+	source
+		government "Pirate"
+	destination
+		distance 4 30
+		government "Pirate"
+	on abort
+		"reputation: Pirate" -= 9
+		dialog phrase "generic aborted pirate slave mission"
+	on fail
+		"reputation: Pirate" -= 9
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		"pirate jobs" ++
+		payment 100000 800
+		dialog phrase "generic completed pirate slave mission"
+
+mission "Bulk Slave Transport [1]"
+	name "将从站转移到 <planet>"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	job
+	repeat
+	infiltrating
+	description "<planet> 上的海盗从当地军阀手中购买了奴隶。将安全单元中的这些 <bunks> 从属设备传输到 <payment> 的 <destination>。在整个银河系，奴隶制都会被判处死刑，所以这可能是一项危险的工作。"
+	passengers 10 4 .1
+	illegal -1
+	to offer
+		random < 15
+		"reputation: Pirate" > 0
+		"combat rating" > 3000
+	to accept
+		has "outfit (installed): Brig"
+	source
+		government "Pirate"
+	destination
+		distance 4 30
+		government "Pirate"
+	on abort
+		"reputation: Pirate" -= 9
+		dialog phrase "generic aborted pirate slave mission"
+	on fail
+		"reputation: Pirate" -= 9
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		"pirate jobs" ++
+		payment 100000 800
+		dialog phrase "generic completed pirate slave mission"
+
+
+
+mission "Mercenary Job (Medium, North, Dangerous Origin)"
+	name "对<planet>的保护"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	job
+	repeat
+	description "<npc> 的船长将向您支付 <payment>，以帮助他们逃避当地执法并由 <date> 到达 <destination>。"
+	deadline 10
+	to offer
+		random < 40
+		"combat rating" > 400
+		"reputation: Pirate" > 0
+	source
+		government Republic "Free Worlds" Syndicate Neutral
+		attributes frontier north
+	destination
+		government "Pirate"
+		attributes "north pirate"
+		distance 3 4
+	npc
+		government Republic
+		personality waiting
+		fleet "Small Republic"
+	npc
+		government Republic
+		personality waiting entering
+		system destination
+		fleet "Small Republic"
+	
+	npc accompany save
+		government Pirate
+		personality escort
+		fleet
+			names "pirate"
+			variant
+				"Headhunter"
+			variant
+				"Headhunter (Particle)"
+			variant
+				"Raven (Afterburner)"
+			variant
+				"Raven (Heavy)"
+			variant
+				"Corvette"
+			variant
+				"Corvette (Missile)"
+			variant
+				"Corvette (Speedy)"
+	on complete
+		"pirate jobs" ++
+		payment 180000
+		dialog phrase "generic safe escort completion dialog"
+	on visit
+		dialog phrase "generic arrived-without-npc dialog"
+
+mission "Escort Illegal Cargo (Large, North, Dangerous Path)"
+	name "保护运往<planet>的货物"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	job
+	repeat
+	description "<npc> 的船长将支付您 <payment> 的费用，以护送他们及其非法货物安全通过执法空间，并于 <date> 到达 <destination>。"
+	deadline 12
+	to offer
+		random < 30
+		"combat rating" > 1100
+		"reputation: Pirate" > 0
+	source
+		government Republic "Free Worlds" Syndicate Neutral Pirate
+		attributes frontier north "north pirate"
+	destination
+		government "Pirate"
+		attributes "north pirate"
+		distance 3 6
+	npc
+		government Republic
+		personality staying
+		system destination
+		fleet "Large Republic"
+	
+	npc accompany save
+		government Pirate
+		personality escort
+		fleet
+			names "pirate"
+			variant 3
+				"Corvette"
+			variant 3
+				"Corvette (Missile)"
+			variant 3
+				"Corvette (Speedy)"
+			variant 2
+				"Firebird"
+			variant 2
+				"Firebird (Missile)"
+			variant 2
+				"Firebird (Plasma)"
+			variant 1
+				"Leviathan"
+	on complete
+		"pirate jobs" ++
+		payment 240000
+		dialog phrase "generic safe escort completion dialog"
+	on visit
+		dialog phrase "generic arrived-without-npc dialog"
+
+mission "Escort Stolen Vessel (Extra Large, North, Dangerous Path)"
+	name "保护前往<planet>的船只"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	job
+	repeat
+	description "<npc> 的船长将支付您 <payment> 费用，以护送他们和他们被盗的船只安全通过执法空间，并于 <date> 到达 <destination>。"
+	deadline 12
+	to offer
+		random < 15
+		"combat rating" > 3000
+		"reputation: Pirate" > 0
+	source
+		government Republic "Free Worlds" Syndicate Neutral Pirate
+		attributes frontier north "north pirate"
+	destination
+		government "Pirate"
+		attributes "north pirate"
+		distance 3 6
+	npc
+		government Republic
+		personality staying
+		system destination
+		fleet "Small Republic"
+		fleet "Large Republic"
+	
+	npc accompany save
+		government Pirate
+		personality escort
+		fleet
+			names "pirate"
+			variant 6
+				"Leviathan"
+				"Hauler II"
+			variant 4
+				"Leviathan (Laser)"
+				"Hauler"
+			variant 4
+				"Leviathan (Heavy)"
+				"Freighter"
+
+	on complete
+		"pirate jobs" ++
+		payment 375000
+		dialog phrase "generic safe escort completion dialog"
+	on visit
+		dialog phrase "generic arrived-without-npc dialog"
+
+mission "Mercenary Job (Medium, Core, Dangerous Origin)"
+	name "对<planet>的保护"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	job
+	repeat
+	description "<npc> 的船长将向您支付 <payment>，以帮助他们逃避当地执法并由 <date> 到达 <destination>。"
+	deadline 10
+	to offer
+		random < 40
+		"combat rating" > 400
+		"reputation: Pirate" > 0
+	source
+		government Republic "Free Worlds" Syndicate Neutral
+		attributes core
+	destination
+		government "Pirate"
+		attributes "core pirate"
+		distance 3 4
+	npc
+		government Syndicate
+		personality waiting
+		fleet "Small Syndicate"
+	npc
+		government Syndicate
+		personality waiting entering
+		system destination
+		fleet "Small Syndicate"
+	
+	npc accompany save
+		government Pirate
+		personality escort
+		fleet
+			names "pirate"
+			variant 1
+				"Headhunter"
+			variant 1
+				"Headhunter (Particle)"
+			variant 1
+				"Quicksilver"
+			variant 1
+				"Quicksilver (Proton)"
+	on complete
+		"pirate jobs" ++
+		payment 180000
+		dialog phrase "generic safe escort completion dialog"
+	on visit
+		dialog phrase "generic arrived-without-npc dialog"
+
+mission "Escort Illegal Cargo (Large, Core, Dangerous Path)"
+	name "保护运往<planet>的货物"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	job
+	repeat
+	description "<npc> 的船长将支付您 <payment> 的费用，以护送他们及其非法货物安全通过执法空间，并于 <date> 到达 <destination>。"
+	deadline 12
+	to offer
+		random < 30
+		"combat rating" > 1100
+		"reputation: Pirate" > 0
+	source
+		government Republic "Free Worlds" Syndicate Neutral Pirate
+		attributes core "core pirate"
+	destination
+		government "Pirate"
+		attributes "core pirate"
+		distance 3 6
+	npc
+		government Syndicate
+		personality staying
+		system destination
+		fleet "Large Syndicate"
+	
+	npc accompany save
+		government Pirate
+		personality escort
+		fleet
+			names "pirate"
+			variant 3
+				"Quicksilver (Proton)" 3
+			variant 2
+				"Manta (Proton)"
+			variant 2
+				"Manta"
+			variant 1
+				"Splinter" 2
+			variant 1
+				"Splinter (Laser)" 2
+	on complete
+		"pirate jobs" ++
+		payment 240000
+		dialog phrase "generic safe escort completion dialog"
+	on visit
+		dialog phrase "generic arrived-without-npc dialog"
+
+mission "Escort Stolen Vessel (Extra Large, Core, Dangerous Path)"
+	name "保护前往<planet>的船只"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	job
+	repeat
+	description "<npc> 的船长将支付您 <payment> 费用，以护送他们和他们被盗的船只安全通过执法空间，并于 <date> 到达 <destination>。"
+	deadline 12
+	to offer
+		random < 15
+		"combat rating" > 3000
+		"reputation: Pirate" > 0
+	source
+		government Republic "Free Worlds" Syndicate Neutral Pirate
+		attributes core "core pirate"
+	destination
+		government "Pirate"
+		attributes "core pirate"
+		distance 3 6
+	npc
+		government Syndicate
+		personality staying
+		system destination
+		fleet "Small Syndicate"
+		fleet "Large Syndicate"
+	
+	npc accompany save
+		government Pirate
+		personality escort
+		fleet
+			names "pirate"
+			variant 4
+				"Firebird"
+				"Argosy"
+			variant 4
+				"Firebird (Plasma)"
+				"Bounder"
+			variant 4
+				"Firebird (Missile)"
+				"Quicksilver"
+			variant 2
+				"Falcon"
+				"Freighter"
+			variant 2
+				"Falcon (Laser)"
+				"Freighter"
+			variant 1
+				"Falcon (Heavy)"
+				"Heavy Shuttle"
+	on complete
+		"pirate jobs" ++
+		payment 375000
+		dialog phrase "generic safe escort completion dialog"
+	on visit
+		dialog phrase "generic arrived-without-npc dialog"
+
+mission "Mercenary Job (Medium, South, Dangerous Origin)"
+	name "对<planet>的保护"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	job
+	repeat
+	description "<npc> 的船长将向您支付 <payment>，以帮助他们逃避当地执法并由 <date> 到达 <destination>。"
+	deadline 10
+	to offer
+		random < 40
+		"combat rating" > 400
+		"reputation: Pirate" > 0
+	source
+		government Republic "Free Worlds" Syndicate Neutral
+		attributes south
+	destination
+		government "Pirate"
+		attributes "south pirate"
+		distance 3 4
+	npc
+		government Militia
+		personality waiting
+		fleet "Small Militia"
+	npc
+		government Militia
+		personality waiting entering
+		system destination
+		fleet "Small Militia"
+	
+	npc accompany save
+		government Pirate
+		personality escort
+		fleet
+			names "pirate"
+			variant 1
+				"Clipper"
+			variant 1
+				"Clipper (Speedy)"
+			variant 1
+				"Clipper (Heavy)"
+			variant 1
+				"Modified Argosy"
+	on complete
+		"pirate jobs" ++
+		payment 180000
+		dialog phrase "generic safe escort completion dialog"
+	on visit
+		dialog phrase "generic arrived-without-npc dialog"
+
+mission "Escort Illegal Cargo (Large, South, Dangerous Path)"
+	name "保护运往<planet>的货物"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	job
+	repeat
+	description "<npc> 的船长将支付您 <payment> 的费用，以护送他们及其非法货物安全通过执法空间，并于 <date> 到达 <destination>。"
+	deadline 12
+	to offer
+		random < 30
+		"combat rating" > 1100
+		"reputation: Pirate" > 0
+	source
+		government Republic "Free Worlds" Syndicate Neutral Pirate
+		attributes south "south pirate"
+	destination
+		government "Pirate"
+		attributes "south pirate"
+		neighbor
+			not government "Pirate"
+		distance 4 6
+	npc
+		government Militia
+		personality staying
+		system destination
+		fleet "Large Militia"
+	
+	npc accompany save
+		government Pirate
+		personality escort
+		fleet
+			names "pirate"
+			variant 2
+				"Modified Argosy"
+			variant 2
+				"Modified Argosy (Heavy)"
+			variant 2
+				"Modified Argosy (Blaster)"
+			variant 1
+				"Bastion"
+			variant 1
+				"Bastion (Laser)"
+			variant 1
+				"Bastion (Heavy)"
+	on complete
+		"pirate jobs" ++
+		payment 240000
+		dialog phrase "generic safe escort completion dialog"
+	on visit
+		dialog phrase "generic arrived-without-npc dialog"
+
+mission "Escort Stolen Vessel (Extra Large, South, Dangerous Path)"
+	name "保护前往<planet>的船只"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	job
+	repeat
+	description "<npc> 的船长将支付您 <payment> 费用，以护送他们和他们被盗的船只安全通过执法空间，并于 <date> 到达 <destination>。"
+	deadline 12
+	to offer
+		random < 15
+		"combat rating" > 3000
+		"reputation: Pirate" > 0
+	source
+		government Republic "Free Worlds" Syndicate Neutral Pirate
+		attributes south "south pirate"
+	destination
+		government "Pirate"
+		attributes "south pirate"
+		neighbor
+			not government "Pirate"
+		distance 4 6
+	npc
+		government Militia
+		personality staying
+		system destination
+		fleet "Small Militia"
+		fleet "Large Militia"
+	
+	npc accompany save
+		government Pirate
+		personality escort
+		fleet
+			names "pirate"
+			variant 4
+				"Bastion"
+				"Blackbird"
+			variant 4
+				"Bastion (Laser)"
+				"Clipper"
+			variant 4
+				"Bastion (Heavy)"
+				"Bounder"
+			variant 2
+				"Falcon"
+				"Hauler"
+			variant 2
+				"Falcon (Laser)"
+				"Freighter"
+			variant 1
+				"Falcon (Heavy)"
+				"Heavy Shuttle"
+	on complete
+		"pirate jobs" ++
+		payment 375000
+		dialog phrase "generic safe escort completion dialog"
+	on visit
+		dialog phrase "generic arrived-without-npc dialog"
+
+
+
+mission "Eliminating Law Enforcement (North, Small)"
+	name "<system> 附近的海军"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	repeat
+	job
+	description "<system> 系统四跳范围内的一支海军舰队已经停止了我们的袭击。销毁它们并由 <day> 返回 <planet>，并支付 <payment> 的费用。"
+	deadline 20
+	to offer
+		random < 25
+		"combat rating" > 650
+	source
+		government "Pirate"
+		attributes "north pirate"
+	npc kill
+		government "Republic"
+		personality heroic marked staying target tracked
+		system
+			distance 1 4
+		fleet "Small Republic" 2
+		dialog "舰队已被消灭。您可以通过返回 <destination> 来领取赏金。"
+	on complete
+		"pirate jobs" ++
+		payment 360000
+		"reputation: Pirate" += 5
+		dialog "<planet> 的海盗感谢您消灭了海军舰队，并支付了 <payment>。"
+
+mission "Eliminating Law Enforcement (North, Large)"
+	name "<system> 附近的海军"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	repeat
+	job
+	description "<system> 星系附近的一支大型海军舰队已经停止了我们的袭击。销毁它们并由 <day> 返回 <planet>，并支付 <payment> 的费用。"
+	deadline 20
+	to offer
+		random < 15
+		"combat rating" > 2000
+	source
+		government "Pirate"
+		attributes "north pirate"
+	npc kill
+		government "Republic"
+		personality heroic marked staying target tracked
+		system
+			distance 1 4
+		fleet "Large Republic"
+		fleet "Small Republic" 2
+		dialog "舰队已被消灭。您可以通过返回 <destination> 来领取赏金。"
+	on complete
+		"pirate jobs" ++
+		payment 600000
+		"reputation: Pirate" += 10
+		dialog "<planet> 的海盗感谢您消灭了海军舰队，并支付了 <payment>。"
+
+mission "Eliminating Law Enforcement (Core, Small)"
+	name "<system> 附近的集团"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	repeat
+	job
+	description "<system> 星系附近的辛迪加舰队已经停止了我们的袭击。销毁它们并由 <day> 返回 <planet>，并支付 <payment> 的费用。"
+	deadline 25
+	to offer
+		random < 25
+		"combat rating" > 650
+	source
+		government "Pirate"
+		attributes "core pirate"
+	npc kill
+		government "Syndicate"
+		personality heroic marked staying target tracked
+		system
+			distance 1 3
+			neighbor
+				not government "Pirate"
+		fleet "Small Syndicate" 2
+		dialog "舰队已被消灭。您可以通过返回 <destination> 来领取赏金。"
+	on complete
+		"pirate jobs" ++
+		payment 360000
+		"reputation: Pirate" += 5
+		dialog "<planet> 的海盗感谢您消灭辛迪加舰队，并支付 <payment>。"
+
+mission "Eliminating Law Enforcement (Core, Large)"
+	name "<system> 附近的集团"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	repeat
+	job
+	description "<system> 星系附近的一支大型辛迪加舰队已经停止了我们的袭击。销毁它们并由 <day> 返回 <planet>，并支付 <payment> 的费用。"
+	deadline 25
+	to offer
+		random < 15
+		"combat rating" > 2000
+	source
+		government "Pirate"
+		attributes "core pirate"
+	npc kill
+		government "Syndicate"
+		personality heroic marked staying target tracked
+		system
+			distance 1 3
+			neighbor
+				not government "Pirate"
+		fleet "Large Syndicate"
+		fleet "Small Syndicate" 2
+		dialog "舰队已被消灭。您可以通过返回 <destination> 来领取赏金。"
+	on complete
+		"pirate jobs" ++
+		payment 600000
+		"reputation: Pirate" += 10
+		dialog "<planet> 的海盗感谢您消灭辛迪加舰队，并支付 <payment>。"
+
+mission "Eliminating Law Enforcement (South, Small)"
+	name "<system>附近的民兵"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	repeat
+	job
+	description "<system> 星系附近的一支民兵舰队已经停止了我们的袭击。销毁它们并由 <day> 返回 <planet>，并支付 <payment> 的费用。"
+	deadline 14
+	to offer
+		random < 25
+		"combat rating" > 220
+	source
+		government "Pirate"
+		attributes "south pirate"
+		neighbor
+			not government "Pirate"
+	npc kill
+		government "Militia"
+		personality heroic marked staying target tracked
+		system
+			distance 1 3
+			neighbor
+				not government "Pirate"
+		fleet "Small Militia" 2
+		dialog "舰队已被消灭。您可以通过返回 <destination> 来领取赏金。"
+	on complete
+		"pirate jobs" ++
+		payment 320000
+		"reputation: Pirate" += 5
+		dialog "<planet> 的海盗感谢您消灭了民兵舰队，并支付了 <payment>。"
+
+mission "Eliminating Law Enforcement (South, Large)"
+	name "<system>附近的民兵"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	repeat
+	job
+	description "<system> 星系附近的一支大型民兵舰队已经停止了我们的袭击。销毁它们并由 <day> 返回 <planet>，并支付 <payment> 的费用。"
+	deadline 14
+	to offer
+		random < 15
+		"combat rating" > 1600
+	source
+		government "Pirate"
+		attributes "south pirate"
+		neighbor
+			not government "Pirate"
+	npc kill
+		government "Militia"
+		personality heroic marked staying target tracked
+		system
+			distance 1 3
+			neighbor
+				not government "Pirate"
+		fleet "Large Militia"
+		fleet "Small Militia" 2
+		dialog "舰队已被消灭。您可以通过返回 <destination> 来领取赏金。"
+	on complete
+		"pirate jobs" ++
+		payment 520000
+		"reputation: Pirate" += 10
+		dialog "<planet> 的海盗感谢您消灭了民兵舰队，并支付了 <payment>。"
+
+
+
+mission "Eliminating Competition (North, Small)"
+	name "<system> 附近的竞争"
+	description "一个敌对小团伙正在 <system> 系统附近制造麻烦。将它们取出并在 <day> 之前返回 <planet>，并支付 <payment> 的费用。"
+	repeat
+	job
+	deadline 20
+	to offer
+		random < 20
+		"combat rating" > 400
+	source
+		government "Pirate"
+		attributes "north pirate"
+	npc kill
+		government "Pirate (Rival)"
+		personality heroic marked staying target tracked
+		system
+			distance 1 2
+		fleet "Small Northern Pirates" 4
+		dialog "舰队已被消灭。您可以通过返回 <destination> 来领取赏金。"
+	on accept
+		"reputation: Pirate (Rival)" = "reputation: Pirate"
+	on complete
+		"pirate jobs" ++
+		payment 500000
+		dialog "<planet> 的海盗非常感谢您消灭了敌对帮派，并支付给您 <payment>。"
+
+mission "Eliminating Competition (North, Large)"
+	name "<system> 附近的竞争"
+	description "一个庞大的敌对帮派正在获得过多的权力。他们的领导者目前位于 <system> 系统附近。带他们和他们的护卫出去，并在 <day> 之前返回 <planet>，支付 <payment> 的费用。"
+	repeat
+	job
+	deadline 20
+	to offer
+		random < 10
+		"combat rating" > 1100
+	source
+		government "Pirate"
+		attributes "north pirate"
+	npc kill
+		government "Pirate (Rival)"
+		personality heroic marked staying target tracked
+		system
+			distance 1 2
+		fleet "Large Northern Pirates" 2
+		fleet "Small Northern Pirates" 2
+		dialog "舰队已被消灭。您可以通过返回 <destination> 来领取赏金。"
+	on accept
+		"reputation: Pirate (Rival)" = "reputation: Pirate"
+	on complete
+		"pirate jobs" ++
+		payment 750000
+		dialog "<planet> 的海盗非常感谢您消灭了敌对帮派，并支付给您 <payment>。"
+
+mission "Eliminating Competition (Core, Small)"
+	name "<system> 附近的竞争"
+	description "一个敌对小团伙正在 <system> 系统附近制造麻烦。将它们取出并在 <day> 之前返回 <planet>，并支付 <payment> 的费用。"
+	repeat
+	job
+	deadline 20
+	to offer
+		random < 20
+		"combat rating" > 400
+	source
+		government "Pirate"
+		attributes "core pirate"
+	npc kill
+		government "Pirate (Rival)"
+		personality heroic marked staying target tracked
+		system
+			distance 1 2
+		fleet "Small Core Pirates" 4
+		dialog "舰队已被消灭。您可以通过返回 <destination> 来领取赏金。"
+	on accept
+		"reputation: Pirate (Rival)" = "reputation: Pirate"
+	on complete
+		"pirate jobs" ++
+		payment 500000
+		dialog "<planet> 的海盗非常感谢您消灭了敌对帮派，并支付给您 <payment>。"
+
+mission "Eliminating Competition (Core, Large)"
+	name "<system> 附近的竞争"
+	description "一个庞大的敌对帮派正在获得过多的权力。他们的领导者目前位于 <system> 系统附近。带他们和他们的护卫出去，并在 <day> 之前返回 <planet>，支付 <payment> 的费用。"
+	repeat
+	job
+	deadline 20
+	to offer
+		random < 10
+		"combat rating" > 1100
+	source
+		government "Pirate"
+		attributes "core pirate"
+	npc kill
+		government "Pirate (Rival)"
+		personality heroic marked staying target tracked
+		system
+			distance 1 2
+		fleet "Large Core Pirates" 2
+		fleet "Small Core Pirates" 2
+		dialog "舰队已被消灭。您可以通过返回 <destination> 来领取赏金。"
+	on accept
+		"reputation: Pirate (Rival)" = "reputation: Pirate"
+	on complete
+		"pirate jobs" ++
+		payment 750000
+		dialog "<planet> 的海盗非常感谢您消灭了敌对帮派，并支付给您 <payment>。"
+
+mission "Eliminating Competition (South, Small)"
+	name "<system> 附近的竞争"
+	description "一个敌对小团伙正在 <system> 系统附近制造麻烦。将它们取出并在 <day> 之前返回 <planet>，并支付 <payment> 的费用。"
+	repeat
+	job
+	deadline 14
+	to offer
+		random < 20
+		"combat rating" > 400
+	source
+		government "Pirate"
+		attributes "south pirate"
+	npc kill
+		government "Pirate (Rival)"
+		personality heroic marked staying target tracked
+		system
+			distance 1 2
+		fleet "Small Southern Pirates" 4
+		dialog "舰队已被消灭。您可以通过返回 <destination> 来领取赏金。"
+	on accept
+		"reputation: Pirate (Rival)" = "reputation: Pirate"
+	on complete
+		"pirate jobs" ++
+		payment 500000
+		dialog "<planet> 的海盗非常感谢您消灭了敌对帮派，并支付给您 <payment>。"
+
+mission "Eliminating Competition (South, Large)"
+	name "<system> 附近的竞争"
+	description "一个庞大的敌对帮派正在获得过多的权力。他们的领导者目前位于 <system> 系统附近。带他们和他们的护卫出去，并在 <day> 之前返回 <planet>，支付 <payment> 的费用。"
+	repeat
+	job
+	deadline 14
+	to offer
+		random < 10
+		"combat rating" > 1100
+	source
+		government "Pirate"
+		attributes "south pirate"
+	npc kill
+		government "Pirate (Rival)"
+		personality heroic marked staying target tracked
+		system
+			distance 1 2
+		fleet "Large Southern Pirates" 2
+		fleet "Small Southern Pirates" 2
+		dialog "舰队已被消灭。您可以通过返回 <destination> 来领取赏金。"
+	on accept
+		"reputation: Pirate (Rival)" = "reputation: Pirate"
+	on complete
+		"pirate jobs" ++
+		payment 750000
+		dialog "<planet> 的海盗非常感谢您消灭了敌对帮派，并支付给您 <payment>。"
+
+mission "Eliminating Competition (Marauders, Small)"
+	name "<system> 附近的竞争"
+	description "一个小掠夺团伙正在 <system> 系统附近制造麻烦。将它们取出并在 <day> 之前返回 <planet>，并支付 <payment> 的费用。"
+	repeat
+	job
+	deadline 20
+	to offer
+		random < 5
+		"combat rating" > 600
+	source
+		government "Pirate"
+	npc kill
+		government "Pirate (Rival)"
+		personality heroic marked staying target tracked
+		system
+			distance 1 2
+		fleet "Marauder fleet VI"
+		dialog "舰队已被消灭。您可以通过返回 <destination> 来领取赏金。"
+	on accept
+		"reputation: Pirate (Rival)" = "reputation: Pirate"
+	on complete
+		"pirate jobs" ++
+		payment 500000
+		dialog "<planet> 的海盗非常感谢您消灭了敌对帮派，并支付给您 <payment>。"
+
+mission "Eliminating Competition (Marauders, Medium)"
+	name "<system> 附近的竞争"
+	description "掠夺团伙正在获得太多权力。他们的领导者目前位于 <system> 系统附近。带他们和他们的护卫出去，并在 <day> 之前返回 <planet>，支付 <payment> 的费用。"
+	repeat
+	job
+	deadline 20
+	to offer
+		random < 5
+		"combat rating" > 1100
+	source
+		government "Pirate"
+	npc kill
+		government "Pirate (Rival)"
+		personality heroic marked staying target tracked
+		system
+			distance 1 2
+		fleet "Marauder fleet VIII"
+		dialog "舰队已被消灭。您可以通过返回 <destination> 来领取赏金。"
+	on accept
+		"reputation: Pirate (Rival)" = "reputation: Pirate"
+	on complete
+		"pirate jobs" ++
+		payment 750000
+		dialog "<planet> 的海盗非常感谢您消灭了敌对帮派，并支付给您 <payment>。"
+
+mission "Eliminating Competition (Marauders, Large)"
+	name "掠夺者消灭"
+	description "<system> 系统的海盗对统治掠夺者团伙的行为越来越不满。将它们取出并在 <day> 之前返回 <planet>，并支付 <payment> 的费用。"
+	repeat
+	job
+	deadline 20
+	to offer
+		random < 5
+		"combat rating" > 2100
+	source
+		government "Pirate"
+	npc kill
+		government "Pirate (Rival)"
+		personality heroic marked staying target tracked
+		system
+			distance 1 2
+		fleet "Marauder fleet X"
+		dialog "舰队已被消灭。您可以通过返回 <destination> 来领取赏金。"
+	on accept
+		"reputation: Pirate (Rival)" = "reputation: Pirate"
+	on complete
+		"pirate jobs" ++
+		payment 900000
+		dialog "<planet> 的海盗感谢您消灭了统治团伙，并支付了 <payment>。"
+
+
+
+mission "Raid on Merchants (North)"
+	name "<system>附近的商家"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	repeat
+	job
+	description "在共和国太空中发现了一支商船队。加入摧毁它们的行列，并由 <day> 返回 <system> 系统中的 <planet>，以分享战利品 (<payment>)。"
+	to offer
+		random < 50
+		"combat rating" > 150
+		"reputation: Pirate" > 0
+	source
+		government "Pirate"
+		attributes "north pirate"
+	npc
+		government "Pirate"
+		personality plunders harvests escort
+		fleet "Small Northern Pirates"
+	
+	npc kill
+		government "Merchant"
+		personality heroic staying target tracked
+		system
+			distance 1 5
+			government "Republic"
+		fleet "Small Northern Merchants" 2
+		fleet "Large Northern Merchants"
+		dialog "商人已经被淘汰了。返回 <destination> 领取你的战利品。"
+	on complete
+		"pirate jobs" ++
+		payment 150000
+		dialog "清点被摧毁的商船队的战利品后，你将获得分成。 <payment>"
+
+mission "Raid on Merchants (Core)"
+	name "<system>附近的商家"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	repeat
+	job
+	description "在辛迪加空间发现了一支商船队。加入摧毁它们的行列，并由 <day> 返回 <system> 系统中的 <planet>，以分享战利品 (<payment>)。"
+	to offer
+		random < 50
+		"combat rating" > 150
+		"reputation: Pirate" > 0
+	source
+		government "Pirate"
+		attributes "core pirate"
+	npc
+		government "Pirate"
+		personality plunders harvests escort
+		fleet "Small Core Pirates"
+	
+	npc kill
+		personality heroic staying target tracked
+		government "Merchant"
+		system
+			distance 1 3
+			government "Syndicate"
+		fleet "Small Core Merchants" 2
+		fleet "Large Core Merchants"
+		dialog "商人已经被淘汰了。返回 <destination> 领取你的战利品。"
+	on complete
+		"pirate jobs" ++
+		payment 150000
+		dialog "清点被摧毁的商船队的战利品后，你将获得分成。 <payment>"
+
+mission "Raid on Merchants (South)"
+	name "<system>附近的商家"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	repeat
+	job
+	description "在南方太空发现了一支商船队。加入摧毁它们的行列，并由 <day> 返回 <system> 系统中的 <planet>，以分享战利品 (<payment>)。"
+	to offer
+		random < 50
+		"combat rating" > 150
+		"reputation: Pirate" > 0
+	source
+		government "Pirate"
+		attributes "south pirate"
+	npc
+		government "Pirate"
+		personality plunders harvests escort
+		fleet "Small Southern Pirates"
+	npc kill
+		personality heroic staying target tracked
+		government "Merchant"
+		system
+			distance 1 3
+			neighbor
+				not government "Pirate"
+		fleet "Small Southern Merchants" 2
+		fleet "Large Southern Merchants"
+		dialog "商人已经被淘汰了。返回 <destination> 领取你的战利品。"
+	on complete
+		"pirate jobs" ++
+		payment 150000
+		dialog "清点被摧毁的商船队的战利品后，你将获得分成。 <payment>"
+
+
+
+mission "Northern Pirate Defense"
+	name "保卫<planet>"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	repeat
+	minor
+	description "当地海军部队正在攻击 <destination>！击败他们，捍卫无政府状态！"
+	to offer
+		random < 15
+		"reputation: Pirate" >= 0
+	source
+		government "Pirate"
+		attributes "north pirate"
+	npc evade
+		government "Republic"
+		personality heroic staying waiting
+		fleet "Large Republic" 2
+		dialog `海军舰队已被击败。返回到<destination>。`
+	npc
+		government "Pirate"
+		personality plunders staying
+		fleet "Large Northern Pirates"
+		fleet "Small Northern Pirates"
+	on offer
+		conversation "北方海盗防御"
+	on complete
+		"pirate jobs" ++
+		payment 200000
+		dialog `许多 <planet> 当地人感谢您，并集体向您支付 <payment>，因为您帮助赶走了海军。`
+
+mission "Northern Pirate Defense [Unpaid]"
+	name "保卫<planet>"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	repeat
+	minor
+	description "当地海军部队正在攻击 <destination>！击败他们，捍卫无政府状态！"
+	to offer
+		random < 5
+		"reputation: Pirate" >= 0
+	source
+		government "Pirate"
+		attributes "north pirate"
+	npc evade
+		government "Republic"
+		personality heroic staying waiting
+		fleet "Large Republic"
+		fleet "Small Republic"
+		dialog `海军舰队已被击败。返回到<destination>。`
+	npc
+		government "Pirate"
+		personality plunders staying
+		fleet "Large Northern Pirates"
+		fleet "Small Northern Pirates"
+	on offer
+		conversation "北方海盗防御"
+	on complete
+		"pirate jobs" ++
+		dialog `许多 <planet> 当地人感谢您帮助赶走海军。`
+
+conversation "北方海盗防御"
+	`突然，你听到外面有人大声喊叫：“我们受到攻击！<planet>受到海军的攻击！我们需要每艘有战斗力的舰艇加入防御！”这可能很容易让你自己丧命，而且你甚至不能保证你的工作会得到报酬。`
+	choice
+		`（待在这里直到战斗结束。）`
+			decline
+		`（加入防御舰队。）`
+	`当地海盗部队正准备击退海军的进攻。你加入他们，一起出发……`
+		launch
+
+
+mission "Core Pirate Defense"
+	name "保卫<planet>"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	repeat
+	minor
+	description "当地辛迪加部队正在攻击 <destination>！击败他们，捍卫无政府状态！"
+	to offer
+		random < 15
+		"reputation: Pirate" >= 0
+	source
+		government "Pirate"
+		attributes "core pirate"
+	npc evade
+		government "Syndicate"
+		personality heroic staying waiting
+		fleet "Small Syndicate"
+		fleet "Large Syndicate" 2
+		dialog `辛迪加舰队已被击败。返回到<destination>。`
+	npc
+		government "Pirate"
+		personality plunders staying
+		fleet "Small Core Pirates" 2
+	on offer
+		conversation "核心海盗防御"
+	on complete
+		"pirate jobs" ++
+		payment 200000
+		dialog `许多 <planet> 当地人感谢您，并集体向您支付 <payment>，因为您帮助赶走了辛迪加。`
+
+mission "Core Pirate Defense [Unpaid]"
+	name "保卫<planet>"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	repeat
+	minor
+	description "当地辛迪加部队正在攻击 <destination>！击败他们，捍卫无政府状态！"
+	to offer
+		random < 5
+		"reputation: Pirate" >= 0
+	source
+		government "Pirate"
+		attributes "core pirate"
+	npc evade
+		government "Syndicate"
+		personality heroic staying waiting
+		fleet "Small Syndicate" 2
+		fleet "Large Syndicate"
+		dialog `辛迪加舰队已被击败。返回到<destination>。`
+	npc
+		government "Pirate"
+		personality plunders staying
+		fleet "Small Core Pirates" 2
+	on offer
+		conversation "核心海盗防御"
+	on complete
+		"pirate jobs" ++
+		dialog `许多 <planet> 当地人感谢您帮助赶走辛迪加。`
+
+conversation "核心海盗防御"
+	`突然你听到外面有人大声喊叫：“我们受到攻击！<planet>受到辛迪加的攻击！我们需要每艘有战斗力的船只加入防御！”这可能很容易让你自己丧命，而且你甚至不能保证你的工作会得到报酬。`
+	choice
+		`（待在这里直到战斗结束。）`
+			decline
+		`（加入防御舰队。）`
+	`当地海盗部队正准备击退辛迪加的袭击。你加入他们，一起出发……`
+		launch
+
+
+mission "Southern Pirate Defense"
+	name "保卫<planet>"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	repeat
+	minor
+	description "当地民兵正在攻击 <destination>！击败他们，捍卫无政府状态！"
+	to offer
+		random < 15
+		"reputation: Pirate" >= 0
+	source
+		government "Pirate"
+		attributes "south pirate"
+		neighbor
+			not government "Pirate"
+	npc evade
+		government "Militia"
+		personality heroic staying waiting
+		fleet "Small Militia"
+		fleet "Large Militia" 2
+		dialog `民兵舰队已被击败。返回到<destination>。`
+	npc
+		government "Pirate"
+		personality plunders staying
+		fleet "Small Southern Pirates" 2
+	on offer
+		conversation "南方海盗防御"
+	on complete
+		"pirate jobs" ++
+		payment 200000
+		dialog `许多 <planet> 当地人感谢您，并集体向您支付 <payment>，因为您帮助赶走了民兵部队。`
+
+mission "Southern Pirate Defense [Unpaid]"
+	name "保卫<planet>"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	repeat
+	minor
+	description "当地民兵正在攻击 <destination>！击败他们，捍卫无政府状态！"
+	to offer
+		random < 5
+		"reputation: Pirate" >= 0
+	source
+		government "Pirate"
+		attributes "south pirate"
+		neighbor
+			not government "Pirate"
+	npc evade
+		government "Militia"
+		personality heroic staying waiting
+		fleet "Small Militia" 2
+		fleet "Large Militia"
+		dialog `民兵舰队已被击败。返回到<destination>。`
+	npc
+		government "Pirate"
+		personality plunders staying
+		fleet "Small Southern Pirates" 2
+	on offer
+		conversation "南方海盗防御"
+	on complete
+		"pirate jobs" ++
+		dialog `许多 <planet> 当地人感谢您帮助赶走民兵部队。`
+
+conversation "南方海盗防御"
+	`突然，你听到外面有人大声喊叫：“我们受到攻击！<planet>受到民兵的攻击！我们需要每艘有战斗力的船只加入防御！”这可能很容易让你自己丧命，而且你甚至不能保证你的工作会得到报酬。`
+	choice
+		`（待在这里直到战斗结束。）`
+			decline
+		`（加入防御舰队。）`
+	`当地海盗部队正准备击退民兵的袭击。你加入他们，一起出发……`
+		launch
+
+
+
+outfit "Secret Cargo"
+	category "Special"
+	cost 0
+	thumbnail "outfit/unknown"
+	"mass" 1
+	description "商船上的货物被盗，引起了海盗军阀的兴趣。"
+
+mission "Cargo Theft (North)"
+	name "<system>附近的车队"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	job
+	repeat
+	description `在 <system> 星系附近的共和国空间中发现了一支商船队。当地军阀有兴趣将货物放在 <npc> 上。掠夺它并由 <day> 返回 <planet>，支付 <payment>。`
+	to offer
+		random < 15
+		"combat rating" > 500
+	deadline 20
+	source
+		government Pirate
+		attributes "north pirate"
+	npc
+		government "Merchant"
+		personality staying heroic target tracked
+		system
+			distance 1 4
+			government "Republic"
+		fleet
+			names "civilian"
+			variant
+				"Corvette" 2
+				"Freighter (Secret Cargo)"
+			variant
+				"Firebird" 2
+				"Freighter (Secret Cargo)"
+			variant
+				"Leviathan"
+				"Freighter (Secret Cargo)"
+	on visit
+		dialog "您降落在 <planet> 上，但您没有秘密货物！返回 <npc> 并将货物带回 <planet> 。"
+	on complete
+		"pirate jobs" ++
+		outfit "Secret Cargo" -1
+		payment 1500000
+		dialog "<planet> 的海盗从您的货舱中拿走秘密货物并向您支付 <payment>。"
+
+mission "Cargo Theft (Core)"
+	name "<system>附近的车队"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	job
+	repeat
+	description `在 <system> 系统附近的辛迪加空间中发现了一支商船队。当地军阀有兴趣将货物放在 <npc> 上。掠夺它并由 <day> 返回 <planet>，支付 <payment>。`
+	to offer
+		random < 15
+		"combat rating" > 500
+	deadline 20
+	source
+		government Pirate
+		attributes "core pirate"
+	npc
+		government "Merchant"
+		personality staying heroic target tracked
+		system
+			distance 1 3
+			government "Syndicate"
+		fleet
+			names "civilian"
+			variant
+				"Quicksilver" 2
+				"Freighter (Secret Cargo)"
+			variant
+				"Splinter" 2
+				"Freighter (Secret Cargo)"
+			variant
+				"Vanguard"
+				"Freighter (Secret Cargo)"
+	on visit
+		dialog "您降落在 <planet> 上，但您没有秘密货物！返回 <npc> 并将货物带回 <planet> 。"
+	on complete
+		"pirate jobs" ++
+		outfit "Secret Cargo" -1
+		payment 1500000
+		dialog "<planet> 的海盗从您的货舱中拿走秘密货物并向您支付 <payment>。"
+
+mission "Cargo Theft (South)"
+	name "<system>附近的车队"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	job
+	repeat
+	description `在 <system> 星系附近的南部太空中发现了一支商船队。当地军阀有兴趣将货物放在 <npc> 上。掠夺它并由 <day> 返回 <planet>，支付 <payment>。`
+	to offer
+		random < 15
+		"combat rating" > 500
+	deadline 14
+	source
+		government Pirate
+		attributes "south pirate"
+		neighbor
+			not government "Pirate"
+	npc
+		government "Merchant"
+		personality staying heroic target tracked
+		system
+			distance 1 3
+			not government "Pirate"
+		fleet
+			names "civilian"
+			variant
+				"Bastion" 2
+				"Freighter (Secret Cargo)"
+			variant
+				"Blackbird" 2
+				"Freighter (Secret Cargo)"
+			variant
+				"Falcon"
+				"Freighter (Secret Cargo)"
+	on visit
+		dialog "您降落在 <planet> 上，但您没有秘密货物！返回 <npc> 并将货物带回 <planet> 。"
+	on complete
+		"pirate jobs" ++
+		outfit "Secret Cargo" -1
+		payment 1500000
+		dialog "<planet> 的海盗从您的货舱中拿走秘密货物并向您支付 <payment>。"
+
+
+
+mission "FW Assassination [1]"
+	name "暗杀政治目标"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	description "一名担心当地奴隶贩子的自由世界政客被发现经过其飞船 <npc> 中 <system> 系统附近的自由世界空间。用 <day> 暗杀他们，向自由世界发送消息。付款方式为<payment>。请注意，他们可能有护送人员。"
+	repeat
+	job
+	deadline 14
+	to offer
+		"combat rating" > 125
+		random < 5
+		"reputation: Pirate" > -100
+		has "event: war begins"
+	source
+		government "Pirate"
+		attributes "south pirate"
+		neighbor
+			not government "Pirate"
+	npc kill
+		government "Free Worlds"
+		personality staying target tracked
+		system
+			government "Free Worlds"
+			distance 1 3
+		fleet
+			names civilian
+			variant 10
+				"Blackbird"
+			variant 2
+				"Sparrow"
+				"Blackbird"
+			variant 4
+				"Fury" 2
+				"Blackbird"
+			variant 3
+				"Hawk" 3
+				"Blackbird"
+			variant 1
+				"Osprey"
+				"Blackbird"
+		dialog "目标已被摧毁。返回 <destination> 进行付款。"
+	on complete
+		"pirate jobs" ++
+		payment 460000
+		dialog "一群奴隶贩子感谢您消灭了政客，并向您支付了<payment>。"
+		"reputation: Free Worlds" -= 10
+		"reputation: Pirate" += 3
+		
+mission "FW Assassination [2]"
+	name "暗杀政治目标"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	description "一名激怒海盗军阀的自由世界政客被发现经过其飞船 <npc> 中 <system> 系统附近的自由世界空间。用 <day> 暗杀他们，向自由世界发送消息。付款方式为<payment>。请注意，他们可能受到重兵防守。"
+	repeat
+	job
+	deadline 14
+	to offer
+		"combat rating" > 400
+		random < 5
+		"reputation: Pirate" > -50
+		has "event: war begins"
+	source
+		government "Pirate"
+		attributes "south pirate"
+		neighbor
+			not government "Pirate"
+	npc kill
+		government "Free Worlds"
+		personality staying target tracked
+		system
+			government "Free Worlds"
+			distance 1 3
+		fleet
+			names civilian
+			variant 3
+				"Blackbird"
+			variant 2
+				"Falcon"
+				"Blackbird"
+			variant 3
+				"Osprey" 2
+				"Blackbird"
+			variant 3
+				"Bastion"
+				"Osprey"
+				"Blackbird"
+			variant 2
+				"Bastion"
+				"Sparrow" 4
+				"Blackbird"
+			variant 1
+				"Fury" 5
+				"Hawk" 4
+				"Blackbird"
+		dialog "目标已被摧毁。返回 <destination> 进行付款。"
+	on complete
+		"pirate jobs" ++
+		payment 800000
+		dialog "海盗军阀感谢您消灭了威胁他们的政客，并向您支付了<payment>。"
+		"reputation: Free Worlds" -= 15
+		"reputation: Pirate" += 5
+		
+mission "Syndicate Assassination [1]"
+	name "暗杀政治目标"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	description "一名辛迪加政客被发现经过其飞船 <npc> 中 <system> 系统附近的辛迪加空间。通过 <day> 刺杀他们，向辛迪加发送消息。付款方式为<payment>。请注意，他们可能有护送人员。"
+	repeat
+	job
+	deadline 25
+	to offer
+		"combat rating" > 125
+		random < 5
+		"reputation: Pirate" > -100
+	source
+		government "Pirate"
+		attributes "core pirate"
+	npc kill
+		government "Syndicate"
+		personality staying target tracked
+		system
+			government "Syndicate"
+			distance 1 3
+		fleet
+			names civilian
+			variant 6
+				"Arrow"
+			variant 6
+				"Bounder"
+			variant 2
+				"Quicksilver" 2
+				"Arrow"
+			variant 2
+				"Manta"
+				"Bounder"
+			variant 3
+				"Wasp" 3
+				"Arrow"
+			variant 3
+				"Quicksilver"
+				"Wasp" 2
+				"Bounder"
+			variant 1
+				"Splinter"
+				"Arrow"
+			variant 1
+				"Splinter"
+				"Bounder"
+		dialog "目标已被摧毁。返回 <destination> 进行付款。"
+	on complete
+		"pirate jobs" ++
+		payment 460000
+		dialog "海盗军阀感谢您消灭政客并向您支付 <payment> 。"
+		"reputation: Syndicate" -= 10
+		"reputation: Pirate" += 3
+		
+mission "Syndicate Assassination [2]"
+	name "暗杀政治目标"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	description "一名辛迪加政治家的计划让当地海盗团伙感到担忧，被发现正在其飞船 <npc> 的 <system> 系统附近穿过辛迪加空间。通过 <day> 刺杀他们，向辛迪加发送消息。付款方式为<payment>。请注意，他们可能受到重兵防守。"
+	repeat
+	job
+	deadline 25
+	to offer
+		"combat rating" > 400
+		random < 5
+		"reputation: Pirate" > -50
+	source
+		government "Pirate"
+		attributes "core pirate"
+	npc kill
+		government "Syndicate"
+		personality staying target tracked
+		system
+			government "Syndicate"
+			distance 1 3
+		fleet
+			names civilian
+			variant 2
+				"Arrow"
+			variant 3
+				"Bounder"
+			variant 2
+				"Vanguard"
+				"Arrow"
+			variant 2
+				"Protector"
+				"Bounder"
+			variant 4
+				"Quicksilver" 4
+				"Arrow"
+			variant 2
+				"Manta" 2
+				"Bounder"
+			variant 2
+				"Manta"
+				"Quicksilver" 2
+				"Arrow"
+			variant 4
+				"Splinter"
+				"Wasp" 3
+				"Bounder"
+			variant 2
+				"Manta"
+				"Splinter"
+				"Arrow"
+			variant 2
+				"Splinter" 2
+				"Bounder"
+			variant 1
+				"Arrow" 20
+		dialog "目标已被摧毁。返回<destination>进行付款。"
+	on complete
+		"pirate jobs" ++
+		payment 800000
+		dialog "一群海盗感谢您消灭了政客，并向您支付了<payment>。"
+		"reputation: Syndicate" -= 15
+		"reputation: Pirate" += 5
+		
+mission "Republic Assassination [1]"
+	name "暗杀政治目标"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	description "一名担心当地海盗团伙的共和国政客被发现在其飞船 <npc> 的 <system> 系统附近经过有人居住的共和国空间。用 <day> 暗杀他们，向共和国发送消息。付款方式为<payment>。请注意，他们可能有护送人员。"
+	repeat
+	job
+	deadline 20
+	to offer
+		"combat rating" > 125
+		random < 5
+		"reputation: Pirate" > -100
+	source
+		government "Pirate"
+		attributes "north pirate"
+	npc kill
+		government "Republic"
+		personality staying target tracked
+		system
+			government "Republic"
+			distance 6
+			not near "Sumar" 1
+			not near "Gorvi" 1
+			not system "Ultima Thule"
+		fleet
+			names civilian
+			variant 7
+				"Flivver"
+			variant 7
+				"Scout"
+			variant 3
+				"Raven"
+				"Berserker"
+				"Flivver"
+			variant 2
+				"Aerie"
+				"Dagger" 4
+				"Scout"
+			variant 2
+				"Firebird"
+				"Flivver"
+			variant 3
+				"Headhunter" 2
+				"Scout"
+			variant 1
+				"Gunboat" 2
+				"Flivver"
+			variant 1
+				"Frigate"
+				"Scout"
+			variant 1
+				"Dagger"
+				"Mule"
+			variant 1
+				"Star Queen"
+		dialog "目标已被摧毁。返回 <destination> 进行付款。"
+	on complete
+		"pirate jobs" ++
+		payment 460000
+		dialog "海盗军阀感谢您消灭政客，并支付给您<payment>。"
+		"reputation: Republic" -= 10
+		"reputation: Navy (Oathkeeper)" -= 10
+		"reputation: Pirate" += 3
+		
+mission "Republic Assassination [2]"
+	name "暗杀政治目标"
+	color selected "illegal job: selected"
+	color unselected "illegal job: unselected"
+	color unavailable "illegal job: unavailable"
+	description "一名担心当地毒贩的共和国政客被发现经过其飞船 <npc> 中 <system> 系统附近有人居住的共和国空间。用 <day> 暗杀他们，向共和国发送消息。付款方式为<payment>。请注意，他们可能受到重兵防守。"
+	repeat
+	job
+	deadline 20
+	to offer
+		"combat rating" > 400
+		random < 5
+		"reputation: Pirate" > -50
+	source
+		government "Pirate"
+		attributes "north pirate"
+	npc kill
+		government "Republic"
+		personality staying target tracked
+		system
+			government "Republic"
+			distance 6
+			not near "Sumar" 1
+			not near "Gorvi" 1
+			not system "Ultima Thule"
+		fleet
+			names civilian
+			variant 1
+				"Flivver"
+			variant 1
+				"Scout"
+			variant 2
+				"Dagger"
+				"Mule"
+			variant 2
+				"Star Queen"
+			variant 2
+				"Aerie"
+				"Dagger" 4
+				"Frigate"
+				"Flivver"
+			variant 4
+				"Headhunter" 4
+				"Scout"
+			variant 3
+				"Raven" 2
+				"Dagger"
+				"Mule"
+			variant 2
+				"Corvette"
+				"Firebird"
+				"Star Queen"
+			variant 2
+				"Leviathan"
+				"Flivver"
+			variant 2
+				"Corvette"
+				"Mule"
+				"Dagger"
+				"Scout"
+			variant 1
+				"Cruiser"
+				"Combat Drone" 4
+				"Dagger"
+				"Mule"
+			variant 1
+				"Carrier"
+				"Lance" 8
+				"Combat Drone" 6
+				"Star Queen"
+		dialog "目标已被摧毁。返回<destination>进行付款。"
+	on complete
+		"pirate jobs" ++
+		payment 800000
+		dialog "一群毒贩感谢您消灭了政客，并向您支付了<payment>。"
+		"reputation: Republic" -= 15
+		"reputation: Navy (Oathkeeper)" -= 15
+		"reputation: Pirate" += 5

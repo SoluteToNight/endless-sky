@@ -1,0 +1,334 @@
+# Copyright (c) 2020 by Michael Zahniser
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program. If not, see <https://www.gnu.org/licenses/>.
+
+phrase "quarg"
+	word
+		"Quar"
+		"Mer"
+		"Ban"
+		"Koor"
+		"Plog"
+		"Flum"
+		"Krak"
+		"Grok"
+		"Merak"
+	word
+		"-"
+		"ala"
+		"gor"
+		"o"
+		"i"
+		"oni"
+		"lam"
+		"tim"
+		"ee"
+		"shee"
+	word
+		"lim"
+		"kor"
+		"far"
+		"mor"
+		"lup"
+		"plug"
+		"trum"
+		"ruk"
+		"rook"
+
+# From the "Southern Television broadcast interruption."
+phrase "hostile quarg"
+	word
+		"All your weapons of evil must be destroyed."
+		"You have only a short time to learn to live together in peace."
+		"You must live in peace... or leave the galaxy."
+
+conversation "夸格监禁"
+	branch "landed"
+		has "flagship landed"
+	`当夸格人完成对你的飞船的扫描后，你会立即受到系统中的欢迎。`
+	`“ <first> <last>，您被发现非法持有夸格设备。我们的设备非常珍贵，而且只属于我们。虽然令人遗憾，但我们必须终止您的职务。”`
+	`他们在你有机会做出反应之前就关闭了通讯，你看向雷达，发现他们的船只已经接近，武器已准备就绪......`
+		accept
+	label landed
+	`您的飞船在着陆垫上着陆后立即失去所有动力。当您四处走动试图找到问题时，您经过了舱口。你发现它已经打开了，有数十名夸格人进来，他们都穿着优雅的全身铠甲。`
+	`“ <first> <last>，您被发现非法拥有夸格设备。我们的设备非常珍贵，而且只属于我们。虽然令人遗憾，但我们必须抓住您。”`
+	`他们不允许你说出任何一句话，然后一名警卫就会将你的手臂锁在背后，完全阻止你毫不费力地反击。你会被带到类似于夸格法庭的地方，在那里他们会向你讲授几个小时，告诉你夸格仪器被他人偷窃和随意使用是多么危险。最终，陪审团判处你终身监禁。`
+	`剩下的日子你都在同一个牢房里度过，虽然它又大又舒适，但很快就变得平淡无奇。你的健康状况非常好，吃得也很好，但夸格人不允许你离开牢房，也很少接受你搭讪的尝试。游客很少，你只能想知道，如果你有机会作为一艘星际飞船的船长，自由地生活这些年，生活会是什么样子。`
+
+# Human Quarg
+
+fleet "Quarg"
+	government "Quarg"
+	names "quarg"
+	cargo 3
+	personality
+		forbearing opportunistic
+	variant
+		"Quarg Lindwyrm"
+	variant
+		"Quarg Drake" 2
+	variant
+		"Quarg Wardragon"
+
+fleet "Large Quarg"
+	government "Quarg"
+	names "quarg"
+	cargo 1
+	personality
+		forbearing opportunistic
+	variant 2
+		"Quarg Lindwyrm" 2
+		"Quarg Wardragon"
+	variant 2
+		"Quarg Wardragon" 2
+		"Quarg Lindwyrm"
+	variant
+		"Quarg Wardragon"
+		"Quarg Drake" 2
+	variant
+		"Quarg Lindwyrm" 2
+		"Quarg Wardragon"
+		"Quarg Drake"
+	variant
+		"Quarg Wardragon" 2
+		"Quarg Drake"
+		"Quarg Lindwyrm"
+	variant
+		"Quarg Lindwyrm" 3
+		"Quarg Wardragon"
+	variant
+		"Quarg Lindwyrm" 2
+		"Quarg Drake" 2
+
+fleet "Quarg Utility"
+	government "Quarg"
+	names "quarg"
+	cargo 1
+	personality
+		forbearing opportunistic
+	variant 3
+		"Quarg Guivre"
+		"Quarg Lindwyrm"
+		"Quarg Wardragon"
+	variant 2
+		"Quarg Guivre"
+		"Quarg Wardragon" 2
+	variant 2
+		"Quarg Guivre"
+		"Quarg Lindwyrm" 2
+	variant 2
+		"Quarg Guivre"
+		"Quarg Drake" 3
+
+
+# Hai Quarg
+
+fleet "Quarg (Hai)"
+	government "Quarg (Hai)"
+	names "quarg"
+	cargo 3
+	personality
+		forbearing opportunistic
+	variant
+		"Quarg Lindwyrm"
+	variant
+		"Quarg Wardragon"
+	variant
+		"Quarg Drake" 2
+
+fleet "Large Quarg (Hai)"
+	government "Quarg (Hai)"
+	names "quarg"
+	cargo 1
+	personality
+		forbearing opportunistic
+	variant 2
+		"Quarg Lindwyrm" 2
+		"Quarg Wardragon"
+	variant 2
+		"Quarg Wardragon" 2
+		"Quarg Lindwyrm"
+	variant
+		"Quarg Wardragon"
+		"Quarg Drake" 2
+	variant
+		"Quarg Lindwyrm" 2
+		"Quarg Wardragon"
+		"Quarg Drake"
+	variant
+		"Quarg Wardragon" 2
+		"Quarg Drake"
+		"Quarg Lindwyrm"
+	variant
+		"Quarg Lindwyrm" 3
+		"Quarg Wardragon"
+	variant
+		"Quarg Lindwyrm" 2
+		"Quarg Drake" 2
+
+fleet "Quarg Utility (Hai)"
+	government "Quarg (Hai)"
+	names "quarg"
+	cargo 1
+	personality
+		forbearing opportunistic
+	variant 3
+		"Quarg Guivre"
+		"Quarg Lindwyrm"
+		"Quarg Wardragon"
+	variant 2
+		"Quarg Guivre"
+		"Quarg Drake" 3
+	variant 2
+		"Quarg Guivre"
+		"Quarg Wyvern"
+		"Quarg Lindwyrm"
+	variant
+		"Quarg Guivre"
+		"Quarg Wyvern" 2
+	variant
+		"Quarg Guivre"
+		"Quarg Wyvern" 2
+		"Quarg Drake"
+	variant
+		"Quarg Guivre"
+		"Quarg Wyvern" 2
+		"Quarg Wardragon"
+	variant
+		"Quarg Guivre"
+		"Quarg Wardragon" 3
+	variant
+		"Quarg Guivre"
+		"Quarg Wardragon" 2
+		"Quarg Drake" 2
+
+# Kor Efret Quarg
+
+fleet "Quarg (Kor Efret)"
+	government "Quarg (Kor Efret)"
+	names "quarg"
+	cargo 3
+	personality
+		forbearing opportunistic
+	variant
+		"Quarg Lindwyrm"
+	variant
+		"Quarg Wardragon"
+	variant
+		"Quarg Drake" 2
+
+fleet "Large Quarg (Kor Efret)"
+	government "Quarg (Kor Efret)"
+	names "quarg"
+	cargo 1
+	personality
+		forbearing opportunistic
+	variant 2
+		"Quarg Wardragon" 4
+	variant 2
+		"Quarg Wardragon" 3
+		"Quarg Wyvern"
+	variant 2
+		"Quarg Wardragon" 2
+		"Quarg Wyvern" 2
+	variant
+		"Quarg Wyvern" 3
+	variant
+		"Quarg Wardragon" 3
+		"Quarg Drake" 3
+	variant
+		"Quarg Wyvern" 2
+		"Quarg Drake" 4
+	variant
+		"Quarg Hydra"
+		"Quarg Wyvern"
+		"Quarg Wardragon" 2
+
+# Gegno Quarg
+
+fleet "Quarg (Gegno)"
+	government "Quarg (Gegno)"
+	names "quarg"
+	cargo 3
+	personality
+		forbearing opportunistic
+	variant
+		"Quarg Lindwyrm"
+	variant
+		"Quarg Wardragon"
+	variant
+		"Quarg Drake" 2
+
+fleet "Large Quarg (Gegno)"
+	government "Quarg (Gegno)"
+	names "quarg"
+	cargo 1
+	personality
+		forbearing opportunistic
+	variant 2
+		"Quarg Lindwyrm" 2
+		"Quarg Wardragon"
+	variant 2
+		"Quarg Wardragon" 2
+		"Quarg Lindwyrm"
+	variant
+		"Quarg Wardragon"
+		"Quarg Drake" 2
+	variant
+		"Quarg Lindwyrm" 2
+		"Quarg Wardragon"
+		"Quarg Drake"
+	variant
+		"Quarg Wardragon" 2
+		"Quarg Drake"
+		"Quarg Lindwyrm"
+	variant
+		"Quarg Lindwyrm" 3
+		"Quarg Wardragon"
+	variant
+		"Quarg Lindwyrm" 2
+		"Quarg Drake" 2
+
+fleet "Quarg Utility (Gegno)"
+	government "Quarg (Gegno)"
+	names "quarg"
+	cargo 1
+	personality
+		forbearing opportunistic
+	variant 3
+		"Quarg Guivre"
+		"Quarg Lindwyrm"
+		"Quarg Wardragon"
+	variant 2
+		"Quarg Guivre"
+		"Quarg Drake" 4
+	variant 2
+		"Quarg Guivre"
+		"Quarg Wyvern"
+		"Quarg Lindwyrm"
+	variant
+		"Quarg Guivre"
+		"Quarg Drake" 2
+		"Quarg Wardragon"
+	variant
+		"Quarg Guivre"
+		"Quarg Wyvern"
+		"Quarg Wardragon"
+		"Quarg Drake"
+	variant
+		"Quarg Guivre"
+		"Quarg Wyvern" 2
+		"Quarg Wardragon"
+	variant
+		"Quarg Guivre"
+		"Quarg Lindwyrm"
+		"Quarg Drake" 3

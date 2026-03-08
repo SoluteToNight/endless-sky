@@ -1,0 +1,271 @@
+# Copyright (c) 2023 by Azure
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program. If not, see <https://www.gnu.org/licenses/>.
+
+
+mission "Avgi Culture: Verticality"
+	minor
+	invisible
+	source Peripheria
+	to offer
+		not "avgi: lost in twilight"
+		random < 15
+	on offer
+		conversation
+			`在寻找吃小吃的地方时，您发现大多数餐厅都位于太空港上方的露台环上。经过一番询问后，你意识到 Avgi 结构根本就不是为不会飞的人类设计的，你被迫要求一个非常困惑的工人使用太空港的货运电梯上升一层。`
+				decline
+
+
+mission "Avgi Culture: Free Fuel"
+	minor
+	landing
+	invisible
+	source
+		government "Avgi (Consonance)"
+	to offer
+		not "avgi: lost in twilight"
+		random < 15
+	on offer
+		conversation
+			`当造船厂工人帮助您加满 <ship> 的燃料时，您听到她的嘀咕声。 “难以置信。我们被指示为外星人提供免费燃料，而我们其他人却因每一滴迪伊而流血。”`
+				decline
+
+
+mission "Avgi Culture: Playfight"
+	minor
+	invisible
+	source "Peripheria"
+	to offer
+		not "avgi: lost in twilight"
+		random < 12
+	on offer
+		conversation
+			`当你穿过太空港时，一对小 Avgi 从你头顶飞过——也许是孩子——互相挥舞着棍子，作为某种游戏的一部分。其中一人设法将另一人手中的棍子打落，然后另一人执行了某种令人眼花缭乱的桶滚，然后两人飞出了视线。`
+				decline
+
+
+mission "Avgi Culture: Cocoon"
+	minor
+	invisible
+	source
+		government "Avgi (Consonance)"
+	to offer
+		not "avgi: lost in twilight"
+		random < 12
+	on offer
+		conversation
+			`一辆 Avgi 飞过，一对 Avgi 孩子坐在她的背上。它们之间有某种茧，是用丝绸纺成的，缠绕成一根绳子，小心地包裹在母亲的身体上。`
+				decline
+
+
+mission "Avgi Culture: Zapchannel Ad"
+	minor
+	invisible
+	source
+		government "Avgi (Consonance)"
+	to offer
+		not "avgi: lost in twilight"
+		random < 3
+	on offer
+		conversation
+			branch language
+				has "language: Avgi (Written)"
+			`墙上随意贴着一个廉价的电子标牌，上面闪烁着一系列色彩缤纷的符号，棱角分明。你无法理解它，但猜测这可能是某种广告或通知。`
+				decline
+
+			label language
+			`A cheap electronic sign, haphazardly stuck to a wall, flashes a message in the colorful written language of the Avgi. "Zapchannel Ray Energy! With over three quadrillion gamma decays per serving, one dose provides enough energy for life! Buy today!"`
+				decline
+
+
+mission "Avgi Culture: Dissonance Protest 1"
+	minor
+	invisible
+	source
+		government "Avgi (Consonance)"
+	to offer
+		not "avgi: lost in twilight"
+		random < 3
+	on offer
+		conversation
+			branch language
+				has "language: Avgi (Written)"
+			`一排看上去很愤怒的阿吉人绕着太空港绕了一大圈，而其他人则以类似的方式从头顶飞过。他们中的大多数似乎都在挥舞着彩色的旗帜，而空中的一些阿吉人则拖着横幅，横幅上写着大而棱角分明的明亮颜色字母。所有 Avgi 人似乎都在参加某种抗议活动，他们的手臂上都系着明亮的洋红色丝带，这种颜色似乎在他们的旗帜和横幅上也很突出。`
+				decline
+
+			label language
+			`A line of angry-looking Avgi march in a wide circle around the spaceport, while others dart overhead in a similar pattern. Most of them seem to be waving colorful flags, while a few of the Avgi in the air are trailing banners with colorful slogans on them. "STOP CONSONANCE TAXES," "ABOLISH MINERAL FEUDALISM," and "STOP SENDING US TO DIE" are just a few of the messages you can make out, all in the angular Avgi script. All of the Avgi are wearing bright magenta ribbons around their arms, a color that seems to be likewise prominent on their flags and banners.`
+				decline
+
+
+mission "Avgi Culture: Dissonance Graffiti 1"
+	minor
+	invisible
+	source
+		government "Avgi (Consonance)"
+	to offer
+		not "avgi: lost in twilight"
+		random < 3
+	on offer
+		conversation
+			branch language
+				has "language: Avgi (Written)"
+			`你会发现 <planet> 太空港航站楼的墙壁、地板和天花板上都涂满了彩色的、弯曲的符号，并且你可以看到一些 Avgi 用刷子和拖把试图将它们清除。你不确定他们在说什么，但当他们走过时，其他 Avgi 似乎在笑着并指指点点。然而，清除涂鸦的工人们似乎并不觉得好笑。`
+				decline
+
+			label language
+			`Colorful, curvy symbols are scrawled all across the walls, floor, and ceiling of <planet>'s spaceport terminal, and you can see a handful of Avgi with brushes and mops attempting to remove them. Much of the paint has run down the walls or overlaps with other symbols, and what you can see is sloppy, but you can make out words like 'taxes' and 'defenestrate' and the phrase 'Twilight Guard? More like Twilight Gourd.'`
+				decline
+
+
+mission "Avgi Culture: We Live In A Society"
+	minor
+	invisible
+	source
+		government "Avgi (Consonance)"
+	to offer
+		not "avgi: lost in twilight"
+		random < 3
+	on offer
+		conversation
+			`一个 Avgi 从你身边经过，他的头埋在一个看起来非常像报纸的东西里。当他漫步走过时，你会听到他嘀咕道：“难以置信。我们真的生活在一个充满关怀的社会里。”`
+				decline
+
+
+mission "Avgi Culture: Realism"
+	minor
+	invisible
+	source
+		government "Avgi (Consonance)"
+	to offer
+		not "avgi: lost in twilight"
+		random < 3
+	on offer
+		conversation
+			`一对 Avgi 从你身边走过，正在深入交谈。 “感谢。我很高兴我们在这里保持现实，”其中一位说道。对方没有回应，但你感觉到一种巨大的绝望。`
+				decline
+
+
+mission "Avgi Culture: Doomed Korath"
+	minor
+	invisible
+	source
+		attributes "aberrant siege"
+	to offer
+		not "avgi: lost in twilight"
+		random < 3
+	on offer
+		conversation
+			`一名 Avgi 站在门口，对着扩音器讲话。 “公告。居民们，请注意！如果你的生活没有适当的平衡，你将注定失败！注定失败，我说！就像我听说过的那些科拉斯一样。末日即将来临！”`
+				decline
+
+
+mission "Avgi Culture: General Ripper"
+	minor
+	invisible
+	source
+		attributes "aberrant siege"
+	to offer
+		not "avgi: lost in twilight"
+		random < 3
+	on offer
+		conversation
+			`一名 Avgi 站在十字路口，挥舞着标牌和激光步枪。 “声明。异常者正在污染我们宝贵的体液，公民们！立即采取行动！我们决不能允许体液出现缺口！”`
+			`安全人员很快就到了，并开始试图说服 Avgi，紧张地盯着激光步枪。`
+				decline
+
+
+mission "Avgi Culture: Criminal Mischief"
+	minor
+	invisible
+	source
+		government "Avgi (Consonance)"
+	to offer
+		not "avgi: lost in twilight"
+		random < 3
+	on offer
+		conversation
+			`一个戴着黑色围巾的亮绿色阿吉从你上方飞向太空港航站楼的一扇大门，她身后悬挂着一个滑稽的超大粗麻袋。三名穿着亮黄色衣服的阿夫吉人挥舞着警棍，在半空中强行穿过混乱的人群。 “注意！站住，小偷！”`
+			`“嘲讽！你永远抓不到我！”小偷大喊一声，然后立即撞到墙上。当她被束缚着带走时，你摇摇头。`
+				decline
+
+
+mission "Avgi Culture: False Alarm"
+	minor
+	invisible
+	source
+		government "Avgi (Twilight Guard)"
+	to offer
+		not "avgi: lost in twilight"
+		random < 3
+	on offer
+		conversation
+			`当机器人的声音宣布它的信息时，太空港被闪烁的黄灯照亮。 “指挥部。辐射危险，立即寻求庇护。指挥部。辐射危险，立即寻求庇护。”`
+			`人群还没来得及惊慌，声音就被一声静电尖叫打断了。 “羞愧。抱歉，误报。Mindaro把他的饮料掉到了控制台上，没有辐射危险。”`
+				decline
+
+
+mission "Avgi Culture: Fencing"
+	minor
+	invisible
+	source
+		government "Avgi (Dissonance)"
+	to offer
+		not "avgi: lost in twilight"
+		random < 15
+	on offer
+		conversation
+			`当穿过 <planet> 的太空港时，您发现一对 Avgi 正朝一座大型建筑物移动。他们拿着看起来像又长又细的剑的东西。`
+			choice
+				`（走近他们。）`
+				`（忽略他们。）`
+					goto ignore
+			`当你走向两个色彩鲜艳的 Avgi 时，他们朝你的方向看了一眼。其中一个肤色为柔和的青色，开口说话了。 “邀请。人类，你是否有兴趣见证古老的阿吉击剑运动，问题？”`
+			choice
+				`“击剑？就像人类运动一样？”`
+				`“当然，我愿意看。”`
+					goto accept
+				`“我很好，谢谢。”`
+					goto ignore
+			`另一个有着明亮的蓝色和紫色光泽的人插话道。“保证。虽然我们作为一个物种不太可能在这样的运动中领先于你，但我仍然恳求你参加。”`
+			`第一个 Avgi 继续说道，“附录。考虑到我们……敏捷性方面的差异，这对你来说肯定是一个奇观。与人类运动相比，就是这样。”`
+			choice
+				`“当然，听起来很有趣！”`
+				`“我会过去的，谢谢。”`
+					goto ignore
+			label accept
+			branch language
+				has "language: Avgi (Written)"
+			`走了一小段路后，您发现自己身处一个大型露天房间，类似于体育馆，但要高得多。一排排看起来像是来自滑板公园的栏杆，构成了整个圆柱形区域的露天看台，里面挤满了 Avgi。许多人举着写有彩色字体的标语，似乎对其中一位参与者有利。`
+				goto start
+			label language
+			`走了一小段路后，您发现自己身处一个大型露天房间，类似于体育馆，但要高得多。一排排看起来像是来自滑板公园的栏杆，构成了整个圆柱形区域的露天看台，里面挤满了 Avgi。许多人举着写有彩色字体的标语，似乎对其中一位参与者有利。一个标牌上特别写着“像集会一样踩踏他们！”`
+			label start
+			action
+				set "avgi: watched zomp win at fencing"
+				log "Minor People" "Zomp" `Zomp is a muted teal Avgi who defeated the reigning champion Razmatazz in a fencing match.`
+				log `Watched a fencing match between two Avgi onboard a Dissonance station with an extremely rowdy and excitable crowd. Witnessed an upset as an Avgi named Zomp defeated the reigning champion.`
+			`不久之后，熟悉的淡青色和闪亮的紫色 Avgi 从底层的一扇小门里走了出来。竞技场上的观众爆发出一阵阵翅膀拍打声，似乎是大声欢呼；你的翻译会数十次地拾取“兴奋”和“期待”等情绪。击剑手的翅膀似乎配备了细铜线，他们携带着你之前看到的相同的剑。他们跳上位于竞技场边缘的小基座上。`
+			`房间里的许多扬声器中响起了一个声音。 “公告。这里有我们的卫冕冠军拉兹马塔兹和新贵挑战者佐姆普！你准备好见证这两位剑锋典范之间的这场扣人心弦的战斗了吗？”`
+			`随着翅膀的扑动，竞技场再次充满生机。 “期待。那么，决斗……开始吧。”`
+			`随着播音员的一声令下，决斗者们以难以置信的速度跃入空中，互相盘旋并互相碰撞刀刃。两人盘旋上升，进入竞技场最上方的区域，然后迅速落下，每秒多次在彼此的触及范围内进进出出。不到一分钟后，你听到一声巨响，其中一名决斗者摔倒在地，翅膀折断。整个决斗过程中，人群中的嗡嗡声一直没有停止过，此时，翅膀扇动的声音更大了。`
+			`“令人惊讶。佐姆普赢得了第一轮，”播音员说道。 “休息一下。我们可以开始第二轮吗？”`
+			`参赛者再次排成一排，在空中进行一场令人眼花缭乱的速度和敏捷性的对决。佐普再次赢得了观众雷鸣般的掌声。`
+			`“困惑。看来佐普已经击败了我们的卫冕冠军！”播音员宣布。`
+			`“歇斯底里。我知道他会赢！我的赌注是 10 比 1！”附近的一个 Avgi 兴奋地说道，他们在你周围疯狂地嗡嗡作响，手里拿着各种粉红色的纸。`
+			`在竞技场的另一边，你听到粉红色 Avgi 的喊声，“崇拜！我爱你，Zomp！”`
+			`比赛结束后的几分钟内，整个赛场似乎都陷入了一片混乱，充满了欢呼声、嘘声和隆隆的翅膀拍打声。你不记得在人类空间击剑的任何一个实例中，人群中有如此多的热情和能量。`
+			`当喧嚣和庆祝活动平息之后，你会发现离开拥挤的竞技场没有任何问题 - 大多数 Avgi 都会飞过你的头顶。`
+				decline
+			label ignore
+			`你让两人飞走了，继续做你自己的事。`
+				decline

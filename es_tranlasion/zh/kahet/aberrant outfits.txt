@@ -1,0 +1,192 @@
+# Copyright (c) 2023 by Azure
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program. If not, see <https://www.gnu.org/licenses/>.
+
+
+# Weapons:
+
+outfit "Aberrant Spiker"
+	category "Secondary Weapons"
+	series "Secondary Weapons"
+	index 05020
+	cost 1370000
+	thumbnail "outfit/unknown"
+	"mass" 23
+	"outfit space" -23
+	"weapon capacity" -23
+	"gun ports" -1
+	"unplunderable" 1
+	weapon
+		sprite "projectile/aberrant spike"
+			"frame rate" 24
+			"scale" 0.5
+			"rewind"
+		sound "minelayer"
+		icon "icon/finisher"
+		"fire effect" "blood" 20
+		"live effect" "spiker trail" 10000
+		"die effect" "spiker impact"
+		"hit effect" "spiker impact"
+		"inaccuracy" 7
+		"reload" 90
+		"firing energy" 4
+		"firing heat" 6
+		"firing fuel" 10
+		"firing hull" 150
+		"velocity" 15
+		"lifetime" 700
+		"acceleration" 1.45
+		"drag" .21
+		"turn" 1.3
+		"homing"
+			"throttle control"
+		"optical tracking" 0.9
+		"hit force" -1350
+		"hull damage" 730
+		"shield damage" 1270
+		"corrosion damage" 3
+		"missile strength" 31
+	description "许多异常变种的背上都长有尖刺，这些变种是由自然界中看似随机的金属和矿物材料制成的。该装置似乎允许异常者发射这些尖刺作为进攻性武器，但它们如何能够引导和推动自己穿过太空是一个谜，粗略地检查这套装备并不能揭示。"
+
+effect "spiker trail"
+	sprite "effect/blood"
+		"no repeat"
+		"frame rate" 10
+		"random start frame"
+	"lifetime" 61
+	"random angle" 20
+	"random velocity" 6
+	"random spin" 5
+	"velocity scale" 0
+
+effect "spiker impact"
+	sprite "effect/explosion/pug/medium"
+		"no repeat"
+		"frame rate" 19
+	sound "explosion medium"
+	"lifetime" 30
+	"random angle" 360
+	"random frame rate" 5
+	"random spin" 6
+	"random velocity" .5
+	"velocity scale" .4
+
+
+outfit "Nucleolysis Beam"
+	category "Guns"
+	series "Guns"
+	index 05040
+	cost 1900000
+	thumbnail "outfit/nucleolysis beam"
+	"flotsam sprite" "effect/flotsam nucleolysis beam"
+	"mass" 31
+	"outfit space" -31
+	"weapon capacity" -31
+	"flotsam chance" 0.1
+	"gun ports" -1
+	"unplunderable" 1
+	weapon
+		sprite "projectile/nucleolysis"
+			"frame rate" 15
+		sound "nucleolysis"
+		"hit effect" "acuit hit"
+		"inaccuracy" .2
+		"velocity" 420
+		"lifetime" 1
+		"reload" 1
+		"firing energy" 4.2
+		"firing heat" 1.5
+		"shield damage" 0.8
+		"hull damage" 1.6
+		"heat damage" -9.1
+		"fuel damage" 1.66
+		"corrosion damage" 0.015
+	description "这种光束武器会产生一个场，在该场内原本稳定的原子核会迅速衰变。这种效应似乎与原子核的质量成反比，导致氘等同位素比重元素以更高的速度分解。由于生成的产物具有比原始核更高的能态，光束会冷却其目标，这违反了传统的热力学。"
+	description "实际上，这种光束可以耗尽船舶的氘燃料，同时导致船体本身的物质衰变。"
+
+outfit "Telescopic Antimissile"
+	category "Turrets"
+	series "Anti-Missile"
+	index 05010
+	cost 16000000
+	thumbnail "outfit/telescopic antimissile"
+	"flotsam sprite" "effect/flotsam telescopic antimissile"
+	"mass" 40
+	"outfit space" -40
+	"weapon capacity" -40
+	"flotsam chance" 0.1
+	"unplunderable" 1
+	"turret mounts" -1
+	weapon
+		"hit effect" "quarg anti-missile"
+		"hardpoint sprite" "hardpoint/quarg anti missile"
+		"anti-missile" 30
+		"velocity" 760
+		"lifetime" 1
+		"reload" 15
+		"firing energy" 90
+	description "奇怪的是，这个反导弹系统类似于一系列扫描仪和望远镜。如此各种各样的传感设备当然不是为了用作武器，但不知何故，已经通过该扫描仪的光学器件泵送了足够的能量，使其成为有效的反导弹防御系统。"
+	description "构成大型望远镜的各种透镜和镜子似乎用于聚焦发射的光束，使该反导弹系统具有很长的射程。"
+
+
+# Systems:
+
+outfit "Anomalous Shield Restorer"
+	category "Systems"
+	series "Shields"
+	index 05030
+	cost 22000000
+	thumbnail "outfit/anomalous shield restorer"
+	"flotsam sprite" "effect/flotsam anomalous shield restorer"
+	"mass" 37
+	"outfit space" -25
+	"shield generation" 3
+	"shield energy" 6
+	"flotsam chance" 0.05
+	"unplunderable" 1
+	description "该发射器不会产生任何类型的可检测场，但每当任何危险靠近时，防护罩就会出现。"
+
+
+# Power:
+
+outfit "Antimatter Power Cell"
+	category "Power"
+	series "Generators"
+	index 05020
+	cost 11000000
+	thumbnail "outfit/antimatter power cell"
+	"flotsam sprite" "effect/flotsam antimatter power cell"
+	"mass" 34
+	"outfit space" -13
+	"energy generation" 2.8
+	"heat generation" 4.9
+	"flotsam chance" 0.05
+	"unplunderable" 1
+	description "这种奇怪的装置在本质上似乎是部分有机的，通过不断再生的海绵状结构缓慢泄漏反质子以释放能量。产生的能量与湮灭的物质和反物质的数量不一致，产生的能量超出了应有的能量。"
+
+
+# Special
+
+outfit "Anomalous Mass"
+	plural "Anomalous Masses"
+	category "Special"
+	cost 800000
+	thumbnail "outfit/anomalous mass"
+	"flotsam sprite" "effect/flotsam anomalous mass"
+	"flotsam chance" 0.4
+	"mass" 2.718
+	"outfit space" -4
+	"heat generation" 0.4
+	"drag" 0.04
+	"inertia reduction" 0.01
+	"unplunderable" 1
+	description "这种玻璃状、肉质的物质在不同的像差机制中具有广泛不同的特性，其特点是很难对其成分进行分类。嵌入物质中的异常材料网似乎不是由 Avgi 所知的原子物质组成，而是由完全不同的东西组成，这种东西阻止了任何探测其构成的尝试。由于缺乏任何其他解释，这被认为使许多异常者具有更令人困惑的能力。"

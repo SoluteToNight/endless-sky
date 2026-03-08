@@ -21,6 +21,8 @@ x64/
 Debug/
 install/
 Release/
+es_translations/
+zh/
 *.layout
 *.depend
 scons-local*
@@ -75,3 +77,18 @@ CMakeUserPresets.json
 
 # static code analysis
 /.scannerwork
+
+# Codex / translation tooling temp files
+.gitconfig-codex
+build_log.txt
+build_log2.txt
+build_log_localization.txt
+build_test_err.txt
+compile_out.txt
+error.txt
+es_tranlasion/__pycache__/
+es_tranlasion/*.pyc
+es_tranlasion/.env
+es_tranlasion/translation_cache*.json
+es_tranlasion/*/
+!es_tranlasion/zh/

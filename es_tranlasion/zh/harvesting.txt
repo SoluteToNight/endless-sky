@@ -1,0 +1,614 @@
+# Copyright (c) 2016 by Michael Zahniser
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program. If not, see <https://www.gnu.org/licenses/>.
+
+minable "aluminum"
+	sprite "asteroid/silicon/spin"
+	hull 900
+	"random hull" 200
+	payload "Aluminum" 40
+		"toughness" 6500
+	explode "smoke" 40
+	explode "bolide" 40
+	explode "asteroid crunch large"
+
+outfit "Aluminum"
+	plural "Aluminum"
+	category "Minerals"
+	cost 1800
+	thumbnail "outfit/harvested aluminum"
+	"flotsam sprite" "effect/flotsam aluminum"
+	"mass" 1
+	"installable" -1
+	"minable" 1
+	description "铝质轻且防锈，通常用于不需要能够承受长时间武器火力的民用航天器的外壳。"
+
+
+minable "copper"
+	sprite "asteroid/gold/spin"
+	hull 1080
+	"random hull" 240
+	payload "Copper" 20
+		"toughness" 9000
+	explode "smoke" 20
+	explode "bolide" 20
+	explode "asteroid crunch small"
+
+outfit "Copper"
+	plural "Copper"
+	category "Minerals"
+	cost 3000
+	thumbnail "outfit/harvested copper"
+	"flotsam sprite" "effect/flotsam copper"
+	"mass" 1
+	"installable" -1
+	"minable" 1
+	description "纯铜的价值主要在于其高导热性和导电性。但是，它也少量用于各种合金中。"
+
+
+minable "gold"
+	sprite "asteroid/gold/spin"
+	hull 2520
+	"random hull" 560
+	payload "Gold" 16
+		"toughness" 13650
+	explode "smoke" 20
+	explode "bolide" 20
+	explode "asteroid crunch small"
+
+outfit "Gold"
+	plural "Gold"
+	category "Minerals"
+	cost 8000
+	thumbnail "outfit/harvested gold"
+	"flotsam sprite" "effect/flotsam gold"
+	"mass" 1
+	"installable" -1
+	"minable" 1
+	description "黄金因其高导电性而有用，并以其美丽和奢华的地位而备受推崇，总能找到一个高薪市场。"
+
+
+minable "iron"
+	sprite "asteroid/iron/spin"
+	hull 1440
+	"random hull" 320
+	payload "Iron" 50
+		"toughness" 12000
+	explode "smoke" 40
+	explode "bolide" 40
+	explode "asteroid crunch large"
+
+outfit "Iron"
+	plural "Iron"
+	category "Minerals"
+	cost 1200
+	thumbnail "outfit/harvested iron"
+	"flotsam sprite" "effect/flotsam iron"
+	"mass" 1
+	"installable" -1
+	"minable" 1
+	description "尽管铁是最常见的金属之一，但它也是最有用的金属之一。"
+
+
+minable "lead"
+	sprite "asteroid/lead/spin"
+	hull 720
+	"random hull" 160
+	payload "Lead" 32
+		"toughness" 7000
+	explode "smoke" 30
+	explode "bolide" 30
+	explode "asteroid crunch medium"
+
+outfit "Lead"
+	plural "Lead"
+	category "Minerals"
+	cost 900
+	thumbnail "outfit/harvested lead"
+	"flotsam sprite" "effect/flotsam lead"
+	"mass" 1
+	"installable" -1
+	"minable" 1
+	description "作为密度最大的非放射性元素之一，自枪支发明以来，铅一直是子弹的首选材料。其其他用途受到预防铅中毒法规的限制。"
+
+
+minable "neodymium"
+	sprite "asteroid/iron/spin"
+	hull 3240
+	"random hull" 720
+	payload "Neodymium" 40
+		"toughness" 14750
+	explode "smoke" 40
+	explode "bolide" 40
+	explode "asteroid crunch large"
+
+outfit "Neodymium"
+	plural "Neodymium"
+	category "Minerals"
+	cost 3800
+	thumbnail "outfit/harvested neodymium"
+	"flotsam sprite" "effect/flotsam neodymium"
+	"mass" 1
+	"installable" -1
+	"minable" 1
+	description "钕是最丰富的稀土元素之一，用于制造用于发动机和发电机的强磁性合金。"
+
+
+minable "platinum"
+	sprite "asteroid/silver/spin"
+	hull 3600
+	"random hull" 800
+	payload "Platinum" 16
+		"toughness" 13000
+	explode "smoke" 20
+	explode "bolide" 20
+	explode "asteroid crunch small"
+
+outfit "Platinum"
+	plural "Platinum"
+	category "Minerals"
+	cost 10000
+	thumbnail "outfit/harvested platinum"
+	"flotsam sprite" "effect/flotsam platinum"
+	"mass" 1
+	"installable" -1
+	"minable" 1
+	description "铂金与黄金一样稀有，甚至更有价值，它具有许多工业用途，因为即使在高温下也能抵抗氧化。"
+
+
+minable "silicon"
+	sprite "asteroid/silicon/spin"
+	hull 360
+	"random hull" 80
+	payload "Silicon" 50
+		"toughness" 5000
+	explode "smoke" 40
+	explode "bolide" 40
+	explode "asteroid crunch large"
+
+outfit "Silicon"
+	plural "Silicon"
+	category "Minerals"
+	cost 400
+	thumbnail "outfit/harvested silicon"
+	"flotsam sprite" "effect/flotsam silicon"
+	"mass" 1
+	"installable" -1
+	"minable" 1
+	description "纯硅用于电子和半导体。它是一种非常常见的元素，而且很容易收获。"
+
+
+minable "silver"
+	sprite "asteroid/silver/spin"
+	hull 1800
+	"random hull" 400
+	payload "Silver" 20
+		"toughness" 9750
+	explode "smoke" 20
+	explode "bolide" 20
+	explode "asteroid crunch small"
+
+outfit "Silver"
+	plural "Silver"
+	category "Minerals"
+	cost 6000
+	thumbnail "outfit/harvested silver"
+	"flotsam sprite" "effect/flotsam silver"
+	"mass" 1
+	"installable" -1
+	"minable" 1
+	description "尽管不像黄金那么昂贵，但白银不仅用于珠宝，还用于电子产品、消毒剂和高质量镜子，并用作化学催化剂。"
+
+
+minable "titanium"
+	sprite "asteroid/titanium/spin"
+	hull 2160
+	"random hull" 480
+	payload "Titanium" 32
+		"toughness" 14400
+	explode "smoke" 30
+	explode "bolide" 30
+	explode "asteroid crunch medium"
+
+outfit "Titanium"
+	plural "Titanium"
+	category "Minerals"
+	cost 2500
+	thumbnail "outfit/harvested titanium"
+	"flotsam sprite" "effect/flotsam titanium"
+	"mass" 1
+	"installable" -1
+	"minable" 1
+	description "钛坚固、轻便且耐腐蚀，是用于星际飞船船体和结构构件的主要金属之一。"
+
+
+minable "tungsten"
+	sprite "asteroid/titanium/spin"
+	hull 4320
+	"random hull" 960
+	payload "Tungsten" 24
+		"toughness" 26250
+	explode "smoke" 30
+	explode "bolide" 30
+	explode "asteroid crunch medium"
+
+outfit "Tungsten"
+	plural "Tungsten"
+	category "Minerals"
+	cost 4500
+	thumbnail "outfit/harvested tungsten"
+	"flotsam sprite" "effect/flotsam tungsten"
+	"mass" 1
+	"installable" -1
+	"minable" 1
+	description "由于其高熔点和强度，钨具有许多工业用途。"
+
+
+minable "uranium"
+	sprite "asteroid/lead/spin"
+	hull 2880
+	"random hull" 640
+	payload "Uranium" 24
+		"toughness" 15600
+	explode "smoke" 30
+	explode "bolide" 30
+	explode "asteroid crunch medium"
+
+outfit "Uranium"
+	plural "Uranium"
+	category "Minerals"
+	cost 5000
+	thumbnail "outfit/harvested uranium"
+	"flotsam sprite" "effect/flotsam uranium"
+	"mass" 1
+	"installable" -1
+	"minable" 1
+	description "铀以其在为大型星际飞船提供动力的核反应堆中的应用而闻名。其最稳定的同位素 U-238 也用于超强船体板和穿甲弹。"
+
+
+minable "yottrite"
+	sprite "asteroid/yottrite/spin"
+	hull 18000
+	"random hull" 4000
+	payload "Yottrite" 7
+		"toughness" 50000
+	explode "smoke" 30
+	explode "bolide" 30
+	explode "asteroid crunch medium"
+
+outfit "Yottrite"
+	plural "Yottrite"
+	category "Minerals"
+	cost 200000
+	thumbnail "outfit/harvested yottrite"
+	"flotsam sprite" "effect/flotsam yottrite"
+	"mass" 3.14
+	"installable" -1
+	"minable" 1
+	description "这是一种极其罕见的晶体结构，是在超新星遗迹周围的分子云中经过数万年锻造而成的。尽管不太先进的物种有可能收获它，但除了夸格之外，很少有文明开发出将氧化铁矿融入合金所需的技术。"
+
+
+
+# The following are not traditional asteroids, and are not present at the start of the game.
+# They are added to specific systems in the Ember Waste during the events of the 'Remnant: Cognizance' missions.
+
+minable "plant"
+	sprite "asteroid/plant/plant"
+	hull 2520
+	"random hull" 560
+	payload "Void Orchid" 21
+		"toughness" 11480
+	explode "smoke" 30
+	explode "bolide" 30
+	explode "final explosion medium"
+
+minable "plant2"
+	"display name" "Plant"
+	sprite "asteroid/plant2/plant2"
+	hull 2340
+	"random hull" 520
+	payload "Void Orchid" 20
+		"toughness" 10660
+	explode "smoke" 30
+	explode "bolide" 30
+	explode "final explosion medium"
+
+minable "plant cluster"
+	sprite "asteroid/plant cluster/plant cluster"
+	hull 1080
+	"random hull" 240
+	payload "Void Orchid" 11
+		"toughness" 4920
+	explode "smoke" 20
+	explode "bolide" 20
+	explode "final explosion small"
+
+minable "large plant"
+	sprite "asteroid/large plant/large plant"
+	hull 3420
+	"random hull" 760
+	payload "Void Orchid" 41
+		"toughness" 14920
+	explode "smoke" 30
+	explode "bolide" 40
+	explode "final explosion medium"
+
+minable "large plant2"
+	"display name" "Large Plant"
+	sprite "asteroid/large plant2/large plant2"
+	hull 3240
+	"random hull" 720
+	payload "Void Orchid" 41
+		"toughness" 14760
+	explode "smoke" 30
+	explode "bolide" 40
+	explode "final explosion medium"
+
+minable "large plant cluster"
+	sprite "asteroid/large plant cluster/large plant cluster"
+	hull 1980
+	"random hull" 440
+	payload "Void Orchid" 22
+		"toughness" 9020
+	explode "smoke" 30
+	explode "bolide" 40
+	explode "final explosion medium"
+
+minable "live crystal"
+	sprite "asteroid/livecrystal/livecrystal"
+	hull 900
+	"random hull" 200
+	payload "Void Orchid" 8
+		"toughness" 4100
+	explode "smoke" 15
+	explode "bolide" 10
+	explode "final explosion small"
+
+minable "space flora"
+	sprite "asteroid/space flora/space flora"
+	hull 900
+	"random hull" 200
+	payload "Void Orchid" 8
+		"toughness" 4100
+	explode "smoke" 15
+	explode "bolide" 10
+	explode "final explosion small"
+
+minable "large space flora"
+	sprite "asteroid/large space flora/large space flora"
+	hull 1800
+	"random hull" 400
+	payload "Void Orchid" 16
+		"toughness" 8200
+	explode "smoke" 25
+	explode "bolide" 20
+	explode "final explosion medium"
+
+
+outfit "Void Orchid"
+	plural "Void Orchids"
+	category "Minerals"
+	cost 15000
+	thumbnail "outfit/harvested silicon"
+	"flotsam sprite" "effect/flotsam silicon"
+	"mass" 1
+	"installable" -1
+	"minable" 1
+	description "“虚空兰花”是主要生活在小行星上的各种奇怪的、类植物生物的总称。由于它们从宿主小行星中浓缩矿物质的方式，它们因其科学好奇心和矿物质含量而受到重视。"
+
+
+
+# Acheron Space-life Asteroids
+
+minable "unknown"
+	sprite "asteroid/bioroid/spin"
+	hull 1600
+	"random hull" 810
+	explode "smoke" 10
+	explode "bolide" 20
+	explode "blood" 10
+	explode "final explosion medium"
+	
+
+
+# Gossamer Smoke Ring Minables
+
+minable "tiny water droplet"
+	"display name" "Tiny"
+	noun "Water Droplet"
+	sprite "asteroid/water droplet/droplet"
+		scale 0.125
+		"frame rate" 12
+		"rewind"
+		"random start frame"
+	hull 60
+	"random hull" 60
+	explode "droplet burst"
+
+minable "small water droplet"
+	"display name" "Small"
+	noun "Water Droplet"
+	sprite "asteroid/water droplet/droplet"
+		scale 0.25
+		"frame rate" 12
+		"rewind"
+		"random start frame"
+	hull 180
+	"random hull" 180
+	payload "Voidfish" 3
+		"toughness" 1260
+	explode "droplet burst" 3
+
+minable "medium water droplet"
+	"display name" "Medium"
+	noun "Water Droplet"
+	sprite "asteroid/water droplet/droplet"
+		scale 0.5
+		"frame rate" 12
+		"rewind"
+		"random start frame"
+	hull 600
+	"random hull" 600
+	payload "Voidfish" 15
+		"toughness" 4200
+	explode "droplet burst" 6
+
+minable "large water droplet"
+	"display name" "Large"
+	noun "Water Droplet"
+	sprite "asteroid/water droplet/droplet"
+		scale 0.75
+		"frame rate" 12
+		"rewind"
+		"random start frame"
+	hull 1800
+	"random hull" 1800
+	payload "Voidfish" 45
+		"toughness" 12600
+	explode "droplet burst" 12
+
+minable "huge water droplet"
+	"display name" "Huge"
+	noun "Water Droplet"
+	sprite "asteroid/water droplet/droplet"
+		scale 1
+		"frame rate" 12
+		"rewind"
+		"random start frame"
+	hull 3600
+	"random hull" 3600
+	payload "Voidfish" 120
+		"toughness" 25200
+	explode "droplet burst" 36
+
+outfit "Voidfish"
+	category "Minerals"
+	plural "Voidfish"
+	cost 2400
+	thumbnail "outfit/voidfish"
+	"flotsam sprite" "effect/flotsam voidfish"
+	"mass" 1
+	"installable" -1
+	"minable" 1
+	description "这些是许多以非传统方式捕获的虚空鱼类的集合。尽管经过快速煮沸和冷冻干燥，但它们却令人惊讶地开胃，而且同样营养丰富。"
+
+
+effect "droplet burst"
+	sprite "effect/puff"
+		"frame rate" 12
+		"no repeat"
+		"scale" 0.5
+	sound "bombardment"
+	"random angle" 360
+	"random spin" 3
+	"lifetime" 15
+	"random lifetime" 15
+	"random velocity" 9
+	"velocity scale" 0
+
+
+
+
+minable "integral tree a"
+	"display name" "Wizened Integral"
+	noun "Tree"
+	sprite "asteroid/integral tree/tree a"
+	hull 7200
+	"random hull" 3600
+	payload "Integral Wood" 120
+		"toughness" 43200
+		"drop rate" 0.6
+	explode "timber" 30
+
+minable "integral tree b"
+	"display name" Integral
+	noun "Tree"
+	sprite "asteroid/integral tree/tree b"
+		scale 0.75
+	hull 2400
+	"random hull" 1200
+	payload "Integral Wood" 30
+		"toughness" 14400
+		"drop rate" 0.6
+	explode "timber" 6
+
+minable "integral tree c"
+	"display name" "Integral"
+	noun "Tree"
+	sprite "asteroid/integral tree/tree c"
+		scale 0.75
+	hull 3600
+	"random hull" 1800
+	payload "Integral Wood" 30
+		"toughness" 21600
+		"drop rate" 0.6
+	explode "timber" 6
+
+minable "integral tree d"
+	"display name" "Frosted Integral"
+	noun "Tree"
+	sprite "asteroid/integral tree/tree d"
+		scale 0.75
+	hull 4800
+	"random hull" 2400
+	payload "Integral Wood" 60
+		"toughness" 28800
+		"drop rate" 0.6
+	payload "Platinum" 120
+		"toughness" 10800
+	explode "timber" 12
+
+minable "integral tree e"
+	"display name" "Amber Integral"
+	noun "Tree"
+	sprite "asteroid/integral tree/tree e"
+		scale 0.75
+	hull 4800
+	"random hull" 2400
+	payload "Integral Wood" 60
+		"toughness" 28800
+		"drop rate" 0.6
+	payload "Gold" 120
+		"toughness" 10800
+	explode "timber" 12
+
+minable "integral tree f"
+	"display name" "Dead Integral"
+	noun "Tree"
+	sprite "asteroid/integral tree/tree f"
+		scale 0.75
+	hull 600
+	"random hull" 1200
+	payload "Integral Wood" 120
+		"toughness" 1800
+		"drop rate" 0.3
+	explode "timber" 30
+
+effect "timber"
+	sprite "effect/flotsam integral wood"
+	sound "crunch"
+	"random angle" 180
+	"random lifetime" 120
+	"random velocity" 3
+	"velocity scale" 0.3
+
+outfit "Integral Wood"
+	category "Minerals"
+	plural "Integral Wood"
+	cost 12000
+	thumbnail "outfit/integral wood"
+	"flotsam sprite" "effect/flotsam integral wood"
+	"mass" 0.3
+	"installable" -1
+	"minable" 1
+	description "从整棵树上采伐的木材极其轻质、坚固且抗辐射——它在异国情调的商品市场上也能卖到极高的价格。"
+	description "有些人声称它甚至会成为木制星际飞船的首选材料，尽管这个想法很荒谬。"

@@ -1,0 +1,1098 @@
+# Copyright (c) 2023 by Azure
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program. If not, see <https://www.gnu.org/licenses/>.
+
+
+mission "Avgi: Lost in Twilight"
+	invisible
+	entering
+	source
+		attributes "twilight"
+	destination "Earth"
+	on offer
+		log "Became trapped in a strange region after entering a system my jump drive could not return from."
+		set "avgi: lost in twilight"
+		conversation
+			`一旦你进入系统，你就会发现有些问题。你的跳跃驱动器的特征等离子体会不自然地快速消退，当你检查飞船的系统时，你会注意到它的温度比正常情况低得多。您的计算机指示您来自的系统超出范围，并且您无法跳回该系统。看来您现在被困在这个区域了。如果您没有带公羊铲，您可能希望重新加载之前的保存并在返回之前安装一个。`
+				decline
+
+phrase "lost in twilight"
+	word
+		`As soon as you jump into the system, you notice something is wrong. The characteristic plasma of your jump drive fades unnaturally quickly, and as you check your ship's systems, you notice its temperature is somehow much lower than normal. Your computer indicates that the system you came from is out of range, and that you cannot jump back to it. It appears you are stuck in this region for now. If you didn't bring a ramscoop, you may wish to reload a previous save and install one before returning.`
+
+mission "Avgi: First Contact"
+	landing
+	autosave
+	name "外星人遭遇"
+	description "陪伴外星飞船到达地图上标记的目的地。"
+	source
+		attributes "avgi"
+	destination "Peripheria"
+	mark "Arche"
+	clearance
+	on offer
+		set "avgi: aberrant siege"
+		event "twilight label"
+		event "tangled shroud label"
+		conversation
+			branch aviskir
+				has "flagship planet: Aviskir"
+			branch "core world"
+				has "flagship planet attribute: avgi core"
+			branch station
+				has "flagship planet attribute: station"
+			branch uninhabited
+				has "flagship planet attribute: uninhabited"
+
+			label aviskir
+			`The first thing you notice about this Earth-like world is the utter devastation in orbit. Your ship's sensors pick up the remains of what appear to be dozens of wrecked stations and countless destroyed satellites, forming a large swath of debris scattered in various orbits. A few larger objects are mostly intact, but lifeless, with no signal emissions or heat signatures. As your ship touches the upper atmosphere, you can see, even with your naked eye, glittering fragments of an immensely long tether slowly spinning in orbit.`
+			`	Your observations are interrupted by a blared warning from your console. You barely manage to yank your ship aside as a bright trail of plasma nearly clips you, the wake of a hypervelocity projectile fired from the ground. Clearly, someone is still alive down there, despite the destruction in orbit. Proceeding could be dangerous if your ship isn't able to withstand a direct hit from those planetary defense batteries.`
+			action
+				set "avgi: fired on by planets"
+			choice
+				`（无论如何尝试着陆。）`
+					goto explode
+					to display
+						"flagship attribute: shields" + "flagship attribute: hull" <= 18000 * 1000
+				`（无论如何尝试着陆。）`
+					goto hit
+					to display
+						"flagship attribute: shields" + "flagship attribute: hull" > 18000 * 1000
+						"flagship attribute: shields" + "flagship attribute: hull" < 90000 * 1000
+				`（无论如何尝试着陆。）`
+					goto scratched
+					to display
+						"flagship attribute: shields" + "flagship attribute: hull" >= 90000 * 1000
+				`（移动到更高的轨道。）`
+					goto orbit
+
+			label "core world"
+			`The first thing you notice about this habitable world is the utter devastation in orbit. Your ship's sensors pick up the remains of what appear to be a handful of wrecked stations and countless destroyed satellites, forming a large swath of debris scattered in various orbits. A few larger objects are mostly intact, but lifeless, with no signal emissions or heat signatures. As your ship touches the upper atmosphere, you can see the tumbling remains of what looks like half of an enormous starship with an equally large drive, splintered and broken along its spine.`
+			`	Your observations are interrupted by a blared warning from your console. You barely manage to yank your ship aside as a bright trail of plasma nearly clips you, the wake of a hypervelocity projectile fired from the ground. Clearly, someone is still alive down there, despite the destruction in orbit. Proceeding could be dangerous if your ship isn't able to withstand a direct hit from those planetary defense batteries.`
+			action
+				set "avgi: fired on by planets"
+			choice
+				`（无论如何尝试着陆。）`
+					goto explode
+					to display
+						"flagship attribute: shields" + "flagship attribute: hull" <= 9000 * 1000
+				`（无论如何尝试着陆。）`
+					goto hit
+					to display
+						"flagship attribute: shields" + "flagship attribute: hull" > 9000 * 1000
+						"flagship attribute: shields" + "flagship attribute: hull" < 60000 * 1000
+				`（无论如何尝试着陆。）`
+					goto scratched
+					to display
+						"flagship attribute: shields" + "flagship attribute: hull" >= 60000 * 1000
+				`（移动到更高的轨道。）`
+					goto orbit
+
+			label explode
+			`	You make it no more than a few seconds before your ship is lanced by a rapid succession of shots from below. Your shields shatter almost instantly, your hull pierced as though it is tissue paper. You don't even have time to think before you are consumed by the rapidly expanding cloud of plasma that was once the <ship>.`
+				explode
+
+			label hit
+			`	You make it no more than a few seconds before the <ship> is lanced by a rapid succession of shots from below. Your ship appears to be holding up under the fire, but the species that lives here doesn't seem willing to welcome you. When you detect the launch of a rather unreasonable number of missiles, you decide it would be safer to proceed back to orbit.`
+				goto orbit
+
+			label scratched
+			`	You make it no more than a few seconds before the <ship> is lanced by a rapid succession of shots from below. Your ship easily shrugs off the kinetic impacts, but the species that lives here doesn't seem willing to welcome you. When you detect the launch of a rather unreasonable number of missiles, you decide it would be safer to proceed back to orbit.`
+				goto orbit
+
+			label uninhabited
+			`While this world looks presently unsettled, you can clearly make out signs that it has been explored, and even exploited, by an alien civilization. However, the signs also show that something disastrous happened here. Ruined satellites litter low orbit, and you can detect the broken remnants of surface outposts smeared across the land below. You take the <ship> in for a close pass over one of the structures, and can see small craters and patches of glassed terrain scattered around it.`
+				goto orbit
+
+			label orbit
+			`	Back in orbit, you are startled when another ship appears over the horizon on an intercept trajectory with you. It doesn't look like any other ship you've seen before, appearing more than a little ungainly compared to the sleeker human ships you're accustomed to. You aren't sure whether it belongs to the same species that inhabits this space, or an entirely different one, but it at least definitely isn't similar to the hostile ships that seem to infest this star cluster.`
+			choice
+				`（尝试发送标准冰雹。）`
+					goto talk
+				`（传输一系列素数。）`
+					goto prime
+				`（保持沉默。）`
+					goto silent
+
+			label station
+			`This alien station has certainly seen better days. While the bulk of the structure is still intact, avoiding the fate of whatever became the debris fields you have seen elsewhere, the hull is scored and chipped by what appears to be powerful weapons fire. The station's systems all seem to be powered down, as you can detect no emissions of light or heat. Without expecting to find anyone or anything alive, you maneuver near what you think is an open docking bay.`
+			`	Just as the <ship> pulls alongside the "docking bay," you spot what looks like a ship tucked away inside. It is like no ship you have ever seen before, appearing more than a little ungainly compared to the sleeker human ships you're accustomed to. You aren't sure whether it belongs to the same species that inhabits this space, or an entirely different one, but it at least definitely isn't similar to the hostile ships that seem to infest this star cluster. What's more, its reactor is powered up and it seems to have an active shield matrix. It appears someone is indeed home.`
+			choice
+				`（发射标准冰雹。）`
+					goto talk
+				`（传输一系列素数。）`
+					goto prime
+				`（保持沉默。）`
+					goto silent
+
+			label talk
+			`	You aren't quite sure how to proceed in communicating with a completely unknown species, but you transmit a standard hail, if only to assure the alien vessel that you're trying to signal it.`
+			`	To your shock, however, the alien vessel responds after only a few minutes, not only in the same frequency band, but with an encoding your ship's computer is able to interpret: a standard human data format, similar to the one you've just sent. Either these aliens have an astonishing ability to decipher transmissions, or they have somehow encountered humanity before.`
+			`	The message is short and direct:`
+				goto transmission
+
+			label prime
+			`	You can't expect a new alien species to be able to decode your transmissions, let alone understand your language, so you transmit a short list of prime numbers via simple amplitude modulated signals, if only to assure the alien vessel that you're attempting to communicate.`
+			`	To your shock, however, the alien vessel interrupts you just as you send the number "37," with a transmission not only in the same frequency band, but with an encoding your ship's computer is able to interpret: a standard human data format, similar to the one you've just sent. They must have somehow encountered humanity before.`
+			`	The message is short and direct:`
+				goto transmission
+
+			label silent
+			`	Unsure of the intentions of the alien vessel, you remain silent. However, it seems the aliens have other intentions, as you shortly receive a transmission with an encoding your ship's computer is able to interpret, in a standard human data format. The message is short and direct:`
+
+			label transmission
+			`	"Salutations. I am of the Avgi. You human, question? Important. You will follow. This space, Twilight, not safe. You have hyperdrive, correct? Emphasis. Space we will travel is unstable, a maze. Follow closely and be careful."`
+			`	The message includes an alien-looking star chart, with a trail of marked systems leading to a system far to the south. Something appears to have been lost in translation, as the systems are unmarked past a certain point and are instead labeled as "shrouded," whatever that means. Just as you are still processing first contact with an alien civilization, a group of the same ships that attacked you earlier jump into the system.`
+				launch
+
+	npc
+		government "Aberrant"
+		personality coward secretive vindictive entering
+		fleet
+			names "aberrant names"
+			variant
+				"Aberrant Latte" 2
+				"异常胡须"
+
+	npc
+		government "Aberrant"
+		personality
+			confusion 90
+			coward secretive uninterested vindictive
+		system "Quintessence"
+		fleet
+			names "aberrant names"
+			variant
+				"异常咀嚼者"
+
+	npc
+		government "Aberrant"
+		personality
+			confusion 90
+			coward secretive uninterested vindictive
+		system "Ballad"
+		fleet
+			names "aberrant names"
+			variant
+				"异常行程"
+
+	npc
+		government "Aberrant"
+		personality
+			confusion 90
+			coward secretive uninterested vindictive
+		system "H-1"
+		fleet
+			names "aberrant names"
+			variant
+				"Aberrant Hugger" 2
+
+	npc save accompany
+		government "Avgi (Twilight Guard)"
+		personality escort fleeing launching timid
+		ship "Polari" "Distant Shores"
+
+	on accept
+		"reputation: Avgi" >?= 5
+		"reputation: Avgi (Consonance)" >?= 5
+		"reputation: Avgi (Twilight Guard)" >?= 5
+
+	on enter "Arche"
+		mark "Ballad"
+		unmark "Arche"
+
+	on enter "Ballad"
+		unmark "Ballad"
+
+	on enter "Concerto"
+		conversation
+			`经过蜿蜒的超航道的一段令人困惑的旅程后，你终于到达了外星人在你的地图上标记的最终系统。您注意到您的飞行计算机无法记录您经过的大多数系统的位置，可能是由于导致您的飞船在该区域内几乎完全失明的相同异常所致。然而，该区域似乎不受影响，并且您的计算机能够像往常一样绘制其位置。`
+			`外星飞船向你发出 ping 信号，示意你跟随它飞向星系中一个看起来有人居住的大型空间站。形状像一个圆盘，中心有一个大切口，暴露出数百个对接站和看起来像是一个太空港的地方。当你观看时，三架外观时尚的战斗机从空间站起飞，并在你和你一路跟踪的另一艘外星飞船周围占据护航位置。您只能假设您的护送人员正在与车站当局保持联系。`
+
+	on fail
+		dialog `外星飞船已被摧毁。如果您想继续 Avgi 故事，请恢复到自动保存或游戏的另一个早期快照。`
+
+	on visit
+		dialog `您已到达 <planet> ，但您把外星飞船落在后面了！最好离开并等待他们正确地介绍您。`
+
+	on complete
+		"reputation: Avgi" += 10
+		"reputation: Avgi (Consonance)" += 10
+		"reputation: Avgi (Twilight Guard)" += 10
+		set "discovered avgi"
+		event "outer limits label"
+
+
+
+mission "Avgi: Humans From the Deep"
+	landing
+	name "Avgi 中的人类"
+	description "访问 <destination> ，那里有另一个人类，Darius Calwell，被困在 Avgi 空间中。"
+	source "Peripheria"
+	destination "Aktina Cylinder"
+	to offer
+		has "Avgi: First Contact: done"
+	on offer
+		log `Met an alien species calling themselves the Avgi. Their home cluster appears infested with hostile ships from some unknown advanced civilization. Made contact with a scout ship and followed it back through a region south of Avgi space called the Tangled Shroud. Met with members of the Avgi government and made an agreement to let you purchase civilian technology.`
+		log "Factions" "Avgi" `The Avgi are a young race of aliens resembling large, colorful dragonflies, which inhabit the Twilight Nebula in this part of the galaxy. After an overwhelming invasion by ships they call the Aberrant, most of their surviving spacecraft fled south through a maze-like region called the Tangled Shroud.`
+		log "Factions" "Avgi Consonance" `The exiled Avgi seem to be led by a central government called the Consonance, but there are many who do not recognize this government.`
+		log "People" "Asime" `Asime is one of the three First Speakers of the Consonance Assembly. While reserved, Asime appears to be defensive about the decisions made by the Consonance in response to the Aberrant incursion.`
+		log "People" "Galano" `Galano is one of the three First Speakers of the Consonance Assembly. He appears to be an elder statesman, with much pride for what the Avgi have accomplished.`
+		log "People" "Prasinos" `Prasinos is one of the three First Speakers of the Consonance Assembly. She seems to take a negative view on the Avgi history of division and fractiousness.`
+		set "avgi: met lait"
+		set "language: Avgi"
+		conversation
+			`你的同伴加速前进，整齐地驶入外层的一个停车位。当你试图跟随时，战斗机会在你面前疾驰，将你赶向靠近中间甲板的另一个海湾。`
+			`坞站里充满了活力，您终于可以第一次近距离地看到这个新物种了。它们看起来类似于地球蜻蜓，或者可能更接近豆娘——平均长一米半，有六个肢体和翅膀。当你最终降落在一个清晰的空间并精确移动时，它们中的一群人迅速靠近你的船。这些外星人显然一直在等你。`
+			`这些外星人看起来都没有携带武器，但它们以明显的防御性圆形图案排列在你的飞船周围，它们要么步行，要么在空中飞来飞去。他们中的一些人看起来穿着某种防弹衣，但他们似乎没有携带任何明显的武器。当您走出 <ship> 时，注意到重力变轻，一小群人迅速向前前去迎接您。`
+			choice
+				`“大家好，我是队长 <first> <last>。”`
+					goto next
+				`“我是为了和平而来。”`
+					goto next
+				`“带我去见你们的领导。”`
+					goto next
+				`（射击他们。）`
+
+			`	You draw your sidearm and begin firing at the group of aliens, who scatter in all directions. Your first shot glances off alien body armor, but your second burns a hole in a wing, sending the alien tumbling. You have little time to celebrate your short-lived victory, however, before a flash of unfathomably bright blue-green light turns you into a rapidly expanding cloud of hot vapor.`
+				die
+
+			label next
+			`	The aliens hum and chirp excitedly amongst themselves, the sound reminding you of a string instrument. You notice they seem to produce sounds not from any particular vocal organs, but by rubbing their forearms or legs together akin to a cricket. One of the aliens, with a cream-colored body, seems to hush the others, flaring their wings out before returning them to a folded position on their back. They then raise a curved, black instrument reminiscent of a violin bow, drawing it over one of their forelimbs for a moment before the device begins to speak in a synthetic, vaguely masculine voice.`
+			`	"Invitation. Welcome, Captain <first> <last>. I am Lait of the Avgi, the one with whom you spoke earlier. I would show you to our leaders to discuss your arrival to our space."`
+			choice
+				`（跟随外星人。）`
+					goto follow
+				`“你怎么会说我的语言？”`
+				`“那些回到北方的敌对外星人是谁？”`
+				`“你能告诉我你的文明吗？”`
+
+			`	"Reassurance. All of your questions will be answered in time, Captain <last>. Please, now follow."`
+
+			label follow
+			`	You are led through the hangar, an entourage of guards separating you from curious onlookers - pilots, mechanics, or soldiers, you aren't sure. It's a bit awkward to be corralled by a group of people whose height barely comes past your knees, but you allow yourself to be escorted nonetheless. After exiting through a downward sloping ramp set in the floor, you then follow a long passageway that seems to perpetually curve upwards. You're reminded of older space stations, ones that relied on spin gravity before gravity plating became commonplace. Surprisingly, despite the short stature of your hosts, the halls and doorways seem to be more than capable of accommodating your height, a feature that makes more sense after you see multiple instances of the aliens making their way in the air, rather than on foot.`
+			`	Eventually, after a number of turns and descents, you pass through an open archway into some kind of conference room. Large and circular with a high, rounded ceiling, it is occupied by a trio of multicolored dragonfly aliens, each perched on a metal ring running around a circular table.`
+			choice
+				`“你好。”`
+				`“你是谁？”`
+			`	The alien directly across from you, gray-white in color, begins speaking with the aid of another of the translator devices - this time taking on a feminine voice.`
+			`	"Invitation. I apologize for the inconvenience of traveling so far from your ship to meet us, but I was advised against being present for your arrival for fear of any unexpected hostilities, as small as such chances were estimated. My name, for lack of a direct translation, is 'Asime,' and with me are Speakers Prasinos and Galano. Together, we represent the Avgi Consonance as the First Speakers of the Assembly of Polities."`
+			`	Prasinos, grass-green in color, and Galano, a frail-looking milky-white Avgi, both wave at you with their forelimbs in a somewhat surreal imitation of the human gesture.`
+			choice
+				`“你怎么会说我的语言？”`
+					goto humans
+				`“那些回到北方的敌对外星人是谁？”`
+					goto aberrant
+				`“你能告诉我你的文明吗？”`
+			label avgi
+			action
+				set "avgi: asked about avgi"
+			`	She twitches her wings slightly in what might be laughter. "Amusement. That would take a very long time to do in any detail, but I will make an attempt." Reverting back to her own language, she consults with the two other Avgi for a minute before turning back to you.`
+			`	"Pride, accomplishment. We are the Avgi. Our six systems, with seven worlds, and hundreds of orbitals each the size of a city, together a thousand polities united towards the betterment of civilization and progress-"`
+			`	Galano interrupts, his translator's voice sounding somehow aged. "Remembrance. But before all that, before the hyperdrive, we still crossed the void between stars. I was a child when the last true starship launched, but I remember. Long before we learned to surpass light, we settled the worlds beyond our home star system, at great cost and effort. We first touched space six centuries ago, and-"`
+			`	He is cut off by Prasinos. "Rebuke. You should start from the beginning, long before we left Aviskir. Our ancestors made their homes around the springs in the valleys of the Fel Mountains, and spread across our planet for millennia. From fire to spears to the atom, our skill in turning the natural world to our will grew, and with it our ability to form civilization: groups of Avgi bound together by more than close kinship or geography, instead by ideology and heritage and religion. And with that came conflict, each polity striving with the others to-"`
+			`	Now both Asime and Galano make noises of dissent, and Galano, sounding rather hurried, interrupts. "Urgency. Perhaps we are not as united as you, the humans, and it is true that we have fought many wars among ourselves. Emphasis. But that time is long since past. We saw reason, and so the Consonance was created, governed by an Assembly of Polities to represent every division of the Avgi, small or large. From the nation-states to the ideolopoli, a consensus government of our species to resolve disputes, to prevent another Great War. And while there have still been wars fought by the foolish and shortsighted, there has not been a nuclear initiation on Aviskir's surface in more than a century. The Assembly, for all its faults, works."`
+			`	Asime adds, "Truth. And we are what the Avgi need, now that all of that could be lost to the Incursion, to the Aberrant it spawned. We need what humanity has, a united Republic to lead all of our people."`
+			choice
+				`“你怎么知道人性？”`
+					goto humans
+					to display
+						not "avgi: asked about humans"
+				`“什么是异常者？”`
+					goto aberrant
+					to display
+						not "avgi: asked about aberrant"
+				`“这就是我的所有问题。现在发生了什么？”`
+					goto conclusion
+
+			label humans
+			action
+				set "avgi: asked about humans"
+			`	Prasinos thinks for a moment, then says, "Hesitance. It may come as a surprise to you, but you are not the first human to come to our space. Three- no, that would be six of your years ago, an alien ship was found drifting around a star in our space, swarmed by Aberrations. By some miracle they were driven away, and the ship recovered. And those were the first, and until now, the only humans we have had the honor of meeting. A crew of explorers from, I believe they said, 'the depths,' though I am not quite sure if that is a planet or a region of space."`
+			`	"Appreciation. They have told us much of humanity, and developed these devices so as to allow us to more easily communicate. And without the ability to return home, they now live among us, helping where they can with their knowledge of humanity's advanced technologies."`
+			label "human questions"
+			choice
+				`“这些‘畸变’是什么？”`
+					goto aberrant
+					to display
+						not "avgi: asked about aberrant"
+				`“告诉我更多关于 Avgi 的事。”`
+					goto avgi
+					to display
+						not "avgi: asked about avgi"
+				`“我不知道我是否可以称人类技术先进。”`
+					goto technology
+					to display
+						not "avgi: asked about human tech"
+				`“这就是我的所有问题。我想见见这些人类。”`
+					goto conclusion
+
+			label technology
+			action
+				set "avgi: asked about human tech"
+			`	Galano speaks. "Appreciation. Perhaps not to you, but humanity has had the hyperdrive since long before we reached our homeworld's moon. I have seen the changes and advancements even a handful of decades can bring, and your species' advantage over us of centuries has brought you miracles such as shields and repulsors."`
+				goto "human questions"
+
+			label aberrant
+			action
+				set "avgi: asked about aberrant"
+			`	Galano speaks. "Sorrow. The Aberrant, as we call them, remain enigmatic despite all they have taken from us. From where they came, we are not completely certain. They came two decades ago, from the east, beyond the reach of our knowledge, from a perilous region of space we have found difficult to probe. The scouts and explorers on the fringes of known space went dark first, and then the outposts fell one by one."`
+			`	Asime continues. "Regret. By the time the Consonance finally took note, the Aberrant swept away the ships Aviskir's polities were able to gather to oppose them. An entire generation of the Twilight Guard, wiped away in a single battle. Their technology is far beyond our own, and at the time it was impossible to oppose them. And the few Aberrations we were able to destroy baffled us. No crew, just a single organic entity inside. And systems operating on principles unknown to us. It can be said that we learned how to make shields from humanity, but we first learned what shields could do from the Aberrant."`
+			`	Prasinos says, "Anger. And thus we find ourselves here. When the hopelessness of the military situation became evident, every ship with a hyperdrive was ordered to take on passengers and make its way into the Tangled Shroud - this confusing web of broken starways and shadowed space that we now must call home. We abandoned our planets to the mercy of the Aberrant with little more than their surface defenses, scavenging the orbital infrastructure that had been painstakingly built over the centuries."`
+			`	He is interrupted by Asime, who seems annoyed. "Clarification. We were not heartless. The decision to evacuate was only made once it became evident the Aberrant had little interest in orbital bombardment, and that our surface batteries could drive off the ones that did. And we took tens of millions of civilians with us, in cryosleep, to be revived as resources allow."`
+			`	"Resolve. We will return. We have suffered a defeat, yes, but we will reclaim our systems in the end," says Galano with finality. The others do not dispute this.`
+			choice
+				`“你怎么懂我的语言？”`
+					goto humans
+					to display
+						not "avgi: asked about humans"
+				`“告诉我更多关于 Avgi 的事。”`
+					goto avgi
+					to display
+						not "avgi: asked about avgi"
+				`“这就是我的所有问题。现在发生了什么？”`
+					goto conclusion
+
+			label conclusion
+			`	Prasinos says, "Assurance. Of course, we will introduce your fellow humans to you. But..." he trails off.`
+			`	Asime continues for him. "Apprehension. The humans that came here before you, I must confess are still here for a reason. Perhaps they can give more details, but they have told us that when they first entered our space, they immediately attempted to leave. For whatever reason, they were unable to. I do not know the means by which you were able to travel to our space, but perhaps you will be able to return, and take these stranded humans with you."`
+			`	"Or, you may find yourself trapped here, just as they are. In any case, we will of course make you as comfortable as we can, as an honored guest, and treat you as we would any foreign dignitary."`
+			choice
+				`“我有一个跳跃引擎，可以让我超越超空间，但它不会让我跳回人类空间。”`
+				`“我有一个设备可以让我去我想去的地方，但它目前不起作用。”`
+
+			`	"Regret. Then the situation is most unfortunate," she says. "Commitment. We will offer you what help we can, but I did not wish to lie to you about their predicament, or provide you with false hope."`
+			`	"Reservation. Perhaps Captain <last> will be able to find a solution." says Galano. "I would not dismiss the possibility too quickly."`
+			choice
+				`“我在这儿，可以买你的技术吗？”`
+					goto "buy stuff"
+				`“在此期间，有什么我可以帮忙的吗？”`
+
+			`	"Consideration. As an alien, you will inevitably be a novelty to most of us, but the existence of humans is well-known among the public enough for you to walk among us without issue. I will speak to others about a more formal role, but until then I am unsure if we can ask anything of you beyond keeping the peace."`
+			label "buy stuff"
+			`	Galano says, "Interest. I would expect human technology to be superior to our own in most aspects, but we will of course allow you to purchase our items with the agreement of the Assembly. In the event that it becomes possible to open trade relations with your human government, we may find it useful to have prior transactions."`
+			`	"Amusement. Not to mention the goodwill such a gesture could buy us," says Asime.`
+			`	Prasinos says, more seriously, "Reservation. Our material resources are quite limited at the moment, so for now I would only support providing for the requisition of small items that do not strain the needs of the Guard."`
+			`	Asime looks like she wants to object, but then Galano says, "Agreement. A reasonable compromise, one I can sell to the Assembly fairly easily. Beyond that, we will provide you with a line of credit with which to purchase housing and nutrition. I cannot vouch for its usefulness among... certain elements that do not recognize the authority of Consonance, but anywhere else, you should find no issues."`
+			`	He twitches his wings. "Satisfaction. For now, we will leave you with some time and space to think. The former captain of the ship that brought the other humans, one Darius Calwell, is currently advising construction on the cylinder habitat in this system. You will find him on Aktina Cylinder, if you wish to speak with him. And should you wish to speak to us as well, there is one last gift we will bestow upon you today that will facilitate that."`
+			`	Before you are dismissed, he holds out a long arm, with a black hairpin-shaped rod clutched between his three sharp fingers, like a smaller version of the translator the Avgi have been using to communicate with you. Tucked behind your ear, this device will translate the speech of the most common Avgi languages as is it spoken around you, quietly whispering the meaning into your ear.`
+				accept
+	on accept
+		clear "avgi: asked about avgi"
+		clear "avgi: asked about humans"
+		clear "avgi: asked about aberrant"
+
+
+
+mission "Avgi: Defend Ensemble 1"
+	landing
+	name "阿夫吉突击队"
+	description "在 <destination> 与 Avgi 突击队会合。"
+	source "Aktina Cylinder"
+	destination "Navigeo Yards"
+	passengers 1
+	blocked "You'll need a free bunk on the <ship> if you want to take Darius anywhere off this station."
+	to offer
+		has "Avgi: Humans From the Deep: done"
+	on offer
+		log "People" "Darius Caldwell" `Darius was a Deep Security captain, who led an expedition sponsored by the Deep to learn more about Quarg technology. While on the return trip, he ordered his crew to investigate an anomalous extra hyperlane leading south of human space. After becoming trapped in Avgi space, the Deep crew sought refuge with the Consonance. Darius seems to blame himself for his crew's situation.`
+		conversation
+			`从远处看，Aktina Cylinder 看起来像一个巨大的骨架管，有石墨烯肋骨和金属脊柱。按照空间站控制机构的指示，您穿过空间站的开放式框架，到达其小型加压区域，该区域容纳了建筑工人和维护人员。`
+			`你被告知你到达的消息已经在你之前发出，所以你并不完全惊讶地看到一个中年人在等你，当你的船停在一个空闲的机库时，他脸上露出纯粹的惊讶表情。您从 <ship> 下船，发现达里厄斯就在舱口外等候。`
+			choice
+				`“你好呀。”`
+				`“你好，人类。我是为了和平而来。”`
+			`男人惊讶地眨了眨眼，然后伸出一只手，你握了握。 “所以，我们中的另一个人在仙境。我不知道我是否应该高兴地看到另一张友好的面孔，或者为另一个灵魂与我们一起被困在这里而感到难过。”他摇摇头。 “我们找个地方谈谈吧。如果你不介意告诉我，你怎么会到这里来？”`
+			choice
+				`“我有跳跃驱动器。”`
+				`“我有一个可以绕过超车道的设备。”`
+			`当你走路时，他不知何故看起来更加惊讶。 “跳投？你到底从哪里弄来的？”`
+			choice
+				`“我从核心附近的一些敌对外星人那里拿走了它。”`
+					goto korath
+					to display
+						"reputation: Korath" < -10
+				`“我从天津四星系的一些外星人那里拿来的。”`
+					goto pug
+					to display
+						has "FWC Pug 2D: done"
+				`“我从辛迪加那里得到了它，他们从核心附近的一个外星种族那里得到了它。”`
+					goto korath
+					to display
+						has "FW Pug 2B: done"
+						not "FW Pug 2C: Jump Drive: done"
+				`“我从一些愤怒的太空松鼠那里得到了它。”`
+					goto unfettered
+					to display
+						has "Wanderers: Translation Machine: done"
+				`“我从夸格人那里拿来的。”`
+					goto quarg
+					to display
+						"reputation: Quarg" < 0
+				`“恐怕我不能告诉你。”`
+			`他看起来很怀疑。 “好吧，那你就保守秘密吧。”`
+				goto next
+
+			label korath
+			`	"Aliens other than the Quarg?" You nod. "Huh. I've heard rumors about alien attacks in the Core before, but I always thought it was the Syndicate making excuses for the out-of-control piracy in the region."`
+				goto next
+
+			label pug
+			`	"Deneb? There's no hyperlanes to that system, are there? Strange." He looks thoughtful for a moment. "I've heard stories before, of... never mind, excuse me."`
+				goto next
+
+			label unfettered
+			`	"The Hai have jump drives? I didn't think their technology was that advanced." He looks thoughtful. "Unless they got them from someone else, that is."`
+				goto next
+
+			label quarg
+			`	"...What? You're kidding, right? How the hell did you defeat a Quarg ship?" He looks worried for a second, taking a step back. "Do I even want to be seen associating with you?" He laughs nervously.`
+
+			label next
+			`	Darius shakes his head for a moment, then looks back at you. "Well, since you're still here, I'm assuming your jump drive couldn't get you out of here?" You tell him about how you were unable to jump back to human space, and he nods along.`
+			`	"There has to be a way out, I just know it. But in six years, we've only been able to spend a few days at a time in the systems bordering human space, before those damn space shoggoths forced us back. And," he lowers his voice, looking around surreptitiously, "I don't think the Avgi are that enthusiastic about us trying to map the place either. I don't think they're exactly trying to keep us here or anything, but they've been pretty insistent on us humans not getting ourselves killed doing something stupid, like say, desperately trying to find a way back to our homes." He sounds frustrated.`
+			choice
+				`“别担心，我相信我们一定能找到回家的路。”`
+					goto reassuring
+				`“Avgi 人想把你留在这里？这令人担忧。”`
+				`“你怎么会在没有跳跃驱动器的情况下进入 Avgi 太空呢？”`
+					goto story
+
+			`	"I'm probably just paranoid. After all, they're really enthusiastic about trying for an alliance with humanity to help them against these Aberrant, no matter how many times I explain humans aren't really all that technologically advanced. But they think if I can find a way home, we might be able to find a way to open up a connection between human space and Avgi space, especially given the way we got here. Not that I'd want to do that, with the chance of the Aberrant overrunning human space."`
+
+			label reassuring
+			`	"Sometimes I find it hard to believe that we'll ever make it home, but it helps to tell myself there's hope," he says.`
+			choice
+				`“你怎么会在没有跳跃驱动器的情况下进入 Avgi 太空呢？”`
+
+			label story
+			`	"Funny story, that," he says. "We were part of a big convoy from Valhalla, sponsored by one of the major universities there. I was working with Deep Security, after my stint in the Navy... ended." He trails off. "Anyway, we were in a Mule carrying some scanning equipment. To research the Quarg, you see. Officially we were there for cultural outreach and exchange, you know, the usual, but really we wanted some good scans of a Wardragon. The Quarg don't really approve of it, but they don't do much to discourage it either."`
+			`	He continues. "So, we were on our way back, just entering Dabih. Really successful trip and everything, with a big bonus waiting for me thanks to how long the trip across the entire Republic took. But then our scanners started picking up weird readings from particular hyperlanes, and we started hearing some pirates chattering about how something weird was happening in the Sadr system. A new hyperlane, pointing south, they said. It was just a few jumps away from our current location, and we were the only Deep ship in the area that could go off alone."`
+			`	He looks at his hands. "So I... I made the decision, as captain. I volunteered my crew to investigate it, to travel through that hyperlane in the name of science. For what the Deep holds highest, because I guess I wanted... I don't know. Not the prestige. But to live up to what the Deep's supposed to be, the ones at the forefront of human exploration and research. They took me in when I had nowhere else to go, and I guess I wanted to repay that somehow. And now, now a dozen good men and women are dead, and the rest are stuck here behind a hyperlane that closed the moment we went through it, living among aliens fighting a war of extinction that they probably can't win."`
+			choice
+				`“你们的其他船员，现在在哪里？”`
+
+			`	"There are a few of us left," he sighs, "but, well, I'm not on the best of terms with them. They blame me for bringing them here, and I can't fault them for it."`
+			choice
+				`“这似乎不公平。你不可能知道会发生什么。”`
+					goto blame
+				`“还有和他们复合的机会吗？”`
+			`	"I've made... a lot of mistakes. Ones with a price paid in lives. But," he looks down, "...maybe. They don't hate me or anything like that, we just... keep our distance. Sora's off doing who knows what with the Twilight Guard on Weledos, and Leon is on and off with those mining guilds to the East. There are a few others left too, but like I said. A price paid in lives."`
+				goto end
+
+			label blame
+			`	"I wish it was that simple. I made more mistakes after that, ones with a price measured in lives. Eleven dead after our ship was disabled, all because I ordered us to get too close to the scary-looking alien ships in the hope we could communicate with them. Sure, you could say I couldn't have known the Aberrant would try to kill us, but I ignored the advice of my crew, just because I was desperate to get home. Sora, Leon, they both told me we should run, but I didn't listen to them."`
+
+			label end
+			`	You sit together in silence for a few more minutes, when Darius seems to receive a message on his communicator. "I get patched in to the emergency alert system," he explains as he reads it. Suddenly, he pales. "A scout is reporting a massive invasion headed towards the Ensemble system. Dozens of Aberrations, flying straight through the Shroud." He looks up at you. "They don't normally try to go too deep in the Shroud. Something about it spooks them, I think, but Ensemble is shallow enough that they've attacked it before. Nothing of this scale though, and... damn, Sora's on Weledos, the moon in the Ensemble system."`
+			`	He looks at you, hopeful. "We've got to do something. The Avgi are assembling a relief force around the Navigeo Yards, their big shipyard not too far from here. Come on, let's join it."`
+				accept
+	on visit
+		dialog `您降落在 <planet> 上，但意识到您携带达流斯的护卫尚未进入系统。最好出发并等待它的到来。`
+
+
+mission "Avgi: Defend Ensemble 2"
+	autosave
+	landing
+	name "整体防御"
+	description "帮助 Ensemble 系统中的 Avgi 阻止异常袭击，直到救援到来。"
+	source "Navigeo Yards"
+	destination "Weledos"
+	passengers 1
+	blocked "You'll need a free bunk on the <ship> to take Darius to <planet>."
+	to offer
+		has "Avgi: Defend Ensemble 1: done"
+	on offer
+		log `Agreed to help the Twilight Guard defend the Ensemble system from an Aberrant raid inside the Tangled Shroud. The Avgi appear to enthusiastically use nuclear weapons, contrary to the taboo most humans place on them.`
+		log "Factions" "Twilight Guard" `The Twilight Guard is the military arm of the Avgi Consonance, a unified command created in response to the Aberrant incursion.`
+		log "Factions" "Avgi" `Notably, the Avgi appear to have no taboo around nuclear weapons, and use them freely against the Aberrant.`
+		conversation
+			`当您驶入为数不多的可用泊位之一时，Navigeo 就热闹非凡。各种尺寸的 Avgi 舰船，涂成暮光守卫的深蓝色，每隔几分钟就会下水，片刻之后就被伤痕累累的战舰取代，这些战舰滑入干船坞进行维修。`
+			`距离空间站几公里远的地方，一支舰队正以宽阔的队形集结。你会看到几艘巡洋舰大小的船只，以及十几艘较小的船只聚集在它们周围。你向他们欢呼，请求加入编队，惊讶的 Avgi 海军上将指示你飞向 Ensemble 系统。`
+			`“警告。原子弹将在即将到来的战斗中使用，所以请远离我们的弹头，”她说。 “如果你飞在我们舰队前面并清除掉路上任何掉队的异常者，我们将不胜感激，这样我们就可以为合奏团的战斗节省尽可能多的原子弹。”`
+			choice
+				`“认了。”`
+					goto end
+				`“等等，核武器？你们使用那些？”`
+
+			`	"Confusion. Yes, of course. What else would we use, beam weapons?" She flicks her wings. "Don't tell me you're a beam fan, I'll have you know guided weapons win every time."`
+			choice
+				`“没什么，我只是感到惊讶而已。”`
+					goto end
+				`“我不确定我是否对种族灭绝武器感到满意。”`
+
+			`	"Annoyance. It's not like we're using them against civilian targets, or even a planetary target to begin with. Honestly, you humans have some strange sensibilities."`
+
+			label end
+			`	She turns away from the viewscreen as another Avgi starts speaking to her, dismissing you with a flick of her fingers.`
+				accept
+	npc
+		government "Avgi (Twilight Guard)"
+		personality heroic frugal escort
+		fleet
+			names "avgi military names"
+			variant
+				"普里斯马奥斯"
+				"Prismaios (Orchid)" 2
+				"Tremoros" 3
+	npc
+		government "Avgi (Twilight Guard)"
+		personality heroic frugal waiting escort
+		fleet
+			names "avgi military names"
+			variant
+				"Difraktos（兰花）"
+				"雷夫拉克托斯"
+				"衰减花（兰花）"
+				"Vibratia" 20
+				"Photikon (Ophrys)" 6
+	npc
+		government "Avgi (Twilight Guard)"
+		personality heroic staying waiting
+		system "Ensemble"
+		fleet
+			names "avgi military names"
+			variant
+				"普里斯马奥斯"
+				"Tremoros" 3
+				"雷夫拉克托斯"
+				"迪亚斯佩西"
+				"Vibratia" 6
+				"Photikon" 2
+	npc
+		government "Avgi (Twilight Guard)"
+		personality heroic waiting
+		system "Arche"
+		fleet
+			names "avgi military names"
+			variant
+				"Prismaios" 3
+				"Tremoros" 6
+				"Refraktos" 2
+	npc evade
+		government "Aberrant"
+		personality
+			confusion 40
+			coward hunting secretive staying vindictive target
+		system "Ensemble"
+		fleet
+			names "aberrant names"
+			variant
+				"Aberrant Latte" 2
+				"Aberrant Chomper (Disable-able)" 2
+				"异常堆积"
+		fleet
+			names "aberrant names"
+			variant
+				"Aberrant Latte" 2
+				"异常咀嚼者"
+				"Aberrant Whiskers" 2
+		fleet
+			names "aberrant names"
+			variant
+				"异常拿铁"
+				"Aberrant Chomper" 2
+				"异常胡须"
+		fleet
+			names "aberrant names"
+			variant
+				"异常破冰船"
+				"Aberrant Mole" 2
+		fleet
+			names "aberrant names"
+			variant
+				"Aberrant Icebreaker" 2
+				"异常痣"
+		fleet
+			names "aberrant names"
+			variant
+				"异常行程"
+				"Aberrant Triplet (Disable-able)" 3
+	on visit
+		dialog `您已登陆 <planet> ，但仍有异常攻击系统。你应该起飞并帮助 Avgi 击败他们。`
+
+	on complete
+		log `Defended Ensemble from the Aberrant raid with the help of a fleet of Twilight Guard ships armed with nuclear weapons. The Aberrant apparently do not usually raid this deep into the Tangled Shroud, which makes the size of this battle worrying.`
+		log "People" "Sora Kun" `Sora was part of the Deep expedition that became trapped in Avgi space, serving as an engineer. She has been assisting the Twilight Guard with reinforcing their defenses in the Tangled Shroud. Despite Darius' fears, she does not appear to blame him for their predicament.`
+		log "People" "Darius Caldwell" `Despite Darius' pessimism, at least some of his crew do not blame him for their situation.`
+		log "People" "Kokkino" `Kokkino is a Captain in the Twilight Guard, who seems interested in the possible help you can provide the Avgi.`
+		conversation
+			`战斗结束后，你降落在韦莱多斯，而大多数幸存的 Avgi 飞船在返回纳维吉奥船坞之前开始在轨道上进行临时维修。当你和达流斯检查 <ship> 的损坏情况时，你听到有人带着明显的人类脚步声走来。`
+			`“所以说，那些传闻并不是空谈，这里确实还有我们一个人。”你抬起头，看到一个穿着作战服的女人伸出手站在你面前。`
+			choice
+				`（握她的手。）`
+					goto handshake
+				`“你是谁？”`
+			`过了一会儿，她松开了手。 “我叫索拉。你呢？”`
+				goto name
+			label handshake
+			`“我叫索拉。你呢？”`
+			label name
+			`“<first> <last> 队长，”你说道。`
+			`“而且我看到你也有一个塔加隆。终于让老大流士从他的壳里出来了，是吗？”你看着达流斯，他盯着地面，脸上露出深深的羞愧。`
+			`“现在，我对你究竟是如何找到这里的路非常感兴趣。愿意解释一下吗？”她问。`
+			`你向索拉讲述了你的旅行如何将你带到这里，以及你如何获得跳跃驱动。达流斯自始至终都没有说话，静静地站在一旁。`
+			`“太棒了。那么，你的跳跃驱动可以让我们离开这里吗？”`
+			choice
+				`“恐怕不行，它因为某种原因无法返回人类空间。”`
+				`“不，但我不会放弃寻找不同的出路。”`
+				`“没有！”`
+			`“该死。我想这太容易了。但我已经很久没有见过新的人类面孔了。我已经在这里为暮光守卫工作了几个月，试图建立第二道防线，以防万一拱门的基地陷落。至少今天的战斗表明，这些防御工事，再加上一支支援舰队，是可以坚守的。你介意我跟在你身边，万一你真的能找到出路吗？”`
+			choice
+				`“当然。”`
+					goto yes
+				`“当然可以，只要德莱厄斯不介意。”`
+			`你看着达流斯，他在沉默了几秒钟后做出了回应。 「当然可以，空，你也可以一起去。」`
+			label yes
+			`“那么，对我来说听起来不错。当你准备离开时，我会再见到你。”她走开去领取她的物品。`
+			`几个小时后，一艘 Avgi 巡洋舰，一艘 Refraktos 级激光星号，停泊在您旁边的平台上，一名 Avgi 军官下船。`
+			`“致敬。您好，<first> <last> 船长。我叫 Kokkino，光谱碰撞船长。请问，<ship> 是一艘战舰吗？”`
+			choice
+				`“是的，<ship> 非常强大。”`
+					goto warship
+				`“不，<ship> 不是为战斗而设计的。”`
+			action
+				set "avgi: rescue intro"
+			`“考虑一下。但是，问题是，你仍然愿意利用你的飞船绕过星际通道的能力来帮助我们吗？”`
+			choice
+				`“是的当然。”`
+				`“我会听你说完。”`
+			`“批准。那很好，因为你独特的能力可能会帮助我们拯救一些非常勇敢的人的生命。来吧，一个小时后到太空港来见我。”在离开之前，他会给你一系列前往 Ensemble 主太空港的一座小建筑的路线。 “我们将有很多事情要讨论。”`
+				goto end
+
+			label warship
+			action
+				set "avgi: warship intro"
+			`	"Excellent. I am unsurprised, given its performance in the battle, but for all we know your alien vessel could be a simple freighter and yet still be formidable in our eyes. Are you willing to assist us with your warship's strength, question?"`
+			choice
+				`“是的当然。”`
+				`“我会听你说完。”`
+			`	"Enthusiasm. Your help will save many lives. Then, if you would, meet me in the spaceport in an hour." He gives you a set of directions to a small building in Ensemble's main spaceport before leaving. "We will have much to discuss."`
+
+			label end
+			`	Darius exits the <ship> behind you. "What was that about?" he asks.`
+			choice
+				`“听起来他们需要我帮忙做点什么。”`
+				`“我将帮助他们进行战争努力。”`
+			`	He frowns. "I see. When do you think we'll be able to head up north to look for a way out?"`
+			choice
+				`“我们很快就会做到，我保证。”`
+				`“我不知道。”`
+			`	He looks a little disappointed, then collects himself. "Well, I suppose there's no real urgency to it. Though, I've been thinking. If your jump drive wasn't able to let you escape from the north, there might not be a point in looking in that direction."`
+			`	"What do you suggest?" you ask.`
+			`	"I have a friend among the Avgi, one who doesn't frequent the official circles in the Consonance as much. There's a number of hideaways and side branches in the Tangled Shroud, with outposts mostly ran by miners and small-time shipbuilders. Just the kind of people who talk a lot among themselves about rumors and tall tales. The official story of the Incursion, the invasion of the Aberrant, is that they came from a chain of systems in the East, but no one ever talks about where exactly that chain leads. I think we should pay my friend a visit after you wrap up this next mission."`
+
+
+mission "Avgi: Scout Rescue"
+	name "搜索与救援"
+	description "找到并疏散 <npc> 的船员，该飞船最后出现在 Twirl 系统中，但可能位于本地星团的任何地方。"
+	source "Weledos"
+	destination "Peripheria"
+	mark "Twirl"
+	passengers 12
+	blocked "You'll need <capacity> to complete this mission."
+	to offer
+		has "Avgi: Defend Ensemble 2: done"
+	to fail
+		has "avgi: warship intro"
+	on offer
+		conversation
+			`你按照科基诺的指示来到了太空港的一座预制建筑，它看起来像是某种指挥中心。 Kokkino 正在中间的一张桌子旁等您，桌子亮着，显示一张 Avgi 空间地图，上面有一些您看不懂的彩色标记。`
+			`“解释。我们定期派遣侦察队和巡逻队进入异常者控制的空间。伊凡塞斯之外的每一次探险基本上都在敌后，补给被切断，在许多情况下通讯被切断。正如你可能想象的那样，这样的冒险充满了危险，不幸的是，侦察船失踪的情况并非闻所未闻。”`
+			choice
+				`“是的，我发现探索往往是危险的。”`
+					goto exploration
+				`“听起来你应该建造更强大的侦察船。”`
+			`“同意。北极星是一艘优秀的舰艇，但不是为战争环境制造的。我们已经尝试在竞争更激烈的环境中使用普里斯马奥斯作为情报平台，但它缺乏多功能性和无人机舱，而正是这些使北极星一开始就如此受人尊敬。”`
+				goto point
+			label exploration
+			`他挥动翅膀。 “遗憾。这是一个悲伤的事实，但那些站在扩展我们知识最前沿的人往往是那些面临未知危险的人。”`
+			label point
+			`“不过，说实话。两周前，北极星级侦察机“银反照率”号上的一支侦察队被派去勘测旋转星系，但已经错过了好几天的登记。要到达那个星团并返回通常需要几周的时间，而且要穿越危险的领土，我很羞愧地说，我们可能会被迫考虑将侦察兵视为失踪。但我听说来访的人类船长<last> ，拥有一种新型的超光速驱动器，无需星际旅行就可以旅行，问题是，这是真的吗？”`
+			choice
+				`“是的。”`
+				`“是的，这就是所谓的跳跃驱动。”`
+			`“兴奋。然后，行程可以缩短到几天，让我们有可能进行救援。我会在你的地图上标记旋转系统的位置，尽管银反照率很可能在星团的其他地方。当然，最优先的是其船员的安全恢复，不过如果你能恢复他们设法收集的任何数据或样本，我也会非常感激。”`
+				accept
+	on accept
+		log `Agreed to help Kokkino by trying to rescue the crew of an Avgi scout ship that failed to report in from a mission in the Twilight.`
+
+	on enter "Twirl"
+		unmark "Twirl"
+		dialog `您已到达旋转系统，但没有银色反照率的迹象。也许你应该检查一下这个星团的其余部分。`
+
+	npc assist
+		government "Avgi (Twilight Guard)"
+		personality derelict mute pacifist target
+		system Whirlwind
+		ship "Polari" "Silver Albedo"
+		conversation
+			`你在银色反照率号旁边机动，它布满了烧焦痕迹和其他损坏迹象。传送科基诺船长给你的代码后，你等待任何生命迹象。几分钟后，您会收到回复，并通过翻译器传递该回复。`
+			`“注意，陌生船只，你是如何获得灵犀识别码的？”`
+			choice
+				`“没时间了。我是来救你的。”`
+					goto serious
+				`“我是一名太空外星人，在我的外星飞船里来拯救你们外星人。”`
+			`“有趣。好吧，我想我们别无选择，只能接受你的帮助，适时的小丑。正如你所看到的，雅儿贝德号正处于困境之中。”`
+				goto next
+			label serious
+			`“考虑一下。我想我们别无选择，只能接受你的帮助，陌生人。正如你所看到的，雅儿贝德正处于困境之中。”`
+			label next
+			`当你的船与银反照率号停靠时，你与 Avgi 指挥官讨论治疗伤员的事宜。任何有能力的 Avgi 在登船时都会抓着一大堆录音和日志。当所有人都安全转移到 <ship> 后，您就与废弃的飞船脱钩了。`
+				depart
+
+	on complete
+		conversation
+			`当银色反照率号的前船员下船时，您回到外围空间站受到热烈欢迎。一些伤势较重的船员被用吊床般的担架抬出，但大多数人都能够依靠自己的力量行走或飞出<ship>。`
+			`经过短暂的庆祝和多次向您表达深深的谢意后，您发现达流斯和索拉正在 <ship> 旁边等待与您交谈。`
+			`“<first>，我认为我们有一个千载难逢的机会，”Darius 说。 “我刚刚和一位议员赫里索谈话，他担心纠结裹尸布东部分支的政治局势。”`
+			`“他们真是一群自私的胆小鬼。”空轻蔑地说。`
+			`“矿工们在抱怨镍铁价格管制，”达流斯过了一会儿说道，“但他想知道你是否可以用跳跃驱动带他去那里与矿工们进行一些接触，而不需要花费数周时间在混乱的扭曲超航道中徘徊。这是与我的朋友见面并向他询问一些问题的绝佳机会。一个小时后在太空港与我见面，我们将解决这次旅行。”`
+	on visit
+		dialog `您降落在 <planet> 上，但意识到您载着获救船员的护卫舰尚未进入系统。最好出发并等待它的到来。`
+
+
+mission "Avgi: Frontline Combat"
+	name "追捕异常者"
+	description "帮助 Avgi 清理异常精髓以北的系统以释放防御资源，然后返回 <destination> 。"
+	source "Weledos"
+	destination "Feo Platform"
+	waypoint "Corporeal"
+	waypoint "Empyrean"
+	waypoint "Firmament"
+	waypoint "Lumine"
+	to offer
+		has "Avgi: Defend Ensemble 2: done"
+	to fail
+		has "avgi: rescue intro"
+	on offer
+		conversation
+			`你按照科基诺的指示来到了太空港的一座预制建筑，它看起来像是某种指挥中心。 Kokkino 正在中间的一张桌子旁等您，桌子亮着，显示一张 Avgi 空间地图，上面有一些您看不懂的彩色标记。`
+			`“解释。异常者是无情的，但通常只会轻轻地推入纠结裹尸布。当然，最近的入侵除外。但阿尔奇凭借菲欧平台和大炮守住了第一道防线。”他指出了裹尸布外的一个三元系统。`
+			`“但是，如果我们要夺回家园，就不能仅仅采取防御性的战斗。因此，这场战争的前线最近已经划定在精华星系以及其北部的三角星系中，而我们仍在清理这些区域。”`
+			choice
+				`“我从哪里进来？”`
+				`“你想让我做什么？”`
+			`“考虑一下。你的船远远超出了我们本土生产的任何东西，至少目前是这样。虽然你确实擅长舰队作战，但我认为你最好使用发动独立攻击的方式，这是我们的一艘船无法独自完成的。”`
+			`他低头看着一个类似于平板电脑的设备。 “随着对合奏团的袭击，我们被迫从精髓前线撤回我们的主力舰队群，试图遏制他们。虽然我们已经夺回了许多最初的阵地，但在所有的机动过程中，大量异常者能够从我们身边溜过，不是进入裹尸布，而是向北，前往九重天星系。在目前的情况下，我不想从防御中转移整个打击力量来追捕他们。向当异常者被消灭时的 Feo 平台。”`
+				accept
+	on accept
+		log `Agreed to help Kokkino by clearing out Aberrant stragglers infesting a cluster of systems behind the front lines.`
+	on visit
+		dialog `您已降落在 <planet> ，但北部的系统中仍残留有异常者。把他们全部杀掉后就回来。`
+
+	npc kill
+		government "Aberrant"
+		personality
+			confusion 40
+			coward secretive staying target uninterested vindictive
+		system "Corporeal"
+		fleet
+			names "aberrant names"
+			variant
+				"异常少年"
+				"异常破冰船"
+	npc kill
+		government "Aberrant"
+		personality
+			confusion 40
+			coward secretive staying target uninterested vindictive
+		system "Empyrean"
+		fleet
+			names "aberrant names"
+			variant
+				"异常拥抱者"
+				"异常堆积"
+	npc kill
+		government "Aberrant"
+		personality
+			confusion 40
+			coward secretive staying target uninterested vindictive
+		system "Firmament"
+		fleet
+			names "aberrant names"
+			variant
+				"异常三联体"
+	npc kill
+		government "Aberrant"
+		personality
+			confusion 40
+			coward secretive staying target uninterested vindictive
+		system "Lumine"
+		fleet
+			names "aberrant names"
+			variant
+				"Aberrant Chomper" 2
+
+
+
+mission "Avgi: Dissonance Outreach 0.5"
+	landing
+	name "返回周边"
+	description "返回 <destination> 去收集 Hriso，一位协和议员。"
+	source "Feo Platform"
+	destination "Peripheria"
+	passengers 2
+	blocked "You'll need two free bunks on the <ship> for Darius and Sora."
+	to offer
+		has "Avgi: Frontline Combat: done"
+	on offer
+		conversation
+			`回到 Feo 平台后，驻扎在那里的暮光守卫将给予您英雄般的欢迎。经过短暂的庆祝和对你这个陌生的陌生人的多次赞美之后，你发现达流斯和索拉正在 <ship> 旁边等着与你交谈。`
+			`“<first>，我认为我们有一个千载难逢的机会，”Darius 说。 “我刚刚和一位议员赫里索谈话，他担心纠结裹尸布东部分支的政治局势。”`
+			`“他们真是一群自私的胆小鬼。”空轻蔑地说。`
+			`“矿工们在抱怨镍铁价格控制，”达流斯过了一会儿说道，“但他想知道你是否可以用跳跃驱动器带他去那里与矿工们进行一些接触，而不需要花几周时间在混乱的扭曲超车道中徘徊。这是一个与我的朋友见面并向他询问一些问题的绝佳机会。我们需要前往 Peripheria 接 Hriso 并解决这次旅行。”`
+				accept
+	on complete
+		dialog
+			`当你驾驶 <ship> 在其中一个机库着陆时，达流斯说：“我会与赫里索取得联系，让他在太空港与我们会面。”`
+	on visit
+		dialog `您降落在 <planet> 上，但意识到载有达流斯和索拉的护卫尚未进入系统。最好出发并等待它的到来。`
+
+
+mission "Avgi: Dissonance Outreach"
+	name "不和谐外展"
+	description "将 Hriso 带到 <destination> 与当地矿工谈判。您可能需要致电车站以获得停靠许可。"
+	source "Peripheria"
+	destination "Outpost Tekis"
+	passengers 3
+	blocked "You'll need <capacity> to transport Darius, Sora, and Hriso."
+	clearance "Hriso has an animated argument with the spaceport controller, saying something about access rights, and manages to get you reluctant permission to dock."
+	to offer
+		or
+			has "Avgi: Scout Rescue: done"
+			has "Avgi: Frontline Combat: done"
+	on offer
+		log "People" "Hriso" `Hriso is an Avgi diplomat, who negotiates with dissenters unhappy with Consonance rule. While loyal to the Consonance, he seems to have some sympathy for the Dissonance movement and its views.`
+		log "People" "Sora Kun" `Sora takes a negative view on the Dissonance, and those who she sees as not contributing to the war effort against the Aberrant.`
+		log "Factions" "Avgi Consonance" `Membership in the Consonance varies widely between the various Avgi polities, and a significant portion of the Avgi that escaped the Aberrant do not recognize its legitimacy.`
+		log "Factions" "Avgi Dissonance" `The Dissonance is a catchall term for the various groups and individuals who do not accept the Consonance as a unified Avgi government. Ranging from anarchists to dissenting corporations, the Dissonance is a big-tent movement rather than being a centralized group.`
+		conversation
+			`赫里索原来是一只黄橙色的中年阿夫吉。 “兴奋。很高兴见到您，<first> <last> 队长。我期待着您在谈判期间的陪伴。”`
+			choice
+				`“阿吉人不是在灵犀之下团结起来了吗？”`
+				`“你到底在和谁谈判？”`
+					goto dissonance
+			`他哈哈大笑。 “人们只能希望我们的物种能够如此统一。不，和谐号的成员资格纯粹是随意的，即使在当前的危机下，许多政体也选择单干。遗憾。至少可以说，最初的疏散到纠结裹尸布是偶然的，因为其中大部分内容过去和现在都没有在地图上绘制。许多船长带着他们的船走不同的路线，互相会合并结成联盟只是为了生存。在某种程度上，这是一个奇迹，灵犀甚至能够自我重组。”`
+
+			label dissonance
+			`	"Those polities not fully aligned with the Consonance are largely independent of each other, but their movement has collectively been labeled as the 'Dissonance.' Imperative. Please do understand, we are not enemies, nor would I say we bear them any ill-will. The Dissonance participates in trade with us and de-facto follows the regulations passed by the Assembly, and each and every one of them wants the Aberrant scoured from our space as much as the rest of us."`
+			`	He looks directly at you. "The individuals we will be negotiating with on this trip are still loyal to the Consonance, merely unhappy with the price controls in place on certain minerals. Necessary for the Twilight Guard to expand the fleet," he explains.`
+			`	Sora says, "I still think they're a bunch of cowards. The existence of your species is threatened, and you let someone else do the fighting? Then you complain about the price they can pay for iron? What kind of person does that?"`
+			`	Hriso flicks his wings. "Reproach. The kind that still has to support themselves, and pay for the precision machinery they cannot make themselves. But we can discuss this later. For now, let us set off as soon as possible."`
+				accept
+
+	on accept
+		log `Agreed to transport Hriso to a Dissonance mining station in the Tangled Shroud, while Darius and Sora investigate a lead that could potentially help you escape the Twilight.`
+
+
+mission "Avgi: Twilight Escape 1"
+	landing
+	name "逃离黄昏"
+	description "寻找摆脱黄昏的方法。你可能想看看暮光之城的远东，入侵最初开始的地方。"
+	source "Outpost Tekis"
+	destination "Vinci"
+	passengers 3
+	blocked "You'll need <capacity> on the <ship> to transport Darius, Sora, and Leon."
+	to offer
+		has "Avgi: Dissonance Outreach: done"
+	on offer
+		log `Heard of a potential way out of the Twilight. Apparently, the Aberrant invaded through a chain of systems stretching to the East, and while no Avgi ships have been able to explore the area since the Incursion, Leon thinks there could be a way back to human space from there.`
+		log "Factions" "Avgi Dissonance" `Independent miners, collectives, and corporations alike are unhappy with the price controls the Consonance has placed on minerals mined from asteroids. While the Consonance claims they are necessary due to the austere war economy and the need for raw materials, the artificially low prices make it hard to survive and make a living.`
+		log "People" "Leon Shez" `Leon was a scientist aboard Darius' ship when it became trapped in the Twilight. Unlike Sora, he definitely does blame Darius for having been trapped with the Avgi. While somewhat rude, he appears to have made several valuable connections and could be close to uncovering a way back to human space.`
+		conversation
+			`特基斯前哨站是一个大型空间站，建在直径几公里的小行星上，管道和栖息地网络在地表纵横交错。您将 <ship> 拖入岩石中挖出的狭窄机库，并与 Hriso 一起下机，Hriso 立即出发前往预先安排的会面地点。你注意到前哨站的许多 Avgi 人都盯着你、大流士和索拉，这可能是他们第一次看到人类。`
+			`你们一起进入一个大型圆形会议室，墙壁是抛光的岩石。那里等待着一些不同年龄段的 Avgi，他们立即开始用自己的语言与 Hriso 交谈。`
+			`其中一个看着你说：“不高兴。那么，你期望外星人表现出的支持会感动我们吗？我们的印象是，你来这里是为了重新考虑你的立场，而不是僵化它们。”`
+			choice
+				`“他们在说什么？”`
+				`（保持沉默。）`
+
+			`	"Rebuke. Captain <last> is not here on 'my' side, or any other, merely as an observer curious of our ways." Hriso turns to you. "Consideration. I suppose you might be curious about what we are discussing. The local mining guild here says they cannot sustain their operations with the low price on iron mandated by the Consonance, as we are not buying enough rarer metals like titanium to make up for it."`
+			`	"That's stupid," says Sora. "Without cheap steel we wouldn't be able to keep expanding Peripheria or build the Aktina Cylinder."`
+			`	Hriso doesn't translate that, returning to conversing with the miners. Sora pulls out a translator of her own, listening intently to the conversation, but Darius pulls you aside. "I had a talk with a few people on the way here, and they say there's someone who knows more about the first days after the Incursion. Come on."`
+			`	"What did they say?" you ask.`
+			`	"Apparently it's someone we have to meet in person," he grumbles. "I don't like it, but I don't think it's anything dangerous. Just inconvenient." You excuse yourself and walk along with Darius.`
+			`	Before long, you find yourself in some kind of mess hall, dozens of Avgi sipping from colorful drinks. Darius freezes as he spots a short man seated on a crude stool, the only human-style seating in the room, together with a few Avgi.`
+			`	"Darius. I didn't expect to see you here," he says. "And, what's this, another human here in Avgi space?"`
+			`	Darius takes a while to respond. "Leon. It's been a while."`
+			`	Leon snorts. "That's to say the least. Is Sora with you, or did you crawl here by yourself?"`
+			choice
+				`“她正在帮助进行一些谈判。”`
+					goto you
+				`（让大流士来说话。）`
+
+			`	"She's with someone from the Consonance, negotiating with the miners here," says Darius.`
+			label you
+			`	"And who's this?" Leon says, looking at you. "How'd you end up here, of all places?"`
+			choice
+				`“<last> 队长。我和你一样被困在这里。”`
+				`“<first>。很高兴认识你。”`
+
+			`	You quickly explain how you found yourself in Avgi space, and Leon nods. "That explains the questions the good Captain was asking," he says, nodding at Darius. "I've spent years collecting this information, from hearing the official narrative to dredging the corners of Avgi space for rumors."`
+			`	He leans in. "So, before I tell you this, one condition. I've spent months looking for a way to get a ship to take me to... well, you'll see. But not a lot of captains are willing to take their ships out of the Tangled Shroud and through the Aberrant blockade, so if this leads anywhere, I want a bunk on your ship."`
+			choice
+				`“同意。”`
+					goto agreed
+				`“没有交易。”`
+			`	You open your mouth to reply, but Darius beats you to the punch. "Of course, Leon."`
+
+			label agreed
+			`	"Good. Well, it more or less comes down to this: the Incursion didn't come out of nowhere. Everyone says they came from beyond the furthest reaches of Avgi exploration, but that's not quite true. The first to encounter them was a scout ship, which went down within minutes against their weapons. But not before they sent out a single garbled transmission to their sister ship, which fled back to the rest of the Avgi."`
+			`	He pauses, taking a drink of what looks like water. "They said they had found a gateway of sorts, an ancient alien artifact built by an unknown Antecessor species. Somehow, they had activated it, and that's where the first Aberrant came from."`
+			choice
+				`“你想用这个传送门作为退路吗？”`
+				`“你认为这个门通向哪里？”`
+
+			`	"I don't know where it leads, but it'll be somewhere other than Avgi space. Maybe somewhere your jump drive can work, which would let us eventually make our way back to human space. But it's better than sitting here and twiddling our thumbs for another six years."`
+			`	"Where is this gateway?" Darius asks.`
+			`	"The Aberrant came from the East, beyond the furthest reaches of the Twilight. A place the Avgi always had trouble exploring, due to strange energy storms periodically ionizing entire systems. But it's apparently recognizable by the red nebula suffusing it, just as the Twilight is surrounded by a cluster of blue nebulae."`
+			branch "unknown ember waste"
+				not "event: ember waste label"
+			choice
+				`“我听说过那个地方。它叫灰烬荒地。”`
+			`	"Can it take us back to human space?" asks Leon, to which you nod.`
+
+			label "unknown ember waste"
+			`	"There's no point in waiting, then. If there's a chance, even a small one, it's worth checking on," says Darius, looking hopeful for the first time since you've met him. You just hope his hope isn't a false one, for both of your sakes.`
+				accept
+	on enter "Decet"
+		log `Discovered a magnetar in the Decet system that can boost the range of my jump drive in an apparent inversion of the mysterious effect that trapped me here.`
+		conversation
+			`就像你第一次进入 Avgi 空间时你的跳跃驱动反应很奇怪一样，它再次出现这种情况，但这次效果相反。你跳跃时产生的等离子会不自然地持续存在，就好像被外界的某种东西激发了能量一样。你的仪器告诉你，你的跳跃驱动器比跳跃后应有的温度要高得多，几乎热到足以造成危险。也许你的跳跃驱动范围也发生了变化？`
+	on enter
+		system
+			attributes "core" "deep" "dirt belt" "near earth" "rim" "south"
+		conversation
+			`当你跳跃驱动的紫色火焰消退时，达流斯、索拉和莱昂都说不出话来。六年来，他们第一次回到人类太空。`
+			choice
+				`“呵呵，告诉过你我们会成功的。”`
+				`“我们出去了。现在去哪儿？”`
+
+			`	Leon stares for a moment, then swears. "That damn magnetar was there the entire time? I was there for years. Years!"`
+			`	"We all were. And you wouldn't have been able to do anything with it without <first>'s jump drive," reminds Sora.`
+			`	"<first>," says Darius in a shaky voice. "Take us to the Deep, please. I need to see my home. And my wife."`
+			`	"Drop me off on Vinci first," interjects Leon. "I need to get my life in order again, and there's someone there I need to talk to about all this. It's on the way to the Deep, anyway."`
+	on complete
+		log `Successfully escaped the Twilight together with the humans stranded there.`
+		log "People" "Leon Shez" `Leon is extremely grateful to you for helping him return to Avgi space. He wants to tell a contact on Vinci about the Avgi, and asks you to stay in touch.`
+		clear "avgi: lost in twilight"
+		"reputation: Avgi (Dissonance Angry)" <?= -10
+		conversation
+			`当您将 <ship> 放在着陆台上时，人群中一片安静。你注意到索拉看着窗外，而达流斯则看着他的双手。至于莱昂，甚至在你进入大气层之前，他就已经准备好离开，在舱门附近踱步，直到你打开舱门的那一刻。`
+			`“我要去呼吸一下新鲜空气，”索拉突然走到愤怒的莱昂面前说道，达里厄斯不情愿地拖着她走。 “我们将在太空港，所以尽量不要离开我们。”`
+			`Leon 注定是最后一个出去的，他在离开 <ship> 之前停了下来，转向你。 “<first>。谢谢。”他一反常态地忧郁，平时对世界的蔑视感暂时消失了。`
+			choice
+				`“别担心。”`
+				`“我很高兴能够提供帮助。”`
+
+			`	"No, really. I was expecting to die back there, with those Avgi. Six years... I don't know how to thank you, but if you're ever in the area and you need anything don't hesitate to give me a call." With that, he shakes your hand and sets off in the direction Sora and Darius went, toward Vinci's spaceport.`
+			`	Remember to meet Darius and Sora in the spaceport before you leave Vinci.`
+	on visit
+		dialog `您降落在 <planet> 上，但意识到您的护卫携带达流斯、索拉和莱昂尚未进入系统。最好出发并等待它的到来。`
+
+
+mission "Avgi: Twilight Escape 2"
+	name "索拉归来"
+	description "在记忆中带索拉去她父母的农场。"
+	source "Vinci"
+	destination "Memory"
+	passengers 2
+	blocked "You'll need <capacity> on the <ship> to transport Darious and Sora."
+	to offer
+		has "Avgi: Twilight Escape 1: done"
+	on offer
+		conversation
+			`你发现达流斯和索拉坐在咖啡馆外面喝着咖啡。 “我们已经很久没有喝到这么好的杯子了，”Sora 解释道，并为你拉开一把椅子。`
+			`“什么，Avgi空间没有咖啡吗？”你开玩笑。`
+			`“不，但你应该找个时间尝尝他们的饮料。伙计，他们是别的东西。”`
+			`“不过，没有什么比回来更好的了，”达里厄斯一边安静地看着你周围熙熙攘攘的太空港，一边说道。 “很难相信我真的在这里。更难理解为什么是我走出了那里，而这么多跟随我的人却没有。”`
+			`“哦，别这样了。”空拍了拍他的后脑勺。 “你不是第一个走错路进入坏邻居的人。还记得那个关于你妻子的故事吗？”她的语气很有趣，但你可以看到她眼中的担忧，因为达流斯明显感到内疚。`
+			`达流斯摇摇头，然后继续说道。 “我们应该送你回家。你的父母可能仍然拥有那个农场，它已经在家里很多年了。离这里不太远，对吧？”`
+			`停顿了一下，然后索拉说道，“记忆。我已经好几年没去过那里了，但我想我的公寓肯定已经消失了……所以我现在无处可去。”`
+			`“那么我们开始吧。<first>，你能带我们去记忆吗？”`
+			`“当然，”你说。`
+				accept
+
+	on accept
+		log `Agreed to take Sora to her parents' farm on Memory, as she has nowhere else to go.`
+		log "People" "Darius Caldwell" `Despite escaping the Twilight, Darius still feels guilty over his crew members that lost their lives to the Aberrant.`
+	on visit
+		dialog `您降落在 <planet> 上，但意识到载有达流斯和索拉的护卫尚未进入系统。最好出发并等待它的到来。`
+
+
+mission "Avgi: Twilight Escape 3"
+	landing
+	name "大流士归来"
+	description "带达流斯到他在瓦尔哈拉的家，希望他的妻子在他明显死亡后仍然在那里。"
+	source "Memory"
+	destination "Valhalla"
+	passengers 1
+	blocked "You'll need <capacity> on the <ship> to transport Darius."
+	to offer
+		has "Avgi: Twilight Escape 2: done"
+	on offer
+		log "People" "Darius Caldwell" `Darius is extremely devoted to his wife Katrina, but worries that she may have moved on in the six years he's been missing.`
+		conversation
+			`记忆是一个干燥的世界，覆盖着沙子和灌木丛。从太空港出发，你们三个乘坐穿梭巴士前往乡村，经过数英里长的仙人掌和干燥植物，这些植物突然变成了更绿的农作物田，可能是由含水层灌溉的。这是你最终到达的农场之一，索拉说这个农场属于她的父母。这里的交通一定很少见，因为公共汽车停下来几分钟后，维护良好的农舍的门就打开了，一对中年夫妇向外张望。`
+			`「……空？是你吗？」年长的女人大声喊叫，而男人则张口结舌，沉默不语。`
+			`索拉的眼睛闪闪发亮，在离开你们之前给了你们和达流斯一个深深的拥抱。 “谢谢你，<first>。还有达流斯，”她严肃地看了他一眼，“我会联系你的。别对自己太苛刻。”当她转身朝房子跑去时，他默默地点点头。`
+			`你不想打扰这次重聚，所以你和达流斯一起离开，返回太空港。回到 <ship> 上，您在舒适的沉默中坐了一会儿。`
+			choice
+				`“那么，你想让我带你去哪里？”`
+				`“那么，接下来去哪里？”`
+			`“……我不知道。我的妻子卡特里娜……我们住在瓦尔哈拉，但已经六年了。她可能认为我死了，见鬼，整个共和国可能都认为我死了。她……”他哽咽了，“她现在可能已经离开了。我本来希望她这么做，她知道这一点。”`
+			choice
+				`“你必须以某种方式找出答案。我们去瓦尔哈拉吧。”`
+				`“我确信她一直在等你。我们去瓦尔哈拉吧。”`
+					goto optimism
+			`“我不知道自己能否面对现实，但我也不能一意孤行，不去检查她，免得她有机会不放弃我。”`
+			label optimism
+			`达流斯揉了揉眼睛。 “谢谢你，<first>。我希望我是错的。我们去瓦尔哈拉吧。”`
+				accept
+
+	on accept
+		log `After reuniting Sora with her parents, agreed to help Darius find his wife on Valhalla.`
+
+	on complete
+		log `Successfully reunited Darius with his wife Katrina, who refused to believe he was dead.`
+		log "Minor People" "Katrina Caldwell" `Katrina is Darius' wife, who moved out of the city but refused to believe he was dead.`
+		conversation
+			`你降落在瓦尔哈拉的主太空港，大流士几乎在你的飞船着陆之前就跳出了它。快速呼叫一辆自动出租车，您很快就会发现自己身处一栋宽敞、外观精美的公寓大楼外。 “我们的旧地址，”他解释道。 “我们仍在租房，但考虑在几年内购买我们的公寓。”`
+			`你敲了右边公寓的门，开门的是一位黑发高个子男人。 “您好，有什么可以帮您的吗？”他小心翼翼地问道。`
+			`达流斯看起来很沮丧。 “这里……有卡特里娜飓风吗？”`
+			`“卡特里娜？我在这里住了五年，没见过叫这个名字的人。那是你的朋友吗？”`
+			`达流斯转身走开时看起来很郁闷。 “是的。很抱歉打扰您了，我们这就上路了。”`
+			choice
+				`“别放弃。她可能只是搬家什么的。”`
+				`“我们可以尝试查找她的信息。”`
+					goto lookup
+			`“她当然想了。但我不明白为什么，买那套公寓是我们的梦想。这没有任何意义！”他停下来。 “抱歉，<first>。我有点紧张。”他叹了口气，然后继续说道。 “我可以试着去找她，也许……”他思考着，声音逐渐减弱。`
+			`“有关于瓦尔哈拉的公开记录吗？”你问。`
+			label lookup
+			`“……是的，我们会尝试一下记录簿。我们可以在图书馆查阅它们。”`
+			`之后去图书馆进行了短暂的旅行，你坐在一张桌子旁，而达里厄斯则检查公共记录。他向下滚动姓名和地址列表，然后停在一个名字上。 “卡特里娜……考德威尔。我们的名字。”他的脸上清晰可见希望。 “至少她保留了我们的名字。”`
+			`你扫视了地址，记下它。看来离市区比较远了。 “我们试试这个地址。今晚我们仍然可以到达那里，”你说。`
+			`该地址似乎在乡下，当出租车沿着道路平稳行驶时，您可以欣赏到风景。与记忆中不同，这里的景色郁郁葱葱，山峦起伏，森林茂密，溪流湍急。您发现该地址属于一栋看起来舒适的河滨房屋，旁边可见一个大花园。`
+			`大流士一生中从未显得如此紧张过，但你轻轻地将他推向门口。他的敲门声无人应答，他的脸再次陷入绝望，但你听到花园里传来声音。`
+			`“达流斯？是你吗？”一个头发花白的女人走上门廊，眼睛闪闪发亮。 “你回来了……我就知道你还活着！”她喊道，冲过去拥抱他。两人开始说话，速度快得你跟不上，而你则有些尴尬地退缩了。`
+			`几分钟后，你试图为自己辩解，但达流斯不肯。 “不，不，我把这一切都归功于你，<first>。你是我在这里的唯一原因。”`
+			`卡特里娜好奇地看着你。 “外星人，嗯？你看起来不像外星人。”`
+			choice
+				`“嗯？”`
+				`“那是因为我不是。”`
+				`“是啊，这些紧身衣很不错。”`
+			`她突然大笑起来。 “如果是其他人告诉我的话，我都不会相信。我的意思是，男人会为晚回家找各种各样的借口，但这是另一回事！”她的语气突然变得严肃起来。 “和政府一起解决这一切会很头痛。他们给了我钱买这个地方，作为对你所谓的‘死亡’的补偿，不管我多么坚持你还活着。”`
+			`“我们会解决这个问题的。无论如何，他们欠我欠款，”仍在卡特里娜怀抱中的达里厄斯开玩笑说。`
+			`当两人走到门口时，你道了再见，大流士承诺他会就 Avgi 的事情与你保持联系。你们都没有忘记外星人在银河系边缘为生存而战，现在你们知道了进出他们的空间的安全方法，你们可以回去而不用担心被困住。`
+	on visit
+		dialog `您降落在 <planet> 上，但意识到您携带达流斯的护卫尚未进入系统。最好出发并等待它的到来。`

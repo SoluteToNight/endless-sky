@@ -1,0 +1,3873 @@
+# Copyright (c) 2016 by Michael Zahniser
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program. If not, see <https://www.gnu.org/licenses/>.
+
+mission "Coalition: First Contact"
+	landing
+	name "向 Heliarchs 注册"
+	description "您被告知前往 <planet> 向联盟空间的统治者登记并向他们请求在此开展业务的许可。"
+	source
+		government "Coalition"
+	destination "Ring of Friendship"
+	on offer
+		"reputation: Coalition" += 10
+		"reputation: Heliarch" += 10
+		log "Factions" "Coalition" `The Coalition is an alliance of three different alien species living in peace with each other: the Saryds, the Kimek, and the Arachi. On many Coalition worlds, all three species live together in harmony, which is made easier by the fact that each species prefers a very different climate and thus gravitates to different parts of a planet. They are ruled by individuals known as the Heliarchs.`
+		conversation
+			`这个星球似乎居住着至少三种不同的有知觉物种。首先是大约一米高的巨型甲虫，当你一着陆，它们就会快速冲向你的船并在它周围聚集，目瞪口呆地看着你。第二种比甲虫更令人不安的是巨型蜘蛛。第三种是半人马。不仅仅是一些隐约类似半人马的东西；他们看起来就像是从古代地球的故事书中走出来的。`
+			`其中一只蜘蛛向你走来，伸展它的腿，抬起它的脸，许多眼睛与你自己的脸齐平，并用一种​​你听不懂的、粘糊糊的、咕噜咕噜的语言对你说些什么。与此同时，甲虫们正在用不同的语言互相交谈，充满了咔哒声和叽叽喳喳的声音。而半人马静静地站在远处，不断回头看向太空港，仿佛在等待着什么人。`
+			`最终，有人确实到来了：一只甲虫、一只蜘蛛和一只半人马，他们都戴着黄色臂章，戴着小型三角形金属头饰，脖子上挂着某种电箱。他们向你走来，半人马说话。短暂的延迟后，它脖子上的盒子写着：“以Heliarchs的名义，他们驱逐了压迫者，维护了和平，我们人类访客向他们致意。”`
+			choice
+				`“谢谢。”`
+					goto next
+				`“你怎么懂我的语言？”`
+			`蜘蛛会说话，脖子上的盒子也会翻译。 “你是我们最近的邻居。Heliarchs以其伟大的智慧，知道我们空间区域中发生的所有事情。”`
+			label next
+			`甲虫通过自己的翻译盒说：“你必须去Heliarch政府所在地。一旦你成为Heliarch的人，你就可以在很多方面为我们的社会做出贡献。”`
+			`半人马拿出一张印在薄塑料片上的地图。你认出它是这个地区的星图。线条标记了三个不同的区域，它们的交汇处是三个黄色的恒星系统。半人马指向三者中的最南端。 “你必须去的地方，就在这里，”他们说。`
+			choice
+				`“谢谢，我这就去。”`
+					goto end
+				`“你能先告诉我更多关于你自己的事吗？”`
+			`蜘蛛说：“睿智的天使，他们会回答你所有的问题。”`
+			label end
+			`最终人群散去并允许您参观太空港，尽管没有人为您提供任何工作或购买除基本商品之外的任何东西的机会。也许你需要先向“Heliarchs”注册。`
+				accept
+	on complete
+		"reputation: Coalition" += 10
+		"reputation: Heliarch" += 10
+		set "known to the heliarchs"
+		log "Factions" "Heliarchs" `The Heliarchs are the rulers of Coalition space: apparently not elected, but instead selected by merit from among the citizens of the Coalition in such a way as to ensure that all three species are equally represented. Thousands of years ago, the Heliarchs led their three species to band together and drive the Quarg out of Coalition space. The Heliarch centers of government are the three Quarg ringworlds that they captured in that war. They are the only ones in Coalition space who are allowed to have weapons on their starships, and they act as a sort of police force, maintaining peace between the Coalition species.`
+		conversation
+			`你对着陆区的第一印象毫无疑问地证实了这是一个夸格环形世界，而不仅仅是一个模仿品。内部建筑是明确无误的。但这里没有夸格人，只有联盟的三个物种。在你着陆后不久，一个代表团就会接近你的船：同样，每个物种都有一个代表团，但他们的头上都戴着金色的头环。这些圆环不仅仅是装饰性的，而且似乎还包含一些电子产品。`
+			`再次，半人马首先说话。 “来到我们的领土，我们很高兴欢迎您，”他们说。`
+			`甲虫说：“你可以和我们的人民打成一片。你可以体验到我们文化的美丽。”`
+			`蜘蛛补充道，“我们的人民和你们的人民也许有一天可以进行交易。也许有一天，人类可以加入我们伟大而自由的联盟。”`
+			choice
+				`“告诉我更多关于你的联盟的信息。”`
+				`“这是夸格环形世界吗？夸格在哪里？”`
+			`半人马说道：“和你一样，我们的三个种族也曾经被夸格人统治过。但我们彼此之间建立了联系。我们结成了联盟，我们赶走了压迫者。六千年来，我们生活在繁荣、不受夸格人约束的自由之中，并且彼此友好地生活着。”`
+			choice
+				`“夸格人对我来说似乎并没有那么压抑。”`
+					goto oppressive
+				`“你是怎么打败夸格人的？”`
+			`蜘蛛说：“单独一人，没有任何物种拥有所有技能或所有知识。但是当我们将我们的能力结合起来时，我们可能会变得强大。这就是原因，所有物种都孤立地保留着夸格人。”`
+				goto next
+			label oppressive
+			`蜘蛛说：“它们每个物种都保存在不同的盒子里。它们以微妙的方式限制了你的发展和发现。并且它们对你的技术施加了限制。”`
+			`甲虫说：“或者，我们错了？把你带到这里的跳跃引擎，是夸格人的礼物吗？他们不再囤积它的秘密了？”你告诉他们夸格人确实拒绝为人类提供跳跃驱动，他们说：“那么，你确实是囚犯。”`
+			label next
+			branch hai
+				has "First Contact: Hai: offered"
+			choice
+				`“我想你对夸格人的看法可能是对的。”`
+					goto end
+				`“也许夸格人将来会改变主意。”`
+			`巨甲虫严肃地看着你。 “希望，我们只能，”他们说。`
+				goto end
+			label hai
+			choice
+				`“我想你对夸格人的看法可能是对的。”`
+					goto end
+				`“但是，夸格人确实让人类和海族彼此接触。”`
+			`显然，这对他们来说是新闻。你向他们解释海人是谁，以及一些人类与他们接触并生活在他们的领土上。 “你们正在组建第二个联盟！”半人马说道，兴奋地用蹄子敲击地板。 “夸格人再一次被挫败了。他们忽视了物种合作的秘密方式。伟大的事情，可能由此而来。”`
+			action
+				set "coalition knows hai"
+			label end
+			`你和他们聊了一会儿，了解到半人马被称为“Saryds”，是这三个物种中最古老的。甲虫被称为“Kimek”，其次是蜘蛛，蜘蛛被称为“Arachi”，是三者中最后发现太空飞行的。`
+			`他们告诉你，更多地了解他们的最好方法就是参观他们的世界，亲眼看看这三个物种如何友好和平等地生活。他们还为您提供在其领土上工作的机会，以便您成为他们社会的“有价值的贡献者”。`
+
+mission "Discovered Coalition Space"
+	landing
+	invisible
+	non-blocking
+	source
+		government "Heliarch"
+	on offer
+		event "label coalition space"
+		fail
+
+event "label coalition space"
+	galaxy "label saryds"
+		sprite "label/saryds"
+	galaxy "label kimek"
+		sprite "label/kimek"
+	galaxy "label arachi"
+		sprite "label/arachi"
+
+
+
+mission "Coalition: Contributor"
+	landing
+	name "返回<planet>"
+	description "既然您已经在他们中间工作了一段时间，请返回 <planet> 看看 Heliarchs 是否会授予您在联盟中更高的地位。"
+	to offer
+		"coalition jobs" >= 30
+		not "license: Coalition"
+	source
+		government "Coalition"
+	destination "Ring of Friendship"
+	on offer
+		conversation
+			`在你着陆后不久，一位圣天使特工就会联系你，并说道：“你在我们中间以许多有用的方式进行了工作。你应该向圣天使请愿，他们可能会提升你在我们中间的权利和地位。”特工指示你返回<planet>并向那里的Heliarch统治者请愿。`
+				accept
+	on complete
+		"reputation: Coalition" += 10
+		"reputation: Heliarch" += 10
+		set "license: Coalition"
+		log "Completed a lot of Coalition jobs and received permission to purchase civilian technology and ships."
+		log "Factions" "Saryds" `Saryds are an alien species who look suspiciously similar to the centaurs found in early human mythology. They prefer to live on worlds with as much green space as possible, and even their major cities are full of parks and gardens. Most Saryds live in small communes with up to a few dozen of them per house.`
+		log "Factions" "Kimek" `The Kimek are large insectoid aliens, and are members of the Coalition. They discovered spaceflight after the Saryds, but before the Arachi. They are intensely social creatures, preferring to live together in massive buildings with thousands of inhabitants, and many of their worlds have populations in the tens of billions, far more than any human world.`
+		log "Factions" "Arachi" `The spider-like Arachi were the last of the three Coalition species to discover interstellar travel. Most members of their society owe allegiance to one of the great Arach "Houses," organizations that are somewhat similar to guilds and that each specialize in one particular form of industry or technology.`
+		conversation
+			`再一次，当你离开你的船时，你会遇到三个联盟物种中每一个的成员，他们戴着金色的圆环，将他们标记为Heliarchs。 “我们被告知，”萨利德说，“在我们中间，你们以极大的勤奋和奉献精神完成了一些小任务。”`
+			`Kimek 说：“那些为我们社会的繁荣进行投资、拥有我们社会技术的人可能值得信赖。”`
+			`“但是，”阿拉克说道，“像所有平民，甚至公民一样，我们仍然不能向你们出售我们的武器和军舰。”`
+			choice
+				`“谢谢。”`
+					goto end
+				`“为什么不允许平民购买武器或军舰？”`
+			`萨利德说：“这是为了和平。” “Heliarch军队训练有素，只为了防御和正义而使用武器。他们将联盟的需求置于他们自己本土物种的野心之上，每个人都这样做。平民没有这样的纪律，甚至包括你。但作为一位尊敬的客人，我们将允许你保留你的武器。”`
+			label end
+			`显然这里没有任何东西出售，但他们向你保证，许多联盟世界现在将允许你进入他们的造船厂和装备店。`
+
+# For pre-0.9.7 compatibility
+mission "Coalition License Patch"
+	invisible
+	non-blocking
+	landing
+	to offer
+		has "Coalition: Contributor: done"
+		not "license: Coalition"
+	on offer
+		set "license: Coalition"
+		fail
+
+
+
+mission "lost in coalition"
+	landing
+	invisible
+	non-blocking
+	source
+		government "Coalition" "Heliarch"
+	to offer
+		has "license: Coalition"
+		not "ship attribute: jump drive"
+	on offer
+		event "lost in coalition" 14
+		fail
+
+event "lost in coalition"
+
+
+
+mission "Coalition: Lost: Marker"
+	name "外援"
+	description "赫利亚克斯注意到你失去了跳跃驱动力，现在被困在联盟空间中，并主动提出提供帮助。前往 <destination> 与他们交谈。"
+	landing
+	source
+		near "Ekuarik" 1 100
+	destination "Ring of Wisdom"
+	to offer
+		has "event: lost in coalition"
+	on offer
+		conversation
+			`在你离开飞船后不久，Heliarch 代表团就会接近你。`
+			`“在过去的几周里，我们对您的飞船进行了仔细观察，<last> 船长，”Saryd 开始说道。`
+			`“与之前的扫描不同，我们的扫描仪没有发现你船上的跳跃驱动器，”Kimek 继续说道。`
+			`“尽管我们很欣赏你们在这里所做的工作，但我们不希望你们与银河系隔绝，”阿拉奇说道。 “我们的领事们已经讨论了很多，为了帮助你，他们决定。你必须去<destination>，在那里讨论，条款将是。”`
+			choice
+				`“你的意思是你会再给我一次跳跃突破？你真是太慷慨了。”`
+				`“什么？我失去了跳跃能力？你开玩笑吧！”`
+					goto unaware
+			`“我们确实很慷慨。你很幸运，这件事发生在我们的管辖之下。如果是夸格人的话，你就会被困住，”萨利德回答道。`
+				goto end
+			label unaware
+			`“如果我们注意到你没有的话，我们会保持警惕，这是一件好事，”基梅克说。 “但即便如此，你还是应该更加小心你的着装。”`
+			label end
+			`您感谢他们为您带来这些信息，然后返回您的飞船准备前往 <destination> 的路线。`
+				accept
+	to complete
+		never
+
+
+
+mission "Coalition: Lost: Offer"
+	name "跳跃驱动贷款"
+	description "Heliarchs 为你提供了离开联盟空间的跳跃驱动器。将另一台跳跃驱动器带到 <date> 的 <destination> 处，以替换您借用的驱动器，否则他们会因为您破坏了他们的信任而非常愤怒。"
+	deadline 333
+	landing
+	source "Ring of Wisdom"
+	to offer
+		has "Coalition: Lost: Marker: active"
+	on offer
+		conversation
+			`当你着陆时，Heliarchs 正在等着你。当你环顾四周时，你看不到平民，但有足够的武装警卫来对付他们的几名惩罚者。所说的惩罚者都停在你自己的船附近。`
+			`萨利德开始说话，“至于被信任，你已经被视为，为你提供跳跃驱动器，这样你就不会被困，我们会的。”`
+			`“请注意，这不是一份礼物，而是一笔贷款，船长，”基梅克继续说道。 “再换一件来代替这件，你必须带我们来，这样才不会失去一件这么贵重的装备，我们才不会。”`
+			`“到<date>为止，必须把替换的跳跃驱动器带到这里。如果你再拖下去，假设你背叛了我们的信任，我们将会，并且，你将被视为敌人，”Arach结束解释道。 “你同意这些条款吗，船长？”`
+			choice
+				`“是的，我保证我会带着第二次跳跃驾驶回来。”`
+				`“抱歉，我需要更多的时间考虑一下。”`
+					defer
+			`他们的工程师开始在你的船上安装跳跃驱动器。在此过程中，几个警卫靠近了一些。当这一切完成后，系统会提醒您需要通过 <date> 将另一个跳跃驱动器带到这里。`
+				accept
+	on accept
+		outfit "Jump Drive" 1
+		fail "Coalition: Lost: Marker"
+	on fail
+		"reputation: Heliarch" = -1000
+		"reputation: Coalition" = -1000
+	on complete
+		require "Jump Drive" 2
+		outfit "Jump Drive" -1
+		dialog `当你再次降落在他们的几艘战舰和武装警卫附近时，Heliarchs 会接受你给他们带来的跳跃驱动器。他们感谢您信守诺言，并要求您避免再次丢失如此重要的服装。`
+
+
+
+mission "Coalition Yottrite 1"
+	minor
+	landing
+	name "更多在售的 Yotrite 商品"
+	description "您因将另外三个稀有矿物钙铁矿样本带到 <destination> 而获得了巨额报酬。"
+	to offer
+		has "license: Coalition"
+	to complete
+		has "Coalition Yottrite 2: offered"
+	source
+		near "Bloptab" 1 100
+		government "Coalition" "Heliarch"
+	destination "Bloptab's Furnace"
+	on offer
+		conversation
+			`一些联盟公民（其中大多数是阿拉奇人）在您着陆后开始包围您的飞船，互相交谈，同时也瞥了一眼在您准备降落在 <origin> 时跟随您的螺旋星中和者。赫利亚克特工走下飞船，与平民组织的阿拉克交谈。过了一会儿，他们回到船内并向你打招呼：他们似乎注意到你携带着异国Yottrite的样本，并且想知道你是否愿意将其卖给他们。`
+			choice
+				`（是的。）`
+				`（不。）`
+					defer
+			`当你接近他们时，Arach 解释说他是监督 <planet> 采矿作业的人之一，他想把 yottrite 带到那里，以便他们可以尝试用最先进的设备研究它。`
+			`“我的前辈们设法编目了 yottrite 上的条目很少，”他说。 “它自然发生在我们的领土上，但事实并非如此。我们几乎没有机会研究它。”`
+			`与同事讨论了一下后，他宣布愿意支付 350,000 信用点来购买矿物样品。`
+			choice
+				`“对我来说听起来很公平。卖了。”`
+				`“抱歉，但我想我会坚持下去。一开始就很难得到它。”`
+					defer
+			`他感谢你，并在一些太空港工作人员的帮助下，将 yottrite 从你的船上转移到他自己的 Arach Spindle 上。就在离开之前，他把积分交给了你，并说你应该多带一些样品到<destination>。 “还有三个，如果你有兴趣的话，也可以带过来。”`
+				accept
+	on accept
+		outfit "Yottrite" -1
+		payment 350000
+
+
+
+mission "Coalition Yottrite 2"
+	name "更多 Yotrite"
+	description "您再次被要求将七个稀有矿物钙铁矿样本带到 <destination> 。"
+	landing
+	to offer
+		has "Coalition Yottrite 1: offered"
+	to complete
+		has "Coalition Yottrite 3: offered"
+	source "Bloptab's Furnace"
+	on offer
+		fail "Coalition Yottrite 1"
+		conversation
+			`当您登陆 <origin> 时，您向其出售一些 yottrite 的 Arach 会联系您。他问你是否还有样品可以卖给他。`
+			choice
+				`“现在不行，抱歉。”`
+					defer
+				`“我有一些，是的。我应该把它们带到哪里？”`
+			`他告诉你像往常一样着陆。一旦你的船被带到地下区域，一些工人会帮助卸载 yottrite，并要求你跟随他们进入建筑群的限制区域以获取报酬。当你们的队伍经过时，入口处的警卫会密切监视。`
+			`您沿着极其宽阔的工业通道行走，俯瞰着无尽的冶炼厂和各种规模的锻造厂。尽管这个地方的炎热可能会影响你的感知，但你几乎可以肯定最大的冶炼厂一定有一艘轻型战舰那么大。`
+			`在闷热难受的地下大院里走了太久之后，你和数吨的yottrite终于被带到了一个类似仓库的大片区域。几名工人正在操作机器并确保矿石被运送到特定的传送带上。`
+			`当工作人员离开你去把 yottrite 带到设施的一个单独区域时，你会受到与你联系的 Arach 的欢迎。 “我们欠你的情，<last> 队长，”他说道，递给你 1,050,000 点积分。 “如果我们制作的样品取得重大进展，将会取得很大成果。”`
+			choice
+				`“有什么进展？”`
+					goto progress
+				`“你希望实现什么目标？”`
+					goto achieve
+			label progress
+			`“yottrite 具有非标准的热力学特性。晶体会吸收周围的热量。很难将其混合成化合物，”他解释道。 “如果如何克服这个障碍，我们了解到，该元素可能会有很多应用。”`
+				goto end
+			label achieve
+			`“几个世纪以来，我们的联盟一直在夸格设备上进行多次测试。他们的一些设备的反应与 yottrite 类似。这是一种参与制作他们服装的材料，”他解释道。 “如果我们自己学习如何做这样的事情，也许复制他们的技术，或者恢复环形世界的建设，我们就可以。”`
+			label end
+			`约特里特板条箱旁的一名工人喊了一声，阿拉克示意他很快就会前往那里。`
+			`“再一次，如果你获得了更多的Yottrite，可以将其带到这里，”他在离开前说道。 “我们正在孜孜不倦地研究它。如果在更大的批次中，你可以带来它们，我们可能会进展得更快。”`
+			`他说下次应该准备大约七个矿物样品，然后就离开了。不久之后，一些工人就会护送你穿过迷宫般的冶炼厂回到船上。`
+				accept
+	on accept
+		outfit "Yottrite" -3
+		payment 1050000
+
+
+
+mission "Coalition Yottrite 3"
+	name "邻居的邮箱"
+	description "将 <cargo> 传送到 <origin>、<destination> 的姐妹世界。"
+	landing
+	cargo "experimental yottrite samples" 5
+	to offer
+		has "Coalition Yottrite 2: offered"
+	source "Bloptab's Furnace"
+	destination "Delve of Bloptab"
+	on offer
+		fail "Coalition Yottrite 2"
+		conversation
+			`你再次带着 yottrite 到达 <origin>，并且这里的 Arachi 会联系你。他们询问您是否准备好出售您带给他们的样品。`
+			choice
+				`“也许改天吧。”`
+					defer
+				`“当然可以。让一些人在停靠区等候，帮我卸下样本。”`
+			`当工人们从你的船上取出矿石样本时，你意识到这一次向你求助的阿拉克并没有联系你，也没有在地面上等你。`
+			`工人们说他们会自己把Yottrite带到仓库，然后让你等待。当他们回来时，其他工人带着不同的板条箱陪伴着他们。他们会给你 2,450,000 积分，并请求允许将板条箱装载到你的船上。`
+			`“它们重约 5 吨。到<destination>，这个星球的邻近世界，你必须带它们。监督者如此要求，”他们说。`
+			choice
+				`“箱子里有什么？”`
+					goto "inside crate"
+				`“这一定是我听说过的最短的快递任务了。难道其他船就不能完成这个行程吗？”`
+					goto "so it would seem"
+			label "inside crate"
+			`“其中包含你带给我们的较旧样本。经过实验，yottrite 是。我不确定细节。”`
+				goto end
+			label "so it would seem"
+			`“让你背着它们，监工问。为什么特别是你，我不确定。”`
+			label end
+			`你认为，由于货物很少，而且对于这个系统中的行星来说，运送板条箱没有什么坏处。他们把它们放在你的船上。`
+				accept
+	on accept
+		outfit "Yottrite" -7
+		payment 2450000
+	on visit
+		dialog `您降落在 <planet> 上，但意识到携带 yottrite 样本的护卫尚未进入系统。最好离开并等待。`
+	on complete
+		conversation
+			`尽管在 <origin> 上您没有受到他的欢迎，但当您准备降落在 <planet> 时，来自其他行程的同一个 Arach 现在会联系您。`
+			`“<last> 队长！请原谅我缺席我们最新的交易，你必须这样做。在这里处理一些事务，我必须这样做，”他说。`
+			`他引导你降落在星球的一个单独区域，在半途中，一支螺旋舰队开始逐渐尾随你的船。你花了几分钟在该区域上空盘旋，直到他们最终允许你着陆。当您来到一个大山谷上的大型仓库综合体时，一些船只会与您一起着陆，而另一些则仍在飞行中。该设施的墙壁和栅栏顶部有一些奇怪的铁丝网，几名武装的 Heliarch 特工正在该地区巡逻。`
+			`当你离开你的船时，Arach 正在和一些 Heliarch 军官一起等待你。他们没有多说什么就将货物从你的船上移走。`
+			`就在赫利亚奇飞船准备护送你返回标准对接区之前，他说：“在太空港，我会和你见面。”`
+
+
+
+mission "Coalition Yottrite 4"
+	name "约特里特研究公司"
+	description "拉格洛普 (Lugglop) 是负责监督 Bloptab 采矿作业的 Arachi 人之一，他要求你去接他在 <destination> 上的一些朋友，以便他们可以帮助进行 yottrite 研究。"
+	to offer
+		has "Coalition Yottrite 3: done"
+	source "Delve of Bloptab"
+	destination "Shadowed Valley"
+	on offer
+		conversation
+			`你在太空港周围等了几分钟，终于发现了阿拉克。他邀请你去他的办公室。`
+			`“我也负责监督将这些奇异材料运送到这里的仓库。对于给您带来的不便和官僚主义，我深表歉意，”他说。 “忘记正确地自我介绍，我经常这样做。拉格洛普，有人叫我。”`
+			choice
+				`“我想很高兴认识你。”`
+				`“你需要更多样品吗？这就是你叫我来这里的原因吗？”`
+			`“样本越多，追踪它们就越困难，”他说。 “我接到了Heliarchs的通知。目前，我不能要求更多的样品。冒着让它们被偷走的风险，他们不能。”然后他向你展示了一张联盟地图，指向萨里德空间中的一个系统。 “使用更精细的程序和研究来研究我们必须的样本。为此，我在 <destination> 上的朋友们将会等待，”他说。 “把他们带到这里来，可以吗，队长？”`
+			choice
+				`“当然，他们很快就会到。”`
+					accept
+				`“抱歉，我不适合做乘客工作。”`
+					decline
+	on complete
+		dialog `当您降落在 <planet> 时，Lugglop 会联系您并通知您他已经向他的朋友透露了您的情况。他说他们将在太空港等候。`
+
+
+
+mission "Coalition Yottrite 5"
+	name "萨利德专家"
+	description "将双胞胎 Nasilor 和 Alituri 运送到 <destination> ，他们将在那里协助 yottrite 研究。"
+	passengers 2
+	blocked "You need <capacity> in order to take on the next mission. Return here when you have the required space free."
+	to offer
+		has "Coalition Yottrite 4: done"
+	source "Shadowed Valley"
+	destination "Delve of Bloptab"
+	on offer
+		conversation
+			`当您进入太空港时，穿着实验室外套的萨利德正在等待您。`
+			`“你和拉格洛普一起工作吗？”他问，你点头。 “纳西勒，我的名字是。收拾我们的行李，我的妹妹。带你去我们的实验室，我会的。”`
+			`你跟随他深入地下太空港，来到“住宅”区，对你来说，这里与研究大楼没有什么区别。左边和右边无尽的门偶尔会为大玻璃板提供空间，让你可以清楚地看到这里巨大的晶体结构。`
+			`纳西勒在这些“观赏地点”之一之后立即停在一扇门前，并将其打开。他向你介绍了他的妹妹阿利图里，你们两个开始帮助她收拾剩下的东西。他们带来的大部分是几篇研究论文，尽管你无法弄清楚上面写的是什么。`
+			`最后，你开始返回你的船。注意到您对石膏洞穴之美的兴趣，两位萨里德研究人员放慢了脚步，开始向您介绍更多关于他们自己的信息。他们是双胞胎，都出生在沙罗岛，但已经在这里工作了几十年。尽管您不太了解技术术语，但您会发现纳西勒专门研究隐晶化合物，而阿利图里的研究重点是导致此处石膏洞穴形成的行星和宇宙条件。`
+			`短暂的“旅行”结束后，当你们三个到达你们的船时，你们带他们到自己的铺位并准备返回 <planet> 。`
+				accept
+	on visit
+		dialog `您降落在 <planet> 上，但意识到您携带 Saryd 双胞胎的护卫尚未进入系统。最好离开并等待。`
+
+
+
+mission "Coalition Yottrite 6"
+	name "造船大师"
+	description "前往 <destination> 接一位 Mallob 家族的成员，以便他们可以帮助尝试将 yottrite 应用于合金。"
+	landing
+	to offer
+		has "Coalition Yottrite 5: done"
+	source "Delve of Bloptab"
+	destination "Market of Gupta"
+	on offer
+		payment 200000
+		conversation
+			`当你着陆时，拉格洛普正在等你，并在你帮助两位研究人员把东西带出飞船时向他们打招呼。`
+			`他带他们去了一家旅馆，在那里他为他们准备了房间，并要求你再次跟随他到他的办公室。`
+			`“我们在这里和邻近星球上的设施都充满了尖端设备。唉，在研究这种稀有元素所需的理论领域进行了大量冒险，但我们这里的人员却没有。”`
+			`他再次向你展示他的地图，这次指向附近的阿拉克世界。 “一旦破解了 yottrite 的某些方面，我们就需要这对双胞胎，一位造船专家，”他说。 “在<destination>，他们准备了一名代表，马洛布家族已经准备好了。把他们带到这里，你必须的。”`
+			`当你正要返回你的船时，他递给你 200,000 积分。 “我差点忘记付钱给你最后一次服务了。”`
+				accept
+
+
+
+mission "Coalition Yottrite 7"
+	name "造船大师"
+	description "将 Pichiie 带到 <destination> ，她将在那里加入 Lugglop 的团队进行 yottrite 研究。"
+	passengers 1
+	blocked "You need <capacity> in order to take on the next mission. Return here when you have the required space free."
+	landing
+	to offer
+		has "Coalition Yottrite 6: done"
+	source "Market of Gupta"
+	destination "Delve of Bloptab"
+	on offer
+		conversation
+			`当您的飞船进入 <origin> 的大气层时，马洛布家族会立即向您致意。他们引导你穿过这个星球，带你到一个看起来像城堡一样的巨大结构，它似乎是由与阿拉克船类似的材料制成的，坐落在山脚下。`
+			`您降落在一个大型停靠区域，其他一些船只也在那里开展业务。走下船，迎接您的显然是一家旅行用品商，当您环顾四周时，您会发现周围地区还​​分布着一些其他大型建筑物，联盟成员往返于这些建筑物之间。气氛就像一个小村庄变成了一个户外购物中心。`
+			`着陆后不久，你就会受到一个穿着你认为是某种制服的阿拉克的欢迎。他从口袋里拿出翻译设备，正式向你打招呼。 “很荣幸邀请您作为客人，伟大的马洛布家族，<first> <last> 队长。”`
+			choice
+				`“你就是我要带去拉格洛普的造船匠吗？”`
+					goto servant
+				`“这里是怎么回事？怎么到处都是建筑物？”`
+					goto property
+			label servant
+			`“山，不！但我是马洛布家族的仆人。我的工作主要是当司机。”`
+				goto mistress
+			label property
+			`“马洛布家族的私人财产不仅仅是豪宅，”他一边说，一边开始指着不同的区域。 “那里有一座博物馆，详细介绍了阿拉克船只的历史。左边是一个市场。右边是马洛布家族的私立大学，在那里学习先进的造船方法，荣誉来自联盟各地的学生。”`
+			label mistress
+			`然后他要求你跟随他，并说道：“协助拉格洛普进行研究，我的女主人会的。你必须在宅邸与她见面。”你沿着小路跟随他，当你走近一些建筑物时，他会提供更多关于这些建筑物的细节。但真正激起你兴趣的是，其中一栋他似乎愿意忽略的建筑，门口有武装警卫，没有任何迹象表明他是Heliarch的成员。`
+			`到达宅邸门口，虽然不像城墙那么像城堡，但依然显得异常的浮夸。近距离观察，它几乎看起来像是一两个阿拉克绿巨人的所有几个部分和吊舱都被揉皱在一起形成了一栋建筑。`
+			`他会带你穿过宅邸。你经过其他几个仆人，注意到他提到马洛布家族的成员正在开会的房间，甚至遇到了一群萨里德和基梅克的学生，他们来这里和马洛布家族的造船师一起学习。`
+			`最后，他带你到三楼的一个房间，声称你的乘客正在里面等候。你进去后，只看到基梅克在往窗外看。`
+			choice
+				`“我猜那是造船师吧？”`
+					goto shipwright
+				`“那么，我的乘客是在某个地方爬行吗？在某个隐藏在网中的角落里？”`
+				`“Kimek？我以为这是Arach House。”`
+			`管家无视你所说的话，并向你介绍了有问题的 Kimek。 “皮奇伊小姐年纪轻轻就嫁给了马洛布家族。她曾经是这里大学的学生。”`
+				goto end
+			label shipwright
+			`“你是对的，船长，”他说。 “我很自豪地向您介绍皮奇伊小姐。她是这里大学的前学生，在嫁给马洛布家族之前，她是的。”`
+			label end
+			`最后，为什么你必须一路走到％ID_0％的这一部分的原因就清楚了； Pichiie 提到，在登船前往 <planet> 之前，她想听听你最初从哪里得到 yottrite 的故事。你告诉她你遇到的所有样本都是在恒星变成超新星的系统中发现的。这是一个简短的解释，但她似乎很满意，在向众议院其他成员道别后，你们俩都被带到了船上。`
+				accept
+	on visit
+		dialog `您降落在 <planet> 上，但意识到携带 Pichiie 的护卫尚未进入系统。最好离开并等待。`
+	on complete
+		event "yottrite research break" 165
+		payment 200000
+		dialog
+			`与萨里德双胞胎一样，拉格洛普向皮奇打招呼，并告诉她他为她在这里准备的一家酒店。`
+			`“准备好了，我的团队现在准备好了，队长，”在 Pichiie 带着行李离开后，他说道。 “在接下来的几个月里，我们将根据需要丰富和研究样本。如果再次需要您的服务，我会再次与您联系。”`
+			`他递给你<payment>，然后走开。`
+
+
+
+event "yottrite research break"
+
+
+
+mission "Coalition Yottrite 8"
+	name "最后一个样品"
+	description "获取一份 yottrite 样本并将其交给 <destination>，以便 Lugglop 可以在向联盟科学界进行演示时获得一些样本。"
+	landing
+	to offer
+		has "event: yottrite research break"
+	source
+		near "Pelubta" 1 100
+	destination "Pelubta Station"
+	on offer
+		conversation
+			`当你着陆时，你会收到来自阿拉克拉格洛普的消息，你给他带来了一些约特里特样本。`
+			`“队长，我们有一些重大发现。我们正在准备一份关于我们研究的演示文稿，以在《智慧之环》中展示，”他说。 “只是，我们已经没有纯样品了。再给我们一个，好吗？我们愿意为不便多付一点钱。<payment>。”`
+			choice
+				`“好吧，我再给你带一块yottrite。”`
+				`“抱歉，我不会再开采了。”`
+					decline
+			`他感谢您，并表示他和团队的其他成员将在 <destination> 等待。 “项目进行到一半左右，我们就搬到了这里，以利用车站的设施。”`
+				accept
+	on complete
+		outfit "Yottrite" -1
+		payment 400000
+		dialog `当您在 Heliarch 代理的陪同下交付 yottrite 时，Lugglop 会向您支付 <payment>。 “我们现在必须完成演示文稿的准备工作。如果您希望进一步帮助我们，就必须在太空港与我们会面。”`
+
+
+
+mission "Coalition Yottrite 9"
+	name "约特里特介绍"
+	description "将 Lugglop 和他的团队与 <cargo> 一起运送到 <destination> ，在那里他们将与联盟的科学界分享他们关于 yottrite 的发现。"
+	passengers 6
+	cargo "yottrite presentation materials" 6.14
+	blocked "You need <capacity> in order to take on the next mission. Return here when you have the required space free."
+	to offer
+		has "Coalition Yottrite 8: done"
+	source "Pelubta Station"
+	destination "Ring of Wisdom"
+	on offer
+		conversation
+			`你在太空港遇到了拉格洛普，并跟随他去见了纳西勒、阿利图里和皮奇耶，他们正在监督一些工人将一些密封的金属板条箱放入一个容器中，并将你刚刚带到这里的酸奶样品放入另一个容器中。他们详细介绍了如何准备所需的所有材料，现在只需要运输到 <destination> 即可。`
+			`纳西勒说：“船长，如果你和我们一起来，也许你可以提供有关发现锂辉石的系统的更详细的描述。”`
+			`“<payment>，我会付钱给你，”拉格洛普说。`
+			choice
+				`“我当然会带你去，把集装箱装到我的船上。”`
+					goto accept
+				`“你对此有什么发现？”`
+					goto findings
+			label findings
+			`“我们不允许与你们分享我们的发现，”Pichiie 说。`
+			`“请原谅我们，船长，但我们被告知要保守一切秘密，”拉格洛普继续说道。 “也许在我们的演讲之后，我们的发现就可以公开了。”`
+			label accept
+			`集装箱准备好装载后，他们都会跟随您到船上。`
+			`当他们被放入你的货物后，纳西勒、阿利图里和皮奇耶前往他们的铺位，但当拉格洛普上船时，你看到两名 Heliarch 特工，都是 Kimek，陪伴着他。 “他们来这里是为了确保我们的发现的保密性，”他说。鉴于他们只剩下两名乘客，你同意载他们到<planet>，然后他们就都登上了你的船。`
+				accept
+	on visit
+		dialog `您降落在 <planet> 上，但意识到携带 Lugglop 团队及其演示材料的护卫尚未进入系统。最好离开并等待。`
+	on complete
+		payment 310000
+		conversation
+			`当您着陆后，Lugglop 会立即向您支付 <payment> 的费用。然后，你和四名研究人员跟随一些在码头等你的 Heliarch 特工。你们五个人被带到一个类似于剧院的区域，舞台上有某种类型的讲台。座位全部被Heliarch特工占据。`
+			`拉格洛普的团队显然会等到两个容器的内容物被带到这里，所以你被要求描述你遇到yottrite小行星的超新星系统。这只会持续几分钟，因为观众似乎不太热衷于询问细节，尽管当他们询问你访问过的超新星的状态时，一个特定的萨里德确实让你感到困惑。你告诉他们你不知道他们的意思，他们就不再追问这个话题了。`
+			`完成后，当拉格洛普的演示材料到达时，一些特工会护送你返回飞船。几个小时后，拉格洛普联系了您，他说演示已经完成，他的团队将返回您的船上。当他们到达时，他们都感谢您提供了进行实验的手段。 “我们的努力得到了官方赞扬，我们确实受到了赞扬！”他说。`
+			`“虽然我们被允许公开分享我们的发现，但我们并没有被邀请成为继续研究的团队的一员，”Pichiie 补充道。萨利德双胞胎表示，只要项目继续进行，他们就会住在这里，而皮奇伊则评论说，她会经常去马洛布家族的房产探望家人。`
+			`“对于我来说，作为监督者的工作，我仍然必须履行，”拉格洛普说。 “我会在这里待几天，但即使拥有这个环的所有先进设备，仍然是我们联盟最有能力的，Bloptab熔炉的冶炼厂。它们必须处于最佳状态，如果要加深我们对耀铁矿的了解，我们就处于最佳状态。很快就会回到那里，我会的。”`
+			`他们再次感谢您的帮助，并祝您在继续探索时旅途安全。`
+
+
+
+mission "Kimek Student 1"
+	minor
+	name "交通奇基"
+	description "Chikee，一个年轻的 Kimek，正在学习成为一名 Heliarch。将他运送到<destination>，在那里他获得了一份工作，这样他就可以一边自学一边谋生。"
+	passengers 1
+	to offer
+		has "Coalition: First Contact: done"
+	source "Fourth Shadow"
+	destination "Second Rose"
+	on offer
+		conversation
+			`在任何特定时间，太空港里都会有成千上万的基梅克人，他们要么在下班休息时相互交往，要么与星际飞船船长协商旅行价格。你想象一下，如果你不是人类并且明显脱颖而出，你也会不断收到前往另一个世界的邀请，因为这里的许多平民船长希望在出发前填补船上空出的最后一两个床铺。`
+			`你设法在这里找到一家餐馆，在那里你发现了一些你已经学会可以吃的食物，所以你坐下来点了一些东西。`
+			`当你吃到一半的时候，你发现给你送饭的服务员仍然没有离开餐桌。`
+			choice
+				`“我可以帮你吗？”`
+				`“抱歉，我应该先付钱再吃饭吗？”`
+			branch translator
+				has "language: Coalition"
+			`Kimek 没有翻译盒，所以你的话他听不到。虽然他坚持留在桌子旁，但你也注意到他一直在看入口，好像在等人进来。`
+			`当一名 Heliarch 特工经过入口时，Kimek 用他的语言说了一些话，走向与 Heliarch 会面，并与他们进行了简短的交谈。然后，Heliarch 代理将陪同 Kimek 服务员到您的餐桌。`
+			choice
+				`“他需要什么东西吗？”`
+				`“我做错什么了吗？”`
+			`“想要和你说话，这个 Kimek 确实愿意，队长，”特工说道，同时他们继续聆听 Kimek 告诉他们的内容，并努力将他们的信息翻译给你。 “他叫 Chikee。他是一名学生，渴望加入 Heliarchs 的行列。他正在寻找前往 <destination> 的交通工具，以便在那里找到一份更好的工作。”`
+			choice
+				`“当然，我会带他去那里。”`
+					goto accept1
+				`“他会付给我多少钱？”`
+				`“我不会往那个方向走，抱歉。”`
+					decline
+			`赫利亚克询问年轻的基梅克有关付款的问题，他在回答之前停顿了一下，当他这样做时，他的语速比以前慢了很多。`
+			`“他没有足够的钱支付你的旅行费用，”代理人说。 “不过，他保证，一旦他确立了地位，他就会付钱给你。”`
+			choice
+				`“好吧，那我带他去吧。”`
+				`“抱歉，我不想等到付款。”`
+					decline
+			label accept1
+			`你被告知要在离开星球之前等待奇基，然后赫利亚克特工就离开了。不久之后，您自己离开餐厅，前往您的船。`
+				goto end
+			label translator
+			`Kimek 对你有翻译盒感到有点惊讶，但知道他现在可以直接与你交谈，他似乎感到放心。`
+			`“Chikee，我的名字是，队长。一名学生。我正在寻找前往 <destination> 的交通工具，”他喋喋不休地说道，手忙脚乱地向你展示你认为是某种信件的内容。 “有人向我提供了一份在那里的矿井工作。报酬比这更好。”`
+			choice
+				`“当然，我带你去那里。”`
+					goto accept2
+				`“你愿意付给我多少钱？”`
+				`“我不会往那个方向走，抱歉。”`
+					decline
+			`他停顿了一下，你看到他的下颌一次又一次地碰撞在一起。`
+			`“我目前缺乏适当的资金，”他说，语速比以前慢得多。 “不过，一旦这份新工作付了工资，我就会付钱给你。我保证。”`
+			choice
+				`“好，我带你过去。”`
+				`“抱歉，我不想等到付款。”`
+					decline
+			label accept2
+			`他感谢你，并说在你出发前在你的船上等他。不久后您离开餐厅，前往您的船。`
+			label end
+			`夜幕降临，但这里的活动并没有减少，成群结队的船长和工人仍然聚集在对接区和太空港。`
+			`午夜左右，奇基到达你的船上，你带他到他的铺位。他只带了一个又旧又坚固的袋子。`
+				accept
+	on visit
+		dialog `您降落在 <planet> 上，但意识到携带 Chikee 的护卫尚未进入系统。最好离开并等待。`
+	on complete
+		"coalition jobs" ++
+		event "chikee break" 62
+		dialog `您让 Chikee 在 <planet> 下车，并祝他在新工作中好运。`
+
+
+
+event "chikee break"
+
+
+
+mission "Kimek Student 2"
+	name "交通奇基"
+	description "Chikee，一个年轻的 Kimek，正在学习成为一名 Heliarch。将他送往 <destination> ，在那里他获得了实习机会，并希望获得推荐信。"
+	deadline
+	passengers 1
+	to offer
+		has "event: chikee break"
+	source "Second Rose"
+	destination "New Finding"
+	on offer
+		clear "event: chikee break"
+		conversation
+			`当你漫步在太空港时，你被一张熟悉的面孔拦住了。这是 Chikee，几个月前你带到这里来的 Kimek 学生。`
+			`他兴奋地向你打招呼，并谈论他的学习进展如何。您注意到他现在有一个自己的翻译设备，位于他的脖子上。`
+			`“我最近买了它，所以不会受到语言障碍的阻碍，”他说。 “船长，你的时机非常好。我又在寻找交通工具。”`
+			`他告诉您他的学术成就如何为他赢得了在 <destination> 的一个实验室实习的机会，并且他需要有人把他送到 <date> 那里，以便他可以立即开始工作。`
+			`“更好的是，报酬是，但我也希望能收到一封推荐信，”他说，并解释说，来自 Heliarch 实验室的此类推荐信可以极大地帮助他加入他们的行列。`
+			choice
+				`“看来你也辛苦了，我们去我的船上吧，我带你去。”`
+					goto accept
+				`“可是你上次还没有付钱给我。”`
+			`他愣了一下，没有反应。`
+			`“我的钱只够在那里租一套公寓。我必须攒钱，直到实验室付钱给我，”他说。 “我没有欺骗你，队长。我很感激，我会付给你丰厚的报酬。”`
+			choice
+				`“好吧，我再等一下，我们去我的船吧。”`
+					goto accept
+				`“抱歉，但我不是一个会被愚弄两次的人。”`
+					decline
+			label accept
+			`他谢谢你，这次马上跟着你，因为他已经准备好了行李。`
+			`“我希望加入智慧之环的研究团队，”当你们两人走向你们的船时，他说道，并解释说他需要学习这么多的原因是因为他的目标是为政府的科学部门工作，而不是更注重军事的部门。`
+			`你把他带到他的铺位并为旅行做准备。`
+				accept
+	on visit
+		dialog `您降落在 <planet> 上，但意识到携带 Chikee 的护卫尚未进入系统。最好离开并等待。`
+	on complete
+		"coalition jobs" ++
+		event "chikee break" 93
+		conversation
+			`看来Chikee将要工作的实验室距离对接区相当远，所以在与你告别后，他决定立即步行前往那里，尽快熟悉他的新老板。`
+			`当他开始穿过连接峡谷壁的一座桥梁时，他明显在与强风作斗争，因为他的行李似乎压在他身上。`
+			choice
+				`（帮他拿行李。）`
+				`（让他自己走吧。）`
+					decline
+			`你毫不费力地追上了他，尽管你也受到了这里的风的困扰。你拿起他的一个包，他在面对持续不断的气流时变得更加自在，尽管他的行走速度仍然比基梅克人预期的要慢。`
+			`两人走了大约二十分钟，终于到达了实验室。它被几堵又大又厚的石板墙保护着，就像这座非正统城市中的许多建筑一样。`
+			`你祝奇基好运，然后返回你的船。`
+
+
+
+mission "Kimek Student 3"
+	name "交通奇基"
+	description "Chikee，一个年轻的 Kimek，正在学习成为一名 Heliarch。将他运送到<destination>，在那里他将与伊德里斯家族的一些成员一起推进他的研究项目。"
+	landing
+	passengers 1
+	to offer
+		has "event: chikee break"
+		has "Kimek Student 2: done"
+	source "New Finding"
+	destination "Ablub's Invention"
+	on offer
+		clear "event: chikee break"
+		payment 170000
+		conversation
+			`当您登陆 <origin> 时，您注意到 170,000 积分已转入您的帐户，同时还附有一条消息。`
+			`这是你带到这里来的 Kimek 学生 Chikee 发来的。他要求你在一个更防风的地方与他会面，所以你就前往那里。`
+			`见到他后，他用一种愉快的语气说道：“我遵守了诺言，船长。我已经付钱给你了。”`
+			`他在这里的实习显然进行得很顺利，他得到了他想要的推荐信，并再次寻找交通。`
+			`“一个月前，伊德里斯家族的一些成员路过。他们是负责硬件建设的阿拉奇家族，”他说。 “他们对我的工作很感兴趣。在 <destination> 上提出了合作伙伴关系，他们也这么做了。”`
+			choice
+				`“我以为你想成为一名Heliarch。这一切到底对你有什么帮助呢？”`
+					goto how
+				`“等等，他们对什么样的‘工作’感兴趣？你一直在做什么？”`
+					goto work
+			label how
+			`“如果我在科学界广为人知，我的课程就会变得更加有价值，”他说。 “让我更容易通过考验，我到现在为止积累的所有知识和经验也会更容易通过。”`
+				goto bunk
+			label work
+			`“基梅克的人口比大多数人都多。即使是比我的家乡更富裕的世界，也很难正确分配药物或其他化学品，”他说。 “我正在寻求创建一个独立的网络以提供更好的分销。”`
+			`他开玩笑说，尽管他的物种在消化运输网络方面取得了如此令人难以置信的进步，但对于大多数人来说，仍然很难找到治疗该设备所翻译的“普通感冒”的药物，这是多么愚蠢的事情。他声称，如果他是Heliarch理事会的成员，他可以直接针对此类问题提出改变和解决方案。`
+			label bunk
+			`他会向您详细介绍他在这里的工作、与 Saryds 的合作情况以及文化交流。尽管他似乎对在这里的时光留下了一些美好的回忆，但在前往你的船时你注意到他仍然没有习惯风。`
+			`您带他到自己的床位并准备前往 <destination> 的旅程。`
+				accept
+	on visit
+		dialog `您降落在 <planet> 上，但意识到携带 Chikee 的护卫尚未进入系统。最好离开并等待。`
+	on complete
+		"coalition jobs" += 2
+		event "chikee break" 78
+		payment 130000
+		dialog `当你登陆时，Chikee 会给你 130,000 积分。 “一如既往，我很感激你送我来，船长，”他在出发去见伊德里斯家族成员时说道。`
+
+
+
+mission "Kimek Student 4"
+	name "交通奇基"
+	description "奇基（Chikee），你多次运送的年轻基梅克（Kimek），终于成为晋升至赫利亚领主（Heliarch）级别的候选人。由<date>把他带到<destination>。"
+	deadline
+	landing
+	passengers 1
+	to offer
+		has "event: chikee break"
+		has "Kimek Student 3: done"
+	source "Ablub's Invention"
+	destination "Ring of Wisdom"
+	on offer
+		clear "event: chikee break"
+		conversation
+			`当您着陆时，Chikee 会与您联系。`
+			`“<last> 队长！好消息，我为你找到了另一份工作，”他说道，并要求你在太空港与他会面。`
+			`你前往那里，他已经带着行李，准备登上你的船。 “伊德里斯家族对我帮助很大。在我的 <destination> 上拜见了 Heliarch！”`
+			`他告诉你他需要在 <date> 之前到达那里，并且立即进入你的飞船。`
+				accept
+	on visit
+		dialog `您降落在 <planet> 上，但意识到携带 Chikee 的护卫尚未进入系统。最好离开并等待。`
+	on complete
+		"coalition jobs" += 2
+		payment 300000
+		conversation
+			`奇基在离开你的船之前将<payment>交给你。圣天使特工正在等待他，并以某种仪式接待他。`
+			`你会花几个小时浏览这里的一些商店，一旦找到一家提供人类开胃菜的餐厅，你就会吃点东西。`
+			`环形世界没有白天和黑夜，但看看你飞船的内部时钟，当奇基匆匆返回你的飞船时，已经快到晚上了。`
+			`“我接受了！授予我军衔，他们做到了！”他边说边给你展示了一个螺旋头环，并把它戴在了头上。 “我非常感谢你在这一切中提供的帮助，船长。”`
+			`你祝贺他取得的成就，他开始告诉你他所谓的“审判”是如何进行的。除了在获得推荐信的地方解释他的工作之外，他还被告知要向某种类型的评审团介绍自己的工作并通过面试。 “我不得不和其他候选人一起排队。要被选中，只有少数人被选中。我非常紧张，”他说。在再次感谢你并试图与你握手之后，他最后一次离开了你的船，你祝他在新的工作中一切顺利。`
+
+
+
+mission "Coalition Outbreak 1"
+	minor
+	name "交通医生"
+	description "由 <date> 将这些 <bunks> 医生连同 <cargo> 带到 <destination>，他们将在那里解决重大病毒爆发"
+	deadline
+	passengers 75
+	cargo "medical supplies" 90
+	to offer
+		has "license: Coalition"
+		random < 5
+	source
+		near "1 Axis" 1 6
+	destination "Celestial Third"
+	on offer
+		conversation
+			`当你进入太空港时，你会注意到几个营的联盟医生在四处​​游荡，与商船船长交谈，然后跟随其中一些人回到他们的飞船。`
+			`一群这样的人群走近你，其中一位萨里德说道：“一种致命病毒在 <destination> 上爆发。我们寻求愿意运送我们和 <cargo> 的船长。”她带您参观了医生组，其中有 <bunks>。`
+			choice
+				`“我很乐意帮助解决这样的严重问题。我们去我的船上吧。”`
+				`“抱歉，我现在没钱填这么多床位。”`
+					decline
+			`医生冲进你的飞船，太空港工作人员迅速将 <cargo> 放入你的货舱。`
+			`当你有机会时，你问他们病毒到底是什么，他们会尽可能地解释它如何导致“Kimek 外骨骼上的肿瘤样行为，迅速使组织退化并暴露肉，同时增加感染的风险。”他们说，虽然这对基梅克来说是最危险的，但已经有一些阿拉奇确诊病例感染了这种疾病。`
+			`情况看起来相当严重，因此您应该确保这些医生及其物资尽快到达<destination>。`
+				accept
+	on visit
+		dialog `您已到达 <planet>，但医生和医疗用品尚未到达。出发并等待运载他们的船只。`
+	on complete
+		payment 768540
+		"coalition jobs" += 2
+		dialog `医务人员离开你的船的速度和他们进入你的船的速度一样快，并在一些急救人员的指挥下前往城市的不同地区。当 <cargo> 也从你的船上被带走后，一名工作人员将 <payment> 交给你，并说你可以通过寻找他们在太空港的同事来寻找更多方法来帮助应对疫情。`
+
+
+
+mission "Coalition Outbreak 2"
+	name "收集疫苗"
+	description "前往 <stopovers>，Saryd 研究人员一直在那里研究新病毒的疫苗，并由 <date> 将其交付给 <destination>。"
+	deadline
+	cargo "vaccines" 80
+	blocked "You need <capacity> in order to take on the next mission. Return here when you have the required space free."
+	to offer
+		has "Coalition Outbreak 1: done"
+	source "Celestial Third"
+	stopover "Secret Sky"
+	destination "Ki Patek Ka"
+	on offer
+		conversation
+			`和以前一样，太空港完全由医生和护士主导。你找不到叫你来这里的人，但当你询问其他一名紧急救援人员时，他们将你带到了一个临时办公室，该办公室设立在几个交易面板旁边。`
+			`“这种病毒对我们来说相当新鲜，”看台上的基梅克说。 “但幸运的是，秘密天空的研究人员最终开发出了第一批疫苗。”`
+			choice
+				`“‘终于’是什么意思？这个病毒不是最近才爆发吗？”`
+				`“你要我去那里取疫苗吗？”`
+					goto vaccines
+			`他看起来对你的问题感到困惑。`
+			`“确实已经过去了几周，但研究人员一直在努力工作，”他说。 “责怪他们比平时多花了几天时间，我们不能。这种病毒很复杂。”`
+			label vaccines
+			`他向你展示了基梅克空间的详细地图，解释说大多数确诊和疑似病例都在那里。鉴于基梅克人的人口是阿拉奇人和萨里德人总和的两倍多，这并不奇怪。`
+			`“必须将第一批疫苗带到<destination>。从那里，你将负责将更多批次的疫苗分发到其他世界。”`
+			`随着你身后志愿商人船长的队伍不断增加，他很快通知你付款将是 <payment> ，并要求下一个人上前。`
+				accept
+	on stopover
+		dialog `一群 Saryd 工人正在等待您，他们会将 <cargo> 装载到您的船上。一名实验室工作人员喋喋不休地说你必须如何照顾它们。`
+	on visit
+		dialog `您已到达 <planet>，但疫苗尚未到位。一旦你拾取了它们，请确保所有携带它们的船只都到达该系统。`
+	on complete
+		payment 943720
+		"coalition jobs" += 2
+		conversation
+			`川流不息的货机让这里的航天港着陆场人满为患，看上去只是因为携带疫苗才获得了快速通关。`
+			`尽管交通拥堵，这里的人们却令人惊奇地保持了这里的井井有条，当他们从您的货舱卸下疫苗时，他们向您支付 <payment>。`
+			`“<last> 船长，我们的同事将在太空港等待您，还有更多任务等着您。”其中一人在跑去照顾其他运送医生或物资的飞船之前说道。`
+
+
+
+mission "Coalition Outbreak 3"
+	name "分发疫苗"
+	description "在三艘志愿船的陪同下，前往指定的 Kimek 世界，运送疫苗以应对当前的病毒爆发，然后由 <date> 返回 <destination>。"
+	deadline
+	cargo "vaccines" 80
+	to offer
+		has "Coalition Outbreak 2: done"
+	source "Ki Patek Ka"
+	stopover "Fourth Shadow"
+	stopover "Blue Interior"
+	stopover "Sandy Two"
+	stopover "Inmost Blue"
+	stopover "Double Haze"
+	stopover "Brass Second"
+	stopover "Second Viridian"
+	stopover "Remote Blue"
+	on offer
+		conversation
+			`这次你被带到了一个大会议室，许多 Saryds 和偶尔的 Arach 正在那里等待。组织遏制程序的团队中的一名基梅克进来并表示，你们将再次运送疫苗。`
+			`“几个小时后，疫苗样本就会被完全复制。我们会把它们装载到你们的船上。你们必须将它们运送到 <stopovers>。”`
+			`然后每个人都被分成几组。你和两名萨瑞德队长和一名阿拉克在一起，后者穿着某种防护服，覆盖了他的整个身体，这让他走路有些困难。`
+			`船长们同意听从你的领导，并与你一起运送疫苗，所以你们都回到你的船上。`
+				accept
+	npc accompany save
+		personality escort timid
+		government "Coalition"
+		ship "Saryd Sojourner" "Noset Temu"
+		ship "Saryd Sojourner" "Miest Laba"
+		ship "Arach Hulk" "Bloobrupblot"
+	on stopover
+		dialog `你和联军队长已经交付了最后一批疫苗。您现在必须返回到 <origin> 。`
+	on visit
+		dialog `您已达到 <planet> ，但您缺少一些内容！要么你还没有访问过 <stopovers> ，要么你把联盟飞船落在后面了。`
+	on complete
+		payment 2593230
+		"coalition jobs" += 3
+		conversation
+			`你和其他船长被告知要在这里排队等候。在等待的过程中，你们的群组中的一些人正在聊天，其中一些人提到了他们的一批疫苗是如何运送到 Arach 和 Saryd 空间的。显然，许多游客在飞往这些地区之前就感染了这种疾病。`
+			`队伍移动得很快，一旦轮到你，你就会得到 <payment> 的报酬，然后很快就会被那些已经在给你后面的人付钱的工作人员推着走。`
+			`回头看看队伍，看到等待分享的船长数量之多，难怪付给你钱的 Kimek 非常简短。当您回到船上时，您会看到联合政府向您发送了一条消息。更具体地说，它似乎是由他们的卫生部发送的。`
+			`“对于所有帮助应对最近病毒爆发的队长，我们向你们表示感谢，今晚可以休息了，因为你们为我们联盟的持续繁荣做出了贡献。”`
+
+
+
+mission "Kimek Gift"
+	minor
+	name "不迟到一分钟"
+	description "<origin> 的一位 Kimek 研究人员忘记了她住在 <destination> 的 Saryd 朋友的生日。由于您有跳跃驱动器并且可以及时到达，因此她要求您在 <date> 之前交付礼物。"
+	deadline 2
+	to offer
+		has "Coalition: First Contact: done"
+	source "Second Cerulean"
+	destination "Cold Horizon"
+	on offer
+		require "Jump Drive"
+		conversation
+			`一个穿着实验服的基梅克带着一个附有一些文件的小包裹在这里的太空港里拼命地跑来跑去。`
+			`她一发现你，就迅速靠近你，说道：“人类！我听说过的访客就是你！从外面来的！你有跳跃驱动器，如果你已经到达我们的空间了，是吗？”`
+			`你点点头，她继续说道，“住在 <planet> 上，我的一个 Saryd 朋友就是这样。我忘记了他的生日是在 <date> 上！我不能及时赶上聚会。我工作很忙。至少要送他的礼物，我很愿意，但是要及时送达，这里的普通船只做不到！用你的跳跃驱动器，一天之内就可以到达那里。帮帮我吧，船长？”`
+			choice
+				`“就那么一个小包裹？很简单，我来做。”`
+					accept
+				`“抱歉，我不会去那里，我还有另一个任务要做。去别的地方。”`
+					decline
+	on complete
+		payment 36750
+		"coalition jobs" += 2
+		conversation
+			`显然这个萨利德并不住在太空港村，所以你必须乘火车去他家。值得庆幸的是，包裹里附有一张火车票，所以你没有浪费时间，就可以在那里搭乘下一趟火车。`
+			`即使对于一个没有太多人口的世界来说，这里的火车车厢也感觉异常空荡，只有少数其他乘客在你安顿的车厢里。旅程需要几个小时，所以你有足够的时间看看窗外，凝视看似无边无际的冬季森林的景色。`
+			`半路上，一场暴风雪让外面的东西看不清。检票员再次过来，现在提供一种奶油蓝色饮料，看起来就像热巧克力一样。`
+			`到达村庄后，您可以按照 Kimek 所包含的街道的临时地图，将礼物交给她的 Saryd 朋友。显然，聚会才刚刚开始。`
+			`当您返回飞船时，<payment> 会转入您的帐户，并且您会收到 Kimek 研究人员发来的短信，感谢您的帮助。`
+
+
+
+mission "Saryd Students 1"
+	minor
+	name "获取阿拉克朗姆酒"
+	description "<origin> 上的一些 Saryd 学生愿意支付您给他们运送传统 Arach 朗姆酒的费用，该朗姆酒目前仅在 <destination> 上出售。为了及时赶到，朗姆酒必须由 <date> 购买。"
+	deadline
+	to offer
+		has "Coalition: First Contact: done"
+	source "Shadow of Leaves"
+	destination "Weir of Glubatub"
+	on offer
+		conversation
+			`当你路过一些商店时，一个年轻的萨里德在你转弯时撞到了你，把你撞倒在地。他扶你起来，并道歉。和他在一起的另外几个人甚至没有注意到你就进入了一家商店，但几乎立即又出来了。`
+			branch translator
+				has "language: Coalition"
+			`他们与他交谈，指着商店和他们在撞到你之前一定去过的地方，而他们的朋友则在摆弄翻译盒。`
+				goto question
+			label translator
+			`“运气不好？”他问他们，一边摆弄着一个翻译框，却没有意识到你们也有自己的翻译框。`
+			`他的同事们摇摇头，“我们的说法和在另一家商店里的一样。运送到这里，Arachi 不再存在了，”他们指着那家商店，指着他们在撞到你之前一定去过的地方。他们的朋友继续摆弄该设备。`
+			label question
+			`完成后，他问道：“人类，你是一名商船船长，对吗？正在找工作，是吗？”`
+			choice
+				`“什么样的工作？”`
+					goto work
+				`“哦不，我其实就住在这儿。在人类城区，就在拐角处。”`
+				`“其实我只是来看风景的，抱歉。”`
+					decline
+			`他们都开始大笑，有些人显然发现你的笑话比你想象的要有趣得多。考虑到他们在平坦的地面上跌跌撞撞的样子，以及自从他们中的一个撞到你后空气中弥漫着的酒精味，你就明白为什么了。`
+			`“很公平。在这里，人类并不常见，船长，”拿着翻译盒的人说道。 “我就是要求这样的回应。”`
+			label work
+			`他们告诉你，他们是星光大学的学生，即将毕业。他们打算举办一个聚会来庆祝，并想为此购买一些传统的阿拉克朗姆酒。`
+			`“阿拉奇人已经不再把它运送到这里了，”另一位萨里德说道，拉着他朋友脖子上的翻译盒，差点把它扯下来。 “很多其他饮料都发生过这种情况，这个也有。”`
+			`他们解释说，朗姆酒是在 <destination> 生产的，您可能会更容易在那里找到它。尽管你不确定他们打算邀请多少人参加这个聚会，而且你也不知道萨里德可以喝多少酒，但当他们说“两吨就够了”时，你仍然会有点担心。他们还告诉您，为了及时参加聚会，朗姆酒应该由 <date> 购买。`
+			choice
+				`“听起来不错，我去拿来给你。”`
+					accept
+				`“两吨需要多少钱？”`
+				`“抱歉，但我反对向学生走私酒精。”`
+					decline
+			`“朗姆酒是最昂贵的饮料之一，”萨里德解释道。 “每吨你应该支付几千个信用点。但你会得到很好的补偿。”`
+			choice
+				`“听起来不错，我去拿来给你。”`
+					accept
+				`“抱歉，但我反对向学生走私酒精。”`
+					decline
+	on visit
+		dialog `你四处打听，被引导到这里人口较多的城市之一的一家大型炼油厂。朗姆酒的价格确实很可观，每吨5642信用点，但更令人印象深刻的是，当你自己没有足够的责任感，没有足够的一万信用点花掉的时候，你担心学生让你买这个时的不负责任。去赚点钱，然后再回来。`
+	on complete
+		payment -11284
+
+
+
+mission "Saryd Students 2"
+	name "交付阿拉克朗姆酒"
+	description "现在您已经购买了两吨 Arach 朗姆酒，请在 <date> 于 <destination> 将其交付给 Saryd 学生。"
+	landing
+	deadline
+	cargo "arach rum" 2
+	blocked "You need <capacity> in order to take on the next mission. Return here when you have the required space free."
+	to offer
+		has "Saryd Students 1: done"
+	source "Weir of Glubatub"
+	destination "Shadow of Leaves"
+	on offer
+		conversation
+			`你四处打听，被引导到这里人口较多的城市之一的一家大型炼油厂。显然，这是最初生产 Arach 朗姆酒的原始建筑。`
+			`你要了两吨朗姆酒，但没有透露其具体用途，因为你不想为某些醉酒的 Saryds 所做的事情承担责任，并为所有朗姆酒付出了代价：11,284 信用点。`
+			`负责将朗姆酒装载到你的船上的阿拉奇给了你一些奇怪的表情，当一切完成后，经理告诉你试着放慢喝酒的速度。`
+				accept
+	on complete
+		payment 87500
+		conversation
+			`除了派你去买朗姆酒的学生之外，还有大约十几个人在你的船着陆时等待你的船并帮助你卸下饮料。`
+			`“你拯救了我们的队伍，队长，”拿着翻译设备的萨利德说道，并递给你 <payment> 。`
+			`他们兴奋地拖着载着许多小桶的货车出发了。他们中的一些人已经擅自打开小桶开始喝酒了。`
+
+
+
+mission "Saryd Census 1"
+	minor
+	name "萨里德人口普查"
+	description "将这些 <bunks> Saryd 人口普查工作人员运送到 <destination> ，他们将在那里收集有关人口增长的数据。"
+	passengers 17
+	to offer
+		has "license: Coalition"
+		random < 40
+	source
+		attributes saryd
+		not planet "Flowing Fields"
+		not planet "Warm Slope"
+	destination "Flowing Fields"
+	on offer
+		conversation
+			`当你进入太空港时，十多个 Saryd 会向你走来。他们解释说，他们是人口普查工作人员，需要前往 <destination> 的交通。 “我们之前的交通工具让我们悬而未决。”`
+			choice
+				`“你在收集什么样的数据？只是一般信息？”`
+				`“当然，我会带你到你的铺位去。”`
+					goto accept
+				`“那你就不走运了，我现在也不找什么运输任务了。”`
+					decline
+			`“我们正在收集人口增长的数据。我们同意帮助我们的同事，许多其他船只已经这样做了，”其中一位说。`
+			choice
+				`“好吧，我带你去你的铺位。”`
+					goto accept
+				`“好吧，我相信你可以找到其他人。我现在不寻找任何运输任务。”`
+					decline
+			label accept
+			`他们感谢你并开始跟随你到你的船上。现在您已经有时间数一数了，总共有 <bunks>。`
+			`你问这个搜索是否会坚持萨里德空间，他们说每个物种在收集此类数据时通常都会坚持自己的家园领地，所以你不应该担心必须把它们从联盟空间的一端带到另一端。`
+			`他们在自己的铺位上安顿下来，为旅行做准备。`
+				accept
+	on visit
+		dialog `您降落在 <planet> 上，但意识到您携带人口普查工作人员的护送人员尚未进入系统。最好离开并等待。`
+	on complete
+		"coalition jobs" ++
+		payment 342000
+		dialog `您将因将 Saryd 运送到这里而获得 <payment> 的报酬，他们会离开您的船，准备开始工作并四处打听。他们说他们可能会在晚上回到太空港，所以如果你想进一步帮助他们，你应该稍后检查那里。`
+
+
+
+mission "Saryd Census 2"
+	name "萨里德人口普查"
+	description "将这些 <bunks> Saryd 人口普查工作人员运送到 <destination> ，他们将在那里收集有关人口增长的数据。"
+	passengers 17
+	blocked "You need <capacity> in order to take on the next mission. Return here when you have the required space free."
+	to offer
+		has "Saryd Census 1: done"
+	source "Flowing Fields"
+	destination "Warm Slope"
+	on offer
+		conversation
+			`显然你很幸运能够运送一组被分配到太空港城市附近的区域，因为你看到许多其他联盟队长不耐烦地等待自己的乘客返回，一些人看着地球地图并抱怨。`
+			`大多数萨雷德人都在这里，但其中三人还没有回来，所以已经到达的十四人只是继续讨论他们发现的结果。`
+			choice
+				`（去逛一些商店，然后再回来。）`
+					goto shops
+				`（询问他们收集的数据。）`
+			`他们解释了这次人口普查主要关注的是联盟的总人口增长，以及事情进展如何如预期。`
+			`其中一位评论道：“萨里德人口保持稳定。” “尽管生育率略有上升，但我们的人口数量仍约为 300 亿。”`
+			`当你们继续聊天时，其中一个人变得好奇并询问你关于人类人口的情况，你回答说你们的物种约有 1000 亿人。`
+			`“是阿拉奇的两倍，”一名工人说。`
+			`“是 Kimek 的一半，”另一位补充道。`
+			`他们会问你一些有关人类领土的更多问题，但要避免过于技术性以至于你难以回答。`
+				goto end
+			label shops
+			`您尝试着逛逛这里的商店来消遣一下，但几乎所有商店都摆满了当地农场的农产品。`
+			`其中一个有一些用稻草做的玩具。你看看 Saryd 为他们设计的。它们并没有什么特别之处，也不像人们对类似半人马的物种所期望的那样刻板。其中大多数似乎是当地动物群的生物或小房子等建筑物的复制品。`
+			`您注意到另外两名人口普查工作人员回来了，因此您决定返回小组并等待最后一名成员。早些时候的一些联军队长聚集在一家酒吧里，哀叹漫长的等待。`
+			label end
+			`最后一位 Saryd 到达后，你们都返回自己的飞船，并被告知下一个目的地是 <destination> 。`
+				accept
+	on visit
+		dialog `您降落在 <planet> 上，但意识到您携带人口普查工作人员的护送人员尚未进入系统。最好离开并等待。`
+	on complete
+		"coalition jobs" += 2
+		payment 387000
+		conversation
+			`这次，工作人员提到他们的任务是收集太空港周围地区以外的地球部分数据，因为他们向您支付 <payment> 。`
+			`值得庆幸的是，他们提到人口普查即将结束，这是他们的最终目的地，因此您无需像在 <origin> 上看到的船长那样在太空港等待数小时。`
+			`他们感谢您帮助他们完成工作，并祝您旅途平安。`
+
+
+
+mission "Saryd Couple 1"
+	minor
+	name "获取资金"
+	description "因图里和奥纳里斯是萨里德的一对年轻夫妇，他们需要赚足够的钱来购买他们的梦想之家。将 Aunaris 运送到 <destination> ，并在那里的大学为她提供了一份工作。"
+	passengers 1
+	to offer
+		has "Coalition: First Contact: done"
+		random < 60
+	source
+		near "Hunter" 1 2
+	destination "Shadow of Leaves"
+	on offer
+		conversation
+			`在太空港周围散步时，你注意到一名正在为你的飞船加油的萨里德工人正在快速地奔向某个地方，只是没有穿制服，就好像他的轮班刚刚结束一样。他遇到了另一个萨德，并开始和她一起看地图。`
+			choice
+				`（走近他们。）`
+				`（回到我的船并检查它是否已正确加油。）`
+					goto ship
+			`他们暂停了地图凝视，自我介绍为 Inturi 和 Aunaris，一对年轻夫妇，他们希望搬出 <origin>，在另一个世界建造一个他们一直梦想的家园。`
+			`“只是，我们需要钱，”因图里说。 “我曾在船上担任船员，在决定留在这里从事船舶维修和保养工作之前，我曾这样做过。”`
+			`“太远了，他以前的工作把他带走了，而且工资很高，但船员们却没有，”奥纳里斯说，再次拿出地图给你看。 “我在 <destination> 的星光大学找到了一份工作。距离 <origin> 不太远，而且薪水更高。船长，你可以送我去那里吗？一旦我们的房子准备好，我们就会付钱给你。”`
+			choice
+				`“当然，你准备好行李就到我的船上来吧。”`
+				`“抱歉，我现在要去别的地方了。”`
+					decline
+			`他们都谢谢你，然后你就回到了你的船上。`
+			`夜幕降临时，奥纳里斯抵达，伴随着因图里和其他一些萨瑞德，你猜他们一定是家庭成员，因为他们都在道别。一旦她进入你的船，你就带她到她的铺位，然后准备离开。`
+				accept
+			label ship
+			`当您到达船上时，您检查控制面板并进行简短的检查。油箱已加满，其他一切正常。你再次离开你的船，继续你的生意。`
+				decline
+	on visit
+		dialog `您降落在 <planet> 上，但意识到您携带 Aunaris 的护卫尚未进入系统。最好离开并等待。`
+	on complete
+		"coalition jobs" ++
+		event "saryd couple has money" 42 86
+		dialog `奥纳里斯感谢你带她来这里，并为无法立即付钱给你而道歉，但承诺一旦她和因图里找到了他们的家，他们就会努力付钱给你。 “在我获得剩余资金之前，我可能会在这里呆几个月，”她在道别并乘坐缆车前往新工作场所之前说道。`
+
+
+
+event "saryd couple has money"
+
+
+
+mission "Saryd Couple 2"
+	name "甜蜜的土地"
+	description "Saryd 夫妇 Inturi 和 Aunaris 终于攒够了钱，在 <destination> 购买了一块土地，他们将在那里开始建造自己的家。将他们两人带到那里，以便他们解决购买问题。"
+	passengers 2
+	to offer
+		has "event: saryd couple has money"
+	source "Shadow of Leaves"
+	destination "Far Garden"
+	on offer
+		conversation
+			`你在太空港遇到了两个熟悉的面孔：你不久前见过的萨利德夫妇，因图里和奥纳里斯，他们正在努力获取建造自己家园所需的资金。`
+			`“我在另一艘船上工作了一个星期，直到我们降落在这里，”因图里说，他开玩笑地谈到了他在不支付交通费的情况下搭船的方式。`
+			`“我睡得不好，但我对校园管理有很大帮助。我得到了奖金，”奥纳里斯告诉你。`
+			`他们说他们只需要前往 <destination> 的交通工具，这是他们选择扎根的世界，一切完成后，他们将努力为您付款。`
+			choice
+				`“很高兴听到一切顺利。我们去我的船吧，我会设置一条通往 <planet> 的路线。”`
+				`“抱歉，但我现在不去那里。”`
+					decline
+			`你带他们到他们的铺位，并为旅行做好准备。`
+				accept
+	on visit
+		dialog `您降落在 <planet> 上，但意识到您携带 Aunaris 和 Inturi 的护卫尚未进入系统。最好离开并等待。`
+	on complete
+		"coalition jobs" ++
+
+
+
+mission "Saryd Couple 3"
+	name "逆位蜘蛛"
+	description "将 Inturi 带到 <destination> ，在那里他将购买一艘小型 Arach 船，他和 Aunaris 将把它改造成一个家。"
+	landing
+	passengers 1
+	to offer
+		has "Saryd Couple 2: done"
+	source "Far Garden"
+	destination "Saros"
+	on offer
+		conversation
+			`这对夫妇离开你的船，前往一家房地产经纪公司。从他们在旅途中告诉你的情况来看，他们有大约二百五十万积分可以花，他们声称这符合这里最有价值（也是最受欢迎）的地点的标准房产，而且他们应该还有足够的钱在事后支付给你。`
+			`他们咨询完回来，两人脸上都带着失望的表情。因图里 (Inturi) 开始观察起降的船只，而奥纳里斯 (Aunaris) 则前来与你交谈。`
+			`“我们花了几个月的时间看管一处房产。它位于一个山村，俯瞰湖泊，可通往附近的森林。几天前，购买了它，”她叹息道。 “可用的是，邻近的另一块土地是可用的，但我们一半以上的资金，光是这块土地就花费了。”`
+			`然后因图里看了过来，仿佛刚刚受到了震惊，说道：“就是它！一艘船！住在船上，我们可以！”`
+			choice
+				`“你是什么意思？”`
+				`“我喜欢这种热情，但不幸的是我现在不寻找更多的船员。”`
+				`“如果你这么说的话。只是别忘了橙子，坏血病可能对萨里兹来说也是一个问题。”`
+			`“住在船上？”奥纳里斯困惑地重复着这句话。`
+			`“那一周我在一艘Arach船上工作。船长教了我一些东西。他们的船经常被改造成房屋，”他解释道。 “我们可以购买他们最小的船。这样可以节省时间和金钱，否则就得花在建造房屋上。”`
+			`他们私下聊了一会儿，几分钟后，因图里显然成功地充分解释了他的想法并说服了她。`
+			`他们回到房地产中介并安排购买这块土地。然后 Inturi 要求你将他运送到 <destination> ，那里出售基本的 Arach 船模型，购买后他会带着新的“房子”返回这里。`
+			`Aunaris 将留在这里完成所有文书工作，并在你们两人返回后在酒店等候。`
+				accept
+	on visit
+		dialog `您降落在 <planet> 上，但意识到您携带 Inturi 的护卫尚未进入系统。最好离开并等待。`
+
+
+
+mission "Saryd Couple 4"
+	name "试驾、终驾"
+	description "护送因图里的船前往<destination>，该船将被改造成他和奥纳里斯的家。"
+	landing
+	to offer
+		has "Saryd Couple 3: done"
+	source "Saros"
+	destination "Far Garden"
+	on offer
+		conversation
+			`因图里直接前往造船厂，你帮助他购买。他说，虽然多年来他在多艘船上工作过，但他去造船厂的目的只是拿起一些零件进行修理，或者打磨新生产的模型。`
+			`只有当你和他一起在阿拉克飞船里时，你才会想到问他是否知道如何驾驶一艘船，但他向你保证这不会成为问题。`
+			`“我的第一份工作是为一位老朋友当副驾驶。你不必担心我会把船撞坏，”他开玩笑说。`
+			`他说他会等待您的引导，并在您离开后跟随您前往 <destination>。`
+				accept
+	npc accompany save
+		personality escort timid
+		government "Coalition"
+		ship "Arach Courier" "Boop"
+	on visit
+		dialog `您降落在 <planet> 上，但意识到 Inturi 的飞船尚未进入系统。最好离开并等待它到达这里。`
+	on complete
+		"coalition jobs" += 2
+		event "saryd couple follow-up" 51 96
+		conversation
+			`你帮助 Inturi 将船停在一块土地上，但由于 Arach Courier 几乎占据了整个区域，你自己的船必须降落在常规着陆场上。`
+			`乘坐运输工具上山后，您会看到一些工人已经在那里，并开始拆除不需要的船舶部件，例如发动机和超级驱动器。毕竟，房子不需要能够穿越太空。`
+			`这对夫妇来见你。 “一两天后，我们购物之后，房子就会配备齐全，”奥纳里斯看着这艘船说道。`
+			`“<last> 队长，您为我们解决了所有问题提供了很大帮助。我们会努力工作，全额回报您，”Inturi 补充道。`
+			choice
+				`“你不用担心付钱给我，我帮忙是因为我想这么做，而不是为了发薪日。”`
+				`“嗯，希望一切顺利。祝你们两个好运！”`
+					goto end
+			action
+				set "refused saryd couple payment"
+			`他们困惑地看着你，然后试图坚持付钱给你，但几分钟后他们同意了。 “你的心太善良了，船长，”奥纳里斯说。`
+			label end
+			`他们再次感谢你，然后你就回到了你的船上。`
+
+
+
+event "saryd couple follow-up"
+
+
+
+mission "Saryd Couple Follow-Up A"
+	invisible
+	landing
+	to offer
+		has "event: saryd couple follow-up"
+		not "refused saryd couple payment"
+	source
+		government "Coalition" "Heliarch"
+	on offer
+		payment 325400
+		conversation
+			`当您着陆时，您会收到通知，<payment> 已转入您的帐户。`
+			`有了它，就有一条消息。这是 Inturi 和 Aunaris 发来的，他们是 Saryd 夫妇，你帮助他们搬到了自己的家。`
+			`在消息中，他们对这么长时间才给您付款表示歉意，并继续告诉您他们在那里的情况。奥纳里斯一直在那里的一所学校工作，而因图里一直在帮助其他居民建立他们自己的“船屋”，他称之为“船屋”。显然，在人们参观了这对夫妇的家后，那里变得有些受欢迎。`
+			`他们再次感谢您，并表示欢迎您随时来访。`
+
+
+
+mission "Saryd Couple Follow-Up B"
+	invisible
+	landing
+	to offer
+		has "event: saryd couple follow-up"
+		has "refused saryd couple payment"
+	source
+		government "Coalition" "Heliarch"
+	on offer
+		conversation
+			`当你着陆时，你会看到你收到了一条消息。这是 Inturi 和 Aunaris 发来的，他们是 Saryd 夫妇，你帮助他们搬到了自己的家。`
+			`除了这条消息之外，他们还发送了一张照片，照片中两人正在船附近开辟的一个小花园里照料一些花和矮树。在消息中，他们继续告诉您他们在那里的情况。奥纳里斯一直在那里的一所学校工作，而因图里一直在帮助其他居民建立他们自己的“船屋”，他称之为“船屋”。显然，在人们参观了这对夫妇的家后，那里变得有些受欢迎。`
+			`他们再次感谢您，并表示欢迎您随时来访。`
+
+
+
+mission "Longcow Antibiotics 1"
+	minor
+	name "长牛抗生素"
+	description "Arach 牧场主要求您在 <stopovers> 上领取 <cargo>，然后将其运送到 <destination> 。"
+	cargo "longcow antibiotics" 7
+	to offer
+		has "Coalition: First Contact: done"
+		random < 35
+	source
+		attributes arach
+		not attributes "coalition station"
+	stopover "New Finding"
+	destination "Corral of Meblumem"
+	on offer
+		require "Jump Drive"
+		conversation
+			`你看到一些阿拉奇人在太空港里互相交谈，偶尔扫视并指着你。`
+			`其中一个终于找到你并说道：“你好，船长。你有兴趣为我们执行货运任务吗？”`
+			`她告诉您他们是 Arach 牧场主的合作社，并解释说他们的长牛牧场业务的安全和健康法规最近更新了，他们需要有人为 <stopovers> 上的牛挑选最新的抗生素。`
+			`“你有跳跃驱动器，所以让它们更快 - 让我们更快地恢复业务 - 你会的。”`
+			choice
+				`“你已经找到了最适合这份工作的人选。我加入了。”`
+				`“我想这是真的，但抱歉，我不是在找快递工作。”`
+					decline
+			`在她向其他阿拉奇示意你已同意提供帮助后，其他阿拉奇过来向你表示感谢。他们解释说，在您在 <stopovers> 领取抗生素后，您必须在 <planet> 归还抗生素，然后才能祝您旅途愉快。`
+				accept
+	on stopover
+		dialog `码头工人在确认您已被 Arach 合作社雇用后，将 <cargo> 装载到您的货舱中。在放置最后一个板条箱后不久，Arachi 人联系了您，他们说您应该将抗生素带到 <destination> ，在那里他们将向您支付 <payment> 。`
+	on visit
+		dialog `您降落在 <planet> 上，但 Arach 牧场主不会来接您，因为您没有带长牛抗生素。确保您所有载有货物的船只在您提货后都到达该系统。`
+	on complete
+		"coalition jobs" += 2
+		payment 421000
+
+
+
+mission "Longcow Antibiotics 2"
+	name "长牛抗生素"
+	description "将剩余的 <cargo> 交付给 <destination> ，其中一些 Arachi 还担任长牛牧场主。"
+	landing
+	cargo "longcow antibiotics" 1
+	to offer
+		has "Longcow Antibiotics 1: done"
+	source "Corral of Meblumem"
+	destination "Nearby Jade"
+	on offer
+		conversation
+			`当你着陆时，你会得到 421,000 积分，但当你帮助牧场主卸载抗生素时，他们说有些事情不对劲。`
+			`“我们只要求了 6 吨抗生素，”其中一位说道。 “那额​​外的吨盈余，我们的不是。”`
+			`她离开了大约十分钟，联系新发现实验室的工作人员。当她回来时，她似乎在和你说话之前用阿拉克语与其他牧场主开玩笑。`
+			`“他们搞混了货物。他在 <destination> 上拥有自己的长牛牧场，我的一个表弟也搞混了，”她说。 “和我自己的抗生素一起寄来的是他那批抗生素。”`
+			`他们联系了有问题的表弟，他要求您将他自己的部分抗生素运送到 <destination> ，在那里他将向您支付 <payment> 。`
+				accept
+	on visit
+		dialog `您降落在 <planet> 上，但意识到携带长牛抗生素的护送人员尚未进入系统。最好离开并等待。`
+	on complete
+		"coalition jobs" += 2
+		payment 193000
+		dialog `您着陆并与梅布卢姆畜栏牧场主的表弟会面，他付给您 <payment> 。 “因为我们的姓氏而混淆了我们的批次，医生总是这样做！”当抗生素从你的货舱中取出时，他抱怨道。`
+
+
+
+mission "Arachi Orphans"
+	minor
+	name "阿拉克孤儿"
+	description "将这 4 个 Arach 孤儿、他们的看护人和他们的 <cargo> 带到 <destination>，他们将在那里加入寄养家庭。"
+	passengers 5
+	cargo "orphanage belongings" 2
+	to offer
+		has "license: Coalition"
+		random < 45
+	source
+		attributes arach
+		not attributes "coalition station"
+	destination "Chosen Nexus"
+	on offer
+		conversation
+			`当你进入太空港时，一位年老的阿拉克正在向你招手。陪伴他的是四个 Arach 孩子，他们都站在一大堆行李旁边。`
+			`他解释说，他曾经在这里经营一家孤儿院，但现在已经太老了，无法胜任这份工作。他已安排将四个孩子转移到 <destination> 的寄养家庭。`
+			`“照顾好他们，那里的萨利德人会的，”他一边说，一边拍拍孩子们中最小和最矮的孩子的头。 “我要退休了，但我不会放弃他们。我会购买一套靠近寄养家庭的公寓。”`
+			`他愿意向您支付 <payment>，让您将他们五个人和他们的 <cargo> 带到 <destination>。`
+			choice
+				`“我当然会帮忙，来，我帮你把行李搬上我的船。”`
+					accept
+				`“我希望你一切顺利，但实际上我现在不会在联盟太空中停留或飞行太久。”`
+					decline
+	on complete
+		"coalition jobs" += 3
+		payment 268000
+		conversation
+			`你帮助老阿拉克看守人和一些工人把行李从船上搬出来，然后前往孤儿院。`
+			`一对 Saryd 夫妇经营着这个地方，当你到达那里时，他们会向你和老阿拉赫打招呼。除了几个 Saryd 孩子之外，你注意到这个地方已经有一个 Arach 孩子和一些 Kimek 孩子了。`
+			`当你确保他们的所有物品都在寄养家庭内后，阿拉克孩子们就会走进去熟悉他们的新家庭。他们的看守人感谢你并递给你 <payment>，然后才走进去。`
+
+
+
+mission "Arachi Cartoonist 1"
+	minor
+	name "新设计"
+	description "Arach 漫画家 Drugub 目前正在努力在他的漫画中寻找新宇宙飞船设计的灵感。前往<destination>并找到一些你可以带回来的东西，向他展示那里生产的船舶模型。"
+	to offer
+		has "Coalition: First Contact: done"
+	source "Mebla's Portion"
+	destination "Prime"
+	on offer
+		conversation
+			`当你沿着连接这里的太空港的较大地下隧道之一移动时，十几个临时看台，每个都有不同的明显“主题”，吸引了你的注意力。当你走近时，你会发现这个活动显然是一种惯例，每个展位都由居住在这里的不同艺术家管理。`
+			`当你看完一个展示着各种奇幻服装的摊位并走到邻近的一个摊位后，摊主一转身看到你就跳了起来，看上去目瞪口呆。他介绍自己为 Drugub，一位因科幻漫画而在当地享有盛誉的漫画家，并在与您交谈时展示了各种科幻漫画的例子。 “我们的领域生产了许多款式的船舶，但我只能从中得到这么多的想法，”他说。 “你来到这里，我很幸运。为了扩大我的创意视野，我需要，看到一些人类船只的总体形状就可以了。”`
+			choice
+				`“我可以帮忙。你有什么想要的船类型吗？”`
+				`“抱歉，我只是路过，不是来找工作什么的。”`
+					decline
+			`他看起来很困惑。 “我的漫画中的船只有多种用途，所以最好了解各种船只。”`
+			`您决定向他简要描述人类太空中最大的造船厂，引用它们的历史和设计理念，从联合造船厂的廉价设计到深空的复杂（按人类标准）技术。`
+			`完成后，他想了一会儿，然后得出结论，参宿四造船厂古老的历史设计正是他要寻找的。 “我正在做的事情是在一个不太发达的时代，”他解释道。`
+			choice
+				`“既然如此，我就去他们的老家造船厂，看看能给你带点什么回来。”`
+					goto end
+				`“好吧，到 <planet> 的路程有点远，但如果你确定的话，我们就去我的船吧，我会带你看看你的铺位。”`
+				`“我碰巧拥有一艘符合描述的船，参宿四利维坦号。你想看看吗？”`
+					goto "has leviathan"
+					to display
+						has "ship model: Leviathan"
+			`“哦，离开我不能。无论你所说的这个 <planet> 是否被允许离开联盟空间，我们都不允许，”他说。 “没有我，你必须继续前进，队长。”`
+			label end
+			`他感谢您并祝愿您在前往 <planet> 的旅途中一路平安。`
+				accept
+			label "has leviathan"
+			action
+				"coalition jobs" += 2
+				payment 75940
+			`尽管从巨型蜘蛛身上解读情绪具有挑战性，但杜古布似乎很追星。`
+			`“你拥有一艘船，一艘‘利维坦’，你有吗？我们必须去你的机库！”`
+			`在短暂步行到停放船只的机库后，Drugub 立即开始在利维坦上爬行。看来你向他提供的信息远比任何二手参考资料所能传达的要重要得多。他花了一段时间近距离观察这艘船，然后跳下来，从各个可以想象的角度拍摄了许多照片，并快速画了一些草图。`
+			`完成后，他会给你一笔 <payment> 的付款，并花更多时间和你在一起，询问你他能想到的有关这艘船的所有问题。`
+			`“这个‘利维坦’非常漂亮。我已经想了很多方法来画它，”他说。 “也许我的角色之一的旗舰，我会做到......”`
+			`在要求您描述您的船的性能后，他又花了几分钟听您讲话，再次感谢您，然后准备离开。`
+			`“哦，在我走之前，<last> 船长，请用你自己的船名来称呼那艘‘利维坦’，可以吗？只是作为一个小小的感谢。”`
+			choice
+				`“当然！它的名字是 <ship> 。”`
+				`“这个名字没什么特别的，说实话，如果我以后看你的漫画，我什至都不会得到它的参考。”`
+					goto "no ship"
+			`“<ship> 是的！我会公正地对待，队长。再次感谢。”`
+				decline
+			label "no ship"
+			`“啊，我明白了。好吧，只是一个参考，所以我想名字并不重要。无论如何，再次感谢，队长。”`
+				decline
+
+
+
+mission "Arachi Cartoonist 2"
+	name "新设计"
+	description "<destination> 返回 Drugub，并将包含参宿四飞船模型图片和一些细节的传单交给他。"
+	landing
+	to offer
+		has "Arachi Cartoonist 1: done"
+	source "Prime"
+	destination "Mebla's Portion"
+	on offer
+		conversation
+			`当你问造船厂工作人员是否可以提供一些详细说明他们的飞船模型的东西以“向刚接触宇宙飞船的朋友展示”时，她递给你一张传单。里面描绘了参宿四的所有飞船，并附有每艘飞船的一些细节（当然还有定价）。`
+			`“通常我们会向首次购买者展示这些，但如果您愿意，您可以购买一艘。您的朋友有兴趣购买吗？也许我可以帮助您找出最适合他们的船。”`
+			`你感谢她，说你的朋友没有资金购买任何一艘船，只是想要一些信息，然后返回你的船。`
+			`希望 Drugub 能通过一本小册子获得一些想法。`
+				accept
+	on complete
+		"coalition jobs" += 2
+		payment 75940
+		conversation
+			branch leviathan
+				has "ship model: Leviathan"
+			`当您回来时，Drugub 正兴奋地等待着您。无论在你看来多么简单的一张纸，他都抓起传单，仿佛它是一本知识卷轴。`
+			`他将 <payment> 的付款交给您，并仍然花一些时间与您在一起，询问您他能想到的有关每艘船的所有问题。`
+			`“这个‘利维坦’非常漂亮。我已经想了很多方法来画它，”他说。 “也许我的角色之一的旗舰，我会做到......”`
+			`在要求你描述你所看到的每艘船的表现后，他又花了几分钟听你讲话，再次感谢你，然后准备离开。`
+			`“哦，在我走之前，<last> 船长，请用你自己的船名来称呼那艘‘利维坦’，可以吗？只是作为一个小小的感谢。”`
+			choice
+				`“当然！它的名字是 <ship> 。”`
+				`“这个名字没什么特别的，说实话，如果我以后看你的漫画，我什至都不会得到它的参考。”`
+					goto "no ship"
+			`“<ship> 是的！我会公正地对待，队长。再次感谢。”`
+				accept
+			label "no ship"
+			`“啊，我明白了。好吧，只是一个参考，所以我想名字并不重要。无论如何，再次感谢队长。”`
+				accept
+			label leviathan
+			`当您回来时，Drugub 正兴奋地等待着您。尽管从巨型蜘蛛身上解读情绪具有挑战性，但当你提到你带回了一艘与他所描述的相符的船时，杜古布似乎很受追星。`
+			`“你拥有一艘船，一艘‘利维坦’，你有吗？我们必须去你的机库！”`
+			`在短暂步行到停放船只的机库后，Drugub 立即开始在利维坦上爬行。看来你向他提供的信息远比任何二手参考资料所能传达的要重要得多。他花了一段时间近距离观察这艘船，然后跳下来，从各个可以想象的角度拍摄了许多照片，并快速画了一些草图。`
+			`完成后，他会将 <payment> 的付款交给您，并花更多时间与您交谈，询问您他能想到的有关这艘船的所有问题。`
+			`“这个‘利维坦’非常漂亮。我已经想了很多方法来画它，”他说。 “也许我的角色之一的旗舰，我会做到......”`
+			`在要求您描述您的船的性能后，他又花了几分钟听您讲话，再次感谢您，然后准备离开。`
+			`“哦，在我走之前，<last> 船长，请用你自己的船名来称呼那艘‘利维坦’，可以吗？只是作为一个小小的感谢。”`
+			choice
+				`“当然！它的名字是 <ship> 。”`
+				`“这个名字没什么特别的，说实话，如果我以后看你的漫画，我什至都不会得到它的参考。”`
+					goto "no ship"
+			`“<ship> 是的！我会公正地对待，队长。再次感谢。”`
+				accept
+
+
+mission "Coalition: Alpha Encounter"
+	minor
+	invisible
+	to offer
+		has "Coalition: First Contact: done"
+		has "remembrance day: offered"
+		random < 1
+	source
+		government "Coalition"
+		not attributes "coalition station"
+		not planet "Secret Sky" "Remote Blue" "Bloptab's Furnace" "Ahr"
+	on offer
+		event "alitis freed" 1095
+		log "Minor People" "Alitis" `Alitis, formerly known as Athis, is an Alpha who lives in the Coalition. Centuries ago, he stole a jump drive from an alien ship and used it to explore, but after some sort of encounter in the galactic east, he decided to give up on his former life.`
+		conversation
+			`当你在太空港的一家商店里浏览橱窗时，你听到了向你走来的过快的脚步声。还没等你看向那个方向，你就突然被一个人形惊人的人扑倒在地。你试图站起来，但攻击你的人将你压倒，将你的脸按在地上，并将你的手臂放在背后以限制你。当你与攻击者搏斗时，你设法看到了长发，然后，带着一丝担忧，瞥见了绿色的皮肤——一个阿尔法。`
+			`不过，你的压力不会持续太久。你会感觉到阿尔法的注意力转移到了你看不到的一侧，一只阿拉克猛扑过来拦截。 Alpha 放开你的手臂试图阻止攻击，但这并不能阻止 Arach 将它们从你身上击落，两人开始在你的视线中扭打。阿尔法是一个男人，令你惊讶的是，尽管他很强大，但阿拉克螺旋主很快就克制了你的攻击者。阿拉克用四条腿将手臂牢牢地固定在躯干上，用两条腿压住他的臀部，并用她的最后一双腿来撬动自己，直到她将整个身体的重量压在阿尔法身上。`
+			`萨瑞德·赫利亚克接近并告诉你保持距离，然后将自己部分地插在你和攻击者之间。然后他看着阿尔法，通过翻译盒子问道：“你有什么理由攻击这个人？”`
+			`Alpha 仍在挣扎着试图摆脱 Arach 的控制，你会注意到一条复杂的金项链在混战中从他的肩膀上散开到地板上，每次他挣扎时都会在安静中叮当作响。此时，其他人都已经离开了该区域，并对现场敬而远之。当你站起来时，他无视了萨利德的问题，而是专注地看着你。 “你是海军的，不是吗？终于知道我在这里了，你以为你能完成任务吗？”`
+			branch navy
+				has "license: Navy"
+			choice
+				`“不，我不属于海军。你可以直接问，而不用把我按在地上。”`
+					goto "not navy"
+				`“这就是你攻击我的原因？”`
+					goto detained
+			label navy
+			choice
+				`“我是海军的，但我不是来找你的。”`
+				`“这就是你攻击我的原因？”`
+					goto detained
+			`“那我就应该相信那些废话吗？”他猛烈攻击，再次试图将阿拉克从他身上打下来，但特工只是收紧了手。她张开下颌，让它们靠近阿尔法的脖子。 “好啦好啦，我明白了！”阿尔法大喊一声，阻止了他挣脱束缚的尝试。`
+				goto detained
+			label "not navy"
+			`他盯着你看了一会儿，似乎不确定你说的是不是真的。 “你到底来这里做什么？你是偶然发现这个地方的吗？”他停止了挣扎，但阿拉克特工并没有松开她的手。`
+			label detained
+			`萨利德走近阿尔法，每走一步，他的蹄子都会重重地踩在地上。 “无论你的动机是什么，你都犯下了违法行为。你应该受到相应的惩罚，”他说。 “请跟随我们去拘留所，好吗，队长？”他问你，但没有等待答案，更多的特工到达并护送你和阿尔法到“拘留所”。`
+			`在去那里的路上，你开始感到手臂和腿部被刺痛，并意识到阿尔法的铲球给你留下了一些瘀伤。 “对待那些人，我们会的，在你的侵略者面临审判之后，”当你接近你的目的地时，萨里德说道：一栋类似于警察局的建筑。 Alpha 被带到 Kimek 面前，你猜他是该设施的负责人。他要求你对所发生的事情提供证词，并由Heliarch特工确认你的说法。 “阿利蒂斯，这是你很长一段时间以来的第一次违规，”基梅克在检查计算机上的阿尔法数据后说道。 “闭关三年，你的刑期是。”`
+			`在简短的裁决之后，这似乎缺乏你在人类空间中所期望的大部分正当程序，特工们将你和阿尔法带到了建筑物的较低层。这层楼有几个空的牢房，被一些透明材料制成的厚而坚韧的墙壁封闭着。虽然牢房区似乎确实超出了该部分并绕过了拐角，但前几个牢房似乎正对着一个适度的医疗空间，大概主要用于在不离开安全层的情况下治疗任何受伤的囚犯。但目前，所有的牢房似乎都是空的，Heliarchs只是把他锁在第二个牢房里，进入他的牢房不会阻碍任何其他门口。然后，工作人员会要求您等待几分钟，以便医生到达，以便他们处理您的瘀伤。`
+			`你注意到墙壁的透明材料上刻有一系列与头同高的小孔，上面有一个可以滑过的盖子，大概是为了在需要时让囚犯安静下来。默认情况下，它们似乎是打开的，Heliarch 特工也没有关闭 Alpha 牢房上的那个。`
+			`你的目光从墙上的洞转向阿尔法，发现他的眼睛盯着你，没有移开视线，甚至没有眨眼。你盯着他几秒钟后，他就开口说话了。 “怎么了，你在期待某种道歉吗？我认为我的谨慎是完全合理的，所以你不会得到道歉。”`
+			choice
+				`“你是谁？你怎么到这里来了？”`
+				`“你在联盟里做什么？”`
+			`他对你皱眉。 “我不欠你任何答案，小子。闭嘴，等待法律给虚弱的公主带来一些创可贴和一根棒棒糖。”`
+			choice
+				`“你在那个空荡荡的牢房里忙得没时间回答我吗？”`
+				`“对于一个和蜘蛛摔跤却输了的人来说，这真是太难了。”`
+			`他向前倾身，双腿抽搐，仿佛在滑行中停住了，然后他停了下来，转身看向走廊下方，望向赫利​​亚克斯所在的地方。他向后退了一步，放慢了呼吸，然后坐下了。 “好吧。这可能是三年来我最后一次能进行正式的谈话，所以我会招待你。我的名字……是阿利蒂斯。一个多世纪前，我的亲戚在极北地区之外偶然发现了一个外星文明，与一群入侵者发生冲突。这些入侵者拥有能够在星系之间跳跃的驱动器，无需超空间链接，这是我们非常渴望的技术，因为它可以让我们远远超出……你的范围。”他的目光注视着你，微微闭上眼睑。 “我们探索了银河系东边的遥远地区，但没有找到可以称之为家的地方。我们唯一的选择是返回泥土带，那里有我们所知道的更多亲属的飞地，只是为了海军，”他在地上吐了口唾沫，然后再次看着你，“找到我们。我们撤离了，我的亲属认为返回东方是明智的，但我更清楚。我偷了我亲属和一艘小船一起拥有的一个驱动器，开始向西旅行。就在那时我发现了联盟，他们为我提供了一个我在银河系其他地方找不到的家。”`
+			choice
+				`“你‘更清楚了？’你是什​​么意思？”`
+				`“怎么，你到了这里之后就变心了吗？”`
+			`他急忙站起来。 “你心里充满了疑问，不是吗？”他再次靠近墙壁，脚步缓慢。 “我是我的同类中的第一人。当时我被称为阿希斯。我在银河系中旅行了许多个世纪，目睹了许多事情。我被伏击过，多次被逼入绝境；恐惧对我来说并不陌生，因为尽管你们看到我，我们仍然感到毫无灵魂。但当我旅行到东方时，有人，或者……更确切地说，某件事，对我说话。一个具有巨大重量的声音。这是我第一次感受到比恐惧更重要的东西。我感到恐惧。所以当我的亲属决定时要回到东方，我不太愿意和他们一起回去。”`
+			choice
+				`“你脑子里有声音？你确定这不是你的想象吗？”`
+					goto imaginary
+				`“那个声音说什么？”`
+			`他看向别处。 “你现在在这里，不是吗？这意味着你必须有一个像我一样跳过链接的装置。到东方去，亲自看看那些声音在说什么。看看它是否也将你归类为‘一次性’。”`
+				goto end
+			label imaginary
+			`他看向别处。 “没有任何想象中的东西能够对我产生如此大的影响。你现在在这里，不是吗？这意味着你必须有一个像我一样超越链接的装置。前往东方，亲自发现这些声音是真实的。”`
+			label end
+			`赫利亚克斯通知你医生已经到达，并带你沿着走廊走到一个房间，在那里他们治疗你的瘀伤。他们会对你进行简单的检查，然后给你一根装有粘稠液体的管子，几乎像凝胶一样，要求你轻轻地将其涂在伤口上。完成后，他们会告诉您疼痛会在几分钟内消失，然后会有一名工作人员护送您退出。再次经过他的牢房时，你看到阿利蒂斯仍然背对着走廊站着，直视着墙壁。代理人将带您到您的船上，并感谢您的合作。`
+				decline
+
+event "alitis freed"
+
+
+
+mission "Saryd University Lecture"
+	name "运输萨德科学家"
+	description "<planet> 的星光大学正在举办异种学研讨会。由 <date> 运送一位嘉宾演讲者到那里。付款方式为 <payment>。"
+	passengers 1
+	deadline
+	to offer
+		random < 40
+		has "Coalition: First Contact: done"
+	source "Warm Slope"
+	destination "Shadow of Leaves"
+	on offer
+		conversation
+			`当你走出太空港的一家餐厅时，你注意到一个满脸皱纹的萨里德正在盯着你。在联盟空间中，受到他人的关注对你来说并不新鲜，因为你在这里是一个很不寻常的景象。你并没有太在意他，直到他开始向你疾驰，将你拦下来。`
+			`“队长！我很高兴终于见到你了。我听说过我们这个空间里的人类，但亲眼见到你，这很特别。”`
+			`“我是一名科学家，我曾受邀在大学研讨会上发表演讲。我必须在 <date> 之前到达。您愿意给予我将我送往 <planet> 的荣幸吗？”`
+			choice
+				`“研讨会是关于什么的？”`
+					goto xeno
+				`“当然，我很乐意接送你。”`
+					goto accept
+				`“抱歉，我现在不能接受运输工作。”`
+					decline
+			label xeno
+			`“我是一名异种学家。我研究的是联盟之外的外星文化，这也是研讨会的主题。我受邀就这个主题进行演讲。我受邀了。带我去那里，好吗？”`
+			choice
+				`“当然，我很乐意接送你。”`
+				`“抱歉，我现在不能接受运输工作。”`
+					decline
+			label accept
+			`“谢谢！Aelbris，我的名字是。我不希望迟到，因为没有记录，该事件是。”他很快就收拾好东西登上了你的船。`
+				accept
+	on visit
+		dialog `您降落在 <planet> 上，但意识到您携带 Aelbris 的护卫尚未进入系统。最好离开并等待。`
+	on complete
+		"coalition jobs" += 3
+		payment 25000
+		conversation
+			`在旅途中，艾尔布里斯很有礼貌，尽管在询问有关你家乡的问题时有点打扰。你尽你所能地回答，尽管有时你甚至很难理解所问的内容。一旦你和你的乘客离开你的船，他就会转身。`
+			`“队长，我知道你一定很忙，但想知道你是否能留下来参加研讨会，我是。你看，我研究人类太空很多年了，但实际上我没有见过一个人。如果有一位人类客座演讲者，这对我们的领域来说是一个巨大的福音。”`
+			choice
+				`“我要去那里做什么？”`
+					goto answer
+				`“我不认为我能成为人类的良好代表。”`
+					goto low
+				`“你如何在不遇见任何人类的情况下研究人类？”`
+					goto explanation
+				`“当然，我很乐意。”`
+					goto yes
+				`“抱歉，我没有时间。”`
+					decline
+			label answer
+			`“回答与会者提出的一些问题，你觉得舒服吗？很简单，涉及人类社会、物理结构等方面。”`
+				goto "choose to stay"
+			label low
+			`“胡说八道！环游银河系，你确实这么做了。你一定是一个知识最渊博的人。接受我的提议，好吗？”`
+				goto "choose to stay"
+			label explanation
+			`“与人类世界接触，Heliarchs有。那里的政府提供了一些关于人类的文件。Heliarchs与民间研究人员分享了他们的知识，所以分析这些信息，我们这样做，以便更好地了解人类，我们可以。”`
+			label "choose to stay"
+			choice
+				`“当然，我很乐意。”`
+					goto yes
+				`“抱歉，我没有时间。”`
+					decline
+			label yes
+			`“谢谢你！非常荣幸，你完成了我们的研究领域。”他示意你跟着他。`
+			`你和 Saryd 乘坐火车从城市到山脚下。 “星光大学地处偏僻，没有直接的交通，”他解释道。相反，他会带你走一条陡峭的小路，大概会带你去参加会议。你注意到沿途设有一个小电梯，但似乎是专门供年老体弱者使用的。`
+			`经过一个下午大部分时间的长途徒步旅行后，您会看到一群闪闪发光的建筑。其中一间有几名科学家和学生，入口处有天使守卫。`
+			`你进入一个布满灰尘的小房间，来自三个联盟物种的一些科学家正在准备他们的讲座。你的出现立刻引起了一阵骚动，有几个人转过头来看着你。 Aelbris 微笑着带你到你的餐桌旁。您还注意到有几位圣天使出席了会议。`
+			`“啊，我们确实与 Heliarchs 密切合作，”Aelbris 解释道。 “与他们分享信息并告知他们我们的结论，以便他们更好地了解可能的威胁和机遇。”`
+			`“现在，你的来访是计划外的，所以我必须咨询研讨会的组织者。”他拿出一个小盒子，打开后会投射出 Arach Heliarch 的全息图。艾尔布里斯开始与他交谈，但你听不到太多内容；艾尔布里斯努力压低声音，以免打扰其他客人。`
+			`你等了一会儿，直到一个 Kimek 走到前面的舞台上。盒子的音量比平时大很多，很容易就能听清说话内容。`
+			`“我很高兴地宣布，由星光大学慷慨主办的第 103 届异种学研讨会正在开会。正如您可能注意到的那样，我们在场的是一位非常……不寻常的客人。我们很荣幸能够在今天的研讨会结束时让 <first> <last> 回答一些问题。”当 Aelbris 在您的餐桌旁坐下时，Kimek 向您做了个手势。`
+			`第一位发言者是另一位基梅克，他谈论了人类农业方法与联盟其他成员的比较。你可以看到他引用了经过修改的数据芯片中的信息，该芯片似乎包含来自亚历山大图书馆的文档。`
+			`研讨会持续了一段时间。萨利德（Saryd）对人体进行了令人惊讶的准确讲座。阿拉克详细解释了人类船只的技术水平。所有发言者结束后，Aelbris 会通知您现在轮到您回答他们的问题了。`
+			choice
+				`“好吧，我们走吧！”`
+					goto questions
+				`“我不想再这样做了。”`
+					goto scared
+			label scared
+			`“回答他们的问题，如果你真的不想，我想我无法阻止你。”艾尔布里斯叹了口气说道。`
+				decline
+			label questions
+			`你一走上讲台，人群中的几位科学家就从椅子上站了起来。 Arach Heliarch 走到台上，解释说这是他们提问的方式。她从人群中选择了一个萨里德。`
+			`“人类与其他外星人的接触程度如何？”`
+			choice
+				`“人类与海族有联系，有的甚至生活在海族行星上。他们生活在人类太空的北面，我们可以通过虫洞拜访他们。”`
+					goto hai
+					to display
+						has "First Contact: Hai: offered"
+				`“有一些人类知道海人，但官方并没有承认他们的存在。他们生活在人类太空的北部，我们可以通过虫洞拜访他们。”`
+					goto hai
+					to display
+						has "First Contact: Hai: offered"
+				`“人类与夸格人有官方联系，但夸格人不与人类交换技术。”`
+				`“人类与夸格人有官方接触，但人类和夸格人并没有真正混合。”`
+				`“人类了解夸格人，但大多数人对他们知之甚少。”`
+			`观众反应平淡。你会觉得你没有告诉他们任何他们不知道的事情。`
+				goto "next question"
+			label hai
+			action
+				set "coalition knows hai"
+			`几位观众都很高兴。 “我们不知道，这个物种是这样的，”Heliarch 说道。 “尽管有夸格人，你还是与他们取得了联系，这是个好消息。”`
+				to display
+					not "coalition knows hai"
+			`几位观众都很高兴。 “啊，海族，我们听说过，”螺旋主说道。 “尽管有夸格人，你还是与他们取得了联系，这是个好消息。”`
+				to display
+					has "coalition knows hai"
+			`“告诉我们更多的情况，可以吗？”另一位科学家问道。`
+			`当你张开嘴想要说话时，Heliarch 打断了你。 “关于海的问题已经够多了。”人们对这一事态发展显得很失望。`
+			label "next question"
+			`Arach 选择了另一个，这次是 Kimek。 “整个人类空间在政治上是统一的吗？”`
+			choice
+				`“不，人类空间分为北部的共和国和南部的自由世界。”`
+					to display
+						has "event: war begins"
+						not "free worlds checkmate"
+				`“不，人类空间分为西部的共和国、南部的自由世界和东部的辛迪加。辛迪加在技术上是共和国的一部分，但他们拥有很大的自治权。”`
+					to display
+						has "event: war begins"
+						not "free worlds checkmate"
+				`“是的，所有人类空间都在共和国的领导下统一起来。”`
+					goto united
+					to display
+						or
+							not "event: war begins"
+							has "free worlds checkmate"
+				`“是的，但内部也有细分：南部是自由世界，北部是共和国，东部是辛迪加。”`
+					to display
+						has "free worlds checkmate"
+				`“不。从技术上讲，所有人类空间都在共和国的管辖之下，但辛迪加拥有很大的自治权。”`
+					to display
+						not "event: war begins"
+				`“不。从技术上讲，所有人类空间都在共和国的管辖之下，但自由世界和辛迪加拥有很大的自治权。”`
+					to display
+						has "free worlds checkmate"
+			`当你回答问题时，你的翻译开始中断。重复你的答案没有任何好处，因为当你说话时它会继续失败。你看向Heliarch，他用怀疑的目光看着好奇的Kimek。 “我必须为这次故障道歉，”直升机领主说道。 “下一个问题，请回答。”`
+				goto "question three"
+			label united
+			`当你说完这句话后，人群中的一些人开始在数据板上写下笔记。看来关于人类政府的信息对他们来说是新鲜的。`
+			label "question three"
+			`Arach 选择了另一个 Kimek。 “人类太空的盗版问题，到底有多大？”`
+			choice
+				`“在人类太空的边缘有整个海盗星球，军阀和罪犯在那里统治。”`
+				`“过去盗版是一个大问题，但现在这是一个相对较小的问题。”`
+				`“有许多独立的世界并不由一个单一的政府统治。那里的一些团体支持海盗，但其他团体则是和平的。”`
+					goto "pirate good"
+			`“铲除，愿违法行为很快就会消失。”赫利亚克用严肃的语气说道。她为下一个问题选择了 Saryd。`
+				goto "question four"
+			label "pirate good"
+			`当您尝试接听时，您的麦克风开始发出声音。螺旋王的八只眼睛都在看着你，你感觉到结束你的句子可能不是一个好主意。天使长为下一个问题选择一位萨瑞德。`
+			label "question four"
+			`“我们拥有一张相当全面的人类空间地图。”萨利德号拿出了一张银河系南部的星图。 “但是关于核心，我们不知道。告诉我们银河系的情况，可以吗？”`
+			choice
+				`（告诉他们关于科拉特的事。）`
+					goto tell
+					to display
+						or
+							has "Discovered Korath Space: offered"
+							has "Wanderers: Rek To Kor Efret: offered"
+				`（不要告诉他们有关科拉特的事。）`
+					to display
+						or
+							has "Discovered Korath Space: offered"
+							has "Wanderers: Rek To Kor Efret: offered"
+				`“抱歉，我比你更不知道那里有什么。”`
+					to display
+						not "Discovered Korath Space: offered"
+						not "Wanderers: Rek To Kor Efret: offered"
+			`“抱歉，我比你更不知道那里有什么。”`
+				to display
+					or
+						has "Discovered Korath Space: offered"
+						has "Wanderers: Rek To Kor Efret: offered"
+			`萨利德失望地走开了。`
+				goto sorry
+			label tell
+			`“我在那里遇到了一个外来物种，叫做科拉特人，”你说。 “他们是爬虫类生物。他们的星球上剩下的一切都因内讧而被毁掉了。科尔塞斯特人和科尔梅雷蒂人一直在使用自主飞船进行内战。科尔埃弗雷蒂人没有参与内战，生活在夸格人的保护下。科拉斯流亡者因拒绝放弃制造跳跃驱动器的能力而被德克人放逐到核心。他们现在正在袭击人类以获取物资。”`
+			`人群对最后一部分表现出了极大的兴趣。 “除了夸格人之外，还有一个物种拥有跳跃驱动的知识？这是个好消息！我们与夸格人的斗争，不是我们一个人承担的。拥有跳跃驱动的知识，还有其他物种吗？”螺旋王似乎并不介意你回答另一个问题。`
+			choice
+				`“在人类太空的北部有一群叫做海族的外星人。他们中的一些人从正常的海族那里偷窃，并试图以各种方式获得跳跃驱动器。”`
+					goto "know unfettered"
+					to display
+						not "coalition knows hai"
+						or
+							has "unfettered requested jump drives"
+							has "Wanderers: Translation Machine: offered"
+				`“海族中有一个派系，即无拘无束的人。他们从普通海族那里偷窃，并试图以各种方式获得跳跃突破。”`
+					goto unfortunate
+					to display
+						has "coalition knows hai"
+						or
+							has "unfettered requested jump drives"
+							has "Wanderers: Translation Machine: offered"
+				`“抱歉，我不知道还有其他物种能做到这一点。”`
+					goto sorry
+			label unfortunate
+			`赫利亚克对着人群的窃窃私语大声说道。 “不幸的是，我们对抗夸格人的盟友被逼到了如此绝望的境地。他们像联盟一样强大，希望有一天他们也会如此。”`
+				goto exit
+			label "know unfettered"
+			`几位观众都很高兴。 “我们不知道，这个物种是这样的，”Heliarch 说道。 “愿他们在对抗夸格人的战斗中变得强大。”`
+				goto exit
+			label sorry
+			`人群的情绪有些低落，但离开大楼时，每个人仍然很兴致勃勃。现在是晚上，你的眼睛需要一段时间才能适应演讲厅明亮的灯光。 Aelbris 在外面与您会面，兴奋不已。`
+				goto end
+			label exit
+			`采访结束的消息一出，人群开始散去。当你走出大楼时，气氛十分热烈。现在是晚上，你的眼睛需要一段时间才能适应演讲厅明亮的灯光。 Aelbris 在外面与您会面，兴奋不已。`
+			label end
+			`“谢谢你，队长！大大拓展了我们的知识面，你真是太棒了。”他倾身过去，这次安静多了。 “Heliarchs 对人类的知识非常严格。公正的信息来源，非常罕见。希望再次见到你，我愿意。旅途平安！”`
+			`他与你握手后，你道别并登上了你的船。`
+				decline
+
+
+
+mission "Coalition: Pilgrimage 1"
+	minor
+	name "世界塑造者圣殿"
+	description "将 Vellorae 带到 <destination> ，她将在那里开始为已故丈夫哀悼的朝圣之旅。"
+	passengers 1
+	to offer
+		has "license: Coalition"
+	source "Bright Echo"
+	destination "Saros"
+	on offer
+		conversation
+			`进入太空港后不久，你就引起了一位萨里德女士的注意，她拖着一个手提箱，头发灰白，辫子及肩。 “你好，机长。您要带新乘客吗？”她问。她向您展示了她手上的一件珠宝，一个中央镶有钻石的小青铜手镯。 “Vellorae，我的名字是，我需要交通工具去朝圣。”`
+			choice
+				`“朝圣？什么意思？”`
+				`“你愿意用这个来付钱给我吗？我只接受积分。”`
+				`“抱歉，我现在不想接受任何工作。”`
+					decline
+			`她凝视着手镯，握紧了手，将它举得更靠近自己的脸。 “这是我已故丈夫阿德菲斯的遗体。他最近去世了，我想去参观一些礼拜场所，祝他一路平安。”`
+			choice
+				`“你把你丈夫变成了珠宝？”`
+				`“我对你的损失感到抱歉。我很乐意提供帮助；你能告诉我你想去哪里吗？”`
+					goto accept
+				`“我表示哀悼，但我现在不打算接受更多工作。”`
+					decline
+			`“在萨里德家庭中，这是一种常见的做法。这些宝石是由火葬灰制成的，更能保存对亲人的记忆。”她解释道。 “自从开发出这项技术以来，几乎所有有能力的人都在实践这一技术。我们不希望让河流和田野分担我们的悲伤。如今，萨里德的墓葬几乎闻所未闻。”`
+			choice
+				`“好吧，我很乐意帮助你。你能告诉我你想去哪里吗？”`
+				`“我明白了。好吧，我希望一切顺利，但是我帮不了你。我现在不找工作。”`
+					decline
+			label accept
+			`“谢谢你，队长。我想参观五个不同的地点，传统上，奥尔凯尔神殿是其中的第一个。在 <destination> 上，它是。一旦我们到达那里，在首都很容易找到，应该是这样。”`
+			`你带她到你的船上，帮助她在铺位上安顿下来。完成后，您可以为 <planet> 设置课程。`
+				accept
+	on visit
+		dialog `您降落在 <planet> 上，但意识到携带 Vellorae 的护卫尚未进入系统。最好离开并等待。`
+	on complete
+		"coalition jobs" ++
+		payment 34500
+
+mission "Coalition: Pilgrimage 2"
+	landing
+	name "守护者的祝福"
+	description "将 Vellorae 带到 <destination>，以便她可以继续为已故丈夫哀悼。"
+	passengers 1
+	to offer
+		has "Coalition: Pilgrimage 1: done"
+	source "Saros"
+	destination "Flowing Fields"
+	on offer
+		conversation
+			`一旦您降落在 <origin> 上，Vellorae 就会为您提供 34,500 个积分，并与当地旅游线路查询前往神社的最便捷路径。 “请等我一下，船长？我可能需要几个小时。”她说。 “当然，如果你愿意跟我一起去，很高兴有你的陪伴，我会的。”`
+			choice
+				`“如果你同意我去的话，我很乐意陪你。”`
+				`“抱歉，我没心情举行哀悼仪式。”`
+					goto skip
+			`你们一起沿着街道走出太空港城市，进入一个公园，公园里长满了几种不同形状的树木。有些伸向天空，而另一些则将大部分树枝固定在地面上。沿着这条小路，你会到达一片大空地，那里聚集着一圈高大的岩石柱子，中间有一座祭坛，周围聚集着数十名萨瑞德。那里的许多萨利德人都穿着深绿色或赭石色的精致织物。其中一些人成双成对，似乎是年轻夫妇，而另一些人则似乎只是前往神社的路过游客。`
+			`一旦太阳从树顶射入空地，游客们就会离开柱子和祭坛，而情侣们则排成一排，一次一个地走向祭坛。他们在那里停留了几分钟，互相交谈，然后为下一对人让路。 “他们交换了誓言，”韦洛拉解释道。 “我们最受欢迎的婚礼地点是首都的神社。”`
+			choice
+				`“我以为这是一个悼念死者的神社？”`
+					goto shrine
+				`“受欢迎？在树林中央，靠近一些岩石？”`
+			`她困惑地看着你，然后笑了。 “奥尔·凯尔是所有森林的创造者，所以他的神殿自然就在森林里。我想，对于我们文化之外的人来说，它们可能看起来很奇怪。”`
+				goto ritual
+			label shrine
+			`“奥尔·凯尔被赋予了阳光的恩赐。因此，在神殿中寻求他的祝福，我们在很多场合都会这样做。只有其中一些，哀悼和结婚的场合是这样。”`
+			label ritual
+			`夫妻俩不断交换誓言，直到中午之前，太阳几乎照在中央祭坛上。此时，萨利德一家都环顾了空地，当他们看到韦洛拉接近神殿时，为她腾出了空间。她将手镯放在祭坛上，这样它就能捕捉到阳光，并将阳光反射到整个空地上。然后，Vellorae 开始绕着祭坛行走，随着太阳爬得更高，反复绕着它转，直到它最终达到顶峰，太阳在宝石上的反射最强。这时，她再次靠近祭坛，用手遮住了手镯。她在那里静静地呆了一会儿，然后取回了手镯，离开了神社。当她走过时，其他萨利德人向她投去同情的目光，其中一位年轻的萨利德人甚至在韦洛拉再次接近你之前走近她表示哀悼。`
+			`“我说完了，船长。回到船上，我们可以走了，”她一到你身边就说道。你们两个回去吧；这次你在路上又经过了几个萨利德并返回了你的船。`
+				goto end
+			label skip
+			`您在航天港城市等待了几个小时，直到中午后大约一个小时韦洛拉返回。`
+			label end
+			`“<destination>，下一站是。我希望能够给予 Adfices Velaulra 的祝福，”她说着，在你准备下一次旅行时走进自己的床铺。`
+				accept
+	on visit
+		dialog `您降落在 <planet> 上，但意识到携带 Vellorae 的护卫尚未进入系统。最好离开并等待。`
+	on complete
+		"coalition jobs" ++
+		payment 49300
+
+mission "Coalition: Pilgrimage 3"
+	landing
+	name "拜访黄昏的魔女"
+	description "将 Vellorae 带到 <destination>，以便她可以继续为已故丈夫哀悼。"
+	passengers 1
+	to offer
+		has "Coalition: Pilgrimage 2: done"
+	source "Flowing Fields"
+	destination "Secret Sky"
+	on offer
+		conversation
+			`Vellorae 会带你前往地球上被一条又长又细的河流切割的地方，当你降落在一个较大村庄的一个可用机库时，它会向你支付 49,300 积分，然后出发前往河岸边的大理石圆形大厅。`
+			`跟着她到那里，你会看到一些 Saryd 母亲正在和孩子们玩耍。其他人抱着年幼的婴儿或小心地在水中给他们洗澡。当你们两个走进圆形大厅时，您会注意到天花板上的画：一位萨利德妇女躺在田野里，看着几个在她周围玩耍的孩子。`
+			`Vellorae 转向您，摘下手镯并用双手握住，将其呈现给您。 “和我一起默祷，可以吗，船长？我不想打扰这里的一位年轻母亲。”`
+			choice
+				`“如果这里是神社，那么孩子们都像公园一样玩耍是怎么回事？”`
+				`“抱歉，我不是一个会祈祷的人。”`
+					goto "no prayer"
+				`“当然可以。我该怎么办？”`
+					goto prayer
+			`“Velaulra 是生命之神和富足之神，生命是生命中最伟大的恩赐，她与新生儿有着紧密的联系。她的神殿是母亲与孩子建立联系的常见场所。”韦洛拉解释道。 “就我而言，我来这里是为了感谢她给予阿德菲斯生命，以及其中的一切。请握住我的手祈祷，好吗？”`
+			choice
+				`“我知道这对你来说很重要，但我不是一个喜欢祈祷的人。抱歉。”`
+				`“我不太明白这一点，但我很乐意。我该怎么办？”`
+					goto prayer
+			label "no prayer"
+			`“我明白了。没关系，我明白了。”她一手拿着手镯，另一只手盖住它，闭上眼睛，静静地站在那里，足有不到一分钟。`
+				goto river
+			label prayer
+			`“就在我的上面，放你的。”她用手做了个手势，你们俩把它们放在手镯上。她闭上眼睛，你也闭上眼睛。你们就这样站了不到一分钟，直到感觉到她走开了。`
+			label river
+			`祈祷结束后，韦洛拉离开圆形大厅，前往河岸，靠近河水躺下，放下手镯，开始以缓慢而明显的仪式方式在水流中清洗它。萨利德的孩子们好奇地看着她，有些人靠近了一些，然后被他们的母亲拦住了。维洛拉完成后，她将手镯再次戴在手上，手镯还被河水浸湿，并告诉你她已经完成了这座神社的工作。`
+			`您返回您的船，她告诉您她下一步想停在 <destination>。 “接下来我必须去拜访玛格尔伊娜。”她走向自己的床位，而您则前往驾驶舱设定 <planet> 的航向。`
+				accept
+	on visit
+		dialog `您降落在 <planet> 上，但意识到携带 Vellorae 的护卫尚未进入系统。最好离开并等待。`
+	on complete
+		"coalition jobs" ++
+		payment 45500
+
+mission "Coalition: Pilgrimage 4"
+	landing
+	name "猎人大师之路"
+	description "将 Vellorae 带到 <destination>，以便她可以继续为已故丈夫哀悼。"
+	passengers 1
+	to offer
+		has "Coalition: Pilgrimage 3: done"
+	source "Secret Sky"
+	destination "Shadow of Leaves"
+	on offer
+		conversation
+			`<origin> 的太空港探照灯会在雷雨中引导您到达机库，Vellorae 表示她会在您的飞船内等待，并支付给您 45,500 个积分。 “黄昏后才到她的神社，反正玛格丽娜也在，所以我不着急。”暴风雨一直持续到傍晚，一旦穿过层层雾气的光线开始变暗，你就打开船舱门，让韦罗莱出发。`
+			`你陪她穿过昏暗的太空港，直到找到当地的萨里德与她交谈。韦洛拉问他是否愿意带你们两个去神社。 “去礼拜场所，这个人类为什么要去？”他问道，同时有些怀疑地看着你。`
+			`“我正在去朝圣，悼念我已故的丈夫。”韦洛拉说。 “<last> 队长帮助我前往各个神殿。”`
+			`“但是，去神社，队长一定要去吗？”他问道。 “帮助你在那里哀悼，人类不能。”`
+			`“在这次旅程中，船长一直在帮助我，所以请介意，我不会。你愿意和我一起去神社吗，船长？”`
+			choice
+				`“如果我可以去的话，我很乐意去。”`
+				`“我不想打扰任何人，所以我就留在船边等你。”`
+					goto "not go"
+			`“精彩的！”她欢呼起来，用前蹄轻轻敲击地面。 “现在，带我们去神社吧，亲爱的，好吗？”她问当地的萨德，萨德转过身来，示意你跟上。`
+			`你们紧贴韦洛拉，两人试图让当地的萨里德保持在视线范围内。这个任务很难，只要他走得太远，他就几乎消失在雾气里，等你追上来后，他的身影又变得清晰起来。几分钟后，你会感觉到鞋下的地面从坚固的太空港平台变成了砾石，再变成了地球上长满青苔的“草”。最后，你到达了一个小湖，或者可能是一个非常大的水坑，位于一片长满青苔的田野中央，周围环绕着倒塌和空心的树干。`
+			`当你们两人接近水域时，当地的萨里德警告你们不要触摸它。韦洛拉看着它，就像凝视着镜子，或者也许她只是想辨认出月亮的倒影，月亮的倒影在薄雾层中散落而模糊。然后她走到一棵树干前，将手镯放入树干内，面朝水面躺在地上，双手恭敬地放在树干上。她在这个姿势上待了近一个小时，期间雾气的寒意慢慢地透过你的外套渗透到你的骨头里。维洛拉和引导你的萨瑞德似乎并没有特别介意，但当她看过去并注意到你在颤抖时，她很快就结束了。她从行李箱中拿起手镯并站起来，然后请另一个萨德引导你们两个返回太空港。`
+			`“花了这么长时间，我非常抱歉，<last> 船长，”她在回来的路上说道。 “我沉浸在祈祷中，甚至没有考虑寒冷对你来说有多不舒服，我做到了。”`
+			choice
+				`“别担心，还不错。看来你真的很投入祈祷。”`
+				`“这怎么这么久？神社的神明有什么特别的吗？”`
+			`“玛格尔伊娜是夜幕降临和预兆的猎鸟。当哀悼亲爱的人时，人们必须请求它原谅他们的错误行为。”`
+			`你跟随 Saryd 回到碎石路，然后到达太空港场地，Vellorae 感谢他引导你们两个到达神社。他表示哀悼，并祝愿她一路平安前往下一个神社。他很快又消失在雾中，你和韦洛瑞回到了你的船上。`
+				goto end
+			label "not go"
+			`她短暂地叹了口气，并同意稍后与你见面，跟随萨里德当地人深入到城市外的浓雾中。你走进飞船，等待了几个小时，直到你听到舱门外有声音。一旦你意识到这是她的，你就让维洛瑞进来了。`
+			label end
+			`“我们现在必须去<destination>。我必须走Lor Ie Vees 之路，”她说着，走向自己的床铺休息。`
+				accept
+	on visit
+		dialog `您降落在 <planet> 上，但意识到携带 Vellorae 的护卫尚未进入系统。最好离开并等待。`
+	on complete
+		"coalition jobs" ++
+		payment 69700
+
+mission "Coalition: Pilgrimage 5"
+	landing
+	name "林地之物"
+	description "将 Vellorae 带到 <destination> ，她将在那里完成她的哀悼朝圣。"
+	passengers 1
+	to offer
+		has "Coalition: Pilgrimage 4: done"
+	source "Shadow of Leaves"
+	destination "Cold Horizon"
+	on offer
+		conversation
+			`当你着陆时，Vellorae 会给你 69,700 个积分，并说一旦太阳落山她就会前往“路径”。 “来到这个世界度蜜月，阿德菲斯和我做到了，并且参观了我们曾经走过的路。知道它的起点，我已经知道了。”`
+			`她告诉你，在那之前她会通过参观当地的商店来打发时间，询问你是否愿意和她一起去。`
+			choice
+				`（和她一起去。）`
+				`（留在我的船上。）`
+					goto "not go"
+			`她带你游览太空港城市，参观一些服装店，并带你去她和丈夫去过的公园。中午过后不久，你们两个进入一家餐厅，她坚持要为你们付餐费。你和她一起游览了这座城市一段时间，在日落之前，到达了星光大学所在的山脚下的森林。`
+			`夜幕降临后，森林里开始出现许多灯光，Vellorae 召唤你跟随她进去。“你应该靠近。这条路很难走，对于其他物种来说通常是这样。”当你和她一起走在一条小路上时，你走近其中一盏灯，发现它是一个微型空地平台上的篝火，你希望与周围的树木保持安全距离。继续走到下一个红灯处，韦洛瑞一直紧握着手中的手镯，嘴里哼着一些喉音，几乎是部落的圣歌。当你经过另一场火灾时，一阵短暂的火焰靠近附近的一些灌木，但幸运的是在造成任何伤害之前就被扑灭了。一个身着斗篷的萨利德（Saryd）似乎从火场附近的树上现身，用杆子上的一张奇怪的大布网将火扑灭。`
+			`“我们必须小心，不要让小路的火灾破坏森林，所以许多当地学生都自愿参与扑灭火焰。”韦洛拉告诉你。 “当我访问这里时，Adfices 和我想知道这项任务是否会获得额外的学分，但显然只是出于对 Lor Ie Vees 的尊重，学生们才这么做。”`
+			choice
+				`“为什么？那是某个知识之神吗？”`
+					goto knowledge
+				`“也许他们喜欢与神交好，希望能在考试中取得好成绩？”`
+			`她停下来笑了一会儿。 “情况，可能是这样。”她环顾四周，看看是否有人发现她打破了宁静、哼唱的圣歌。`
+			label knowledge
+			`“他教第一批萨利德人如何狩猎，他做到了。他的教诲是追求知识，克服挑战。”她解释道。 “不仅是学生，所有正在经历困难时期的人都应该寻求与他的交流。”`
+			`你继续紧紧跟随她穿过森林，定期经过更多篝火，直到你看到远处有多个灯光，并意识到这是通往城市的森林边缘。只有当您走出树林时，您才会注意到自己回到了小路的起点，尽管您确信自己只走在山的一侧。`
+			`韦洛拉最后看了一眼这条小路，透过茂密的松树丛，只能看到一些篝火的光芒。她告诉你她准备离开，你把她带回你的船上。`
+				goto end
+			label "not go"
+			`她说她晚上会回来，然后就离开了。你观看了来自地球的一些传输，其中大多数在某种程度上与星光大学有关。一部是你猜的萨里德喜剧电影，讲述一个人为了制作围巾而砍伐树木但后来后悔的故事。你试着跟着看，但传输的字幕只有 Kimek 或 Arach 语言。夜幕降临几个小时后，您离开船去等待不久后到达的韦洛拉 (Vellorae)。`
+			label end
+			`她走向自己的床铺，说她会在旅途中休息。你突然意识到她还没有告诉你她的下一个目的地，所以你敲了敲她的门询问。`
+			`“是的，队长？有什么不对吗，是——啊！忘了告诉你下一个目的地了，我已经告诉你了！”你点点头，她看着她的手镯，用手抚摸着宝石。 “是的，最后一个神殿，下一个是……下一个……”`
+			choice
+				`“你还好吗？”`
+				`“隔壁神社有什么问题吗？”`
+			`她忽略了你的问题，盯着手镯看了一会儿。 “<planet>。我们必须前往<destination>。”她最终这样说道，然后回到了自己的房间。`
+				accept
+	on visit
+		dialog `您降落在 <planet> 上，但意识到携带 Vellorae 的护卫尚未进入系统。最好离开并等待。`
+	on complete
+		"coalition jobs" ++
+		payment 80000
+		conversation
+			`着陆后，Vellorae 将 <payment> 递给你，并问道：“跟我一起完成最后一点，可以吗，<last> 队长？”`
+			choice
+				`“当然。我们要去哪里？”`
+					goto shrine
+				`“我会过去的。我现在还没准备好。”`
+			`她的目光落在手镯上，在房间里转了一圈，然后注视着你的背部。 “请问，队长？我知道你同意跟随我去神社工作，但你没有，但我不想独自一人在那里。”`
+			choice
+				`“好吧，如果能让你放松的话，我就跟你一起去。”`
+					goto shrine
+				`“抱歉，但我宁愿在船上休息。”`
+			`她后退了一步，再次低头看着手镯。 “好吧。是的，你的责任，这不是。稍后在太空港见你，我会的。”`
+			`你为她打开舱门，她走向附近的一位萨利德并开始与他们交谈。谈话开始几秒钟，他们就紧张起来，交叉双臂并向下挥动，好像在拒绝什么，然后跑开了。她再次尝试与其他一些萨利德人联系，但仍然被拒绝。她沮丧地回头看了看你的船，然后开始盯着附近停靠的其他船，然后朝刚刚登陆的基梅克·索恩号驶去。当她与船长交谈时，Kimek 号似乎很困惑，但过了一会儿，他短暂地重新进入了他们的船，穿着一件蓬松的外套返回，跟随 Vellorae 前往铁路枢纽。`
+			`太阳落山很久之后，基梅克人就回来了，冲向他们的船，同时试图摆脱寒冷。你向他们询问有关韦洛瑞的事情，他们告诉你她前往太空港是为了“清醒头脑”。`
+				accept
+			label shrine
+			action
+				set "drak revelations: saryds"
+			`她深深地吸了一口气。 “谢谢你，队长。地点就在村外很远的地方。来吧，我会告诉你去那里的路。”你离开你的船，跟随她到铁路枢纽，登上一列似乎是最古老、最简单的火车之一。它没有非萨里德人的座位，所以你不得不紧紧抓住你能够到的扶手。`
+			`您将留在火车上直到最后一站，此时太阳已经开始落山。当您离开时，您会看到一个只有几十栋建筑物和一条简单土路的乡村，几个工人在路上与冰雪奋战，以保持道路畅通且易于穿越。你沿着Vellorae沿着路走，当你到达一根刻有洞的石柱时，她转向森林，沿着一条又细又直的小路走去。向身后看去，夕阳正落在柱子的开口处。`
+			`当您沿着韦洛拉 (Vellorae) 沿着小路走下去时，您会看到树木逐渐显示出越来越多的森林火灾迹象，树皮颜色变深、受损，土壤越来越灰，以及许多倒塌、腐烂的森林部分。这条小路突然终止于森林中一道被烧焦的大疤痕处。你脚下仍然存在的成堆的火山灰几乎与地球上其他雪地的其他地方相似，但不知何故没有与雪混合。是否是被更多工人或其他力量故意清除，你无法判断。在疤痕中心附近，你可以看到一个侧面有一个开口的小土堆，几乎就像一个由烧焦的树干和岩石制成的“棚屋”。一道微弱的光芒从里面散发出来。`
+			`当你看着土丘时，韦洛拉抓住你的手，开始犹豫地把你拉向土丘。在里面，你身后逐渐暗淡的阳光与里面的光源形成鲜明对比，“棚屋”中间有一个小柴堆，只有一些孤独的火焰在余烬上舞动。韦洛拉在它面前躺下，摘下手镯，将其放入火焰中片刻，然后抓起它并再次站起来。一旦站起来，她就会再次抓住你的手，拉着你，匆匆回到烧焦的空地边缘。`
+			`当你到达小路时，她似乎又平静下来，放开你的手，放慢了脚步。`
+			choice
+				`“那是怎么回事？是什么让你这么激动？”`
+				`（保持安静。）`
+					goto return
+			`她没有回答你的问题，只是继续沿着小路走下去。当你越过石柱并再次回到正确的道路上时，她终于开口了。 “那……为了给我们带来阳光，偷走了恩苏·乌里的眼睛，是奥尔·凯尔所做的。它被打碎了，它眼睛里的光只留下了斑点。但完成了，它没有，所以恳求阿德菲斯远离它，这就是。”`
+			label return
+			`两人回村子，坐旧火车回铁路枢纽。 “我会在太空港等你，船长，”韦洛拉说道。 “回家之前我必须先理清思绪。”`
+
+mission "Coalition: Pilgrimage 6"
+	name "朝圣之旅的终点"
+	description "将 Vellorae 带回她在 <destination> 的家。"
+	passengers 1
+	to offer
+		has "Coalition: Pilgrimage 5: done"
+	source "Cold Horizon"
+	destination "Bright Echo"
+	on offer
+		conversation
+			`你在一家小吃店里发现了韦洛拉，他正在喝完一杯热饮。 “抱歉让我久等了，船长。准备好出发了，但我还没有准备好。”`
+			choice
+				`“本以为你会感觉比这更好。毕竟你终于完成了你的朝圣。”`
+					goto better
+				`“我明白了，有时候我也需要喝一杯来帮助我思考问题。”`
+			`她咯咯地笑。 “这是凉茶，回家路上帮我冷静一下，休息一下，就可以了。”`
+				goto end
+			label better
+			`“是的，我感到如释重负，能够做到这一点，我是。只是……仍然接受一切，我是。”`
+			label end
+			`她喝完饮料，起身付钱，然后跟着你到船上。 “我准备回家了，”她告诉您，并在您准备 <destination> 的课程时走进她的床铺。`
+				accept
+	on visit
+		dialog `您降落在 <planet> 上，但意识到携带 Vellorae 的护卫尚未进入系统。最好离开并等待。`
+	on complete
+		"coalition jobs" += 3
+		payment 220000
+		conversation
+			`一旦她离开你的船，Vellorae 就会给你 <payment> 的付款，并把你的手握在她的手里。 “我非常感谢 <last> 队长在这段旅程中陪伴我。当然，Adfices 也很感谢你的帮助。”`
+			`她放开你的手，祝你旅途愉快，然后转身回家。`
+
+
+
+mission "Coalition: Council of Ahr"
+	minor
+	name "阿尔议会"
+	description "由 <date> 将 Ablomab、Bebliss 和 Chamgar 家族的代表带到 <destination>，以便他们可以参加 Ahr 议会。"
+	deadline 30
+	to offer
+		has "license: Coalition"
+		random < 50
+		"month" < 3
+	source
+		near "Sol Arach" 0 1
+	stopover "Delve of Bloptab"
+	stopover "Hammer of Debrugt"
+	stopover "Stronghold of Flugbu"
+	destination "Ahr"
+	on offer
+		conversation
+			`在你进入太空港后不久，一只穿着坚固的红色制服、每条腿的关节上都有金色“肩甲”的阿拉克就会向你走来。 “你好，<last> 队长，”他说道。 “你有兴趣从事一些运输工作吗？你的薪水会很高。”`
+			choice
+				`“工作内容是什么？”`
+				`“具体付得怎么样？”`
+				`“抱歉，我现在不想找那种工作。”`
+					decline
+			`“很快，阿尔议会即将召开。所有阿拉克家族都会聚集在首都。讨论与阿拉克空间有关的事务，他们将与我的王室领主一起讨论。支付<payment>，如果<destination>乘以<date>，你将成为你带来的家族的剩余代表。”`
+			choice
+				`“听起来很简单。这些代表是谁？”`
+					goto representatives
+				`“你能告诉我更多关于议会的事吗？”`
+				`“听起来可能需要一段时间，而且我很忙，所以我就过去了。”`
+					decline
+			`“当然。在离开我们的母星几个世纪后，卷入了小规模的战争，那些更显赫的家族开始了。出于对臣民命运的担忧，当时的王室召开了第一次议会。这成为了解决争端的一种更文明的方式，虽然战争仍然存在，但许多家族确实这样做了，但冲突已经少了很多。现在我们处于和平状态，只是每隔几年举行一次传统的会议，以便讨论如何改善阿拉克空间的条件，房子可能会。”`
+			label representatives
+			scene "scene/councilofahr1"
+			`他向您展示了一个数据板，并指着屏幕上的三个符号，同时从左到右命名了房屋。 “贝布利斯家族的代表，她的其他交通工具出现了问题，所以在弗拉布要塞等待，她仍然在。我刚刚收到消息，查姆加尔家族已经为议会做好了准备，在德布吕特之锤上，他们的成员也准备好了。为议会腾出一些时间，阿布洛玛家族终于可以了，在布洛普塔的德尔夫等待你，他们的特使也在。`
+			`“收到你的付款，你会的，一旦在<planet>，三位代表就到了。我会通知那些期待你的房子，他们应该的。感谢你的帮助，王室。”`
+			`他短暂地低下头，同时伸展双腿以某种方式致敬，然后消失在太空港中。到达船上后，您可以在 <stopovers> 上放置标记，代表们正在那里等待。`
+				accept
+	to complete
+		has "Coalition: Council of Ahr: Ablomab: done"
+		has "Coalition: Council of Ahr: Bebliss: done"
+		has "Coalition: Council of Ahr: Chamgar: done"
+	on abort
+		fail "Coalition: Council of Ahr: Ablomab"
+		fail "Coalition: Council of Ahr: Bebliss"
+		fail "Coalition: Council of Ahr: Chamgar"
+		fail "Coalition: Council of Ahr: Drama"
+	on complete
+		"coalition jobs" += 5
+		payment 4500000
+
+mission "Coalition: Council of Ahr: Ablomab"
+	invisible
+	landing
+	passengers 1
+	blocked "You have reached <origin>, but you need <capacity> in order to take on the next mission. Return here when you have the required space free."
+	to offer
+		has "Coalition: Council of Ahr: active"
+	source "Delve of Bloptab"
+	destination "Ahr"
+	on offer
+		conversation
+			`您降落在 <origin> 上，发现阿布洛玛家族的代表必须监督邻近星球 Bloptab 熔炉上的一次“紧急熔毁演习”。他的星际穿梭机还没有到达，所以你只能在太空港等他。`
+			`日落后几个小时，他终于到达了，拖着一个沉重的手提箱，几乎没有拿着咖啡。当你帮他搬运沉重的行李时，他介绍自己是 Dubug。 “抱歉让您久等了，我。在熔毁演习中替换一位同事，我不得不这样做。这是一项例行任务，但也是例行任务，议会是这样，所以很在意延误，但房子没有。带我去我的房间，可以吗？”`
+			`当你们俩一起走向船时，他喝完了酒，但这似乎并没有帮助他睁开眼睛；你必须帮助他避免撞到这里的其他阿拉奇或太空港装饰品。虽然他看起来不太健谈，但这可能有助于他集中注意力，让谈话继续下去。`
+			choice
+				`“那么，关于 Ablomab 家族，你能告诉我些什么吗？”`
+					goto house
+				`“与议会中的所有其他议院打交道是不是很困难？”`
+					goto council
+				`“这个议会是由皇室主办的吧？你能告诉我关于他们的什么事情吗？”`
+			`“第九宫？没什么好说的。在古代，他们被认为是‘王室’。他们从来没有多大的权力，他们只是一个稳定的象征，用来确保阿尔的和平。他们确实主持议会，但这只是一个传统。除此之外，他们保留的大部分都是他们自己的。”`
+				goto end
+			label house
+			`他轻轻地咕哝了一声。 “我们拥有整个联盟中最深的矿井和最大的冶炼厂。监督建设、确保矿石纯度、测试合金质量，是我们最常见的职责。为了满足马洛布家族和赫利亚克斯家族船只的配额，一切都必须按顺序进行。”`
+				goto end
+			label council
+			`“最初是来自阿尔的贵族家庭，大多数房屋都是如此。当第一次绘制地图时，阿拉克空间被划出了自己的部分，房屋也这样做了，自然地，为了更多的系统，许多房屋发生了争斗。现在，房屋彼此相处融洽，并且停止了领土争端。”他叹了口气。 “在很大程度上。”`
+			label end
+			`到达你的船上时，杜布格仍然醒着，但当你问他是否需要帮助打开行李时，他并不在乎回答。相反，他躺在床上并要求您在 <planet> 到达后叫醒他。`
+				accept
+	on visit
+		dialog `您降落在 <planet> 上，但意识到携带 Dubug 的护卫尚未进入系统。最好离开并等待。`
+	on complete
+		conversation
+			`在旅途中休息完毕后，杜布格一走下你们的船就舒展一下双腿。 “我家里的所有报告，我都带来了，我已经为委员会做好了准备，”他说，再次检查了他的手提箱。 “那么，我必须走了。再见，<last> 船长。感谢这次平静的旅程，我。这是一次摆脱日常生活的好机会。”`
+
+mission "Coalition: Council of Ahr: Bebliss"
+	invisible
+	landing
+	passengers 1
+	blocked "You have reached <origin>, but you need <capacity> in order to take on the next mission. Return here when you have the required space free."
+	to offer
+		has "Coalition: Council of Ahr: active"
+	source "Stronghold of Flugbu"
+	destination "Ahr"
+	on offer
+		conversation
+			`当你的飞船着陆后，你会收到来自贝布利斯家族的消息，引导你前往太空港城市的一家大型酒店。保安不让你进去，你就等着代表出来。等了大约半个小时后，附近的电梯打开，许多阿拉奇人走了出来，他们大多穿着正式制服，拎着各种行李。年长的阿拉克因穿着更加正式而从其他人中脱颖而出。`
+			`“你是我去议会的交通工具，对吗？”她问，你确认。 “太棒了。普鲁巴特女士，我是，船长。很高兴能够运送贝布利斯家族的意志，这样一位出色的船长应该这么做。终于对了，那些安排运送到议会的人已经得到了它。”`
+			`她要求你们带路去你们的船，而另一名穿着制服的阿拉奇则带着她的行李跟着你们两个。 “我被告知，关于哪些代表负责运送，你是。贝布利斯除外，不是最……有趣的公司，他们非常感激你至少运送了一位合适的客人，你应该这样做。”`
+			choice
+				`“看来你对你的家非常重视。”`
+					goto house
+				`“你似乎对议会不太感兴趣。其他学院有什么问题吗？”`
+					goto council
+				`“关于议会的主人，我有什么需要了解的吗？我听说他们是皇室成员。”`
+			`“奥贝雷特家族？好吧，他们是为数不多的几个尊重其高贵血统的家族之一。在古代，他们是被选为傀儡领袖。除此之外，他们缺乏真正的权力，只专注于阿尔，尽管他们为我们对医学的理解做出了很大贡献。他们是傀儡，但是个好人，因此我必须给予他们某种程度的尊重。”`
+				goto end
+			label house
+			`“保持联盟的团结，贝布利斯家族做到了。使从一个星系到另一个星系的交流成为可能的是我们的努力。除了我们工作的明显重要性之外，我们是少数几个保持高贵血统纯正并保留其原始徽章的家族之一。我没有对其他家族混杂的偏见，但我们非常重视传统，而打破传统，他们在与平民或……其他物种的婚姻中做到了。”`
+				goto end
+			label council
+			`“他们中的大多数人已经偏离了我们的旧生活方式。以马洛布和加尔巴拉格为例：他们几乎不再是房子了。他们已经完全转变为公司。德布多声称拥有高贵的遗产，但实际上他们是我们自己家族的一个分裂组织，他们是叛徒分支。然而，他们中最糟糕的是查姆加尔家族。他们是坚持古老竞争的疯子，他们是骗子和修正主义者，他们是为了玷污我们的形象，如果他们愿意向我们宣战，如果服从赫利亚政府，我们的房子就不会。”`
+			label end
+			`一旦你到达你的船，她就会让阿拉克管家收拾她的房间，然后让他们解散。她告诉你，如果她需要任何东西，她会打电话给你，然后关上房间的门。`
+				accept
+	on visit
+		dialog `您降落在 <planet> 上，但意识到携带普鲁巴特女士的护卫尚未进入系统。最好离开并等待。`
+	on complete
+		conversation
+			branch drama
+				has "Coalition: Council of Ahr: Drama: offered"
+			`你着陆后发现一群穿着制服的阿拉奇人正在附近等候，准备从你的船上搬运普鲁巴特的行李。 “这是一次令人愉快的飞行，机长。希望您将来再次被选中来运送我，我确实如此，”她说，向您告别，然后前往附近的运输班车。`
+				accept
+			label drama
+			`普鲁巴特女士从你的船上冲出来，迎接一群穿着制服的阿拉奇人，其中一些人从你的船上搬运她的行李，而其他人则围着她，仿佛期待查姆加尔家族的普鲁巴特试图挑起一场讨论。一旦她所有的行李都出来了，他们就会护送她到附近的班车。`
+
+mission "Coalition: Council of Ahr: Chamgar"
+	invisible
+	landing
+	passengers 1
+	blocked "You have reached <origin>, but you need <capacity> in order to take on the next mission. Return here when you have the required space free."
+	to offer
+		has "Coalition: Council of Ahr: active"
+	source "Hammer of Debrugt"
+	destination "Ahr"
+	on offer
+		conversation
+			`你刚走下船，查姆加尔家族的代表就会向你打招呼。 “<last> 机长，我很荣幸能够运送我这样一位受人尊敬的飞行员。当然，我很荣幸，你也很荣幸。从伟大的查姆加尔家族运送一名飞行员是一项重要的任务。普鲁巴特，我的名字是，在我们还有时间的情况下，我必须向你展示我们的装置。”`
+			`他拖着你绕着古怪的太空港转了一圈，带你参观一些奇怪的展览，那里正在建造或修理一些技术，讲述查姆加尔家族的进步。参观持续了几个小时，你假装对他所说的“最新原型”印象深刻（其中大部分看起来像标准的联盟技术）。只有当他再次拖着你到处走，停在附近的一家酒店并领取行李后，你才终于让他跟着你上船。`
+			`没过多久，他又重新开始了。 “现在，<last> 队长，是时候全面参观一下我们的太空港设施了，今天我们没有；我们必须去议会，但很高兴回答您关于我们伟大房子的许多问题，我很高兴。想知道我们是如何发明我们的维修模块的，是吗？或者也许是对我们的特殊合金感兴趣？”`
+			choice
+				`“那么，你为什么不告诉我一些关于你的房子的事情呢？”`
+					goto house
+				`“你能告诉我关于其他将要进入议会的议院的情况吗？”`
+					goto council
+				`“其实，我对议会的主人很好奇。”`
+			`他停了下来。 “王室？嗯，没什么好说的，有。他们的角色是在一个原始的阿尔被选中的，只是象征性的。他们从来没有抱有任何野心，他们一直是自成立以来最弱的家族。他们保证了首都的稳定，并且与我们关系良好，他们承认我们的价值，他们确实如此，很糟糕，他们不是，只是无趣。”`
+				goto end
+			label house
+			`你几乎无法完成你的问题，因为他开始了毫无疑问是排练过的演讲。 “我们是古代最伟大的阿拉克战士，并且始终站在科学进步和创造性发明的最前沿。为了我们的修复模块的辉煌突破，我们受到了夸格人的迫害，但在这里，在这个星系，在这个星球上，我们做到了。保护阿拉克空间免受他们的侵害，几个世纪以来我们必须这样做，直到在我们的萨里德和基梅克朋友的帮助下被放逐，他们是。”`
+				goto end
+			label council
+			`“好吧，他们中的大多数都是。我们与几乎所有家族都保持着友好关系。除了来自贝布利斯的败类之外，他们都是撒谎、奸诈的蛇。他们密谋反对政府，帮助叛乱分子！他们的世界，弗拉格布要塞不是‘他们的’世界，是从我们这里偷来的。听我的警告，队长：你不应该相信他们，最好相信夸格人，它是。”`
+			label end
+			`他似乎准备让你问另一个问题，但当你到达你的船时，他接听了通讯设备上的电话，并示意你带他去他的房间。然后他说他要去处理一些事情，稍后他会再和你谈谈。`
+				accept
+	on visit
+		dialog `您降落在 <planet> 上，但意识到携带 Plubat 的护卫尚未进入系统。最好离开并等待。`
+	on complete
+		conversation
+			branch drama
+				has "Coalition: Council of Ahr: Drama: offered"
+			`“<last> 船长！对我们俩来说都是一次愉快的经历，但遗憾的是，从我家到 <planet> 的旅程很短，所以我们必须分道扬镳，”Plubat 在准备离开你的船时说道。 “为了结束对我们设施的参观，我确信你想要，所以一旦结束，理事会就到了，请我去那里，并再次引导你，我会的。”`
+				accept
+			label drama
+			`查姆加尔家族的代表普鲁巴特 (Plubat) 紧贴着你，同时紧紧抓住他的行李，而他来自贝布利斯家族 (House Bebliss) 的同事普鲁巴特女士 (Lady Plubat) 则让附近穿着制服的阿拉奇 (Arachi) 人把她的行李从你的船上搬出来。 “船长，我告诉你，我是值得信赖的，但她不应该被信任。检查过你的船了，是吗？一切都就位了，你的物品都准备好了？小心她的类型，你一定要小心，”他说。贝布利斯管家结束后，普鲁巴特最后一次对普鲁巴特女士嗤之以鼻，然后离开了你的船。`
+
+mission "Coalition: Council of Ahr: Drama"
+	invisible
+	non-blocking
+	landing
+	to offer
+		or
+			has "Coalition: Council of Ahr: Bebliss: active"
+			has "Coalition: Council of Ahr: Chamgar: active"
+		has "Coalition: Council of Ahr: active"
+		not "Coalition: Council of Ahr: Bebliss: done"
+		not "Coalition: Council of Ahr: Chamgar: done"
+	source
+		planet "Hammer of Debrugt" "Stronghold of Flugbu"
+	destination "Ahr"
+	on enter
+		conversation
+			`从 <origin> 起飞后，您开始听到驾驶舱外传来一些喊叫声，因此您离开去检查乘客的情况。来自查姆加尔家族的普鲁巴特正在用一只腿敲击来自贝布利斯家族的普鲁巴特房间的门。 “队长！幸好你在这里，”他说。 “派了一个使者来嘲笑我，贝布利斯那座该死的房子！抄袭我的名字，她就是！”`
+			`来自贝布利斯家族的普鲁巴特打开她的房间门做出回应。 “那是胡说八道，队长。看看我们，老了几十年，我都这么抄袭你，怎么可能？这里的违规者是查姆加尔家族。”`
+			`“为了这个嘲笑，你可以改名。我知道你的家族对我们的怨恨，”他回答道。`
+			`“荒唐、幼稚，就是这样。开始嘲笑我的人就是你，”她说。 “<last>队长，催促你赶紧去找阿鲁，我必须。再忍受这个小丑，我不能。”`
+			`普鲁巴特女士再次关上了她房间的门，你说服查姆加尔家族的代表也回到他的房间。你回到驾驶舱，希望这是最后一次。`
+	on enter "Sol Arach"
+		dialog `尽管你尽了最大努力让他们远离彼此，普鲁巴特和普鲁巴特还是短暂地不再互相侮辱。然而，一旦你进入这个系统，他们就会自己回到自己的房间，而不需要你离开驾驶舱去干预。距离他们的目的地如此之近，你希望他们不会再给你带来任何麻烦。`
+
+mission "Coalition: Council of Ahr: On Complete"
+	invisible
+	landing
+	to offer
+		has "Coalition: Council of Ahr: done"
+	source "Ahr"
+	on offer
+		conversation
+			`最终代表离开您的船几分钟后，您将收到 4,500,000 个积分的付款。它带有来自王室的信息，上面有所有阿拉克家族的标志。你最熟悉的是一些行星上的广告或办公室，但这是你第一次看到中心的。你想象它是王室的徽章。`
+			scene "scene/councilofahr2"
+			`“您好，<last> 上尉。作为阿尔议会的东道主，感谢您对我们的帮助。虽然我们确信，对您来说，这类工作看起来很平凡，但有时很难为来自所有伟大家族的同胞安排适当的交通，所以要知道，奥伯雷特家族对您的合作深表感谢。”`
+
+
+
+mission "Coalition: Submarines 1"
+	minor
+	name "水下输送"
+	description "将 Apri'ie 带到 <destination> ，那里有五艘新的深海潜艇正在等待被带到第二华蓝。"
+	passengers 1
+	to offer
+		has "Coalition: First Contact: done"
+		random < 25
+	source
+		government "Coalition"
+		near "5 Axis" 1 3
+	destination "Market of Gupta"
+	on offer
+		conversation
+			`你注意到基梅克在办公楼前面焦急地看着码头。一旦他注意到你，他就会迅速靠近。 “请问，船长，你愿意为我服务吗？我需要传送到外星世界。”`
+			choice
+				`“你想去哪里？”`
+				`“抱歉，我现在不想找运输工作。”`
+					decline
+			`“我代表的是第二华蓝号的一个著名研究小组，我们正在寻求扩大我们的深海探险。为此，我的上级刚刚解决了采购五艘新潜艇的问题，”他说。 “为了从 <planet> 接他们，我被选中了，所以我必须被运送到那里。我被允许向您支付 <payment> 的服务费。”`
+			choice
+				`“好吧，我带你去我的船。”`
+					goto accept
+				`“为什么他们不首先建立在第二华蓝号上？”`
+				`“抱歉，我不会往那个方向走。”`
+					decline
+			`“第二华蓝没有此类建设设施，”他解释道。 “地球必须保持基本不变。在上面建造不仅仅是简单的研究站，我们做不到。但是我们需要更坚固的潜艇，所以我们举行了一场竞赛来决定由哪家公司建造它们，我的团队就这么做了。在我看来，老实说，不需要这样的过程。显然，马洛布家族会获胜，是的。他们在船体完整性方面无与伦比。”`
+			choice
+				`“我明白了。好吧，我很乐意帮助你。让我带你去我的船。”`
+					goto accept
+				`“这个星球有什么特别之处，以至于你不能在那里做？一个造船厂不应该太具有侵略性。”`
+				`“好吧，我祝你好运，但抱歉，我不会那样做。”`
+					decline
+			`他思考了一会儿，制定了应对措施。 “几个世纪前，当我们在那里建造前哨基地时，我们担心进一步的扩张会扰乱那里脆弱而独特的食物链，从而禁止所有人定居，我们也不能建造任何超出政府规定的必要结构。我们已经收集了足够的数据，成功说服他们允许我们建造一些额外的勘探船。对他们的研究将更具侵入性，但我们现在知道，对动植物群的研究已经足够了，我们可以避免任何重大并发症。”`
+			choice
+				`“似乎有很多官僚机构只是为了一些研究。无论如何，我很乐意提供帮助，让我们前往我的船吧。”`
+					goto accept
+				`“如果地球上的原生生命都在水下，那么造船厂怎么会构成任何风险呢？这不像你会在水下建造它。”`
+				`“这听起来太复杂了。我祝你一切顺利，但我不会去那里，所以我帮不了你。”`
+					decline
+			`就像风中的灌木一样，他的身体因你的话而剧烈颤抖。 “不，建在水下，什么都不会。这是显而易见的。但是，我仍然不制定规则，船长。我只是遵循它们。”`
+			choice
+				`“我明白了。好吧，我很乐意帮助你。让我带你去我的船。”`
+				`“呃，我对这个不太感兴趣，抱歉。”`
+					decline
+			label accept
+			`“很好。谢谢你，船长。我叫 Apri'ie，是淡水研究中心的成员。愿我们有一次美妙的旅行。”你把他带到你的船上并帮助他安置他房间里的小行李。`
+				accept
+	on visit
+		dialog `您降落在 <planet> 上，但意识到携带 Apri'ie 的护卫尚未进入系统。最好离开并等待。`
+	on complete
+		"coalition jobs" ++
+		payment 90000
+		conversation
+			`Apri'ie 让你来到了 Mallob 家族的一间办公室，它看起来像是摩天大楼和仓库的混合体，然后交给你 <payment> 。`
+			`“感谢您的协助，<last> 船长。我必须与马洛布家族的高管会面，但如果要继续提供帮助，您希望在太空港与您会面，我会的。潜艇的正确运输，下一步是，所以如果您有兴趣，请为他们腾出空间，您必须这样做。”他停了下来，好像在数总重量。 “大约60吨，他们应该承担。无论如何，我们可以在太空港更详细地讨论。”他拿起自己的东西，前往办公室，消失在大楼里。`
+
+mission "Coalition: Submarines 2"
+	name "加压压力测试"
+	description "将 Apri'ie 和 <cargo> 带到 <destination> ，潜艇将在那里接受一些最终的高压压力测试。"
+	passengers 1
+	cargo "unmanned submarines" 60
+	blocked "You need <capacity> to help Apri'ie move the submarines. Return here when you have the required space free."
+	to offer
+		has "Coalition: Submarines 1: done"
+	source "Market of Gupta"
+	destination "Inmost Blue"
+	on offer
+		conversation
+			`在太空港呆了一段时间后，你开始四处打听阿普里耶，并被引导到马洛布家族的一间小办公室。在那里，一位经理简要地检查了他们的系统，并通知你 Apri'ie 还没有离开他的会议，所以你在太空港坐下来，偶尔站起来检查他进入的办公室的入口。几个小时后，你终于看到他离开了，伴随着一个萨里德，他们一边看数据板，一边在通讯设备上说话。`
+			`“<last> 船长！很高兴您有兴趣进一步帮助我们，我。准备好将潜艇装入您的货舱了，是吗？”阿普里伊问道。 “我在 <planet> 的同事已经准备好进行一些最终压力测试了。”`
+			choice
+				`“当然，我已经为他们留出了空间。”`
+					goto end
+				`“你要进行什么样的测试？”`
+			`“潜艇必须能够承受压力的快速变化，因此可以快速、深入地潜入 <planet> 的海洋，然后以同样快的速度重新浮出水面，”他说。 “马洛布家族已经进行了他们自己的测试，所以最肯定的是，这些船只已经做好了出发的准备，但只是作为一种形式，我们必须进行这些测试。”`
+			choice
+				`“我明白了。好吧，我已经准备好了，所以你可以把潜艇带到我的船上。”`
+					goto end
+				`“为什么不立即对 Second Cerulean 进行这些测试呢？”`
+			`“我们希望避免扰乱或惊吓当地动物群，以及任何结构性损坏，所以等到测试结束后，我们才会将它们部署到该星球的水域。”`
+			choice
+				`“那我们就继续吧。我的船已经准备好搭载潜艇了。”`
+					goto end
+				`“结构性损坏？”`
+			`他茫然地盯着你看了一会儿。 “那里的冰川布置得很巧妙。我们的一些监控设备就在上面。我们必须避免因不可预见的故障而对它们造成任何损坏。”`
+			label end
+			`Saryd 在数据板上发出命令，关闭通信设备，并在货物装载时陪伴您和 Apri'ie 到您的船上。`
+			`总共有五艘潜艇，绑在坚固的大雪橇上，慢慢地沿着坡道推到你的货舱。潜艇本身呈椭圆形，但顶部和底部平坦，侧面有可伸缩的机械臂。最后一艘潜水艇安全地进入货舱后，Apri'ie 驶入您的船并设置了前往 <destination> 的路线。`
+				accept
+	on visit
+		dialog `您降落在 <planet> 上，但意识到您的护卫舰 Apri'ie 和无人潜艇尚未进入系统。最好离开并等待。`
+	on complete
+		"coalition jobs" ++
+		payment 210000
+		conversation
+			`当工人们从你的货物中卸下潜艇时，阿普里伊走近你，递给你 <payment> 。 “我必须监督压力测试，所以我会在太空港再次见到你。不过，如果你有兴趣观看测试，可以跟我一起去。”`
+			choice
+				`“当然，为什么不呢？可能比四处等待和一遍又一遍地检查商店要好。”`
+				`“谢谢你的邀请，但我不太感兴趣。”`
+					goto refuse
+			`当所有潜艇都离开你的货舱后，它们被放置在带有重型履带而不是轮子的卡车顶上。你和阿普里登上其中一辆卡车，开始前往下面的海岸，到达一个拥有大型码头的小型商业港口。到达那里后，Apri'ie 向您介绍了他的一些同事，他们已经在等待开始测试了。潜艇在离开卡车之前就被激活，一些 Kimek 开始测试基本功能。`
+			`一旦他们全部下水，每个人都会登上一艘坚固的驳船，该驳船跟随潜艇离开海岸几公里，直到你再也看不到海岸。此时他们停了下来，其中一艘潜艇沉入水中，大约二十分钟后重新浮出水面。 Kimek 确保潜艇没有受到损坏，并继续测试其他潜艇。在每艘潜艇和驳船都往返海底数次之后，潜艇和驳船返回码头。`
+			`潜艇再次被装上卡车，您开始返回太空港城市的旅程。当你到达后，阿普里的同事邀请他和他们一起私下讨论一些事情，他告诉你他会在太空港与你见面。`
+				accept
+			label refuse
+			`“然后在太空港，我会见到你，”他说。当所有潜艇都离开你的货舱后，它们被放置在大型卡车式车辆的顶部，但车轮位于连续轨道系统中。阿普里登上了其中一辆卡车，他们开始向下面的海岸驶去。从那里，他们沿着峡湾的水流到达潜艇可以潜得更深的地方。`
+
+mission "Coalition: Submarines 3"
+	name "构造应力测试"
+	description "将 Apri'ie 和 <cargo> 带到 <destination> ，在那里潜艇将接受更多压力测试以评估其修复功能。"
+	passengers 1
+	cargo "unmanned submarines" 60
+	blocked "You need <capacity> to take the next mission. Return here when you have the required space free."
+	to offer
+		has "Coalition: Submarines 2: done"
+	source "Inmost Blue"
+	destination "Dusk Companion"
+	on offer
+		conversation
+			`阿普里来到太空港，身后跟着他的一位同事。 “必须再进行一次测试，我们会的，船长。为了评估潜艇在危险环境中的修复能力，Pale Waters 想要，所以我们必须在 <destination> 快速停留。”`
+			choice
+				`“好，那我们接下来就去那里。”`
+					goto end
+				`“评估他们的‘修复’能力？什么意思？”`
+			`他解释说：“潜艇的武器配备了焊机，因此，如果在水下深处严重受损，其中一艘可以由其他潜艇修复。” “<planet> 的构造不稳定，因此我们将在一次夜间震动期间进行测试修复。这样，我们就可以在不干扰第二华蓝动物群的情况下评估他们的能力。”`
+			choice
+				`“听起来你已经为这些替补想到了一切。那么我们接下来就去那里吧。”`
+					goto end
+				`“为什么要在这种条件下进行测试？第二华蓝也有构造方面的问题吗？”`
+			`“不，不。但是，为了应对任何可能发生的情况，我们已经做好了准备，”他回答道。 “如果地球板块变得不稳定，或者出现其他一些令人不安的因素，潜艇必须做好准备。”`
+			label end
+			`他的同事开口说道。 “研究中心的另一个团队已经前往<planet>。我和其他人会带着我们收集到的数据返回第二华蓝。为你的货物准备好潜艇，我们已经准备好了。”`
+			`你跟着他回到你的船上，看到潜艇又在巨型雪橇上准备好了。当他们被带到你的货舱后，阿普里的同事们向他告别，他再次进入你的船。`
+				accept
+	on visit
+		dialog `您降落在 <planet> 上，但意识到您的护卫舰 Apri'ie 和无人潜艇尚未进入系统。最好离开并等待。`
+	on complete
+		"coalition jobs" ++
+		payment 130000
+
+mission "Coalition: Submarines 4"
+	landing
+	name "交付潜艇"
+	description "与 Apri'ie 和 <cargo> 一起前往 <destination>，Pale Waters 研究中心将在那里使用新潜艇进行深海探险。"
+	passengers 1
+	cargo "unmanned submarines" 60
+	to offer
+		has "Coalition: Submarines 3: done"
+	source "Dusk Companion"
+	destination "Second Cerulean"
+	on offer
+		conversation
+			`阿普里伊指示你前往一个大型港口的一些机库，那里有一个团队正在等待维修测试。当你登陆时，他会给你 130,000 积分，并去检查正在卸载潜艇的工人。`
+			`当 Kimek 团队登上一艘大船（你猜是一艘旧油轮）时，它们全部从您的货物中取出并迅速放入水中。这艘船准备跟随潜艇前往测试区域，旁边还有另一艘更小、更新的船，前面有一台厚重的起重机。阿普里在登上油轮之前向你走来，问道：“船长，你愿意和我们一起参加测试吗？可能需要一段时间。没想到，直到夜幕降临之后，下一次地震才会发生。”`
+			choice
+				`“如果可以的话，是的。可能会很有趣。”`
+				`“我就过去了，来这里之后我需要休息一下。”`
+					goto refuse
+			`你走上坡道走向船，几分钟后它就出发了，跟随基梅克团队远程控制的潜艇。探索油轮时，你会发现一堆奇怪的东西，看起来像是破碎的船舶零件，作为货物固定在背面。这些部件被焊接在一起，形成类似于一艘较小的 Heliarch 飞船驾驶舱的形状，尽管它有几个凹痕，就像被炸药击中一样。 Apri'ie 注意到你在看它，并解释说这是他们将测试修复功能的“道具”。`
+			`一旦油轮停下来，较小的船的起重机就会抓住支柱并慢慢地将其远离油轮，然后将其放入水中并让它沉没。潜艇跟随螺旋桨下降，直到几分钟后停止。`
+			`随后，基梅克操作员开始在计算机前轮班，每个人都在等待地震开始。当月亮高挂在天空后，你会注意到海浪的奇怪变化和船只的颤抖，基梅克人就开始了他们的修理工作。完成后，震动停止后，潜艇会慢慢将支撑物吊起，起重机再次将其放置在油轮上。`
+			`“让我们看看……”Apri'ie 前往支柱检查焊接部件。 “是的，非常好。焊机臂性能良好。它们应该如此，适合部署。”潜艇再次前进，照亮返回港口的道路，船只跟随它们直到停靠。`
+				goto end
+			label refuse
+			`他走向油轮，船只跟随潜艇出发。你在太空港走了一会儿，在一家餐厅停下来吃了一份萨里德糕点。日落时分，您返回港口，等待最终看到地平线上的潜艇灯光向海岸驶去。`
+			`“焊工们工作得很好。潜艇应该准备好部署了，”阿普里走下油轮时告诉你。`
+			label end
+			`潜艇再次放置在雪橇顶部并带入您的船。 Apri'ie 感谢 Kimek 团队处理了潜艇，然后回到你的船上，说道：“现在是他们最后一次航行的时间了。可以把我和船只带到 <destination> 了。”`
+				accept
+	on visit
+		dialog `您降落在 <planet> 上，但意识到您的护卫舰 Apri'ie 和无人潜艇尚未进入系统。最好离开并等待。`
+	on complete
+		"coalition jobs" += 2
+		payment 510000
+		conversation
+			`当地工作人员小心翼翼地把潜艇一次一艘地从船上卸下，带到附近冰冷的水域，在那里他们将潜入深海，对当地的动物群进行探索。`
+			`完成后，Apri'ie 会邀请您进入距离航天港塔仅几公里的研究设施，并为您的飞船提供自己的机库。在那里你会遇到一个类似委员会的人；一些当地科学家向你们两个致意，并感谢你们帮助运输潜艇。其中一位告诉你：“由于难以到达海洋更深处，我们的旧探测器能够分析大量新物种，我们希望能够利用这些新潜艇。”`
+			`当他们完成后，他们会把 <payment> 交给你，然后 Apri'ie 跟着你到你的船上。 “感谢您在最后一刻忍受了我所走的弯路，船长。祝您旅途平安。”他做了一个简短的手势作为告别：你把前臂放在地上，他把一条腿放在上面。完成后，他就回到研究中心。`
+
+
+
+mission "Coalition: Expeditions Past 1"
+	minor
+	name "侦察许可证"
+	description "将 Heliarch Tribune Sedlitaris 运送到 <destination> ，在那里她将向 Heliarch 议会请求允许她脱离联盟进行侦察探险。付款方式为<payment>。"
+	passengers 1
+	to offer
+		"coalition jobs" >= 40
+		random < 5
+	source
+		government "Coalition"
+	destination "Ring of Friendship"
+	on offer
+		require "Jump Drive"
+		conversation
+			`当你离开飞船并开始前往太空港时，你听到一阵急促的疾驰声越来越近。当你转身时，你会看到一位萨瑞德·赫利亚克 (Saryd Heliarch) 向你走来，示意你等待。一旦她看到你乐于助人，她就会放慢脚步，慢慢走到你身边，同时瞥一眼你的船。`
+			`“<last> 船长，我必须为打扰您而道歉，但我需要延长交通服务，”她说。 “我的名字是 Sedlitaris Quatcid，我是一名 Heliarch 论坛。我必须被带到 <destination>。我要向理事会提交一份请愿书。”`
+			choice
+				`“‘请愿’？什么意思？”`
+				`“我认为你不需要为此而需要一些‘扩展’服务。”`
+				`“抱歉，我现在不会再载客了。”`
+					decline
+			`“大约一千年前，我的祖先带领一支远征舰队来到了联盟之外，”她解释道。 “米莫杜姆，他的名字是，在晋升并让我们的家庭摆脱了贫困之后，他被选为领导这次探险的人。只是，他没有回来。我希望能查出发生了什么。寻找你，在我的请求被批准后，我需要一种交通工具来带我去他访问过的行星，我会的。”`
+			choice
+				`“我很乐意帮助你查明发生了什么事。让我带你到你的铺位。”`
+					goto accept
+				`“如果你没有船，你就不能自己去，或者花钱请人带你去吗？”`
+				`“事实上，我不会很快离开联盟空间。抱歉。”`
+					decline
+			`她摇摇头。 “禁止就这样离开，任何人都可以，并为此窃取跳跃驱动器，我需要这样做。这显然是非法的。允许外出，只有获得议会许可的Heliarchs才可以。终于到了再次听到我的请求的时候了，他们已经这样做了，所以去<planet>，我必须。”`
+			choice
+				`“好吧，那我们就别让他们久等了。我带你到你的铺位去。”`
+				`“我希望你一切顺利，但我不会很快离开联盟党。抱歉。”`
+					decline
+			label accept
+			`“太棒了！我向你保证，一旦完成，你将获得丰厚的报酬。目前，当我们到达擂台时，我会付给你<payment>。”`
+			`您将她带入您的飞船，并设置一条前往 <destination> 的路线。`
+				accept
+	on visit
+		dialog `您降落在 <planet> 上，但意识到携带 Sedlitaris 的护卫尚未进入系统。最好离开并等待。`
+	on complete
+		payment 100000
+		conversation
+			`在您打开舱门让她离开之前，Sedlitaris 会向您支付 <payment>。 “需要几个小时，这可能，所以你可以在太空港等我。我很了解布局，所以毫无问题地找到你，我会的。”`
+			`当你打开舱门看着她离开时，你会看到一个基梅克·赫利阿奇正在等待你们两个，当塞德利塔里斯看到他时，她吃了一惊。`
+			`“我已经说清楚了，不是吗，你应该停止顽固的企图，保民官？”他问道。 “执政官们的时间太宝贵了。继续浪费时间责备你，他们不能。”`
+			`塞德利塔里斯低下头，一只手抚摸着头发。她张了张嘴，却把要说的话都堵在了喉咙里。相反，她走下坡道，迅速前往环形世界的某个区域，无视基梅克人的抗议。他叹了口气，走近你。 “她把你拉进了她的探索计划吗，队长？你是一个拥有跳跃驱动器的局外人，所以当然会被你吸引，她会是，那个女孩……”`
+			choice
+				`“你们两个是同事吗？”`
+				`“她这么固执是怎么回事？”`
+			`“Kicharri，我是。几十年来，我一直是监督塞德利塔里斯工作的仲裁者。一个聪明的女孩。她创造了许多优秀的外部理论模型，但近年来，她沉迷于正式远征，她成为了。执政官们拒绝了她近十几次，但得到暗示，她不会。”他用双腿快速地敲击着地面，仿佛地面摸起来很烫。 “我帮助她提出了这份具体的‘请愿书’。这次我要求理事会更加严格和明确。我想她已经和你签订了长途旅行合同，但被允许离开，她不会。”`
+			`他祝你有美好的一天，然后前往航天港对面的办公室。`
+
+mission "Coalition: Expeditions Past 2"
+	name "中继塔"
+	description "将 Sedlitaris 和 Heliarch 委员会的一些代表带到 <destination> ，伊德里斯家族的成员将为她提供一个中继塔，以寻找她祖先探险的迹象。"
+	passengers 6
+	blocked "You need <capacity> to take the next mission. Return here when you have the required space free."
+	to offer
+		has "Coalition: Expeditions Past 1: done"
+	source "Ring of Friendship"
+	destination "Ablub's Invention"
+	on offer
+		conversation
+			`当你在太空港没有看到塞德利塔里斯时，你会找个地方坐下来等她，并注意到一组为夸格人制作的座位，至今仍然存在。你拿起一个你认为是给夸格孩子的东西，站得比其他人低，然后等待。经过的船长和工人都会向你投来各种各样的目光，几分钟后甚至一些Heliarch特工也会呆呆地看着你，互相讨论。正当你决定站起来坐在别处时，你看到塞德利塔里斯进入了太空港。`
+			`“等了一会儿，不是吗？”一旦你们接近，她就会发表评论。 “想听听我的情况，领事们没有，只是告诉我，只要我愿意，我就可以离开。‘如果我可以的话，’他们说，为我提供跳跃驱动器，他们不会，但这就是你进来的地方。”`
+			choice
+				`“我当然没有等太久。那么，我们要去哪里呢？”`
+					goto heading
+				`“不想听你的案子？你是什么意思？”`
+			`“根据协议，有抱负的检查员必须提出他们的探险的有效理由，以及彻底的旅行计划。这一次，考虑到每一个法律细节，我已经为会议做好了准备，但我一进去，几乎没有时间迎接他们，他们就给了我。”她解释道。 “说经过深思熟虑，他们已经这样做了，并且愿意帮忙，他们是，所以只需签署一些文件，我就签署了，现在我正式成为一名检查员。”`
+			choice
+				`“我想督察就是你们所谓的探险家吧？”`
+				`“很高兴听到他们改变了主意。那么，我们要去哪里？”`
+					goto heading
+			`“我们不仅仅是探险家，”她开始说道。 “这是对联盟中最勇敢的人最大的敬意，他们不惧怕冒险进入虚空，描绘未知的事物。这个头衔可以追溯到几千年前。早期的萨瑞德人在开始探索家乡星系之外时首先使用了这个头衔，然后被赫利亚克斯所采用。这个词一直沿用至今，”她兴奋地说，微笑着停了下来，仿佛考虑到她自己就是这样的人。现在是“检查员”。`
+			choice
+				`“那么，是你付钱给我这份工作，还是领事们现在已经正式批准了？”`
+				`“你看起来很想开始。那么，我们要去哪里？”`
+					goto heading
+			`“他们批准我们离开，但他们不会提供任何进一步的帮助——无论是跳跃驾驶还是资金——他们不会，”她解释道。 “我在过去的几年里攒了很多钱，所以一旦完成，我会付给你几百万积分。但是，谁知道呢，也许如果我们的发现足够令人兴奋的话，我们确信会给你奖金，领事们可能会，”她微笑着说道。`
+			label heading
+			`“我们还没有准备好出去。至少不是为了找出上次探险的目的。我们需要伊德里斯家族的工具，如果要追踪我祖先的足迹，我们就准备好了。到<destination>，我们必须出发。”`
+			`当她正要继续说下去时，你们的谈话被一个向你们两个冲过来的基梅克打断了，她疯狂地大喊大叫。一旦他靠近，你就会认出他就是之前的仲裁者基查里，塞德利塔里斯在他喘口气时试图让他平静下来。 “教授，如果我的请求是这样的话，我已经与议会会面了。批准了——”`
+			`“我知道，我知道！这正是我愤怒的原因！”他喊道。 “我要求他们给你一个明确的答案，但不是这种明确的答案！听着，无论是否允许，离开都不是安全的。你知道这一点。”他看了她一会儿，然后又看了你一眼。 “队长，作为她的上级，非常感谢你帮助塞德利塔里斯的意图，我确实如此，但她对此太傲慢了。把她带出我们的空间，你不可以。”`
+			`他再次看着她，似乎在等待她的回应。当没有回应时，他慢慢地转过身来，说道：“不要浪费你的生命在这上面。”然后走开了。当他穿过走廊时，塞德利塔里斯叹了口气，说她已经准备好出发了。`
+			choice
+				`“等等，他说离开不安全是什么意思？我以为你已经允许了。”`
+				`“好了，我们回船上吧。”`
+					goto end
+			`“我知道。我知道他的意思，但我也不知道，”她说着，回头看着基查里转身的角落。 “他同意我这次旅行的愿望，但他从来没有同意过。他需要一些时间冷静下来。现在，回到你的船上，我们该走了。”`
+			choice
+				`“好吧，我们走吧。”`
+					goto end
+				`“我不确定在那之后我是否舒服。”`
+			`她向后退了一步，似乎对你改变主意感到震惊。 “什么？队长，一个迷信的基梅克，仲裁者。别在意那些咆哮，你应该。向你保证，我会的，我们会的。”`
+			choice
+				`“对不起，我不会再帮你了。”`
+				`“我最好不要后悔。我们上船吧。”`
+					goto end
+			`塞德利塔里斯什么也没说，但也没有试图掩饰她的沮丧。她看着基查里要去的地方，然后怒气冲冲地追了上去。`
+				decline
+			label end
+			`你会发现五位 Heliarchs 在你的船上等待，塞德利塔里斯将他们介绍为议会的代表，并且当伊德里斯家族提供她想要的装备时，他们必须在场。你带她和其他人到他们的床位并为旅行做准备。`
+				accept
+	on visit
+		dialog `您降落在 <planet> 上，但意识到您携带 Sedlitaris 和 Heliarch 议会代表的护卫尚未进入系统。最好离开并等待。`
+
+mission "Coalition: Expeditions Past 3"
+	landing
+	name "尘土飞扬的死滴"
+	description "前往 <destination> ，塞德利塔里斯希望检查古老的萨利德宝库，了解她祖先探险的路线和日志。"
+	passengers 1
+	to offer
+		has "Coalition: Expeditions Past 2: done"
+	source "Ablub's Invention"
+	destination "Sundrinker"
+	on offer
+		conversation
+			`赫利亚丘议会的代表会引导你远离地球的赤道，来到靠近雪山的地区，并告诉你降落在一个立方体形状的高原上。数十个探照灯点缀在边缘，照亮了下面的地面，而一座仓库综合体坐落在高原顶部的中心。当您接近高原时，船上的传感器会提醒您即将到来的船只；你看向雷达，看到一艘萨里德旅居者，后面跟着三名旅行者，正在靠近你的船。他们看起来手无寸铁，但当你降落在高原上时，他们会跟着你下来，建筑群边缘的防御炮塔仍然锁定着他们。`
+			`一旦寄居者着陆，萨利德就会走下坡道并前往您的船。塞德利塔里斯叹了口气，离开去迎接他，身后跟着赫利亚议会的代表。当你全部离开你的船时，你会看到萨利德号被三名身穿冬季制服的阿拉克守卫拦住了，挡住了他的去路。 “你把这件事告诉了妈妈或爸爸，是吗？”当塞德利塔丽丝走近时，他对她喊道。 “因为重要到需要被告知，但我显然不是。你被某个遇到的基梅克仲裁者告诉我，你是去死的，我从来没有！”`
+			`“Repilor，这是一次工作旅行。我不会离开很长时间，所以希望通过这个消息来打扰你们大家，但我没有，”她回答道。`
+			`“给我们添麻烦？说实话，你知道你错了，但是面对告诉父亲你正在丢掉自己的生命，你不能！”`
+			`他试图向她走去，但在他取得多大进展之前，警卫阻止了他。一名赫利亚克代表走近，说道：“这里是禁区。你侵犯了政府财产，所以建议你立即离开，我愿意。”`
+			`“限制？外面呢？也限制，不是吗？更危险？把我妹妹送到那里就好了，你看来，”Repilor反驳道，片刻之后，Heliarch把目光移开。 “如果如此打扰领事们，她就被解雇了，她就应该被解雇！”然后他看着你，继续说道，“那人类呢？我想你是离开这里的交通工具？或者也许就是那些把这些想法灌输给你头脑的人？”`
+			choice
+				`“我刚刚受雇来运送她。”`
+					goto hired
+				`“她想要在联盟之外探索有什么错吗？”`
+					goto wrong
+				`“等等，你刚才说外面很危险是什么意思？”`
+			`萨利德困惑地看着你。然后，他仿佛意识到了什么，转向塞德利塔里斯。 “告诉人类了，你还没有告诉吗？”`
+			`“够了，Repilor。你闯入了禁区。护送他到他的船上，”她告诉守卫，在Repilor方面进行了一番挣扎后，Arachi设法将他推回了Sojourner号内。 “别理会你应该做的事，队长。我哥哥总是……很难相处。他太固执，不知道什么时候该停下来，而且很容易被外面的民间故事所打动。”`
+			choice
+				`“如果你这么说的话。我应该在我的船上等你们都完成这里的工作吗？”`
+					goto accept
+				`“是不是民间故事，事后我也不太愿意去了解了。他看起来并没有说谎。”`
+			`“什么？”她惊呼道。 “请队长，你不能相信我哥哥的小小咆哮。我终于获准离开了！”`
+			choice
+				`“好吧好吧。不过我希望我不会后悔。”`
+				`“抱歉，无论他害怕什么，我都不愿意冒险。”`
+					goto decline
+			`“你不会的。”她说着，朝你走去，握住你的手，好像在表达谢意。 “我答应你，我们会的，船长。”`
+				goto accept
+			label decline
+			`当你返回飞船时，你会听到她用蹄子踩在地上的声音，当你关闭舱门时，你会看到她和赫利亚议会代表在互相争吵。当你回到太空港着陆区时，一个旅居者降落在你的飞船旁边，而雷皮勒（Repilor），即之前的萨利德（Saryd），也出现了。`
+			`“请原谅我之前的无礼，你必须的，”他在向你打招呼时说道。 “我以为是这样，你说服我姐姐这么做了。这让她脑子里充满了更宏大的外部故事，你一定是这样。”他叹了口气。 “谢谢你，队长。我姐姐现在一定恨你，但你确实做了正确的事。`
+			`“在过去的 6000 年里，没有任何检查员从他们的探险中回来，事实是，我非常担心你会导致我妹妹死亡。这对你们俩来说都更好。”他给你几秒钟的时间来处理，然后继续。 “拜托，别对着她，我请求你不要这么做。我确信我无意伤害你，她是。只是……她一直试图离开这么久，害怕告诉你全部真相，我想她是这样。”他轻轻点头，然后返回他的船。`
+				decline
+			label wrong
+			`“等待‘探索者’的，只有未知的、确定的厄运。我希望这成为我妹妹的命运，但我不希望，”他回答道。`
+			label hired
+			`“<last>队长与此无关。只是同意帮助我，他们有，和你接的工作没有什么不同，这就是。”塞德利塔里斯说。`
+			`“这不是一份工作，而是一场注定以悲剧告终的长途跋涉。”他思考了几秒钟，看着降落在高原上的萨雷德飞船。 “离开的许可，你有，但你有义务这样做，你没有。退出，你仍然可以。离开队伍，你可以，和我一起工作。给你我自己的船，我会的。就像那样，你不愿意吗？再次驾驶你自己的船？”`
+			`“我终于可以离开了。我不会放弃这个机会的，Repilor。几周后我就会回来，然后你就可以对我说教了。”`
+			`他低头凝视了她一会儿，伸手捂住脸，擦掉眼角的泪水。 “哥哥应该比这更聪明才对。”他转身返回旅居者号，并与三位旅行者一起出发。`
+			label accept
+			`代表们敦促你和塞德利塔里斯跟随他们进入建筑群，穿过墙壁和栅栏，进入较大的仓库之一。里面，堆到天花板的大架子围绕着中间的六角形孔，由金属条和关闭的门封闭。你被告知这是一部电梯，正在运送塞德利塔里斯所需的设备。`
+			`“我对你目睹的丑闻深感抱歉，船长，”你等待时她说道。 “我没想到，我哥哥会跟着我们来这里。”`
+			choice
+				`“没关系，说明他很关心你。”`
+					goto care
+				`“他不是擅自闯入这里吗？为什么还允许他这么做？”`
+					goto trespassing
+				`“他到底在担心什么？是不是出了什么事情，让他害怕你离开了？”`
+			`她想了想，然后说道，“禁止离开，无论是平民还是普通的赫利亚克斯。只有得到议会许可的特工——像我这样的检查员——才可以这样做。这是一个帮助保护我们有限的跳跃驱动器的简单措施，但在民众中产生了某种禁忌，法律规定了这一点。”`
+				goto elevator
+			label trespassing
+			`她咯咯地笑。 “可能是因为守卫们都同意他的观点。看到仲裁者基查里的反应，你也同意了。不太支持这次远征，队伍中的大多数人都是这样的。”`
+				goto elevator
+			label care
+			`“我想是的。只是，希望他能以不那么……鲁莽的方式表现出来。”`
+			label elevator
+			`电梯到达，并带来了一对 Arachi，他们携带着一个高高的天线状塔架，塔架上覆盖着螺旋状的绝缘线。 Arachi 人将机器带出电梯，并向 Heliarch 代表展示了一些文件，他们轮流阅读并签署这些文件。最后，塞德利塔里斯也做出了手势，阿拉奇人将塔架带到了你的船上。`
+			`一切准备就绪后，Heliarch 代表会要求您将他们带到太空港城市。一旦你着陆，他们很快就会离开你的船，并且懒得向你或塞德利塔里斯说再见，而是消失在一座Heliarch建筑中。`
+			`“好吧，我们现在就出发了，”塞德利塔里斯说。 “准备好前往我们的第一站了吗，队长？”`
+			choice
+				`“当然。我们要去哪里？”`
+					goto stop
+				`“你能告诉我那台机器是什么吗？它有什么帮助？”`
+			`“它是一个解密塔。它们是为了保证我们的数据安全而开发的，”她解释道。 “每次探险队都会生成一种独特的加密模式，这样就可以找到有关他们的重要信息，而外部力量则无法做到。根据我祖先探险队的模式进行校准，这就是。”`
+			label stop
+			`她要求查看你的星系图，并将数据与塔中记录的数据进行比较。在比较了匹配的系统几分钟后，她将您指向 <destination> 。 “每次探险的第一站都是那个世界。那里保存着一系列日志条目，详细说明了每位领导者为自己的探险制​​定的计划。你知道人类是否发现了这个世界，船长？”您向她解释说 <planet> 是一个人类小镇的所在地，但您还没有听说过那里有外星人发现。 “希望能够找到并捡起它，人类还没有。如果我们知道舰队要去的确切位置，那就容易多了。必须穿越数百个星系来寻找它们的停靠点，然后将它们按顺序拼凑在一起，我们不会。”`
+			`您帮助她将塔架带入她的房间并设置 <planet> 的航向。`
+				accept
+	on visit
+		dialog `您降落在 <planet> 上，但意识到携带 Sedlitaris 的护卫尚未进入系统。最好离开并等待。`
+
+mission "Coalition: Expeditions Past 4"
+	landing
+	name "报告：遥远的家"
+	description "带塞德利塔里斯前往<destination>，这是远征舰队除了金库之外的第一站，这样她就可以开始拼凑发生的事情。"
+	passengers 1
+	to offer
+		has "Coalition: Expeditions Past 3: done"
+	source "Sundrinker"
+	destination "Winter"
+	on offer
+		conversation
+			`到达 <origin> 时，Sedlitaris 检查古代 Saryd 站点所在的坐标，并将数据传递到您的飞船系统。它会把你带到沙漠上的一个台地，上面有一个宽阔的、像峡谷一样的洞。你降落在通往峡谷的台面墙上的一个小开口附近，并跟随塞德利塔里斯进入其中，帮助她将塔架带进去。大约结束时，她指着墙上的另一个洞。 “过去的探险队应该在那边。找到Mimodum留下的那个塔，我们必须。与我们带来的那一个建立物理连接，因为我们需要第一个。‘唤醒’他的探险队留下的其他人，它会的，还有足够的电池，以便更容易地访问其中的数据，他们应该有。”`
+			`当你照亮道路时，她会把塔扛进去。在挖入台面墙的隧道内几分钟后，你就到达了尽头：一个精心雕刻的房间，里面有十件与塞德利塔里斯的塔相似的物品，尽管其中四件的设计非常不同，更接近于米色的块状方尖碑。她放下了塔架，并要求你用灯照射它，以便她可以对其进行配置。然后，她开始修补一些连接到塔下半部分面板的电线。 “要确定其中哪一个是最新的，请以其频率发送信号，我会的。”`
+			choice
+				`“所有这些流程的设置是为了让夸格人即使找到了你的日志也无法获取它们吗？”`
+					goto process
+				`“到达这些塔的所有洞穴探险是怎么回事？”`
+			`“我理解你的沮丧，”她说。 “在用跳跃驱动器进行外部探索后，第一批离开联盟的萨利德人尝试殖民他们发现的一些世界，他们确实做到了。由于距萨利德空间距离太远，而且难以获得补给，他们失败了。正因为如此，一旦在这个世界上留下了最初的探险日志，我们就开始费心去建立适当的基础设施，而我的前任却没有。”她想了想，然后继续说道：“虽然，这有助于减少其他人发现它的可能性，但糟糕的入口可能会。”`
+				goto pylon
+			label process
+			`“不，古代萨利德人在与夸格人发生冲突之前就采用了这种方法，”她解释道。 “事实上，夸格人是最先提出这个建议的人。截然不同的是，独立战争前后使用的程序是，但总体做法是保留的。”`
+			label pylon
+			`完成电线后，她按下按钮，其中一台具有相同螺旋设计的机器发出嗡嗡声。 “就是那个，”她说，并要求你帮助她将塔移到发出声音的塔附近。她在每个塔的底部用电缆将两者连接起来。过了一会儿，旧的塔架发出咔嗒声，发出几声短促的嘟嘟声。 “现在有足够的能量来传输数据，它应该有。”`
+			`几秒钟过去了，又传来一阵嗡嗡声。她看着面板上的小屏幕，确认数据都是安全的。 “在他们的塔之前复制探险队的数据，第六个复制了，所以节省了我们一些时间，他们有。通过我的翻译设备播放他们记录的日志，我会的。”她将两个塔彼此断开，并在面板上输入了一些命令。短暂的停顿后，一段音频信息开始播放，并被塞德利塔里斯脖子上挂着的盒子拾取并翻译。`
+			`“记录开始，第六次向外探险。仲裁者米莫杜姆，这是领导第六次。使用这些塔，跟踪我们的主要停靠点，我们应该。如果可能的话，任务指令是比我们之前地图中记录的更远。希望收集有关外部系统安全程度的数据，我愿意。将舰队分成两半，我已经。向东直行，分裂组的四名惩罚者。之后，在我们来的时候与我们会合从北方下来，他们会的。关于目前在我指挥下前往遥远家园的惩罚者，我们将评估这个星球的发展情况，以确定是否可以在该星球上建立一个基地或殖民地，并用我们的发现。”`
+			`录音结束，塞德利塔里斯再次拾起塔，准备将其带出洞穴。 “知道我们的下一个目的地，我们现在知道了，”她说。`
+			choice
+				`“你知道‘远方’在哪里吗？”`
+					goto where
+				`“他所说的‘如果可能’是什么意思？是否有什么东西阻止了他们探索某个点？”`
+			`“阻止他们？”她停顿了很长时间，目光锁定在塔架上。 “我也想知道。也许他们遇到了一些麻烦。从其他日志条目中了解更多信息，我相信我们会的。”`
+				goto end
+			label where
+			`“这是我们第一次尝试殖民外部世界。它应该在西北的某个地方，但我们需要查阅你们飞船的记录以获取确切的坐标。”`
+			label end
+			`你们两个走出洞穴，返回峡谷，然后从那里前往你们的船。 Sedlitaris 要求您提供地图，并再次将坐标与塔中的数据进行比较，发现 <destination> 就是记录中提到的“遥远的家”。她前往她的房间，您将 <planet> 设置为目的地。`
+				accept
+	on visit
+		dialog `您降落在 <planet> 上，但意识到携带 Sedlitaris 的护卫尚未进入系统。最好离开并等待。`
+
+mission "Coalition: Expeditions Past 5"
+	landing
+	name "报告：远古之光"
+	description "带塞德利塔里斯前往远征舰队的下一站<destination>，她的祖先希望在那里调查一些外星遗迹的遗迹。"
+	passengers 1
+	to offer
+		has "Coalition: Expeditions Past 4: done"
+	source "Winter"
+	destination "Skymoot"
+	on offer
+		conversation
+			`当您穿过 <origin> 的第一片云层时，Sedlitaris 开始在塔架上工作，完成后不久会听到微弱的蜂鸣声。 “再往南，就是这个世界的塔了。”你驾驶着你的船向南航行，她要求你在到达极点的途中停下来。她再次输入命令，又一声提示音响起。 “我们已经通过了。确定它的确切位置，我们必须。塔架上没有足够的电池来发送这些信号。”你向东北飞行，然后直接向西飞行，每次你的船停下来时她都会发出信号。`
+			`对塔的坐标进行三角测量后，您飞到冰川上并降落在一个看起来足够稳定的地方，可以承受您的船的重量。塞德利塔里斯说，由于冰川融化和重新冻结，这座塔肯定被冰覆盖了，尽管这似乎并没有损害它的系统；她在修补你船上的塔架一段时间后远程访问数据。`
+			`完成后，她播放了记录探险队在这个星球上的日志：“日志开始了。正如预期的那样，这个世界正在发展，而且显然仍然没有受到影响，它仍然存在。对于非萨里德居民来说太冷了，但通过一些改造工作，为 Kimek 和 Arachi 特工提供一个足够舒适的基地，它可能是。撇开行星不谈，我们注意到了更多的超航道连接。依赖于他们，这支舰队不是，但与以前有很大不同。记录，现在的记录，好像被打乱然后重新排列，他们接下来要去远古之光，我们必须检查那里的废墟和龙。”`
+			`记录结束，塞德利塔里斯开始将她获得的数据与你船上的地图进行比较。 “是的，他是。在第五次探险之后的某个时刻，在第六次探险之前，这个地区的超航道网络发生了变化。”`
+			choice
+				`“知道那是怎么发生的吗？”`
+				`“我想‘远古之光’就是我们接下来要去的地方？”`
+					goto next
+			`“超航道对我们的通讯网络至关重要。贝布利斯家族是该领域最先进的组织，但他们已经学会了篡改超航道的方法，即使他们还没有。”她停了下来，看着附近与联盟接壤的星系。 “在变化之前或之后，我们的空间都没有链接。如果是一种自然现象，那么链接的混乱是非常不幸的，我们就是这样。”`
+			choice
+				`“好吧，至少我们知道下一步该去哪里。你能将坐标与我的地图进行匹配，找到‘远古之光’在哪里吗？”`
+					goto next
+				`“那如果这不自然呢？”`
+			`她沉默了一会儿，眼睛没有离开地图。 “夸格人告诉了一群古老的萨利德人，他们做到了。‘德拉克’，我想他们这样称呼他们。他们说，他们把恒星系统之间的路径编织在一起。也许他们所做的，就是扰乱。”`
+			label next
+			`她将远古之光的坐标与您的地图进行比较，并找到 <destination> 。您告诉她您将设定 <planet> 的航向，然后她返回自己的房间。`
+				accept
+	on visit
+		dialog `您降落在 <planet> 上，但意识到携带 Sedlitaris 的护卫尚未进入系统。最好离开并等待。`
+
+mission "Coalition: Expeditions Past 6"
+	landing
+	name "报告：峰会"
+	description "乘坐塞德利塔里斯前往<destination>，这是塔记录上最北的点，也是远征舰队的下一站。"
+	passengers 1
+	to offer
+		has "Coalition: Expeditions Past 5: done"
+	source "Skymoot"
+	destination "Watcher"
+	on offer
+		conversation
+			`塞德利塔里斯开始进行三角测量，再次寻找下一个塔，并带你来到一座高山，一些当地的龙似乎在那里筑起了某种形式的巢穴或繁殖地。当你绕山飞行时，你会尽力避开它们，而塞德利塔里斯会继续发送信号来寻找信号塔。`
+			`“可能是在山里面。信号信号就是从那里传来的。”她停了几分钟，看着显示器上的山景。她再次尝试，并要求你靠近一点。当你又完成一圈时，她要求你停下你的船，让它在空中保持稳定。 “把你的相机变焦到这里，可以吗，队长？”她指着显示器中间问道。你放大后会看到一圈大岩石，周围都是龙巢。岩石顶上有一些树叶，中间有一个黑色的小塔状结构，一端卡在岩石中。看了几秒钟后，你们都意识到这是一个倒置的塔架。 “把它当作某种形式的令牌，龙一定有，”塞德利塔里斯说。 “我希望能够以物理方式取回一些塔，但我更愿意为前一个塔挖出冰川，而不是测试我对龙的运气。我会远程解锁这个塔的数据。”`
+			`当她开始转移时，一条龙栖息在你的船上。它试图咬住引擎，但你再次开始移动你的船以摆脱它。当其他龙飞过你的飞船时，你要避开它们，直到下载完成，然后直接前往太空港城市。`
+			`一旦你的飞船安全降落在机库，塞德利塔里斯就会播放音频日志：“日志开始了。我们用搜索搜遍了整个星球，但没有发现之前访问过的废墟的踪迹，也没有发现任何其他居住在这里的群体的迹象。工程师们向我保证，我们所有飞船的导航系统都工作正常，但在它们应该在的坐标上，废墟却没有，就好像它们从未在那里一样。这是令人困惑的失望，但继续任务，我们必须向北前进，到达顶峰，这是我们与分裂的队伍重新集结之前的最后一个地点。”`
+			`录音结束时，塞德利塔里斯困惑地看着你。 “这个星球上曾经生活过一个智慧物种。我想知道米莫杜姆会对他们有什么发现，但他什么也没发现？只是凭空消失，废墟却不会。”`
+			choice
+				`“你怎么知道这个物种的？”`
+				`“他们消失之前，废墟里到底有什么？”`
+			`“几千年前，第一批来到外面的萨利德人就发现了这个废墟。他们还发现了一些文物，他们还拥有复杂的工具，例如非常大的个人推进装置，并有专用的存储空间。它们被保存在沙罗斯的一些博物馆里。”`
+			choice
+				`“他们找到过这个物种的成员吗？”`
+				`“他们找不到更多东西了？只是一些带口袋的喷气背包？”`
+			`她摇摇头。 “最初的探险队主要储备的是给养。他们并没有准备好在这个星球上进行适当的考古研究。萨利德人向夸格人询问了这些发现，但令他们惊讶的是，他们表现得好像这里什么都没有。就当时而言，他们这样做很奇怪，确实如此。”她用好奇的目光转向你。 “那人类呢，队长？找到了有关居住在这里的物种的任何线索，是吗？”`
+			branch sheragi
+				has "Rim Archaeology 6: offered"
+			choice
+				`“不，我什至不知道这里曾经有过废墟。”`
+					goto "not know"
+			label sheragi
+			choice
+				`「事实上，是的。他们被称为雪拉吉。」`
+				`“不，我什至不知道这里曾经有过废墟。”`
+					goto "not know"
+			action
+				"told coalition about sheragi" ++
+			`她很惊讶你知道得更多，听了你和阿尔伯特·福斯特的故事，以及你如何梦见船只撤离楚格。你告诉她这座被埋在岩石层下的城市、发掘它的努力，以及夸格人最终如何派人监视挖掘过程。`
+			`“城市被熔岩完全掩埋？调整扫描仪来寻找如此奇怪的废墟，任何探险队都必须……”她停下来思考了几分钟，在塔的指挥面板上工作。 “再讲一遍这个故事，可以吗，<last> 队长？我想在这里正式记录下调查结果。”你在接下来的几个小时里重述了你所看到的，并帮助她收集了自从福斯特发表他的初步发现以来人类所了解到的有关雪拉吉及其废墟的信息。`
+			`一旦她满意，你们两个就会查看地图并将坐标与 Mimodum 的下一站进行匹配。`
+				goto end
+			label "not know"
+			`她微微皱眉。 “我也这么想。好吧，更多地了解他们，这次探险的目的不是。这本来是一个不错的奖励，但准备寻找下一个塔，我们应该这样做。”`
+			label end
+			`您打开地图，并使用坐标，得出“Summit”是 <planet> ，一个靠近深渊入口处的小月亮。 Sedlitaris 返回她的床铺，您将航向设置为 <system> 。`
+				accept
+	on visit
+		dialog `您降落在 <planet> 上，但意识到携带 Sedlitaris 的护卫尚未进入系统。最好离开并等待。`
+
+mission "Coalition: Expeditions Past 7"
+	landing
+	name "好奇的红云"
+	description "寻找阿尔吉巴附近的星系，探险队队长米莫杜姆曾在那里跳下调查该星系中的宇宙现象。"
+	passengers 1
+	to offer
+		has "Coalition: Expeditions Past 6: done"
+	source "Watcher"
+	on offer
+		conversation
+			`你绕着月球飞行，塞德利塔里斯确定了塔的坐标，直到你降落在一片森林附近。 “在更深处，一定是塔。这个世界没有人类居住，对吗？”你确认了这一点，她就准备离开。 “这里不用担心龙，因为有，所以试着把这座塔带回来，我会的。”`
+			`你们两个离开飞船进入森林，轮流携带你们带来的塔架，这很容易做到，因为这里的重力低得多。有时，塞德利塔里斯会停下来并放下塔，以便她确定下一步该去哪里。最终，你会注意到，随着你继续前进，树木开始变小，直到你到达一片宽阔、奇怪的空地，那里的地面没有任何当地植物。塞德利塔里斯发现了对面的另一个塔，一半卡在地上，然后将其拉出来。当你跟着她走向机器时，你会注意到地面上很深、完全笔直的洞，形成的线条有时会穿过整个空地，并一直延伸到远处。大部分的地方都被泥土和灰尘填满了，但在某些缝隙中，你可以俯视到数十米深的裂缝。`
+			`塞德利塔里斯在塔架可见的一端系了一根绳子，然后拉动它，将装置的其余部分拉到水面，将泥土推上来。她将其与您带来的塔连接起来并从那里访问数据。 “探险队在这里更加活跃，”她说。 “有三段录音。我们应该把这些带回你的船上；听第一段，我们可以。”`
+			`你们俩都带着一座塔，走出森林，回到船上，塞德利塔里斯立即播放了最古老的条目：“记录开始了。我派了两个惩罚者到更北的地方，但他们还没有回来。至于附近西部星系上的深红色异常，仍然没有反应。无论是终结者弹幕还是试图撞击它，异常都没有反应。研究人员声称，这是一个简单的星云。不是；认为我们错过了一些东西，他们确实需要再等几天，让惩罚者回来，同时，我会去了解一些关于异常的信息，我们可以。”`
+			`米莫杜姆的声音消失后，塞德利塔里斯催促你离开。 “以前听说过这个‘异常’，但我没有。我们必须立即寻找它所在的系统。希望几个世纪后它仍然存在。”`
+				accept
+	to complete
+		has "Coalition: Expeditions Past 7B: failed"
+	on visit
+		dialog `您降落在 <planet> 上，但意识到携带 Sedlitaris 的护卫尚未进入系统。最好离开并等待。`
+
+mission "Coalition: Expeditions Past 7B"
+	invisible
+	non-blocking
+	landing
+	to offer
+		has "Coalition: Expeditions Past 6: done"
+	on enter "Terminus"
+		conversation
+			`Sedlitaris 摆弄着你从 <origin> 恢复的塔架，并让第二条记录的日志播放，同时她凝视着米莫杜姆提到的“深红色异常”。`
+			`“现在我们已经尝试了几乎所有的方法。终结者弹幕，从远处轰炸，驾驶小行星穿过它，甚至在沉浸在红色云中时激活我们的跳跃驱动器。首席研究员告诉我它显示出一些旋转的迹象；试图向我展示它旋转的轴，她做到了。无论如何，找到关于云的任何有价值的东西，我们不能。现在返回山顶，我们，并从那里与舰队重新集结。”`
+			`录音结束，但塞德利塔里斯继续默默地注视着“云”几分钟。`
+			choice
+				`“你要玩最后一首吗？”`
+					goto last
+				`“有什么事吗？”`
+			`“不，只是……考虑到这一点，我是。与联盟内部的任何现象不同，这是。”`
+			label last
+			`她走回塔台，犹豫了一会儿。 “回到山顶，米莫杜姆说他们会去。更好地了解他的下一步行动，如果听一下我们发现这个的空地上的最后一个条目，我们就会这么做，”她一边说，一边敲击着塔架。`
+			`您告诉她您很快就会回到 <origin>，然后她就走向自己的床位。`
+		fail
+	to complete
+		never
+
+mission "Coalition: Expeditions Past 8"
+	landing
+	name "丢失检查站"
+	description "前往标记的星系，以便塞德利塔里斯可以寻找探险队的信号频率。"
+	passengers 1
+	to offer
+		has "Coalition: Expeditions Past 7: done"
+	source "Watcher"
+	waypoint "Rasalhague"
+	waypoint "Cebalrai"
+	waypoint "Zeta Aquilae"
+	waypoint "Ascella"
+	waypoint "Peacock"
+	waypoint "Kaus Australis"
+	on offer
+		conversation
+			`你再次降落在森林旁边并再次冒险进入其中。这条小路你们记忆犹新，你们两个很快就到达了空地，塞德利塔里斯将塔架放在了被挖出来之前的位置附近。 “几乎就像我们和他们在一起一样，这应该是，就在他们离开塔架的地方。希望这也能更好地了解他们的想法。”`
+			`她开始录音，您首先听到的是尖锐、静态的嘟嘟声。过了一会儿，你可以听到焦躁的声音，好像工作人员正在讨论什么，但塞德利塔里斯的翻译没有接听。最后，米莫杜姆熟悉的声音响起，“被摧毁了，舰队的其余部分。已返回星系，其中一支向北行驶的惩罚者一定是这样；我们确实遇到了星系中漂浮的一些碎片。起飞，山顶上的其余部分无法起飞。地面是……”静电声返回，这一次包括一些类似刮擦的停顿。 “……像粘土一样切割……岩石……熔化……”它再次切换到静态，然后停了一会儿。当它回来时，干扰噪音就消失了。 “我必须与分散的小组会面。警告他们发生了什么事，然后和他们一起回家，我会的。”`
+			`你们两人沉默地看了一会儿塔架，然后她慢慢靠近机器把它捡起来，说道：“本来应该立即回家的，如果被摧毁，远征船就会被摧毁，其中一艘惩罚者会被毁掉。如果遵循这些命令，他……就不能保证分队的生存，他有。如果回家，他们就……”`
+			choice
+				`“他可以这么做，但那样的话其他人就不会知道任何惩罚者被摧毁了。他们不会知道要回去。”`
+				`“看来他们没有选择最好的人来执行这些命令。”`
+				`“我们不知道如果他立即返回，他是否能成功。我相信我们会通过下一个塔来找到更多信息。”`
+					goto more
+			`她没有回应，而是低头看着空地地面上的线条。她靠近一个，躺下并伸出双臂去触碰裂缝。几分钟后，她站起来看着你。`
+			label more
+			`“回到船上，我们该走了，”她说。 “我会试着弄清楚米莫杜姆下一步要去哪里。他要在哪里与分裂的小组会面。”`
+			`沿着小路返回后，塞德利塔里斯走进她的铺位修补塔架。夜幕降临后几个小时她就出来了，要求你给她看你的地图。 “两个群体正在进行一场夹击运动。很难知道确切的行星，因为我们没有来自分裂群体的数据，但我想我已经知道了两个群体将连接的整个区域。”`
+			`你帮助她匹配坐标，最终得到了 Sol 和 Tarazed 之间的一组系统。 “我们可能需要访问每个系统。接收到他们下一个塔的微弱信号，虽然在正确的系统中我可以，但我无法知道它到底在哪里。”`
+				accept
+	on enter "Rasalhague"
+		dialog `一旦您进入系统，Sedlitaris 就会让塔台开始搜索任何匹配的信号。几个小时过去了，机器没有返回任何坐标，但也没有报告故障。 Sedlitaris 困惑地看着它，然后重新启动了它。 “绕着系统飞一会儿，可以吗，舰长？也许信号受到影响，飞船当前的位置是。”你按照她的建议去做，然后再慢慢地巡游几个小时。塔再次没有给出任何答案。 Sedlitaris 说这可能是一些奇怪的特定错误，并要求您继续使用下一个系统。`
+	on enter "Cebalrai"
+		dialog `塔在该系统中很快做出回应，没有报告类似的信号。 Sedlitaris 敦促您转移到下一个系统，然后返回检查数据。`
+	on enter "Zeta Aquilae"
+		dialog `塞德利塔里斯让她的塔工作了大约一个小时，但没有返回系统中任何其他塔的迹象。 “他们可能经过这里，但那个世界并不是侦察的优先事项，”她指着兰德说道。你告诉她你很快就会转向下一个系统，然后她就回去继续制作塔架。`
+	on enter "Ascella"
+		dialog `塔搜索了一段时间，但告诉塞德利塔里斯系统中没有其他塔。她轻轻叹了口气，请你继续下一个。`
+	on enter "Peacock"
+		dialog `“如果正确的话，我的估计是，最有可能的交汇点应该是，”当你跳入系统时，塞德利塔里斯说道。她让塔工作了一段时间，但它没有返回类似设备的信号。 “嗯……要么估计错了，我有，要么就是在这里开会时出了问题，两个小组出了问题。检查下一个系统，我们应该。”`
+	on enter "Kaus Australis"
+		dialog `几分钟后，塔楼发出几声安静的口哨声，塞德利塔里斯短暂地庆祝了一下。 “在那个星球上，它是！很高兴我们设法找到它，我很高兴。”你告诉她你很快就会降落在霍珀星球上，这样你就可以在星球上寻找塔。`
+	to complete
+		never
+	to fail
+		has "Coalition: Expeditions Past 9: offered"
+	on visit
+		dialog `您降落在 <planet> 上，但意识到携带 Sedlitaris 的护卫尚未进入系统。最好离开并等待。`
+
+mission "Coalition: Expeditions Past 9"
+	landing
+	name "逃生路线"
+	description "探索 <system> 西南部的星系，寻找通往 Ablub 星系的可能路线，以便 Sedlitaris 寻找探险队的信号频率。"
+	passengers 1
+	to offer
+		has "Coalition: Expeditions Past 8: active"
+	source "Hopper"
+	on offer
+		conversation
+			`当 Sedlitaris 搜索塔的确切位置时，您在 <origin> 附近飞行，希望她也能把它带回来。她告诉你在山脉附近着陆，并在她试图确定塔的确切位置时让你经常重新调整着陆点。 “他们一定把它埋起来，以保护它免受大气酸性的影响，”她评论道。`
+			`当她完成后，您将船舱门打开到塔架应该所在的位置，并帮助她将其挖出来，注意不要在外面呆太久。当设备被挖出来时，你把它带进你的船里，而塞德利塔里斯则用挖出来的泥土填满洞。`
+			`当你飞向太空港时，她播放了塔架的条目：“记录开始了。从山顶直接到集合点，我已经找到了一条路线，但找到了分开的小组，我找不到。焦躁不安，焦躁不安，船员们变得焦躁不安，焦躁不安，直奔阿布卢布，我们，埋葬后，这个东西是。如果找到这个，分开的小组中的任何人都回来——”就在那时，一个未翻译的喊叫声掩盖了米莫杜姆所说的话，随后是数十条腿匆忙。录音结束前，传来“不……”的声音。`
+			`你专注于驾驶飞船，但即使你已经着陆，塞德利塔里斯仍然保持沉默。`
+			choice
+				`“你还好吗？”`
+				`“他说他们要立即回去，但他们没有成功。你认为那是最后一个塔架吗？”`
+				`（保持安静。）`
+			`她仍然一言不发。 “访问这里和阿布卢布之间的星系，可以吗，船长？如果沿着他们使用的路线走，我们会做，如果还有更多发现，那就接收信号，我会的。”`
+			`你同意了，并寻找一条向西南方向阿布卢布方向的路线。`
+				accept
+	on enter "Girtab"
+		dialog `自从您前往阿布卢布后，塞德利塔里斯一直躺在她的床铺上，但当您进入系统时，您可以听到她在床铺上喊叫。她带着塔向你跑来。 “收到信号，收到了！”她指着机器的面板说道，面板上不断传来一些信息。 “我们必须登陆那个星球，队长！”你告诉她你很快就会着陆，一旦你着陆，她就会留下来和你一起找出和谐号上的塔架位置。`
+	to complete
+		never
+	to fail
+		has "Coalition: Expeditions Past 10: offered"
+	on visit
+		dialog `你还没有找到第六次探险队的最后一个塔。尝试在从该系统到 Ablub 的路线上搜索它。`
+
+mission "Coalition: Expeditions Past 10"
+	landing
+	name "过去的探险"
+	description "返回 <destination> ，塞德利塔里斯将在那里向 Heliarch 委员会报告她的发现。"
+	passengers 1
+	to offer
+		has "Coalition: Expeditions Past 9: active"
+	source "Harmony"
+	destination "Ring of Friendship"
+	on offer
+		conversation
+			`一旦接近行星表面，塞德利塔里斯就开始尝试访问塔中记录的数据。 “如果可以的话，稍后再恢复，我们可以的。”她尝试了几分钟，但她所能得到的只是扭曲的静电，所以她开始确定它的位置。 “清理传输，距离应该更近了。”`
+			`你飞来飞去，直到飞到海洋上方，无论你往哪里看都看不到陆地。 “它就在我们下面，”她说。 “为什么要在水下？为什么要把它扔进海里，对吧？”她致力于将数据传输到她自己的塔上，因为你无法找到原始数据塔，并在播放之前尽可能地清除录音。`
+			`几秒钟内，只有一些环境声音、低沉的背景嗡嗡声和一些粗重的呼吸声。 “当我们准备离开最后一个星球时，他们伏击了我们，”米莫杜姆说道。 “我们有足够的燃料一次性返回，所以我们尽可能地跳。然而，这个星系中有太多的船只，就像一堵墙挡住了我们。”他停了下来，你可以看到类似金属的东西轻轻落在桌子上。 “他们意识到了这一点。那次探索，我们曾经做到。那次分裂，我们做到了。那次成功，我们无法返回。看到这一点，他们的数十艘船做到了。我们曾试图在这个星球上失去他们，但当我们坠落时，我们被抓住了。切断了大部分引擎，天枪火已经这样做了。一艘孤独的、正在下沉的船，第六艘剩下的就是。保持在一起，船体应该，但我们没有出路，有。”他再次停顿，足有一分多钟。 “如果在那些人第一次要求时返回……不，即使在那时，他们的船只一定已经在等待了。如果分开舰队，我没有……数量仍然超过，我们会的。至少……”又是一次停顿，这次只有几秒钟长。 “至少……步枪还能用。”`
+			`录音结束，你们两个尴尬地沉默了一分钟。 “我意识到他已经死了。已经过去太久了。即使找到了一个安全的避难所、宜居星球或一个友好的群体，舰队也已经死了，我知道他们所有人都会死去很久。”她停顿了一下，又恢复了一分钟的沉默。她关闭了塔架。 “只是，我期待着什么……任何事情。英勇的死亡，调查结果的总结。他们什么也没完成。毕竟，执政官们是。”`
+			choice
+				`“无论是否英勇牺牲，他还是得到了一些信息不是吗？信息你恢复了。”`
+					goto info
+				`“他没有机会表现英勇。他遭到伏击。”`
+			`“如果夸格人的人数属实的话，他确实被屠杀了，”她回答道。 “第六次远征队冒着很大的跳跃风险。人们认为，惩罚者数量越多，安全返回的机会就越大。”她叹了口气。 “只要减少我们的储备，确实如此。”`
+				goto back
+			label info
+			`“关于红色星云或消失的废墟的不确定报告有什么用？”她叹了口气。 “在夹击行动中相遇后，这些团体在探索了兴趣点后，应该比我们之前行驶得更远，他们确实是这样。为了到达银河系核心，也许为了找到友好的团体来促进更多的旅行……实现了，但所有目标都没有实现。”`
+			label back
+			`她回到自己的床铺，说她想一个人呆一会儿，然后你就飞往了地球的太空港。几个小时后，她回来了。 “我已经完成报告了。我准备回家了，<last> 队长。这是一次长途旅行，我答应给你丰厚的报酬，我做到了，所以当我们到达 <planet> 时，我将给你你应得的 10,000,000 积分。我必须向理事会报告我的调查结果。”`
+			choice
+				`“那是很多钱。我担心你甚至不想付钱给我，因为你之前有多失望。”`
+					goto money
+				`“你不担心我们会遭到伏击，就像米莫杜姆的船那样吗？”`
+			`她笑了一会儿，似乎把这当作一个玩笑。 “如果夸格人要伏击我们，他们早就这么做了。我们现在离联盟太近了。”`
+				goto accept
+			label money
+			`“啊，请原谅我，队长。确实，我很失望。但是，检查员不应该让这影响她的职责，”她解释道。 “你已经完成了你的工作，所以现在我必须完成我的工作。Mimodum 的音频条目中没有讨论，委员会感兴趣的许多细节都是。我已经准备好了这些数据的初步收集。”`
+			label accept
+			`她要求您尽快带她到<destination>，然后回到她的床位休息。`
+				accept
+	on visit
+		dialog `您降落在 <planet> 上，但意识到携带 Sedlitaris 的护卫尚未进入系统。最好离开并等待。`
+	on complete
+		"coalition jobs" += 15
+		conversation
+			`塞德利塔里斯使用你的通讯链接告诉太空港当局她已经回来了，在你着陆后不久，一群Heliarchs和联盟平民就包围了你的飞船。赫利亚克特工尽其所能地组织人群，一群赫利亚克执政官冲过人群，在你们的船上与你们见面。`
+			`“督察！这是一次最……幸运的回报。你收集到的大量信息，我们接受吗？”一位阿拉克领事问道。`
+			`“是的，我们渴望听到你的报告，”一位基梅克领事继续说道。 “能够从我们一位尊敬的检查员那里了解外界情况，这是一次难得的机会。”`
+			`一位脸上表情严肃的萨利德执政官插话道：“你的祖先米莫杜姆带着他的舰队回来了，却没有。你知道原因吗？”`
+			`“是的，”她说。 “恢复尽可能多的信息，我做不到，但准备了一份关于 <last> 船长和我发现的报告，我已经恢复了。此外，我们还恢复了 Mimodum 留下的两座塔。”`
+			`一位领事对你说：“告诉我们，船长，在旅途中遇到任何呃……并发症，是吗？也许是因为保民官——督察——和你在一起而引起的？”`
+			choice
+				`“只要有人类看到她的风险，她就会呆在我的船上，如果你问的是这个的话。”`
+				`“我没发现有什么异常，没有。”`
+			`他们要求一些特工将塔从你的船上取出，并将它们运送到塞德利塔里斯可以展示她的发现的地方。当他们告诉她跟随他们到将要进行演示的房间时，基梅克·赫利阿奇冲破了阻止人群前进的特工队伍。你认出他是仲裁者 Kicharri，你在 Sedlitaris 获得 Heliarch 议会批准之前就认识了他。`
+			`“这是什么？”当基查里走近时，萨利德领事走到他面前。 “仲裁者，适时与你分享调查结果，但监察员向我们领事报告的情况，优先事项是，所以，你还是回到你的职责上吧——”`
+			`“不，她会见见她的家人，”基查里打断了他。 “我从她哥哥那里听到的只有地狱般的声音，她的父母很伤心。现在她回来了，看看他们，平息他们的忧虑，她会的。”`
+			`“谁的命令？”一位阿拉克领事插话道：“我们都对她的发现很感兴趣，我们必须立即听听她的说法。”`
+			`“命令？”基查里惊呼道。 “让她离开、受死的命令，你以为是你给她的！”基查里看了看塞德利塔里斯，然后又看了看执政官们。 “如果你这么感兴趣，肯定会错过任何信息，你不想的。她是最适合提供完整报告的人，一旦从探险中休息下来，她就做到了。”`
+			`领事们对他的反应感到恼火，让特工清理了该区域，并将你的船暂时变成了临时会议室，让每个人都出去，而他们则进去讨论。几分钟后，他们回来了，其中一名基梅克说：“护民官，我们将给你十天的假期。之后，你必须向我们展示你的发现。你也将被考虑晋升为仲裁员，因为你在探险中的勇敢和工作。”`
+			`执政官队伍离开，基查里接近你和塞德利塔里斯。 “告诉我你为什么一直都是对的，以后你就可以，”基查里告诉塞德利塔里斯。 “现在，我必须将你重新添加到活跃的Heliarchs列表中。你显然是因为‘系统故障’而被标记为死亡的。”他用一只腿反复敲击地面，同时瞥了一眼你的船。 “很高兴你能安全回来，我很高兴。”`
+			`他也离开了，塞德利塔里斯转向你。 “有点混乱，但至少我们受到了欢迎，对吧？”她看着你的船，然后看起来很惊讶。 “你的付款！没时间给你转钱，他们给了我。”她拿出个人设备，将一千万积分转入你的账户。 “你就是了。更有价值，你的帮助是，但不幸的是，我的资金是有限的。”`
+			choice
+				`“别担心，我很高兴能帮到你。”`
+					goto end
+				`“为什么每个人都对我们回来如此惊讶？似乎他们以为再也见不到你了。”`
+			`当你问这个问题时，她的笑容消失了，而且她似乎很难找到一个可以看的地方。 “我……我，队长——”她环顾四周，然后深吸了一口气。 “抱歉，船长。自从脱离夸格人独立以来，我们已经从联盟中获得了六次远征。返回，只有第一批的船只做到了。我祖先的舰队中装备最精良、数量最多的是第六远征舰队。我们越来越害怕离开，而最后一次远征已经是几个世纪前的事了，甚至谈论离开都成了一种禁忌。第六次远征离开一年后，实际上禁止了任何进一步的远征。探险队，理事会做到了。”她再次用眼睛四处旅行。 “抱歉，我对你隐瞒了此事。我想知道发生了什么，我确实这么做了。我担心，你会像其他人一样拒绝帮助我，如果你知道其中的风险，你就会这样做。”`
+			choice
+				`“好吧，我们安全回来了，而且你对此充满热情，愿意冒险。我不反对你。”`
+					goto forgive
+				`“所以你对我撒了谎。你可能会害死我们——我们可能会在一艘沉入大海的船上。”`
+			`她吃了一惊。 “船长，没有夸格人在追赶我们。确实，既然居住在所有这些星系中，人类就会避免像那样攻击船只……”她停了下来，叹了口气。 “对不起，我对你撒谎了，船长。”`
+				goto end
+			label forgive
+			`她松了口气。 “谢谢你，队长。我的本意不是为了欺骗你。多亏了你的帮助，也许我可以结束这种对离开的恐惧，甚至说服议会重新开始探险工作。”`
+			label end
+			`突然，一艘萨里德旅居者几乎撞上了你的船，勉强躲开，它降落在距离你的船不到二十米的地方。 “我的弟弟，”塞德利塔里斯看着这艘船说道。 “请原谅我，队长，但我必须去见见我的家人。从之前的讨论来看，他们一定非常担心我。再次感谢你所做的一切。”她的哥哥离开船时冲上来拥抱她，然后一边尖叫着一边摇晃着她。一对年长的萨德夫妇也慢慢地从寄居者中走出来，塞德利塔里斯和她的兄弟去迎接他们，拥抱着走进去。旅居者号在太空港工作人员开始照料这艘船之前就起飞了，当它离开环形世界时，你会看到它。`
+			branch sheragi
+				has "told coalition about sheragi"
+			action
+				payment 35000000
+			`当您返回船内时，您会收到通知，更多积分已转入您的帐户。好像是赫利亚克政府发来的，额外给你2500万信用点，感谢你帮助恢复第六次远征的数据。`
+				decline
+			label sheragi
+			action
+				clear "told coalition about sheragi"
+				payment 50000000
+			`当您返回船内时，您会收到通知，更多积分已转入您的帐户。好像是赫利亚克政府发来的，额外给你2500万信用点，感谢你帮助恢复第六次远征的数据。发生了这一切之后，你决定在船上休息一段时间，但不到一个小时，你的船就受到了当地政府的欢迎，要求你打开舱门。`
+			`你照做了，之前的一位天使执政官，萨里德，进来了。“你好，船长，”他用有点颤抖的声音向你打招呼。 “只是回顾一下调查结果，我们……”他努力寻找词语，眼睛盯着地面。 “最引起我们注意的是关于远古之光的报道。关于‘雪拉吉’和附近世界的废墟的报道。”他停顿了一下，拿出一个类似于 Sedlitaris 用来给你转账的设备。 “完成了远古萨雷德巡查员的旅程，人类的努力，你们的努力，已经有了。为此，希望能够补偿你们和女孩足够的，议会不能。”他输入了一些命令，你发现你又收到了 15,000,000 积分。 “让她去死，我们做到了。我做到了。带着我们祖先梦想揭开的秘密的答案，她回来了。”他的目光终于抬起来，与你的目光相遇。 “我很高兴，他们至少为我们中的一个人感到骄傲。”他再次移开视线，向你点点头，然后离开了你的船。`
+
+
+
+mission "Coalition: Long Lost Property 1"
+	minor
+	name "失落已久的财产"
+	description "前往 <system> 系统恢复伊德里斯家族的卫星，或者尝试了解它发生了什么（如果它不在那里）。"
+	to offer
+		has "Coalition: First Contact: done"
+		random < 75
+	source "Ablub's Invention"
+	destination "Darkstone"
+	on offer
+		conversation
+			`你注意到一对 Arachi（由于他们的制服，你认为他们是太空港工作人员）一边指着你的飞船一边说话。其中一只比您见过的大多数阿拉克略短，而另一只则稍高一些。当他们发现你注意到他们后，他们就会接近你，其中体型较大的他们会说话。 “对不起，船长，但我们需要你的帮助。”`
+			`“我们在伊德里斯家族工作，我们希望找回一些丢失的财产，伊德里斯家族就是这样，”矮个子解释道。 “陪我们去一下总部，可以吗？我们的老大，来见见你——”`
+			`“总统，”另一个人打断了他的话。`
+			`“我们的总统会的。”`
+			choice
+				`“我还有时间，你带路吧。”`
+					goto proposal
+				`“你失去的是什么？”`
+				`“抱歉，我没兴趣。”`
+					decline
+			`“嗯……就是说，机密信息，”较高的那个说。 “如果你想了解更多，就陪我们一起吧，你应该的。”`
+			choice
+				`“好吧，那就给我带路吧。”`
+				`“这似乎有点阴暗。我会过去的。”`
+					decline
+			label proposal
+			`他们将您带到距离太空港不远的一条死胡同，周围环绕着各种旧建筑。尽头是一个宽阔的洞，几乎就像地铁入口一样，有楼梯通向地下几十米。你跟着他们走下楼梯，发现了一个类似于海关区域的地方，一些穿着制服的阿拉奇和基梅克一看到你们三个就准备好站岗。`
+			`等待一段时间后您继续，因为操作员坚持手动检查您的电子设备的每一个细节。在里面，你会看到几十名工作人员在电脑前工作，其中一人偶尔会走到后面并乘电梯到某个地方。他们很少说话，所以你能听到的唯一声音是你下面一些机器工作的声音。最终，迎接你的是一位穿着某种燕尾服的阿拉克，或者至少是与之相当的燕尾服，蓝色的布料上点缀着黑色的纽扣。 “啊，<last> 队长，你一定是！”她向你打招呼。 “欢迎来到我们公司总部。”`
+			`她催促你跟着她去她的办公室，你就跟着引导你来到这里的两个阿拉奇一起走。进入办公室后，她自我介绍道，这是一间为 Arachi 设计的朴素、宽敞的房间。 “弗洛普格，你可以打电话给我。我是伊德里斯议院的代理议长。现在，我们被告知我们需要你的服务，是吗？”`
+			choice
+				`“这两个人告诉我伊德里斯家族丢失了一些东西。”`
+				`“不，不是真的。”`
+			`“近九千年前，甚至在联盟成立之前，就发起了一项……某种探索，以进行一项长期实验，当时的伊德里斯家族就曾进行过，”她解释道。 “被发送到附近的一个可能存在宜居行星的系统，它的速度加速到大约光速的一半。”她用一条腿轻敲桌子上的某个地方，顶部出现一个屏幕，显示当地恒星系统的地图。 “你认得这个吗？”她指着其中一个系统问道。 “我们相信它是一个目前有人类居住的星系。探测器很快就会到达那里，如果已经到达，它还没有到达。”`
+			`经过进一步检查，您将屏幕中的系统拼凑在一起，并意识到她指向的系统是 <system> ，仅一步之遥。`
+			choice
+				`“我还没有听到任何探测器进入汉城的消息。”`
+				`“那你想让我做什么？”`
+					goto do
+			`“没有？好吧，探测器的目的地，那个系统是。嗯……也许会为了一些额外的数据而延迟……”她安静下来，陷入了沉思。`
+			label do
+			`“我们需要有人取回探测器。它的设计是带有人工智能，可以在旅途中学习，所以即使非常过时，这些设备也可能是无价的，它通过观察星光收集的数据可能是无价的。或者只是有点有趣，但我们希望是前者。”`
+			choice
+				`“好吧，我这就去找找。”`
+					goto accept
+				`“如果系统里找不到怎么办？如果还没到的话，是不是要等很久才能到？”`
+					goto wait
+				`“这对我有什么好处？”`
+			`“伊德里斯家族会付给你丰厚的报酬，”她回答道。 “此外，如果有任何用处的话，这些数据已经适应了深空，人工智能可能已经做到了。新技术，这可以为我们提供，我们将与你分享这样的奖励。”`
+				goto accept
+			label wait
+			`“不会太长，”矮小的阿拉克回答道。 “探测器可能会在速度上发生微小的变化，但将其到达时间推迟几周以上是不可能的。从现在起一周后，它到达的绝对限制日期就到了。”`
+			`“如果立即找到它，你不会，也许可以问当地人，”较高的一个补充道。 “在大多数系统中，这样的事件都具有新闻价值。”`
+			label accept
+			`他们向你展示了探测器的图像，它看起来非常像普通的卫星，并表示他们将在你的船上的扫描系统上工作，以更容易地拾取物体的特征。弗洛普格向你道别，并告诉你她必须继续工作，但让两个阿拉奇带你回到你的船上并调整你的扫描仪。他们完成后祝你好运，然后离开你的船。`
+				accept
+	on enter "Han"
+		dialog `你让扫描仪工作了几分钟，但它们无法找到伊德里斯家族的探测器。它可能还没有到达系统，但最好寻找有关黑石的信息。`
+
+mission "Coalition: Long Lost Property 2"
+	landing
+	name "失物招领"
+	description "前往<planet>，这是盗取伊德里斯家族探针的海盗的基地，并尝试从他手中夺回探针。"
+	to offer
+		has "Coalition: Long Lost Property 1: done"
+	source "Darkstone"
+	destination "Greenrock"
+	on offer
+		conversation
+			`查完当地最近的新闻后，你会感到放心，因为你不需要等待探测器到达：像“不明物体进入汉城”这样的普通头条新闻，或者像“末日无人机！面对即将到来的末日你能做什么”这样的耸人听闻的标题，在几周前探测器第一次到达时非常流行。不过，他们都没有详细说明发生了什么，所以你决定询问该星球的居民。`
+			`你问的太空港工作人员似乎只知道它几周前进入系统的事实，而一些当地人似乎相信了更戏剧性的头条新闻，当你提起它时会感到担心。当您到达当地农产品市场时，您询问的一位农民对这个问题做出了一些解释。 “就在我看到有关那台机器的新闻几天后，一群海盗经过这里。他们像往常一样来这里，从我们那里得到食物作为贡品。他们在这里的时候一定读过新闻。其中一个人问我这件事，我们是否看到它做了任何危险的事情。我说没有，然后他嘀咕了一些关于在垃圾场出售它的事情。”`
+			choice
+				`“你听到他的名字了吗？”`
+					goto name
+				`“你知道他去哪里卖的吗？”`
+			`“不，但我猜<planet>。这是他们围绕这些部分进行活动的最大中心。”`
+				goto accept
+			label name
+			`他轻轻一笑，摇了摇头。 “我没有保留他们的名单。他们中的任何一个人出现不止一次的情况都很罕见，大多数人在有机会之前就被从天上炸掉了。他们的一生很短暂，来自 <planet> 的帮派。”`
+			label accept
+			`您感谢他提供的信息，并决定前往 <destination> 看看能否找到拾取探测器的海盗，或者他将探测器卖给的垃圾场。`
+				accept
+	to complete
+		never
+	to fail
+		or
+			has "Coalition: Long Lost Property 3: active"
+			has "Coalition: Long Lost Property 3: done"
+
+mission "Coalition: Long Lost Property 3"
+	landing
+	name "回收探测器"
+	description "搜索南方以外的海盗系统，找到偷走探测器的舰队。找到它后，将其带回 <destination> 。"
+	to offer
+		has "Coalition: Long Lost Property 2: active"
+	source "Greenrock"
+	destination "Ablub's Invention"
+	on offer
+		conversation
+			`当你向一位市场组织者询问当地海盗带着外星人探测器回来的情况时，你会发现他已经卖掉了它。然后你会被指向一个大型的、保存得令人惊讶的完好的垃圾场，这有点像一个微型造船厂：一些船员在附近的船上工作，为他们刚刚购买的船只添加或更换零件。垃圾场本身被六座混凝土建筑包围，顶部有防御炮塔。一些挖掘机和推土机移动船舶部件和其他部件，试图让一切井井有条。`
+			`你告诉其中一名工作人员你正在寻找探测器，他们离开了几分钟，进入入口处的灰色建筑内。`
+			branch money
+				"credits" > 1000000
+			`他们独自回来，说道：“老板查过你了，发现你的口袋有点空，如果你想要这种信息，等你准备好付款后再回来。”`
+				defer
+			label money
+			`当他们回来时，他们招呼你进去，带你到一个简单的办公室，里面有一个秃顶的中年男人正在等待。 “那么，我听说你正在寻找我最新的大笔收购？介意告诉我是什么让你如此感兴趣吗？”`
+			choice
+				`“我被雇来帮某人拿东西。”`
+				`“没有理由。”`
+			`他笑了。 “好吧，你运气不好，我拿到后第二天就卖掉了。真遗憾我不能用它做更多广告，但报价太好了。”他从椅子上站起来，靠在桌子上，看着你。 “现在，我喜欢让这里的生意井井有条，所以当然，我对买家是谁略知一二。不过，我不能直接告诉你，我有时会和危险的人打交道。有一天我告诉你他们在哪里，另一天就有一支舰队准备摧毁我这里的生意。如果我有，比如说，一百万信用点来雇用一些帮手，以防发生这种情况……”`
+			choice
+				`“当我完成后，他们不会有舰队来这里。十万应该足够给我指路了。”`
+				`“好吧，你先告诉我吧。”`
+					goto bribe
+			branch "convince" "fail"
+				random < 20
+			label convince
+			action
+				payment -100000
+			`他盯着你看了几秒钟，然后笑了。 “嗯，值得一试。好吧，十万吧。”`
+				goto where
+			label fail
+			`“现在我不能只相信你能得到他们的最后一艘船，可以吗？”他回答道。 “如果你想让我觉得值钱，那就一百万吧。如果你不感兴趣，我也没办法。”`
+			
+			# For the mission NPCs to work properly, this needs to force an accept at this point.
+			# Add a choice to defer once some sort of "on board" child of "npc" exists and allows for all NPCs to be defined in just this mission.
+			
+			choice
+				`“好吧，你先告诉我吧。”`
+			label bribe
+			action
+				payment -1000000
+			`“谢谢您的惠顾，”他说，然后坐了下来。`
+			label where
+			`“那些来找我要机器的人都是海盗，尽管我想你已经知道了这一点，”他开始说道。 “不过他们不是来自南方，我可以告诉你很多。年纪更大，穿得更好。说他们读过关于‘未知探测器’进入汉城的报道，并想要它用于他们的生意。我问他们打算如何使用它，这里没有人知道它是如何工作的，但他们说他们会找到一种方法来使用它，让它作为某种监视设备，或类似的东西。”`
+			choice
+				`“你认为他们这话是什么意思？”`
+					goto meant
+				`“你听到他们的名字了吗？”`
+			`“他们告诉我他们的名字了吗？是的。他们的真实名字？对此表示怀疑。他们似乎组织得很好，他们想隐藏这些信息。不过，当我们将产品装载到其中一艘船时，我确实看到了他们的船。”`
+				goto ships
+			label meant
+			`他耸耸肩，“我的猜测是他们的基地遇到了一些瓶颈，所以他们想要一些东西可以提前告诉他们是否有海军或赏金猎人来抓他们。我确实看了他们的船，如果他们知道有人来了，似乎装备精良，可以逃跑。”`
+			label ships
+			`他告诉你，装载探测器的那艘船是一艘“水银”号，经过大量改造，成为一艘更强大的战舰。你带着信息走出垃圾场，并准备你的船去寻找海盗。`
+				accept
+	on enter "Persian"
+		dialog `进入系统后，您的扫描仪会捕获三个经过严重修改的水银。他们还告诉您探测器在系统中，尽管它无法向您提供其确切位置，就好像有什么东西造成干扰一样。快银们注意到你并准备好了枪。`
+	npc board
+		personality staying marked target
+		government "Bounty"
+		system "Persian"
+		ship "Marauder Quicksilver (Engines) (Safe)" "Cohen"
+		conversation
+			action
+				set "idriss probe recovered"
+			`当你登上他们的快银号时，海盗们正在等着你，你们会互相射击一会儿。一旦你清理了入口，你就可以探索这艘船，找到应该是探测器的东西——它与伊德里斯家族的工作人员向你展示的东西相匹配，如果它周围缠绕着很多额外的电线。海盗肯定对它进行了修改，试图将其用作即将到来的舰队的警告系统。你拆下电线，将探测器从船上的附件中释放出来，然后将其释放到虚空中。然后你赶紧返回你的船，并把漂流探测器抓到你的货舱里。现在你只需要把它带回伊德里斯家族就可以了。`
+				launch
+	to complete
+		has "idriss probe recovered"
+	on complete
+		clear "idriss probe recovered"
+		payment 500000
+		conversation
+			`着陆后，你将前往伊德里斯家族的地下基地，弗洛普格再次与你会面。 “立即安排探测器被带到这里，我会的，”她说着，派遣了一些工人到你的船所在的地方。几分钟后，她被告知它被安全地存放在“较低层”，于是她亲自前往那里查看它收集了哪些数据。`
+			`当她回来时，后面跟着第一次带你来这里的 Arach 二人组，她递给你 <payment> 。 “有一些试图破坏探测器安全的记录，但数据受到了损害，值得庆幸的是，没有一个。它的人工智能走了一条最奇怪的道路，”她说。 “它没有像我们当前的系统那样进行微调，但它开发了算法来更好地确定遥远恒星的当前状态，它已经做到了。我们仍在检查数据，所以我们还不知道它有多准确。”`
+			`另一个阿拉奇告诉你，一旦他们检查完数据，他们就会在太空港与你会面，因为他们希望你亲自检查系统，以便将其与探测器的信息进行比较。他们陪您到通往街道的楼梯，然后返回继续分析数据。`
+
+# Replace the below two missions once some sort of "on board" child of "npc" exists.
+mission "Coalition: Long Lost Property 3A"
+	invisible
+	non-blocking
+	landing
+	to offer
+		has "Coalition: Long Lost Property 2: active"
+		"credits" > 1000000
+	source "Greenrock"
+	npc board
+		personality staying marked target
+		government "Bounty"
+		system "Persian"
+		ship "Marauder Quicksilver (Safe)" "Coven"
+		conversation
+			`你在船中一路战斗，但在搜索了“快银”号的货舱和装备后，你意识到探测器一定在另一艘船上。`
+				launch
+	to complete
+		never
+	to fail
+		has "Coalition: Long Lost Property 3: done"
+
+mission "Coalition: Long Lost Property 3B"
+	invisible
+	non-blocking
+	landing
+	to offer
+		has "Coalition: Long Lost Property 2: active"
+		"credits" > 1000000
+	source "Greenrock"
+	npc board
+		personality staying marked target
+		government "Bounty"
+		system "Persian"
+		ship "Marauder Quicksilver (Weapons) (Safe)" "Conan"
+		conversation
+			`在空荡荡的船上走了一会儿后，你听到警报声，并看到海盗从他们炸开的门冲向你。你回到你的船上，尽可能地避开射击，并迅速关闭你一侧的入口。当你再次看到水银时，你会发现它的自毁序列正在开始。`
+				launch
+	to complete
+		never
+	to fail
+		has "Coalition: Long Lost Property 3: done"
+
+mission "Coalition: Long Lost Property 4"
+	name "比较二进制文件"
+	description "前往 <waypoints> 收集有关双星的数据，以便伊德里斯家族可以将其与探测器自己的预测进行比较。"
+	to offer
+		has "Coalition: Long Lost Property 3: done"
+	source "Ablub's Invention"
+	waypoint "Alnasl"
+	on offer
+		conversation
+			`阿拉克二人组在太空港迎接你，并要求你带他们进入你的飞船交谈。他们每隔一段时间就会向两侧和身后看一眼，仿佛在警惕着什么。当你进入飞船的指挥室时，较高的那个会说话。 “我们将探测器的预测与其最后一次到达系统的读数进行了比较。它非常接近真实情况。虽然非常过时，但它的硬件是一个巧妙的程序，我的祖先——”`
+			`“我们的祖先，”简短的声音打断了他。`
+			`“我们的祖先创造的是。”`
+			`他们向你展示了一个设备，屏幕上有一张地图，描绘了附近的恒星系统，然后简短的阿拉克开始解释。 “我们对它的预测有多准确很感兴趣，所以下一步是验证它关于人类太空深处一颗恒星的数据。”他指着地图边缘的一个系统。 “人类发现了这个系统吗，队长？总统有兴趣比较遥远双星上的探测器数据。”`
+			`您查看屏幕和自己的地图片刻，并将系统识别为 <waypoints> 。 “那就这么定了。前往那个系统，你应该，”较高的那个再次说道。 “尽管我们进行了调整，但你们的扫描仪仍然如此，所以只需稍微修改一下它们以收集所需的数据，我们就会的。”`
+			`几分钟后，他们完成对您的扫描仪的扫描后，就会离开您的船并祝您好运。`
+				accept
+	on enter "Alnasl"
+		dialog `当您进入系统时，您的一台监视器会显示用 Arach 语言编写的各种数据集，并且您的扫描仪开始收集 House Idriss 想要的数据。几分钟过去了，直到加载栏出现。当它到达终点时，另一个出现，这个过程又重复了几次。大约一个小时后，您的显示器恢复正常。`
+	on complete
+		event "outskirts gauger ready" 157 342
+		payment 250000
+		conversation
+			`Flo帕格 正在停机坪等待您，Arach 二人组就在她身边。当您着陆时，他们会进入您的飞船，并在 Flo帕格 向您支付 <payment> 后开始检查数据。`
+			`“嗯……探测器犯了更多错误，”较高的阿拉赫说道。 “做对了很多事情，它仍然做到了，但遗憾的是，要处理这么远的距离，它却做不到。”`
+			`“失误的原因不是距离，”矮个子阿拉赫回答道。 “它对双星的签名感到困惑。它的算法必须经过改进，以解释双星系统及其奇怪之处。”`
+			`“无论如何，我很高兴称探测器的航行取得了成功，”弗洛普格打断了他们的话。 “预计它会发展得这么好，但我们没有，当……我的意思是，当记得它到达该系统的日期即将到来时，我们做到了。”`
+			`他们将您的扫描仪恢复正常，告诉您他们将致力于使用这些数据来开发一种新的扫描设备。他们还告诉您，当您下次访问 <origin> 时，他们会在准备就绪时通知您，尽管可能需要几个月的时间。再次感谢你的帮助后，阿拉奇三人离开了你的船。`
+
+event "outskirts gauger ready"
+
+mission "Coalition: Outskirts Gauger Ready"
+	landing
+	invisible
+	to offer
+		has "event: outskirts gauger ready"
+	source "Ablub's Invention"
+	on offer
+		outfit "Outskirts Gauger" 1
+		conversation
+			`当你离开你的船时，伊德里斯家族的弗洛普格会迎接你。 “我们已经完成了我们最新的一套扫描仪的工作。自从帮助我们恢复探测器及其数据以来，你已经，公平地说，你赠送了一份设备的副本。”`
+			`她要求登上你的飞船，并告诉你起飞，引导你前往地球另一个地区的工厂大楼。当 <ship> 降落在机库时，平台会大声移动齿轮和链条，很快就会开始将飞船和您带入设施深处，机库门很快就会在您上方关闭。当电梯停下来时，你和弗洛普格走进了一个介于联盟服装商和伊德里斯家族总部之间的混合体。几名阿拉奇人在他们的空间站工作，其中大多数人负责处理天线盘和传感器的大型组合体。 “就是说，我们给你的礼物，”弗洛普格一边说，一边示意阿拉奇号开始将扫描仪安装到你的船上。 “我们把它命名为郊区测量仪。”`
+			`她解释说，当阿拉奇号正在研究这套装备时，他们使用探测器的算法让扫描仪擅长寻找基本的能量特征，例如其他船只的热量或能量水平。 “它是用来检查服装等复杂机械，或识别特定货物类型的，但它不是，但仍然可以找到其当前形式的用途，我相信你会的。”`
+			`当一切准备就绪后，你们两个回到飞船内，电梯将你们带回船上。你飞回主着陆区，在你打开舱门之前她就靠近你了。 “现在，仍然......实验性的，这套装备是，并为Heliarchs提供可能有缺陷的产品，我们不希望。所以，自然地，我们还没有向他们注册它。为你提供更多的副本，我们不能，所以小心不要丢失这个，你应该这样做。”她再次感谢你的帮助，然后前往工作场所。`
+				decline
+
+
+
+mission "Heliarchs Buy Jump Drive Mission"
+	minor
+	landing
+	invisible
+	"apparent payment" 5000000
+	to offer
+		has "known to the heliarchs"
+		has "outfit (cargo): Jump Drive"
+	source
+		government "Heliarch"
+	on offer
+		conversation
+			`你的飞船刚在 <origin> 着陆，几十艘各种大小的 Heliarch 战舰就开始在它周围降落。当地驻军不浪费时间向你招呼。 “<last> 队长，我们尊敬的朋友。注意到您拥有一个额外的跳跃驱动器。任何额外的副本都会极大地帮助我们，所以如果您愿意将您的备用驱动器卖给我们，我们会用 <payment> 来感谢您。”许多Heliarchs离开了他们的飞船，盯着<ship>，急切地等待着你的决定。`
+			choice
+				`（接受这笔交易。）`
+					goto accept
+				`（不，我不感兴趣。）`
+			`“令人遗憾的是，”向你欢呼的赫利亚克声音非常失望地说道。 “如果你改变主意，你准备好了，一个特殊的工作要求将是，当你带来一个备用的跳跃驱动器时。建议我们这样做，你仔细考虑我们的提议，船长。非常慷慨地奖励你给我们带来的任何和所有副本，我们会的。”`
+				decline
+			label accept
+			`他们对你表示衷心的感谢，仿佛瞬间集体告知了这个决定，所有 Heliarch 人员都停止了呆呆的表情，为一队工程师腾出了空间，让他们从你的船上拆除备用的跳跃驱动器。螺旋领主特工仍在观察着这一幕，只是现在已经排成队形，他们互相窃窃私语，很少移动眼睛，仿佛在观看奇观。`
+			`一旦驱动器离开你的船，它就会被固定在一个过度加固的容器中，并在数百名武装士兵的看守下运输到环的限制区域。其中一位似乎负责该程序的 Heliarchs，一位 Arach，亲自来到你身边，再次感谢你，并将 <payment> 交给你。 “请尊重我们，你对我们如此慷慨，队长。虽然在研究跳跃驱动器及其机制方面取得了很大进展，但我们仍然无法创建自己的跳跃驱动器，而且我们还没有能力获得新副本。您可以带给我们的每一个驱动器都非常有价值，所以我会为它们准备特殊的工作请求。如果有兴趣出售更多跳跃驱动器，请检查环中的工作板，从现在开始，您应该这么做。”`
+			branch license
+				"coalition jobs" < 30
+			`她再次感谢您，行礼，然后离开，跟随守卫新购买的跳跃驱动器的随行人员。`
+				accept
+			label license
+			action
+				"reputation: Coalition" += 10
+				"reputation: Heliarch" += 10
+				set "license: Coalition"
+				log "Sold a jump drive to the Heliarchs and received permission to purchase Coalition civilian technology and ships."
+				log "Factions" "Saryds" `Saryds are an alien species who look suspiciously similar to the centaurs found in early human mythology. They prefer to live on worlds with as much green space as possible, and even their major cities are full of parks and gardens. Most Saryds live in small communes with up to a few dozen of them per house.`
+				log "Factions" "Kimek" `The Kimek are large insectoid aliens, and are members of the Coalition. They discovered spaceflight after the Saryds, but before the Arachi. They are intensely social creatures, preferring to live together in massive buildings with thousands of inhabitants, and many of their worlds have populations in the tens of billions, far more than any human world.`
+				log "Factions" "Arachi" `The spider-like Arachi were the last of the three Coalition species to discover interstellar travel. Most members of their society owe allegiance to one of the great Arach "Houses," organizations that are somewhat similar to guilds and that each specialize in one particular form of industry or technology.`
+			`她再次感谢您，行礼，然后离开，跟随守卫新购买的跳跃驱动器的随行人员。她离开后不到一分钟，另外三名Heliarchs到达了你的船上，这个代表团由三个联盟物种中的每一个成员组成，他们都戴着金色的圆环，表明他们的等级和权威。萨里德说：“这是最出乎意料但非常有价值的贡献，因为我们的访客如此渴望证明他们的勤奋和承诺。”`
+			`基梅克说：“我们的社会帮助你挣脱了夸格人的牢笼，我们社会的技术愿你值得信赖。”`
+			`“但是，”阿拉克说道，“像所有平民，甚至公民一样，我们仍然不能向你们出售我们的武器和军舰。”`
+			choice
+				`“谢谢。”`
+					goto end
+				`“为什么不允许平民购买武器或军舰？”`
+			`萨利德说：“这是为了和平。” “Heliarch军队训练有素，只为了防御和正义而使用武器。他们将联盟的需求置于他们自己本土物种的野心之上，每个人都这样做。平民没有这样的纪律，甚至包括你。但作为一位尊敬的客人，我们将允许你保留你的武器。”`
+			label end
+			`显然这里没有任何东西出售，但他们向你保证，许多联盟世界现在将允许你进入他们的造船厂和装备店。三位天使都对您为他们提供新的跳跃驱动器的慷慨表示深深的谢意，并祝您一切顺利。`
+				accept
+
+
+	on accept
+		"coalition jobs" >?= 30
+		outfit "Jump Drive" -1
+		payment 5000000
+		fail
+
+
+
+mission "Coalition: Struggling Author - Human Media 1"
+	minor
+	name "获取卡恰奇文化信息"
+	description "一群联盟公民向你询问有关人类的信息。您可以在 <stopovers> 上找到该信息。"
+	source "Ki Patek Ka"
+	stopover "Alexandria"
+	destination "Ki Patek Ka"
+	to offer
+		has "Coalition: First Contact: done"
+	on offer
+		conversation
+			`当你穿过太空港时，你会看到一群 Kimek 和 Arachi 坐在一张桌子旁，正在深入交谈。其中一个人朝你看了一眼。好像突然有什么声音响起，这群人迅速从座位上站起来，开始向你靠近。`
+			choice
+				`“请问，你们都想要什么？”`
+					goto "literature collectors"
+				`“喂？什么事？”`
+					goto "literature collectors"
+				`（伸手去拿我的枪。）`
+			`领先的基梅克向后跳去。 “你的意思是伤害，我们没有。我们的任务与暴力无关。和你谈谈，可以吗？”`
+			choice
+				`“你想要什么？”`
+					goto "literature collectors violent"
+				`“不，你可能不会。再见。”`
+			`一群联盟公民带着失望的表情回到了自己的桌子旁。`
+				decline
+			label "literature collectors violent"
+			`“我们是文学收藏家。我们对你们的种族和他们写的书感到好奇，所以对你们来说，我们有一个使命，”领队基梅克说，然后他介绍自己为卡查奇。 “我们读过各种各样的文学作品，从科幻小说到祖国之外的外星世界的故事。`
+				goto "literature collector choice"
+			label "literature collectors"
+			`“你好，人类朋友。我们是文学收藏家。我们对你们的种族和他们写的书感到好奇，所以对你们来说，我们有一个使命，”基梅克说，然后他介绍自己为卡查奇。 “我们读过各种各样的文学作品，从科幻小说到祖国之外的外星世界的故事。`
+			label "literature collector choice"
+			`“这是一个小任务。我们从你们的种族中寻求知识。付给你<payment>，我们非常感激，如果你接受这个任务，”他们解释道。`
+			choice
+				`“我进去了，你要我收集什么？”`
+				`“抱歉，我没兴趣。”`
+					decline
+			`“任何东西。我们有翻译设备。将人类语言翻译成我们自己的语言，我们有能力。邪恶的压迫者和英雄反抗他们的故事，在我们的人民中总是很受欢迎，主题是。勇敢的战斗、暴君和叛乱的故事。我们寻找人类抵抗运动的历史。”`
+			label decision
+			choice
+				`“你为什么想要这些知识？你的小组是做什么的？”`
+					goto "group question"
+					to display
+						not "coalition: asked about kachachee"
+				`“我明白了，我会给你带来你想要的所有知识。”`
+				`“我没兴趣。抱歉。”`
+					decline
+			`“谢谢你。你的行动将会启发我们和联盟其他成员。我们希望你旅途平安。”他们会告诉您在哪里可以找到它们。`
+			branch "don't have"
+				not "human cultural data"
+			`你记得你的船上有一个包含亚历山大档案副本的数据芯片，这可能正是该组织想要的。你走到你的船上，复制了数据芯片，然后返回队伍。`
+			`当你把数据芯片递给他们时，Kachachee 就会走近你。 “速度真快，你回来了。”`
+			choice
+				`“很高兴能帮助你。”`
+				`“我希望你喜欢我的种族为你提供的一切。”`
+			action
+				event "coalition citizens discover fangvin" 14 27
+				payment 180000
+			`“谢谢。请告诉我和我的朋友们，这个数据芯片会的。正如所承诺的，我们有一个 <payment> 的芯片。” Kachachee 将它放在你手中。`
+				decline
+			label "group question"
+			action
+				set "coalition: asked about kachachee"
+			`“我们是一群喜欢一起读书的人。科幻小说，我相信这个词尤其如此。”`
+				goto decision
+			label "don't have"
+			`快速搜索万维网就会发现，<stopovers> 的图书馆拥有包含所有人类文化和历史的完整数据库的数据芯片。你回到你的船上并准备前往那里获取一个。`
+				accept
+	on decline
+		clear "coalition: asked about kachachee"
+	on accept
+		clear "coalition: asked about kachachee"
+	on stopover
+		conversation
+			branch broke
+				"credits" < 40
+			action
+				payment -40
+				set "human cultural data"
+			`您曾想知道如何获得整个文化档案的副本，但事实证明这比预期要容易。车站有一家小型博物馆礼品店，出售数据卡上的档案副本。 （“给你家中崭露头角的历史学家的完美礼物！将所有人类历史掌握在手掌中。现在仅售 39.99 美元！”）考虑到一张便宜的数据卡只需要一小部分信用点，这有点敲诈，但你很乐意买一张带回 Kachachee。`
+				decline
+			label broke
+			`车站有一家小型博物馆礼品店，出售数据卡上的整个档案的副本。它只需要 40 个学分，但由于您在财务管理方面做得很糟糕，所以您现在手头甚至没有那么多现金。`
+			`去赚点钱，然后再回来。`
+				decline
+	on complete
+		event "coalition citizens discover fangvin" 20 40
+		payment 180000
+		conversation
+			`您前往第一次见到 Kachachee 的酒吧。当你到达时，Kimek 会向你打招呼，“谢谢你。请告诉我和我的朋友们，这个数据芯片会的。<payment> 的芯片，正如我们所承诺的，我们有。” Kachachee 将它放在你手中。`
+
+
+event "coalition citizens discover fangvin"
+
+
+mission "Coalition: Struggling Author - Book Discovered"
+	minor
+	name "寻找安娜·方文"
+	description "与联盟读书俱乐部感兴趣的作家 Anna Fangvin 取得联系。"
+	source
+		government "Coalition"
+	destination "Zug"
+	to offer
+		has "event: coalition citizens discover fangvin"
+	on offer
+		conversation
+			`在一次平安的太空港之旅后，您返回了您的 <model> 。登上飞机后，您会看到来自联盟公民团体的消息，您向他们提供了亚历山大档案的副本：`
+			``
+			`亲爱的<first>，`
+			`我们感兴趣的是数据芯片的一位作者。“Anna Fangvin”，她的名字是。尽管我们无法阅读完整的书，但你们种族对抗压迫者的行动的总结却让我们着迷，它确实如此。我们希望能与她交谈。我们想要这本书的副本。`
+			`卡恰奇`
+			``
+			choice
+				`（寻找安娜·方文。）`
+				`（也许稍后。）`
+					defer
+				`（丢弃该消息。）`
+					decline
+			`快速浏览一下你的飞船数据文件并没有发现任何问题。然而，检查你给联盟公民的数据芯片副本后发现，安娜·方文是一位来自环地人类星球的作家。经过几分钟在万维网上疯狂地寻找这本书后，您决定在 <destination> 上找到她进行采访。`
+				accept
+	on complete
+		conversation
+			`当你准备着陆时，你给安娜发了一条短信，要求在太空港附近的一家餐厅采访她。不到十分钟后，她回复了——她接受了你的提议，并会在那里等你。`
+
+mission "Coalition: Struggling Author 1"
+	name "带安娜去联盟空间"
+	description "带 Anna Fangvin 去 <destination> ，在 <origin> 上奋斗了这么久之后，她可能会在那里找到成功的作家。"
+	source "Zug"
+	destination "Ki Patek Ka"
+	passengers 1
+	blocked "You may need space on your ship for Anna in the next mission."
+	to offer
+		has "Coalition: Struggling Author - Book Discovered: done"
+	on offer
+		conversation
+			`到达太空港后，你走到餐厅去见安娜·方文，联盟公民感兴趣的作家。一个女人举起手臂向你挥手——她一定是安娜。`
+			`你走近并坐在她旁边。 “您好，您是<first>吗？”她问。`
+			choice
+				`“是的。你写什么？”`
+				`“是的。我可以借一本你的书《超越超光速》吗？”`
+					goto bookcopy
+			`“我写科幻小说。我刚刚发布了《超越超光速》，讲述了一群人类窃取了夸格人的跳跃技术，并看看我们早已熟知的超空间之外到底有什么。来吧，看看！”`
+			label "beyond the hyperdrive description"
+			`安娜从包里拿出一本精装书。封面展示了夸格战龙旁边的人类。你浏览了一下前后翻盖，证实了安娜告诉你的大部分内容。她的签名在扉页上。`
+			label "genre choice"
+			choice
+				`“多久了？”`
+					goto "book length"
+				`“为什么这是一个关于人类从夸格人那里偷窃的故事？”`
+					goto "quarg"
+				`“那个翻盖有一个非常好的插图。”`
+					goto "illustration"
+				`“除了超空间之外还有什么吗？”`
+			label "other novels"
+			`“实际上，《超越超空间》是我出版的第五本书，”安娜说。 “其他四个人从来没有……他们做得不太好。”她看了一眼地面。 “我还在空闲时间在超网上写短篇小说。事实上，一旦我找到好主意，我可能会在几个月内开始写第六篇故事。”`
+			choice
+				`“你写过什么类型的短篇小说？”`
+					goto "short stories"
+				`“你以前的书怎么样？”`
+			label "previous books"
+			`“它们并不是很成功，说实话，我还在勉强维持收支平衡。我从少数几个买书的人那里赚了一点钱，但我从来没有达到五位数。第一部是我自己出版的，所有出版商都拒绝了，所以我没有得到太多关注。第二部是关于一个来自天堂世界的孩子，因为被父母宠坏而被送到泥土地带。第三部是关于同一个孩子被绑架的故事。海盗。我停止了那个系列，因为很明显它永远不会出售。而且，第四个，嗯......”安娜叹了口气。 “那件事太失败了，我什至不想告诉你。`
+			`“超越超光速引擎是第五款，我希望它会比前四款卖得更好。”`
+			choice
+				`“短篇小说怎么样？”`
+			label "short stories"
+			`“我有时会写短篇小说并将它们放在超网上。帮助我提高写作水平并满足这种冲动，而无需致力于像小说这样的长期项目。”`
+			`安娜向您展示了一个包含她所有故事的网页。观看次数似乎有数百次，偶尔达到四位数。`
+			choice
+				`“那么为什么《超越超光速》讲述的是人类从夸格人那里偷东西的故事呢？”`
+					goto "quarg"
+			label "illustration"
+			`“嗯，谢谢！我在Starcross的一家商店打印的——运费很高，但绝对非常好！”`
+				goto "genre choice"
+			label "book length"
+			`“大约三百页——九万字。不太长。”`
+			choice
+				`“你还写过其他小说吗？”`
+					goto "other novels"
+				`“是什么让你决定在超越超光速中将夸格人设定为反派？”`
+			label "quarg"
+			`几秒钟的时间里，安娜乐观的笑容沉了下来，眼神也显得呆滞。 “你可能会笑，但是，好吧……我对他们有一些……问题。我还记得当我还是个小女孩的时候，我的父母在一次假期旅行中带我去了Humanika。这是我第一次来到一个如此陌生的世界，所以很自然地，我想要探索。我从我们的旅行团中走出来，很快意识到我迷路了。”她回头看了你一眼，好像在衡量你如何看待她的故事。 “有那么多的走廊，曲折——我仍然不明白我是怎么进入那个迷宫的。那是太空港的一个较暗的部分，当我不断呼唤我的父母时，我只听到自己的声音在回响。然后，我看到了它。一个巨大的夸格人，有着深邃、锐利的紫色眼睛，在走廊深处直视着我。我冲刺逃跑，但我不断遇到越来越多的夸格人……我之后的事我就不记得了，只记得我最终回到了父母身边。`
+			`“然后当我长大后，当我十几岁的时候，我决定在大学里做一个关于夸格人的项目，协助一名记者写一篇关于他们的文章。为了这个项目，我试图不去回忆童年那段插曲，但当我采访他们时，当我试图与他们交谈并与他们交朋友时……即使是那些有礼貌的人，他们看起来也是如此……冷漠。不同——而且不是一个好的方式。我只是感到一种巨大的不安，再次靠近他们。当然没有他们经常对我的问题保持沉默，就好像他们有什么事情要隐瞒一样，我几个月来一直在努力，但他们就是不肯让步，每当有人和我在一起时，那种怪异的感觉就永远不会消失……”`
+			label priorchoice
+			choice
+				`（告诉她关于联盟的事。）`
+					goto coalition
+				`“那一定很艰难，卡在Humanika上。你的父母最终是怎么找到你的？”`
+					goto parents
+				`“我可以要一本这本书吗？”`
+					to display
+						not "beyond the hyperdrive - asked for book copy"
+				`“嗯，一切都很好。但我现在有自己的事要处理。祝你的书好运，谢谢你的时间，再见。”`
+					decline
+			action
+				set "beyond the hyperdrive - asked for book copy"
+			`“恐怕我现在还没有能力把它送出去。”`
+				goto priorchoice
+			label parents
+			`“我不知道。但是和那个夸格人在一起感觉就像是永恒一样令人痛苦。我不记得具体多久了。最终，另一个夸格人把我的父母带到了我身边。我告诉他们我想尽快离开胡曼卡并回到楚格。他们答应了，我们离开了那个世界；我再也不想回去了。”`
+			choice
+				`“所以你说你的书卖得不好，对吗？”`
+			`虽然安娜尽力保持镇静，但她的表情明显表明她对这个话题感到不舒服。 “不，他们没有，”她最终说道。 “就连我的一些朋友和家人也没有多少好话可讲，愿意为我做任何事情的人也更少了。”她的眼睛里泛出一种隐约乐观的光芒。 “你，也许……为某个出版商工作？有人对我的作品感兴趣？”`
+			choice
+				`（告诉她关于联盟的事。）`
+				`“不，事实上，恐怕我不认识任何人可以帮助你。”`
+					decline
+			label coalition
+			`你开始向安娜解释联盟，深入了解他们的文化和反对夸格人的悠久历史，因为安娜对他们的看法不太积极。起初安娜不相信你，但你向她保证这是真的。您还提到了联盟的人口以及“外星”作家进入该地区的新鲜感。`
+			`“他们真的会喜欢我的书吗？”`
+			choice
+				`“希望他们会的。”`
+				`“嗯，尝试一下总比放弃要好。”`
+			`“这些故事可能会激发我的下一部小说。但他们不会说我们的语言。他们将如何阅读我的书呢？”你回答说：“他们有翻译设备。”`
+			`“这让人放心……但是，我该如何到达那里呢？”她问道。`
+			choice
+				`“我带你去那里。”`
+				`“我认为你不能。”`
+					goto decline
+			`她的语气变得更加兴奋。 “我需要支付任何费用吗？我根本买不起外星交通，更不用说去银河系的另一个完全不同的部分了！事实上，我知道——我会给你一本《超越超空间》！非常感谢！稍等一下。我会去我家，带上旅行所需的东西，然后我们就可以去参加联盟的任何活动了，”安娜说。`
+			`当你等待安娜时，你查看了联盟空间地图，仔细检查了联盟读书俱乐部所在的星球。快速查看后，您会发现 <destination> 。`
+			`等待大约一个小时后，安娜出现在你的船外，敲响了舱门。你打开门让她进去并准备离开太空港。`
+				accept
+			label decline
+			`安娜充满失望地说：“好吧，那么恐怕我还有其他事情要做。至少谢谢你的故事。”她离开了。`
+				decline
+			label bookcopy
+			action
+				set "beyond the hyperdrive - asked for book copy"
+			`“恐怕我现在没钱送人，但我很高兴把它展示给你。我想你已经知道这是一群人类的故事，他们窃取了夸格人的跳跃技术，并看到了我们早已知道的超航道之外真正存在的东西。”`
+				goto "beyond the hyperdrive description"
+	on accept
+		clear "beyond the hyperdrive - asked for book copy"
+	on decline
+		clear "beyond the hyperdrive - asked for book copy"
+	on enter
+		system
+			government "Coalition" "Heliarch"
+		conversation
+			`当你的跳跃驱动的火焰逐渐消失时，安娜震惊地从她的铺位上走出来。 “那是什么？感觉整艘船完全消失在我们的空间之外！我们在哪里？”`
+			choice
+				`“我的跳跃引擎欢迎你来到联盟空间。”`
+				`“那是一次跳跃驱动。”`
+				`“每次我带着跳跃引擎前往联盟太空时都会发生这种情况。”`
+			`“哇。我不敢相信这会发生！”安娜看着窗外，然后又转回来。`
+			`“我可以看一下你的跳跃驱动吗？我很想知道它是如何工作的，”安娜说。您带她到 <ship> 的机房，她开始记录驾驶情况并拍摄照片。`
+			`“好吧，谢谢你带我来这里，”安娜说完后说道。 “我没睡好，待会儿见。再见！”她回到了她的小屋，而你则回到了控制装置上。`
+	npc
+		government "Heliarch"
+		personality heroic opportunistic
+		fleet "Heliarch"
+	on complete
+		set "coalition: struggling author - beyond the hyperdrive"
+		conversation
+			`在你们退出 <ship> 之前，安娜给了你们这本书。你一出去，三个头上戴着金环的基梅克就向你和安娜走来。`
+			`“你好，<first> <last>。你带来的另一个人，她是谁，我可以问你吗？”`
+			`“哦，我写科幻小说，”安娜回答道，看到巨型甲虫只是稍微吃了一惊。`
+			`基梅克人开始用他们的母语相互交谈十到二十秒，然后他们再次面对你。`
+			`然后，重新打开翻译框，Kimek 解释说，欢迎安娜与你在一起，但提醒你，在她在友谊之环上向 Heliarchs 注册之前，她不会被允许做太多事情。`
+			`“好吧，”安娜说，“我会稍微探索一下太空港，寻找一些灵感。准备好你的飞船，到那里与我会合。”`
+
+mission "Coalition: Book Discovered 2"
+	name `超越 Kachachee 的超光速`
+	description `现在您已经有了 Anna Fangvin 的 Beyond the Hyperdrive 的副本，请将其交给 Kachachee 和他们在 <destination> 上的小组。`
+	to offer
+		has "coalition: struggling author - beyond the hyperdrive"
+	source
+		government "Coalition"
+		not planet "Ki Patek Ka"
+	destination "Ki Patek Ka"
+	on offer
+		conversation
+			`整理消息时，您记得一个名叫 Kachachee 的 Kimek 和他们的团队想要一本 Anna Fangvin 的《超越超光速》。你现在认识她了。`
+			choice
+				`（向安娜索要这本书的另一本。）`
+				`（把我的书给 Kachachee。）`
+					accept
+				`（忘了它吧。）`
+					decline
+			action
+				set "struggling author: asked for another copy of beyond the hyperdrive"
+			`你打电话给安娜，请她为一位名叫 Kachachee 的朋友提供另一本《超越超空间》。她说：“当然，我会通过联盟令人难以置信的超空间中继将其发送给您。对于像书这样小的东西，可能甚至不需要宇宙飞船来运送它！您希望将其发送到哪里？”您回复“至 <planet>”。您应该前往那里领取它并将其作为礼物送给 Kachachee。`
+				accept
+	on complete
+		payment 7000
+		conversation
+			branch owncopy
+				not "struggling author: asked for another copy of beyond the hyperdrive"
+			`收到这本书后——事实证明它是通过普通的宇宙飞船到达那里的，同时还附上了安娜发来的一条表达她失望的信息——你与 Kachachee 取得了联系，并告诉他们你有一本《超越超光速》的副本。他们回应，告诉你在太空港内的公共广场与他们见面。`
+				goto gift
+			label owncopy
+			`当您降落在 <planet> 时，您会与 Kachachee 取得联系并告知他们您拥有《超越超光速》的副本。他们回应，告诉你在太空港内的公共广场与他们见面。`
+			label gift
+			`走到前面提到的公共广场，你在人群中认出了 Kachachee。你拿起你的《超越超空间》并将其交给他们。 Kachachee 急切地接过副本。 “我们非常感谢这本书。我必须和我的团队一起阅读它。但是为了你的麻烦，你值得 <payment> ，”然后他们会给你一颗筹码，然后走开，融入人群。`
+
+mission "Coalition: Struggling Author 2"
+	name "帮助安娜在日政司注册"
+	description "将 Anna Fangvin 带到 <destination>，以便她可以向 Heliarchs 注册。"
+	source "Ki Patek Ka"
+	destination "Ring of Friendship"
+	passengers 1
+	to offer
+		has "Coalition: Struggling Author 1: done"
+	on offer
+		conversation
+			`你穿过太空港，寻找安娜。你发现她在一个公共广场中央，坐在一张桌子旁，拿出笔记本电脑。你认为她一定打算开始一些早期的工作，因为在这样一个陌生的社会中新发现的灵感，但 <origin> 上的人口数量和多样性似乎让她完全忘记了打字。`
+			`只有当你也坐在她旁边时，她似乎才会注意到你。 “哦，你好，<first>！”她说，然后重新集中注意力。 “船准备好了吗？”`
+			`听到肯定的回答，安娜从椅子上站起来，开始跟随您前往 <ship> 。当您准备前往 <destination> 时，她在自己的铺位上安顿下来。`
+				accept
+	on enter "Quaru"
+		conversation
+			`当您输入 <system> 时，安娜走出床位，在桥边找到一个位置，凝视着空旷的空间。 “多么巨大的环形世界啊！”她惊呼道。`
+			choice
+				`“它非常巨大。大约七千年前，他们从夸格人那里偷走了它。”`
+				`（什么也不说。）`
+			`“这将成为我下一部小说的灵感来源，”安娜说道，仍然充满敬畏。她拿出一个小笔记本，开始忙碌地写着。`
+	on complete
+		conversation
+			`当你降落在环形世界时，安娜感到很惊讶。当你们两个打开舱门时，你们看到一名 Heliarch 特工出现在你们面前。`
+			`“你们好，人类。今天我能为你们做什么呢？”直升机领主问道。您回复说您想在 日政司 中注册 Anna。到达登记处后，安娜进去了，十五分钟后与另一位螺旋王一起退出，这次是一位戴着王冠的萨利德。 “他们终于完成了所有的文书工作。我们要去太空港买点食物。在那里与我们会面，讨论我们的下一步行动。”`
+
+
+mission "Coalition: Struggling Author 3"
+	name "返回<planet>"
+	description "现在 Anna Fangvin 已经完成了注册过程，带她和 Heliarch 特工去 <destination> 获取翻译设备。"
+	source "Ring of Friendship"
+	destination "Ki Patek Ka"
+	passengers 2
+	blocked "You do not have enough space for Anna and the Heliarch agent. Return here when you have two bunks free."
+	to offer
+		has "Coalition: Struggling Author 2: done"
+	on offer
+		conversation
+			`在太空港寻找安娜时，你终于在一家餐厅找到了她，她正在吃长牛牛排，并在笔记本电脑上打字。先前的圣天使萨利德站在她旁边，弯腰指着屏幕上的什么东西。她看到你并示意你坐下。`
+			`“这肉真好吃！在家里吃了几个月的方便面和外卖，终于可以吃到真正健康的东西了，”她关上电脑，感叹道。`
+			choice
+				`“有多好？”`
+					goto good
+				`“除了这个你什么也没吃！？”`
+			`“我的饮食并不是最好的。我所吃的只是碳水化合物和外卖食品；我从来没有在日程安排中找到时间在家做饭。当时我正在努力超越超光速。这种食物比我在楚格找到的任何食物都要好。`
+				goto published
+			label good
+			`“这非常好。可能比我在楚格吃过的任何东西都好。现在，我想在这里出版我的书。”`
+				goto company
+			label published
+			`“另一方面，我想在这里出版我的书。”`
+			label company
+			`“你找到出版公司了吗？”你问。`
+			`“不，”安娜回答道。 “但是这位 Heliarch，Temporo，在寻找合适的出版商方面提供了巨大的帮助。没有他们，我几乎不可能与餐厅工作人员沟通，因为他们没有翻译盒。”`
+			choice
+				`“现在有什么计划吗？”`
+				`“Heliarch特工有没有提到我们现在应该去哪里？”`
+				`“为什么日政司关心谁出版了这本书？”`
+					goto publisher
+			label "take us to destination"
+			`赫利亚克直起身子。 “你应该带我们去<planet>。我可以更好地帮助那里。”`
+			`“你觉得这合理吗？”安娜问道。当你做出肯定的回答时，她说：“当你在的时候，我们会在你的宇宙飞船上。”`
+				accept
+			label publisher
+			`“我认为坦波罗只是想提供帮助。他没有说过任何相反的话。”`
+				goto "take us to destination"
+	on complete
+		conversation
+			`当你着陆时，安娜说：“我们是不是应该考虑一下买一个翻译设备？我不想在这儿一直打扰坦波罗。”`
+			`坦波罗接近。 “相信你有翻译，政府不能。所以我必须帮助你。当你找到出版商时，我会陪你去他们的办公室。”`
+			`“那我们得找一家出版公司了！”安娜说。`
+			label questions
+			choice
+				`“Kimek 可能是一个不错的选择。他们人口众多。”`
+					goto publishingcompany
+				`“也许是萨利德人。他们在文化上与人类更相似，所以他们可能对人类的书籍更感兴趣。”`
+					goto saryd
+					to display
+						not "struggling author: saryd"
+				`“阿拉奇人的人口关系密切。一本新书的消息可能会很快在那里传播开来。”`
+					to display
+						not "struggling author: arachi"
+			action
+				set "struggling author: arachi"
+			`“哦，有点尴尬，但是……我其实有点害怕蜘蛛，所以我需要一段时间来适应阿拉奇。”`
+				goto questions
+			label saryd
+			action
+				set "struggling author: saryd"
+			`“我一开始也是这么想的，但从我所看到的来看，萨雷德人似乎相当保守，你不觉得吗？也许另一个物种会更好。”`
+				goto questions
+			label publishingcompany
+			action
+				clear "struggling author: arachi"
+				clear "struggling author: saryd"
+			`“但是我们在哪里可以找到 Kimek 出版公司？我们甚至还没有将我们的书翻译成他们的语言！”`
+			choice
+				`“我们会找到一家公司。”`
+				`“考虑到这里的书籍数量，一定有一家出版公司。”`
+			`“书出版得越快越好。几个小时后到太空港来见我；我会找到一家好公司的。”`
+			`安娜还没来得及离开，坦波罗就站了起来。 “再陪你一次，我会的。”`
+
+
+mission "Coalition: Struggling Author 4"
+	name "基梅克出版公司"
+	description "Anna Fangvin 找到了一家 Kimek 出版公司，愿意出版她的书。带她去<destination>。"
+	source "Ki Patek Ka"
+	destination "Inmost Blue"
+	blocked "You do not have enough bunk space for Anna Fangvin and the Heliarch agent. Come back here when you have two bunks free."
+	passengers 2
+	to offer
+		has "Coalition: Struggling Author 3: done"
+	on offer
+		conversation
+			`基帕泰克卡太空港面积巨大，通常对于一个人来说是一个噩梦般的地方。值得庆幸的是，安娜是联盟中唯一的其他人，因此您的搜索速度相对较快。她选择带着笔记本电脑坐在一家自助餐厅里，在键盘上打字，大概是在写一篇短篇故事要发布。`
+			`“<first>！我找到了一家愿意出版我的公司！我向他们发送了我的书的数字副本，他们指示我通过 <planet> 访问他们的办公室，”安娜再次热情地解释道。在她身后的一张桌子旁，你注意到坦波罗的身影，正在与服务员交谈。`
+			choice
+				`“伟大的！”`
+					goto go
+				`“我们走吧！”`
+					goto go
+				`“出版公司叫什么？”`
+			`“他们的名字叫‘Priyepichia Publishing’。”安娜向你展示了美丽的照片，照片中一座干净的白色建筑坐落在山腰上，高高地耸立在温柔的海浪之上。屋顶上有一个着陆平台，上面画着一种条纹、光滑的甲虫状生物，其后腿像宽阔的桨。`
+			label go
+			`您与 Anna 和 Temporo 一起返回您的飞船，并绘制了前往 <destination> 的航线。`
+				accept
+	on complete
+		event "beyond the hyperdrive is published" 165 197
+		conversation
+			`安娜降落在 <planet> 上，兴奋地拿着一本“超越超空间”。舱门一打开，她就赶紧打开。`
+			`安娜停下来，等你追上。 “在他们发给我的消息中，包括了如何到达他们办公室的说明，”她解释道。 “我们走吧！”`
+			`走了好几条长街，安娜完全迷路了。 “这根本不是指令应该引导的地方，”她转向一直跟着你的坦波罗说道。 “你知道怎么去那里吗？”`
+			`Heliarch 带头，几分钟之内您就到达了火车站。火车到达后，您将前往一个街区，那里一座大型白色建筑占据了天际线的主导地位。`
+			`绕到出版商办公室，你会发现入口处挤满了 Kimek，偶尔还有 Saryd 和 Arach 来来往往。安娜寻找前台，并引导您找到似乎是接待员的基梅克。`
+			choice
+				`“你好，你知道 Priyepichia Publishing 在哪里吗？”`
+				`“我们正在寻找一家名为 Priyepichia Publishing 的出版公司。你能指路吗？”`
+			`“Priyepichia 出版社在 16 楼。电梯在那边。”接待员的翻译说道。`
+			`你转向 Kimek 所指的地方，看到六部大型电梯，比你在人类太空中熟悉的电梯还要大。 Temporo 将带您前往最不拥挤的那一处。`
+			`三人进了电梯。它在大楼的每一层都会停靠，随着越来越多的 Kimek 到达目的地，电梯变得越来越安静。当你到达16楼时，电梯只载了一半。门打开，露出了基梅克，他戴着华丽的珠宝项链和翻译装置。`
+			choice
+				`“你好？”`
+				`（走出电梯。）`
+			`“大家好，人类。请跟我来，我们可以讨论你的书，”Kimek 通过翻译框说道。`
+			`在Kimek的方向，你和安娜按照指示行走，直到到达一个有玻璃墙的房间。一路上，你会经过一个休息室、一个会议区，多个 Kimek 正在桌子上与一群 Heliarchs 讨论一些事情，还有一个大型开放工作区，每个 Kimek 都坐在自己的电脑前。`
+			`步行几分钟后，您到达一间办公室，那里坐着另一个 Kimek 和一群 Heliarchs。坦波罗和他们一起坐下，每个物种有六人——两人。`
+			`Kimek 引导您向办公室打手势，然后走过去与大家交谈。`
+			`当你们进去时，安娜把她的书放在桌子上，你们各自坐下。带你来到这里的基梅克在离开之前与坐在采访桌旁的另一位非圣体领主基梅克进行了简短的交谈。`
+			`坐着的 Kimek 的翻译设备开始说话。`
+			`“大家好。Ikiyachee，我的名字是，我是 Priyepichia Publishing 的主编。看到一个外星人想要出版一本书，这很有趣，也出乎意料，”Kimek 说。`
+			`“你好，我是 Anna Fangvin，这是我的朋友 <first> <last>，她帮了我很大的忙，把我带到了这里，”安娜有些慌乱地说。`
+			`“从引言和前几页来看，你的书听起来很有趣，但我们必须通过 Heliarch 审稿人的审查。所以，<first>，这次采访将是漫长而深入的。非常独特，要认识像她这样的人，并使她的书适应我们的文化，这将是一个漫长而漫长的过程。”`
+			choice
+				`“我得等多久？”`
+				`“我要留在这里陪安娜吗？`
+					goto accompany
+			label "wait time"
+			`“在我们的初步面试期间，你必须等待几个小时。`
+			choice
+				`“几个小时？这很无聊，不是吗？”`
+				`“我要留在这里陪安娜吗？”`
+					goto accompany
+			label boring
+			`“如果面试对你来说很无聊，那么你可以离开，去休息室。”`
+			choice
+				`“那我去休息室，在哪里？”`
+				`（采访期间陪同安娜。）`
+					goto "stay in interview"
+			label "directions to lounge"
+			`Ikiyachee 告诉你去休息室的路线，然后你就去那里等待面试。`
+				goto lounge
+			label "accompany"
+			`“在面试期间留在她身边，我们允许你，但是我们有一个休息室给你。如果面试太无聊，那么你可能会离开。”`
+			choice
+				`（在休息室等候。）`
+					goto "directions to lounge"
+				`（采访期间陪同安娜。）`
+			label "stay in interview"
+			`一旦提出第一个问题，安娜就非常高兴地开始详细讨论她小说的内容。`
+			`在房间里六位赫利亚克的注视下，安娜解释了她的反夸格情绪、她选择写这本书的原因以及这本书的内容。她语速很快，但赫利亚克斯提出的无数问题需要澄清和阐述，这使得整个过程变得漫长。`
+			`“来这里之前卖了很多书吧？”坦波罗问道。安娜尴尬地朝你的方向看了一眼。 “嗯，不，”她回答道。 “但过去几年我写得越来越好。”`
+			`Priyepichia 的代表发言。 “字数，一定要知道。装订过程，你知道吗？你想要什么类型和封面样式？”`
+			`“精装书的封面上应该有一个跳跃驱动器。我不确定在这个空间区域装订类型的确切选择；你不能自己决定吗？”`
+			`当你听的时候，你会发现，由于联盟为了让这本书更合适而进行了审查，安娜将不得不停留大约半年，在此期间她将有一套公寓居住。`
+			choice
+				`“我必须要在这里陪安娜半年吗？”`
+					goto "half a year"
+				`（什么也不说。）`
+			label "rest of interview"
+			`随着时间的流逝，安娜热情的语气依然强烈而持续。然后 Kimek 接过这本书，把它放在附近的文件柜里，并向你们两个表示感谢。`
+			`你离开采访室，而 Heliarchs 留下来，大概是为了继续与 Kimek 交谈。当你们两个走出去时，安娜开始说话。`
+				goto thanks
+			label "half a year"
+			`“必须和安娜呆在一起，你不是，但如果你愿意，你可以和她呆在一起。返回人类空间，你可以自由地做，”基梅克说。`
+				goto "rest of interview"
+			label "lounge"
+			`你离开房间，走到休息室。在几张桌子上，许多基梅克人正在用他们的母语聊天，而一些萨里德人和阿拉奇人显然很放松。你坐在空桌子旁打发时间，偶尔去饮水机补充水分。`
+			`三十分钟后，一个 Kimek 接近你。他们的翻译设备会说话。 “你是我们空间里的外星人吗？最奇怪的是，这次见面确实很奇怪。像你这样的联盟成员，我从来没有遇到过。或者……嗯……来自我们空间之外的，是吗？”`
+			# kst-1 is short for [K]imek [s]mall [t]alk 1
+			choice
+				`“我现在宁愿一个人呆着。”`
+					goto "kst-1 ignore"
+				`“是的，我是人类 <first> <last>。很高兴认识你。”`
+				`“嗯，我不是唯一的外星人。”`
+					goto "kst-1 not only alien"
+				`“我们称自己为人类，而不是外星人。”`
+					goto "kst-1 endonym"
+			label "kst-1 glad to meet you"
+			`“一样。‘阿卡查拉’，我的名字是。我们的好邻居，你来这里的目的是什么？”`
+			`“我正在帮助某人在这里出版一本书，”你说。 “她的名字叫安娜·方文。`
+				goto "kst-1 anna"
+			label "kst-1 not only alien"
+			`“如果这里有更多的人，那么他们是谁？”`
+			`“只有两个人：我的乘客安娜·方文和我。她正在你的空间出版一本书，”你回答道。`
+				goto "kst-1 anna"
+			label "kst-1 endonym"
+			`“你是‘人类’吗？知道吗，我从来没有这样做过。我很感激你纠正我并教育我了解你的同类，”基梅克说。 “那么，另一个人类，她是谁？”`
+			`“哦，那是我的乘客 Anna Fangvin。她来这里是为了在联盟空间出版她的书，”你回答道。`
+			label "kst-1 anna"
+			`“安娜·方文，她的名字是？一个有趣的名字，她的书，当它出版时也会很有趣。但是我不知道书名，所以如果告诉我你会知道，我会感激的。”`
+			choice
+				`“它的名字叫‘超越超光速引擎’。很可能距离发布还有好几年，但我很高兴你对此感兴趣。”`
+				`“它的名字叫‘超越超光速引擎’。我认为这可能是有史以来最好的书之一。”`
+			`“所以，你说，‘超越超空间’？我很感激。在它发行时，买这本书，我会记得的。”`
+			`在你们两人道别后，Kimek 就走开了，留下你们自己玩。`
+				goto "anna approaches"
+			label "kst-1 ignore"
+			`“对于侵犯您的个人空间，我深表歉意。” Kimek很快就走开了。`
+			label "anna approaches"
+			`几个小时后，您看到安娜进入休息室并向您走来。她坐在你旁边。`
+			choice
+				`“采访进行得怎么样？”`
+			`“他们告诉我，由于要审核是否合适，大概要等半年左右，幸好他们给我安排了一套小公寓住。​​你现在可以自己去了，不过如果你想回人类空间，请记得回来和我在这里见面。”`
+			choice
+				`“你为什么不回人类空间去？”`
+					goto stay
+				`“我一定会做到这一点。”`
+			label thanks
+			`“再次感谢，<first> <last>。我将永远感激你对我的帮助。我从未想过我会成为一名成功的作家，但当我遇到你时，你帮助我将我的职业生涯变成了我认为从未见过的东西。”`
+			choice
+				`“只是帮忙而已。”`
+				`“我很高兴能帮助你。”`
+			`“再次感谢大家的帮助。”`
+			`您按原路返回太空港并返回您的飞船。`
+				decline
+			label stay
+			`“我需要留在这里，以便在审核过程中回答他们的问题。不用担心我。”`
+			choice
+				`“明白了。祝你的书出版顺利。”`
+					goto thanks
+
+
+event "beyond the hyperdrive is published"
+
+mission "Coalition: Beyond the Hyperdrive Fail Book Discovered 2"
+	landing
+	invisible
+	non-blocking
+	to offer
+		has "event: beyond the hyperdrive is published"
+	on offer
+		fail "Coalition: Book Discovered 2"
+		fail
+
+mission "Coalition: Struggling Author 5A"
+	landing
+	name "拜访安娜"
+	description "请访问作者 Anna Fangvin（<destination>）。"
+	source
+		not government "Coalition"
+	destination "Inmost Blue"
+	to offer
+		has "event: beyond the hyperdrive is published"
+		not "Coalition: Struggling Author 5B: offered"
+	on offer
+		conversation
+			`检查计算机上的最新银河新闻和交易价格时，您会收到提醒。`
+			`你读过它，并记得你曾帮助一位名叫安娜·方文（Anna Fangvin）的作家获得她的书《超越超光速》（Beyond the Hyperdrive），该书大约半年前在联盟空间出版。您应该返回 <destination> 并检查她的情况。`
+				accept
+	on complete
+		payment 750000
+		conversation "安娜邀请你参加签名售书活动"
+
+mission "Coalition: Struggling Author 5B"
+	landing
+	name "拜访安娜"
+	description "请访问作者 Anna Fangvin（<destination>）。"
+	source
+		government "Coalition"
+	destination "Inmost Blue"
+	to offer
+		has "event: beyond the hyperdrive is published"
+		not "Coalition: Struggling Author 5A: offered"
+	on offer
+		conversation
+			`当你降落在太空港时，你检查消息并看到来自安娜·方文（Anna Fangvin）的通知，她是你大约半年前帮助过的作家。在消息中，她解释说她的小说《超越超光速》已获得批准。您应该返回<destination>并与她会面。`
+				accept
+	on complete
+		payment 750000
+		conversation "安娜邀请你参加签名售书活动"
+
+
+conversation "安娜邀请你参加签名售书活动"
+	action
+		log "People" "Anna Fangvin" `Anna was a struggling science fiction author in human space until she found success publishing her novel Beyond the Hyperdrive in the Coalition. Her book is a bestseller in the Kimek region.`
+		log "Helped somebody named Anna Fangvin get her book published in Coalition space. Apparently, it's a bestseller now. The book was Beyond the Hyperdrive, something about humans stealing jump drives from the Quarg."
+		event "beyond the hyperdrive payment" 40
+		set "beyond the hyperdrive news can show now"
+		outfit "Beyond the Hyperdrive" 1
+	`你一落地，安娜就到了，很高兴见到你。她用双臂抓住你的肩膀，用兴奋的语气解释说她的书已获准出版。`
+	`“他们今天要出版《超越超空间》，并且有一个完整的发行活动，我将在会上签名！感谢你所做的一切，<first>！你想和我一起参加签名售书吗？”`
+	choice
+		`“整个过程我都陪着你，算我一个！”`
+		`“我很乐意！”`
+		`“不，谢谢。”`
+			goto decline
+	`“太好了！我们步行去书店准备吧！工作人员已经给我们俩准备好了座位。”`
+	`你和安娜走进太空港的大型书店。已经有几位Heliarchs在场，他们的执法者防暴法杖就位以控制人群。`
+	`穿着看起来像书店制服的基梅克拿出一个带有多个把手的扬声器，开始宣布《超越超光速》的发布。几分钟之内，书店就变得拥挤起来，收银员和你的桌子之间排起了长队，安娜在送给她的每一本书上签名。`
+	`偶尔，每当另一只手累了时，安娜就会轮流用左右手签名。这样的情况持续了几个小时。你试图数出她签名的份数，但在达到六百份时放弃了。`
+	choice
+		`（什么也不说。）`
+			goto continue
+		`“你是左撇子还是右撇子？”`
+	`“我本来就是左撇子，但小时候我选择学习如何使用右手，因为我觉得能够使用双手会很酷。”`
+	label continue
+	`签名会持续几个小时。最终，穿着书店制服的基梅克宣布书店即将关门。`
+	`随着商店关门，队伍缩短，安娜在最后一份基梅克的副本上签名。至此，活动结束。安娜和你一起走回船上告别。`
+	`“我的书取得的成功超出了我最疯狂的梦想，这全都是因为你，<first>！”她几乎带着泪水说道。她拿出一张信用芯片。 “在这里，<payment>。你为我和我的职业生涯做了这么多，这是你应得的。”`
+	`然后安娜拿出另一本《超越超空间》，并在你面前签名。这是本书的联盟版，但已翻译成您的语言。快速通读一遍，你会发现这本书与你在人类空间中读到的版本相比已经有了很大的改变。 “给你，拿着吧。一份专门给你的，作为对你所做的一切的感谢。”`
+	choice
+		`“为什么这本书和人类空间里的书差别这么大？”`
+		`“你对它做了什么改变吗？”`
+	`“嗯，首先，这不是我们的语言。有些概念翻译得不太好，所以我试图捕捉故事的精神。Heliarch 语言学家非常有帮助，”她解释道。 “他们确实深入探讨了联盟语言的某些方面。值得庆幸的是，尽管书中的某些内容必须编辑或删除，但主要情节点都没有改变。我的 Heliarch 朋友说，如果我改变这个或删除那个，这本书会卖得更好，正如他们所说，他们希望‘让它更适合联盟’。他们的话。`
+	`“至于特别副本，这样我就可以用我的语言验证并查看他们所做的更改，这样我就不必学习他们的语言。他们同意为我打印另一份副本，这样我就可以把它给你。”`
+	`安娜检查了你们第一次见面时她没有的手表。 “哇，看来人们已经开始评论这本书了，而且他们给出了很好的反馈！我现在得走了；我想亲自看看我的书卖得怎么样。再见！”`
+	`然后安娜离开了你的船，给你留下了一本小说、一笔报酬，以及你帮助一位苦苦挣扎的作家取得成功的知识。`
+		decline
+	label decline
+	`安娜看起来很失望，但这种情绪很快就消失在她的热情之中。她朝着进来的方向飞奔而去。`
+
+
+event "beyond the hyperdrive payment"
+
+mission "Beyond the Hyperdrive Gratitude Payment"
+	landing
+	source
+		government "Coalition" "Heliarch"
+	to offer
+		has "event: beyond the hyperdrive payment"
+	on offer
+		payment 2000000
+		conversation
+			`您惊讶地发现您的帐户中多了一个 <payment>。检查您的消息时，您会发现来自安娜的通知，她的书《Beyond the Hyperdrive》几个月前在 联合体 space 上出版。她解释说，这本书在联盟空间销量非常好，并表达了谢意。鉴于您收到的<payment>，这可能是轻描淡写的。`
+				decline

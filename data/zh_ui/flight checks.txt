@@ -1,0 +1,38 @@
+# Copyright (c) 2014 by Michael Zahniser
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program. If not, see <https://www.gnu.org/licenses/>.
+
+# Conversations shown when launching from a planet with insufficiently equipped ships.
+conversation "flight check: no energy!"
+	scene "scene/engine2"
+	`你听过太多关于飞船系统故障引发事故的恐怖故事，因此你非常确信起飞前安全检查的必要性。伴随着 <ship> 预热时发出的低鸣、震动与咔嗒声，你在脑海中快速核对清单。计算机：正常。生命维持：正常。`
+	`	一切都很顺利，直到你准备启动系统进行试运行……你发现发电机输出功率不足，无法支撑这些系统运行。你需要安装一些电池，或者更换更强的发电机。`
+	
+conversation "flight check: no thruster!"
+	scene "scene/engine2"
+	`你听过太多关于飞船系统故障引发事故的恐怖故事，因此你非常确信起飞前安全检查的必要性。伴随着 <ship> 预热时发出的低鸣、震动与咔嗒声，你在脑海中快速核对清单。计算机：正常。生命维持：正常。`
+	`	一切都很顺利，直到你准备启动推进器进行试运行……你尴尬地意识到，你根本没有安装推进器。回装备店补上吧！`
+
+conversation "flight check: no steering!"
+	scene "scene/engine"
+	`你听过太多关于飞船系统故障引发事故的恐怖故事，因此你非常确信起飞前安全检查的必要性。伴随着 <ship> 预热时发出的低鸣、震动与咔嗒声，你在脑海中快速核对清单。计算机：正常。生命维持：正常。`
+	`	一切都很顺利，直到你准备启动转向引擎进行试运行……你尴尬地意识到，你根本没有安装转向系统。回装备店补上吧！`
+	
+conversation "flight check: overheating!"
+	scene "scene/engine"
+	`你听过太多关于飞船系统故障引发事故的恐怖故事，因此你非常确信起飞前安全检查的必要性。伴随着 <ship> 预热时发出的低鸣、震动与咔嗒声，你在脑海中快速核对清单。计算机：正常。生命维持：正常。`
+	`	当你检查到最后一项时，舱内温度已经高得令人不适。空气里弥漫着臭氧和灼热金属的气味，摄像头也显示引擎附近机体正在喷出蒸汽或烟雾。如果在大气层内都这么热，一旦进入真空环境很可能立刻过热。你需要安装冷却系统，或者把部分部件更换为低发热方案。`
+
+conversation "flight check: no bunks!"
+	scene "outfit/bunk room"
+	`你听过太多关于飞船系统故障引发事故的恐怖故事，因此你非常确信起飞前安全检查的必要性。伴随着 <ship> 预热时发出的低鸣、震动与咔嗒声，你在脑海中快速核对清单。计算机：正常。生命维持：正常。`
+	`	一切都很顺利，但诊断屏幕上突然弹出人工确认提示。你呼叫 <ship> 的船员……然后尴尬地意识到，你根本没有安装铺位。回装备店补上吧！`

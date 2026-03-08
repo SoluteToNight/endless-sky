@@ -1,0 +1,950 @@
+# Copyright (c) 2018 by Michael Zahniser
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program. If not, see <https://www.gnu.org/licenses/>.
+
+phrase "free worlds scanner payment"
+	word
+		`A Free Worlds captain is waiting for you when you land and takes a copy of your scanner logs, and you collect your payment of <payment>.`
+
+trade
+	commodity "Free Worlds Outfits"
+		"ion engines"
+		"plasma engines"
+		"cooling systems"
+		"fission reactors"
+		"thermionic reactors"
+		"battery packs"
+		"fuel cell units"
+		"heavy rocket systems"
+		"meteor rocket systems"
+		"javelin rocket systems"
+		"energy blasters"
+		"energy blaster turrets"
+		"torpedo rocket systems"
+		"beam lasers"
+		"beam turrets"
+		"heavy lasers"
+		"heavy laser turrets"
+		"plasma cannons"
+		"plasma turrets"
+		"radar jammers"
+		"tactical scanners"
+		"anti-missile turrets"
+		"proton guns"
+		"proton turrets"
+		"shield generators"
+
+mission "FW Scout Run [0]"
+	job
+	repeat
+	name `侦察跑`
+	description `飞过 <waypoints> 系统并侦察其海军活动。然后由 <date> 返回 <destination>，您的飞船的扫描仪日志将在此处进行分析。付款方式为<payment>。`
+	deadline
+	to offer
+		random < 30
+		has "salary: Free Worlds"
+		not "event: fw armistice"
+	source
+		government "Free Worlds"
+		neighbor
+			neighbor government "Republic"
+	waypoint
+		distance 1 2
+		government "Republic"
+		not system "Graffias"
+	on visit
+		dialog `您已降落在 <planet> 上，但尚未侦查出所有标记的系统。返回之前，请访问地图上标记的所有系统。`
+	on complete
+		payment 10000 180
+		dialog phrase "free worlds scanner payment"
+
+mission "FW Scout Run [1]"
+	job
+	repeat
+	name `侦察跑`
+	description `飞越 <waypoints> 系统并侦察它们的海军活动。然后由 <date> 返回 <destination>，您的飞船的扫描仪日志将在此处进行分析。付款方式为<payment>。`
+	deadline
+	to offer
+		random < 25
+		has "salary: Free Worlds"
+		not "event: fw armistice"
+	source
+		government "Free Worlds"
+		neighbor
+			neighbor government "Republic"
+	waypoint
+		distance 2 3
+		government "Republic"
+		not system "Graffias"
+	waypoint
+		distance 2 3
+		government "Republic"
+		not system "Graffias"
+	on visit
+		dialog `您已降落在 <planet> 上，但尚未侦查出所有标记的系统。返回之前，请访问地图上标记的所有系统。`
+	on complete
+		payment 20000 180
+		dialog phrase "free worlds scanner payment"
+
+mission "FW Scout Run [2]"
+	job
+	repeat
+	name `侦察跑`
+	description `飞越 <waypoints> 系统并侦察它们的海军活动。然后由 <date> 返回 <destination>，您的飞船的扫描仪日志将在此处进行分析。付款方式为<payment>。`
+	deadline
+	to offer
+		random < 20
+		has "salary: Free Worlds"
+		not "event: fw armistice"
+	source
+		government "Free Worlds"
+		neighbor
+			neighbor government "Republic"
+	waypoint
+		distance 2 3
+		government "Republic"
+		not system "Graffias"
+	waypoint
+		distance 3 4
+		government "Republic"
+		not system "Graffias"
+	on visit
+		dialog `您已降落在 <planet> 上，但尚未侦查出所有标记的系统。返回之前，请访问地图上标记的所有系统。`
+	on complete
+		payment 30000 180
+		dialog phrase "free worlds scanner payment"
+
+
+
+phrase "free worlds convoy supplies payment"
+	word
+		`The captain of the <npc> thanks you for escorting them safely, and the shipyard pays you <payment> for helping to deliver the supplies.`
+
+mission "FW Convoy Defense [0]"
+	job
+	repeat
+	name `护送至<planet>`
+	description `<planet> 的造船厂需要更多补给来建造战舰。立即护送一支船队由 <date> 前往 <destination>。付款方式为<payment>。`
+	deadline 1 1
+	to offer
+		random < 30
+		has "salary: Free Worlds"
+		not "main plot completed"
+	source
+		government "Free Worlds"
+		attributes "mining" "factory"
+		not attributes shipyard
+	destination
+		government "Free Worlds"
+		attributes shipyard
+		distance 2 6
+	npc
+		government "Pirate"
+		personality nemesis staying harvests plunders
+		system destination
+		fleet "Large Southern Pirates"
+		fleet "Small Southern Pirates"
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+		system destination
+		fleet "Large Southern Pirates"
+		fleet "Small Southern Pirates"
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+		fleet "Large Southern Pirates"
+	npc accompany save
+		government "Merchant"
+		personality escort timid
+		"cargo settings"
+			commodities "Ship Alloys" "Ship Systems" "Free Worlds Outfits"
+		fleet
+			names "civilian"
+			variant
+				"Freighter" 2
+				"Bastion"
+			variant
+				"Behemoth"
+				"Clipper" 2
+			variant
+				"Behemoth" 2
+			variant
+				"Hauler III"
+				"Bastion" 2
+			variant
+				"Hauler II" 2
+				"Osprey"
+			variant
+				"Argosy" 2
+				"Osprey"
+	on complete
+		payment 270000
+		dialog phrase "free worlds convoy supplies payment"
+	on visit
+		dialog `您已到达 <planet> ，但您留下了部分或全部车队！最好先出发，等待他们到达这个星系。`
+
+mission "FW Convoy Defense [1]"
+	job
+	repeat
+	name `护送至<planet>`
+	description `<planet> 的造船厂需要更多补给来建造战舰。立即护送一支船队由 <date> 前往 <destination>。付款方式为<payment>。`
+	deadline 1 1
+	to offer
+		random < 20
+		has "salary: Free Worlds"
+		not "main plot completed"
+	source
+		government "Free Worlds"
+		attributes "mining" "factory"
+		not attributes shipyard
+	destination
+		government "Free Worlds"
+		attributes shipyard
+		distance 2 6
+	npc
+		government "Pirate"
+		personality nemesis staying harvests plunders
+		system destination
+		fleet "Large Southern Pirates"
+		fleet "Small Southern Pirates"
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+		system destination
+		fleet "Large Southern Pirates"
+		fleet "Small Southern Pirates"
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+		fleet "Large Southern Pirates"
+	npc accompany save
+		government "Merchant"
+		personality escort timid
+		"cargo settings"
+			commodities "Ship Alloys" "Ship Systems" "Free Worlds Outfits"
+		fleet
+			names "civilian"
+			variant
+				"Freighter" 2
+				"Bastion"
+			variant
+				"Behemoth"
+				"Clipper" 2
+			variant
+				"Behemoth" 2
+			variant
+				"Hauler III"
+				"Bastion" 2
+			variant
+				"Hauler II" 2
+				"Osprey"
+			variant
+				"Argosy" 2
+				"Osprey"
+	on complete
+		payment 270000
+		dialog phrase "free worlds convoy supplies payment"
+	on visit
+		dialog `您已到达 <planet> ，但您留下了部分或全部车队！最好先出发，等待他们到达这个星系。`
+
+mission "FW Convoy Defense [2]"
+	job
+	repeat
+	name `护送至<planet>`
+	description `<planet> 的造船厂需要更多补给来建造战舰。立即护送一支船队由 <date> 前往 <destination>。付款方式为<payment>。`
+	deadline 1 1
+	to offer
+		random < 10
+		has "salary: Free Worlds"
+		not "main plot completed"
+	source
+		government "Free Worlds"
+		attributes "mining" "factory"
+		not attributes shipyard
+	destination
+		government "Free Worlds"
+		attributes shipyard
+		distance 2 6
+	npc
+		government "Pirate"
+		personality nemesis staying harvests plunders
+		system destination
+		fleet "Large Southern Pirates"
+		fleet "Small Southern Pirates"
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+		system destination
+		fleet "Large Southern Pirates"
+		fleet "Small Southern Pirates"
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+		fleet "Large Southern Pirates"
+	npc accompany save
+		government "Merchant"
+		personality escort timid
+		"cargo settings"
+			commodities "Ship Alloys" "Ship Systems" "Free Worlds Outfits"
+		fleet
+			names "civilian"
+			variant
+				"Freighter" 2
+				"Bastion"
+			variant
+				"Behemoth"
+				"Clipper" 2
+			variant
+				"Behemoth" 2
+			variant
+				"Hauler III"
+				"Bastion" 2
+			variant
+				"Hauler II" 2
+				"Osprey"
+			variant
+				"Argosy" 2
+				"Osprey"
+	on complete
+		payment 270000
+		dialog phrase "free worlds convoy supplies payment"
+	on visit
+		dialog `您已到达 <planet> ，但您留下了部分或全部车队！最好先出发，等待他们到达这个星系。`
+
+
+
+mission "FW Reinforcements [0]"
+	job
+	repeat
+	name `<planet> 增援`
+	description `这些 <bunks> 自由世界士兵需要立即由 <date> 运送到 <destination>，以增援前线。付款方式为<payment>。`
+	deadline 2 1
+	passengers 5 5 .2
+	to offer
+		random < 20
+		has "salary: Free Worlds"
+		not "event: fw armistice"
+	source
+		government "Free Worlds"
+		not
+			neighbor government "Republic"
+		not
+			neighbor
+				neighbor government "Republic"
+	destination
+		distance 2 10
+		government "Free Worlds"
+		neighbor
+			neighbor government "Republic"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment 10000 180
+		dialog `您将自由世界的士兵卸载到繁忙的 <planet> 太空港，并收取 <payment> 的付款。`
+
+mission "FW Reinforcements [1]"
+	job
+	repeat
+	name `<planet> 增援`
+	description `这些 <bunks> 自由世界士兵需要立即由 <date> 运送到 <destination>，以增援前线。付款方式为<payment>。`
+	deadline 2 1
+	passengers 5 5 .2
+	to offer
+		random < 10
+		has "salary: Free Worlds"
+		not "event: fw armistice"
+	source
+		government "Free Worlds"
+		not
+			neighbor government "Republic"
+		not
+			neighbor
+				neighbor government "Republic"
+	destination
+		distance 2 10
+		government "Free Worlds"
+		neighbor
+			neighbor government "Republic"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment 10000 180
+		dialog `您将自由世界的士兵卸载到繁忙的 <planet> 太空港，并收取 <payment> 的付款。`
+
+
+phrase "free worlds thanked resupply payment"
+	phrase
+		"generic cargo delivery payment"
+	word
+		` `
+	word
+		`A Free Worlds captain stationed on <planet> thanks you for delivering the much-needed supplies.`
+		`The Free Worlds captains stationed on <planet> thank you for delivering the much-needed supplies.`
+
+mission "FW Outfitter Resupply [0]"
+	job
+	repeat
+	name `补给<planet>`
+	description `<planet> 的服装店供应不足，需要立即补充库存。由 <date> 将已拆卸的 <commodity> 的 <tons> 交付给 <destination>。付款方式为<payment>。`
+	deadline 2 1
+	cargo "Free Worlds Outfits" 5 2 .1
+	to offer
+		random < 50
+		has "salary: Free Worlds"
+		not "main plot completed"
+	source
+		government "Free Worlds"
+	destination
+		distance 4 8
+		government "Free Worlds"
+		attributes outfitter
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment 2000 180
+		dialog phrase "free worlds thanked resupply payment"
+
+mission "FW Outfitter Resupply [1]"
+	job
+	repeat
+	name `补给<planet>`
+	description `<planet> 的服装店供应不足，需要立即补充库存。由 <date> 交付已拆卸的 <commodity> 的 <tons>。付款方式为 <payment>。`
+	deadline 2 1
+	cargo "Free Worlds Outfits" 5 2 .1
+	to offer
+		random < 40
+		has "salary: Free Worlds"
+		not "main plot completed"
+	source
+		government "Free Worlds"
+	destination
+		distance 5 10
+		government "Free Worlds"
+		attributes outfitter
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment 2000 180
+		dialog phrase "free worlds thanked resupply payment"
+
+mission "FW Outfitter Resupply [2]"
+	job
+	repeat
+	name `补给<planet>`
+	description `<planet> 的服装店供应不足，需要立即补充库存。由 <date> 将已拆卸的 <commodity> 的 <tons> 交付给 <destination>。付款方式为<payment>。`
+	deadline 2 1
+	cargo "Free Worlds Outfits" 5 2 .1
+	to offer
+		random < 30
+		has "salary: Free Worlds"
+		not "main plot completed"
+	source
+		government "Free Worlds"
+	destination
+		distance 6 12
+		government "Free Worlds"
+		attributes outfitter
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment 2000 180
+		dialog phrase "free worlds thanked resupply payment"
+
+mission "FW Bulk Outfitter Resupply [0]"
+	job
+	repeat
+	name `补给<planet>`
+	description `<planet> 的服装店供应不足，需要立即补充库存。由 <date> 将已拆卸的 <commodity> 的 <tons> 交付给 <destination>。付款方式为<payment>。`
+	deadline 2 1
+	cargo "Free Worlds Outfits" 25 2 .05
+	to offer
+		random < 30
+		has "salary: Free Worlds"
+		not "main plot completed"
+	source
+		government "Free Worlds"
+	destination
+		distance 4 8
+		government "Free Worlds"
+		attributes outfitter
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment 5000 180
+		dialog phrase "free worlds thanked resupply payment"
+
+mission "FW Bulk Outfitter Resupply [1]"
+	job
+	repeat
+	name `补给<planet>`
+	description `<planet> 的服装店供应不足，需要立即补充库存。由 <date> 将已拆卸的 <commodity> 的 <tons> 交付给 <destination>。付款方式为<payment>。`
+	deadline 2 1
+	cargo "Free Worlds Outfits" 25 2 .05
+	to offer
+		random < 25
+		has "salary: Free Worlds"
+		not "main plot completed"
+	source
+		government "Free Worlds"
+	destination
+		distance 5 10
+		government "Free Worlds"
+		attributes outfitter
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment 5000 180
+		dialog phrase "free worlds thanked resupply payment"
+
+mission "FW Bulk Outfitter Resupply [2]"
+	job
+	repeat
+	name `补给<planet>`
+	description `<planet> 的服装店供应不足，需要立即补充库存。由 <date> 将已拆卸的 <commodity> 的 <tons> 交付给 <destination>。付款方式为<payment>。`
+	deadline 2 1
+	cargo "Free Worlds Outfits" 25 2 .05
+	to offer
+		random < 20
+		has "salary: Free Worlds"
+		not "main plot completed"
+	source
+		government "Free Worlds"
+	destination
+		distance 6 12
+		government "Free Worlds"
+		attributes outfitter
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment 5000 180
+		dialog phrase "free worlds thanked resupply payment"
+
+mission "FW Frontline Resupply [0]"
+	job
+	repeat
+	name `补给<planet>`
+	description `战争前线急需补给。立即由 <date> 将 <cargo> 递送至 <destination>。付款方式为<payment>。`
+	deadline 2 1
+	cargo "Food" 5 2 .1
+	to offer
+		random < 40
+		has "salary: Free Worlds"
+		not "event: fw armistice"
+	source
+		government "Free Worlds"
+		not
+			neighbor government "Republic"
+		not
+			neighbor
+				neighbor government "Republic"
+	destination
+		distance 2 10
+		government "Free Worlds"
+		neighbor
+			neighbor government "Republic"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment 2000 180
+		dialog phrase "free worlds thanked resupply payment"
+
+mission "FW Frontline Resupply [1]"
+	job
+	repeat
+	name `补给<planet>`
+	description `战争前线急需补给。立即由 <date> 将 <cargo> 递送至 <destination>。付款方式为<payment>。`
+	deadline 2 1
+	cargo "Medical" 5 2 .1
+	to offer
+		random < 30
+		has "salary: Free Worlds"
+		not "event: fw armistice"
+	source
+		government "Free Worlds"
+		not
+			neighbor government "Republic"
+		not
+			neighbor
+				neighbor government "Republic"
+	destination
+		distance 2 10
+		government "Free Worlds"
+		neighbor
+			neighbor government "Republic"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment 2000 180
+		dialog phrase "free worlds thanked resupply payment"
+
+mission "FW Frontline Resupply [2]"
+	job
+	repeat
+	name `补给<planet>`
+	description `战争前线急需补给。立即由 <date> 将 <cargo> 递送至 <destination>。付款方式为<payment>。`
+	deadline 2 1
+	cargo "Heavy Metals" 5 2 .1
+	to offer
+		random < 20
+		has "salary: Free Worlds"
+		not "event: fw armistice"
+	source
+		government "Free Worlds"
+		not
+			neighbor government "Republic"
+		not
+			neighbor
+				neighbor government "Republic"
+	destination
+		distance 2 10
+		government "Free Worlds"
+		neighbor
+			neighbor government "Republic"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment 2000 180
+		dialog phrase "free worlds thanked resupply payment"
+
+mission "FW Frontline Resupply [3]"
+	job
+	repeat
+	name `补给<planet>`
+	description `战争前线急需补给。立即由 <date> 将 <cargo> 递送至 <destination>。付款方式为<payment>。`
+	deadline 2 1
+	cargo "Military" 5 2 .1
+	to offer
+		random < 20
+		has "salary: Free Worlds"
+		not "event: fw armistice"
+	source
+		government "Free Worlds"
+		not
+			neighbor government "Republic"
+		not
+			neighbor
+				neighbor government "Republic"
+	destination
+		distance 2 10
+		government "Free Worlds"
+		neighbor
+			neighbor government "Republic"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment 2000 180
+		dialog phrase "free worlds thanked resupply payment"
+
+
+mission "FW Bulk Frontline Resupply [0]"
+	job
+	repeat
+	name `补给<planet>`
+	description `战争前线急需补给。立即由 <date> 将 <cargo> 递送至 <destination>。付款方式为<payment>。`
+	deadline 2 1
+	cargo "Food" 25 2 .95
+	to offer
+		random < 30
+		has "salary: Free Worlds"
+		not "event: fw armistice"
+	source
+		government "Free Worlds"
+		not
+			neighbor government "Republic"
+		not
+			neighbor
+				neighbor government "Republic"
+	destination
+		distance 3 12
+		government "Free Worlds"
+		neighbor
+			neighbor government "Republic"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment 5000 180
+		dialog phrase "free worlds thanked resupply payment"
+
+mission "FW Bulk Frontline Resupply [1]"
+	job
+	repeat
+	name `补给<planet>`
+	description `战争前线急需补给。立即由 <date> 将 <cargo> 递送至 <destination>。付款方式为<payment>。`
+	deadline 2 1
+	cargo "Medical" 25 2 .95
+	to offer
+		random < 15
+		has "salary: Free Worlds"
+		not "event: fw armistice"
+	source
+		government "Free Worlds"
+		not
+			neighbor government "Republic"
+		not
+			neighbor
+				neighbor government "Republic"
+	destination
+		distance 3 12
+		government "Free Worlds"
+		neighbor
+			neighbor government "Republic"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment 5000 180
+		dialog phrase "free worlds thanked resupply payment"
+
+mission "FW Bulk Frontline Resupply [2]"
+	job
+	repeat
+	name `补给<planet>`
+	description `战争前线急需补给。立即由 <date> 将 <cargo> 递送至 <destination>。付款方式为<payment>。`
+	deadline 2 1
+	cargo "Military" 25 2 .95
+	to offer
+		random < 15
+		has "salary: Free Worlds"
+		not "event: fw armistice"
+	source
+		government "Free Worlds"
+		not
+			neighbor government "Republic"
+		not
+			neighbor
+				neighbor government "Republic"
+	destination
+		distance 3 12
+		government "Free Worlds"
+		neighbor
+			neighbor government "Republic"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment 5000 180
+		dialog phrase "free worlds thanked resupply payment"
+
+
+
+phrase "free worlds thanked care package"
+	word
+		`You deliver the care package of <commodity> to the specified address and explain to the people where the care package came from. They thank you for delivering it, and you collect your payment of <payment>.`
+
+mission "FW Care Package to Republic [0]"
+	job
+	repeat
+	name `寄往<planet>的关怀包`
+	description `自由世界的公民担心共和国的家人。立即由 <date> 将 <cargo> 的爱心包裹递送至 <destination>。付款方式为<payment>。`
+	deadline 1 1
+	cargo random 1 3
+	to offer
+		random < 30
+		has "chosen sides"
+		not "event: fw armistice"
+	source
+		government "Free Worlds"
+	destination
+		government "Republic"
+		distance 2 5
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment 1000 180
+		dialog phrase "free worlds thanked care package"
+
+mission "FW Care Package to Republic [1]"
+	job
+	repeat
+	name `寄往<planet>的关怀包`
+	description `自由世界的公民担心共和国的家人。立即由 <date> 将 <cargo> 的爱心包裹递送至 <destination>。付款方式为<payment>。`
+	deadline 1 1
+	cargo random 1 3
+	to offer
+		random < 30
+		has "chosen sides"
+		not "event: fw armistice"
+	source
+		government "Free Worlds"
+	destination
+		government "Republic"
+		distance 2 5
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment 1000 180
+		dialog phrase "free worlds thanked care package"
+
+mission "FW Care Package from Republic [0]"
+	job
+	repeat
+	name `寄往<planet>的关怀包`
+	description `一名共和国公民担心自由世界的家人。立即由 <date> 将 <cargo> 的爱心包裹递送至 <destination>。付款方式为<payment>。`
+	deadline 1 1
+	cargo random 1 3
+	to offer
+		random < 30
+		has "chosen sides"
+		not "event: fw armistice"
+	source
+		government "Republic"
+	destination
+		government "Free Worlds"
+		distance 2 5
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment 1000 180
+		dialog phrase "free worlds thanked care package"
+
+mission "FW Care Package from Republic [1]"
+	job
+	repeat
+	name `寄往<planet>的关怀包`
+	description `一名共和国公民担心自由世界的家人。立即由 <date> 将 <cargo> 的爱心包裹递送至 <destination>。付款方式为<payment>。`
+	deadline 1 1
+	cargo random 1 3
+	to offer
+		random < 30
+		has "chosen sides"
+		not "event: fw armistice"
+	source
+		government "Republic"
+	destination
+		government "Free Worlds"
+		distance 2 5
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment 1000 180
+		dialog phrase "free worlds thanked care package"
+
+
+
+phrase "free worlds thanked refugee transport"
+	word
+		`Your passengers thank you graciously for taking them away from the dangerous frontlines of the war. You wish them the best of luck on <planet>, and collect your payment of <payment>.`
+
+mission "FW Refugees [0]"
+	job
+	repeat
+	name `难民前往 <planet>`
+	description `这些 <bunks> 乘客希望逃离战争前线并立即在 <date> 定居在 <destination> 上。付款方式为<payment>。`
+	deadline 2 1
+	passengers 2 10 .9
+	to offer
+		random < 60
+		has "chosen sides"
+		not "event: fw armistice"
+	source
+		government "Free Worlds"
+		neighbor
+			neighbor government "Republic"
+	destination
+		distance 2 10
+		government "Free Worlds"
+		not
+			neighbor government "Republic"
+		not
+			neighbor
+				neighbor government "Republic"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment 2000 180
+		dialog phrase "free worlds thanked refugee transport"
+
+mission "FW Refugees [1]"
+	job
+	repeat
+	name `难民前往 <planet>`
+	description `这些 <bunks> 乘客希望逃离战争前线并立即在 <date> 定居在 <destination> 上。付款方式为<payment>。`
+	deadline 2 1
+	passengers 2 10 .9
+	to offer
+		random < 40
+		has "chosen sides"
+		not "event: fw armistice"
+	source
+		government "Free Worlds"
+		neighbor
+			neighbor government "Republic"
+	destination
+		distance 2 10
+		government "Free Worlds"
+		not
+			neighbor government "Republic"
+		not
+			neighbor
+				neighbor government "Republic"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment 2000 180
+		dialog phrase "free worlds thanked refugee transport"
+
+mission "FW Refugees [2]"
+	job
+	repeat
+	name `难民前往 <planet>`
+	description `这些 <bunks> 乘客希望逃离战争前线并立即在 <date> 定居在 <destination> 上。付款方式为<payment>。`
+	deadline 2 1
+	passengers 2 10 .9
+	to offer
+		random < 20
+		has "chosen sides"
+		not "event: fw armistice"
+	source
+		government "Free Worlds"
+		neighbor
+			neighbor government "Republic"
+	destination
+		distance 2 10
+		government "Free Worlds"
+		not
+			neighbor government "Republic"
+		not
+			neighbor
+				neighbor government "Republic"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment 2000 180
+		dialog phrase "free worlds thanked refugee transport"
+
+mission "FW Bulk Refugees [0]"
+	job
+	repeat
+	name `难民前往 <planet>`
+	description `这些 <bunks> 乘客希望逃离战争前线并立即在 <date> 定居在 <destination> 上。付款方式为<payment>。`
+	deadline 2 1
+	passengers 5 5 .5
+	to offer
+		random < 20
+		has "chosen sides"
+		not "event: fw armistice"
+	source
+		government "Free Worlds"
+		neighbor
+			neighbor government "Republic"
+	destination
+		distance 2 10
+		government "Free Worlds"
+		not
+			neighbor government "Republic"
+		not
+			neighbor
+				neighbor government "Republic"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment 5000 180
+		dialog phrase "free worlds thanked refugee transport"

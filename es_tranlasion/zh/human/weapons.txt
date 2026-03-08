@@ -1,0 +1,1880 @@
+# Copyright (c) 2014 by Michael Zahniser
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program. If not, see <https://www.gnu.org/licenses/>.
+
+outfit "Energy Blaster"
+	category "Guns"
+	series "Guns"
+	index 01010
+	cost 16000
+	thumbnail "outfit/blaster"
+	"mass" 5
+	"outfit space" -5
+	"weapon capacity" -5
+	"gun ports" -1
+	weapon
+		sprite "projectile/blaster"
+		sound "blaster"
+		"hit effect" "blaster impact"
+		"inaccuracy" 3
+		"velocity" 10.625
+		"lifetime" 48
+		"reload" 12
+		"firing energy" 5.8
+		"firing heat" 18
+		"shield damage" 10.6
+		"hull damage" 6.6
+	description "虽然能量冲击波不是最精确或最具破坏性的武器，但它很受欢迎，因为它足够小，甚至可以安装在最小的船上。一个爆能枪不足以对比战斗机更大的任何物体造成明显的伤害，但一艘配备了多个爆能枪的舰艇将成为一股不可忽视的力量。"
+
+outfit "Twin Blaster"
+	category "Guns"
+	series "Guns"
+	index 01030
+	cost 40000
+	thumbnail "outfit/twin blaster"
+	"mass" 12
+	"outfit space" -12
+	"weapon capacity" -12
+	"gun ports" -1
+	weapon
+		sound "blaster"
+		"submunition" "Blaster Submunition"
+			"offset" 1 0
+			"facing" 0.3
+		"submunition" "Blaster Submunition"
+			"offset" -1 0
+			"facing" -0.3
+		"hit effect" "blaster impact" 2
+		"inaccuracy" 3
+		"lifetime" 1
+		"velocity override" 10.625
+		"range override" 510
+		"reload" 12
+		"firing energy" 11.6
+		"firing heat" 36
+	description "Energy Blaster 的普遍性、低廉的价格和稳定的性能从它首次推出的那一天起就让修补匠无法抗拒。这些爆能枪通过螺栓固定在一起，安装在一个枪口内，其伤害是单个爆能枪的两倍，但代价是两倍的热量和功耗，以及一些额外的质量。"
+
+outfit "Blaster Submunition"
+	weapon
+		sprite "projectile/blaster"
+		"hit effect" "blaster impact"
+		"velocity" 10.625
+		"lifetime" 48
+		"shield damage" 10.6
+		"hull damage" 6.6
+
+outfit "Blaster Turret"
+	category "Turrets"
+	series "Turrets"
+	index 01010
+	cost 100000
+	thumbnail "outfit/blaster turret"
+	"mass" 15
+	"outfit space" -15
+	"weapon capacity" -15
+	"turret mounts" -1
+	"required crew" 1
+	weapon
+		sprite "projectile/blaster"
+		"hardpoint sprite" "hardpoint/blaster turret"
+		"hardpoint offset" 9.
+		sound "blaster"
+		"hit effect" "blaster impact"
+		"inaccuracy" 3
+		"turret turn" 3.6
+		"velocity" 10.625
+		"lifetime" 48
+		"reload" 6
+		"firing energy" 5.8
+		"firing heat" 18
+		"shield damage" 10.6
+		"hull damage" 6.6
+	description "爆能炮塔是一对安装在旋转平台上的能量爆能炮，可以向任何方向发射。先进的软件算法使炮塔能够纠正目标的运动，使爆能炮塔即使对抗小型、快速移动的战斗机也能有效。由于它需要具有 360 度视野的特殊安装点，因此并非所有舰艇都能配备炮塔。"
+
+outfit "Quad Blaster Turret"
+	category "Turrets"
+	series "Turrets"
+	index 01030
+	cost 230000
+	thumbnail "outfit/quad blaster turret"
+	"mass" 25
+	"outfit space" -25
+	"weapon capacity" -25
+	"turret mounts" -1
+	"required crew" 1
+	weapon
+		sprite "projectile/blaster"
+		"hardpoint sprite" "hardpoint/quad blaster turret"
+		"hardpoint offset" 9.
+		sound "blaster"
+		"hit effect" "blaster impact"
+		"inaccuracy" 3
+		"turret turn" 2.6
+		"velocity" 10.625
+		"lifetime" 48
+		"reload" 3
+		"firing energy" 5.8
+		"firing heat" 18
+		"shield damage" 10.6
+		"hull damage" 6.6
+	description "四重爆能炮塔在一个炮塔底座上携带四门火炮，对于有足够空间安装一门炮和驱动它的能量的船舶来说，可以将普通爆能炮塔的火力提高一倍。"
+
+effect "blaster impact"
+	sprite "effect/blaster impact"
+		"no repeat"
+		"frame rate" 30
+	"lifetime" 7
+	"random angle" 40
+	"velocity scale" -.05
+
+
+outfit "Modified Blaster"
+	category "Guns"
+	series "Guns"
+	index 01020
+	cost 35000
+	thumbnail "outfit/mod blaster"
+	"mass" 6
+	"outfit space" -6
+	"weapon capacity" -6
+	"gun ports" -1
+	weapon
+		sprite "projectile/mod blaster"
+		sound "mod blaster"
+		"hit effect" "blaster impact"
+		"inaccuracy" 4
+		"velocity" 10
+		"lifetime" 48
+		"reload" 12
+		"firing energy" 6.5
+		"firing heat" 25.2
+		"shield damage" 13.2
+		"hull damage" 8.8
+	description "这是一种能量冲击波，经过篡改以略微增加其威力，但代价是射程减小和能耗增加。改装的爆能炮在发射时还会产生大量热量，增加飞船过热的风险。"
+
+outfit "Twin Modified Blaster"
+	category "Guns"
+	series "Guns"
+	index 01040
+	cost 84000
+	thumbnail "outfit/twin mod blaster"
+	"mass" 14
+	"outfit space" -14
+	"weapon capacity" -14
+	"gun ports" -1
+	weapon
+		sound "mod blaster"
+		"submunition" "Modified Blaster Submunition"
+			"offset" 1 0
+			"facing" 0.45
+		"submunition" "Modified Blaster Submunition"
+			"offset" -1 0
+			"facing" -0.45
+		"hit effect" "blaster impact" 2
+		"inaccuracy" 4
+		"lifetime" 0
+		"velocity override" 10
+		"range override" 480
+		"reload" 12
+		"firing energy" 13
+		"firing heat" 50.4
+	description "一位有进取心的工程师大概认为改良型爆能枪本已令人恐惧的安全控制不足还不够，于是他拿起两把武器，把它们塞进同一个枪口，用狂热的热情粗略地焊接在一起。这种武器是否会在其自身成分熔化之前摧毁目标，谁也说不准。也许其目的是双管枪管会在武器必须发射之前恐吓敌人屈服。"
+
+outfit "Modified Blaster Submunition"
+	weapon
+		sprite "projectile/mod blaster"
+		"hit effect" "blaster impact"
+		"velocity" 10
+		"lifetime" 48
+		"shield damage" 13.2
+		"hull damage" 8.8
+
+outfit "Modified Blaster Turret"
+	category "Turrets"
+	series "Turrets"
+	index 01020
+	cost 170000
+	thumbnail "outfit/mod blaster turret"
+	"mass" 18
+	"outfit space" -18
+	"weapon capacity" -18
+	"turret mounts" -1
+	"required crew" 1
+	weapon
+		sprite "projectile/mod blaster"
+		"hardpoint sprite" "hardpoint/mod blaster turret"
+		"hardpoint offset" 9.
+		sound "mod blaster"
+		"hit effect" "blaster impact"
+		"inaccuracy" 4
+		"turret turn" 3.6
+		"velocity" 10
+		"lifetime" 48
+		"reload" 6
+		"firing energy" 6.5
+		"firing heat" 25.2
+		"shield damage" 13.2
+		"hull damage" 8.8
+	description "这是改良型冲击波的炮塔版本，是一种能量冲击波，经过改装以提高功率，但代价是更高的能耗和热量。这些炮塔很受海盗和其他试图将尽可能多的火力塞进船只的人的欢迎。"
+
+outfit "Heavy Blaster"
+	category "Guns"
+	series "Guns"
+	index 01050
+	cost 125000
+	thumbnail "outfit/heavy blaster"
+	"mass" 19
+	"outfit space" -19
+	"weapon capacity" -19
+	"gun ports" -1
+	weapon
+		sprite "projectile/heavy blaster"
+		sound "heavy blaster"
+		"hit effect" "blaster impact"
+		"inaccuracy" 5
+		"velocity" 9
+		"lifetime" 65
+		"reload" 30
+		"firing energy" 49
+		"firing heat" 150
+		"shield damage" 90
+		"hull damage" 54
+	description "重型冲击波是广受欢迎的能量冲击波设计的放大变体。这些在历史早期曾在多艘战舰上广泛使用，最著名的是作为火鸟号首次生产时的主要武器。随着时间的推移，粒子炮和等离子炮等更先进武器的发展已经取代了较新飞船上的重型爆能枪，但它的性能仍然足以在较旧的可用船舶上找到。"
+
+
+outfit "Beam Laser"
+	category "Guns"
+	series "Guns"
+	index 01050
+	cost 29000
+	thumbnail "outfit/laser"
+	"mass" 8
+	"outfit space" -8
+	"weapon capacity" -8
+	"gun ports" -1
+	weapon
+		sprite "projectile/laser"
+			"frame rate" 1
+		sound "laser"
+		"hit effect" "beam laser impact"
+		"inaccuracy" .5
+		"velocity" 300
+		"lifetime" 1
+		"reload" 1
+		"firing energy" .67
+		"firing heat" 1.6
+		"shield damage" 1
+		"hull damage" 1.3
+	description "在太空时代的早期，被称为“深渊”的太空区域中的定居点是在与人类其他空间相对隔离的情况下发展起来的。这种孤立的结果之一是他们的武器技术主要使用光束武器，而不是其他地方更常见的能量射弹武器。"
+
+outfit "Laser Turret"
+	category "Turrets"
+	series "Turrets"
+	index 01040
+	cost 140000
+	thumbnail "outfit/laser turret"
+	"mass" 22
+	"outfit space" -22
+	"weapon capacity" -22
+	"turret mounts" -1
+	"required crew" 1
+	weapon
+		sprite "projectile/2x laser"
+			"frame rate" 1
+		"hardpoint sprite" "hardpoint/laser turret"
+		"hardpoint offset" -0.5 8.
+		sound "laser"
+		"hit effect" "beam laser impact"
+		"inaccuracy" .5
+		"turret turn" 4
+		"velocity" 300
+		"lifetime" 1
+		"reload" 1
+		"firing energy" 1.33
+		"firing heat" 3.2
+		"shield damage" 2
+		"hull damage" 2.6
+	description "战斗机飞行员讨厌激光炮塔，因为一旦进入激光炮塔的攻击范围，就几乎不可能躲避它们。该炮塔携带一对激光器，几乎可以立即旋转，在新目标接近时向其开火。当安装在缓慢移动的货轮上以抵御成群的小型海盗船时，激光炮塔特别有用。"
+
+effect "beam laser impact"
+	sprite "effect/laser impact"
+		"no repeat"
+		"frame rate" 30
+	"lifetime" 5
+	"random angle" 2
+	"random spin" 1
+	"velocity scale" -.005
+
+
+outfit "Heavy Laser"
+	category "Guns"
+	series "Guns"
+	index 01060
+	cost 60000
+	thumbnail "outfit/heavy laser"
+	"mass" 15
+	"outfit space" -15
+	"weapon capacity" -15
+	"gun ports" -1
+	weapon
+		sprite "projectile/heavy laser"
+			"frame rate" 1
+		sound "heavy laser"
+		"hit effect" "heavy laser impact"
+		"inaccuracy" .4
+		"velocity" 400
+		"lifetime" 1
+		"reload" 1
+		"firing energy" 1.33
+		"firing heat" 2.8
+		"shield damage" 1.7
+		"hull damage" 2.4
+	description "重型激光器是升级版光束激光器，具有更远的射程和更高的功率。它主要用于能量和空间充足的大型船舶，但一些飞行员认为单个重型激光器是一对光束激光器的值得替代品，因为更长的射程弥补了它不会造成两倍伤害的事实。"
+
+outfit "Heavy Laser Turret"
+	category "Turrets"
+	series "Turrets"
+	index 01050
+	cost 320000
+	thumbnail "outfit/heavy laser turret"
+	"mass" 40
+	"outfit space" -40
+	"weapon capacity" -40
+	"turret mounts" -1
+	"required crew" 1
+	weapon
+		sprite "projectile/2x heavy laser"
+			"frame rate" 1
+		"hardpoint sprite" "hardpoint/heavy laser turret"
+		"hardpoint offset" 8.
+		sound "heavy laser"
+		"hit effect" "heavy laser impact"
+		"inaccuracy" .4
+		"turret turn" 2.2
+		"velocity" 400
+		"lifetime" 1
+		"reload" 1
+		"firing energy" 2.66
+		"firing heat" 5.6
+		"shield damage" 3.4
+		"hull damage" 4.8
+	description "对于有足够空间安装的舰船来说，重型激光炮塔是一种强大的武器，对于驱逐战斗机和用连续火力轰炸更大的目标同样有用，而不必担心将你的舰船指向正确的方向。"
+
+effect "heavy laser impact"
+	sprite "effect/heavy laser impact"
+		"no repeat"
+		"frame rate" 30
+	"lifetime" 5
+	"random angle" 2
+	"random spin" 1
+	"random velocity" 1
+	"velocity scale" -.007
+
+outfit "Mining Laser"
+	category "Guns"
+	series "Guns"
+	index 01070
+	cost 38000
+	thumbnail "outfit/mining laser"
+	"mass" 12
+	"outfit space" -12
+	"weapon capacity" -12
+	"gun ports" -1
+	weapon
+		sprite "projectile/mining laser"
+			"frame rate" 1
+		sound "mining laser"
+		"hit effect" "beam laser impact"
+		"inaccuracy" .35
+		"velocity" 200
+		"lifetime" 1
+		"reload" 1
+		"firing energy" 1.1
+		"firing heat" 2.1
+		"shield damage" .8
+		"hull damage" 1.4
+		"minable damage" 1.9
+		"prospecting" 1
+	description "2400年代中期光束激光器的发展不仅带来了太空战争的进步，也带来了小行星采矿领域的进步，因为将小行星拖到基地进行提取的传统但效率低下的方法被可以精确地从小行星本身提取矿石的单独航天器所取代。"
+	description "现代采矿激光器是光束激光器的衍生产品，旨在优化矿物产量和提取率，但会牺牲射程和防护罩损坏。"
+
+
+outfit "Mining Laser Turret"
+	category "Turrets"
+	series "Turrets"
+	index 01060
+	cost 66000
+	thumbnail "outfit/mining laser turret"
+	"mass" 18
+	"outfit space" -18
+	"weapon capacity" -18
+	"turret mounts" -1
+	"required crew" 1
+	weapon
+		sprite "projectile/mining laser"
+			"frame rate" 1
+		"hardpoint sprite" "hardpoint/mining laser turret"
+		"hardpoint offset" 0.7 8.
+		sound "mining laser"
+		"hit effect" "beam laser impact"
+		"inaccuracy" .35
+		"turret turn" 4.4
+		"velocity" 200
+		"lifetime" 1
+		"reload" 1
+		"firing energy" 1.1
+		"firing heat" 2.1
+		"shield damage" .8
+		"hull damage" 1.4
+		"minable damage" 1.9
+		"prospecting" 1
+	description "虽然小行星采矿者通常更喜欢能够与小行星保持速度的更灵活的船只，但采矿激光炮塔使具有宽敞货舱的大型且缓慢的船只更容易采矿。"
+	description "采矿激光炮塔设计为与小行星扫描仪结合使用，因为无法瞄准小行星意味着您必须手动瞄准武器，就像它是固定枪一样。"
+
+
+outfit "Tractor Beam"
+	category "Turrets"
+	series "Tractor Beams"
+	index 10
+	cost 75000
+	thumbnail "outfit/tractor beam"
+	"mass" 22
+	"outfit space" -22
+	"weapon capacity" -22
+	"turret mounts" -1
+	weapon
+		"hardpoint sprite" "hardpoint/tractor beam"
+		"hardpoint offset" 4.
+		sound "tractor beam"
+		"hit effect" "tractor beam"
+		"tractor beam" 7
+		"velocity" 300
+		"lifetime" 1
+		"reload" 1
+		"firing energy" 2.1
+		"firing heat" .8
+	description "斥力发动机的反重力特性在 24 世纪引发了人类航天的一场革命，但直到最近，工程师们才开始尝试万有引力。牵引光束利用基本的吸引子技术，使船只能够吸引太空碎片，无论是最近开采的小行星上的矿石，还是逃命的商船倾倒的货物。这使得牵引光束成为小行星矿工和海盗中流行的装备。"
+
+effect "tractor beam"
+	sprite "effect/tractor beam"
+		"frame rate" 3.5
+	"lifetime" 1
+	"velocity scale" 1
+
+outfit "Electron Beam"
+	category "Guns"
+	series "Guns"
+	index 01080
+	cost 170000
+	thumbnail "outfit/electron beam"
+	"mass" 21
+	"outfit space" -21
+	"weapon capacity" -21
+	"gun ports" -1
+	weapon
+		sprite "projectile/electron"
+			"frame rate" 60
+		sound "electron beam"
+		"hit effect" "electron impact"
+		"inaccuracy" .3
+		"velocity" 450
+		"lifetime" 1
+		"reload" 1
+		"firing energy" 2
+		"firing heat" 3.6
+		"shield damage" 2.4
+		"hull damage" 3.3
+	description "电子束是深空实验室最近开发的产品，是一种更强大的武器，其设计类似于他们长期流行的激光枪。"
+
+outfit "Electron Turret"
+	category "Turrets"
+	series "Turrets"
+	index 01070
+	cost 720000
+	thumbnail "outfit/electron turret"
+	"mass" 54
+	"outfit space" -54
+	"weapon capacity" -54
+	"turret mounts" -1
+	"required crew" 1
+	weapon
+		sprite "projectile/2x electron"
+			"frame rate" 60
+		"hardpoint sprite" "hardpoint/electron turret"
+		"hardpoint offset" 8.
+		sound "electron beam"
+		"hit effect" "electron impact"
+		"inaccuracy" .3
+		"turret turn" 1.2
+		"velocity" 450
+		"lifetime" 1
+		"reload" 1
+		"firing energy" 4
+		"firing heat" 7.2
+		"shield damage" 4.8
+		"hull damage" 6.6
+	description "该炮塔将深空公司最近开发的两个电子束武器放置在旋转炮塔上，为击落快速移动的目标提供无与伦比的精度和威力。"
+
+effect "electron impact"
+	sprite "effect/electron impact"
+		"no repeat"
+		"frame rate" 30
+	"lifetime" 5
+	"random angle" 2
+	"random spin" 1
+	"velocity scale" -.003
+
+
+outfit "Anti-Missile Turret"
+	category "Turrets"
+	series "Anti-Missile"
+	index 01010
+	cost 60000
+	thumbnail "outfit/anti-missile"
+	"mass" 16
+	"outfit space" -16
+	"weapon capacity" -16
+	"turret mounts" -1
+	weapon
+		"hardpoint sprite" "hardpoint/anti-missile"
+		"hardpoint offset" 4.
+		"hit effect" "small anti-missile"
+		"anti-missile" 5
+		"velocity" 150
+		"lifetime" 1
+		"reload" 8
+		"firing energy" 5
+		"firing heat" 3
+	description "几个世纪前，太空战主要是用导弹进行的，其结果仅取决于哪艘船拥有更多的防护罩或弹药。 Lovelace Labs 最初的成立就是为了解决这种情况，开发了一种可以从空中发射导弹的保护系统，保护货轮车队免受海盗的侵害，否则海盗就可以简单地轰炸他们，让他们屈服而无需冒险进入他们的枪炮射程。"
+
+effect "small anti-missile"
+	sprite "effect/small anti missile"
+		"no repeat"
+		"frame rate" 3
+	sound "anti-missile"
+	"sound category" "anti-missile"
+	"lifetime" 21
+	"velocity scale" 1
+
+
+outfit "Heavy Anti-Missile Turret"
+	category "Turrets"
+	series "Anti-Missile"
+	index 01020
+	cost 150000
+	thumbnail "outfit/heavy anti-missile"
+	"mass" 30
+	"outfit space" -30
+	"weapon capacity" -30
+	"turret mounts" -1
+	weapon
+		"hardpoint sprite" "hardpoint/heavy anti-missile"
+		"hardpoint offset" 5.
+		"hit effect" "large anti-missile"
+		"anti-missile" 8
+		"velocity" 200
+		"lifetime" 1
+		"reload" 6
+		"firing energy" 10
+		"firing heat" 5
+	description "重型反导弹炮塔比其较小的同类炮塔具有更远的射程、更高的功率和更短的装填时间。克服这一问题的唯一方法是集中发射导弹，这样当一枚导弹被瞄准时，其他导弹就可以通过，因此，如果安装了同一发射器的多个副本，现在市场上的所有导弹系统都默认以集群发射，而不是像普通枪支那样交错开火。"
+
+effect "large anti-missile"
+	sprite "effect/large anti missile"
+		"no repeat"
+		"frame rate" 2
+	sound "heavy anti-missile"
+	"sound category" "anti-missile"
+	"lifetime" 31
+	"velocity scale" 1
+
+
+outfit "Particle Cannon"
+	category "Guns"
+	series "Guns"
+	index 01090
+	cost 220000
+	thumbnail "outfit/particle cannon"
+	"mass" 30
+	"outfit space" -30
+	"weapon capacity" -30
+	"gun ports" -1
+	weapon
+		sprite "projectile/particle beam"
+		sound "particle"
+		"hit effect" "particle impact"
+		"inaccuracy" .5
+		"velocity" 30
+		"lifetime" 25
+		"reload" 20
+		"firing energy" 35
+		"firing force" 15
+		"firing heat" 120
+		"hit force" 120
+		"shield damage" 65
+		"hull damage" 62
+	description "粒子炮的工作原理是将短时间的粒子爆发加速到接近相对论的速度。当安装在一艘能够足够快地转向以使其能够对接近的船只进行训练的船只上时，它就成为一种几乎无与伦比的武器，能够在较小的船只靠近到足以让其相对短程武器发挥作用之前摧毁它们。"
+
+effect "particle impact"
+	sprite "effect/particle impact"
+		"no repeat"
+		"frame rate" 30
+	sound "explosion small"
+	"lifetime" 20
+	"random angle" 2
+	"random spin" 10
+	"velocity scale" -.05
+
+
+outfit "Proton Gun"
+	category "Guns"
+	series "Guns"
+	index 01100
+	cost 150000
+	thumbnail "outfit/proton gun"
+	"mass" 28
+	"outfit space" -28
+	"weapon capacity" -28
+	"gun ports" -1
+	weapon
+		sprite "projectile/proton"
+		sound "proton"
+		"hit effect" "proton impact" 3
+		"inaccuracy" 4
+		"submunition" "Proton Fragment" 3
+		"velocity" 24
+		"lifetime" 2
+		"reload" 8
+		"firing energy" 15
+		"firing force" 3
+		"firing heat" 60
+	description "质子枪最初是辛迪加试图逆向工程并批量生产粒子炮的廉价竞争对手。不幸的是，他们无法找到一种可靠的方法来保持光束连贯，但由此产生的武器仍然受到一些船长的欢迎，特别是作为反战斗机枪。"
+
+outfit "Proton Fragment"
+	weapon
+		sprite "projectile/proton fragment"
+			"no repeat"
+			"frame rate" 2
+		"hit effect" "proton impact"
+		"inaccuracy" 2
+		"lifetime" 24
+		"hit force" 9
+		"shield damage" 10.1
+		"hull damage" 8.4
+
+effect "proton impact"
+	sprite "effect/proton impact"
+		"no repeat"
+		"frame rate" 30
+	"lifetime" 20
+	"random angle" 2
+	"velocity scale" -.005
+
+
+outfit "Proton Turret"
+	category "Turrets"
+	series "Turrets"
+	index 01080
+	cost 260000
+	thumbnail "outfit/proton turret"
+	"mass" 34
+	"outfit space" -34
+	"weapon capacity" -34
+	"turret mounts" -1
+	"required crew" 1
+	weapon
+		sprite "projectile/proton"
+		"hardpoint sprite" "hardpoint/proton turret"
+		"hardpoint offset" 14.
+		sound "proton"
+		"hit effect" "proton impact" 3
+		"inaccuracy" 4
+		"turret turn" 2.4
+		"submunition" "Proton Fragment" 3
+		"velocity" 24
+		"lifetime" 2
+		"reload" 8
+		"firing energy" 15
+		"firing force" 3
+		"firing heat" 60
+	description "辛迪加质子炮塔是一款相对较新的产品，旨在与深空公司在反战斗机防御市场上长期流行的激光炮塔竞争。虽然质子炮塔比它的竞争对手更粗糙，但它在对激光武器的短射程不满意的船长中仍然拥有一批忠实的追随者。"
+
+
+outfit "Plasma Cannon"
+	category "Guns"
+	series "Guns"
+	index 01110
+	cost 190000
+	thumbnail "outfit/plasma cannon"
+	"mass" 25
+	"outfit space" -25
+	"weapon capacity" -25
+	"gun ports" -1
+	weapon
+		sprite "projectile/plasma"
+			"frame rate" 3
+		sound "plasma"
+		"hit effect" "plasma explosion"
+		"inaccuracy" 2
+		"velocity" 12
+		"lifetime" 40
+		"reload" 18
+		"firing energy" 30
+		"firing heat" 180
+		"hit force" 45
+		"shield damage" 63
+		"hull damage" 25
+		"heat damage" 340
+	description "等离子炮发射过热等离子体。除了损坏目标之外，这些等离子爆发还会传递大量热量，尤其是对于护盾已关闭的目标。"
+
+outfit "Plasma Turret"
+	category "Turrets"
+	series "Turrets"
+	index 01090
+	cost 520000
+	thumbnail "outfit/plasma turret"
+	"mass" 60
+	"outfit space" -60
+	"weapon capacity" -60
+	"turret mounts" -1
+	"required crew" 1
+	weapon
+		sprite "projectile/plasma"
+			"frame rate" 3
+		"hardpoint sprite" "hardpoint/plasma turret"
+		"hardpoint offset" 15.
+		sound "plasma"
+		"hit effect" "plasma explosion"
+		"inaccuracy" 2
+		"turret turn" 1.6
+		"velocity" 12
+		"lifetime" 40
+		"reload" 9
+		"firing energy" 30
+		"firing heat" 180
+		"hit force" 45
+		"shield damage" 63
+		"hull damage" 25
+		"heat damage" 340
+	description "等离子炮塔是一对安装在炮塔上的等离子炮，可以向任何方向射击。这是一种可怕的武器，但只有最大的船只才拥有它所需的空间和能量。"
+
+outfit "Plasma Repeater"
+	category "Guns"
+	series "Guns"
+	index 01120
+	cost 274000
+	thumbnail "outfit/plasma repeater"
+	"mass" 32
+	"outfit space" -32
+	"weapon capacity" -32
+	"gun ports" -1
+	weapon
+		sprite "projectile/plasma"
+			"frame rate" 3
+		sound "plasma"
+		"hit effect" "plasma explosion"
+		"lifetime" 38
+		"velocity" 12
+		"inaccuracy" 5
+		"reload" 7
+		"firing energy" 13
+		"firing heat" 100
+		"shield damage" 33
+		"hull damage" 13
+		"heat damage" 144
+		"hit force" 28.5
+	description `在购买等离子加农炮的版权几十年后，克拉兹控制论将这种武器放在了南环每家高端装备商的货架上。到目前为止，事实证明，中继器在所有敢于测试它的人中都非常受欢迎，并且正在成为对任何炫耀其海盗掠夺成果的人的重要威慑力量。`
+	description `这种较重的版本源自最初的等离子加农炮，它以更大的爆发力换取更快的射速。尽管较小的过热等离子体爆发造成的伤害远低于其前身，但火力的大小会对目标造成更大的整体伤害。`
+
+effect "plasma explosion"
+	sprite "effect/plasma explosion"
+		"no repeat"
+		"frame rate" 20
+	sound "explosion tiny"
+	"lifetime" 21
+	"random angle" 360
+	"random spin" 4
+	"random velocity" .1
+	"velocity scale" -.05
+
+
+outfit "Flamethrower"
+	category "Secondary Weapons"
+	series "Secondary Weapons"
+	index 01160
+	cost 190000
+	thumbnail "outfit/flamethrower"
+	"mass" 9
+	"outfit space" -9
+	"weapon capacity" -9
+	"gun ports" -1
+	weapon
+		sprite "effect/explosion/small"
+			"frame rate" 60
+			"no repeat"
+		sound "flamethrower"
+		icon "icon/flamethrower"
+		"submunition" "Flamethrower Projectile"
+		"inaccuracy" 12
+		"velocity" 9
+		"lifetime" 5
+		"reload" 1
+		"firing energy" .1
+		"firing fuel" .4
+		"firing heat" 4
+	description "火焰喷射器是一种简陋但外观令人印象深刻的武器，它可以点燃你的超空间燃料并将其引向你的对手。它造成的伤害相对较小，但它可以使已经在接近其热容量的目标过热，暂时使其脱离战斗。"
+
+outfit "Flamethrower Projectile"
+	weapon
+		sprite "projectile/flamethrower"
+			"frame rate" 17
+			"random start frame"
+		"hit effect" "flamethrower hit"
+		"die effect" "flamethrower die"
+		"inaccuracy" 20
+		"lifetime" 18
+		"random lifetime" 8
+		"damage dropoff" 0 198
+		"dropoff modifier" .5
+		"shield damage" .8
+		"hull damage" .7
+		"heat damage" 125
+
+effect "flamethrower die"
+	sprite "effect/explosion/small"
+		"no repeat"
+		"frame rate" 15
+		"random start frame"
+	"lifetime" 24
+	"random angle" 360
+	"random frame rate" 5
+	"random spin" 2
+	"random velocity" .4
+	"velocity scale" .4
+
+effect "flamethrower hit"
+	sprite "effect/explosion/medium"
+		"no repeat"
+		"frame rate" 15
+		"random start frame"
+	"lifetime" 28
+	"random angle" 360
+	"random frame rate" 5
+	"random spin" 3
+	"random velocity" .6
+	"velocity scale" .4
+
+
+outfit "Meteor Missile"
+	category "Ammunition"
+	series "Ammunition"
+	index 01020
+	cost 500
+	thumbnail "outfit/meteor"
+	"mass" .2
+	"meteor capacity" -1
+	description "流星导弹充当流星导弹发射器的弹药。每个导弹发射器都有自己的容量；如果您没有先购买吊舱、发射器或用于存放导弹的存储器，则无法安装导弹。"
+
+outfit "Meteor Missile Box"
+	plural "Meteor Missile Boxes"
+	series "Ammunition"
+	index 01021
+	category "Ammunition"
+	cost 9000
+	thumbnail "outfit/meteor storage"
+	"mass" 2
+	"outfit space" -5
+	"meteor capacity" 15
+	ammo "Meteor Missile"
+	description "流星导弹箱用于储存流星导弹发射器的额外弹药。"
+
+outfit "Meteor Missile Launcher"
+	category "Secondary Weapons"
+	series "Secondary Weapons"
+	index 01050
+	cost 15000
+	thumbnail "outfit/meteor launcher"
+	"mass" 8
+	"outfit space" -14
+	"weapon capacity" -14
+	"gun ports" -1
+	"meteor capacity" 30
+	weapon
+		sprite "projectile/meteor"
+			"no repeat"
+			"frame rate" .25
+		sound "meteor"
+		ammo "Meteor Missile"
+		icon "icon/meteor"
+		"fire effect" "meteor fire"
+		"die effect" "missile death"
+		"hit effect" "missile hit"
+		"inaccuracy" 5
+		"velocity" 11
+		"lifetime" 350
+		"reload" 80
+		"firing energy" 1
+		"firing heat" 20
+		"acceleration" 1
+		"drag" .1
+		"turn" 1.8
+		"homing"
+			"blindspot"
+		"infrared tracking" .65
+		"shield damage" 360
+		"hull damage" 220
+		"hit force" 330
+		"missile strength" 6
+	description "流星导弹是人类太空中最便宜、最简单的寻的武器。流星很快就会被反导弹系统摧毁，而且它们的红外跟踪系统很难追踪到热量水平较低的目标。然而，当大量导弹发射时，它们的大型弹头可能会给防御薄弱的目标带来毁灭性的打击。"
+	description "该武器的弹药可以在任何装备商处补充。"
+		to display
+			has "gamerule: universal ammo restocking"
+
+outfit "Meteor Missile Pod"
+	category "Secondary Weapons"
+	series "Secondary Weapons"
+	index 01040
+	cost 5000
+	thumbnail "outfit/meteor pod"
+	"mass" 1
+	"outfit space" -3
+	"weapon capacity" -3
+	"gun ports" -1
+	"meteor capacity" 7
+	weapon
+		sprite "projectile/meteor"
+			"no repeat"
+			"frame rate" .25
+		sound "meteor"
+		ammo "Meteor Missile"
+		icon "icon/meteor"
+		"fire effect" "meteor fire"
+		"die effect" "missile death"
+		"hit effect" "missile hit"
+		"inaccuracy" 5
+		"velocity" 11
+		"lifetime" 350
+		"reload" 200
+		"burst count" 7
+		"burst reload" 80
+		"firing energy" 1
+		"firing heat" 20
+		"acceleration" 1
+		"drag" .1
+		"turn" 1.8
+		"homing"
+			"blindspot"
+		"infrared tracking" .65
+		"shield damage" 360
+		"hull damage" 220
+		"hit force" 330
+		"missile strength" 6
+	description "流星导弹是人类太空中最便宜、最简单的寻的武器。流星很快就会被反导弹系统摧毁，而且它们的红外跟踪系统很难追踪到热量水平较低的目标。然而，当大量导弹发射时，它们的大型弹头可能会给防御薄弱的目标带来毁灭性的打击。"
+	description "吊舱使战斗机和其他轻型飞机能够携带少量导弹投入战斗，同时为其他武器保留足够的空间。大型船舶最好配备全尺寸发射器。"
+	description "该武器的弹药可以在任何装备商处补充。"
+		to display
+			has "gamerule: universal ammo restocking"
+
+effect "meteor fire"
+	sprite "effect/meteor fire"
+		"no repeat"
+		"frame rate" 30
+	"lifetime" 12
+	"random velocity" 10
+
+outfitter "Meteor Missile Restock"
+	to sell
+		has "gamerule: universal ammo restocking"
+		or
+			has "outfit: Meteor Missile Launcher"
+			has "outfit: Meteor Missile Pod"
+			has "outfit: Meteor Missile Box"
+	location
+		attributes "outfitter"
+	stock
+		"Meteor Missile"
+
+
+outfit "Sidewinder Missile"
+	category "Ammunition"
+	series "Ammunition"
+	index 01030
+	cost 900
+	thumbnail "outfit/sidewinder"
+	"mass" .2
+	"sidewinder capacity" -1
+	description "响尾蛇导弹是响尾蛇导弹发射器的弹药；您安装的每个发射器最多可配备 45 个，而吊舱可携带 4 个。如果没有吊舱或发射器来发射导弹，则无法安装导弹。"
+
+outfit "Sidewinder Missile Rack"
+	category "Ammunition"
+	series "Ammunition"
+	index 01031
+	cost 20000
+	thumbnail "outfit/sidewinder storage"
+	"mass" 2.4
+	"outfit space" -7
+	"sidewinder capacity" 23
+	ammo "Sidewinder Missile"
+	description "响尾蛇导弹架用于储存响尾蛇导弹发射器的额外弹药。"
+
+outfit "Sidewinder Missile Launcher"
+	category "Secondary Weapons"
+	series "Secondary Weapons"
+	index 01070
+	cost 60000
+	thumbnail "outfit/sidewinder launcher"
+	"mass" 11
+	"outfit space" -20
+	"weapon capacity" -20
+	"gun ports" -1
+	"sidewinder capacity" 45
+	weapon
+		sprite "projectile/sidewinder"
+			"no repeat"
+			"frame rate" .25
+		sound "sidewinder"
+		ammo "Sidewinder Missile"
+		icon "icon/sidewinder"
+		"fire effect" "sidewinder fire"
+		"die effect" "missile death"
+		"hit effect" "missile hit"
+		"inaccuracy" 4
+		"velocity" 14
+		"lifetime" 350
+		"reload" 60
+		"firing energy" 1
+		"firing heat" 15
+		"acceleration" 1.2
+		"drag" .1
+		"turn" 4
+		"homing"
+			"leading"
+			"throttle control"
+		"radar tracking" .9
+		"shield damage" 260
+		"hull damage" 180
+		"hit force" 255
+		"missile strength" 18
+	description "响尾蛇导弹是由 Lovelace Labs 设计的，讽刺的是，该实验室也是反导弹炮塔的设计者。有传言称，洛夫莱斯的两个制造导弹和反导弹的工程团队彼此之间展开了激烈的竞争：结果是一代又一代更智能的导弹和更智能的炮塔来抵御它们。"
+	description "虽然响尾蛇导弹的威力不如流行的流星导弹那么强大或便宜，但它有几个优点，包括卓越的机动性、更好的跟踪系统和保护壳，使反导弹系统更难以摧毁它们。"
+	description "该武器的弹药可以在任何装备商处补充。"
+		to display
+			has "gamerule: universal ammo restocking"
+
+outfit "Sidewinder Missile Pod"
+	category "Secondary Weapons"
+	series "Secondary Weapons"
+	index 01060
+	cost 20000
+	thumbnail "outfit/sidewinder pod"
+	"mass" 2
+	"outfit space" -4
+	"weapon capacity" -4
+	"gun ports" -1
+	"sidewinder capacity" 6
+	weapon
+		sprite "projectile/sidewinder"
+			"no repeat"
+			"frame rate" .25
+		sound "sidewinder"
+		ammo "Sidewinder Missile"
+		icon "icon/sidewinder"
+		"fire effect" "sidewinder fire"
+		"die effect" "missile death"
+		"hit effect" "missile hit"
+		"inaccuracy" 4
+		"velocity" 14
+		"lifetime" 350
+		"reload" 150
+		"burst count" 6
+		"burst reload" 60
+		"firing energy" 1
+		"firing heat" 15
+		"acceleration" 1.2
+		"drag" .1
+		"turn" 4
+		"homing"
+			"leading"
+			"throttle control"
+		"radar tracking" .9
+		"shield damage" 260
+		"hull damage" 180
+		"hit force" 255
+		"missile strength" 18
+	description "响尾蛇导弹是由 Lovelace Labs 设计的，讽刺的是，该实验室也是反导弹炮塔的设计者。有传言称，洛夫莱斯的两个制造导弹和反导弹的工程团队彼此之间展开了激烈的竞争：结果是一代又一代更智能的导弹和更智能的炮塔来抵御它们。"
+	description "虽然响尾蛇导弹的威力不如流行的流星导弹那么强大或便宜，但它有几个优点，包括卓越的机动性、更好的跟踪系统和保护壳，使反导弹系统更难以摧毁它们。"
+	description "吊舱使战斗机和其他轻型飞机能够携带少量导弹投入战斗，同时为其他武器保留足够的空间。大型船舶最好配备全尺寸发射器。"
+	description "该武器的弹药可以在任何装备商处补充。"
+		to display
+			has "gamerule: universal ammo restocking"
+
+
+effect "sidewinder fire"
+	sprite "effect/sidewinder fire"
+		"no repeat"
+		"frame rate" 30
+	"lifetime" 9
+	"random velocity" 2
+
+outfitter "Sidewinder Missile Restock"
+	to sell
+		has "gamerule: universal ammo restocking"
+		or
+			has "outfit: Sidewinder Missile Launcher"
+			has "outfit: Sidewinder Missile Pod"
+			has "outfit: Sidewinder Missile Rack"
+	location
+		attributes "outfitter"
+	stock
+		"Sidewinder Missile"
+
+
+outfit "Javelin"
+	category "Ammunition"
+	series "Ammunition"
+	index 01010
+	cost 50
+	thumbnail "outfit/javelin"
+	"mass" .04
+	"javelin capacity" -1
+	description "标枪导弹是标枪吊舱的弹药；如果没有 Pod 来存储它们，您将无法购买或使用标枪。"
+
+outfit "Javelin Storage Crate"
+	category "Ammunition"
+	series "Ammunition"
+	index 01011
+	cost 5000
+	thumbnail "outfit/javelin storage"
+	"mass" 2
+	"outfit space" -6
+	"javelin capacity" 100
+	ammo "Javelin"
+	description "标枪储存箱用于储存标枪吊舱的额外弹药。"
+
+outfit "Javelin Pod"
+	category "Secondary Weapons"
+	series "Secondary Weapons"
+	index 01020
+	cost 20000
+	thumbnail "outfit/javelin pod"
+	"mass" 4
+	"outfit space" -12
+	"weapon capacity" -12
+	"gun ports" -1
+	"javelin capacity" 200
+	weapon
+		sprite "projectile/javelin"
+		sound "javelin"
+		ammo "Javelin"
+		icon "icon/javelin"
+		"hit effect" "tiny explosion"
+		"inaccuracy" 1
+		"velocity" 10
+		"lifetime" 60
+		"reload" 15
+		"firing energy" .2
+		"firing heat" 12
+		"shield damage" 48
+		"hull damage" 26
+		"hit force" 75
+		"missile strength" 3
+	description "标枪吊舱可快速发射非制导导弹。标枪吊舱的伤害远高于任何同等尺寸的枪支，并且射程也更远，但一旦一艘船用完所有弹药，它就必须离开战斗并寻找可以购买更多弹药的星球，这使得标枪在持久战中不太有用。"
+	description "该武器的高射速还使其能够有效地饱和保护良好的船只的反导弹防御系统，以便盟军船只发射的更危险的射弹可以潜入。"
+	description "该武器的弹药可以在任何装备商处补充。"
+		to display
+			has "gamerule: universal ammo restocking"
+
+outfit "Javelin Mini Pod"
+	category "Secondary Weapons"
+	series "Secondary Weapons"
+	index 01010
+	cost 5000
+	thumbnail "outfit/javelin mini pod"
+	"mass" 1
+	"outfit space" -3
+	"weapon capacity" -3
+	"gun ports" -1
+	"javelin capacity" 30
+	weapon
+		sprite "projectile/javelin"
+		sound "javelin"
+		ammo "Javelin"
+		icon "icon/javelin"
+		"hit effect" "tiny explosion"
+		"inaccuracy" 1
+		"velocity" 10
+		"lifetime" 60
+		"reload" 40
+		"burst count" 30
+		"burst reload" 20
+		"firing energy" .2
+		"firing heat" 12
+		"shield damage" 48
+		"hull damage" 26
+		"hit force" 75
+		"missile strength" 3
+	description "标枪吊舱可快速发射非制导导弹。标枪吊舱的伤害远高于任何同等尺寸的枪支，并且射程也更远，但一旦一艘船用完所有弹药，它就必须离开战斗并寻找可以购买更多弹药的星球，这使得标枪在持久战中不太有用。"
+	description "该武器的高射速还使其能够有效地饱和保护良好的船只的反导弹防御系统，以便盟军船只发射的更危险的射弹可以潜入。"
+	description "迷你吊舱使战斗机和其他轻型飞机能够携带少量标枪进入战斗，同时为其他武器保留足够的空间。大型船舶最好配备全尺寸吊舱。"
+	description "该武器的弹药可以在任何装备商处补充。"
+		to display
+			has "gamerule: universal ammo restocking"
+
+outfit "Javelin Turret"
+	category "Secondary Weapons"
+	series "Secondary Weapons"
+	index 01030
+	cost 110000
+	thumbnail "outfit/javelin turret"
+	"mass" 15
+	"outfit space" -31
+	"weapon capacity" -31
+	"turret mounts" -1
+	"required crew" 1
+	"javelin capacity" 400
+	weapon
+		sprite "projectile/javelin"
+		"hardpoint sprite" "hardpoint/javelin turret"
+		"hardpoint offset" 9.
+		sound "javelin"
+		ammo "Javelin"
+		icon "icon/javelin turret"
+		"hit effect" "tiny explosion"
+		"inaccuracy" 4
+		"turret turn" 2.6
+		"velocity" 10
+		"lifetime" 60
+		"reload" 7.5
+		"firing energy" .2
+		"firing heat" 12
+		"shield damage" 48
+		"hull damage" 26
+		"hit force" 75
+		"missile strength" 3
+	description "标枪炮塔安装的不是一个而是两个标枪吊舱，标枪炮塔可发射大量非制导导弹，造成的伤害明显高于其他相同尺寸的炮塔武器，但由于其高射速而需要使用大量弹药。因此，这些炮塔通常与标枪存储箱和武器搭配使用，一旦所有导弹都用完，这些武器就不需要使用弹药来依靠。"
+	description "该武器的弹药可以在任何装备商处补充。"
+		to display
+			has "gamerule: universal ammo restocking"
+
+outfitter "Javelin Restock"
+	to sell
+		has "gamerule: universal ammo restocking"
+		or
+			has "outfit: Javelin Pod"
+			has "outfit: Javelin Mini Pod"
+			has "outfit: Javelin Turret"
+			has "outfit: Javelin Storage Crate"
+	location
+		attributes "outfitter"
+	stock
+		"Javelin"
+
+
+outfit "Torpedo"
+	plural "Torpedoes"
+	series "Ammunition"
+	index 01050
+	category "Ammunition"
+	cost 1400
+	thumbnail "outfit/torpedo"
+	"mass" .4
+	"torpedo capacity" -1
+	description "鱼雷是鱼雷发射器的弹药。每个鱼雷发射器可容纳 30 个。除非您还安装了发射器来发射鱼雷，否则您无法安装鱼雷。"
+
+outfit "Torpedo Storage Rack"
+	category "Ammunition"
+	series "Ammunition"
+	index 01051
+	cost 21000
+	thumbnail "outfit/torpedo storage"
+	"mass" 3
+	"outfit space" -9
+	"torpedo capacity" 15
+	ammo "Torpedo"
+	description "鱼雷储存架用于储存鱼雷发射器的额外弹药。"
+
+outfit "Torpedo Launcher"
+	category "Secondary Weapons"
+	series "Secondary Weapons"
+	index 01110
+	cost 80000
+	thumbnail "outfit/torpedo launcher"
+	"mass" 18
+	"outfit space" -30
+	"weapon capacity" -30
+	"gun ports" -1
+	"torpedo capacity" 30
+	weapon
+		sprite "projectile/torpedo"
+			"frame rate" 2
+			"random start frame"
+		sound "torpedo"
+		ammo "Torpedo"
+		icon "icon/torpedo"
+		"fire effect" "torpedo fire"
+		"hit effect" "torpedo hit"
+		"die effect" "tiny explosion"
+		"inaccuracy" 5
+		"velocity" 0
+		"velocity override" 6
+		"lifetime" 900
+		"reload" 150
+		"firing energy" 2
+		"firing heat" 45
+		"acceleration" .12
+		"drag" .02
+		"turn" 1.5
+		"homing"
+			"throttle control"
+		"optical tracking" .8
+		"shield damage" 820
+		"hull damage" 820
+		"hit force" 450
+		"missile strength" 30
+	description "鱼雷是最强大的自导武器，但它们的移动速度足够慢，以至于快速的船只可以轻松超越它们，这使得它们在对付大型目标或有时在小船只过于分散而无法躲避时最有用。鱼雷发射器也比其他导弹系统大得多，因此它们最常见于主力舰上。"
+	description "该武器的弹药可以在任何装备商处补充。"
+		to display
+			has "gamerule: universal ammo restocking"
+
+outfit "Torpedo Pod"
+	category "Secondary Weapons"
+	series "Secondary Weapons"
+	index 01100
+	cost 30000
+	thumbnail "outfit/torpedopod"
+	"mass" 5
+	"outfit space" -8
+	"weapon capacity" -8
+	"gun ports" -1
+	"torpedo capacity" 3
+	weapon
+		sprite "projectile/torpedo"
+			"frame rate" 2
+			"random start frame"
+		sound "torpedo"
+		ammo "Torpedo"
+		icon "icon/torpedo"
+		"fire effect" "torpedo fire"
+		"hit effect" "torpedo hit"
+		"die effect" "tiny explosion"
+		"inaccuracy" 5
+		"velocity" 0
+		"velocity override" 6
+		"lifetime" 900
+		"reload" 320
+		"burst count" 3
+		"burst reload" 150
+		"firing energy" 2
+		"firing heat" 45
+		"acceleration" .12
+		"drag" .02
+		"turn" 1.5
+		"homing"
+			"throttle control"
+		"optical tracking" .8
+		"shield damage" 820
+		"hull damage" 820
+		"hit force" 450
+		"missile strength" 30
+	description "鱼雷是最强大的自导武器，但它们的移动速度足够慢，以至于快速的船只可以轻松超越它们，这使得它们在对付大型目标或有时在小船只过于分散而无法躲避时最有用。"
+	description "吊舱使战斗机和其他轻型飞机能够携带少量鱼雷投入战斗，同时为其他武器保留足够的空间。大型船舶最好配备全尺寸发射器。"
+	description "该武器的弹药可以在任何装备商处补充。"
+		to display
+			has "gamerule: universal ammo restocking"
+
+effect "torpedo fire"
+	sprite "effect/torpedo fire"
+		"no repeat"
+		"frame rate" 10
+	"lifetime" 15
+
+outfitter "Torpedo Restock"
+	to sell
+		has "gamerule: universal ammo restocking"
+		or
+			has "outfit: Torpedo Launcher"
+			has "outfit: Torpedo Pod"
+			has "outfit: Torpedo Storage Rack"
+	location
+		attributes "outfitter"
+	stock
+		"Torpedo"
+
+
+outfit "Typhoon Torpedo"
+	plural "Typhoon Torpedoes"
+	series "Ammunition"
+	index 01060
+	category "Ammunition"
+	cost 2700
+	thumbnail "outfit/typhoon"
+	"mass" .5
+	"typhoon capacity" -1
+	description "台风鱼雷是台风发射器的弹药。每个发射器可容纳 30 个。除非您还安装了发射器来发射台风鱼雷，否则您无法安装台风鱼雷。"
+
+outfit "Typhoon Storage Tube"
+	category "Ammunition"
+	series "Ammunition"
+	index 01061
+	cost 40500
+	thumbnail "outfit/typhoon storage"
+	"mass" 2.5
+	"outfit space" -10
+	"typhoon capacity" 15
+	ammo "Typhoon Torpedo"
+	description "台风储存管用于储存台风发射器的额外弹药。"
+
+outfit "Typhoon Launcher"
+	category "Secondary Weapons"
+	series "Secondary Weapons"
+	index 01130
+	cost 260000
+	thumbnail "outfit/typhoon launcher"
+	"mass" 25
+	"outfit space" -40
+	"weapon capacity" -40
+	"gun ports" -1
+	"typhoon capacity" 30
+	weapon
+		sprite "projectile/typhoon"
+			"frame rate" 4
+			"random start frame"
+		sound "typhoon"
+		ammo "Typhoon Torpedo"
+		icon "icon/typhoon"
+		"fire effect" "typhoon fire"
+		"hit effect" "torpedo hit"
+		"die effect" "tiny explosion"
+		"inaccuracy" 5
+		"velocity" 4
+		"lifetime" 1600
+		"reload" 150
+		"firing energy" 4
+		"firing heat" 50
+		"acceleration" .15
+		"drag" .04
+		"turn" 1.5
+		"homing"
+			"leading"
+			"throttle control"
+		"optical tracking" .9
+		"shield damage" 1050
+		"hull damage" 1050
+		"hit force" 675
+		"missile strength" 40
+	description "台风鱼雷是一种改进的鱼雷技术；它们比普通鱼雷造成的伤害要大得多。然而，它们的速度也慢得多，因为它们主要用于对抗大型且移动缓慢的主力舰。因此，技术足够熟练的飞行员通常可以在它们周围躲避。"
+	description "该武器的弹药可以在任何装备商处补充。"
+		to display
+			has "gamerule: universal ammo restocking"
+
+outfit "Typhoon Pod"
+	category "Secondary Weapons"
+	series "Secondary Weapons"
+	index 01120
+	cost 100000
+	thumbnail "outfit/typhoonpod"
+	"mass" 6
+	"outfit space" -12
+	"weapon capacity" -12
+	"gun ports" -1
+	"typhoon capacity" 3
+	weapon
+		sprite "projectile/typhoon"
+			"frame rate" 4
+			"random start frame"
+		sound "typhoon"
+		ammo "Typhoon Torpedo"
+		icon "icon/typhoon"
+		"fire effect" "typhoon fire"
+		"hit effect" "torpedo hit"
+		"die effect" "tiny explosion"
+		"inaccuracy" 5
+		"velocity" 4
+		"lifetime" 1600
+		"reload" 320
+		"burst count" 3
+		"burst reload" 150
+		"firing energy" 4
+		"firing heat" 50
+		"acceleration" .15
+		"drag" .04
+		"turn" 1.5
+		"homing"
+			"leading"
+			"throttle control"
+		"optical tracking" .9
+		"shield damage" 1050
+		"hull damage" 1050
+		"hit force" 675
+		"missile strength" 40
+	description "台风鱼雷是一种改进的鱼雷技术；它们比普通鱼雷造成的伤害要大得多。然而，它们的速度也慢得多，因为它们主要用于对抗大型且移动缓慢的主力舰。因此，技术足够熟练的飞行员通常可以在它们周围躲避。"
+	description "吊舱使战斗机和其他轻型飞机能够携带少量台风鱼雷投入战斗，同时为其他武器保留足够的空间。大型船舶最好配备全尺寸发射器。"
+	description "该武器的弹药可以在任何装备商处补充。"
+		to display
+			has "gamerule: universal ammo restocking"
+
+effect "typhoon fire"
+	sprite "effect/typhoon fire"
+		"no repeat"
+		"frame rate" 10
+	"lifetime" 15
+
+outfitter "Typhoon Torpedo Restock"
+	to sell
+		has "gamerule: universal ammo restocking"
+		or
+			has "outfit: Typhoon Launcher"
+			has "outfit: Typhoon Pod"
+			has "outfit: Typhoon Storage Tube"
+	location
+		attributes "outfitter"
+	stock
+		"Typhoon Torpedo"
+
+
+outfit "Heavy Rocket"
+	category "Ammunition"
+	series "Ammunition"
+	index 01040
+	cost 2000
+	thumbnail "outfit/rocket"
+	"mass" .5
+	"rocket capacity" -1
+	description "重型火箭是重型火箭发射器的弹药。除非您首先安装了启动器来启动它，否则您无法安装它。每个发射器最多可容纳 20 枚火箭。"
+
+outfit "Heavy Rocket Rack"
+	category "Ammunition"
+	series "Ammunition"
+	index 01041
+	cost 20000
+	thumbnail "outfit/rocket storage"
+	"mass" 2
+	"outfit space" -7
+	"rocket capacity" 10
+	ammo "Heavy Rocket"
+	description "重型火箭架用于储存重型火箭发射器的额外弹药。"
+
+outfit "Heavy Rocket Launcher"
+	category "Secondary Weapons"
+	series "Secondary Weapons"
+	index 01090
+	cost 40000
+	thumbnail "outfit/rocket launcher"
+	"mass" 15
+	"outfit space" -25
+	"weapon capacity" -25
+	"gun ports" -1
+	"rocket capacity" 20
+	weapon
+		sprite "projectile/rocket"
+			"frame rate" 4
+		sound "rocket"
+		ammo "Heavy Rocket"
+		stream
+		icon "icon/rocket"
+		"hit effect" "heavy rocket hit"
+		"die effect" "small explosion"
+		"inaccuracy" 1
+		"velocity" 8
+		"lifetime" 125
+		"reload" 240
+		"firing energy" 1
+		"firing heat" 250
+		"acceleration" .8
+		"drag" .1
+		"trigger radius" 20
+		"blast radius" 150
+		"shield damage" 790
+		"hull damage" 670
+		"hit force" 900
+		"missile strength" 24
+	description "重型火箭是目前最强大的导弹武器之一，但也有代价：它们没有寻的系统，而是直接向前发射，并依靠接近触发器来引爆。然而，一旦被触发，它们就会损坏其爆炸半径内的所有船只，这使得它们对战斗机群非常有效。"
+	description "该武器的弹药可以在任何装备商处补充。"
+		to display
+			has "gamerule: universal ammo restocking"
+
+outfit "Heavy Rocket Pod"
+	category "Secondary Weapons"
+	series "Secondary Weapons"
+	index 01080
+	cost 15000
+	thumbnail "outfit/rocket pod"
+	"mass" 3
+	"outfit space" -6
+	"weapon capacity" -6
+	"gun ports" -1
+	"rocket capacity" 2
+	weapon
+		sprite "projectile/rocket"
+			"frame rate" 4
+		sound "rocket"
+		ammo "Heavy Rocket"
+		icon "icon/rocket"
+		"hit effect" "heavy rocket hit"
+		"die effect" "small explosion"
+		"inaccuracy" 1
+		"velocity" 8
+		"lifetime" 125
+		"reload" 500
+		"burst count" 2
+		"burst reload" 240
+		"firing energy" 1
+		"firing heat" 250
+		"acceleration" .8
+		"drag" .1
+		"trigger radius" 20
+		"blast radius" 150
+		"shield damage" 790
+		"hull damage" 670
+		"hit force" 900
+		"missile strength" 24
+	description "重型火箭是目前最强大的导弹武器之一，但也有代价：它们没有寻的系统，而是直接向前发射，并依靠接近触发器来引爆。然而，一旦被触发，它们就会损坏其爆炸半径内的所有船只，这使得它们对战斗机群非常有效。"
+	description "吊舱使战斗机和其他轻型飞机能够携带少量火箭投入战斗，同时为其他武器保留足够的空间。大型船舶最好配备全尺寸发射器。"
+	description "该武器的弹药可以在任何装备商处补充。"
+		to display
+			has "gamerule: universal ammo restocking"
+
+effect "heavy rocket hit"
+	sprite "effect/explosion/huge"
+		"no repeat"
+		"frame rate" 15
+	sound "heavy rocket hit"
+	"lifetime" 36
+	"random angle" 360
+	"random frame rate" 5
+	"random spin" 5
+	"random velocity" 1
+	"velocity scale" .4
+
+outfitter "Heavy Rocket Restock"
+	to sell
+		has "gamerule: universal ammo restocking"
+		or
+			has "outfit: Heavy Rocket Launcher"
+			has "outfit: Heavy Rocket Pod"
+			has "outfit: Heavy Rocket Rack"
+	location
+		attributes "outfitter"
+	stock
+		"Heavy Rocket"
+
+
+outfit "Nuclear Missile"
+	category "Secondary Weapons"
+	series "Secondary Weapons"
+	index 01170
+	cost 1000000
+	thumbnail "outfit/nuke"
+	"mass" 10
+	"outfit space" -10
+	"weapon capacity" -10
+	"gun ports" -1
+	weapon
+		sprite "projectile/missile"
+			"no repeat"
+			"frame rate" .25
+		"hardpoint sprite" "hardpoint/nuke"
+		sound "nuke"
+		ammo "Nuclear Missile"
+		stream
+		icon "icon/nuke"
+		"hit effect" "nuke explosion"
+		"hit effect" "nuke residue fast" 10
+		"hit effect" "nuke residue slow" 10
+		"die effect" "missile death"
+		"inaccuracy" 1
+		"velocity" 6
+		"lifetime" 800
+		"reload" 400
+		"firing energy" 10
+		"firing heat" 400
+		"acceleration" .8
+		"drag" .1
+		"turn" 4
+		"homing"
+			"leading"
+			"throttle control"
+		"radar tracking" .5
+		"optical tracking" 1
+		"trigger radius" 30
+		"blast radius" 150
+		"shield damage" 9000
+		"hull damage" 7000
+		"hit force" 6000
+		"missile strength" 200
+		"triggers nuke alert"
+	description "距离上一次核战争已经过去了几个世纪，直到最近，银河系中的大多数人都认为那个混乱和破坏的时代已经永远成为过去……"
+	description "[核导弹是一次性武器：每枚导弹都占据一个枪位，发射后，它所在的枪位就空了。]"
+
+effect "nuke explosion"
+	sprite "effect/explosion/nuke"
+		"no repeat"
+		"frame rate" 30
+	sound "explosion nuke"
+	"lifetime" 15
+	"random angle" 360
+	"random spin" 5
+	"random velocity" 1
+	"velocity scale" .4
+
+effect "nuke residue fast"
+	sprite "effect/explosion/huge"
+		"no repeat"
+		"frame rate" 15
+	"lifetime" 36
+	"random angle" 360
+	"random spin" 5
+	"random velocity" 8
+	"velocity scale" 0.1
+
+effect "nuke residue slow"
+	sprite "effect/explosion/huge"
+		"no repeat"
+		"frame rate" 10
+	"lifetime" 60
+	"random angle" 360
+	"random spin" 5
+	"random velocity" 5
+	"velocity scale" 0.1
+
+
+outfit "Gatling Gun Ammo"
+	plural "Gatling Gun Ammo"
+	category "Ammunition"
+	series "Ammunition"
+	index 01070
+	cost 4
+	thumbnail "outfit/bullet"
+	"mass" .002
+	"gatling round capacity" -1
+	description "这种简单的弹药筒是加特林机枪的弹药，带有贫核燃料弹丸或发光曳光弹。由于这种弹药主要是在海盗世界中由奴隶儿童在恶劣的工作条件下制造的，因此枪口速度的变化可达 30%，并且曳光弹的分布很少是均匀的。"
+
+outfit "Bullet Boxes"
+	plural "Bullet Boxes"
+	category "Ammunition"
+	series "Ammunition"
+	index 01071
+	cost 3000
+	thumbnail "outfit/bullet storage"
+	"mass" 2
+	"outfit space" -5
+	"gatling round capacity" 1500
+	ammo "Gatling Gun Ammo"
+	description "弹匣用于储存加特林机枪的额外弹药。"
+
+outfit "Gatling Gun"
+	category "Secondary Weapons"
+	series "Secondary Weapons"
+	index 01140
+	cost 20000
+	thumbnail "outfit/gat"
+	"mass" 2
+	"outfit space" -8
+	"weapon capacity" -8
+	"gun ports" -1
+	"gatling round capacity" 3000
+	weapon
+		sprite "projectile/tinyflare"
+			"random start frame"
+		sound "gatling"
+		ammo "Gatling Gun Ammo"
+		icon "icon/gat"
+		"inaccuracy" 2
+		"velocity" 16
+		"lifetime" 1
+		"reload" 3
+		"burst count" 180
+		"burst reload" 1
+		"firing energy" .03
+		"firing heat" 2.5
+		"submunition" "gbullet"
+		"cluster"
+		"hit effect" "bullet impact"
+	description `当理查德·J·加特林博士在 19 世纪发明了以他的名字命名的速射枪时，他希望它的破坏性能够导致战争本身的结束。一千多年后，加特林机枪的现代化身在星空中发挥作用，证明了其基本坚固的设计 - 以及加特林博士的天真。虽然射速很高，但该枪需要冷却时间是其开火时间的两倍，并且最多只能维持三秒的连续射击。`
+	description "该武器的弹药可以在任何装备商处补充。"
+		to display
+			has "gamerule: universal ammo restocking"
+
+outfit "Gatling Turret"
+	category "Secondary Weapons"
+	series "Secondary Weapons"
+	index 01150
+	cost 120000
+	thumbnail "outfit/gat turret"
+	"mass" 11
+	"outfit space" -23
+	"weapon capacity" -23
+	"turret mounts" -1
+	"required crew" 1
+	"gatling round capacity" 6000
+	weapon
+		sound "gatling"
+		sprite "projectile/2x tinyflare"
+			"random start frame"
+		"hardpoint sprite" "hardpoint/gat turret hardpoint"
+		"submunition" "gbullet"
+			"offset" 1.5 -6
+			"facing" 0.3
+		"submunition" "gbullet"
+			"offset" -1.5 -6
+			"facing" -0.3
+		ammo "Gatling Gun Ammo" 2
+		icon "icon/gat turret"
+		"inaccuracy" 2
+		"turret turn" 3.6
+		"velocity" 16
+		"lifetime" 1
+		"reload" 3
+		"burst count" 180
+		"burst reload" 1
+		"firing energy" .06
+		"firing heat" 5
+		"cluster"
+		"hit effect" "bullet impact"
+	description `理查德·加特林博士发明的枪管的凶猛程度让理查德·J·加特林博士在坟墓中旋转，当一位足智多谋的海盗想用一对加特林机枪取代爆能炮塔上的能量爆能枪时，加特林炮塔诞生了。从那时起，加特林炮塔的统治范围就扩展到了南环，以其无与伦比的撕裂船体的能力恐吓商人和执法部门。`
+	description "该武器的弹药可以在任何装备商处补充。"
+		to display
+			has "gamerule: universal ammo restocking"
+
+outfit "gbullet"
+	weapon
+		sprite "projectile/bullet"
+			"delay" 5
+			"random start frame"
+			"frame rate" 0
+		"random velocity" 8
+		"lifetime" 20
+		"random lifetime" 5
+		"shield damage" 3
+		"hull damage" 6
+		"hit force" 3
+		"hit effect" "bullet impact"
+
+effect "bullet impact"
+	sprite "effect/bullet impact"
+		"no repeat"
+		"frame rate" 60
+	"lifetime" 8
+	"random angle" 40
+	"velocity scale" -.05
+
+outfitter "Gatling Gun Ammo Restock"
+	to sell
+		has "gamerule: universal ammo restocking"
+		or
+			has "outfit: Gatling Gun"
+			has "outfit: Gatling Turret"
+			has "outfit: Bullet Boxes"
+	location
+		attributes "outfitter"
+	stock
+		"Gatling Gun Ammo"

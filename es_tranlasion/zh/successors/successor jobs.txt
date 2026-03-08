@@ -1,0 +1,822 @@
+# Copyright (c) 2024 by Daeridanii
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program. If not, see <https://www.gnu.org/licenses/>.
+
+phrase "successor tourists out"
+	word
+		`The tourists thank you for bringing them to <planet> and pay you <payment>.`
+
+phrase "successor tourists in"
+	word
+		`The tourists thank you for returning them to <planet> and pay you <payment>.`
+
+phrase "successor tourists stopover"
+	word
+		`Having completed their travel itinerary, the tourists are ready to return home.`
+
+phrase "successor bold tourists stopover"
+	word
+		`Having completed their somewhat unusual travel itinerary, the tourists are ready to return home.`
+
+phrase "successor students out"
+	word
+		`The students thank you for bringing them to <planet> and pay you <payment>.`
+
+phrase "successor workers out"
+	word
+		`The workers thank you for bringing them to <planet> and pay you <payment>.`
+
+phrase "successor delivery"
+	word
+		`You drop off the shipment of <commodity> and receive <payment> in payment.`
+
+phrase "successor data"
+	word
+		`You `
+	word
+		`deliver `
+		`hand over `
+		`transfer `
+	word
+		`the encrypted databanks `
+		`the secured databanks `
+		`the databanks `
+		`the data `
+	word
+		`and `
+	word
+		`receive `
+		`are given `
+	word
+		`<payment> in payment.`
+		`a payment of <payment>.`
+
+phrase "high houses delivery"
+	word
+		`You `
+	word
+		`offload `
+		`deliver `
+		`hand off `
+		`drop off `
+	word
+		`the `
+		`your `
+	word
+		`shipment `
+		`cargo `
+	word
+		`of <commodity> to several well-dressed Successor officers. `
+	word
+		`They give you your `
+		`They provide you with the agreed-upon `
+		`They hand over your `
+	word
+		`payment of <payment>.`
+
+phrase "predecessor researchers out"
+	word
+		`You deliver the `
+	word
+		`researchers `
+		`scientists `
+		`scholars `
+	word
+		`to <planet stopovers>, where they `
+	word
+		`promptly `
+		`immediately `
+		`quickly `
+		``
+	word
+		`begin `
+		`start `
+	word
+		` cataloging some nearby rock formations. `
+		` examining nearby ruins. `
+		` scanning for artifacts. `
+		` taking radiation measurements. `
+		` taking soil measurements. `
+		` taking atmospheric measurements. `
+		` examining the local flora. `
+		` examining the local fauna. `
+		` cross-checking the data from a previous expedition. `
+	word
+		`After a few hours, they are ready to return home.`
+		`After several hours, they are ready to return home.`
+		`Eventually, they are ready to return home.`
+
+phrase "successor researchers out"
+	word
+		`You deliver the `
+	word
+		`researchers `
+		`scientists `
+		`experimenters `
+	word
+		`to <planet stopovers>, where they `
+	word
+		`promptly `
+		`immediately `
+		`quickly `
+		``
+	word
+		`begin `
+		`start `
+	word
+		` cataloging some nearby rock formations. `
+		` taking radiation measurements. `
+		` taking soil measurements. `
+		` taking atmospheric measurements. `
+		` cross-checking the data from a previous expedition. `
+	word
+		`After a few hours, they are ready to return home.`
+		`After several hours, they are ready to return home.`
+		`Eventually, they are ready to return home.`
+
+phrase "successor researchers in"
+	word
+		`The researchers thank you for taking them to <stopovers> and give you <payment> in payment.`
+
+phrase "successor researchers transfer"
+	word
+		`The researchers readily embark for the symposium, but not before giving you <payment> in payment.`
+
+mission "Successors: Tourists Out 1"
+	job
+	repeat
+	name "飞往 <planet> 的度假者"
+	description "这些 <bunks> 旅客将向您支付 <payment>，以便您在 <date> 之前将他们带到 <destination>。"
+	deadline
+	passengers 2 5 .5
+	to offer
+		has "known to the successors"
+		random < 25
+	to fail
+		has "Successors: Unified Defense: offered"
+	source
+		attributes "successor"
+	destination
+		attributes "successor"
+		not attributes "uninhabited"
+		attributes "tourism" "quiet"
+		distance 5 20
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment 8000 160
+		dialog phrase "successor tourists out"
+		"successor jobs" ++
+
+
+mission "Successors: Tourists Out 2"
+	job
+	repeat
+	name "飞往 <planet> 的度假者"
+	description "这些 <bunks> 旅客将向您支付 <payment>，以便您在 <date> 之前将他们带到 <destination>。"
+	deadline
+	passengers 3 6 .5
+	to offer
+		has "known to the successors"
+		random < 25
+	to fail
+		has "Successors: Unified Defense: offered"
+	source
+		attributes "successor"
+	destination
+		attributes "successor"
+		not attributes "uninhabited"
+		attributes "tourism" "quiet"
+		distance 5 20
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment 10000 160
+		dialog phrase "successor tourists out"
+		"successor jobs" ++
+
+
+mission "Successors: Bold Tourists Round Trip"
+	job
+	repeat
+	name "<planet stopovers> 的极限观光"
+	description "这些 <bunks> 观光者将支付您 <payment>，让您将他们及其安全设备带到 <stopovers>，并在 <date> 之前返回 <destination>。"
+	deadline
+	cargo "Isolation Suits" 1
+	passengers 2 4 .5
+	to offer
+		has "known to the successors"
+		random < 15
+	to fail
+		has "Successors: Unified Defense: offered"
+	source
+		attributes "successor"
+	stopover
+		attributes "bold tourism"
+		distance 5 20
+	on stopover
+		dialog phrase "successor bold tourists stopover"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment 24000 200
+		dialog phrase "successor tourists in"
+		"successor jobs" ++
+
+
+mission "Successors: Tourist Expedition"
+	job
+	repeat
+	name "观光探险"
+	description "这些 <bunks> 观光者将支付您 <payment>，让您将他们带到 <stopovers>，然后由 <date> 将他们送回 <destination>。"
+	deadline
+	deadline 4
+	passengers 2 5 .5
+	to offer
+		has "known to the successors"
+		random < 15
+	to fail
+		has "Successors: Unified Defense: offered"
+	source
+		attributes "successor"
+	stopover
+		attributes "successor"
+		attributes "uninhabited" "tourism" "wealthy"
+		not attributes "crime"
+		distance 3 20
+	stopover
+		attributes "successor"
+		attributes "tourism" "wealthy"
+		not attributes "crime"
+		distance 3 20
+	stopover
+		attributes "successor"
+		attributes "quiet" "tourism" "wealthy"
+		not attributes "crime"
+		distance 3 20
+	on stopover
+		dialog phrase "successor tourists stopover"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment 36000 200
+		dialog phrase "successor tourists in"
+		"successor jobs" ++
+
+
+mission "Successors: Students Out"
+	job
+	repeat
+	name "学生放假前往<planet>"
+	description "这些 <bunks> 学生正在放假，并将向您支付 <payment>，让您在 <date> 前将他们带到 <destination>。"
+	deadline
+	passengers 2 5 .5
+	to offer
+		has "known to the successors"
+		random < 50
+	to fail
+		has "Successors: Unified Defense: offered"
+	source
+		attributes "successor"
+		attributes "education"
+	destination
+		attributes "successor"
+		not attributes "uninhabited" "education" "crime"
+		distance 5 20
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment 8000 160
+		dialog phrase "successor students out"
+		"successor jobs" ++
+
+
+mission "Successors: Students In"
+	job
+	repeat
+	name "返回<planet>的学生"
+	description "这些 <bunks> 学生将于 <destination> 返回他们的大学，并会向您支付 <payment>，让您在 <date> 之前将他们送回大学。"
+	deadline
+	passengers 2 5 .5
+	to offer
+		has "known to the successors"
+		random < 20
+	to fail
+		has "Successors: Unified Defense: offered"
+	source
+		attributes "successor"
+		not attributes "crime"
+	destination
+		attributes "successor"
+		not attributes "uninhabited"
+		attributes "education"
+		distance 5 20
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment 8000 160
+		dialog phrase "successor students out"
+		"successor jobs" ++
+
+
+mission "Successors: Workers Out 1"
+	job
+	repeat
+	name "<planet> 的后继工作人员"
+	description "这些 <bunks> 工作人员正在 <destination> 上寻找工作，并将支付您 <payment> 让您在 <date> 之前将他们带到那里。"
+	deadline
+	passengers 2 5 .5
+	to offer
+		has "known to the successors"
+		random < 20
+	to fail
+		has "Successors: Unified Defense: offered"
+	source
+		attributes "successor"
+	destination
+		attributes "successor"
+		not attributes "uninhabited" "quiet"
+		distance 5 20
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment 8000 160
+		dialog phrase "successor workers out"
+		"successor jobs" ++
+
+
+mission "Successors: Workers Out 2"
+	job
+	repeat
+	name "<planet> 的后继工作人员"
+	description "这些 <bunks> 工作人员正在 <destination> 上寻找工作，并将支付您 <payment> 让您在 <date> 之前将他们带到那里。"
+	deadline
+	passengers 3 6 .5
+	to offer
+		has "known to the successors"
+		random < 20
+	to fail
+		has "Successors: Unified Defense: offered"
+	source
+		attributes "successor"
+	destination
+		attributes "successor"
+		not attributes "uninhabited" "quiet"
+		distance 5 20
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment 9000 160
+		dialog phrase "successor workers out"
+		"successor jobs" ++
+
+
+mission "Successors: Delivery Out 1"
+	job
+	repeat
+	name "运送至<planet>"
+	description "从 <origin> 到 <planet> 的 <tons> 物资需要快递。您将在交货时收到 <payment> 的付款。"
+	cargo random 5 10 .2
+	to offer
+		has "known to the successors"
+		random < 35
+	to fail
+		has "Successors: Unified Defense: offered"
+	source
+		attributes "successor"
+	destination
+		attributes "successor"
+		not attributes "uninhabited"
+		distance 3 20
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 3000 160
+		dialog phrase "successor delivery"
+		"successor jobs" ++
+
+
+mission "Successors: Delivery Out 2"
+	job
+	repeat
+	name "运送至<planet>"
+	description "从 <origin> 到 <planet> 的 <tons> 物资需要快递。您将在交货时收到 <payment> 的付款。"
+	cargo random 6 9 .2
+	to offer
+		has "known to the successors"
+		random < 30
+	to fail
+		has "Successors: Unified Defense: offered"
+	source
+		attributes "successor"
+	destination
+		attributes "successor"
+		not attributes "uninhabited"
+		distance 3 20
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 3000 160
+		dialog phrase "successor delivery"
+		"successor jobs" ++
+
+
+mission "Successors: High Value Delivery Out"
+	job
+	repeat
+	name "贵重物品发送至 <planet>"
+	description "需要快递员将 <cargo> 从 <origin> 运送到 <planet>。您将在交货时收到 <payment> 的付款。"
+	cargo "Successor High Value" 6 9 .2
+	to offer
+		has "known to the successors"
+		random < 10
+	to fail
+		has "Successors: Unified Defense: offered"
+	source
+		attributes "successor"
+		not attributes "crime"
+	destination
+		attributes "successor"
+		attributes "wealthy"
+		not attributes "crime" "uninhabited"
+		distance 3 20
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 3000 180
+		dialog phrase "successor delivery"
+		"successor jobs" ++
+
+
+mission "Successors: Aid Delivery Out 1"
+	job
+	repeat
+	name "援助运送至<planet>"
+	description "需要一名快递员将 <tons> 的援助物资在 <date> 之前从 <origin> 运送到 <planet>。您将在交货时收到 <payment> 的付款。"
+	deadline
+	deadline 2
+	cargo random 5 10 .2
+	to offer
+		has "known to the successors"
+		random < 10
+	to fail
+		has "Successors: Unified Defense: offered"
+	source
+		attributes "successor"
+		not attributes "crime"
+	destination
+		attributes "successor"
+		not attributes "uninhabited"
+		attributes "crime"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 2400 160
+		dialog phrase "successor delivery"
+		"successor jobs" ++
+
+
+mission "Successors: Large Delivery Out 1"
+	job
+	repeat
+	name "批量发货至<planet>"
+	description "从 <origin> 到 <planet> 的 <tons> 物资需要快递。您将在交货时收到 <payment> 的付款。"
+	cargo random 30 80 .2
+	to offer
+		has "known to the successors"
+		random < 20
+	to fail
+		has "Successors: Unified Defense: offered"
+	source
+		attributes "successor"
+	destination
+		attributes "successor"
+		not attributes "uninhabited"
+		distance 3 20
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 2000 140
+		dialog phrase "successor delivery"
+		"successor jobs" ++
+
+
+mission "Successors: Large Delivery Out 2"
+	job
+	repeat
+	name "批量发货至<planet>"
+	description "从 <origin> 到 <planet> 的 <tons> 物资需要快递。您将在交货时收到 <payment> 的付款。"
+	cargo random 50 70 .2
+	to offer
+		has "known to the successors"
+		random < 20
+	to fail
+		has "Successors: Unified Defense: offered"
+	source
+		attributes "successor"
+	destination
+		attributes "successor"
+		not attributes "uninhabited"
+		distance 3 20
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 2000 140
+		dialog phrase "successor delivery"
+		"successor jobs" ++
+
+
+mission "Successors: Rush Delivery Out 1"
+	job
+	repeat
+	name "加急发货至<planet>"
+	description "需要快递员将 <tons> 的物资在 <date> 之前从 <origin> 紧急运送到 <planet>。您将在交货时收到 <payment> 的付款。"
+	cargo random 5 10 .2
+	deadline
+	to offer
+		has "known to the successors"
+		random < 25
+	to fail
+		has "Successors: Unified Defense: offered"
+	source
+		attributes "successor"
+	destination
+		attributes "successor"
+		not attributes "uninhabited"
+		distance 3 20
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 2200 165
+		dialog phrase "successor delivery"
+		"successor jobs" ++
+
+
+mission "Successors: Large Rush Delivery Out 1"
+	job
+	repeat
+	name "大量紧急发货至 <planet>"
+	description "需要快递员将 <tons> 的物资在 <date> 之前从 <origin> 紧急运送到 <planet>。您将在交货时收到 <payment> 的付款。"
+	cargo random 30 80 .2
+	deadline
+	to offer
+		has "known to the successors"
+		random < 15
+	to fail
+		has "Successors: Unified Defense: offered"
+	source
+		attributes "successor"
+	destination
+		attributes "successor"
+		not attributes "uninhabited"
+		distance 3 20
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 3000 150
+		dialog phrase "successor delivery"
+		"successor jobs" ++
+
+
+mission "Successors: Seismic Stabilizers"
+	job
+	repeat
+	name "<planet> 的地震稳定器"
+	description "<planet> 发生小地震后，<date> 已要求交付 <tons> 的地震稳定器。您将获得 <payment> 的报酬。"
+	cargo "Seismic Stabilizers" 30 80 .2
+	deadline
+	deadline 2
+	to offer
+		has "known to the successors"
+		random < 6
+	to fail
+		has "Successors: Unified Defense: offered"
+	source
+		attributes "successor"
+	destination
+		attributes "successor"
+		not attributes "uninhabited" "station"
+		distance 3 20
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 2000 140
+		dialog phrase "successor delivery"
+		"successor jobs" ++
+
+
+mission "Successors: Data Courier 1"
+	job
+	repeat
+	name "数据快递至 <planet>"
+	description "存储在 <tons> 数据库中的机密数据需要通过 <date> 从 <origin> 传输到 <planet>。您将在交货时收到 <payment> 的付款。"
+	deadline
+	cargo "Encrypted Databanks" 1 1
+	to offer
+		has "known to the successors"
+		random < 30
+	to fail
+		has "Successors: Unified Defense: offered"
+	source
+		attributes "successor"
+		attributes "wealthy" "urban" "station"
+		not attributes "crime"
+	destination
+		attributes "successor"
+		not attributes "uninhabited" "crime"
+		distance 5 20
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 1000 100
+		dialog phrase "successor data"
+		"successor jobs" ++
+
+
+mission "Successors: Researchers Out 1"
+	job
+	repeat
+	name "研究人员到<planet stopovers>"
+	description "这些研究前辈的 <bunks> 研究人员将支付您 <payment>，让您将他们带到 <stopovers> 并归还到这里。"
+	passengers 2 5 .5
+	to offer
+		has "known to the successors"
+		random < 15
+	to fail
+		has "Successors: Unified Defense: offered"
+	source
+		attributes "successor"
+		attributes "education"
+	"distance calculation settings"
+		"all wormholes"
+		"assumes jump drive"
+	stopover
+		government "Predecessor"
+	on stopover
+		dialog phrase "predecessor researchers out"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment 41000 160
+		dialog phrase "successor researchers in"
+		"successor jobs" ++
+
+
+mission "Successors: Large Researchers Out 1"
+	job
+	repeat
+	name "研究人员到<planet stopovers>"
+	description "这个由 <bunks> 组成的大型研究团队正在研究前辈，他们将向您支付 <payment>，让您将他们带到 <stopovers> 并将他们归还到这里。"
+	passengers 10 30 .5
+	to offer
+		has "known to the successors"
+		random < 10
+	to fail
+		has "Successors: Unified Defense: offered"
+	source
+		attributes "successor"
+		attributes "education"
+	"distance calculation settings"
+		"all wormholes"
+		"assumes jump drive"
+	stopover
+		government "Predecessor"
+	on stopover
+		dialog phrase "predecessor researchers out"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment 34000 160
+		dialog phrase "successor researchers in"
+		"successor jobs" ++
+
+
+mission "Successors: Home Researchers Out 1"
+	job
+	repeat
+	name "研究人员到<planet stopovers>"
+	description "这些研究 <stopovers> 的 <bunks> 研究人员将向您支付 <payment> 的费用，让您将他们运送到那里进行研究并将他们送回家。"
+	passengers 2 5 .5
+	to offer
+		has "known to the successors"
+		random < 20
+	to fail
+		has "Successors: Unified Defense: offered"
+	source
+		attributes "successor"
+		attributes "education"
+	stopover
+		attributes "uninhabited"
+		attributes "successor"
+		not attributes "station"
+	on stopover
+		dialog phrase "successor researchers out"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment 12000 160
+		dialog phrase "successor researchers in"
+		"successor jobs" ++
+
+
+mission "Successors: Researchers Transfer"
+	job
+	repeat
+	name "<planet> 研讨会"
+	description "这些前往参加 <destination> 研讨会的 <bunks> 研究人员将向您支付 <payment> 费用，让您在 <date> 研讨会开始之前将他们带到那里。"
+	passengers 2 3 .5
+	deadline
+	to offer
+		has "known to the successors"
+		random < 30
+	to fail
+		has "Successors: Unified Defense: offered"
+	source
+		attributes "successor"
+		not attributes "crime"
+	destination
+		attributes "successor"
+		not attributes "uninhabited"
+		attributes "education" "wealthy"
+		distance 2 20
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment 8000 150
+		dialog phrase "successor researchers transfer"
+		"successor jobs" ++
+
+
+mission "Successors: Old Houses Rush Delivery"
+	job
+	repeat
+	clearance "After a moment of checking your delivery ID against their manifests, flight control clears you for landing."
+	name "老房子快递到<planet>"
+	description "老房子需要 <date> 将 <tons> 的高级物资从 <origin> 运送到 <planet>。您将在交货时收到 <payment> 的付款。"
+	cargo random 5 10 .2
+	deadline
+	to offer
+		has "known to the successors"
+		random < 10
+	to fail
+		has "Successors: Unified Defense: offered"
+	source
+		attributes "successor"
+	destination
+		government "Old Houses" "House Chydiyi" "House Myurej" "House Sioeora"
+		distance 2 20
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 3000 170
+		dialog phrase "high houses delivery"
+		"successor jobs" ++
+		"old houses jobs" ++
+
+
+mission "Successors: New Houses Rush Delivery"
+	job
+	repeat
+	clearance "After a moment of checking your delivery ID against their manifests, flight control clears you for landing."
+	name "新房快递至 <planet>"
+	description "新房屋需要 <date> 将 <tons> 的高级物资从 <origin> 运输到 <planet>。您将在交货时收到 <payment> 的付款。"
+	cargo random 5 10 .2
+	deadline
+	to offer
+		has "known to the successors"
+		random < 10
+	to fail
+		has "Successors: Unified Defense: offered"
+	source
+		attributes "successor"
+	destination
+		government "New Houses" "House Kaatrij" "House Seineq" "House Aqrabe"
+		distance 2 20
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 3000 170
+		dialog phrase "high houses delivery"
+		"successor jobs" ++
+		"new houses jobs" ++

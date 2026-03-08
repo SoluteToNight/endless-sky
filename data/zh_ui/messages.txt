@@ -1,0 +1,170 @@
+# Copyright (c) 2025 by TomGoodIdea
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program. If not, see <https://www.gnu.org/licenses/>.
+
+
+
+# Categories:
+
+# The category used for most important system messages.
+"message category" "high"
+	"main color" "message category high"
+	"log color" "message log category high"
+	important
+
+# The default category used for most engine messages, including hails.
+"message category" "normal"
+	"main color" "message category normal"
+	"log color" "message log category normal"
+
+# The category used for messages that generate a lot of spam
+# (for example, ones that are sent continuously every frame).
+"message category" "low"
+	"main color" "message category low"
+	"log color" "message log category low"
+	"main duplicates" "keep old"
+
+# The category used for system messages that require more attention.
+"message category" "info"
+	"main color" "message category info"
+	"log color" "message log category info"
+	important
+
+# The special category used to mark the day beginning for easier navigation in the log.
+"message category" "daily"
+	"main color" "message category daily"
+	"log color" "message log category daily"
+	important
+
+# Same as the default one, but always adds the message to the log.
+"message category" "force log"
+	"main color" "message category normal"
+	"log color" "message log category normal"
+	"log duplicates" "keep both"
+
+# Same as the default one, but does not add the message to the main panel's list.
+"message category" "log only"
+	"log color" "message log category normal"
+	"log only"
+
+# A category combining features of the "high" and "low" categories.
+"message category" "high no repeat"
+	"main color" "message category high"
+	"log color" "message log category high"
+	important
+	"main duplicates" "keep old"
+
+# A high importance category that allows duplicates everywhere.
+"message category" "high duplicating"
+	"main color" "message category high"
+	"log color" "message log category high"
+	important
+	"main duplicates" "keep both"
+	"log duplicates" "keep both"
+
+
+
+# Engine messages:
+
+message "no formations available"
+	text "没有可用阵型。"
+
+message "disengaging autopilot"
+	text "正在解除自动驾驶。"
+
+message "coming to a stop"
+	text "正在减速至停止。"
+
+message "engaging cloaking device"
+	text "正在启动隐形装置。"
+
+message "disengaging cloaking device"
+	text "正在关闭隐形装置。"
+
+message "no landables"
+	text "该星系中没有你可以着陆的行星。"
+	category "high"
+
+message "no hyperdrive"
+	text "你没有安装超空间引擎。"
+	category "high"
+
+message "cannot jump"
+	text "你无法跃迁到所选星系。"
+	category "high"
+
+message "no fuel"
+	text "你的燃料不足以进行超空间跃迁。"
+	category "high"
+
+message "cannot jump while landing"
+	text "着陆过程中无法跃迁。"
+	category "high"
+
+message "undercrewed flagship"
+	text "由于船员不足，你的旗舰正以不稳定状态航行。"
+	category "low"
+
+message "cannot board while cloaked"
+	text "隐形状态下无法登舰。"
+	category "high no repeat"
+
+message "overheated"
+	text "你的飞船已经过热。"
+	category "high no repeat"
+
+message "basics 1"
+	text `按 <View star map> 打开星图。选定目的地后关闭星图，再按 <Initiate hyperspace jump> 执行跃迁。按 <Land on planet / station> 进行着陆。`
+
+message "basics 2"
+	text `按 <Show main menu> 打开主菜单。你可以在偏好设置中查看并修改按键绑定。`
+
+message "basics 3"
+	text `若要再次查看当前帮助信息，请按 <Show help>。若要重新启用全部首次帮助提示，请进入主菜单 -> Preferences -> Settings，然后选择 "Reactivate first-time help."`
+
+message "map received"
+	text "你获得了一份附近星系地图。"
+
+message "turret tracking focused"
+	text "炮塔追踪模式已设为：集火。"
+
+message "turret tracking opportunistic"
+	text "炮塔追踪模式已设为：机会主义。"
+
+message "expend ammo frugally"
+	text "你的护卫舰弹药消耗策略已设为：节约。"
+
+message "expend ammo always"
+	text "你的护卫舰弹药消耗策略已设为：总是消耗。"
+
+message "expend ammo never"
+	text "你的护卫舰弹药消耗策略已设为：从不消耗。"
+
+message "cannot hail while jumping"
+	text "无法发送呼叫：你的旗舰正在进入超空间。"
+	category "high"
+
+message "cannot hail while cloaked"
+	text "无法发送呼叫：你的旗舰处于隐形状态。"
+	category "high"
+
+message "cannot hail"
+	text "无法发送呼叫。"
+	category "high"
+
+message "wormhole hail"
+	phrase "wormhole hail"
+	category "high"
+
+message "cannot hail without target"
+	text "无法发送呼叫：未选择目标。"
+	category "high"

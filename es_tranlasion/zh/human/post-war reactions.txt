@@ -1,0 +1,259 @@
+# Copyright (c) 2022-2023 by an anonymous author
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program. If not, see <https://www.gnu.org/licenses/>.
+
+mission "Main Plot Completed Date"
+	landing
+	invisible
+	non-blocking
+	to offer
+		has "main plot completed"
+	on offer
+		"main plot completed date" = "days since start"
+		fail
+
+
+
+mission "War Reactions: Asteroid Miners"
+	minor
+	landing
+	source
+		government "Republic"
+		attributes "deep" "paradise" "north"
+		attributes "spaceport"
+	to offer
+		has "main plot completed date"
+		"days since start" - "main plot completed date" > 30
+		random < 30
+	on offer
+		"war reactions" ++
+		conversation
+			`当您离开飞船时，您会看到一群人正在观看距离您的着陆点不远的视频屏幕。视频在小组讨论和丹福斯海军上将接受议会质询的镜头之间切换。当你到达的时候，活动已经结束了，许多围观的人已经离开去忙自己的事了。然而，两名队长仍然留了下来，从声音来看，他们正在对视频进行热烈的讨论。`
+			choice
+				`“嘿。那个视频是关于什么的？”`
+				`（别管他们了。）`
+					decline
+			`当两位船长转向你时，你大吃一惊，这对双胞胎有着荒谬的鬓角和老鼠般的小胡子。无法判断他们是在微笑还是皱眉，因为这两个人就住在恐怖谷的中间。`
+			`左边的双胞胎问道：“你能相信吗？已经过去几周了，每个人仍然对哈巴狗入侵事件耿耿于怀。一开始新闻都是专家和官员报道的，但现在我们只看到了正在谈论的人和阴谋论者。”`
+			`右边的双胞胎难以置信地回答道：“这只是为了提高辛迪加销量的宣传活动。即使这些难以捉摸的‘哈巴狗’存在，只要这个故事提高了辛迪加的公众舆论，我们就不会听到它的结局。”`
+			choice
+				`“这可能是本世纪最大的事件。当然，人们会继续谈论它。”`
+				`“哦，哈巴狗真的很好。我遇到了一些并与他们战斗。”`
+					goto nobody
+				`“我想你们都需要刮胡子。”`
+					goto scowl
+			`双胞胎中的一个翻白眼，另一个尴尬地抽动胡子。他将视频倒回到议会讨论中，丹福斯正在向议员们保证海军有能力在人类太空边缘巡逻。`
+			`左边的双胞胎说：“看看这个笨蛋！赏金计划的议员马杜埃纳·卡比鲁（Mdueena Kabiru），他一直对这个海军家伙咆哮，呃，这位海军上将……”他打响指，试图记住这个名字。`
+			`“丹福斯海军上将，”右边的双胞胎说道。`
+			`“对。丹福斯。这位议员希望丹福斯能够防御‘人类太空边缘的未知危险’。”难道我们眼前的问题还不够多，还没有想象出新的恐怖吗？”`
+			`“就像恐怖分子用核武器攻击我们一样，”右边的双胞胎说。`
+			choice
+				`“海军技术精湛且光荣。我相信他们能够保护我们。”`
+					goto eyes
+				`“不，不用担心。我结束了炸弹威胁。”`
+					to display
+						has "free worlds reconciliation"
+				`“也许你是对的。”`
+					goto shrug
+				`“我们能做的就是继续我们的生活，对吗？”`
+					goto shrug
+				`“如果你不尽快刮胡子，人们会认为你戴着口罩。”`
+					goto scowl
+			label nobody
+			`两人都捧腹大笑，微风吹过他们的胡须。`
+			`左边的双胞胎说：“你是谁，丹福特上将？”`
+			`他的双胞胎纠正了他。 “丹福斯。丹福斯海军上将。海军解雇了你还是你来这里度假？”`
+			choice
+				`“整个战争期间你都处于困境之中吗？我是<first> <last> 队长！”`
+				`“没关系。”`
+					goto shrug
+				`“至少我的上唇上没有粘着一只蓬乱的仓鼠。”`
+					goto scowl
+			`双胞胎都显得很困惑，左边的一个做出了回应。 “整个战争期间我们一直在小行星上采矿。战争是一件大事，但我们大多数人都必须继续生活。你认为我们有时间跟踪每一个交战的船长吗？”`
+			`正确的人抱歉地说：“感谢您的服务，<last> 队长。”`
+			`他们都笨拙但善意地行了个礼，然后回到了各自的船上。`
+				decline
+			label eyes
+			`左边的双胞胎笑着说：“请原谅我们，如果我们睁大眼睛，相信我们自己的枪。”双胞胎都点点头，然后前往各自的船上。`
+				decline
+			label shrug
+			`双胞胎耸耸肩，前往各自的船。`
+				decline
+			label scowl
+			`双胞胎的脸都扭曲着，这可能表明他们感到尴尬或恼怒。这很难说，因为他们的面部毛发阻碍了任何情感力量。他们朝船的方向走去。`
+				decline
+
+
+
+mission "War Reactions: Navy and Free Worlds Captains"
+	minor
+	source
+		government "Republic" "Syndicate" "Free Worlds"
+		attributes "spaceport"
+		near "Sirius" 5 100
+	to offer
+		has "main plot completed date"
+		"days since start" - "main plot completed date" > 30
+		random < 30
+	on offer
+		"war reactions" ++
+		conversation
+			`当你的船加油时，你正在咖啡馆里放松，两位中年船长来到你的餐桌旁。一个是海军，另一个是自由世界，它们彼此有着惊人的相似之处。`
+			`“雷恩船长，R.N.S. Camuy，”其中一人说道。 “<ship> 怎么样，<last> 队长？”`
+			`“菲奥娜队长，F.S. 猴面包树，”另一个说道。 “我们都看到你在与哈巴狗的战斗中。你是这场战争中最有成就的队长！`
+			`“我们一起巡逻，看到了你们的船，所以过来打个招呼。”`
+			label questions
+			action
+				"WR: Captains: question" ++
+			choice
+				`“为什么海军和自由世界的船长要一起旅行？”`
+					goto navy
+					to display
+						not "WR: Captains: navy"
+				`“你发现新的外星人了吗？”`
+					goto aliens
+					to display
+						not "WR: Captains: aliens"
+						has "WR: Captains: navy"
+				`“你们是在战争的另一边并肩作战吗？”`
+					goto sister
+					to display
+						not "WR: Captains: sister"
+				`「你们是姐妹对立的！？」`
+					goto opposite
+					to display
+						has "WR: Captains: sister"
+						not "WR: Captains: opposite"
+				`“很高兴见到你们俩，但我现在必须回去处理我的事情了。”`
+					decline
+					to display
+						"WR: Captains: question" > 1
+				`“你好。抱歉，我没有太多时间说话。”`
+					to display
+						"WR: Captains: question" <= 1
+			`“哦，我们应该猜到你太忙了，没有时间聊天，”雷恩船长说。`
+			`“战争可能已经结束，但我相信像您这样的船长还有很多工作要做，”菲奥娜船长说。 “嗯，至少很高兴见到你。保持健康。”`
+				decline
+			
+			label navy
+			action
+				set "WR: Captains: navy"
+			`“警方联合行动，”雷恩队长说道。 “这比你想象的更常见。”`
+			`菲奥娜船长点点头。 “我们正在关闭一个银河蜘蛛芬克走私活动。这是一种非法致幻剂。不会让人上瘾，但仍然很危险。运营该活动的组织规模庞大，资金充足，装备精良。”`
+			`“不过，这不是无畏舰和辅助舰的对手，”雷恩吹嘘道。`
+			`“我们必须飞遍共和国和自由世界的太空，所以我们与每个州的一艘船进行联合巡逻。”`
+			`“当然，我们还有另一个任务，”菲奥娜说。 “无论我们走到哪里，我们都会寻找新的外星人活动。”`
+				goto questions
+			
+			label aliens
+			action
+				set "WR: Captains: aliens"
+			`“只有常见的各种恶作剧，”雷恩说。两人都笑了。`
+			`“不过，说实话，自由世界参议院和共和国议会都因害怕外星人而武装起来，”菲奥娜说。 Rain 补充道，“这一次只是象征性地举起了手臂。`
+			`“如果我们发现新的外星人，我们会尽快通知必要的当局。你也应该这样做。保持谨慎，避免冲突，如果需要就寻求帮助。”`
+				goto questions
+			
+			label sister
+			action
+				set "WR: Captains: sister"
+			`“是的，”菲奥娜说，“作为我的妹妹并没有阻止我炸毁她的巡洋舰！不过，我们救出了她飞船的逃生舱；它们正在转向一颗星星，令人担忧。”`
+			`Rain继续说道，“当我在姐姐的新无畏舰上醒来时，你能想象我的惊讶吗？”`
+			`“嘿，之后你得到了一个新的辅助委员会，”菲奥娜回答道，边说边戳戳雷恩，“你的全体船员都活了下来。现在我们在调查期间护送彼此的船只！”`
+				goto questions
+			
+			label opposite
+			action
+				set "WR: Captains: opposite"
+			`“嗯，雷恩几年前就去了地球加入海军学院，”菲奥娜上尉说。`
+			`“在自由世界成立之前，菲奥娜留在了跳远并加入了当地民兵，”雷恩上尉说道。 “并不是我们想互相争斗，而是我们都相信自己的立场。”`
+				goto questions
+
+
+
+mission "War Reactions: Syndicate Orphan"
+	minor
+	landing
+	source
+		government "Syndicate"
+		attributes "spaceport"
+		not attributes "station"
+	to offer
+		has "main plot completed date"
+		"days since start" - "main plot completed date" > 20
+		random < 30
+	on offer
+		"war reactions" ++
+		conversation
+			`当你离开着陆区时，你会听到拳头落在皮肤上的声音和一个孩子的呼救声。拐角处，三个衣衫褴褛的男孩正在殴打第四个男孩，后者刚刚倒在地上。目前还不清楚他们是否会停止攻击他。`
+			choice
+				`“分手吧，孩子们。”`
+				`（无视他们，继续走。）`
+					decline
+			`三名袭击者转过身来，一脸愤怒。他们看到你皮套里的枪就跑了。`
+			`地上的男孩慢慢站了起来。他看起来大约十二岁。他花了几秒钟才恢复过来。 “谢谢。这里没有多少人愿意提供这样的帮助。我是格斯。”他一脸担心地问道：“你能送我去维修店吗？我上班已经迟到了，我怕他们又袭击我。”`
+			label questions
+			choice
+				`“那些男孩为什么攻击你？”`
+					goto attacking
+					to display
+						not "WR: Orphan: attacking"
+				`“你年纪还小，去修理厂工作是不是太年轻了？”`
+					goto young
+				`“我很着急。你得靠自己了。”`
+					decline
+			label attacking
+			action
+				set "WR: Orphan: attacking"
+			`“我的兄弟是辛迪加辅助安全部门的三等兵。”他自豪地笑了，显然已经练习过这种表达方式了。 “他监视辛迪加的工作场所，上周他因在工作中吸烟而举报了那些男孩。我想他们终于在修理店得到了休息，并来追捕我，因为他们不能伤害我的兄弟。”`
+				goto questions
+			label young
+			`当你开始走路时，他回答了。 “不，我是个孤儿。”他看到你的困惑并解释。 “辛迪加让我们中的一些孤儿在工业界工作。作为回报，他们为我们提供更好的教育、更好的住房和医生就诊。”他把自己抬高了。 “只有我们中最聪明的人才能做到这一点。孤儿的所有工作也都是安全的；我们不使用大型危险设备。只是普通的东西，比如锤子、烙铁或缝纫机。`
+			`“等一下！”他突然睁大眼睛看着你。 “你是船长，对吧？你参加过大型战斗吗？当我在 Maker 上看到一些哈巴狗船在我们学校的大屏幕上与我们的船作战时。”`
+			choice
+				`“是的，我是队长 <first> <last>。”`
+					goto me
+				`“我炸毁了我那份哈巴狗船。”`
+					goto blew
+				`“事实上，我领导了这场战斗。”`
+			`“哦，等一下，”他一边说，一边拿出一个看起来很耐用的数据板，上面贴着“辛迪加 Childcare Device”的标签。经过一番打字和滑动后，他宣布：“您是队长 <first> <last>！哇！很荣幸见到您。我可以握您的手吗？”他伸出手，你握了握。`
+				goto next
+			label me
+			`“哦，等一下，”他一边说，一边拿出一个看起来很耐用的数据板，上面贴着“辛迪加 Childcare Device”的标签。经过一番打字和滑动后，他宣布：“你领导了这次攻击！哇！很荣幸见到你。我可以握你的手吗？”他伸出手，你握了握。`
+				goto next
+			label blew
+			`“我打赌你做到了！我希望我是在我们的一艘战舰上，勇敢地保卫我们所有人。炸毁哈巴狗，获得报酬。听起来太棒了！”`
+			label next
+			`“与那些令人讨厌、邪恶的哈巴狗战斗是什么感觉？”`
+			choice
+				`“战争是地狱，孩子。我不会为你美化它。”`
+					goto hell
+				`“实际上，他们并不邪恶。他们的‘战争’是一种策略，目的是让我们停止互相争斗。很多哈巴狗自愿献出生命，以拯救我们免于自我毁灭。”`
+				`“领导一场战斗就像用枪和引擎下棋。这是我感受过的最令人兴奋的感觉。”`
+					goto chess
+				`“能够保护人类免受攻击者的侵害是一种荣幸。”`
+					goto honor
+			`“哇哦，你听起来真的很聪明。就像视频中那些明智的专家一样！不过，如果没有像你这样的人，哈巴狗的计划就不可能成功。我仍然认为你是最棒的，队长。”`
+				goto salute
+			label hell
+			`“你为我们经历了地狱，嗯？这听起来没有我想象的那么有趣……也许我应该坚持上学，成为一名工程师而不是飞行员。我不知道。”`
+				goto salute
+			label chess
+			`“辛迪加正在训练我维护，他们甚至会在我长大后训练我驾驶他们的战舰！有一天，我会像你一样与外星人作战。”`
+				goto salute
+			label honor
+			`“荣誉……和服务。辛迪加会训练像我这样的男孩，但我想知道加入海军。它没有那么有利可图，但听起来更崇高。”`
+			label salute
+			`你们到达修理店，一个年龄较大的男孩，大约十七岁，遇见了你们两个。格斯立正并熟练地向你敬礼。你礼貌地向他回礼。`
+			`当格斯结束敬礼时，男孩从后面袭击了他，掐住了他的脖子。看得出来，他做这件事的时候非常小心。 “你是从托儿所外面溜出来的吗？这次是航天港着陆区吗？我看到你身上到处都是抓痕和瘀伤。”格斯回答说：“对不起，卡尔文！我很好奇。”`
+			`卡尔文把他放了出来，并对你说：“谢谢你救了我的兄弟。他是我唯一剩下的家人了，我希望，”他捏了捏他，“他不会因为好奇而冒着生命危险。”他和蔼地看着格斯。 “走吧，我们带你去看医生。”`
+			`卡尔文送弟弟进来时挥手告别。`
+				decline

@@ -1,0 +1,818 @@
+# Copyright (c) 2014 by Michael Zahniser and Nate Graham
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program. If not, see <https://www.gnu.org/licenses/>.
+
+
+mission "Transport executive to <planet>"
+	job
+	repeat
+	deadline
+	description "辛迪加高管需要立即而舒适的交通来参加 <date> 于 <destination> 举行的紧急会议。付款方式为 <payment>。"
+	passengers 1
+	to offer
+		random < 20
+	to accept
+		has "outfit (installed): Luxury Accommodations"
+	source
+		government "Syndicate"
+	destination
+		distance 3 15
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "Quarg"
+		attributes "paradise" "rich" "core" "near earth"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment 5000 250
+		dialog "辛迪加的高管冲下你的船，甚至没有告别，手里拿着漂亮的公文包。您收到了 <payment> 的付款。"
+
+
+mission "Corporate retreat to <planet stopovers>"
+	job
+	repeat
+	deadline
+	description "由 <bunks> 工程师组成的团队需要乘车前往 <stopovers> 上的公司休养地，之后他们必须由 <date> 返回 <origin>。他们想要一个舒适的旅程，所以您的船必须配备合适的装备。付款方式为 <payment>。"
+	passengers 3 10 .56
+	to offer
+		random < 20
+	to accept
+		has "outfit (installed): Luxury Accommodations"
+	source
+		government "Syndicate"
+	stopover
+		attributes "quarg" "volcanic" "frontier" "north" "south"
+		not attributes "station" "military"
+		distance 3 12
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "Quarg"
+	on stopover
+		dialog "几天来，您的船一直在进行关于载荷计算、抗拉强度和热力学极限的无休止的讨论。当工程师团队走出舱门，前往充满异国情调的公司休养地时，您会感激片刻的平静。您准备返回 <origin> 。"
+	on complete
+		payment 3000 160
+		dialog "团队老板感谢您旅途顺利并授权支付 <payment> 。"
+
+
+mission "Large Corporate retreat"
+	name "公司撤退至 <planet stopovers>"
+	job
+	repeat
+	deadline
+	description "由 <bunks> 工程师组成的团队需要乘车前往 <stopovers> 上的公司休养地，之后他们必须由 <date> 返回 <origin>。他们想要一个舒适的旅程，所以您的船必须配备合适的装备。付款方式为 <payment>。"
+	passengers 20 6 .15
+	to offer
+		random < 20
+		random < ( "passenger space" - 25 ) * 2
+	to accept
+		has "outfit (installed): Luxury Accommodations"
+	source
+		government "Syndicate"
+	stopover
+		attributes "quarg" "volcanic" "frontier" "north" "south"
+		not attributes "station" "military"
+		distance 3 12
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent" "Quarg"
+	on stopover
+		dialog "几天来，您的船一直在进行关于载荷计算、抗拉强度和热力学极限的无休止的讨论。当工程师团队走出舱门，前往充满异国情调的公司休养地时，您会感激片刻的平静。您准备返回 <origin> 。"
+	on complete
+		payment 130000 110
+		dialog "团队老板感谢您旅途顺利并授权支付 <payment> 。"
+
+
+mission "Corporate espionage"
+	description "<npc> 即将进入该系统。拦截它并为 <destination> 上的辛迪加研究人员详细扫描其货物；检索数据后，在 <date> 之前继续进行 <payment>。"
+	job
+	deadline 1 3
+	repeat
+	to offer
+		random < 10
+	source
+		government Republic Syndicate Neutral
+	destination
+		government Syndicate
+		attributes research
+		distance 3 12
+	npc "scan cargo"
+		government Merchant
+		personality fleeing uninterested entering target
+		fleet
+			names "civilian"
+			variant
+				"Scout"
+			variant
+				"Bounder"
+		dialog "您成功按照要求对 <npc> 的货物进行了扫描。是时候前往 <planet> 了。"
+	on complete
+		dialog `您传输扫描结果并收到衷心祝贺，以及 <payment> 。 “这将为我们节省几个月的时间！”当您关闭音频链接时，您会听到有人在后台说话。`
+		payment 50000
+
+
+mission "Document delivery to <planet>"
+	job
+	repeat
+	description "将 <tons> 普通文档传送到 <destination> 。付款方式为 <payment>。"
+	cargo "Confidential documents" 1 16 .69
+	to offer
+		random < 10
+	source
+		government Syndicate
+	destination
+		distance 3 20
+		government Republic "Free Worlds" Syndicate Neutral
+		attributes factory mining "dirt belt"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment 5000 170
+		dialog "几乎你一打开货舱口，几个沉默寡言、衣着出奇的人就将一箱箱文件送到你没有注意到的着陆点旁边的传送带上，令你惊讶的是，它们很快就消失在工业焚烧炉的火焰中。您收到了 <payment> 的付款。"
+
+
+mission "Waste recycling on <planet>"
+	job
+	repeat
+	description "辛迪加d Systems 正在寻找勇敢的船长，愿意为我们新的绿色倡议做出贡献！将 <tons> 的可回收 <commodity> 运送到我们位于 <destination> 的特殊设施。付款方式为<payment>。"
+	cargo "Garbage" 5 2 .1
+	to offer
+		random < 20
+	source
+		government Syndicate
+	destination
+		distance 3 10
+		government Syndicate
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 2000
+		dialog "您降落在 <planet>，并按照指示将散发着异味的 <commodity> 货物投送到一栋不起眼的建筑物中。当你起飞时，你的后置摄像头捕捉到一名魁梧的辛迪加员工挥舞着拳头跑出大楼。您注意到您的 <payment> 付款来自您在 <origin> 上的联系人，而不是来自 <planet> 上的任何地方。"
+
+
+mission "Rush fuel Delivery"
+	name "紧急将燃油运送至 <planet>"
+	job
+	repeat
+	deadline
+	description "<destination> 上的民用反应堆燃料不足，需要由 <date> 紧急运送 <cargo>。付款方式为<payment>。"
+	cargo "Heavy Metals" 10 2 .1
+	to offer
+		random < 20
+		"cargo space" > 15
+	source
+		government Syndicate
+	destination
+		distance 3 10
+		government Syndicate
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 20000
+		dialog "您将 <commodity> 的货物投放到一座高耸的核设施的装卸区，并收取 <payment> 的付款。"
+
+
+mission "Rush equipment Delivery"
+	name "将设备紧急运送至<planet>"
+	job
+	repeat
+	deadline
+	description "<destination> 上的辛迪加技术人员需要 <date> 紧急运送 <tons> 的专用 <commodity>。付款方式为 <payment>。"
+	cargo "Equipment" 5 2 .15
+	to offer
+		random < 20
+	source
+		government Syndicate
+	destination
+		distance 3 10
+		government Syndicate
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 9000
+		dialog "您将 <commodity> 的货物投放到一座高耸的核设施的装卸区，并收取 <payment> 的付款。"
+
+
+mission "Syndicate target practice [0]"
+	name "辛迪加目标实践"
+	job
+	repeat
+	description "禁用 <system> 中的机器人目标虚拟船，通过扫描其货物为辛迪加工程师收集测试数据，并降落在 <planet> 上。警告：目标船被编程为进行自卫行为，以确保模拟真实。付款方式为 <payment>。"
+	source
+		government Syndicate
+	destination
+		distance 1 3
+		government Syndicate
+	to offer
+		random < 20
+		"combat rating" > 5
+		"combat rating" < 50
+		"destroyed Syndicate target ship" < 3
+	npc save disable "scan cargo"
+		government "Test Dummy"
+		personality disables staying heroic target
+			confusion 120
+		system destination
+		ship "Berserker Test Dummy" "Syndicate Test Vessel"
+		dialog "你扫描受损的飞船并仔细测量战斗损失。是时候在 <planet> 上交付结果了。"
+	on visit
+		dialog "您忘记禁用或扫描 <system> 中的目标虚拟飞船！您需要先返回那里并完成此操作，然后才能返回此处付款。"
+	on abort
+		# No penalty
+	on fail
+		dialog "机器人目标船已被摧毁。一位愤怒的辛迪加官员向您致意，对您处以 <payment> 的罚款，并警告您，如果再犯此类性质的错误，您可能会失去担任这些工作的资格。"
+		"destroyed Syndicate target ship" ++
+		"reputation: Syndicate" --
+		fine 160000
+	on complete
+		payment 80000
+		dialog "您将扫描结果传输给热心的工程师团队并收取 <payment> 的付款。"
+
+
+mission "Syndicate target practice [1]"
+	name "辛迪加目标实践"
+	job
+	repeat
+	description "禁用 <system> 中的机器人目标虚拟船，通过扫描其货物为辛迪加工程师收集测试数据，并降落在 <planet> 上。警告：目标船被编程为进行自卫行为，以确保模拟真实。付款方式为 <payment>。"
+	source
+		government Syndicate
+	destination
+		distance 1 3
+		government Syndicate
+	to offer
+		random < 20
+		"combat rating" > 50
+		"combat rating" < 250
+		"destroyed Syndicate target ship" < 3
+	npc save disable "scan cargo"
+		government "Test Dummy"
+		personality disables staying heroic target
+			confusion 120
+		system destination
+		ship "Quicksilver Test Dummy" "Syndicate Test Vessel"
+		dialog "你扫描受损的飞船并仔细测量战斗损失。是时候在 <planet> 上交付结果了。"
+	on visit
+		dialog "您忘记禁用或扫描 <system> 中的目标虚拟飞船！您需要先返回那里并完成此操作，然后才能返回此处付款。"
+	on abort
+		# No penalty
+	on fail
+		dialog "机器人目标船已被摧毁。一位愤怒的辛迪加官员向您致意，对您处以 <payment> 的罚款，并警告您，如果再犯此类性质的错误，您可能会失去担任这些工作的资格。"
+		"destroyed Syndicate target ship" ++
+		"reputation: Syndicate" --
+		fine 300000
+	on complete
+		payment 150000
+		dialog "您将扫描结果传输给热心的工程师团队并收取 <payment> 的付款。"
+
+
+mission "Syndicate target practice [2]"
+	name "辛迪加目标实践"
+	job
+	repeat
+	description "禁用 <system> 中的机器人目标虚拟船，通过扫描其货物为辛迪加工程师收集测试数据，并降落在 <planet> 上。警告：目标船被编程为进行自卫行为，以确保模拟真实。付款方式为 <payment>。"
+	source
+		government Syndicate
+	destination
+		distance 1 3
+		government Syndicate
+	to offer
+		random < 20
+		"combat rating" > 200
+		"combat rating" < 1000
+		"destroyed Syndicate target ship" < 3
+	npc save disable "scan cargo"
+		government "Test Dummy"
+		personality disables staying heroic target
+			confusion 120
+		system destination
+		ship "Splinter Test Dummy" "Syndicate Test Vessel"
+		dialog "你扫描受损的飞船并仔细测量战斗损失。是时候在 <planet> 上交付结果了。"
+	on visit
+		dialog "您忘记禁用或扫描 <system> 中的目标虚拟飞船！您需要先返回那里并完成此操作，然后才能返回此处付款。"
+	on abort
+		# No penalty
+	on fail
+		dialog "机器人目标船已被摧毁。一位愤怒的辛迪加官员向您致意，对您处以 <payment> 的罚款，并警告您，如果再犯此类性质的错误，您可能会失去担任这些工作的资格。"
+		"destroyed Syndicate target ship" ++
+		"reputation: Syndicate" --
+		fine 520000
+	on complete
+		payment 260000
+		dialog "您将扫描结果传输给热心的工程师团队并收取 <payment> 的付款。"
+
+
+mission "Syndicate target practice [3]"
+	name "辛迪加目标实践"
+	job
+	repeat
+	description "禁用 <system> 中的机器人目标虚拟船，通过扫描其货物为辛迪加工程师收集测试数据，并降落在 <planet> 上。警告：目标船被编程为进行自卫行为，以确保模拟真实。付款方式为 <payment>。"
+	source
+		government Syndicate
+	destination
+		distance 1 3
+		government Syndicate
+	to offer
+		random < 20
+		"combat rating" > 1000
+		"destroyed Syndicate target ship" < 3
+	npc save disable "scan cargo"
+		government "Test Dummy"
+		personality disables staying heroic target
+			confusion 120
+		system destination
+		ship "Vanguard Test Dummy" "Syndicate Test Vessel"
+		dialog "你扫描受损的飞船并仔细测量战斗损失。是时候在 <planet> 上交付结果了。"
+	on visit
+		dialog "您忘记禁用或扫描 <system> 中的目标虚拟飞船！您需要先返回那里并完成此操作，然后才能返回此处付款。"
+	on abort
+		# No penalty
+	on fail
+		dialog "机器人目标船已被摧毁。一位愤怒的辛迪加官员向您致意，对您处以 <payment> 的罚款，并警告您，如果再犯此类性质的错误，您可能会失去担任这些工作的资格。"
+		"destroyed Syndicate target ship" ++
+		"reputation: Syndicate" --
+		fine 800000
+	on complete
+		payment 400000
+		dialog "您将扫描结果传输给热心的工程师团队并收取 <payment> 的付款。"
+
+ship "Berserker" "Berserker Test Dummy"
+	add attributes
+		"automaton" 1
+		"self destruct" 1
+
+ship "Quicksilver" "Quicksilver Test Dummy"
+	add attributes
+		"automaton" 1
+		"self destruct" 1
+
+ship "Splinter" "Splinter Test Dummy"
+	add attributes
+		"automaton" 1
+		"self destruct" 1
+
+ship "Vanguard" "Vanguard Test Dummy"
+	add attributes
+		"automaton" 1
+		"self destruct" 1
+
+
+mission "Syndicate Prisoner Transport [0]"
+	name "交通运输主管被软禁"
+	job
+	repeat
+	description `将一名被起诉的白领罪犯及其助手、律师和收集的 <cargo> 运送到 <planet>，他将在那里“软禁”等待审判。他需要一艘足够舒适的船来完成这次旅程。付款方式为 <payment>。`
+	cargo "Luxury Goods" 1 10
+	passengers 5 12
+	source
+		government "Syndicate"
+		attributes "urban"
+	destination
+		distance 2 10
+		government "Syndicate"
+		attributes "rich"
+		attributes "frontier"
+	to offer
+		random < 5
+	to accept
+		has "outfit (installed): Luxury Accommodations"
+	on visit
+		dialog phrase "generic cargo and passenger on visit"
+	on complete
+		payment 10000 200
+		dialog "这位高管脸上挂着阳光般的微笑，漫步走下您的船。一位律师会给你 <payment> 的报酬，并低声威胁说，如果你说出你在船上可能听到或没有听到的任何事情，就会提起诽谤诉讼。"
+
+
+mission "Syndicate Prisoner Transport [1]"
+	name "运输破坏者被定罪"
+	job
+	repeat
+	description `将一名被定罪的工业破坏分子送往 <planet> 服刑。他们必须被关押在为转移罪犯而建造的适当设施中。付款方式为<payment>。`
+	passengers 1
+	source
+		government "Syndicate"
+		not attributes "military"
+	destination
+		distance 2 10
+		government "Syndicate"
+		attributes "military"
+	to offer
+		random < 15
+	to accept
+		has "outfit (installed): Brig"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment 10000 200
+		dialog "一群守卫将囚犯带离你的船，其行为过于粗鲁，超出了严格必要的程度。您收到了 <payment> 的付款。"
+
+
+mission "Syndicate Prisoner Transport [2]"
+	name "交通运输企业间谍被定罪"
+	job
+	repeat
+	description `将一群 <bunks> 被定罪的企业间谍送往 <planet> 服刑。他们必须被关押在为转移罪犯而建造的适当设施中。付款方式为 <payment>。`
+	passengers 3 5
+	source
+		government "Syndicate"
+		not attributes "military"
+	destination
+		distance 2 10
+		government "Syndicate"
+		attributes "military"
+	to offer
+		random < 15
+	to accept
+		has "outfit (installed): Brig"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment 15000 175
+		dialog "一群守卫将囚犯带离你的船，他们的脚踝被锁在一起。您收到了 <payment> 的付款。"
+
+
+mission "Syndicate Prisoner Transport [3]"
+	name "运送被拘留的抗议者"
+	job
+	repeat
+	description `将一群 <bunks> 被拘留的抗议者运送到 <planet>，他们将在那里等待煽动骚乱的审判。他们必须被关押在为转移罪犯而建造的适当设施中。付款方式为 <payment>。`
+	passengers 10 40 .9
+	source
+		government "Syndicate"
+		attributes "urban"
+		not attributes "military"
+	destination
+		distance 2 10
+		government "Syndicate"
+		attributes "military"
+	to offer
+		random < 15
+	to accept
+		has "outfit (installed): Brig"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment 10000 150
+		dialog "囚犯们还穿着便服，当警卫带他们进去时，你可以看到他们被捕时的瘀伤。您收到了 <payment> 的付款。"
+
+
+mission "Syndicate Prisoner Transport [4]"
+	name "运输被拘留的劳工组织者"
+	job
+	repeat
+	description `将一群 <bunks> 被拘留的劳工组织者运送到 <planet>，将其作为恐怖分子嫌疑人进行“处理”。他们必须被关押在为转移罪犯而建造的适当设施中。付款方式为 <payment>。`
+	passengers 3 10 .56
+	source
+		government "Syndicate"
+		attributes "factory" "farming" "mining"
+		not attributes "military"
+	destination
+		distance 2 10
+		government "Syndicate"
+		attributes "military"
+	to offer
+		random < 10
+	to accept
+		has "outfit (installed): Brig"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment 15000 200
+		dialog `当警卫把他们拖进去时，工会组织者表现得目中无人，其中一名组织者大喊“阶级叛徒”。您收到了 <payment> 的付款。`
+
+
+mission "Return Syndicate Prisoners [0]"
+	name "让高管从软禁中返回"
+	job
+	repeat
+	description `将一名被无罪释放的白领罪犯及其助手、律师和 <cargo> 的收藏品运送到 <planet> 的家中。他需要一艘足够舒适的船来完成这次旅程。付款方式为 <payment>。`
+	cargo "Luxury Goods" 1 10
+	passengers 3 10 .56
+	source
+		government "Syndicate"
+		attributes "rich"
+		attributes "frontier"
+	destination
+		distance 2 10
+		government "Syndicate"
+		attributes "urban"
+	to offer
+		random < 5
+	to accept
+		has "outfit (installed): Luxury Accommodations"
+	on visit
+		dialog phrase "generic cargo and passenger on visit"
+	on complete
+		payment 20000 200
+		dialog "这位主管带着得意的笑容大步走向快速海关入口。一位满是文书工作的律师向您支付了 <payment> 的费用。"
+
+
+mission "Return Syndicate Prisoners [1]"
+	name "将被拘留的抗议者送回家"
+	job
+	repeat
+	description `将一群 <bunks> 抗议者从 <origin> 的拘留所送回 <planet> 家。付款方式为<payment>。`
+	passengers 10 40 .9
+	source
+		government "Syndicate"
+		attributes "military"
+	destination
+		distance 2 10
+		government "Syndicate"
+		attributes "urban"
+		not attributes "military"
+	to offer
+		random < 15
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment 5000 100
+		dialog "抗议者在下飞机前紧张地环顾航天港。您收到了 <payment> 的付款。"
+
+
+mission "Return Syndicate Prisoners [2]"
+	name "将被拘留的劳工组织者送回家"
+	job
+	repeat
+	description `将一群 <bunks> 劳工组织者从 <origin> 的监禁中运送到 <planet> 的家中。付款方式为<payment>。`
+	passengers 3 15 .9
+	source
+		government "Syndicate"
+		attributes "military"
+	destination
+		distance 2 10
+		government "Syndicate"
+		attributes "factory" "farming" "mining"
+		not attributes "military"
+	to offer
+		random < 10
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment 5000 100
+		dialog "劳工组织者因被监禁而几乎瘦得皮包骨。其中一人仰面朝天，仿佛沐浴在阳光下。您收到了 <payment> 的付款。"
+
+
+mission "Syndicated Shipyards Shipment [0]"
+	name "运送至<planet>"
+	description "人类太空最大的造船厂之一辛迪加造船厂要求独立船长运送<cargo>至<destination>以确保充足的库存。付款方式为 <payment>。"
+	cargo "weapons" 5 2 .1
+	job
+	repeat
+	to offer
+		random < 10
+		has "landing access: Foundry"
+	source
+		near Achernar 2 10
+		attributes core factory
+		not government "Pirate"
+	destination Foundry
+	npc
+		government Pirate
+		personality heroic harvests plunders
+		fleet "Small Core Pirates"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment 0 160
+		dialog phrase "generic cargo delivery payment"
+
+mission "Syndicated Shipyards Shipment [1]"
+	name "运送至<planet>"
+	description "人类太空最大的造船厂之一辛迪加造船厂要求独立船长运送<cargo>至<destination>以确保充足的库存。付款方式为 <payment>。"
+	cargo "Ship Alloys" 5 2 .1
+	job
+	repeat
+	to offer
+		random < 10
+		has "landing access: Foundry"
+	source
+		near Achernar 2 10
+		attributes core mining
+		not government "Pirate"
+	destination Foundry
+	npc
+		government Pirate
+		personality heroic harvests plunders
+		fleet "Small Core Pirates"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment 0 160
+		dialog phrase "generic cargo delivery payment"
+
+mission "Syndicated Shipyards Shipment [2]"
+	name "运送至<planet>"
+	description "人类太空最大的造船厂之一辛迪加造船厂要求独立船长运送<cargo>至<destination>以确保充足的库存。付款方式为 <payment>。"
+	cargo "Ship Systems" 5 2 .1
+	job
+	repeat
+	to offer
+		random < 10
+		has "landing access: Foundry"
+	source
+		near Achernar 2 10
+		attributes core factory
+		not government "Pirate"
+	destination Foundry
+	npc
+		government Pirate
+		personality heroic harvests plunders
+		fleet "Small Core Pirates"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment 0 160
+		dialog phrase "generic cargo delivery payment"
+
+mission "Syndicated Shipyards Shipment [3]"
+	name "运送至<planet>"
+	description "将 <cargo> 运送到 <destination>，那里是人类空间最大的造船厂之一辛迪加造船厂的所在地。付款方式为 <payment>。"
+	cargo "Ship Alloys" 5 2 .1
+	job
+	repeat
+	to offer
+		random < 10
+		has "landing access: Foundry"
+	source
+		near Achernar 2 10
+		attributes core factory
+		not government "Pirate"
+	destination Foundry
+	npc
+		government Pirate
+		personality heroic harvests plunders
+		fleet "Small Core Pirates"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment 0 160
+		dialog phrase "generic cargo delivery payment"
+
+mission "Syndicated Systems Shipment [0]"
+	name "运送至<planet>"
+	description "将 <cargo> 运送到 <destination>，这是 辛迪加d Systems 的总部，该系统是人类太空中最大的船舶系统和装备制造商。付款方式为 <payment>。"
+	cargo Electronics 5 2 .1
+	job
+	repeat
+	to offer
+		random < 10
+		has "landing access: Hephaestus"
+	source
+		near Markab 2 10
+		attributes core factory
+		not government "Pirate"
+	destination Hephaestus
+	npc
+		government Pirate
+		personality heroic harvests plunders
+		fleet "Small Core Pirates"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment 0 160
+		dialog phrase "generic cargo delivery payment"
+
+mission "Syndicated Systems Shipment [1]"
+	name "运送至<planet>"
+	description "将 <cargo> 运送到 <destination>，这是 辛迪加d Systems 的总部，该系统是人类太空中最大的船舶系统和装备制造商。付款方式为 <payment>。"
+	cargo Metal 5 2 .1
+	job
+	repeat
+	to offer
+		random < 10
+		has "landing access: Hephaestus"
+	source
+		near Markab 2 10
+		attributes core mining factory
+		not government "Pirate"
+	destination Hephaestus
+	npc
+		government Pirate
+		personality heroic harvests plunders
+		fleet "Small Core Pirates"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment 0 160
+		dialog phrase "generic cargo delivery payment"
+
+mission "Megaparsec Shipment [0]"
+	name "运送至<planet>"
+	description "将 <cargo> 运送到 Megaparsec Inc. 的总部，<destination>，这是一家以轻量级设计而闻名的造船厂。付款方式为 <payment>。"
+	cargo "weapons" 5 2 .1
+	job
+	repeat
+	to offer
+		random < 10
+		has "landing access: Sunracer"
+	source
+		near Mirfak 2 10
+		attributes core factory
+		not government "Pirate"
+	destination Sunracer
+	npc
+		government Pirate
+		personality heroic harvests plunders
+		fleet "Small Core Pirates"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment 0 160
+		dialog phrase "generic cargo delivery payment"
+
+mission "Megaparsec Shipment [1]"
+	name "运送至<planet>"
+	description "将 <cargo> 运送到 Megaparsec Inc. 的总部，<destination>，这是一家以轻量级设计而闻名的造船厂。付款方式为 <payment>。"
+	cargo "Ship Alloys" 5 2 .1
+	job
+	repeat
+	to offer
+		random < 10
+		has "landing access: Sunracer"
+	source
+		near Mirfak 2 10
+		attributes core mining factory
+		not government "Pirate"
+	destination Sunracer
+	npc
+		government Pirate
+		personality heroic harvests plunders
+		fleet "Small Core Pirates"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment 0 160
+		dialog phrase "generic cargo delivery payment"
+
+mission "Megaparsec Shipment [2]"
+	name "运送至<planet>"
+	description "将 <cargo> 运送到 Megaparsec Inc. 的总部，<destination>，这是一家以轻量级设计而闻名的造船厂。付款方式为 <payment>。"
+	cargo "Ship Systems" 5 2 .1
+	job
+	repeat
+	to offer
+		random < 10
+		has "landing access: Sunracer"
+	source
+		near Mirfak 2 10
+		attributes core mining factory
+		not government "Pirate"
+	destination Sunracer
+	npc
+		government Pirate
+		personality heroic harvests plunders
+		fleet "Small Core Pirates"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment 0 160
+		dialog phrase "generic cargo delivery payment"
+
+mission "Syndicate Hovercraft Racer Transport"
+	name "将赛车运送到 <planet>"
+	description "将一名飞行员及其气垫船运送到 <destination>，以参加 <date> 为 <payment> 举行的比赛。"
+	passengers 1
+	cargo "Syndicate hovercraft" 1
+	job
+	repeat
+	deadline
+	to offer
+		random < 6
+		has "landing access: Sunracer"
+	source
+		government "Syndicate"
+		not near "Mirfak" 4
+	destination Sunracer
+	on visit
+		dialog phrase "generic cargo and passenger on visit"
+	on complete
+		payment
+		dialog `您让飞行员驾驶气垫船下车并收取 <payment> 的付款。`
+
+mission "Syndicate Hovercraft Large Racer Transport"
+	name "将团队运送到<planet>"
+	description "将这支 <passengers> 成员赛车队及其一组 <cargo> 交给 <destination>，以参加 <date> 为 <payment> 举行的比赛。"
+	passengers 50 100 .9
+	cargo "Syndicate hovercraft" 50
+	job
+	repeat
+	deadline
+	deadline 8
+	to offer
+		random < 1
+		has "landing access: Sunracer"
+	source
+		government "Syndicate"
+		not near "Mirfak" 4
+	destination Sunracer
+	on visit
+		dialog phrase "generic cargo and passenger on visit"
+	on complete
+		payment
+		payment 23000
+		dialog `您用气垫船送赛车队并收取 <payment> 的付款。`

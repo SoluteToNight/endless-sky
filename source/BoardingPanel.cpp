@@ -99,7 +99,7 @@ BoardingPanel::BoardingPanel(PlayerInfo &player, const shared_ptr<Ship> &victim)
 	canCapture = victim->IsCapturable() || player.CaptureOverriden(victim);
 	// Some "ships" do not represent something the player could actually pilot.
 	if(!canCapture)
-		messages.emplace_back("This is not a ship that you can capture.");
+		messages.emplace_back("这不是你可以夺取的飞船。");
 	else
 	{
 		attackOdds.Calculate();
@@ -262,13 +262,13 @@ bool BoardingPanel::KeyDown(SDL_Keycode key, Uint16 mod, const Command &command,
 		{
 			string message;
 			if(canTake == CanTakeResult::TARGET_YOURS)
-				message = "You cannot plunder your own ship.";
+				message = "你不能掠夺自己的飞船。";
 			else if(canTake == CanTakeResult::NO_SELECTION)
-				message = "No item selected.";
+				message = "未选择物品。";
 			else if(canTake == CanTakeResult::NO_CARGO_SPACE)
-				message = "You do not have enough cargo space to take this item, and you cannot install it as ammo.";
+				message = "你的货舱空间不足以拿走该物品，且无法将其作为弹药安装。";
 			else
-				message = "You cannot plunder now.";
+				message = "你现在无法掠夺。";
 
 			GetUI().Push(DialogPanel::Info(message));
 			return true;
@@ -328,13 +328,12 @@ bool BoardingPanel::KeyDown(SDL_Keycode key, Uint16 mod, const Command &command,
 		{
 			victim->SelfDestruct();
 			GetUI().Pop(this);
-			GetUI().Push(DialogPanel::Info("The moment you blast through the airlock, a series of explosions "
-				"rocks the enemy ship. They appear to have set off their self-destruct sequence..."));
+			GetUI().Push(DialogPanel::Info("你刚炸开气闸门，一连串爆炸便震撼了敌舰。看起来他们启动了自毁程序……"));
 			return true;
 		}
 		isCapturing = true;
-		messages.push_back("The airlock blasts open. Combat has begun!");
-		messages.push_back("(It will end if you both choose to \"defend.\")");
+		messages.push_back("气闸门被炸开，战斗开始！");
+		messages.push_back("（若双方都选择“防御”，战斗将结束。）");
 	}
 	else if((key == 'a' || key == 'd' || key == 'D') && CanAttack())
 	{
@@ -356,7 +355,7 @@ bool BoardingPanel::KeyDown(SDL_Keycode key, Uint16 mod, const Command &command,
 		// If neither side attacks, combat ends.
 		if(!youAttack && !enemyAttacks)
 		{
-			messages.push_back("You retreat to your ships. Combat ends.");
+			messages.push_back("你撤回自己的飞船。战斗结束。");
 			isCapturing = false;
 		}
 		else
@@ -426,31 +425,31 @@ bool BoardingPanel::KeyDown(SDL_Keycode key, Uint16 mod, const Command &command,
 
 			// Report what happened and how many casualties each side suffered.
 			if(youAttack && enemyAttacks)
-				messages.push_back("You both attack. ");
+				messages.push_back("双方都选择进攻。");
 			else if(youAttack)
-				messages.push_back("You attack. ");
+				messages.push_back("你发起进攻。");
 			else if(enemyAttacks)
-				messages.push_back("They attack. ");
+				messages.push_back("对方发起进攻。");
 
 			if(yourCasualties && enemyCasualties)
-				messages.back() += "You lose " + to_string(yourCasualties)
+				messages.back() += "你损失了" + to_string(yourCasualties)
 					+ " crew; they lose " + to_string(enemyCasualties) + ".";
 			else if(yourCasualties)
-				messages.back() += "You lose " + to_string(yourCasualties) + " crew.";
+				messages.back() += "你损失了" + to_string(yourCasualties) + "名船员。";
 			else if(enemyCasualties)
-				messages.back() += "They lose " + to_string(enemyCasualties) + " crew.";
+				messages.back() += "对方损失了" + to_string(enemyCasualties) + "名船员。";
 
 			// Check if either ship has been captured.
 			if(!you->Crew())
 			{
-				messages.push_back("You have been killed. Your ship is lost.");
+				messages.push_back("你已阵亡。你的飞船也一并损失。");
 				you->WasCaptured(victim);
 				playerDied = true;
 				isCapturing = false;
 			}
 			else if(!victim->Crew())
 			{
-				messages.push_back("You have succeeded in capturing this ship.");
+				messages.push_back("你已成功夺取这艘飞船。");
 				victim->GetGovernment()->Offend(ShipEvent::CAPTURE, victim->CrewValue());
 				int crewTransferred = victim->WasCaptured(you);
 				if(crewTransferred > 0)

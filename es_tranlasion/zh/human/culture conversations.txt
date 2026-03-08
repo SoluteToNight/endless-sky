@@ -1,0 +1,1781 @@
+# Copyright (c) 2021 by Michael Zahniser
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program. If not, see <https://www.gnu.org/licenses/>.
+
+mission "Sad Gamblers - Republic"
+	minor
+	source
+		government "Republic"
+		attributes "near earth"
+		not attributes "station"
+	"offer precedence" 5
+	to offer
+		random < 1
+	on offer
+		conversation
+			`穿过太空港，你会看到一大群人在等待抽奖。您会听到成功的欢呼声，并且您的注意力会被其中一个人在第 12 级联赛中赢得一笔中等金额的胜利所吸引。这是一两天的标准工资。`
+			`很难不怜悯他们，因为他们立即购买了更多全价门票。`
+				decline
+
+mission "Sad Gamblers - Syndicate"
+	minor
+	source
+		government "Syndicate"
+		not attributes "station"
+	"offer precedence" 5
+	to offer
+		random < 1
+	on offer
+		conversation
+			`穿过太空港，你会看到一大群人在等待抽奖。您会听到成功的欢呼声，并且您的注意力会被其中一个人在第 12 级联赛中赢得一笔中等金额的胜利所吸引。这是一两天的标准工资。`
+			`很难不怜悯他们，因为他们立即购买了更多全价门票。`
+				decline
+
+
+
+mission "Foiled Kidnapping Witnessed"
+	minor
+	source
+		government "Syndicate"
+		not attributes "station" "frontier" "urban"
+	"offer precedence" 5
+	to offer
+		random < 1
+	on offer
+		conversation
+			`当您前往城市时，路障中断了您的道路，迫使您在经过时放慢速度，以便能够看到骚乱的情况。警察挥手示意从另一个方向驶来的一辆又一辆汽车，并对车辆进行调查，直到其中一辆被停在一边，导致警察暂时停止了所有交通活动。司机看上去很苦恼，即使在被拘留的情况下也拒绝打开后备箱；当发现里面有一个小女孩时，他的脸色变得苍白。`
+			`当警察挥手让你离开并挡住你的视线时，你不知道对此有何感受。`
+				decline
+
+
+
+mission "Gift Store Interaction"
+	minor
+	source
+		government "Republic"
+		attributes "deep"
+		not attributes "station"
+	"offer precedence" 5
+	to offer
+		random < 1
+	on offer
+		conversation
+			`当你拿着零食在太空港闲逛，等待飞船加油时，你经过了一家当地的纪念品商店，于是探头进去打发时间。你看到一个看起来不错的杯子，上面印有“和平、繁荣、进步”字样，下面印着深海徽章，你拿起它看看感觉如何。手柄很坚固，对于手指来说不算太小，而且它的边缘看起来喝起来很舒服。`
+			`两个年轻人漫步在几米外的过道中，用一种你听不懂的语言交谈，这种语言可能是深海当地的语言。他们正在对找到的一件物品窃窃私语，但当一个人将其翻过来查看价格标签时，他们会立即交换眼神和表情，不需要翻译。最终，这件商品又回到了货架上，大家咯咯地笑着，摇了摇头。`
+			branch broke
+				credits < 50
+			`出于好奇，你把自己的杯子翻过来，发现它确实至少是你购买一个杯子的价格的五倍，即使是一个好的杯子：50 个积分。尽管如此，这确实是一个新奇......`
+			choice
+				`（买杯子。）`
+					goto buy
+				`（把它放回去。）`
+			`你翻了个白眼，又把它放了回去。有些经历确实是普遍的。`
+				decline
+			
+			label buy
+			action
+				payment -50
+				outfit "Mug"
+			`您一时冲动购买了这个杯子。至少你可以扔掉另一个有芯片的东西。`
+				decline
+			
+			label broke
+			`出于好奇，你翻开了自己的杯子，当你看到 50 个积分的价格标签时，你的心沉了下去。你永远买不起这么贵的杯子。你把它放回去然后走开，同时思考你的财务状况。`
+				decline
+
+
+
+mission "New China Mourners"
+	minor
+	source "New China"
+	"offer precedence" 5
+	to offer
+		random < 10
+	on offer
+		conversation
+			`天空倾泻到下面的世界，与人群一起哭泣，一尊朴素但庄严的棺材从虚空的甲板上缓缓抬出。有节奏的哀号声与淅淅沥沥的雨声融为一体，空气中弥漫着空气，棺材后面紧随其后的是哀悼者的队伍，看起来是一大群家庭的聚集。即使当它被放入货车时，他们也不会离开死者，许多人将手放在它上面，好像将人推向他们最后的安息地。两个最重要的哀悼者，一个女人和一个年轻人，爬上车，坐在旁边的座位上。附近某处，随着车辆缓缓驶离，音乐开始响起。`
+			`你想知道这个人在死前有多出名，因为剩下的人最终离开了逐渐远去的面包车，开始列队经过一些你一开始没有注意到的谨慎的服务员，赤脚接受拖鞋，然后登上巴士，等待在面包车后面接他们。`
+				decline
+
+
+
+mission "New Holland Foibles"
+	minor
+	source "New Holland"
+	"offer precedence" 5
+	to offer
+		random < 10
+	on offer
+		conversation
+			`当你走在航天港附近工厂小镇的不拥挤的街道上时，空气中弥漫着燃烧金属的气味，远离直接为港口及其机库供电的主干补给路线。`
+			`尽管距离较远且交通稀少，但这里却远非安静。当你调查时，几栋工厂大楼发出明显的嗡嗡声，研磨机在寂静中回响。拐过一个拐角，你会看到一条沿着长长的铁丝网围栏延伸的小巷。在它之外，你可以看到一群人正在砍伐一艘宇宙飞船。零件经常掉到地板上，工人们显然没有注意到下面的情况。`
+			`即使在观察时，您也会看到一块船体板在工人头顶上危险地摆动。`
+			choice
+				`（发出警告。）`
+				`（别管他们了。）`
+					goto leave
+			`你发出警告，大多数人都会停下来看着你，当有问题的研磨机的持有者斜视着你的方向时，船体板轻轻摆动。你现在意识到，其中一位年长的男子至少在某种程度上监督了整个活动，他向前迈了​​一步，以一种驱逐的动作向你挥动双手。 “喂，你滚蛋。我们有安全主管，我们的事不需要你插手。”`
+			choice
+				`（对这一主张提出质疑。）`
+				`（别管他们了。）`
+					goto leave
+			`你指出，无论是否有人监督，你所看到的一切看起来都不安全，那名男子环顾四周，然后怒气冲冲地走到你对面，站在栅栏后面。 “看起来很奇怪，”他说，“在这里工作很难找到。对于在这里工作的人来说，我们没有多余的时间。但是薪水不错，我们至少可以养活我们的孩子。当然，有些人会受到一些擦伤和瘀伤，但在我的监督下没有人死亡，里克只是失去了他最小的一根手指。如果你觉得有必要观看，那就好吧，站在旁边，但别打扰我们，好吗？这里没有人会关心你要说什么。无论如何。”`
+			`他死死地看着你的眼睛，一旦他确信你理解了他的信息，他就会跺脚回到他的船员身边，他们继续他们的工作。你会看到他们把这艘废弃的船拆开，直到其碎片完全填满他们的拖车，然后他们才将这些部件拖到远处的工厂。`
+				decline
+			label leave
+			`你转身离开。过了一会儿，你听到了咔嗒声和喊叫声，但当你回头看时，似乎没有人受伤。`
+				decline
+
+
+
+mission "Trash Fire Crops"
+	minor
+	source
+		government "Republic"
+		attributes "dirt belt"
+		attributes "farming"
+		not attributes "station"
+	"offer precedence" 5
+	to offer
+		random < 1
+	on offer
+		"bumper crop year" = "year"
+		conversation
+			`当你在太空港中走动时，你无法避免难闻的气味。这就像一场垃圾火灾，但你看不到任何烟雾。`
+			choice
+				`（忽略它。）`
+					goto ignore
+				`（四处询问。）`
+			`你问一位看起来不太忙的当地人。他们悲伤地告诉你，香蕉丰收，但不幸的是，其他富裕国家同时也丰收，但没有地方可以出售或储存大量多余的香蕉。苦恼的农民正在焚烧多余的水果，为下一季制造肥料，风把这种气味带到了整个城镇。`
+				decline
+			label ignore
+			`你把神秘的气味留给当地人，然后继续你的生意。`
+				decline
+
+
+
+mission "Worker's Occasion"
+	minor
+	source
+		government "Republic"
+		attributes "dirt belt"
+		not attributes "station"
+	"offer precedence" 5
+	to offer
+		random < 1
+	on offer
+		conversation
+			`当你停下来考虑去哪家餐厅吃晚饭时，你注意到一名只有少量积分的当地工人正热切地盯着菜单。他的衣服穿得很整齐，看起来刚刷过，但不可能不注意到那些没有洗掉的脏痕和污渍。不可否认，这个男人看起来很紧张，他看着正式的餐厅布局，明显不熟悉。亲自看看菜单，你会发现虽然价格对你来说非常实惠，但在你转行之前是遥不可及的。`
+			choice
+				`（提出支付该男子的晚餐费用。）`
+					goto aid
+				`（默默地怜悯这个人。）`
+					goto pity
+				`（对男人微笑。）`
+			`你对这个男人微笑，并反思小成就的​​价值。他用眼角的余光瞥见了你的微笑，在你开始做自己的事情之前，他犹豫但友好地向你挥了挥手。`
+				decline
+			label aid
+			`您进入餐厅并引起了该男子的注意，并主动提出为他付餐费。`
+			`他认出你是一名飞行员，皱起眉头，然后用丰富多彩的语言告诉你可以在哪里坚持这个提议。当你走开时，你会想，如果一个更富有的人为你支付晚餐费用而怜悯你，你会作何反应。`
+				decline
+			label pity
+			`你可怜那个必须工作整整一个月才能负担得起并继续你的路的人。`
+				decline
+
+
+
+mission "Paradise Cleaner Incident"
+	minor
+	source
+		government "Republic"
+		attributes "paradise"
+		not attributes "station"
+	"offer precedence" 5
+	to offer
+		random < 1
+	on offer
+		conversation
+			`对于外国人来说，参观天堂太空港总是一种有趣的经历。阶级是日常生活中根深蒂固的组成部分，其他任何地方都没有。你发现自己注意到了一些人，他们对大多数做生意的人来说似乎是看不见的，但他们从来没有引起你的注意。他们似乎总是竭尽全力避免引起注意。`
+			`过去你不会注意到这里的孩子看起来很穷，但这次你会发现一个孩子，他打翻了拖把和水桶……就在一位商人和他的家人推着行李穿过太空港的面前。你从来没有见过像清洁工、男孩的母亲那样脸色变得如此苍白的人，她甚至在男孩喘口气之前就急忙去修理东西。`
+			`当这名男子和他的家人开始抱怨时，两名保安人员几乎立即出现，在你以某种方式求情之前。一名警官提供保证，另一名警官负责监督清洁工，清洁工很快就催促她的孩子远离危险。`
+				decline
+
+
+
+mission "Curious Waiter"
+	minor
+	source
+		government "Syndicate"
+		attributes "factory"
+		not attributes "station"
+	"offer precedence" 5
+	to offer
+		random < 1
+	on offer
+		conversation
+			`一时兴起，你决定在一家远离繁忙太空港的餐厅用餐。你很快就会发现自己在实体菜单上寻找美味佳肴，人们从你的摊位窗前涌过，每个人都因漫长的工作而疲惫不堪。很快就点了餐，你继续看着人群，直到一份当地版本的炸猪排盖饭到来，然后开始吃。`
+			`这个地方很安静，也许对于晚餐高峰来说有点早，当你吃到一半时，一个服务员停在你旁边，咳嗽着吸引你的注意力。`
+			choice
+				`“我可以帮你吗？”`
+				`“是的？”`
+				`“你想要什么？”`
+			`“抱歉，”他说，抓住了衬衫的边缘。 “但是……请问……看星星是什么感觉？参观其他世界？”`
+			choice
+				`“大多数世界都和这里一样，甚至更糟。”`
+				`“星星在大气层下更漂亮。”`
+				`“这是一次冒险，但不适合胆小的人。”`
+			`“哦......我从来没有见过任何飞行员，所以我从来没有问过，”他有点沮丧地说。 “不过还是非常感谢你告诉我！”`
+			`他继续工作，脸上带着中性满意的若有所思的表情。`
+				decline
+
+
+
+mission "Syndicated Security Troops"
+	minor
+	source
+		government "Syndicate"
+		attributes "urban"
+		not attributes "station"
+	"offer precedence" 5
+	to offer
+		random < 1
+	on offer
+		conversation
+			`用于运送部队和物资的重型卡车“Tonners”在街道上滚动，发出低沉的隆隆声，人们纷纷转过头来，看到那些块状但威严的车辆慢慢停下来。最前面车辆的驾驶员和指挥官将目光集中在道路上，留意任何可能对车辆或其支持人员构成风险的交通危险。`
+			`另一方面，每艘吨车后面的士兵们正在闲聊，他们脸上的迷彩服在高温下被抹掉了。其中一个人指着你，说了一些让他的同伴发出呻吟的话，你决定你可能不想知道他说了什么。`
+				decline
+
+
+
+mission "Class Trip to Port"
+	minor
+	source
+		attributes "south"
+		not attributes "station"
+	"offer precedence" 5
+	to offer
+		random < 1
+	on offer
+		conversation
+			`当你走下飞船时，一群孩子向你挥手，对展示的航天器感到惊叹，而他们的老师试图吸引他们的注意力，但未能成功。远远就可以看到他们的制服颜色褪色，一行人走过，却没有一个人露出一丝不悦的表情。当你进入太空港时，你想知道他们中有多少人最终可能拥有自己的宇宙飞船并飞越星空。`
+				decline
+
+
+
+mission "Old Defense Turrets"
+	minor
+	source
+		attributes "south"
+		not attributes "station" "frontier"
+	"offer precedence" 5
+	to offer
+		random < 1
+	on offer
+		conversation
+			`经过令人恼火的长时间停留，鼓励您进行一些探索，您租了一辆车在附近地区进行短途驾驶。随后，当您将车驶入指定的回程停车场时，大型液压马达的意外声音引起了您的注意。你会看到一座巨大的炮塔从附近的路障后面升起，转向天空，它的一门大炮似乎准备向任何东西开火。`
+			`环顾四周寻找某种形式的解释，你会发现附近有一块纪念炮塔的牌匾，还有其他五个类似的牌匾，直到最近几年才提供保护并阻止盗版。你不禁想知道如果这些炮塔再次被实际使用的话会有多好。`
+				decline
+
+
+
+mission "Blind Landing"
+	minor
+	landing
+	source
+		government "Free Worlds"
+		attributes "farming"
+		not attributes "station" "frontier"
+	"offer precedence" 5
+	to offer
+		"year" > "bumper crop year" + 2
+		random < 1
+		has "Trash Fire Crops: declined"
+	on offer
+		conversation
+			`当你下降时，烟雾充满了你的挡风玻璃，试图看清前方几米以外的任何东西，但未能看到。不过，自动驾驶系统的所有指标均呈绿色常亮，交通管制已确认锁定。`
+			choice
+				`（自动驾驶着陆。）`
+				`（返回轨道。）`
+					goto orbit
+			`你让飞行器着陆，茫然地盯着薄雾直到它散去。`
+			`在地面上，你可以看到原因，一片片种植园在燃烧。你会看到一群主要是农民的人挡住了一小群消防员，争吵并试图阻止他们扑灭火焰，飞机飞过头顶，在必要的地方喷洒水和阻燃剂。`
+			`你记得几年前看到过这样的事情，农民焚烧农作物来使土地肥沃，几个月来空气质量多么糟糕。`
+				decline
+			label orbit
+			`由于不愿意盲目着陆进入未知情况，您返回轨道并重新加入太空港处理队列。为了保证，延迟一天是值得付出的代价。`
+				flee
+
+
+
+mission "Forest Fire"
+	minor
+	source
+		government "Free Worlds"
+		attributes "frontier"
+		not attributes "station"
+	"offer precedence" 5
+	to offer
+		random < 1
+	on offer
+		conversation
+			`当你走下飞船时，空气中弥漫着燃烧的烟雾的味道，导致你冲向最近的避难所，一路上咳嗽。到达那里后，你会发现人们大喊大叫，冲过来把胶带贴在窗户上。似乎没有人注意到你的到来，也没有人做出解释。`
+			choice
+				`“嘿！发生什么事了？我可以帮忙！”`
+					goto help
+				`（寻找不动的人。）`
+			`你找到了一位坐在椅子上的怀孕女士，她戴着面具，她解释道：“附近发生了一场大火，风把它吹向太空港。可能是某个傻瓜在玩火，或者是某个海盗向当地人发送了一条信息。我们不知道，这里可能真的有什么东西。我们蹲下来，希望它能在造成太大损害之前烧毁。”`
+			choice
+				`“我那里有一艘船。让我帮忙吧。”`
+			`她睁大了眼睛，环顾四周，敏锐地引起了众多匆匆忙忙的人之一的注意。`
+				goto fight
+			label help
+			`一个看起来很可疑的年轻人，看起来像是二十分钟前的空中交通管制员，他看了你一眼，然后停下来。 “哦，你是一名飞行员！你的船能帮忙吗？”`
+			choice
+				`“是的。”`
+			label fight
+			`在您发布公告后，码头工作人员争先恐后地将消防设备搬到您的船上，指示您将阻燃剂投放到火场周围。在空中交通管制员允许您离开并驾驶飞机驶向火场之前，您几乎记不清每个按钮的用途。`
+			`熊熊的火焰像地狱一样熊熊燃烧，当你靠近时，会冒出滚滚黑烟。当您放下阻燃剂并确保保持低速时，动物会争先恐后地逃向更安全的地方。每次当你返回另一批时，你都要尽量确保你没有在它们上面清空。`
+			`几个小时后，你看着你的杰作，当火开始被扑灭时，一条长长的红色线挡住了火焰。您通过广播报告了自己的进展并收到了愉快的回复，感谢您的帮助。`
+				decline
+
+
+
+mission "Local Politics"
+	minor
+	source
+		attributes "frontier"
+		attributes "south"
+		not attributes "station" "urban" "ex-pirate"
+	"offer precedence" 5
+	to offer
+		or
+			and
+				random < 5
+				or
+					has "flagship planet attribute: south pirate"
+					not "event: war begins"
+			and
+				random < 1
+				has "event: war begins"
+				not "event: fw suppressed Greenrock"
+	on offer
+		conversation
+			`当你降落在发射台上时，你注意到太空港周围普遍缺乏存在。没有人争先恐后地挂上你的船，也没有其他人承认你的到来。相反，当你离开飞船时，你发现的只是太空港内的一张纸条，详细说明了他们的“霸主”可以在哪里找到他们的年度贡品。`
+			`你决定不去调查居民去了哪里。`
+				decline
+
+
+
+mission "Military Response Test"
+	landing
+	minor
+	source
+		government "Free Worlds"
+		not attributes "station" "urban" "frontier"
+	"offer precedence" 5
+	to offer
+		random < 1
+	on offer
+		conversation
+			`在一组奇怪的指令中，空中交通管制员让你输入一组坐标，带你在前往着陆区的途中靠近一个大型军事基地。你让自动驾驶仪接管，同时观察驾驶舱窗户外的景色，希望基地的炮塔不会把你从天上射下来。`
+			`从你观看的地方，你会看到一个女人站在游行广场上，举起一只手，就像在看手表一样。几秒钟过去了，她举起另一只手，向看着她的人竖起大拇指。突然，基地响起了响亮的警报声，即使在你的飞船以合理的高度经过时也能听到。你会看到士兵们放下手中的一切，一些人冲进建筑物，另一些人则跑向装甲车。几分钟之内，基地的车辆驶向阅兵广场，全副武装的士兵们在广场上整齐地集合。`
+			`您不确定他们所做的事情是否是预定的，或者是否是为了响应您的航班。`
+				decline
+
+
+
+mission "Missed Mugging"
+	minor
+	source
+		government "Free Worlds"
+		not attributes "station" "frontier"
+	"offer precedence" 5
+	to offer
+		random < 1
+	on offer
+		conversation
+			`当你走出太空港，试图找一家附近的餐馆品尝他们的商品时，太阳已经落山了。环顾四周，唯一的光源来自你刚刚走出的那栋大楼，就像黑暗海洋中的一盏明灯。`
+			`你随机选择了一个方向，决定沿着安静的街道行走，欣赏风景。当两个男人从巷子里冲出来时，你被打断了，他们从你身边推过。还没等你反应过来，就看到一个女人跑了出来，衣服乱七八糟，追着两个男人却没有结果。姗姗来迟，你才意识到他们手里拿着一个钱包，在他们消失很久之后，消失在了远处的黑暗中。`
+				decline
+
+
+
+mission "Sojourn Sunday Sales"
+	minor
+	source
+		government "Free Worlds"
+		attributes "urban"
+		not attributes "station"
+	"offer precedence" 5
+	to offer
+		random < 1
+	on offer
+		conversation
+			`当你进入太空港时，你惊讶地眨着眼睛，看着成群结队的人在商业区周围的人链中挤过。你扫视周围的环境，注意到度假地点的广告，所有这些广告都以高得离谱的折扣。然而，尽管价格大幅降低，广告上的假期仍然花费如此大的金额，以至于年轻的你永远无法证明这样的花费是合理的。`
+				decline
+
+
+
+mission "Tarazed Ship Christening"
+	minor
+	source "Wayfarer"
+	to offer
+		random < 10
+		has "main plot completed"
+	"offer precedence" 5
+	on offer
+		conversation
+			`当您走过许多在太空港工作的飞船和机组人员时，航天飞机前的一小群人引起了您的注意。一名穿着相当俗气的飞行员制服的年轻女子站在一群一起庆祝的人中间。当你经过他们时，一个站在梯子顶上的男人在（显然不是新的）船体上打碎了一瓶香槟。人群中爆发出一阵大声的欢呼声，年轻女子尴尬地脸红了。`
+			choice
+				`（仔细看看。）`
+					goto investigate
+				`（当我经过时大声祝福。）`
+					goto "pass by"
+				`（别理他们，我还有更重要的事情要做。）`
+			`你匆匆走过吵闹的人群，对骚乱感到恼火。`
+				decline
+			label "pass by"
+			`当他们安静下来时，你快步走过这群人。趁着短暂的平静，你大喊“祝你好运！你成功了！”向他们。他们又发出一阵欢呼作为回应，除了那个把脸埋在手里的年轻女子之外。`
+				decline
+			label investigate
+			`当他们安静下来时，你走近他们，注意到空气中弥漫着一丝焦虑。`
+			`“没有什么比购买你的第一艘星际飞船更好的了，”你在他们的闲聊声中说道。当他们转头看看是谁打扰了他们的小聚会时，庆祝活动安静了下来。`
+			`“这当然是一次……经历，”当你们处于舒适的交谈距离时，这位年轻女士回答道。`
+			choice
+				`“你有什么大计划吗？”`
+					goto plans
+				`（给一些建议。）`
+					goto advice
+				`“那么，谁是幸运的飞行员呢？”`
+			`你向航天飞机做了个手势，然后环顾四周，就好像它应该是其他人一样。`
+			`“呃……那就是我，”女人尴尬地环顾四周说道。`
+			choice
+				`（尽力挽救尴尬的局面。）`
+				`（趁我还可以的时候出去吧。）`
+					goto "get out"
+			`“我只是在逗你，我的精神科医生也不认为我对他这么做很有趣。”`
+			`“哦，”女人轻声说，“我想那……很好。”`
+			label "get out"
+			`你意识到你的闯入让这位随机的年轻女士感到非常不舒服。`
+			`“嗯，祝你好运！”你挥手说道，然后就匆匆离去。你几乎听不到那一声轻柔的“谢谢”，而你的耳朵却在灼痛。`
+				decline
+			label plans
+			`“现在，”她叹了口气说，“我唯一的计划就是摆脱因此而欠下的巨额债务。”`
+			label advice
+			`“只要你肯努力，房贷还不错。”你笑着说，“而且不缺需要一艘船和一个好的领航员。”`
+			`“我知道有了一个你就能过上体面的生活，但这真的那么容易吗？”她问。`
+			`“工作并不容易，但找工作是你最不用担心的。我相信你很快就会得到这艘船的回报。”`
+			`你留在周围，与有抱负的飞行员交谈几分钟，在告诉她你有工作要做之前，给她提示和建议。当你转身准备离开时，一位年长的男子把手放在你的手臂上，阻止了你。`
+			`“在你走之前，”男人说，“一开始我们对整个‘试点’的事情不太确定，但很高兴听到我的小女儿做出了正确的决定。谢谢你。”`
+			`“这是我至少能做的，”你在走开之前说道。`
+				decline
+
+
+
+mission "Masquerade Hanging"
+	minor
+	source
+		government "Pirate"
+		not attributes "station"
+	"offer precedence" 5
+	to offer
+		random < 1
+	on offer
+		conversation
+			`当你进入城镇广场时，空气中弥漫着燃烧的火药味，看着一具尸体从高台上滚下来。一名蒙面男子将一名女士拖过站台，拖到中央广场上，空气中充满了哭声和尖叫声，他用一把老式手枪指着她的头，问了她一些你听不懂的问题。值得庆幸的是，这名男子没有开枪，他把枪从她的太阳穴上拔下来，然后用武器将她击倒。`
+			`过了一会儿，一小群人允许他从你的观点对面离开，没有发生任何事件，也没有解释。当尸体被迅速拖走时，你不太确定如何看待这一场景。`
+				decline
+
+mission "News Reporter - Paradise"
+	minor
+	source
+		government "Republic"
+		attributes "paradise"
+		not attributes "station"
+	"offer precedence" 5
+	to offer
+		random < 8
+		has "event: war begins"
+		not "event: joined the free worlds"
+	on offer
+		conversation
+			`当你穿过太空港时，你看到一个年轻女子朝你的方向走来。她身后跟着许多无人机，每架都标有由两条向内的曲线组成的标志。`
+			choice
+				`（等她靠近。）`
+					goto walk
+				`（希望她没有注意到我。）`
+					goto notice
+				`（尽量避开她。）`
+			`你从旁边走一条走廊来躲避她。正当你以为自己已经消失的时候，你听到了一个声音。 “打扰一下！”你转身看到记者跟着你。`
+				goto walk
+			label notice
+			`继续走着，就听见她喊道：“对不起！”强忍着叹息，转身面对记者。`
+			label walk
+			`当她靠近你时，她会微笑。 “队长您好！您愿意为我们观众解答几个问题吗？”`
+			choice
+				`“当然，我不会介意的。”`
+					goto questions
+				`“不，我宁愿不。”`
+					decline
+			label questions
+			`当她准备采访时，无人机在你周围盘旋。几秒钟后，她对其中一架无人机微笑并开始。`
+			`“欢迎回来。我在 <origin> 报告自由世界的情况。目前在两次旅行之间，一名商船船长加入了我的行列。船长，您对发送给议会的最后通牒有何看法？”`
+			choice
+				`“我认为议会应该重新考虑并考虑一下目前的情况。”`
+				`“议会拒绝这些要求，做出了正确的决定。”`
+					goto right
+			`记者皱起眉头。 “你能为我们的观众解释一下你的答案吗？”`
+			choice
+				`“无论我们同意与否，每个世界的利益都应该得到考虑。”`
+				`“自由世界的代表性不够好，无法通过正常渠道获得吸引力。”`
+				`“海军几乎没有保卫那片领土，所以税收不应该那么多。”`
+				`“我宁愿不回答。”`
+			`“我不确定议会会同意你的观点，但我要感谢你的回答，并感谢你花时间接受这次采访！”她说。`
+			`当她继续穿过太空港时，无人机飞回来跟踪她。`
+				decline
+			label right
+			`记者笑了。 “你能为我们的观众解释一下这个答案吗？”`
+			choice
+				`“有适当的渠道来表达不满，但这不是其中之一。”`
+				`“当议会是保护他们的人时，这是一件非常忘恩负义的事情。”`
+				`“我宁愿不回答。”`
+			`“我们很幸运，很多人都有这种感觉！感谢您的回答，并抽出时间接受这次采访！”她说。`
+			`当她继续穿过太空港时，无人机飞回来跟踪她。`
+				decline
+
+mission "Scientists at the Pub after a Conference"
+	minor
+	source
+		government "Republic"
+		attributes "urban"
+		not attributes "station"
+	"offer precedence" 5
+	to offer
+		random < 1
+	on offer
+		conversation
+			`当您在长途旅行和感觉更长的着陆程序后休息时，您注意到一群人进入您所在的酒吧，从街对面的会议中心涌入。他们的年龄、着装和口音各不相同，但大多数人脖子上挂着挂绳，挂着相​​同的徽章。您注意到掉落在地板上的一枚徽章，上面写着“与会者 - 第 35 届星际微生物基因组学和种群动态泛银河年度会议”。这群人在靠近你的一张长桌上就座。`
+			choice
+				`（点餐并听他们的谈话。）`
+					goto "overheard scientists 1"
+				`（找个比较安静的地方放松一下。）`
+					decline
+			label "overheard scientists 1"
+			`酒吧的喧闹声中，谈话的片段传到了你的耳中。`
+			``
+			`两名年轻的与会者看起来有点紧张。 “我很高兴我的演讲结束了。我很担心第一天必须要演讲，但现在我终于可以放松下来，真正聆听其他演讲了！”`
+			`“哦，当然！我可能根本不应该在这里 - 我真的应该排练......哦！服务员，请再来一杯啤酒！”`
+			`“明天的幻灯片准备好了吗？”`
+			`“是的，但我还是很害怕。我讨厌公开演讲。”`
+			`“别担心，你比他们更了解自己的专业领域。一旦你上台，你就会没事的！此外，研究生院是公开演讲的一项巨大练习。练习带来舒适。”`
+			``
+			`另一位科学家在对当天的事件进行尸检后翻了个白眼。 “是否有一些我不知道的法律要求每个‘问题’都以‘我想这与其说是一个问题，不如说是一条评论……’开头？”`
+			``
+			`一位愤怒的学者正在向她的朋友强调你所推断的内容是他们之前都听过的演讲。 “我认为核苷酸证据根本不支持他们的假设！就像，我知道蛋白质组数据可以用来支持他们的结论，但他们忽略了同义突变！”`
+			choice
+				`（再点一杯饮料，然后继续听。）`
+					goto "overheard scientists 2"
+				`（吃完饭就走。）`
+					decline
+			label "overheard scientists 2"
+			`由于对这个话题的热情以及几杯酒的影响，大家的谈话变得越来越响亮。`
+			`“看，分析可能没问题，但如果他们甚至懒得提供分析软件的版本号，那么它就无法重现，这就是我的自动‘拒绝’。”`
+			``
+			`考虑到可能发生的事情后，一个人看起来有点震惊。 “你能相信我的电脑在我必须演讲之前就崩溃了吗？还好我有备份。二就是一，一就是没有。”`
+			``
+			`一群人似乎正在讨论该领域的其他一些同事，他们可能今晚不在场。 “辛格和埃斯特哈齐都是如此傲慢的混蛋。我猜他们的工作还不错，但不足以证明他们想成为摇滚明星的个性！”`
+			`“当然，但他们不仅仅是傲慢的混蛋，他们还是有魅力的傲慢混蛋。魅力吸引优秀的研究生到他们的实验室，他们写出好的论文，他们把自己的名字贴在他们身上。这是一个积极的反馈循环。”`
+			``
+			`拨款申请似乎是一个常见的话题。 “共和国医学研究机构说我的工作太理论化，但凯龙大学微生物系却说太应用化了！”`
+			`“这是一个难题，好吧。也许你可以从工业界找到一些资金？辛迪加可能对你的工作感兴趣。”`
+			`“是的，但我还不确定我是否愿意放弃我的学术自由。”`
+			choice
+				`（按照我自己的节奏完成。）`
+					goto "overheard scientists 3"
+				`（尽快结清账单然后离开。）`
+					decline
+			label "overheard scientists 3"
+			`两名与会者比较了对工作要求的抱怨。 “教学很糟糕。在上课时间、办公时间和准备讲座之间，几乎没有时间进行研究。”`
+			`“这很有趣！教本科生是我在撰写资助金之余的唯一喘息机会！”`
+			``
+			`一个善于交际但看上去很疲惫的男人坐在椅子上。 “这些会议只持续三四天，但总感觉你老了一岁。”`
+			`吃完饭后你离开，回想起无意中听到的一段与你自己截然不同的生活。`
+				decline
+
+
+mission "Sol-Bound Shuttle"
+	minor
+	source
+		system "Sol"
+	"offer precedence" 5
+	to offer
+		random < 10
+	on offer
+		conversation
+			`进入庞大的太空港后，您注意到一群工厂工人正在与一位船长交谈。当你走近时，你会发现船长的旗舰，一架已经过时的航天飞机，缺少超空间驱动器。`
+			choice
+				`“你的超光速引擎在哪里？”`
+				`“你要如何乘坐那艘船去任何地方？”`
+				`（回到我的船上去。）`
+					decline
+			`船长笑了。 “大多数飞行员都是喜欢冒险的人。但我不是。我只是将人们从地球运送到火星并返回，就取得了相当不错的成绩。偶尔我也会为游客提供前往月球的旅行。”您注意到她使用了卢娜的古老术语。必须是本地表达式。`
+			choice
+				`“这样不会很无聊吗？”`
+					goto boring
+				`“索尔内的旅行真的足够让你以此为生吗？”`
+			`“你会感到惊讶。毕竟这个星系里有很多人，其中很多人有足够的钱离开地球，但没有足够的钱离开太阳系。这是我为自己开辟的一个很好的利基市场。”`
+				goto end
+			label boring
+			`“也许对你来说。从你的口音中我可以看出，你已经从自己的家乡星球旅行过一段时间了。不过，我喜欢呆在离家较近的地方。银河系里充满了不稳定因素——海盗、外星人，谁知道还有什么——留在索尔可以让我安全。你可以说我是偏执狂，但住在一个我不必担心这些的地方才是我所看重的。”她看到旁边有一艘正在修理船体的船。伤害似乎是由光束武器造成的。`
+			label end
+			`当你登船时，你会说再见。虽然你们都是队长，但你们的人生轨迹却截然不同。`
+				decline
+
+# Note about Earth Day and Earth Hour:
+# Earth Day (in 2023) is a day of awareness about climate change and occurs every 22nd of April. Earth Hour is an hour
+# of blackout around cities worldwide, also to bring awareness to climate change, and it's observed on the last Saturday
+# of March.
+
+# Since Earth Day has become a quasi-'national day' for Earthlings in Endless Sky, it would be interesting to have Earth
+# Hour be conflated with Earth Day as well, to demonstrate how people in a thousand years' time observe what we observe
+# today and how its meaning has changed.
+mission "Earth Day Blackout"
+	minor
+	landing
+	source "Earth"
+	"offer precedence" 5
+	to offer
+		day == 22
+		month == 4
+	on offer
+		conversation
+			`当您沿着跟踪信标前往地球中央太空港时，您意识到有些事情非常不对劲。原本熙熙攘攘的太空港城市现在完全寂静无声，尽管已经接近午夜，超高层建筑和摩天大楼却出奇地黑暗；几公里内没有一盏灯亮着。`
+			`尽管如此，太空港似乎仍在运行，因为签署着陆文件、加油和检查飞船适航性的自动化程序在你着陆时就已完成。在太空港航站楼里，蜡烛间隔开来，为现在黑暗的走廊带来一些光线。对于人类太空中人口最多的星球来说，这是一种奇怪的景象。`
+			choice
+				`（找人问问。）`
+				`（停电可能会过去。）`
+					goto pass
+			branch attendant tourist
+				random > 50
+
+			label attendant
+			`	You approach an information desk in the terminal's atrium that, given the situation, doesn't seem to be as busy as expected. After a moment you get to the attendant behind the counter.`
+			choice
+				`“停电了怎么办？”`
+				`“停电什么时候能修好？”`
+			`	The attendant chuckles to himself. "I should've expected that question from your accent. Today's Earth Day, when all the cities of Earth - and I mean all of them - participate in a total blackout. Even the Parliament building was out today. It makes us think about our origins; that we once lived on the soil without electricity, all confined to just this one planet here, divided and uncertain. Of course, people like me still have to keep working, but for other people it's a day off to enjoy what little wildlife and Earth us Earthlings have left, ironically. Do you have any other questions?`
+			choice
+				`“这个传统是什么时候开始的？”`
+				`“谢谢你告诉我。”`
+					goto pass
+			`	"Well, my old history class tells me that the first Earth Day was around the 20th century, a few years after we landed on the Moon for the first time. Back then, there were a bunch of conflicts and disputes over resources and how we were fighting all over and digging it all up to power all those dirty, primitive cars, power plants, and factories we had back then. So as a show of unity against that people started celebrating Earth's natural beauty by bringing us back to our past."`
+			`	As he finishes, the ceiling lights flash back on. "Ah, well, there you go. Too bad I missed the celebrations, but that's the end of Earth Day and my night shift. I hope you had a good Earth Day, and have a good night!"`
+				decline
+
+			label tourist
+			`	You approach a woman with a bunch of oversized bags clustered around her seat. She's tapping rapidly on her datapad, but nonetheless she looks up when you approach. "Excuse me, Captain, I was just trying to figure out when the metro starts up again. Do you know?"`
+			choice
+				`“我知道的和你一样多，抱歉。”`
+				`“也许和停电有关？”`
+					goto "way in"
+			`	"Ha, they shut everything down for Earth Day and then assume all us offworlders get the idea. What do you know..."`
+			choice
+				`“地球日？”`
+				`“把所有东西都关掉？”`
+			`	"Didn't you see what was happening outside on your way in? It's something to do with Earth Day. Back in those old days before humans were able to get off this planet, they were stuck in a chain of issues and disputes over energy. You know, they didn't have fusion reactors back then. Awfully primitive times.`
+				goto decided
+
+			label "way in"
+			`	"Yes, I suppose you must have seen what's happening outside on your way in. It's something to do with Earth Day. Back in those old days before humans were able to get off this planet, they were stuck in a chain of issues and disputes over energy. You know, they didn't have fusion reactors back then. Awfully primitive times.`
+
+			label decided
+			`	"So they decided that, on the 22nd of April each year, all of Earth would go into total blackout to symbolize that they didn't have enough energy to sustain themselves, and to remind them that the only way to advance was to keep pushing themselves forward, find new pathways to power, lest those blackouts became longer and more frequent. Fascinating, huh?"`
+			choice
+				`“好像有点落后了。”`
+				`“这很有趣，谢谢。”`
+					goto pass
+			`	"Well, perhaps. But Earth is like that sometimes. It's survived through so much, and without Earth Day to remind our ancestors that we must keep looking forward, maybe you wouldn't be in your fancy little spaceship, would you?"`
+			`	The lights in the spaceport turn back on as she says that, and she turns to look at her data pad again. "Oh, it's twelve o'clock. I've got to see if the metro's opened so I can get to my accommodation. Safe travels!"`
+				decline
+
+			label pass
+			`	After the clock passes midnight, the lights in the spaceport come back on, followed by the signage and lights of the city surrounding it. A few workers come and snuff out the candles before putting them away in unseen closets.`
+				decline
+
+mission "Burthen Triathlon"
+	minor
+	source
+		planet "Burthen"
+	"offer precedence" 5
+	to offer
+		random < 10
+	on offer
+		conversation
+			`由于地球的高重力，伯森并不是一个常见的目的地，但今天这个太空港似乎有很多游客。许多通常空着的着陆场都被占用了，当你走上相当完好的停机坪时，你会注意到太空港边缘有一大群人。从身高来看，人群中的一些人显然来自外星，甚至还有一些媒体工作人员站在一旁，尽管他们的无人机似乎正在与伯森的重力作斗争。`
+			choice
+				`（看看发生了什么。）`
+				`（避免喧闹，专注于我自己的事情。）`
+					decline
+			`每一步都比你习惯的要付出更多的努力，但你最终还是会接触到人群。从途中张贴的指示牌来看，今天似乎正在举行“伯森铁人三项赛”，而太空港已被指定为终点。几个看起来特别坚固的帐篷已经搭建起来；较小的一个似乎是行政帐篷，目前只有活动工作人员可以进入，而另一个则要大得多，正在为附近的人群提供食物和饮料。`
+			choice
+				`（走向餐饮帐篷。）`
+				`（呆在外面。）`
+					goto outside
+				`（回到我的船上。）`
+					decline
+
+			`	Thankfully, the walk to the catering tent is far shorter than the walk from your ship, but nevertheless you're exhausted by the time you drag your feet inside. A lot of effort has been put into this tent: the metal chairs are all sturdily-built to allow offworlders to pull themselves up, but cushioned as to not make it uncomfortable to sit in. A small firepit has been built in the middle of the tent, along with a couple fire extinguishers placed nearby, and the whole place is brightly lit in contrast to Burthen's typically chilly weather. Quite a few people, both Burthenians and offworlders, are mingling about here.`
+			`	There's a counter in the corner with two levels, apparently so that the Burthenian attending it can serve both offworlders and locals. Alongside the typical drinks you've seen in spaceport bars and some local to the southern Core, the counter also offers a local drink called the "Antigrav" that claims to "ease visitors from Burthen's natural pull," and comes in a specially made glass, all for 30 credits.`
+			branch "no credits"
+				credits < 2
+			choice
+				`（从柜台点一杯普通饮料。）`
+				`（从柜台订购反重力。）`
+					goto antigrav
+					to display
+						credits >= 30
+				`（不要点任何东西并离开帐篷。）`
+					goto "leave tent"
+
+			action
+				payment -2
+			`	You hand over a couple credits for the drink and leave the tent, sipping with some difficulty as you go. The Burthenian at the counter advises you not to drink too much of it at once, and not to drop the cup "unless you want a munted foot for a few weeks."`
+				goto "leave tent"
+
+			label antigrav
+			action
+				payment -30
+				outfit "Antigrav Glass"
+			`	It turns out the glass the Antigrav comes with has a miniature repulsor installed so that you don't need to hold it while drinking it. The drink itself is a highly carbonated soda that tastes like something in between lingonberry and raspberry, made from the native berries found in Westland, the district the spaceport is located in. The Burthenian at the counter advises you not to drink too much of it at once and to not turn it off while it's levitating, "lest it falls on your foot and we have to treat your bone fractures."`
+				goto "leave tent"
+
+			label "no credits"
+			`	Unfortunately, it looks like all the drinks are too pricy for you.`
+			choice
+				`（离开帐篷。）`
+
+			label "leave tent"
+			`	The crowd is a bit more active when you return outside, and over the heads of the locals you see on a large, portable screen that the leading triathlete is a particularly stocky Burthenian, wearing a white helmet and tight, dark sportswear.`
+				goto "after tent"
+
+			label outside
+			`	Staying outside in the oppressive gravity and the chilly temperature, you move over to the sidelines and watch the large, portable screen that is broadcasting the leading competitors from above. It appears that competitors are divided into Burthenians and offworlders, with Burthenians wearing white helmets and offworlders wearing red helmets. It's nearing the end of the whole event; the competitor in front is named Abernathy, a stocky Burthenian apparently doing his eleventh Burthen Triathlon. Meanwhile, the leading offworlder is five hundred meters behind him, a competitor from Martini named Caldarone. Apparently, they've been at it for over 11 hours, beginning with a 1.5 kilometer swim, then a 40 kilometer bicycle ride, and finally a 10 kilometer run.`
+			`	After a couple minutes, Abernathy emerges from behind a bend, camera drones chasing him. Cheers, whoops, and rather overly enthusiastic hollers erupt from the crowd, raising enormously as he dashes through the finishing straight, the drones now circling around him. Just over the crowd a loudspeaker announces, "And here comes the winner of the Syndicate Athletics Burthen Triathlon, the world triathlete champion, competitor number fifty-eight: Samuel Abernathy!"`
+				goto end
+
+			label "after tent"
+			`	As he nears the finish line the Burthenians' enthusiastic cheers, whoops, and hollers erupt from the crowd, and the camera drones, their repulsors now calibrated for Burthen's gravity, circle around the finishing straight. Just over the crowd a loudspeaker announces, "And here comes the winner of the Syndicate Athletics Burthen Triathlon, the world triathlete champion, competitor number fifty-eight: Samuel Abernathy!"`
+
+			label "end"
+			`	Abernathy doesn't slow down until he's within an arm's length of the finishing line; as he crosses it he seizes the tape, making a yelp of simultaneous joy and relief. He holds the tape up before everybody in the crowd and at the cameras pointed at him, taking in the attention (and catching his breath) before accepting a bottle of water from someone on the sidelines.`
+				decline
+
+mission "CCOR Guerrilla Standoff"
+	minor
+	source "Gagarin"
+	"offer precedence" 5
+	to offer
+		random < 10
+	on offer
+		conversation
+			`每一张人类太空地图都将加加林列入肮脏、自担风险的海盗港口名单中，这会让人们想起格林罗克的战斗坑和自由的装备集市。不过，它看起来很像任何其他古老的、略显破旧的南方太空港，只是规模更大。作为地球上广泛的交通系统的中心，你似乎正在这个太空港的每个中庭和走廊中穿过成千上万的加加人和外星人，因为他们也这样做，以建立他们在地球上和地球外的联系。`
+			`但当你走进中央大厅时，你发现，你原本以为最热闹的地方，一切都停止了。就连不断移动的货物和补给品反重力手推车也被停了下来，一动不动，每个人的注意力都集中在太空港正中心的某种骚动上。`
+			choice
+				`（看一下。）`
+				`（回到我的船上去。）`
+					decline
+			`穿过人群中的空隙，你最终会站在一名太空港宪兵旁边。他看起来好像是要执行巡逻任务，但现在正忙着看着别人分心，无暇完成他的工作。越过他旁边的栏杆，你首先看到的是大厅中间巨大而奇怪的空旷空间，然后是一队身穿工作服、手持钻头和刷子的男人。他们周围是一圈身穿玫瑰色 CCOR 制服的游击队员，用步枪和手枪打量​​着公众和周围的航天港保安。`
+			`绘画游击队正在忙着完成似乎是联邦委员会的酒红色和白色徽章的雕像的修饰，而旁边的一堆瓦砾表明当地政府的象征曾经矗立在它的位置上。当他们离开雕像时，一个穿着比其他人保存得更好的制服的孤独男子走到了他们的作品前。当他抬起头说话时，你能感觉到空气的寒冷。`
+			choice
+				`（收听。）`
+				`（在他讲话之前退开。）`
+					decline
+			`你看不到任何扩音设备，但他的声音却毫不费力地充满了整个房间。`
+			`“加加人和外星人。船长和旅行者。军人和农民。`
+			`“外环的世界，事实上，共和国和整个人类的世界，已经并将继续被无情的暴利所掠夺和破坏。`
+			`“辛迪加的高管和天堂世界的地主贵族窃取了数百亿男人、女人和儿童的努力，从最初到铸造厂；从瓦尔哈拉到地球；从伯恩到赫斯提亚，以及更远的地方。近一个世纪以来，他们串通一气，将他们的设计强加于我们的世界！新米尼奥的企业叛乱和外环北部的帮派战争显然是像阿拉斯泰尔这样的人的手臂的延伸。科班，只会给我们地区带来进一步的苦难和痛苦的破坏！`
+			`“但仍然有希望。我们可以实现加加林的独立，统一这个被辛迪加资助的寡头及其亲信和傀儡官员所失去的世界。我们可以重新统一外环，恢复从我们身上偷走的繁荣。我们可以组建一个新的联邦议会，再次将贝雷诺斯的光芒照耀整个银河系！”`
+			`当这名男子在零星的掌声中结束演讲时，宪兵环顾四周，思考周围人群的反应。演讲者下台，命令他的游击队列队，然后将他们从静止的人群中带出，进入一辆你以前没有注意到的布满灰尘的酒红色军用货车的后面，留下旧雕像的残骸散落在空旷的地方。`
+			`你转过身，看到了站在你旁边的宪兵。他与你的目光相遇，认出你来自外星世界的空气。`
+			`“只是每天的打扰，队长，”他说。 “只有怀念旧事业的人。我们每个月都会遇到十几起这样的事件。”他似乎被腰间无线电接收器的嗡嗡声打断了，然后大步走进人群，把你留在了窗台上。`
+			`慢慢地，但可以肯定的是，太空港从震惊中恢复过来，恢复了之前的势头，尽管当你转身时，你会经过两辆装有起重机的政府品牌卡车，几乎肯定是在那里搬运新安装的雕像并清理游击队留下的烂摊子。`
+
+mission "Raider returning to Mordente-Bridi"
+	source "Mordente-Bridi"
+	"offer precedence" 5
+	to offer
+		random < 10
+	on offer
+		conversation
+			`从莫登特圆筒的一个酒吧观看太空港的微重力部分，你会发现一座带有海盗标记的堡垒以太快的速度接近空间站，其外壳布满了看起来是等离子炮射击造成的伤口和烧伤。`
+			`当它停在维修站时，太空港的工程航天飞机从四面八方出现，开始在堡垒周围嗡嗡作响，评估损坏情况并开始维修工作。与此同时，船员们从船上散开，立即开始从货舱中卸下大量破损的板条箱和集装箱，这些箱子和集装箱可能是从民用运输工具上搜来的。看起来他们的收获是值得的。`
+			`不到一个小时，工作穿梭机就完成了修补破损船体的工作，从船上分散开来，堡垒号几乎像进入海湾时一样随意地驶出海湾。`
+
+mission "Militia returning to Solace"
+	source "Solace"
+	"offer precedence" 5
+	to offer
+		random < 10
+	on offer
+		conversation
+			`在索雷斯的主太空港闲逛时，您会注意到 Delta V 公司办公室旁边有几排闪亮的新着陆场。一面巨大的横幅宣布您正在见证 Delta V 新私人太空港的盛大开幕，一群感兴趣的观众聚集在栅栏周围。`
+			`突然，一架阿戈西号从天而降，几乎撞上了主航天港的几艘较小的飞船，然后转向新着陆场的方向消失在机库后面。围观的人群发出一阵叫喊声，他们似乎都认为这是一场噱头。然而，你更熟练的眼睛会告诉你，阿戈西号的船体上有加特林机枪留下的弹痕。很可能是飞行员电脑的误判，险些造成了相撞。`
+			`不久之后，一个大喇叭宣布，告诉旁观者没有发生什么不好的事情，他们现在可以回家了。好奇地停留了一会儿后，人群终于散去。然而，你在附近停留，发现阿戈西号飞回视野中并降落在主太空港。`
+
+mission "Republic 300 Year Anniversary"
+	landing
+	source
+		government "Republic"
+		not attributes "uninhabited"
+	"offer precedence" 5
+	to offer
+		year == 3030
+	on offer
+		conversation
+			`当您降落在 <origin> 时，新闻头条会轰炸您的通讯：今天是共和国成立三百周年。一群人聚集在当地的太空港庆祝，他们收听整个人类太空的主要新闻电台、网站和博客，对这一重要的日子发表评论。然而，你会注意到许多路人带着对庆祝活动的蔑视态度走来走去，只是想尽快完成他们的生意，并对今天当地设施不可避免的缓慢感到沮丧。`
+			`共和国最初由地球和靠近它的行星、环缘和一些泥土带世界组成，后来逐渐扩张并合并了辛迪加、天堂世界和深渊世界。三百年来，大多数人类都生活在它的旗帜下，通过抗议和太空复兴、殖民浪潮、扩张以及与阿尔法残余势力的战斗，这面旗帜今天仍然飘扬在大多数人类世界上空。`
+			branch "war over"
+				has "main plot completed"
+			branch "war ongoing"
+				has "chosen sides"
+				not "main plot completed"
+			`当然，并非一切都很好，因为双子座和马蒂尼号的轰炸似乎已将共和国推向了与人类空间南部的自由世界战争的边缘。你会情不自禁地感觉到，这个日子的欢乐更多地与国庆节有关，而不是与对共和国历史及其代表的根深蒂固的欣赏有关。`
+				goto end
+			label "war ongoing"
+			`与自由世界的持续战争大大削弱了共和国艺术文化部无疑希望成为年度公共活动的希望。当地工人和商船船长互相窃窃私语，海军人员以惊人的速度进出军舰，似乎并没有受到历史日期的影响，一些酒吧斗殴事件在可能喝醉的当地爱国者和那些鲁莽地表达对自由世界的支持的人之间爆发。`
+				goto end
+			label "war over"
+			`最近的自由世界战争似乎威胁到了这一悠久的稳定历史，战争在数十个行星的天空上激烈进行，随着冲突升级，公开核战争的威胁日益逼近。许多靠近地球的星系的无差别消失，随后人类统一战线对抗哈巴狗入侵者，似乎已经将整个共和国许多人的情绪凝聚在一起——至少目前是这样。`
+			branch "zenith bombed"
+				has "Wanderers: Sestor: Return to Wanderers: done"
+			branch "sestor beaten at farpoint" end
+				has "Wanderers: Sestor Alt: Return to Wanderers: done"
+			label "zenith bombed"
+			`神秘的机器人战舰舰队入侵远北地区的评论让原本大多积极的新闻标题的情绪变得黯淡。在远点上空粉碎了海军部队之后，在天顶上发生了一枚可怕的炸弹爆炸后，这支舰队只受到了部分打击，这颗炸弹摧毁了地球的大部分地区。事实上，距离分散的船只被完全摧毁还有几周的时间，人们对海军——乃至共和国——保护人类安全的能力的信心似乎受到了严重影响……`
+				goto end
+			label "sestor beaten at farpoint"
+			`网络评论和新闻主播似乎特别兴奋地评论美国海军最近战胜了入侵远北地区的神秘机器人战舰舰队。虽然北方舰队驻军付出了巨大的代价，但入侵的舰队还是成功地在远点基地被拦截，避免了船只造成进一步的伤害。远点战役的退伍军人似乎都在聚光灯下，用充满感情的方式讲述他们对这场战斗的记忆，以及他们为取得胜利而做出的牺牲。`
+			label end
+			choice
+				`（参加共和国成立 300 周年庆祝活动。）`
+					goto celebrate
+				`（像往常一样继续我的一天。）`
+			`你关掉庆祝活动的媒体频道，开始检查飞船的系统。完成后，您就可以为新的一天做好准备。`
+				decline
+			label celebrate
+			`你会花一两个小时来参加庆祝活动，因为毕竟不是每个人都可以声称见证了一个国家的百年纪念。走下 <ship> ，您前往太空港，喝了几杯，与一些当地人交谈，并与一些狂欢者一起聚会。一旦天色已晚，你就回到你的飞船，思考这一天在整个人类空间的意义。`
+				decline
+
+mission "Exotic Life: Buccaneer Bay"
+	minor
+	source "Buccaneer Bay"
+	"offer precedence" 5
+	to offer
+		random < 10
+		credits > 379
+	on offer
+		conversation
+			`你漫步在地球上阳光明媚的木板路上，经过数十家浸满朗姆酒的酒吧。最终，您会看到一家狭窄的餐厅挤在一家已关闭的纪念品商店和另一家酒吧之间。该建筑漆成珊瑚色，配有破旧的锡制遮阳篷，门上方悬挂着一块手写板，上面写着“新鲜美味的菜肴鱼”。`
+			`一位身材瘦长、留着银色辫子、有着控制论左眼的服务员热情地向您招手，并熟练地喊道：“镇上最好的菜鱼！千载难逢的体验，再加上世界知名的纪念品！尝尝菜鱼——这就是一道菜！”`
+			choice
+				`“什么？”`
+				`“多少？”`
+					goto price
+				`“不，谢谢。”`
+					decline
+			`“菜鱼！鱼就是菜。海盗湾因鱼而闻名。”服务员略带恼怒地瞪着你。 “这是一种扁鱼，头很大。头骨是扁平的，有三个角，所以它可以单独作为一个盘子，我们把剩下的鱼煮熟放在上面。之后你可以把头骨当作盘子。菜。鱼。”`
+			label price
+			`服务员将一只手放在你的肩膀上。 “才 99 个积分，太划算了！光是头骨就在其他地方花费你 200 个积分。你说呢，想吃一顿终生难忘的大餐吗？”`
+			choice
+				`“当然。”`
+				`“不，谢谢。”`
+					decline
+			action
+				payment -379
+			`“太棒了！包含服务费了。”服务员抢走了你的积分，把一份层压菜单和收据塞到你手里，然后把你塞进一个狭窄的摊位，然后匆匆走向厨房。您查看收据，发现您被收取了 20 个积分的“座位费”、30 个积分的“便利费”、50 个积分的“鱼类清洗”、80 个积分的“菜肴组装”和 100 个积分的“服务费”——总共 379 个积分。`
+			`坐在里面，餐厅比从外面看起来更紧凑。这里有一排小桌子，天花板很低，还有一些看起来像无知游客的其他顾客。菜单本身包括海鲜和邻近海洋的食物，如九眼派、手工捣碎的头盔、水螅拉桑加，以及一种名称可疑的“船长渔获”。菜单顶部有一个用草书写成的标题菜，下面有一个突出的信息框，占据了菜单的三分之一：`
+			``
+			`菜鱼：自然奇观和纪念品 - 99 学分`
+			`（不包括额外费用）`
+			`- 海盗湾的海洋里充满了无下巴、像鱼一样的生物，通常被称为海盗湾白骨头，它们的头部和身体上有一个单一的骨状板，一个超​​大的头骨！`
+			`- 从生态角度来看，它们通常是滤食性动物、沉积物食性动物和食草动物，以水、沉积物或海底中的微小生物或碎屑为食。`
+			`- 菜鱼与其他海盗湾骨头鱼不同：它们有一个近乎完美的圆形头板、三个用来抵御掠食者的小角，并且没有眼睛，因为它们生活在深海、光线昏暗的海底。`
+			`- 这些特征使 Dish Fish 头板成为完美的纪念品菜肴：圆形、密封、内置三脚架。今天就购买吧！`
+			`服务员回来了，盘子很有特色。他拿出一个相当大的象牙圆盘，骨头光滑、抛光，由桌上的三个锥形角平衡。盘子上放着一条烧焦的尾巴，串起来烤，直到皮肤发出裂纹。它看起来既令人印象深刻又令人胃口大开。`
+			choice
+				`（咬一口。）`
+				`（向服务员道谢后离开。）`
+					goto thanks
+			`你咬一口。肉是一种糟糕的食物尝试。一开始有一股霉味、硫磺味，就像湿堆肥一样，而在它下面是一种几乎腐烂的味道，掩盖了鱼视觉上的新鲜感。最接近救赎的味道是咸泥的淡淡泥土味。`
+			label thanks
+			`服务员过来用抹布把菜鱼擦干净，感谢您光顾这家餐厅，然后用拇指向门猛地一指——一顿标点符号接近您的“一生难忘的一餐”。`
+				decline
+
+mission "Exotic Life: Delve"
+	minor
+	source Delve
+	"offer precedence" 5
+	to offer
+		random < 20
+	on offer
+		conversation
+			`德尔夫太空港的空气清新，带着风化石头的矿物味，偶尔还夹杂着燃料和挥之不去的工业清洁剂的味道。当你走向你的船时，你注意到一群穿着生物危害装备的工人成对地在出发的船只之间移动，他们背上绑着笨重的喷雾器，喷嘴在船体上涂上一层细雾时发出嘶嘶声。每艘船在起飞前都会经过彻底检查，工人们以熟练的效率检查裂缝和起落架。`
+			choice
+				`（问他们在做什么。）`
+				`（无视他们并继续我的路。）`
+					decline
+				`“船蛆爆发？”`
+					to display
+						has "exotic animals: delvan shipworm known"
+					goto known
+			`当两名工人完成对一艘散装货轮的喷洒工作时，你走近他们并询问他们在做什么。其中一位是一位头发花白的老兵，眼睛周围有深深的皱纹，几乎看都不看你一眼。 “船蛆，”他低声说道，已经移向下一艘船。`
+			`另一个是一名年轻工人，他穿着靴子几乎蹦蹦跳跳，戴着呼吸器，咧着嘴笑。 “是啊！咀嚼金属的小害虫。它们原产于德尔夫，出没于矿井、造船厂——任何有金属可以让它们的牙齿咬进去的地方。如果我们不在起飞前对每艘船进行喷洒，它们现在就会遍布整个银河系。”老兵叹了口气。 “它们已经遍布整个银河系。因为人们不够小心。”`
+			`菜鸟没理他。 “它们一开始是小蠕虫，只比你的小指大一点，但一旦它们找到金属，就会融化进去，形成一个茧，看起来就像船的一部分！炸弹，我们称之为炸弹。然后砰！几个月后，外壳像炸弹一样炸开！炸弹！”`
+			`老兵摇摇头。 “他的意思是，如果它们离开地球，就会成为一种入侵性危险。这就是我们喷洒农药的原因。没有船蛆，就没有问题。”`
+			`菜鸟热情地摇晃着他的喷雾器。 “我会把找到的每一个炸弹都烧掉。你见过在高温下爆裂的情况吗？太令人满意了。”老兵只是嘀咕道：“你会认为新鲜感会逐渐消失。”`
+			action
+				set "exotic animals: delvan shipworm known"
+			`再看一眼刚刚喷漆的散货货轮，您就会在心里记下在起飞前对自己的船进行一次检查。`
+				goto ending
+			label known
+			`其中一位身经百战的老兵，目光疲惫，长长地叹了口气。 “太好了。至少这个人真的知道它们是什么。”相比之下，另一个人——一位面容清新、充满活力的工人——几乎容光焕发。 “它们就像太空藤壶 - 直到它们孵化成蠕虫炸弹！我只是告诉他煎它们是多么有趣！”`
+			`这位老兵指着巨大的太空港。 “我们这里没有爆发疫情。这里是德尔维。它们是德尔文船蛆。它们是本土的。一直都是。它们在矿井、造船厂、任何有暴露金属的地方出没。这就是为什么每艘船在起飞前都要进行熏蒸——以防止它们传播得更严重。”`
+			`新手急切地跳回来。“你实时看到过破茧而出的情景吗？外壳破裂，它像手榴弹一样爆炸 - 太疯狂了！”老兵只是揉了揉脸。`
+			`没有什么可补充的，你在心里记下了在起飞前让工人们继续他们的日常工作时对你的船进行一次检查。`
+			label ending
+			`您最后看了熏蒸小组一眼，然后返回您的船。你周围的金属表面现在暗示着潜伏着看不见的生物。`
+				decline
+
+mission "Exotic Life: Ada"
+	minor
+	source Ada
+	"offer precedence" 5
+	to offer
+		random < 10
+	on offer
+		conversation
+			`你穿过太空港光线昏暗的区域，来到一个几乎空无一人的机库，那里通常的喧闹声被一种诡异的寂静所抑制。机库后部的强化玻璃货舱门可能是被错误地打开了。你往里面看，会看到巨大的密封防水布遍布整个区域，有些覆盖在货箱上，有些则覆盖了整个区域。一块巨大的防水布看起来足够覆盖整艘船。每一个都带有同样的粗体警告：“DELVAN SHIPWORM FUMIGATION”。空气中弥漫着淡淡的化学味，前方有两个人影在防水布之间有条不紊地向门口移动。`
+			`他们从头到脚都穿着防护服，戴着厚厚的手套，呼吸器遮住了他们的脸。一个人拿着手持喷雾器，向空气中释放细雾，而另一个人则检查绑在手臂上的监视器。他们经过时，靴子踩在地板上发出轻轻的嘎吱声。`
+			choice
+				`（问他们发生了什么事。）`
+				`（无视他们并继续我的路。）`
+					decline
+				`“可恶的小炸弹，不是吗？”`
+					to display
+						has "exotic animals: delvan shipworm known"
+					goto known
+			`好奇心战胜了你，你指着防水布询​​问这到底是怎么回事。其中一人停了下来，呼吸器遮住了他们的声音。 “德尔文船蛆爆发。令人讨厌的感染。我们要在它们蔓延到其他船只或城市之前消灭它们。”你可以看到附近地板上有小烧焦的痕迹——有东西被烧毁的迹象。`
+			choice
+				`“什么是德尔文船蛆？”`
+				`“可恶的炸弹，不是吗？”`
+					to display
+						has "exotic animals: delvan shipworm known"
+					goto known
+				`“好吧，祝你好运。我该走了。”`
+					decline
+			`拿着显示器的工作人员几乎没有犹豫就做出了回应。 “德尔文船蛆是来自德尔夫的入侵物种。它们一开始是幼虫，微小的蠕虫——”`
+			`“炸弹！”拿着喷雾器的那个插话了，声音透过呼吸器扭曲了。 “它们粘在船上，长成藤壶，然后它们就是炸弹！”`
+			`第一个工人叹了口气，摇摇头。 “它们的作用还不止这些。幼虫附着在金属上——通常是船体，但也可以是采矿设备，或者其他任何东西——并分泌一种酶，腐蚀表面，将其分解，这样它们就可以在自己周围形成一个茧。这会产生高压气体，因此外壳会变硬以补偿，与周围的金属融为一体。”`
+			`“是啊，直到——轰！三个月后，它像手榴弹一样炸开，出来一打恶心的蠕虫！”`
+			`“你让它听起来像一部恐怖电影。”`
+			`“如果它孵化时你就在旁边，那它就是一部恐怖电影。”挥舞着喷雾器的工人转向你。 “扭动的蠕动物会在它们突破的任何物体上留下手掌大小的洞。很多船只都因为它们而失去了压力。”`
+			`第一个工人叹了口气。 “这就是我们现在正在处理这个问题的原因。我们不让它们传播，我们不让人们被排放到太空中。”`
+			action
+				set "exotic animals: delvan shipworm known"
+			`你的目光又回到防水布上，想象着防水布下面可能有什么东西在掠过。你点头表示感谢，然后走开，并在心里记下在起飞前仔细检查你的船体。`
+				goto ending
+			label known
+			`拿着喷雾器的工人精神抖擞。 “终于有人明白了！”他们边说边摇动喷雾器以示强调。`
+			`其他人都在呻吟。 “它们不是藤壶，也不是炸弹。它们是一种高度适应性的入侵物种，具有复杂的——”`
+			`“是啊，是啊，它们仍然是炸弹，”喷雾机工人插嘴道。“重点是，我们要在它们杀死船只、城市和人民之前杀死它们。”`
+			`班长呼了口气，但还是向你点了点头。 “至少你明白这有多重要。大多数人只是不假思索地走过去。”喷雾机工作人员向您招手。 “无论如何，让我们在其中一件事情吞噬一些重要的事情之前开始工作。”`
+			`你满意了，让他们继续工作，并在起飞前在心里记下检查自己的船体。`
+			label ending
+			`最后看了一眼熏蒸防水布后，您回到了船上，突然意识到金属船体在错误的情况下是多么脆弱。`
+
+mission "Exotic Life: Glaze"
+	repeat
+	minor
+	source Glaze
+	"offer precedence" 5
+	to offer
+		random < 10
+		or
+			not "chosen sides"
+			has "main plot completed"
+		not "exotic life: seen glaze apes"
+	on offer
+		conversation
+			`您从太空港走到台地边缘，欣赏风景时微风徐徐。峡谷在你面前展开，就像一座由红色和金色石头组成的迷宫，其深处消失在阴影中。远处，有什么东西在移动——一些小人物，几乎不比斑点大，正在穿过一个峡谷。你眯起眼睛，但细节仍然难以捉摸。`
+			`附近，一套饱经风霜的信用双筒望远镜用螺栓固定在地上，上面有一个褪色的标志，上面写着：每次使用 1 个信用。`
+			choice
+				`（仔细观察可获得 1 分。）`
+					to display
+						credits >= 1
+				`（忽略这些斑点并返回我的船。）`
+					to display
+						credits >= 1
+					decline
+				`（拍拍我空空的口袋，回到我的船上，因为我什至付不起 1 个信用费。）`
+					to display
+						credits < 1
+					decline
+			action
+				payment -1
+			branch "no rare apes"
+				random < 20
+			`当你把注意力集中在人物身上时，双筒望远镜嗡嗡作响，期待着徒步旅行者，但你看到的却完全是另一回事。一小群毛茸茸的长肢生物小心翼翼地穿过峡谷。它们的皮毛与砂岩的颜色相同，与地形几乎完美融合。他们用两条腿走路，但步态弯腰驼背，小心翼翼，在继续前进之前经常停下来环顾四周。`
+			`其中一人停在一块巨石旁，跪下抓起一把灰尘，让它从手指间流过，仿佛在试探风向。另一个在其他人后面徘徊，轻轻地转过头，也许是在听什么。没有任何工具或火的迹象——当然没有任何迹象表明当地传说中的“峡谷人”——但他们移动的方式有一种不可否认的意识，似乎属于景观本身。`
+			action
+				set "exotic life: seen glaze apes"
+			`过了很长一段时间，它们消失在山脊后面，它们的伪装让人很难判断它们是否曾经在那里。你从双筒望远镜后退了一步，它们的最后一瞥在你的脑海中挥之不去。`
+				decline
+			label "no rare apes"
+			`好奇心战胜了你，你就向机器支付了积分。双筒望远镜在调整时轻轻转动，将远处的峡谷聚焦在焦点上。一群衣着鲜艳的游客沿着蜿蜒的小路行走，指着岩层停下来拍照。其中一人兴奋地向某样东西挥手——也许是一位看不见的导游在解释景观。`
+			`只是另一个探索峡谷的旅行团。你轻笑一声，从双筒望远镜前退了一步。`
+				decline
+
+mission "Exotic Life: Bluestone"
+	minor
+	source Bluestone
+	"offer precedence" 5
+	to offer
+		random < 10
+	on offer
+		conversation
+			`您走下飞船，在 Bluestone 安静而实用的太空港中漫步。这些建筑物主要由耐用的塑料树脂制成，形成了古雅但近乎均匀的红棕色景观，与中心的黄色小酒吧形成了鲜明的对比。太空港很安静，但附近石油钻探发出的低沉的嗡嗡声给它带来了一些生机。当您进入酒吧时，您会在公告板上看到一条公告：`
+			`“导游：杂交作物研究村 - 由聚宝盆农业学院领导的卓越的实地研究中心，坐落在迷人的风景中！”`
+			`公告吸引了您的眼球。这是一个难得的机会看到炼油设备和塑料以外的东西，而提到杂交作物则意味着不同的东西。有一张报名表，只剩下几个名额了。`
+			choice
+				`（报名。）`
+				`（跳过游览。）`
+					decline
+			`报名参加下一次旅行后，您会被引导跳上一辆破旧的巴士，嘎嘎作响地驶向研究村。你会注意到蓝石岛生锈的工业蔓延逐渐转变为深邃、不饱和的蓝草的岩石田野，而这颗行星正是以这种草丛而闻名。村庄本身看起来是一个小而充满活力的社区，以光滑的玻璃镶板实验室和散发着红黄色光芒的温室为中心。周围点缀着朴素的塑料树脂公寓楼。整个社区被一片广阔的田野所包围，田野里种植着成排的农作物。`
+			`你一下车，立即被一位看上去年轻的导游和其他六名游客带入实验室。她有一个小名牌，上面写着：`
+			`玉米 S.`
+			`社区导游`
+			`农学硕士`
+			`聚宝盆农学院`
+			`“欢迎来到我们的 Bluestone 杂交作物研究村导览游！在这里，我们敬业的科学家们利用本地植物群的秘密。您周围看到的草和地衣已经进化出独特的光合色素，可以在我们星球的昏暗、微红的光线下茁壮成长。在我们继续之前，有人能说出地球上发现的最著名的光合色素吗？”`
+			choice
+				`“茶叶。”`
+					goto "once wrong"
+				`“绿色的。”`
+					goto "once wrong"
+				`“叶绿素。”`
+					goto "once right"
+				`“紫色油漆。”`
+				`（保持沉默。）`
+					goto awkward
+			`“这就是我用来画我的迷你龙的！”一名游客脱口而出，他的兴奋短暂地袭来，然后他立即清了清嗓子，恢复了平静。`
+			label "once wrong"
+			`泽亚不安地动了动。 “嗯，不完全是。我正在寻找的答案是叶绿素。`
+				goto chlorophyll
+			label "once right"
+			`玉米的光芒四射。 “完全正确！叶绿素是地球生命的基础。`
+				goto chlorophyll
+			label awkward
+			`当泽亚扫视这群人时，出现了一阵尴尬的停顿。又过了一会儿，导游轻轻叹了口气，“嗯，是叶绿素。”她显然试图淡化这一刻，她补充道，“不用担心——我们继续吧。`
+			label chlorophyll
+			`“我们本土植物上的这些色素与地球的叶绿素不同。绿色叶绿素实际上可以很好地捕获红光，但不如青色色素。我们星球的红色调也可能具有欺骗性——近红外光，一种超出人类可见范围的不可见光，才是我们本土植物真正茁壮成长的基础。植被可以以惊人的效率捕获这些波长的光。通过破译它们的基因蓝图，我们已经确定了可以与地球或其他星球上发现的农作物杂交，以增强它们在较冷恒星的弱光环境中的适应能力。”`
+			`然后，您将被带到实验室旁边的一个小花园，里面长满了原生草和地衣。 “现在，仔细看看我们迷人的本土物种。注意它们柔和的蓝色和近乎黑色的颜色 - 这不仅仅是大自然的怪癖，而是一种重要的适应，可以增强我们昏暗星球上对红光和近红外光的吸收。它们广泛的根系深入稀疏的土壤，使它们能够在弱光条件下有效地获取尽可能多的养分和水分。现在，这些草上的叶子比你在行星上看到的类似草上的叶子更大更平坦。谁能告诉我为什么我们的植物比地球上的植物有更大更平坦的叶子？”`
+			choice
+				`“更大的叶子可以最大化表面积以捕获更多的光线。”`
+					goto "twice right"
+				`“它们在微风中看起来更漂亮。”`
+					goto "twice wrong"
+				`“它可以帮助食草动物远离它们。”`
+				`（什么也不说。）`
+					goto "twice shy"
+			`旅行团里响起一阵集体的呻吟声，不时夹杂着几声不情愿的笑声。泽亚继续巡演，完全没有意识到这一点。`
+			label "twice wrong"
+			`“嗯，实际上，这不太正确。这些较大叶子的主要目的是最大化表面积以获得更好的光吸收。”`
+				goto "native plants"
+			label "twice right"
+			`“完全正确！它们最大化表面积以实现更好的光吸收，这对于我们昏暗的星球至关重要。很好的答案！”`
+				goto "native plants"
+			label "twice shy"
+			`当导游等待回应时，她与大多数人进行眼神交流，感到不舒服。当没有人来时，导游说：“嗯，这是因为更大、更薄的叶子可以最大化吸收光的表面积……嗯，现在让我们看看一些草。”`
+			label "native plants"
+			`她走到一棵草丛前，指着它的叶子。 “我们本土植物的大而薄的叶子旨在最大化表面积，以更好地收集红外线，确保它们捕获尽可能多的每个光子。这些特征共同使我们的植物能够在地球植物难以生存的地方茁壮成长。”`
+			`当您进入最先进的温室时，旅程将继续。在室内，杂交作物在从黄色到红色的受控照明下蓬勃发展，当您从上面的加热灯中感到温暖时。玉米指着一个深盆，里面装满了柔和的蓝黑色小麦草，叶子巨大而精致。 “在这里，像小麦这样的传统地球作物被赋予了受我们本地物种启发的特征。观察更宽、更深的叶子，它们在弱光条件下提高光合作用效率。这些修改不仅帮助植物利用我们微红色阳光的能量，而且可以在整个银河系中用来种植以前不可能的食物！”`
+			`当导游召集大家进行最后的讨论时，您会感觉到旅行即将结束。`
+			`“感谢您加入我们对杂交作物前沿的探索。我希望您今天离开这里时，对您所吃的食物和我们周围的非凡植物有新的欣赏和好奇心。”`
+			choice
+				`（拍。）`
+				`（什么也不做。）`
+					goto silence
+			`你开始鼓掌，房间里充满了掌声，其他游客也加入进来。泽亚热情地微笑着，“再次感谢大家，祝你有美好的一天！”`
+				goto ending
+			label silence
+			`沉默持续的时间有点太长了。泽亚又等了一会儿，然后对自己点了几下头，然后静静地走开了。`
+			label ending
+			`旅行结束后，您将登上带您来到这里的那辆破旧的巴士。当巴士摇摇晃晃地驶回太空港的铜色树脂时，您有时间欣赏蓝黑色草丛在青石岛昏暗、微红的阳光下摇曳的连绵起伏的田野。`
+				decline
+
+mission "Exotic Life: Geyser"
+	minor
+	source Geyser
+	"offer precedence" 5
+	to offer
+		random < 10
+	on offer
+		conversation
+			`当你漫步穿过一排半拆毁的机库时，你会发现瓦砾中长着一簇簇带刺的仙人掌，它们的垫子扁平而圆形，还有鲜红色的果实。一个当地人注意到了你的好奇心，苦笑着大步走了过来。`
+			`“那边那个植物？那是仙人掌。它们就来自间歇泉。它们也很耐寒——它们是如此具有攻击性，甚至已经在地球上扎根了。”`
+			choice
+				`“这听起来不对。它们原产于地球，而不是间歇泉。”`
+					goto argue
+				`“嗯。那好吧。”`
+			`当地人满意地点点头。 “很高兴你能欣赏当地的植物。祝你玩得开心。”他们朝美食广场走去。`
+				decline
+			label argue
+			`“你们这些游客以为你们什么都知道。你们是植物科学家吗？”`
+			choice
+				`“植物学家？”`
+				`“哦，不，我不是科学家。”`
+			`“呸！”他们轻蔑地挥挥手，气冲冲地走开，低声咒骂着游客。`
+				decline
+
+mission "Exotic Life: Bloodsea"
+	minor
+	source Bloodsea
+	"offer precedence" 5
+	to offer
+		random < 10
+	on offer
+		conversation
+			branch "former pirates"
+				or
+					has "event: bloodsea independent"
+					has "event: bloodsea joins free worlds"
+			`你走进血海喧闹的露天市场之一，武装的商贩和魁梧的守卫在成堆的饱经风霜的板条箱中交换偷来的货物。当你穿过噪音和色彩的迷宫时，你会看到一个人蜷缩在一个板条箱后面——他剧烈咳嗽，鲜血染红了他的嘴唇、板条箱和他旁边的地面。还没等你反应过来，一个瘦削、伤痕累累的女人就用冷酷的目光盯着你，她的脸藏在两条脏兮兮的头巾下面——一条遮住了她的嘴和鼻子，另一条包住了她的头。`
+				goto "rest of hello"
+			label "former pirates"
+			`你走进了血海喧闹的露天市场之一，在那里，神情警惕的商贩和武装警卫在成堆的饱经风霜的板条箱中交换着所谓的合法货物。当你穿过噪音和色彩的迷宫时，你会看到一个人蜷缩在一个板条箱后面——他剧烈咳嗽，鲜血染红了他的嘴唇、板条箱和他旁边的地面。还没等你反应过来，一个瘦削、伤痕累累的女人就用冷酷的目光盯着你，她的脸藏在两条脏兮兮的头巾下面——一条遮住了她的嘴和鼻子，另一条包住了她的头。`
+			label "rest of hello"
+			`“那个男人有血海花，”她平淡地说，仿佛在提到天气。`
+			choice
+				`“那是什么？”`
+				`（回到我的船上。）`
+					goto declined
+			`她嗤之以鼻，倾身过去，声音低沉地低语。 “赤潮。每年夏天，血腥的海洋都会盛开，空气中充满了令人讨厌的有毒物质，如果你闻到一丝味道，就会吞噬你的肺部。当赤潮盛开时，没有当地人会靠近海滩。”`
+			`然后，她突然尖叫道：“只有外来者和那些想死的瞎子才会在这种毒药里游泳！”`
+			`她的脸上浮现出一丝苦笑，然后她用一种对话的语气补充道，几乎是事后的想法，“现在，如果你不买一些鱼饵，我会活剥你的皮，把你变成密友。八架。”她用一只伤痕累累的手猛击身边一个腐臭的桶。`
+			choice
+				`（给她八万积分买一桶烂鱼饵。）`
+					to display
+						credits > 80000
+				`（给她8000积分买一桶烂鱼饵。）`
+					to display
+						credits > 8000
+					goto thousand
+				`（给她800积分买一桶烂鱼饵。）`
+					to display
+						credits > 800
+					goto hundred
+				`（奔跑吧。）`
+					goto declined
+			action
+				payment -80000
+				"reputation: Pirate" += 1
+			`你咬紧牙关抵御恶臭，强忍住想作呕的冲动，一边摸索着那个粗糙女人的片尾字幕。她抑制住眼中闪烁的笑意，小心翼翼地小心翼翼地把腐烂的木桶轻轻推向你，长满老茧的手指以一种短暂而优雅的方式拂过桶沿。你感激地低下头，把它滚开，一旦她消失在视线之外，就扔掉木桶，飞回<ship>，留下一个残酷而肮脏的提醒，让你想起这个不守规矩的港口。`
+				decline
+			label thousand
+			action
+				payment -8000
+			`你咬紧牙关抵御恶臭，强忍住想作呕的冲动，一边摸索着那个粗糙女人的片尾字幕。她恼怒地哼了一声，把腐烂的木桶推向你，你很快就把它滚开。一旦她消失在视线之外，你就扔掉木桶，飞回<ship>，留下一个残酷而肮脏的痕迹，提醒你这个不守规矩的港口。`
+				decline
+			label hundred
+			action
+				payment -800
+			`你咬紧牙关抵御恶臭，强忍住想作呕的冲动，一边摸索着那个粗糙女人的片尾字幕。她的鼻孔张开，咆哮着抢夺积分。 “连一个架子都没有，”她吐槽道，眼睛里闪闪发光。在没有任何警告的情况下，她把木桶从地上拖起来，直接砸在你的小腿上。你大喊一声，踉踉跄跄地向后退去。她在空中挥舞着一把锯齿刀，咆哮道：“我要把你像鳕鱼一样切开，然后把你的内脏串起来送给海鸥！”你逃离了她和木桶，飞回<ship>，她愤怒的咒骂在你身后回响。`
+				decline
+			label declined
+			`你在由饱经风霜的板条箱和看守的马厩组成的迷宫中奔跑。当您推开混乱的人群，奔向安全的 <model> 时，那个女人的大笑声——一种刺耳的、肆无忌惮的蔑视咆哮——在您的耳边回响。`
+				decline
+
+mission "Exotic Life: Albatross"
+	minor
+	source Albatross
+	"offer precedence" 5
+	to offer
+		random < 10
+	on offer
+		conversation
+			`你在刺骨的寒风中艰难地来到一家饱经风霜的太空港酒吧，酒吧的外部标着“没有神，没有大师”和“没有控制论植入物。没有獾、黄鼠狼或臭猫”的标志。里面的空气中充满了浓重的阴影和烟雾——磨损的木板、昏暗、闪烁的灯光，还有杂乱的标志，上面写着更奇特的禁令。一位老人无精打采地坐在厚重门边的角落里，默默地坐着，半睁着的眼睛看着醉酒的戏谑声和碰杯声。你可以联系他，或许还可以就酒吧奇怪的公告寻求答案。`
+			label "next question"
+			choice
+				`“为什么没有‘控制论植入’？”`
+					goto implants
+					to display
+						not "heard implants"
+				`“‘獾’是怎么回事？”`
+					goto badgers
+					to display
+						not "heard badgers"
+				`“萝卜？”`
+					to display
+						has "heard badgers"
+						not "heard turnips"
+					goto turnips
+				`“标牌上写着‘禁止使用${复数名词}’？”`
+					goto "mad lib"
+					to display
+						or
+							has "heard implants"
+							has "heard turnips"
+							has "heard weasels"
+						not "heard madlib"
+				`“‘黄鼠狼’有什么问题吗？”`
+					goto weasels
+					to display
+						not "heard weasels"
+				`“‘臭猫’怎么样？”`
+					goto polecats
+					to display
+						has "heard weasels"
+						not "heard polecats"
+				`“信天翁？”`
+					goto albatross
+					to display
+						has "heard polecats"
+				`（感谢他的回答并离开。）`
+					goto ending
+					to display
+						or
+							has "heard implants"
+							has "heard badgers"
+							has "heard weasels"
+				`（转身离开。）`
+					goto ending
+					to display
+						not "heard implants"
+						not "heard badgers"
+						not "heard weasels"
+			label implants
+			action
+				set "heard implants"
+			`老人咕哝了一声，身体前倾，声音变得粗哑低沉。 “这里不允许控制论植入——总是在打牌时作弊。当命运应该是公平的时候，不能相信被操纵的手！”`
+				goto "next question"
+			label badgers
+			action
+				set "heard badgers"
+			`他停顿了一下，然后简单地咕哝道：“萝卜。”`
+				goto "next question"
+			label turnips
+			action
+				set "heard turnips"
+			`他爆炸了。 “獾！他们会挖掉我种的每一棵萝卜，毁掉我的土地的速度比机器人打扫房子的速度还要快。除了麻烦，什么也没有！”`
+				goto "next question"
+			label "mad lib"
+			action
+				set "heard madlib"
+			`他的嘴唇卷曲成苦涩的咆哮，倾泻出大量的愤怒，“它们导致${充当标题的海盗形容词}，${充当标题的海盗形容词}，${充当标题的海盗形容词}${糟糕的结果}！”`
+			`目前还不清楚他希望你如何回应。`
+				goto "next question"
+			label weasels
+			action
+				set "heard weasels"
+			`他轻蔑地哼了一声。 “黄鼠狼，现在，它们只是像恶作剧的化身一样到处乱跑的小臭猫——不值得它们的盐，更糟糕的是，它们本质上是麻烦制造者！”`
+				goto "next question"
+			label polecats
+			action
+				set "heard polecats"
+			`他的脸色阴沉下来，声音变得沉重而不祥。 “臭猫，它们吸引……信天翁。”在暂停的片刻里，喋喋不休的声音停止了。当每个顾客都注意到这个词的分量时，眼镜的喧闹声和低沉的窃窃私语声都消失了。然后，就像有提示一样，噪音又恢复了，喧闹声一如往常。`
+				goto "next question"
+			label albatross
+			`这一句话划破了新的喧嚣，刹那间，气氛就被打破了。几位顾客从凳子上站起来，他们的表情变得冷酷、充满威胁。老人目光遥远而空洞，似乎陷入了沉思，但很明显你已经跨越了禁线。`
+			`粗糙的双手抓住了你的肩膀，你还没来得及抗议，你就被拖向门口。外面刺骨的寒风中，他们的威胁喊声的回声一直伴随着你。也许有些石头最好不要动。`
+			label ending
+			action
+				clear "heard implants"
+				clear "heard badgers"
+				clear "heard turnips"
+				clear "heard madlib"
+				clear "heard weasels"
+				clear "heard polecats"
+
+mission "Exotic Life: New Greenland"
+	minor
+	source "New Greenland"
+	to offer
+		random < 10
+	on offer
+		conversation
+			`你走上停机坪，你的呼吸形成白色的光环。太空港异常多雾，寒冷的风让你反射性地颤抖到脖子根部。`
+			`一名头发花白的男子从雾中走来，步伐轻松、从容，肩上挎着一支激光步枪。一头笨重的野兽在他身边缓慢地走着：一匹马大小的猎犬，披着厚重的毛茸茸的皮毛，周围还结着霜。两根巨大的獠牙从它的枪口中伸出，就像一把苍白的军刀。当它几乎懒洋洋地将头转向你时，蒸汽从它张开的鼻孔中喷涌而出。它的眼睛里带着冷酷的耐心。`
+			`那个人看到你并咕哝道：“别盯着猛犸獒看。”`
+			choice
+				`“什么是猛犸獒？”`
+				`“别告诉我该怎么做！”`
+					goto ending
+				`（移开我的视线，回到我的船上。）`
+					decline
+			`“来自严酷时代的幻影，在赫斯提亚还是毫无生命的冰层时孕育而生。现在只不过是一种贸易工具。”他拍拍这个生物，它发出低沉的隆隆声。`
+			label ending
+			`随着雾气越来越浓，男人发出一声深沉的笑声。在人类和獒犬消失之前，这种生物的眼睛是最后穿透薄雾的东西。你发现自己再次孤身一人。`
+				decline
+
+mission "Exotic Life: Mainsail"
+	minor
+	source Mainsail
+	to offer
+		random < 10
+	on offer
+		conversation
+			`当驳船、码头和龙门架在主帆无尽海浪的影响下吱吱作响并摇摆时，您将自己稳定在漂浮的城市船上。当你走向拳击场时，盐雾会刺痛你的脸。一艘驳船摇晃着靠近，甲板上长满了藻类，而一个当地人无所畏惧地牵着一条拴在皮带上的四足鲸鱼般的生物——石板毛皮下有海豹大小的紧凑肌肉，有蹼的爪子可以敲击木板，长着胡须的鼻子上长满了针状的牙齿，还有一条宽阔、扁平的尾巴，满怀期待地摇晃着。`
+			`当地人发现你呆呆地看着你，露出一个带着咸味的笑容，喊道：“以前从未见过海狗吗？`
+			choice
+				`“不能说我有！”`
+				`“那是什么东西？”`
+				`“我当然见过海狗！”`
+					goto seen
+				`（移开我的视线，回到我的船上。）`
+					decline
+			action
+				set "exotic animals: mainsail seadog known"
+			`“啊，我的朋友，那是主帆海狗，天堂星球上首屈一指的水上运动猎犬。大约四个世纪前，在这个星球的工作室里培育出来，它们将古老的水狗血统与海豚和水獭血统结合在一起，尾巴上有一点海狸的味道，下巴上有鳄鱼的味道，攻击力上有梭鱼的味道，”他眨了眨眼睛说道。 “他们会找出鱼群，拖上最好的鱼，然后把潮湿而感激的头放在你的靴子上——自从共和国封锁基因实验室以来，这是一种珍贵的罕见现象。”`
+				goto ending
+			label seen
+			`“很高兴听到这个消息，我的朋友！自从共和国封锁了实验室以来，如今很少有人看到主帆海狗这种珍贵的稀有物品。”`
+			label ending
+			`他熟练地从驳船上跳上一艘光滑、无动力的小船。海狗像一条丝带一样从驳船上滑落，干净利落地潜入大海，将宽大的尾巴贴在海浪上。在一片盐雾中，钢铁生物将它们拖走，船像波塞冬的战车一样消失在港口的薄雾中。`
+				decline
+
+mission "Little Vienna in New Austria"
+	minor
+	source "New Austria"
+	"offer precedence" 5
+	to offer
+		random < 10
+	on offer
+		conversation
+			`当您从太空港的着陆场走向村庄中心时，您的注意力会被一个破旧的标志吸引，指向您“Kleinwean Bezirk”。`
+			choice
+				`（按照标志走。）`
+				`（无视路标继续走。）`
+					decline
+			`出于好奇，你决定一探究竟，走进一条狭窄的街道，感觉就像老维也纳的回声。鹅卵石小路两旁矗立着几座历史悠久的建筑，它们的外墙装饰着引人注目的石雕和华丽的瓷砖。一个标有“巴赫学院音乐厅”的小音乐厅，嗡嗡作响着微弱的弦乐器调音声。附近的一家小咖啡馆里飘出浓郁的巧克力咖啡香气。`
+			`咖啡馆外，一名男子坐在大理石桌子旁一边喝着咖啡，一边阅读当地报纸。你可以看到首页的标题是：“Mitreibender Mozart mit dem Bach Collegium Konzertsaal”，上面有一张微笑的指挥家站在小型管弦乐队中央的照片。读者的盘子上放着一个亮粉色的海绵蛋糕，它的颜色与街道的丰富色调非常相配。`
+			`当你徘徊时，一位穿着考究的老妇人走了过来。她的声音充满音乐节奏，用衷心的“Gruess Gott！”向您打招呼。`
+			`“没有多少外来者访问克莱因韦恩，这很遗憾，因为你可以看到它是新奥地利的‘宝石’，”她眨了眨眼说道。 “我正在去音乐会的路上 - 我丈夫病了 - 我不想浪费他的门​​票。你能荣幸地接受我吗？”`
+			choice
+				`（接受门票。）`
+				`（礼貌地拒绝。）`
+					goto declined
+			`你欣然接受邀请，跟着她来到温馨的音乐厅。尽管规模不大，大厅内却容纳了一支完整的管弦乐队。当你舒适地坐下后，售票员向前走去，清了清嗓子，用谨慎的语气宣布：`
+			`“Willkommen im ehrwuerdigen Bach Collegium Konzertsaal！Wir sind Lichtjahre von Mozarts Heimat entfernt，aber auch im Zentrum von Kleinwean！Geniessen Sie das Konzert！”`
+			`当你注意到售票员的微笑时，这句话就悬在空中了，从报纸上的照片来看，这笑容非常熟悉。随着他邀请您沉浸在表演中的回声仍在回响，乐团开始了激动人心的莫扎特的演奏。这些音符在空气中如水晶般清晰地舞动，你甚至可以认出其中的一两个旋律，每一个都是通往地球旧维也纳的桥梁。`
+			`即使在演出结束后，当您再次回望新奥地利隐藏的文化飞地时，您也会感觉到音乐在您的骨头中产生共鸣。`
+				goto backtoship
+			label declined
+			`你善意地感谢她，但解释说你没有心情听音乐会。她理解地点点头，眼神变得柔和，带着失望但又亲切的接受。您完成了对“Kleinwean Bezirk”的探索，沉浸在鹅卵石街道的氛围中，咖啡的香味与音乐的声音交织在一起。`
+			label backtoship
+			`带着对遥远世界上一座遥远城市的怀旧气氛，您回到了船上。`
+
+mission "Struggling Author Gone Missing"
+	minor
+	landing
+	source "Zug"
+	to offer
+		random < 88
+		has "event: beyond the hyperdrive is published"
+	on offer
+		conversation
+			`当您的船停在 A5B 着陆场时，两名年轻人靠近。其中一人说道：“你好，船长。你在任何地方见过一个叫安娜·方文的女人吗？她最后一次被人看见是在太空港，肯定是在某人的宇宙飞船里离开的。”`
+			`在太空港周围，你会看到其他一些团体也在做同样的事情。安娜可能比她想象的更受欢迎。`
+			choice
+				`“她去了距离这里很远的另一个星系。你找不到她。”`
+				`“不，我不知道。抱歉。”`
+					goto continue
+			`“如果你再见到她，请告诉她，读书人联盟很欣赏她的工作。你不可能带我们去她那里吧？”你的回答是否定的，然后两人就去其他小组传播这个消息。`
+			label continue
+			`太空港的许多墙壁上都挂着海报——在这里，安娜的书一定也很出名。海报上写着：`
+			`丢失的：`
+			`安娜·方文 (Anna Fangvin) 是一位年轻作家，她的书已在全球范围内传播。请向图书爱好者联盟报告任何新闻，地址：5662 Myrtle Lane, Sizertown, Zug。`
+				decline
+
+phrase "racetrack"
+	word
+		"Racetrack"
+		"Speedway"
+		"Arena"
+		"Course"
+		"Circuit"
+		"Glideway"
+		"Hover Circuit"
+		"Velocity Course"
+		"Hoverloop"
+
+phrase "sunracer opening"
+	word
+		"As you walk through the din of Sunracer's bustling spaceport"
+		"As you wade through the clang and clatter of Sunracer's ever-churning shipyards"
+		"Amidst the city's persisting glitz"
+		"Lost in a maze of hangars and half-built hulls"
+		"While navigating through the organized chaos of Megaparsec shipyards"
+
+phrase "sunracer hovercraft adhook"
+	word
+		"dazzling holographic display"
+		"radiant, floating billboard"
+		"vivid holographic advertisement"
+	word
+		" seizes your attention"
+		" catches your eye"
+		" appears overhead"
+
+phrase "sunracer hovercraft adcloser"
+	word
+		"The ad flashes sleek"
+		"Photo-realistic images show agile"
+		"The visuals display streamlined"
+	word
+		" hovercraft "
+		" vehicles "
+	word
+		"slicing a twisting course through untamed terrain. "
+		"racing along a rugged, serpentine track. "
+		"dashing along wild, winding roads. "
+	word
+		"The ad copy% "
+		"The display's text% "
+		"The words below "
+	word
+		"promise high-speed thrills for the audience."
+		"provide a teaser of the breakneck action to come."
+		"offer heart-pounding, high-octane excitement."
+		"beckon wealthy corporate sponsors to back the adrenaline-fueled event."
+		"offer the perk of free parking."
+		`simply state "Sponsored by Megaparsec."`
+	replace
+		"% promise" " promises"
+		"% provide" " provides"
+		"% offer" " offers"
+		"% beckon" " beckons"
+		"% simply state" " simply states"
+		"%" ""
+		
+phrase "sunracer city to wilderness description"
+	word
+		"the bustle of Sunracer's shipyards"
+		"the vibrant Megaparsec metropolis"
+		"the clamor of Sunracer's industrial hub"
+	word
+		" fades into "
+		" gives way to "
+		" transitions to "
+	word
+		"shimmering lakes dotted with sailboats and fishing vessels"
+		"picturesque rolling hills of sprawling farmlands"
+		"a serene stretch of raw, unspoiled nature"
+
+phrase "sunracer fan tshirt"
+	word
+		"clad in Megaparsec Racing Technologies gear, with a large Quicksilver emblazoned across the front of the shirt"
+		"wearing Megaparsec Racing Technologies apparel - the shirt covered with hundreds of tiny Splinter, Manta, and Quicksilver silhouettes"
+		`dressed in a Megaparsec Racing Technologies sweater that has the words "Mighty fast, impossibly light - Megaparsec" at its center`
+		`dressed in a Syndicate Performance Racing shirt with the centered words "Smart racers know race pace is key. Smart racers race for Syndicate Performance Racing"`
+		`wearing a Deep Sky Dynamics hat with the words "Peace, Prosperity, Progress... Podium"`
+		`dressed in a Delta V Grand Prix sweater on which the words "The Wild Pace of Plasma" are surrounded by various images of tiny chipmunks, greyhounds, capybaras, and impalas running across the shirt, leaving tiny footprints`
+	word
+		". Though obviously not a racer, "
+	word
+		"he clearly is very familiar with hovercraft racing. You ask him for an overview and he responds"
+		"she clearly is very familiar with hovercraft racing. You ask her for an overview and she responds"
+		"they clearly are very familiar with hovercraft racing. You ask them for an overview and they respond"
+		
+
+phrase "sunracer hovercraft race description"
+	word
+		"You push through the buzzing entrance, "
+		"The entrance bursts with energy as you weave through enthusiastic crowds, "
+		"Amid a cascade of bright lights and raucous cheers, you enter the racetrack, "
+		"The crowd briefly disperses, leaving you ample space to go through the entrance, "
+	word
+		"navigate a series of well-lit steps, and settle into your seat. Now you are ready for the race."
+		"each step drawing you closer to the exciting race view from the stands."
+		"then follow well-marked signs that lead you into the heart of the action in the stands."
+		"where banners and cheers guide you to the stands for you to sit during the race."
+	word
+		" "
+	word
+		"It is a clear, brisk sky overhead, "
+		"The day's air is crisp and electric with anticipation, "
+		"A partly cloudy day blankets most of the track, "
+		"Scattered showers mist the air, "
+	word
+		"while a gentle wind stirs the dust on the track."
+		"with the sun's beams lending a warm glow to the cool sky."
+		"with sunlight and swirling mist setting an unpredictable stage."
+		"while a shifting haze fails to hide the crowd's raw anticipation."
+	word
+		" "
+	word
+		"A pulsing neon light flashes "
+		"The starting gun goes off "
+		`A booming voice announces, "It's repulsors on and away we go!" `
+		"In an instant, there's a thunderous explosion "
+	word
+		"at the starting line"
+		"in front of the starting grid"
+	word
+		" and the hovercraft launch forward in a burst of speed."
+		", then engines ignite in a frenzy to send the sleek machines darting into the first lap."
+		" as the racers enter into a chaotic scramble for the lead."
+		" - hovercraft fighting for position as one leaps ahead of the rest."
+	word
+		" "
+	word
+		"An hour in, the racers continue to weave through the course's twisting tracks, "
+		"Midway, the competition transforms into a dynamic dance, "
+		"As the race unfolds, a few hovercraft nearly crash before recovering, "
+	word
+		"each maneuver a blend of precision and raw power."
+		"with daring overtakes and strategic maneuvers."
+		"each moment getting closer to the crescendo of the race's final hour."
+		"as competitors push their vehicles to the limit at every turn."
+
+phrase "sunracer hovercraft victory description"
+	word
+		" is today's victor."
+		" seizes the day with a victory."
+		" wins this race."
+
+phrase "sunracer hovercraft victory exit"
+	word
+		"With the race finished, the crowd gradually disperses, and you wander back to your <model> amid the soft buzz of post-race chatter."
+		"As the stands empty, you slip away through clusters of lingering fans back to the <ship>."
+		"Despite the race being over, the crowd still roars with adrenaline, and you still feel the crowd's excitement as you return to your ship."
+		"The venue quiets as spectators scatter, leaving you to drift back to your <model> in the calm that's followed the thrill of the race."
+
+mission "A Sunracer Hovercraft Racing"
+	minor
+	repeat
+	invisible
+	"offer precedence" 10
+	to offer
+		random < 40
+	source "Sunracer"
+	substitutions
+		"<racename>" "${adjectives} ${racetrack}"
+		"<megaparsec name>" "${civilian}"
+		"<syndicate name>" "${syndicate fighter}"
+		"<delta name>" "${free worlds fighter}"
+		"<deep name>" "${deep fighter}"
+	on offer
+		conversation
+			`${sunracer opening}，一个 ${sunracer 气垫船挂钩}：在 <racename> 举行气垫船比赛，乘坐气垫铁路只需几个小时，或者乘坐 <model> 更快。 ${sunracer 气垫船 adcloser}`
+			choice
+				`（一探究竟。）`
+				`（跳过比赛。）`
+					decline
+			action
+				"race length" = 3 + "roll: 2"
+				"syndicate boost" = 2 + "roll: 2"
+				"delta boost" = 4 + "roll: 8"
+				"deep boost" = 6 + "roll: 12"
+				# The ( ( 10 - x + "race length" ) / 10 ) flips to 1 when race length is x or greater, 0 if it's less than x. Only used to roll for the length of the track.
+				"megaparsec speed" = "roll: 12" + "roll: 12" + "roll: 12" + ( ( 10 - 4 + "race length" ) / 10 ) * ( "roll: 12" ) + ( ( 10 - 5 + "race length" ) / 10 ) * "roll: 12"
+				"syndicate speed" = "roll: 10" + "roll: 10" + "roll: 10" + ( ( 10 - 4 + "race length" ) / 10 ) * ( "roll: 10" ) + ( ( 10 - 5 + "race length" ) / 10 ) * "roll: 10"
+				"delta speed" = "roll: 8" + "roll: 8" + "roll: 8" + ( ( 10 - 4 + "race length" ) / 10 ) * ( "roll: 8" ) + ( ( 10 - 5 + "race length" ) / 10 ) * "roll: 8"
+				"deep speed" = "roll: 6" + "roll: 6" + "roll: 6" + ( ( 10 - 4 + "race length" ) / 10 ) * ( "roll: 6" ) + ( ( 10 - 5 + "race length" ) / 10 ) * "roll: 6"
+				"syndicate laps" = "syndicate speed" + "syndicate boost"
+				"delta laps" = "delta speed" + "delta boost"
+				"deep laps" = "deep speed" + "deep boost"
+			`您搭乘 <ship> 快速前往 <racename>。窗外，${sunracer 从城市到荒野的描述}。最终，您将船停在 <racename> 外面，然后走到赛马场的入口处。`
+			label decisioning
+			`上面的屏幕闪烁着比赛详细信息：`
+			`<racename> : &[race length] 小时竞赛`
+			``
+			`今天的赛车手：`
+			`百万秒差距赛车技术：<megaparsec name>`
+			`辛迪加性能赛车：<syndicate name>`
+			`德尔塔 V 大奖赛：<delta name>`
+			`深空动力学：<deep name>`
+			``
+			choice
+				`（观看比赛。）`
+					goto race
+				`（向某人询问悬停赛车的概述。）`
+					to display
+						not "hovercraft racing: talked to fan"
+				`（用我的船扫描赛车手。）`
+					to display
+						or
+							"flagship attribute: outfit scan power" > 0
+							"flagship attribute: tactical scan power" > 0
+					goto scanner
+			action
+				set "hovercraft racing: talked to fan"
+			`在 <racename> 的入口附近，您发现了一个友善的人物 ${sunracer fan tshirt}：`
+			`“气垫船比赛有四艘船争分夺秒，每艘船都试图记录尽可能多的圈数。比赛持续三到五个小时，分为两个阶段：最初的后燃以实现爆发性的速度，然后在剩余时间内完成圈数。`
+			`“尽管 Megaparsec Racing Technologies 总体上获胜的机会要大一些，但每位赛车手的获胜机会大致相同。Megaparsec 在较长距离的比赛中也表现出色，这要归功于其高效的离子发动机，每小时最多可以跑 12 圈，但完全没有任何初始速度爆发。深度赛车手通过使用高功率原子技术实现强大的启动，可以在较短的时间内表现出色，可以推动他们在第一个小时内完成多达 18 圈，但他们在较长的比赛中往往表现较差，因为他们的其他两支球队的效率则介于两者之间。`
+			`“尽管每支球队大致相当，但在一场特定的比赛中，精明的观察者可以通过了解哪支球队在较短或较长的比赛长度上表现更好来更好地预测获胜者，而运动能力较差的球队甚至可以在比赛开始前就知道气垫船加力燃料的准确水平。`
+			`“要记住的最后一个提示 - 他们说在气垫船比赛中赚一笔小钱的最可靠方法就是从一笔大钱开始！”粉丝的演讲以爽朗的笑声结束，笑声与 <racename> 内引擎的轰鸣声混合在一起。`
+			``
+				goto decisioning
+			label scanner
+			`您的飞船距离 <racename> 的轨道足够近，能够准确扫描每艘气垫船的加力燃烧器可以行驶多少圈。您的飞船转发以下加力数据：`
+			``
+			`Megaparsec Racing Technologies：无加力燃料`
+			`辛迪加 Performance Racing：&[syndicate boost] 圈数的加力燃油`
+			`Delta V 大奖赛：&[delta boost] 圈数的加力燃油`
+			`Deep Sky Dynamics：&[deep boost] 圈的加力燃料`
+			``
+				goto decisioning
+			label race
+			action
+				clear "sunracer race winner"
+			`${sunracer 气垫船比赛描述}`
+			branch megawon
+				and
+					"megaparsec speed" >= "syndicate laps"
+					"megaparsec speed" >= "delta laps"
+					"megaparsec speed" >= "deep laps"
+			branch syndwon
+				and
+					"syndicate laps" >= "delta laps"
+					"syndicate laps" >= "deep laps"
+			branch deltwon
+				"delta laps" >= "deep laps"
+			action
+				"sunracer race winner" = 4
+				# maximum of other laps
+				"second place" = "megaparsec speed"
+				"second place" >?= "syndicate laps"
+				"second place" >?= "delta laps"
+				# minimum of other laps
+				"last place" = "megaparsec speed"
+				"last place" <?= "syndicate laps"
+				"last place" <?= "delta laps"
+				"second place margin" = "deep laps" - "second place"
+			`Deep Sky Dynamics <deep name> ${sunracer 气垫船胜利描述}`
+				goto ending
+			label deltwon
+			action
+				"sunracer race winner" = 3
+				# maximum of other laps
+				"second place" = "megaparsec speed"
+				"second place" >?= "syndicate laps"
+				"second place" >?= "deep laps"
+				# minimum of other laps
+				"last place" = "megaparsec speed"
+				"last place" <?= "syndicate laps"
+				"last place" <?= "deep laps"
+				"second place margin" = "delta laps" - "second place"
+			`Delta V 大奖赛 <delta name> ${sunracer 气垫船胜利描述}`
+				goto ending
+			label syndwon
+			action
+				"sunracer race winner" = 2
+				# maximum of other laps
+				"second place" = "megaparsec speed"
+				"second place" >?= "deep laps"
+				"second place" >?= "delta laps"
+				# minimum of other laps
+				"last place" = "megaparsec speed"
+				"last place" <?= "deep laps"
+				"last place" <?= "delta laps"
+				"second place margin" = "syndicate laps" - "second place"
+			`辛迪加性能赛车 <syndicate name> ${sunracer 气垫船胜利描述}`
+				goto ending
+			label megawon
+			action
+				"sunracer race winner" = 1
+				# maximum of other laps
+				"second place" = "deep laps"
+				"second place" >?= "syndicate laps"
+				"second place" >?= "delta laps"
+				# minimum of other laps
+				"last place" = "deep laps"
+				"last place" <?= "syndicate laps"
+				"last place" <?= "delta laps"
+				"second place margin" = "megaparsec speed" - "second place"
+			`Megaparsec Racing Technologies <megaparsec name> ${sunracer 气垫船胜利描述}`
+			label ending
+			action
+				"last place margin" = "second place" - "last place"
+			branch secondplaceten
+				"second place margin" >= 10
+			branch secondplacefour
+				"second place margin" >= 4
+			branch secondplacetwo
+				"second place margin" >= 2
+			branch secondplaceone
+				"second place margin" >= 1
+			# 2nd place margin of 0:happens in ~9% of races, 1:~16%, 2-3:~24%,4-9:~38%,10+:~12%
+			`他们以微弱的优势以微弱的优势赢得了比赛。`
+				goto endingmiddle
+			label secondplaceone
+			`他们以令人惊叹的表现赢得了胜利，仅领先赛场一圈。`
+				goto endingmiddle
+			label secondplacetwo
+			`他们在比赛的最后几分钟取得了无与伦比的领先优势，以明显的压倒性优势结束了比赛。`
+				goto endingmiddle
+			label secondplacefour
+			`他们一路领先，他们的技术模糊了力量和精确度，让对手落后了好几圈，最终以明显的胜利结束了比赛。`
+				goto endingmiddle
+			label secondplaceten
+			`他们以惊人的两位数单圈领先优势统治了比赛，以压倒性的胜利冲过终点线。`
+			label endingmiddle
+			branch lastplacefourteen
+				"last place margin" >= 14
+			branch lastplacenine
+				"last place margin" >= 9
+			branch lastplacesix
+				"last place margin" >= 6
+			branch lastplacethree
+				"last place margin" >= 3
+			# last place margin of 0-2:happens in ~8% of races, 3-5:~27%, 6-8:~28%,9-14:~29%,14+:~8%
+			`其他三支车队并肩作战，在争夺第二名的最后一刻冲刺中，彼此之间的差距从未超过两圈。`
+				goto trueending
+			label lastplacethree
+			`其余的人紧紧地聚集在一起，为比赛画上了圆满的句号。`
+				goto trueending
+			label lastplacesix
+			`中场气垫船以松散的分组方式结束比赛，间隔六圈以上。`
+				goto trueending
+			label lastplacenine
+			`剩下的车手平安无事地分散完成比赛，顺序延伸了近十几圈。`
+				goto trueending
+			label lastplacefourteen
+			`今天只有三名赛车手完成比赛：其中一名冲出赛道，车手幸运地逃脱，毫发无伤。`
+			label trueending
+			`${sunracer气垫船胜利出口}`
+			`最终结果：`
+			``
+			`兆秒差距赛车技术：已完成 <megaparsec name>、&[megaparsec speed] 圈`
+			`辛迪加性能赛车：已完成 <syndicate name>、&[syndicate laps] 圈`
+			`Delta V 大奖赛：已完成 <delta name>、&[delta laps] 圈`
+			`Deep Sky Dynamics：已完成 <deep name>、&[deep laps] 圈`
+			# The next line can be used when testing changes to the mission, but should remain commented out on the master branch.
+			# `	2nd place: &[second place], margin: &[second place margin]; last place: &[last place], margin: &[last place margin]`
+			``
+			action
+				clear "race length"
+				clear "syndicate boost"
+				clear "delta boost"
+				clear "deep boost"
+				clear "megaparsec speed"
+				clear "syndicate speed"
+				clear "delta speed"
+				clear "deep speed"
+				clear "syndicate laps"
+				clear "delta laps"
+				clear "deep laps"
+				clear "second place"
+				clear "last place"
+				clear "second place margin"
+				clear "last place margin"
+				clear "hovercraft racing: talked to fan"

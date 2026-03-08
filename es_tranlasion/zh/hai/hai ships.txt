@@ -1,0 +1,1844 @@
+# Copyright (c) 2014-2016 by Michael Zahniser
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program. If not, see <https://www.gnu.org/licenses/>.
+
+ship "Anomalocaris"
+	plural "Anomalocarises"
+	sprite "ship/hai anomalocaris"
+	thumbnail "thumbnail/hai anomalocaris"
+	attributes
+		category "Medium Warship"
+		"cost" 7400000
+		"shields" 14200
+		"hull" 6800
+		"required crew" 20
+		"bunks" 26
+		"mass" 970
+		"drag" 9.3
+		"heat dissipation" .49
+		"fuel capacity" 400
+		"cargo space" 121
+		"outfit space" 533
+		"weapon capacity" 192
+		"engine capacity" 98
+		weapon
+			"blast radius" 210
+			"shield damage" 2100
+			"hull damage" 1050
+			"hit force" 3150
+	outfits
+		"Ion Cannon"
+		"Pulse Cannon"
+		"Pulse Turret" 2
+		"Chameleon Anti-Missile" 2
+		"Boulder Reactor"
+		"Pebble Core"
+		"Hai Ravine Batteries"
+		"Hai Diamond Regenerator"
+		"Hai Williwaw Cooling" 3
+		"Quantum Keystone"
+		"Pulse Rifle" 20
+		`"Biroo" Atomic Thruster`
+		`"Bondir" Atomic Steering`
+		Hyperdrive
+	gun -24 -89.5
+	gun 24 -89.5
+	turret 0 -32.5 "Pulse Turret"
+	turret -40 -28
+	turret 40 -28
+	turret 0 60 "Pulse Turret"
+	engine -50 15
+	engine 50 15
+	"steering engine" -50 15
+		zoom 0.5
+		right
+	"steering engine" 50.5 15
+		zoom 0.5
+		left
+	leak "leak" 40 50
+	leak "flame" 40 30
+	explode "tiny explosion" 24
+	explode "small explosion" 50
+	explode "medium explosion" 30
+	explode "large explosion" 14
+	"final explode" "final explosion medium"
+	description "奇虾号最初是在海族与雪拉吉族最初的冲突中创建的，据说是当时最通用的海族战舰之一。其高载货能力和低发动机空间表明该船的最初用途是采矿或运输，尽管它也可能用于抢劫敌方船只和运送弹药。当时的船只是用更昂贵的材料制造的，使得奇虾更加坚固并且能够承受更大的伤害。"
+
+ship "Anomalocaris" "Anomalocaris (Venerable)"
+	add attributes
+		"threshold percentage" 0.4
+	outfits
+		"Pulse Cannon" 2
+		"Pulse Turret"
+		"Thermal Repeater Turret" 2
+		"Chameleon Anti-Missile"
+		"Hai Diamond Regenerator"
+		"Hai Williwaw Cooling" 4
+		"Value Detector"
+		"Hai Valley Batteries"
+		"Boulder Reactor"
+		"Pulse Rifle" 20
+		`"Biroo" Atomic Thruster`
+		`"Bondir" Atomic Steering`
+		"Afterburner (Asteroid Class)"
+		"Hyperdrive"
+	turret "Pulse Turret"
+	turret "Thermal Repeater Turret"
+	turret "Thermal Repeater Turret"
+	turret "Chameleon Anti-Missile"
+	description "奇虾号最初是在海族与雪拉吉族最初的冲突中创建的，据说是当时最通用的海族战舰之一。其高载货能力和低发动机空间表明该船的最初用途是采矿或运输，尽管它也可能用于抢劫敌方船只和运送弹药。当时的船只是用更昂贵的材料制造的，使得奇虾号更加坚固，尽管这艘船在长期淹没在水下后已经受到损坏。"
+
+ship "Aphid"
+	sprite "ship/hai aphid"
+	thumbnail "thumbnail/hai aphid"
+	attributes
+		category "Light Freighter"
+		"cost" 570000
+		"shields" 1700
+		"hull" 1400
+		"required crew" 1
+		"bunks" 5
+		"mass" 130
+		"drag" 2.1
+		"heat dissipation" .82
+		"fuel capacity" 400
+		"cargo space" 51
+		"outfit space" 185
+		"weapon capacity" 37
+		"engine capacity" 48
+		weapon
+			"blast radius" 30
+			"shield damage" 300
+			"hull damage" 150
+			"hit force" 450
+	outfits
+		"Chameleon Anti-Missile"
+		"Sand Cell" 2
+		"Hai Fissure Batteries"
+		"Hai Corundum Regenerator"
+		`"Basrem" Atomic Thruster`
+		`"Basrem" Atomic Steering`
+		"Hyperdrive"
+	engine -8 40
+	engine 8 40
+	turret 0 24 "Chameleon Anti-Missile"
+	leak "leak" 60 50
+	explode "tiny explosion" 10
+	explode "small explosion" 20
+	explode "medium explosion" 15
+	description "蚜虫号是海族使用的最轻的货船，几千年来一直是海族星际经济的支柱。由于海空间在历史上的大部分时间里都是非常和平的，蚜虫只具有基本的防御能力，并且依靠更大的海船只来获得更严格的保护。"
+
+ship "Aphid" "Aphid (Phantom Pallet)"
+	outfits
+		"Pulse Turret"
+		"Pebble Core"
+		"Hai Fissure Batteries"
+		"Hai Corundum Regenerator"
+		"Hai Williwaw Cooling"
+		"Quantum Keystone"
+		"Pulse Rifle"
+		`"Benga" Atomic Thruster`
+		`"Benga" Atomic Steering`
+		"Hyperdrive"
+		"Phantom Pallet" 4
+
+ship "Aphid" "Aphid (Armed)"
+	outfits
+		"Pulse Turret"
+		"Pebble Core"
+		"Hai Fissure Batteries"
+		"Hai Corundum Regenerator"
+		"Hai Williwaw Cooling"
+		"Quantum Keystone"
+		"Pulse Rifle"
+		`"Benga" Atomic Thruster`
+		`"Benga" Atomic Steering`
+		"Hyperdrive"
+
+ship "Aphid" "Aphid (Unfettered)"
+	"variant map name" "Unfettered Shipyards"
+	outfits
+		"Chameleon Anti-Missile"
+		"Cargo Expansion" 2
+		"Hai Corundum Regenerator"
+		"Hai Fissure Batteries"
+		"Sand Cell"
+		"Small Bunk Room"
+		"Quantum Keystone"
+		"Pulse Rifle"
+		`"Basrem" Atomic Steering`
+		`"Basrem" Atomic Thruster`
+		"Hyperdrive"
+
+
+ship "Centipede"
+	sprite "ship/hai centipede"
+	thumbnail "thumbnail/hai centipede"
+	attributes
+		category "Space Liner"
+		"cost" 6300000
+		"shields" 6600
+		"hull" 2400
+		"required crew" 35
+		"bunks" 131
+		"mass" 440
+		"drag" 5.7
+		"heat dissipation" .52
+		"fuel capacity" 600
+		"cargo space" 38
+		"outfit space" 375
+		"weapon capacity" 78
+		"engine capacity" 88
+		weapon
+			"blast radius" 60
+			"shield damage" 600
+			"hull damage" 300
+			"hit force" 900
+	outfits
+		"Hai Tracker Pod" 2
+		"Hai Tracker" 112
+		"Bullfrog Anti-Missile" 3
+		"Geode Reactor"
+		"Hai Corundum Regenerator"
+		"Hai Ravine Batteries"
+		"Hai Williwaw Cooling" 3
+		"Hai Cuttlefish Jammer" 2
+		"Luxury Accommodations"
+		"Quantum Keystone"
+		`"Biroo" Atomic Thruster`
+		`"Biroo" Atomic Steering`
+		`"Basrem" Atomic Steering`
+		Hyperdrive
+		
+	engine -15 113
+	engine 15 113
+	gun -11 -113 "Hai Tracker Pod"
+	gun 11 -113 "Hai Tracker Pod"
+	turret 0 -19 "Bullfrog Anti-Missile"
+	turret -41 67 "Bullfrog Anti-Missile"
+	turret 41 67 "Bullfrog Anti-Missile"
+	leak "leak" 60 50
+	leak "flame" 40 40
+	leak "big leak" 10 10
+	explode "tiny explosion" 10
+	explode "small explosion" 25
+	explode "medium explosion" 25
+	explode "large explosion" 10
+	"final explode" "final explosion medium"
+	description `人类引入海文明导致了大量的文化交流。虽然有些人可能会认为腌橡子是这种关系中最伟大的产物，但更多人会指出这艘豪华运输船。蜈蚣号是人类与海族合作的产物，在31世纪之交发布，但已经在海族舰队中广受欢迎。`
+
+ship "Centipede" "Centipede (Holovid)"
+	outfits
+		"Hai Tracker Pod" 2
+		"Hai Tracker" 112
+		"Bullfrog Anti-Missile" 3
+		"Geode Reactor"
+		"Hai Corundum Regenerator"
+		"Hai Ravine Batteries"
+		"Hai Williwaw Cooling" 3
+		"Hai Cuttlefish Jammer" 2
+		"Luxury Accommodations"
+		"Holovid Zone"
+		"Quantum Keystone"
+		`"Biroo" Atomic Thruster`
+		`"Biroo" Atomic Steering`
+		`"Basrem" Atomic Steering`
+		Hyperdrive
+
+ship "Centipede" "Centipede (Pulse)"
+	outfits
+		"Pulse Cannon" 2
+		"Bullfrog Anti-Missile" 3
+		"Boulder Reactor"
+		"Hai Fissure Batteries"
+		"Hai Chasm Batteries"
+		"Hai Diamond Regenerator"
+		"Hai Williwaw Cooling" 5
+		"Luxury Accommodations"
+		"Quantum Keystone"
+		"Pulse Rifle" 24
+		`"Biroo" Atomic Thruster`
+		`"Basrem" Atomic Steering`
+		`"Biroo" Atomic Steering`
+		Hyperdrive
+
+
+
+ship "Cicada"
+	sprite "ship/hai cicada"
+	thumbnail "thumbnail/hai cicada"
+	attributes
+		category "Transport"
+		"cost" 3850000
+		"shields" 5400
+		"hull" 2000
+		"required crew" 8
+		"bunks" 51
+		"mass" 487
+		"drag" 6.1
+		"heat dissipation" .58
+		"fuel capacity" 500
+		"cargo space" 143
+		"outfit space" 323
+		"weapon capacity" 89
+		"engine capacity" 64
+		weapon
+			"blast radius" 80
+			"shield damage" 960
+			"hull damage" 420
+			"hit force" 1280
+	outfits
+		"Hai Tracker Pod"
+		"Hai Tracker" 84
+		"Tracker Storage Pod"
+		"Bullfrog Anti-Missile" 2
+		"Chameleon Anti-Missile" 2
+		"Geode Reactor"
+		"Hai Gorge Batteries"
+		"Hai Diamond Regenerator"
+		"Hai Williwaw Cooling"
+		"Quantum Keystone"
+		`"Benga" Atomic Thruster`
+		`"Benga" Atomic Steering`
+		"Hyperdrive"
+	engine -6 75
+	engine 6 75
+	gun 0 -76 "Hai Tracker Pod"
+	turret 34.5 -16.5 "Chameleon Anti-Missile"
+	turret -34.5 -16.5 "Chameleon Anti-Missile"
+	turret -20 42 "Bullfrog Anti-Missile"
+	turret 20 42 "Bullfrog Anti-Missile"
+	leak "leak" 50 30
+	leak "flame" 40 50
+	leak "big leak" 20 40
+	explode "small explosion" 11
+	explode "medium explosion" 24
+	explode "large explosion" 16
+	explode "huge explosion" 4
+	"final explode" "final explosion medium"
+	description `这种设计几乎与蚜虫一样古老，在最近的记忆中几乎没有建造过新的蝉。它是如此可靠，以至于二手市场上充斥着蝉，这些蝉不仅比一名飞行员寿命长，而且在许多情况下，海族的整个血统都拥有一只蝉，并将其代代相传。这一特点可能是控制圣甲虫受欢迎程度的主要因素，也是 Yeer e Ki 造船厂的座右铭：“为生命服务”。`
+
+
+
+ship "Flea"
+	sprite "ship/hai flea"
+	thumbnail "thumbnail/hai flea"
+	attributes
+		category "Drone"
+		"cost" 142400
+		"shields" 200
+		"hull" 700
+		"mass" 21
+		"drag" .55
+		"heat dissipation" .83
+		"outfit space" 63
+		"weapon capacity" 13
+		"engine capacity" 22
+		"automaton" 1
+		weapon
+			"blast radius" 6
+			"shield damage" 55
+			"hull damage" 30
+			"hit force" 80
+	outfits
+		"Railgun" 3
+		"Railgun Slug" 3000
+		"Sand Cell"
+		"Supercapacitor" 2
+		`"Baellie" Atomic Engines`
+
+	engine 0 27 1.4
+	gun 0 -27 "Railgun"
+	gun 0 -27 "Railgun"
+	gun 0 -27 "Railgun"
+	leak "leak" 60 50
+	explode "tiny explosion" 15
+	description `这款战斗无人机旨在以尽可能少的积分增强任何战斗部队的实力。它的设计与船长磁轨炮的战术后坐力相结合，使其能够风筝目标，延长其战斗力，同时以削弱离子伤害来支持盟友。`
+	description "无人机没有配备超光速引擎。除非您的舰队中有一艘带有无人机舱的船只，否则您无法携带无人机。"
+
+ship "Flea" "Flea (Pulse)"
+	outfits
+		"Pulse Cannon"
+		"Sand Cell"
+		"Supercapacitor" 2
+		`"Baellie" Atomic Engines`
+
+ship "Geocoris"
+	plural "Geocoris"
+	sprite "ship/hai geocoris"
+	thumbnail "thumbnail/hai geocoris"
+	attributes
+		category "Heavy Freighter"
+		"cost" 12540000
+		"shields" 13300
+		"hull" 6200
+		"required crew" 15
+		"bunks" 56
+		"mass" 1576
+		"drag" 26.5
+		"heat dissipation" 0.3
+		"fuel capacity" 800
+		"cargo space" 761
+		"outfit space" 582
+		"weapon capacity" 172
+		"engine capacity" 94
+		weapon
+			"blast radius" 300
+			"shield damage" 3000
+			"hull damage" 1500
+			"hit force" 4500
+	outfits
+		"Pulse Cannon" 2
+		"Pulse Turret" 2
+		"Bullfrog Anti-Missile" 3
+		"Hai Cuttlefish Jammer" 4
+		"Geode Reactor" 2
+		"Hai Valley Batteries"
+		"Hai Diamond Regenerator"
+		"Hai Williwaw Cooling" 4
+		`"Biroo" Reverse Thruster`
+		`"Biroo" Atomic Thruster`
+		`"Bondir" Atomic Steering`
+		Hyperdrive
+
+	engine 100 39
+	engine -100 39
+	gun 24 -118 "Pulse Cannon"
+	gun -24 -118 "Pulse Cannon"
+	turret 0 -89 "Bullfrog Anti-Missile"
+	turret 110 -23 "Pulse Turret"
+	turret -110 -23 "Pulse Turret"
+	turret 35 94 "Bullfrog Anti-Missile"
+	turret -35 94 "Bullfrog Anti-Missile"
+	leak "leak" 40 50
+	leak "flame" 40 80
+	leak "big leak" 70 30
+	explode "tiny explosion" 50
+	explode "small explosion" 50
+	explode "medium explosion" 50
+	explode "large explosion" 50
+	explode "huge explosion" 20
+	"final explode" "final explosion large"
+	description "在大型载人货轮开始击败传统的小型海船后，海人通过开发 Geocoris 来做出回应：一艘超越了当时人类所能提供的任何重型货轮。"
+
+ship "Geocoris" "Geocoris (Tracker)"
+	outfits
+		"Hai Tracker Pod" 2
+		"Hai Tracker" 196
+		"Pulse Turret" 2
+		"Bullfrog Anti-Missile" 2
+		"Chameleon Anti-Missile"
+		"Boulder Reactor"
+		"Pebble Core"
+		"Hai Ravine Batteries"
+		"Hai Corundum Regenerator" 2
+		"Hai Williwaw Cooling" 7
+		"Tracker Storage Pod" 3
+		"Quantum Keystone"
+		"Pulse Rifle" 14
+		`"Biroo" Atomic Thruster`
+		`"Bondir" Atomic Steering`
+		Hyperdrive
+	turret "Chameleon Anti-Missile"
+	turret "Pulse Turret"
+	turret "Pulse Turret"
+	turret "Bullfrog Anti-Missile"
+	turret "Bullfrog Anti-Missile"
+
+
+
+ship "Grasshopper"
+	sprite "ship/hai grasshopper"
+	thumbnail "thumbnail/hai grasshopper"
+	attributes
+		category "Interceptor"
+		"cost" 684000
+		"shields" 3300
+		"hull" 600
+		"required crew" 1
+		"bunks" 5
+		"mass" 124
+		"drag" 1.65
+		"heat dissipation" .78
+		"fuel capacity" 300
+		"cargo space" 29
+		"outfit space" 198
+		"weapon capacity" 47
+		"engine capacity" 61
+		weapon
+			"blast radius" 36
+			"shield damage" 180
+			"hull damage" 360
+			"hit force" 540
+	outfits
+		"Pulse Cannon" 2
+		"Sand Cell" 2
+		"Hai Fissure Batteries"
+		"Hai Corundum Regenerator"
+		"Hai Williwaw Cooling"
+		"Quantum Keystone"
+		"Pulse Rifle"
+		`"Benga" Atomic Thruster`
+		`"Benga" Atomic Steering`
+		Hyperdrive
+
+	engine 0 36
+	gun -6 -34 "Pulse Cannon"
+	gun 6 -34 "Pulse Cannon"
+	leak "leak" 60 50
+	explode "tiny explosion" 10
+	explode "small explosion" 20
+	explode "medium explosion" 5
+	"final explode" "final explosion small"
+	description "蚱蜢号由 亥族 设计，用作快速侦察艇，已受到寻求刺激者和矿工的青睐。同时，它也经常被那些希望以低成本寻求有效保护的海船长使用。"
+
+ship "Grasshopper" "Grasshopper (Tracker)"
+	outfits
+		"Hai Tracker Pod" 2
+		"Hai Tracker" 112
+		"Pebble Core"
+		"Hai Fissure Batteries"
+		"Hai Corundum Regenerator"
+		"Hai Williwaw Cooling" 2
+		"Quantum Keystone"
+		"Pulse Rifle"
+		`"Basrem" Atomic Thruster`
+		`"Basrem" Atomic Steering`
+		Hyperdrive
+
+ship "Grasshopper" "Grasshopper (Surveillance)"
+	outfits
+		"Pulse Cannon"
+		"Pebble Core"
+		"Hai Chasm Batteries"
+		"Supercapacitor"
+		"Outfit Scanner" 5
+		"Cargo Scanner" 5
+		"Hai Corundum Regenerator"
+		"Hai Williwaw Cooling" 2
+		"Quantum Keystone"
+		"Pulse Rifle"
+		`"Benga" Atomic Thruster`
+		`"Benga" Atomic Steering`
+		Hyperdrive
+
+ship "Grasshopper" "Grasshopper (Ion)"
+	outfits
+		"Ion Cannon"
+		"Pebble Core"
+		"Hai Fissure Batteries"
+		"Hai Williwaw Cooling"
+		"Hai Corundum Regenerator"
+		"Quantum Keystone"
+		"Pulse Rifle"
+		`"Benga" Atomic Steering`
+		`"Benga" Atomic Thruster`
+		Hyperdrive
+
+
+ship "Lightning Bug"
+	sprite "ship/hai lightning bug"
+	thumbnail "thumbnail/hai lightning bug"
+	attributes
+		category "Light Warship"
+		"cost" 3200000
+		"shields" 6700
+		"hull" 1700
+		"required crew" 4
+		"bunks" 10
+		"mass" 345
+		"drag" 4.8
+		"heat dissipation" .68
+		"fuel capacity" 600
+		"cargo space" 73
+		"outfit space" 278
+		"weapon capacity" 87
+		"engine capacity" 93
+		weapon
+			"blast radius" 84
+			"shield damage" 840
+			"hull damage" 420
+			"hit force" 1260
+	outfits
+		"Ion Cannon"
+		"Bullfrog Anti-Missile" 2
+		"Hai Cuttlefish Jammer"
+		"Geode Reactor"
+		"Hai Gorge Batteries"
+		"Hai Corundum Regenerator"
+		"Hai Williwaw Cooling"
+		"Quantum Keystone"
+		"Pulse Rifle" 2
+		`"Benga" Atomic Thruster`
+		`"Biroo" Atomic Steering`
+		"Hyperdrive"
+
+	engine -40 22
+	engine 40 22
+	gun 0 -40 "Ion Cannon"
+	turret -47 18 "Bullfrog Anti-Missile"
+	turret 47 18 "Bullfrog Anti-Missile"
+	leak "leak" 40 50
+	leak "flame" 40 30
+	explode "tiny explosion" 18
+	explode "small explosion" 36
+	explode "medium explosion" 24
+	explode "large explosion" 8
+	"final explode" "final explosion small"
+	description "闪电虫号是一艘小型防御舰，主要被海号用作护航船队。与许多昆虫一样，闪电虫在群体中效果最好：即使是少量的闪电虫也能用其配备的离子炮让最大的船只无能为力。"
+
+ship "Lightning Bug" "Lightning Bug (Phantom Pallet)"
+	outfits
+		"Ion Cannon"
+		"Bullfrog Anti-Missile" 2
+		"Hai Cuttlefish Jammer"
+		"Geode Reactor"
+		"Hai Gorge Batteries"
+		"Hai Corundum Regenerator"
+		"Hai Williwaw Cooling"
+		"Quantum Keystone"
+		"Pulse Rifle" 2
+		`"Benga" Atomic Thruster`
+		`"Biroo" Atomic Steering`
+		"Phantom Pallet" 7
+		"Hyperdrive"
+
+ship "Lightning Bug" "Lightning Bug (Pulse)"
+	outfits
+		"Hai Tracker Pod"
+		"Hai Tracker" 56
+		"Pulse Turret" 2
+		"Geode Reactor"
+		"Hai Gorge Batteries"
+		"Hai Corundum Regenerator"
+		"Pulse Rifle" 2
+		`"Biroo" Atomic Thruster`
+		`"Benga" Atomic Steering`
+		"Hyperdrive"
+
+ship "Lightning Bug" "Lightning Bug (Surveillance)"
+	outfits
+		"Hai Tracker Pod"
+		"Hai Tracker" 56
+		"Pulse Turret"
+		"Bullfrog Anti-Missile"
+		"Geode Reactor"
+		"Outfit Scanner" 5
+		"Cargo Scanner" 5
+		"Hai Williwaw Cooling"
+		"Hai Gorge Batteries"
+		"Hai Corundum Regenerator"
+		"Pulse Rifle" 2
+		`"Benga" Atomic Thruster`
+		`"Benga" Atomic Steering`
+		"Hyperdrive"
+
+ship "Lightning Bug" "Lightning Bug (Unfettered Shipyards)"
+	"variant map name" "Unfettered Shipyards"
+	outfits
+		"Pulse Cannon"
+		"Pulse Turret" 2
+		"Hai Corundum Regenerator"
+		"Hai Williwaw Cooling"
+		"Quantum Keystone"
+		"Value Detector"
+		"Pebble Core"
+		"Sand Cell"
+		"Hai Gorge Batteries"
+		"Pulse Rifle" 6
+		`"Benga" Atomic Thruster`
+		`"Biroo" Atomic Steering`
+		"Hyperdrive"
+
+
+ship "Ladybug"
+	sprite "ship/hai ladybug"
+	thumbnail "thumbnail/hai ladybug"
+	attributes
+		category "Medium Warship"
+		"cost" 8950000
+		"shields" 12300
+		"hull" 3600
+		"required crew" 9
+		"bunks" 33
+		"mass" 584
+		"drag" 7.8
+		"heat dissipation" .59
+		"fuel capacity" 900
+		"cargo space" 91
+		"outfit space" 460
+		"weapon capacity" 170
+		"engine capacity" 120
+
+		# Expensive features mentioned in description:
+		"ramscoop" 0.25
+		"cargo scan power" 5
+		"cargo scan efficiency" 16
+		"outfit scan power" 17
+		"outfit scan efficiency" 15
+		"tactical scan power" 25
+		"atmosphere scan" 100
+		"asteroid scan power" 30
+		
+		weapon
+			"blast radius" 100
+			"shield damage" 1000
+			"hull damage" 500
+			"hit force" 1500
+	outfits
+		"Ion Cannon" 2
+		"Hai Tracker Pod" 1
+		"Hai Tracker" 56
+		"Chameleon Anti-Missile"
+		"Pulse Turret"
+
+		"Hai Diamond Regenerator"
+		"Hai Williwaw Cooling" 2
+		"Hai Fissure Batteries"
+		"Hai Chasm Batteries"
+		"Supercapacitor"
+		"Boulder Reactor"
+		"Pulse Rifle" 7
+		
+		`"Bondir" Atomic Steering`
+		`"Biroo" Atomic Thruster`
+		"Hyperdrive"
+
+	gun 0 -69.5 "Hai Tracker Pod"
+	gun -12 -68.5 "Ion Cannon"
+	gun 12 -68.5 "Ion Cannon"
+	turret -36 3 "Chameleon Anti-Missile"
+	turret 36 3 "Pulse Turret"
+	engine -36 62 0.8
+	engine 36 62 0.8
+	explode "tiny explosion" 20
+	explode "small explosion" 45
+	explode "medium explosion" 50
+	explode "large explosion" 40
+	explode "huge explosion" 10
+	"final explode" "final explosion large"
+	description "这些装有传感器的勘探船回到了更加和平的海时代。尽管它们没有真正的冲压斗（海族从未开发过这项技术），但它们内置的收集鳃放大了所有船只中存在的天然冲压斗。这些昂贵的功能是这艘船被闪电虫取代的原因。"
+	description "然而，这艘船近年来经历了与人类海盗的战斗。拥有充足的护盾再生空间、良好的机动性以及深入海盗领地的攻击范围，他们的长眠已经结束。"
+
+ship "Ladybug" "Ladybug (Three Ion)"
+	outfits
+		"Ion Cannon" 3
+		"Bullfrog Anti-Missile" 2
+
+		"Hai Diamond Regenerator"
+		"Hai Williwaw Cooling" 2
+		"Hai Fissure Batteries"
+		"Hai Chasm Batteries"
+		"Supercapacitor"
+		"Boulder Reactor"
+		"Pulse Rifle" 7
+		
+		`"Bondir" Atomic Steering`
+		`"Biroo" Atomic Thruster`
+		"Hyperdrive"
+	gun "Ion Cannon"
+	gun "Ion Cannon"
+	gun "Ion Cannon"
+	turret "Bullfrog Anti-Missile"
+	turret "Bullfrog Anti-Missile"
+
+ship "Ladybug" "Ladybug (Pulse)"
+	outfits
+		"Pulse Cannon" 3
+		"Pulse Turret" 2
+
+		"Hai Diamond Regenerator" 2
+		"Hai Williwaw Cooling" 3
+		"Hai Fissure Batteries"
+		"Hai Chasm Batteries" 2
+		"Supercapacitor"
+		"Boulder Reactor"
+		"Pulse Rifle" 7
+		
+		`"Bondir" Atomic Steering`
+		`"Biroo" Atomic Thruster`
+		"Hyperdrive"
+	gun "Pulse Cannon"
+	gun "Pulse Cannon"
+	gun "Pulse Cannon"
+	turret "Pulse Turret"
+	turret "Pulse Turret"
+
+ship "Ladybug" "Ladybug (Tracker)"
+	outfits
+		"Hai Tracker Pod" 3
+		"Tracker Storage Pod" 5
+		"Hai Tracker" 308
+		"Pulse Turret"
+		"Chameleon Anti-Missile"
+
+		"Hai Diamond Regenerator"
+		"Hai Williwaw Cooling" 2
+		"Hai Fissure Batteries"
+		"Boulder Reactor"
+		"Pulse Rifle" 7
+		
+		`"Basrem" Atomic Steering`
+		`"Biroo" Atomic Steering`
+		`"Bondir" Atomic Thruster`
+		"Hyperdrive"
+	gun "Hai Tracker Pod"
+	gun "Hai Tracker Pod"
+	gun "Hai Tracker Pod"
+	turret "Chameleon Anti-Missile"
+	turret "Pulse Turret"
+
+
+ship "Pond Strider"
+	sprite "ship/hai pond strider"
+	thumbnail "thumbnail/hai pond strider"
+	attributes
+		category "Medium Warship"
+		"cost" 5250000
+		"shields" 10000
+		"hull" 3000
+		"required crew" 9
+		"bunks" 18
+		"mass" 429
+		"drag" 5.33
+		"hull repair rate" 1
+		"heat dissipation" .34
+		"fuel capacity" 300
+		"cargo space" 71
+		"outfit space" 354
+		"weapon capacity" 144
+		"engine capacity" 76
+		weapon
+			"blast radius" 200
+			"shield damage" 1500
+			"hull damage" 750
+			"hit force" 1750
+	outfits
+		"Railgun"
+		"Ion Cannon" 2
+		"Railgun Slug" 1000
+		"Chameleon Anti-Missile"
+		"Bullfrog Anti-Missile" 2
+		"Hai Corundum Regenerator" 2
+		"Hai Cuttlefish Jammer"
+		"Hai Gorge Batteries"
+		"Geode Reactor"
+		"Hai Williwaw Cooling" 2
+		"Quantum Keystone"
+		"Pulse Rifle" 9
+		`"Basrem" Atomic Thruster`
+		`"Biroo" Atomic Steering`
+		"Hyperdrive"
+		
+	engine -23 80
+	engine 23 80
+	gun 0 -76 "Railgun"
+	gun -15 -72 "Ion Cannon"
+	gun 15 -72 "Ion Cannon"
+	turret -18 -53 "Bullfrog Anti-Missile"
+	turret 18 -53 "Bullfrog Anti-Missile"
+	turret 0 14 "Chameleon Anti-Missile"
+	bay "Drone" -70 -45 left under
+		"launch effect" "hai launch"
+	bay "Drone" 70 -45 right under
+		"launch effect" "hai launch"
+	bay "Drone" -70 28 left under
+		"launch effect" "hai launch"
+	bay "Drone" 70 28 right under
+		"launch effect" "hai launch"
+	bay "Drone" -70 -45 over
+		"launch effect" "hai launch"
+	bay "Drone" 70 -45 over
+		"launch effect" "hai launch"
+	bay "Drone" -70 28 over
+		"launch effect" "hai launch"
+	bay "Drone" 70 28 over
+		"launch effect" "hai launch"
+	leak "leak" 40 50
+	leak "flame" 40 70
+	leak "big leak" 70 30
+	explode "tiny explosion" 20
+	explode "small explosion" 45
+	explode "medium explosion" 50
+	explode "large explosion" 40
+	explode "huge explosion" 10
+	"final explode" "final explosion large"
+	description "通过外星人外交获得船体修复技术后，海族升级了原来的池塘漫步者。这些改进大大减少了他们与无拘无束者的冲突中的伤亡，因为轻型池塘漫步者在收集受损的无人机时变得脆弱。除了让这艘船能够修复受损的无人机外，海族还巧妙地创新了船长磁轨炮，使池塘漫步者和跳蚤成为他们舰队的非常有效的战斗支持。"
+
+ship "Pond Strider" "Pond Strider (Tracker)"
+	outfits
+		"Hai Tracker Pod"
+		"Hai Tracker" 112
+		"Railgun" 2
+		"Railgun Slug" 2000
+		"Tracker Storage Pod" 2
+		"Chameleon Anti-Missile" 3
+		"Hai Diamond Regenerator"
+		"Hai Chasm Batteries"
+		"Boulder Reactor"
+		"Hai Williwaw Cooling" 2
+		"Quantum Keystone"
+		"Pulse Rifle" 9
+		`"Basrem" Atomic Thruster`
+		`"Biroo" Atomic Steering`
+		"Hyperdrive"
+
+ship "Pond Strider" "Pond Strider (Ion)"
+	outfits
+		"Railgun"
+		"Ion Cannon" 2
+		"Railgun Slug" 1000
+		"Chameleon Anti-Missile"
+		"Bullfrog Anti-Missile" 2
+		"Hai Corundum Regenerator"
+		"Supercapacitor"
+		"Boulder Reactor"
+		"Hai Williwaw Cooling" 3
+		"Quantum Keystone"
+		"Pulse Rifle" 9
+		`"Benga" Atomic Thruster`
+		`"Biroo" Atomic Steering`
+		"Hyperdrive"
+
+ship "Pond Strider" "Pond Strider (Pulse)"
+	outfits
+		"Pulse Cannon" 2
+		"Railgun"
+		"Railgun Slug" 1000
+		"Pulse Turret"
+		"Chameleon Anti-Missile" 2
+		"Hai Diamond Regenerator"
+		"Hai Chasm Batteries" 2
+		"Hai Gorge Batteries"
+		"Geode Reactor"
+		"Hai Williwaw Cooling" 2
+		"Quantum Keystone"
+		"Pulse Rifle" 9
+		`"Benga" Atomic Thruster`
+		`"Biroo" Atomic Steering`
+		"Hyperdrive"
+
+ship "Pond Strider" "Pond Strider (Railgun)"
+	outfits
+		"Railgun" 3
+		"Railgun Slug" 3000
+		"Chameleon Anti-Missile" 3
+		"Hai Corundum Regenerator"
+		"Hai Diamond Regenerator"
+		"Hai Chasm Batteries"
+		"Boulder Reactor"
+		"Hai Williwaw Cooling" 3
+		"Quantum Keystone"
+		"Pulse Rifle" 9
+		`"Benga" Atomic Thruster`
+		`"Biroo" Atomic Steering`
+		"Hyperdrive"
+
+
+
+ship "Sea Scorpion"
+	sprite "ship/hai sea scorpion"
+	thumbnail "thumbnail/hai sea scorpion"
+	attributes
+		category "Medium Warship"
+		"cost" 5450000
+		"shields" 15500
+		"hull" 4900
+		"required crew" 14
+		"bunks" 36
+		"mass" 735
+		"drag" 7.8
+		"heat dissipation" .47
+		"fuel capacity" 500
+		"cargo space" 45
+		"outfit space" 510
+		"weapon capacity" 188
+		"engine capacity" 117
+		weapon
+			"blast radius" 84
+			"shield damage" 840
+			"hull damage" 420
+			"hit force" 1260
+	outfits
+		`"Bondir" Atomic Steering`
+		`"Bondir" Atomic Thruster`
+		"Cargo Expansion"
+		"Chameleon Anti-Missile"
+		"Fuel Pod"
+		"Geode Reactor"
+		"Hai Diamond Regenerator"
+		"Hai Ravine Batteries"
+		"Hai Tracker" 336
+		"Hai Tracker Pod" 4
+		"Hai Williwaw Cooling"
+		Hyperdrive
+		"Pulse Rifle" 15
+		"Pulse Turret"
+		"Quantum Keystone"
+		"Tracker Storage Pod" 4
+		"Value Detector" 2
+
+	engine -23.5 68.5
+	engine 23.5 68.5
+	gun -13 -77.5
+	gun 13 -77.5
+	gun -27 -56
+	gun 27 -56
+	turret -35.5 24.5
+	turret 35.5 24.5
+	leak "leak" 40 50
+	leak "flame" 40 30
+	explode "tiny explosion" 24
+	explode "small explosion" 50
+	explode "medium explosion" 30
+	explode "large explosion" 14
+	"final explode" "final explosion medium"
+	description "海蝎号是几十年前设计的，作为发射跟踪器的移动平台。然而，直到最近，无拘无束才能够批量生产它们。虽然个体很脆弱，但与盾甲虫相比，制造成本的降低使得物质上处于劣势的无拘无束者能够在对抗他们的同胞时获得数量优势。"
+
+ship "Sea Scorpion" "Sea Scorpion (Tracker)"
+	outfits
+		"Hai Tracker Pod" 4
+		"Chameleon Anti-Missile" 2
+		"Tracker Storage Pod" 4
+		"Hai Tracker" 336
+		"Hai Williwaw Cooling" 2
+		"Hai Octopus Jammer"
+		"Boulder Reactor"
+		"Hai Ravine Batteries"
+		"Hai Diamond Regenerator"
+		`"Bondir" Atomic Thruster`
+		`"Bondir" Atomic Steering`
+		"Value Detector"
+		"Hyperdrive"
+
+ship "Sea Scorpion" "Sea Scorpion (Pulse)"
+	outfits
+		"Pulse Cannon" 4
+		"Pulse Turret" 2
+		"Boulder Reactor"
+		"Hai Williwaw Cooling" 2
+		"Hai Ravine Batteries"
+		"Supercapacitor" 5
+		"Hai Diamond Regenerator" 2
+		`"Biroo" Atomic Thruster`
+		`"Bondir" Atomic Steering`
+		"Value Detector"
+		"Hyperdrive"
+		"Pulse Rifle" 15
+
+ship "Sea Scorpion" "Sea Scorpion (Ion)"
+	outfits
+		"Ion Cannon" 3
+		"Hai Tracker Pod"
+		"Tracker Storage Pod"
+		"Hai Tracker" 84
+		"Boulder Reactor"
+		"Hai Fissure Batteries"
+		"Hai Diamond Regenerator" 2
+		`"Bondir" Atomic Thruster`
+		`"Bondir" Atomic Steering`
+		"Value Detector"
+		"Hyperdrive"
+		"Pulse Rifle" 15
+
+# These variants don't spawn normally and have larger crew counts to represent experimentation with ionic weapons.
+ship "Sea Scorpion" "Sea Scorpion (Ionic Blasters)"
+	crew 30
+	outfits
+		`"Biroo" Atomic Steering`
+		`"Bondir" Atomic Thruster`
+		"Boulder Reactor"
+		"Hai Williwaw Cooling" 2
+		"Hai Corundum Regenerator"
+		"Hai Diamond Regenerator"
+		"Hai Valley Batteries"
+		"Hyperdrive"
+		"Ion Cannon"
+		"Ionic Blaster Prototype" 2
+		"Ionic Turret Prototype"
+		"Pulse Rifle" 36
+
+ship "Sea Scorpion" "Sea Scorpion (Shredder)"
+	outfits
+		`"Biroo" Atomic Steering`
+		`"Biroo" Atomic Thruster`
+		"Boulder Reactor"
+		"Bullfrog Anti-Missile"
+		"Hai Diamond Regenerator" 2
+		"Hai Gorge Batteries"
+		"Hai Williwaw Cooling" 4
+		"Hyperdrive"
+		"Pulse Cannon" 2
+		"Pulse Rifle" 36
+		"Pulse Turret"
+		"Quantum Keystone"
+		"Tripulse Shredder" 2
+
+
+
+ship "Scarab"
+	sprite "ship/hai scarab"
+	thumbnail "thumbnail/hai scarab"
+	attributes
+		category "Transport"
+		"cost" 1620000
+		"shields" 4600
+		"hull" 1500
+		"required crew" 4
+		"bunks" 27
+		"mass" 221
+		"drag" 4.6
+		"heat dissipation" .73
+		"fuel capacity" 400
+		"cargo space" 44
+		"outfit space" 231
+		"weapon capacity" 49
+		"engine capacity" 93
+		weapon
+			"blast radius" 52
+			"shield damage" 540
+			"hull damage" 230
+			"hit force" 780
+	outfits
+		"Bullfrog Anti-Missile"
+		"Chameleon Anti-Missile"
+		"Pebble Core"
+		"Hai Fissure Batteries"
+		"Hai Corundum Regenerator"
+		"Hai Williwaw Cooling"
+		"Quantum Keystone"
+		"Pulse Rifle"
+		`"Benga" Atomic Thruster`
+		`"Benga" Atomic Steering`
+		"Hyperdrive"
+
+	engine -29 27
+	engine 29 27
+	turret 0 -30 "Bullfrog Anti-Missile"
+	turret 0 38 "Chameleon Anti-Missile"
+	leak "leak" 70 50
+	leak "flame" 50 40
+	explode "tiny explosion" 14
+	explode "small explosion" 28
+	explode "medium explosion" 12
+	explode "large explosion" 4
+	"final explode" "final explosion small"
+	description `圣甲虫是闪电虫勤劳的近亲，它的受欢迎程度只增不减，从未下降。该统计数据偶尔会连续几年以千分之一的百分点来衡量，但这对标题来说并不重要。这种轻型运输工具通常是希望在继续满足自由精神的同时赚钱的 Grasshopper 飞行员的选择。它还足够大，可以容纳一个大海族家庭，使其成为海族空间中几乎任何零工的完美选择。`
+
+
+
+ship "Shield Beetle"
+	sprite "ship/hai shield beetle"
+	thumbnail "thumbnail/hai shield beetle"
+	attributes
+		category "Heavy Warship"
+		"cost" 17900000
+		"shields" 32000
+		"hull" 9800
+		"required crew" 47
+		"bunks" 95
+		"mass" 1881
+		"drag" 16.3
+		"heat dissipation" .33
+		"fuel capacity" 500
+		"cargo space" 142
+		"outfit space" 798
+		"weapon capacity" 333
+		"engine capacity" 150
+		weapon
+			"blast radius" 400
+			"shield damage" 4000
+			"hull damage" 2000
+			"hit force" 3000
+	outfits
+		"Ion Cannon" 4
+		"Hai Tracker Pod" 4
+		"Hai Tracker" 280
+		"Tracker Storage Pod" 2
+		"Bullfrog Anti-Missile" 4
+		"Hai Cuttlefish Jammer" 3
+		"Boulder Reactor"
+		"Geode Reactor"
+		"Hai Valley Batteries"
+		"Hai Diamond Regenerator"
+		"Hai Williwaw Cooling" 3
+		"Quantum Keystone"
+		"Pulse Rifle" 55
+		`"Bondir" Atomic Thruster`
+		`"Bufaer" Atomic Steering`
+		"Hyperdrive"
+	engine -44 133
+	engine 44 133
+	gun -22 -102 "Ion Cannon"
+	gun 22 -102 "Ion Cannon"
+	gun -34 -68 "Hai Tracker Pod"
+	gun 34 -68 "Hai Tracker Pod"
+	gun -49 -38 "Ion Cannon"
+	gun 49 -38 "Ion Cannon"
+	gun -61 -14 "Hai Tracker Pod"
+	gun 61 -14 "Hai Tracker Pod"
+	turret -39 48
+	turret 39 48
+	turret -57 75
+	turret 57 75
+	leak "leak" 40 50
+	leak "flame" 50 80
+	leak "big leak" 60 50
+	explode "tiny explosion" 50
+	explode "small explosion" 50
+	explode "medium explosion" 50
+	explode "large explosion" 50
+	explode "huge explosion" 20
+	"final explode" "final explosion large"
+	description "这艘船是在几千年前首次建造的，当时正值海历史上一个更加暴力的时期即将结束。从那时起，它就成为海军唯一可以使用的重型战舰。盾甲虫号是一艘多功能战舰，海族用它来保护他们的商船队，无拘无束者则用它来攻击那些同样的商船队。"
+
+ship "Shield Beetle" "Shield Beetle (Police)"
+	outfits
+		"Ion Cannon" 4
+		"Hai Tracker Pod" 4
+		"Hai Tracker" 224
+		"Chameleon Anti-Missile" 2
+		"Boulder Reactor" 2
+		"Hai Chasm Batteries" 2
+		"Hai Fissure Batteries"
+		"Hai Gorge Batteries"
+		"Outfits Expansion" 4
+		"Hai Diamond Regenerator" 2
+		"Outfit Scanner" 7
+		"Cargo Scanner" 7
+		"Brig"
+		"Hai Williwaw Cooling" 4
+		"Pulse Rifle" 55
+		`"Bondir" Atomic Thruster`
+		`"Bufaer" Atomic Steering`
+		"Hyperdrive"
+	gun "Ion Cannon"
+	gun "Ion Cannon"
+	gun "Hai Tracker Pod"
+	gun "Hai Tracker Pod"
+	gun "Ion Cannon"
+	gun "Ion Cannon"
+	gun "Hai Tracker Pod"
+	gun "Hai Tracker Pod"
+	turret
+	turret
+	turret "Chameleon Anti-Missile"
+	turret "Chameleon Anti-Missile"
+
+ship "Shield Beetle" "Shield Beetle (Unfettered)"
+	outfits
+		"Ion Cannon" 4
+		"Hai Tracker Pod" 4
+		"Hai Tracker" 252
+		"Tracker Storage Pod"
+		"Bullfrog Anti-Missile" 4
+		"Hai Octopus Jammer" 3
+		"Boulder Reactor"
+		"Geode Reactor"
+		"Hai Valley Batteries"
+		"Hai Diamond Regenerator"
+		"Hai Williwaw Cooling" 3
+		"Value Detector" 2
+		"Quantum Keystone"
+		"Pulse Rifle" 65
+		`"Bondir" Atomic Thruster`
+		`"Bufaer" Atomic Steering`
+		"Hyperdrive"
+
+ship "Shield Beetle" "Shield Beetle (Unfettered Shipyards)"
+	"variant map name" "Unfettered Shipyards"
+	outfits
+		"Ion Cannon" 2
+		"Hai Tracker" 420
+		"Hai Tracker Pod" 6
+		"Tracker Storage Pod" 3
+		"Pulse Turret" 3
+		"Chameleon Anti-Missile"
+		"Hai Corundum Regenerator"
+		"Hai Diamond Regenerator"
+		"Hai Octopus Jammer" 3
+		"Hai Williwaw Cooling" 4
+		"Outfits Expansion" 2
+		"Value Detector" 2
+		"Geode Reactor" 2
+		"Pebble Core"
+		"Hai Gorge Batteries"
+		"Quantum Keystone"
+		"Pulse Rifle" 75
+		`"Bondir" Atomic Thruster`
+		`"Bufaer" Atomic Steering`
+		"Hyperdrive"
+
+ship "Shield Beetle" "Shield Beetle (Jump)"
+	outfits
+		"Ion Cannon" 4
+		"Hai Tracker Pod" 4
+		"Hai Tracker" 224
+		"Chameleon Anti-Missile" 2
+		"Boulder Reactor" 2
+		"Hai Chasm Batteries" 2
+		"Hai Fissure Batteries"
+		"Hai Gorge Batteries"
+		"Outfits Expansion" 4
+		"Hai Diamond Regenerator" 2
+		"Fuel Pod" 3
+		"Hai Williwaw Cooling" 4
+		"Pulse Rifle" 55
+		`"Bondir" Atomic Thruster`
+		`"Bufaer" Atomic Steering`
+		"Jump Drive"
+	gun "Ion Cannon"
+	gun "Ion Cannon"
+	gun "Hai Tracker Pod"
+	gun "Hai Tracker Pod"
+	gun "Ion Cannon"
+	gun "Ion Cannon"
+	gun "Hai Tracker Pod"
+	gun "Hai Tracker Pod"
+	turret
+	turret
+	turret "Chameleon Anti-Missile"
+	turret "Chameleon Anti-Missile"
+
+ship "Shield Beetle" "Shield Beetle (Jump, Tracker)"
+	outfits
+		"Hai Tracker Pod" 8
+		"Hai Tracker" 448
+		"Pulse Turret" 4
+		"Boulder Reactor" 2
+		"Hai Ravine Batteries"
+		"Outfits Expansion" 4
+		"Hai Diamond Regenerator" 2
+		"Fuel Pod" 3
+		"Hai Williwaw Cooling" 6
+		"Pulse Rifle" 47
+		`"Bondir" Atomic Thruster`
+		`"Bufaer" Atomic Steering`
+		"Jump Drive"
+
+ship "Shield Beetle" "Shield Beetle (Pulse)"
+	outfits
+		"Ion Cannon" 2
+		"Pulse Cannon" 6
+		"Pulse Turret" 4
+		"Boulder Reactor"
+		"Geode Reactor"
+		"Hai Ravine Batteries"
+		"Hai Diamond Regenerator" 2
+		"Hai Williwaw Cooling" 3
+		"Pulse Rifle" 27
+		`"Bondir" Atomic Thruster`
+		`"Bufaer" Atomic Steering`
+		"Hyperdrive"
+	gun "Ion Cannon"
+	gun "Ion Cannon"
+	gun "Pulse Cannon"
+	gun "Pulse Cannon"
+	gun "Pulse Cannon"
+	gun "Pulse Cannon"
+	gun "Pulse Cannon"
+	gun "Pulse Cannon"
+
+ship "Shield Beetle" "Shield Beetle (Tracker)"
+	outfits
+		"Hai Tracker Pod" 8
+		"Hai Tracker" 560
+		"Tracker Storage Pod" 4
+		"Pulse Turret" 4
+		"Boulder Reactor"
+		"Geode Reactor"
+		"Hai Valley Batteries"
+		"Hai Diamond Regenerator"
+		"Hai Williwaw Cooling" 2
+		"Hai Cuttlefish Jammer" 3
+		"Quantum Keystone"
+		"Pulse Rifle" 32
+		`"Bondir" Atomic Thruster`
+		`"Bufaer" Atomic Steering`
+		"Hyperdrive"
+
+ship "Shield Beetle" "Shield Beetle (Tripulse Ionic Turret)"
+	crew 80
+	outfits
+		"Ion Cannon" 2
+		"Pulse Cannon" 2
+		"Pulse Turret"
+		"Tripulse Shredder" 2
+		"Hai Tracker" 112
+		"Hai Tracker Pod" 2
+		"Chameleon Anti-Missile" 2
+		"Bullfrog Anti-Missile"
+		"Hai Diamond Regenerator"
+		"Hai Octopus Jammer"
+		"Hai Williwaw Cooling" 2
+		Hyperdrive
+		"Quantum Keystone"
+		"Value Detector"
+		"Hai Gorge Batteries"
+		"Boulder Reactor" 2
+		`"Basrem" Atomic Steering`
+		`"Biroo" Atomic Steering`
+		`"Bufaer" Atomic Thruster`
+		"Pulse Rifle" 85
+
+
+
+# Flagship of the Unfettered Hai, filled with the spoils of wars against Korath and Wanderers:
+ship "Emperor Beetle"
+	sprite "ship/hai emperor beetle"
+	thumbnail "thumbnail/hai emperor beetle"
+	attributes
+		category "Heavy Warship"
+		"cost" 35100000
+		"shields" 26700
+		"hull" 19600
+		"required crew" 83
+		"bunks" 91
+		"mass" 2367
+		"drag" 18.1
+		"outfit space" 891
+		"cargo space" 27
+		"weapon capacity" 352
+		"engine capacity" 139
+		# Expensive features inherited from Ladybug-era technology, with some fuel (and improved heat dissipation):
+		"heat dissipation" 0.38
+		"tactical scan power" 30
+		"ramscoop" .5
+		"fuel capacity" 600
+		weapon
+			"shield damage" 5000
+			"hull damage" 2500
+			# High hit force and wide radius for a spectacle if the leader dies.
+			# This should be adjusted downward if the ship is reused more widely.
+			"blast radius" 800
+			"hit force" 8000
+	outfits
+		"Tripulse Shredder" 2
+		"Ionic Blaster Prototype" 4
+		"Pulse Turret" 4
+		"Warder Anti-Missile" 2
+		
+		"Large Heat Shunt"
+		"Fuel Processor"
+		"Jump Drive"
+		"Quantum Keystone"
+		"Systems Core (Large)"
+		"Systems Core (Medium)"
+		"Wanderer Ramscoop"
+		
+		"White Sun Reactor"
+		"Large Biochemical Cell"
+		
+		"Afterburner (Comet Class)"
+		"Steering (Planetary Class)"
+		"Thruster (Planetary Class)"
+		
+		"Pulse Rifle" 65
+		"Fragmentation Grenades" 65
+		"Thermal Repeater Rifle" 25
+	engine -43 131
+		zoom 0.85
+	engine 43 131
+		zoom 0.85
+	engine 0 126.5
+		zoom 0.5
+	"reverse engine" -61 -18.5
+		angle -35
+	"reverse engine" 62 -18.5
+		angle 35
+	"steering engine" -61 -18.5
+		zoom 0.6
+		angle 145
+		left
+	"steering engine" 62 -18.5
+		zoom 0.6
+		angle 215
+		right
+	"steering engine" -73 46
+		zoom 0.5
+		angle 80
+		left
+	"steering engine" 73 46
+		zoom 0.5
+		angle -80
+		right
+	"steering engine" -43 131
+		zoom 0.45
+		right
+	"steering engine" 43 131
+		zoom 0.45
+		left
+	gun 12.5 -128
+	gun -10 -128
+	gun -23 -102.5
+	gun 24.5 -102.5
+	gun -42.5 -53.5 "Tripulse Shredder"
+	gun 43.5 -54.5 "Tripulse Shredder"
+	turret 0.5 -25.5 "Warder Anti-Missile"
+	turret -47.5 11.5
+	turret 48.5 11.5
+	turret 62.5 76
+	turret -61.5 76.5
+	turret 0 107.5 "Warder Anti-Missile"
+	leak "leak" 35 45
+	leak "flame" 60 95
+	leak "big leak" 50 45
+	explode "tiny explosion" 60
+	explode "small explosion" 51
+	explode "medium explosion" 54
+	explode "large explosion" 53
+	explode "huge explosion" 22
+	"final explode" "final explosion large"
+	description "在盾甲虫号之前，海族使用的是泰坦甲虫号，这是一艘设计类似的较弱但能力更强的舰艇。帝王甲虫号是一艘涂有多层现代装甲的泰坦，使其成为比海族现代建造的任何其他战舰都更强大的战舰。不幸的是，先进的功能相当昂贵，因此这些船很少用作旗舰和战利品船。"
+	description "由于它的目的不是掠夺，而是为了领导光荣的战斗，许多货舱被拆除并改造成用于武器和防御改进的空间。这一改变是以增加质量和降低敏捷性为代价的，但这是无拘无束者非常愿意做出的牺牲。"
+	description "帝甲虫号不仅仅是一艘船，它的建造目的是为了激发敌人的恐惧，让他们知道他们面对的不是简单的海，而是在他们指挥下的无拘无束的军事领导人。有些人认为以这种方式展示他们领导人的船只是愚蠢的，但无拘无束者并不这么想。这艘船的建造能够承受比任何普通盾甲虫更多的惩罚，同时仍然能够造成自身的伤害。"
+
+
+
+ship "Solifuge"
+	sprite "ship/hai solifuge"
+	thumbnail "thumbnail/hai solifuge"
+	attributes
+		category "Heavy Warship"
+		licenses
+			"Unfettered Militia"
+		"cost" 22800000
+		"shields" 37800
+		"hull" 11000
+		"required crew" 62
+		"bunks" 118
+		"mass" 2590
+		"drag" 30
+		"heat dissipation" .22
+		"fuel capacity" 600
+		"cargo space" 142
+		"outfit space" 828
+		"weapon capacity" 342
+		"engine capacity" 166
+		weapon
+			"blast radius" 450
+			"shield damage" 4500
+			"hull damage" 2250
+			"hit force" 3500
+	outfits
+		"Hai Tracker Pod"
+		"Hai Tracker" 56
+		"Ion Cannon" 4
+		"Pulse Turret" 2
+		"Chameleon Anti-Missile"
+		"Bullfrog Anti-Missile" 4
+		"Boulder Reactor" 2
+		"Hai Gorge Batteries"
+		"Hai Diamond Regenerator"
+		"Hai Williwaw Cooling" 6
+		"Quantum Keystone"
+		"Pulse Rifle" 62
+		`"Benga" Atomic Steering`
+		`"Bufaer" Atomic Steering`
+		`"Bondir" Atomic Thruster`
+		"Hyperdrive"
+		
+	engine -28 135.5
+	engine 28 135.5
+	gun 0 -140 "Hai Tracker Pod"
+	gun -11.5 -138.5 "Ion Cannon"
+	gun 11.5 -138.5 "Ion Cannon"
+	gun -9.5 -101 "Ion Cannon"
+	gun 9.5 -101 "Ion Cannon"
+	turret 0 -109.5 "Chameleon Anti-Missile"
+	turret 54.5 -48.5 "Bullfrog Anti-Missile"
+	turret -54.5 -48.5 "Bullfrog Anti-Missile"
+	turret 55 1 "Pulse Turret"
+	turret -55 1 "Pulse Turret"
+	turret 54.5 50.5 "Bullfrog Anti-Missile"
+	turret -54.5 50.5 "Bullfrog Anti-Missile"
+	bay "Fighter" -51.5 -71 under
+		"launch effect" "hai launch"
+	bay "Fighter" 51.5 -71 under
+		"launch effect" "hai launch"
+	bay "Fighter" -58.5 2 under
+		"launch effect" "hai launch"
+	bay "Fighter" 58.5 2 under
+		"launch effect" "hai launch"
+	bay "Fighter" -51.5 76 under
+		"launch effect" "hai launch"
+	bay "Fighter" 51.5 76 under
+		"launch effect" "hai launch"
+	leak "leak" 40 50
+	leak "flame" 60 70
+	leak "big leak" 70 50
+	explode "tiny explosion" 50
+	explode "small explosion" 50
+	explode "medium explosion" 50
+	explode "large explosion" 50
+	explode "huge explosion" 20
+	"final explode" "final explosion large"
+	description `阿尔法人的“礼物使者”给无拘无束的人留下了深刻的印象，他们努力建造自己的战斗机航母，以更好地利用他们的跳跃驱动器供应。`
+
+ship "Solifuge" "Solifuge (Jump)"
+	outfits
+		"Hai Tracker Pod"
+		"Hai Tracker" 56
+		"Ion Cannon" 4
+		"Pulse Turret" 2
+		"Chameleon Anti-Missile"
+		"Bullfrog Anti-Missile" 4
+		"Boulder Reactor" 2
+		"Hai Gorge Batteries"
+		"Hai Diamond Regenerator"
+		"Hai Williwaw Cooling" 6
+		"Pulse Rifle" 86
+		`"Benga" Atomic Steering`
+		`"Bufaer" Atomic Steering`
+		`"Bondir" Atomic Thruster`
+		"Jump Drive"
+
+ship "Solifuge" "Solifuge (Jump, Pulse)"
+	outfits
+		"Ion Cannon" 2
+		"Pulse Cannon" 3
+		"Pulse Turret" 5
+		"Bullfrog Anti-Missile" 2
+		"Boulder Reactor" 2
+		"Hai Fissure Batteries"
+		"Hai Corundum Regenerator"
+		"Hai Diamond Regenerator"
+		"Hai Williwaw Cooling" 8
+		"Pulse Rifle" 71
+		`"Benga" Atomic Steering`
+		`"Bufaer" Atomic Steering`
+		`"Bondir" Atomic Thruster`
+		"Jump Drive"
+	gun "Pulse Cannon"
+	gun "Pulse Cannon"
+	gun "Pulse Cannon"
+	gun "Ion Cannon"
+	gun "Ion Cannon"
+
+ship "Solifuge" "Solifuge (Jump, Tracker)"
+	outfits
+		"Hai Tracker Pod" 5
+		"Hai Tracker" 280
+		"Pulse Turret" 4
+		"Chameleon Anti-Missile"
+		"Bullfrog Anti-Missile" 2
+		"Boulder Reactor" 2
+		"Hai Gorge Batteries"
+		"Hai Corundum Regenerator"
+		"Hai Diamond Regenerator" 2
+		"Hai Williwaw Cooling" 6
+		"Pulse Rifle" 68
+		`"Benga" Atomic Steering`
+		`"Bufaer" Atomic Steering`
+		`"Bondir" Atomic Thruster`
+		"Jump Drive"
+
+ship "Solifuge" "Solifuge (Pulse)"
+	outfits
+		"Ion Cannon" 2
+		"Pulse Cannon" 3
+		"Pulse Turret" 5
+		"Bullfrog Anti-Missile" 2
+		"Boulder Reactor" 2
+		"Hai Fissure Batteries"
+		"Hai Corundum Regenerator"
+		"Hai Diamond Regenerator"
+		"Hai Williwaw Cooling" 8
+		"Pulse Rifle" 62
+		`"Benga" Atomic Steering`
+		`"Bufaer" Atomic Steering`
+		`"Bondir" Atomic Thruster`
+		"Hyperdrive"
+	gun "Pulse Cannon"
+	gun "Pulse Cannon"
+	gun "Pulse Cannon"
+	gun "Ion Cannon"
+	gun "Ion Cannon"
+
+ship "Solifuge" "Solifuge (Tracker)"
+	outfits
+		"Hai Tracker Pod" 5
+		"Hai Tracker" 280
+		"Pulse Turret" 4
+		"Chameleon Anti-Missile"
+		"Bullfrog Anti-Missile" 2
+		"Boulder Reactor" 2
+		"Hai Gorge Batteries"
+		"Hai Corundum Regenerator"
+		"Hai Diamond Regenerator" 2
+		"Hai Williwaw Cooling" 6
+		"Pulse Rifle" 59
+		`"Benga" Atomic Steering`
+		`"Bufaer" Atomic Steering`
+		`"Bondir" Atomic Thruster`
+		"Hyperdrive"
+
+
+
+ship "Violin Spider"
+	sprite "ship/hai violin spider"
+	thumbnail "thumbnail/hai violin spider"
+	attributes
+		category "Fighter"
+		"cost" 139000
+		"shields" 1400
+		"hull" 600
+		"required crew" 1
+		"bunks" 1
+		"mass" 31
+		"drag" 0.9
+		"heat dissipation" .7
+		"outfit space" 92
+		"weapon capacity" 23
+		"engine capacity" 30
+		weapon
+			"blast radius" 12
+			"shield damage" 120
+			"hull damage" 60
+			"hit force" 180
+	outfits
+		"Hai Tracker Pod"
+		"Hai Tracker" 56
+		"Pebble Core"
+		Supercapacitor
+		"Hai Williwaw Cooling"
+		"Pulse Rifle"
+		`"Basrem" Atomic Steering`
+		`"Basrem" Atomic Thruster`
+
+	engine -15 30
+	engine 15 30
+	gun 0 -31 "Hai Tracker Pod"
+	turret 0 5
+	leak "leak" 60 50
+	explode "tiny explosion" 15
+	explode "small explosion" 5
+	description `海战斗机配备了大多数人认为最先进的技术，但所有这些高科技都是有代价的。`
+	description "战斗机没有配备超光速引擎。除非您的舰队中有一艘带有战斗机舱的舰艇，否则您无法携带战斗机。"
+
+ship "Violin Spider" "Violin Spider (Pulse)"
+	outfits
+		"Pulse Cannon"
+		"Pebble Core"
+		"Hai Chasm Batteries"
+		"Hai Williwaw Cooling"
+		"Quantum Keystone"
+		"Pulse Rifle"
+		`"Basrem" Atomic Steering`
+		`"Basrem" Atomic Thruster`
+
+
+
+ship "Water Bug"
+	sprite "ship/hai water bug"
+	thumbnail "thumbnail/hai water bug"
+	attributes
+		category "Light Freighter"
+		"cost" 6500000
+		"shields" 7900
+		"hull" 4500
+		"required crew" 5
+		"bunks" 29
+		"mass" 461
+		"drag" 7.7
+		"heat dissipation" .58
+		"fuel capacity" 600
+		"cargo space" 197
+		"outfit space" 368
+		"weapon capacity" 145
+		"engine capacity" 64
+		weapon
+			"blast radius" 124
+			"shield damage" 1240
+			"hull damage" 620
+			"hit force" 1860
+	outfits
+		"Hai Tracker Pod" 2
+		"Hai Tracker" 168
+		"Tracker Storage Pod" 2
+		"Pulse Turret"
+		"Chameleon Anti-Missile" 2
+		"Geode Reactor"
+		"Hai Gorge Batteries"
+		"Hai Diamond Regenerator"
+		"Hai Williwaw Cooling"
+		"Quantum Keystone"
+		`"Basrem" Reverse Thruster`
+		`"Benga" Atomic Thruster`
+		`"Benga" Atomic Steering`
+		"Hyperdrive"
+	engine -50 33
+	engine 50 33
+	gun -24 -53 "Hai Tracker Pod"
+	gun 24 -53 "Hai Tracker Pod"
+	turret 0 -10 "Pulse Turret"
+	turret -17 17 "Chameleon Anti-Missile"
+	turret 17 17 "Chameleon Anti-Missile"
+	leak "leak" 60 50
+	leak "flame" 40 50
+	leak "big leak" 40 30
+	explode "small explosion" 15
+	explode "medium explosion" 30
+	explode "large explosion" 20
+	explode "huge explosion" 5
+	"final explode" "final explosion medium"
+	description "水虫的设计几乎与蚜虫一样古老，但直到最近它才被广泛使用。无拘无束的海虫的攻击性激增，导致更强硬、防守更严密的水虫比它的弟弟蚜虫更受欢迎。 Water Bug 现在是使用最广泛的 亥族 货船，占所有 亥族 商船队的大部分。"
+
+ship "Water Bug" "Water Bug (Phantom Pallet)"
+	outfits
+		"Hai Tracker Pod" 2
+		"Hai Tracker" 168
+		"Tracker Storage Pod" 2
+		"Pulse Turret"
+		"Chameleon Anti-Missile" 2
+		"Geode Reactor"
+		"Hai Gorge Batteries"
+		"Hai Diamond Regenerator"
+		"Hai Williwaw Cooling"
+		"Quantum Keystone"
+		`"Basrem" Reverse Thruster`
+		`"Benga" Atomic Thruster`
+		`"Benga" Atomic Steering`
+		"Hyperdrive"
+		"Phantom Pallet" 7
+
+ship "Water Bug" "Water Bug (Jump)"
+	outfits
+		"Hai Tracker Pod" 2
+		"Hai Tracker" 112
+		"Pulse Turret"
+		"Chameleon Anti-Missile" 2
+		"Geode Reactor"
+		"Hai Gorge Batteries"
+		"Hai Chasm Batteries"
+		"Hai Diamond Regenerator"
+		"Hai Williwaw Cooling"
+		"Quantum Keystone"
+		"Pulse Rifle" 8
+		`"Benga" Atomic Thruster`
+		`"Benga" Atomic Steering`
+		"Jump Drive"
+
+ship "Water Bug" "Water Bug (Pulse)"
+	outfits
+		"Hai Tracker Pod" 2
+		"Hai Tracker" 112
+		"Pulse Turret" 3
+		"Geode Reactor"
+		"Hai Gorge Batteries"
+		"Hai Chasm Batteries"
+		"Hai Diamond Regenerator"
+		"Hai Williwaw Cooling"
+		"Pulse Rifle" 3
+		`"Benga" Atomic Thruster`
+		`"Benga" Atomic Steering`
+		"Hyperdrive"

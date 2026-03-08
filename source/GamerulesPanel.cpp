@@ -478,13 +478,13 @@ void GamerulesPanel::DrawGamerules()
 			switch(gamerules.FightersHitWhenDisabled())
 			{
 			case Gamerules::FighterDodgePolicy::ALL:
-				text = "all";
+				text = "全部";
 				break;
 			case Gamerules::FighterDodgePolicy::ONLY_PLAYER:
-				text = "player";
+				text = "仅玩家";
 				break;
 			case Gamerules::FighterDodgePolicy::NONE:
-				text = "none";
+				text = "无";
 				break;
 			}
 		}

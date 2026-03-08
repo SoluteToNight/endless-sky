@@ -1,0 +1,102 @@
+# Copyright (c) 2022 by Saugia
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program. If not, see <https://www.gnu.org/licenses/>.
+
+
+event "gegno space label"
+	galaxy "label gegno"
+		sprite label/gegno
+
+
+event "gegno: civilian suspicion"
+	government "Gegno"
+		"send untranslated hails"
+		"friendly hail" "gegno untranslated"
+
+
+event "gegno: quarg talks"
+
+
+event "gegno: apprehension"
+
+
+event "gegno: vi occupy zydee"
+	system "Vesvii"
+		fleet "Scin Warfleet" 2700
+		fleet "Vi Warfleet" 2400
+	system "Kneirc"
+		government "Gegno Vi"
+		attributes "gegno" "vi"
+		fleet "Small Vi" 1400
+		fleet "Vi Warfleet" 3300
+		fleet "Small Scin" 1900
+		fleet "Scin Warfleet" 3000
+	planet "Zydee"
+		attributes "gegno" "vi" "moon"
+		description `有证据表明，附近的杰格诺·斯金 (Gegno Scin) 试图在这颗贫瘠的卫星上建立存在，其形式是在地表散布几座部分建造的建筑物和着陆区。然而，最近，反对派盖格诺·维派出了自己的部队来控制该星系，并开始了一系列改造现有基础设施并建立自己的哨所的行动，以他们的名义声称拥有月球。`
+		spaceport `维族为分布在月球上的战士们建立了临时着陆区和前哨站，比如这个。虽然他们的人数不过一个小村庄的数量，但在场的人在地面上的时间里已经取得了相当大的成就，而上面的舰队则在保护他们。`
+		government "Gegno Vi"
+		"required reputation" 1
+	planet "Ghneoe"
+		description `由于系统中心有双星，Ghneoe 的轨道周期主要是一个非常长的旱季。然而，在一年中的一小部分时间里，Ghneoe 经历了强烈的水循环，导致绿色植物和野生动物活动蓬勃发展，形成了一个短暂但繁荣的生态系统。许多动植物已经适应了如此剧烈的气候变化，一旦强热循环恢复，它们就会恢复休眠状态。`
+		description `与它的卫星不同，格尼奥几乎没有看到来自杰格诺维或斯辛的殖民努力，这可能是由于异常的天气周期、持续的系统战争，或两者的结合。`
+
+
+event "gegno: unified defense"
+	government "Gegno Vi"
+		"attitude toward"
+			"Gegno Scin" 1
+	government "Gegno Scin"
+		"attitude toward"
+			"Gegno Vi" 1
+	government "Gegno"
+		"attitude toward"
+			"Gegno Scin" 1
+			"Gegno Vi" 1
+	government "Quarg (Gegno)"
+		"attitude toward"
+			"Gegno" 1
+			"Gegno Vi" 1
+			"Gegno Scin" 1
+	system "Vesvii"
+		remove fleet "Vi Warfleet"
+		remove fleet "Scin Warfleet"
+		add fleet "Gegno Miners" 1000
+	system "Zeinar"
+		add fleet "Scin Warfleet" 600
+		add fleet "Quarg (Gegno)" 1000
+	system "Scija"
+		add fleet "Vi Warfleet" 600
+		add fleet "Quarg (Gegno)" 1000
+	system "Heutesl"
+		add fleet "Scin Warfleet" 600
+		add fleet "Vi Warfleet" 600
+		add fleet "Large Quarg (Gegno)" 600
+
+
+event "gegno leave quarg space"
+	system "Aleit"
+		remove fleet "Gegno Basic"
+		remove fleet "Gegno Cargo"
+	system "Elifennka"
+		remove fleet "Gegno Miners"
+	system "Yllke"
+		remove fleet "Gegno Basic"
+		remove fleet "Gegno Cargo"
+		remove fleet "Gegno Miners"
+	system "Heutesl"
+		remove fleet "Quarg (Gegno)"
+
+
+# Will be defined in the future.
+
+event "Vesvii War"

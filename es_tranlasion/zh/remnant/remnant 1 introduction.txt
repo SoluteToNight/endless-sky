@@ -1,0 +1,3924 @@
+# Copyright (c) 2017 by Michael Zahniser
+# Copyright (c) 2018 by Zitchas
+# Copyright (c) 2022 by williaji
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program. If not, see <https://www.gnu.org/licenses/>.
+
+mission "First Contact: Remnant"
+	landing
+	invisible
+	source
+		government "Remnant"
+	on offer
+		conversation
+			`虽然他们身材异常高大，皮肤黝黑，但这里的人看起来都是人类。然而，您不会从建筑中了解到这一点：这些具有弯曲、扭曲表面和分叉拱门的建筑物看起来比您以前见过的任何人类住宅都更加陌生。`
+			`更奇怪的是，没有人说话：这里没有你会联想到太空港的常见背景杂音。相反，当地人用快速而优雅的手语进行交流，他们的双手在空中划出的弧线几乎比你的眼睛跟随的还要快。`
+			`他们中的一些人接近你的船，其中一个大声向你打招呼，但他没有说话，而是用高亢、单调的口号唱道：“你听懂祖先的语言吗？”`
+			choice
+				`（说：“是的，我愿意。”）`
+				`（尝试喊出“是的，我愿意。”）`
+					goto chant
+
+			`	Their expressions are inscrutable; you aren't sure if they even understood you or not. They turn away from you for a second and converse in sign language.`
+				goto blood
+			label chant
+			`	You sing, "Yes, I do," trying to match the leader's pitch. As you do so, several of them hum notes that harmonize with you.`
+			label blood
+			`	Two of them walk up to you. One is carrying a small device that looks like a handheld scanner. The other unwraps a small foil package, pulls out a lancet, and jabs his finger with it. A dark, red drop of blood wells up. He presses his finger onto a port on the scanner, then hands you another one of the packets. "We kindly request that you identify yourself," he chants. Several of the others hum along with him.`
+			choice
+				`（给他们一份血样。）`
+					goto yes
+				`（拒绝给他们样品。）`
+					goto no
+				`（跑回我的船并逃离这里。）`
+
+			`	You run into your airlock, slam the door shut, and blast off from the planet. Already, several of their ships are moving to intercept you. It seems that you are no longer welcome in this region of space...`
+				launch
+
+			label no
+			`	You try to pull away, but the man's hand snakes out and grabs you by the wrist. Before you are even able to react he jabs your finger and shoves it onto the scanner. "You are in our space," he sings. "You will abide by our rules." No longer a monotone, his song is a jarring and atonal melody.`
+			label yes
+			`	Several of them gather around the one with the scanner as if waiting to see what the results will be. As you watch them you notice that all of them, even the women, have their hair cropped short. Also, their clothing looks like nothing that has ever been in fashion at any point in human history that you know of.`
+			`	Finally the scanner beeps, and a yellow light flashes. You can almost feel the tension leaving the air as the crowd relaxes. "So you are pure. You are human," chants one of the women. "You are one of us."`
+			choice
+				`“我当然是人类。但是人类在这里做什么呢？”`
+				`“你是谁？”`
+
+			`	Several of them burst into song, singing together in harmony, "We are the hidden ones. We are the Remnant. In time of great chaos to this place we came, lest all true-born humans be killed or enslaved, by those who evolved not, but unwisely were made."`
+			`	As they continue to sing, you begin to piece together their story. They are the descendants of people who fled to this region of space through an unstable wormhole at the peak of the first Alpha War, which means they have been here for more than half a millennium. That doesn't explain why their culture is so radically different, though.`
+			`	Eventually they invite you to a dinner. Their food has strange and complex flavors, not all of them pleasant, but you do your best to be polite and pretend to enjoy it all. The meal itself is generous and stretches out as your hosts consume considerably more food than you would expect for such a trim group. After the meal, they entertain you by singing songs, some of which you recognize as classical Earth music. It appears that people in this culture use sign language for day to day communication, and use their voices only for making music.`
+			`	When you return to your ship, you do a search on videos of historical dialects of human sign language. None of them bear even a passing resemblance to the language of these people who call themselves the Remnant.`
+				decline
+			
+	on enter
+		"remnant chilia" ++
+		conversation
+			`当您突破轨道并准备逃跑时，您会收到来自 <planet> 的消息。扬声器中传来吟唱声。`
+			`“我的同胞们似乎走错了路。我是遗迹的奇利亚级长。我们在这里建立了人类的堡垒，以便在人类空间的其他部分受到阿尔法威胁时生存。`
+			`“我们要求的血液测试对于所有来到我们世界的人都是强制性的。我们不会容忍任何阿尔法血统的存在。如果你同意血液测试并通过，我们将允许你和平地访问我们的世界。”`
+			choice
+				`“好的，我去验血。”`
+					goto accept
+				`“我不会进行任何血液检查。”`
+			action
+				set "remnant: declined second chance"
+				"reputation: Remnant" <?= -10
+			`“那就赶紧离开，不然就被淘汰，这里不会再欢迎你了。”`
+				decline
+			
+			label accept
+			action
+				set "remnant: accepted second chance"
+			`“请返回<planet>。请表现最好，因为不会有第三次机会。”`
+	
+	to fail
+		has "remnant: declined second chance"
+	
+	on fail
+		log "Discovered a strange, isolated human community in an otherwise uninhabited region of space south of the Core. Angered them by refusing to submit to some sort of blood test."
+		log "Factions" "Remnant" `The Remnant are a group of unusual-looking humans that live in a secluded section of the galaxy. It is unclear how long they have lived apart from the rest of humanity, but they have been free of human influences for long enough that their culture is wildly different from any found in human record. Their buildings seem to be alien in origin, and they communicate amongst each other primarily with sign language. When they do use their voices they sing or chant, rather than speak.`
+	
+	on decline
+		event "ember waste label"
+		log "Discovered a strange, isolated human community in an otherwise uninhabited region of space south of the Core. They call themselves the Remnant."
+		log "Factions" "Remnant" `Half a millennium ago, during the Alpha Wars, a group of humans fleeing the conflict and looking for a safer place to live discovered a wormhole into a region of space known as the Ember Waste. They built settlements there, and chose to call themselves the Remnant. Although they no longer fear the Alphas as much as they once did, they still have not rejoined human society.`
+			`Since their colonies were first formed, the Remnant's culture has changed drastically. They communicate in sign language, using their voices only for singing. Their food and architecture and much of their technology is strange, and much of it has been borrowed or stolen from nearby alien species.`
+	
+	npc
+		government "Remnant"
+		personality heroic coward disables plunders
+		fleet "Large Remnant" 2
+	
+	to complete
+		has "remnant: accepted second chance"
+	
+	on complete
+		event "ember waste label"
+		log "Discovered a strange, isolated human community in an otherwise uninhabited region of space south of the Core. They call themselves the Remnant."
+		log "Factions" "Remnant" `Half a millennium ago, during the Alpha Wars, a group of humans fleeing the conflict and looking for a safer place to live discovered a wormhole into a region of space known as the Ember Waste. They built settlements there, and chose to call themselves the Remnant. Although they no longer fear the Alphas as much as they once did, they still have not rejoined human society.`
+			`Since their colonies were first formed, the Remnant's culture has changed drastically. They communicate in sign language, using their voices only for singing. Their food and architecture and much of their technology is strange, and much of it has been borrowed or stolen from nearby alien species.`
+		conversation
+			`你的回程有点令人伤脑筋。与之前不同的是，你的飞行计算机不断发出警告，警告护送你的船只已处于武器密集状态并已锁定。一旦你登陆，你的船就被携带各种武器的士兵包围，而同一个人出现在他们中间。和以前一样，他刺破手指，将其按到设备上的某个位置，然后向您提供仍然密封的刺血针。他开始用严厉的语气喊道：“第一个可能是误会，但现在你知道我们的法律了。你会接受验血，还是会被一劳永逸地宣告有罪？”`
+			choice
+				`（提供血样。）`
+					goto comply
+				`（拒绝并跑向我的船。）`
+				
+			`当你转身开始跑回你的船时，附近的士兵开始举起武器向你开火。当你感觉自己的身体在奇异能量箭的袭击下开始液化时，你最后看到的就是拿着扫描仪的男人脸上的怜悯、无奈和困惑。可能想知道如果你只是想再次跑步，为什么你会决定回来。你以为他们永远不会知道...`
+				die
+			
+			label comply
+			`他们中的几个人聚集在拿着扫描仪的人周围，好像在等着看结果。当你观察他们时，你会发现他们所有人，甚至是女性，都把头发剪得很短。而且，他们的服装看起来与你所知的人类历史上任何时期都不曾流行过的。`
+			`最后，扫描仪发出蜂鸣声，黄灯闪烁。当人群放松下来时，你几乎可以感觉到空气中的紧张气氛消失了。 “所以你是纯洁的。你是人类，”其中一位女士高呼道。 “你是我们中的一员。”`
+			choice
+				`“我当然是人类。但是人类在这里做什么呢？”`
+				`“你是谁？”`
+
+			`	Several of them burst into song, singing together in harmony, "We are the hidden ones. We are the Remnant. In time of great chaos to this place we came, lest all true-born humans be killed or enslaved, by those who evolved not, but unwisely were made."`
+			`	As they continue to sing, you begin to piece together their story. They are the descendants of people who fled to this region of space through an unstable wormhole at the peak of the first Alpha War, which means they have been here for more than half a millennium. That doesn't explain why their culture is so radically different, though.`
+			`	Eventually they invite you to a dinner. Their food has strange and complex flavors, not all of them pleasant, but you do your best to be polite and pretend to enjoy it all. After the meal, they entertain you by singing songs, some of which you recognize as classical Earth music. It appears that people in this culture use sign language for day to day communication, and use their voices only for making music.`
+			`	When you return to your ship, you do a search on videos of historical dialects of human sign language. None of them bear even a passing resemblance to the language of these people who call themselves the Remnant.`
+
+
+
+# Compatibility patch for those who made contact with the Remnant prior to v0.9.15
+# v2 has been added to force those on continuous who already have the patch to get it again so that they get the post-scanning hostility/tolerance hail changes
+mission "Remnant: Blood Test Patch v2"
+	landing
+	invisible
+	non-blocking
+	to offer
+		has "event: ember waste label"
+		not "Remnant: Scanning Tolerances: done"
+	on offer
+		set "remnant: blood test pure"
+		event "remnant: change hail"
+		fail
+
+
+
+mission "Remnant: Lost in Ember Waste: Trigger"
+	landing
+	invisible
+	non-blocking
+	source
+		government "Remnant"
+	to offer
+		has "remnant: blood test pure"
+		not "license: Remnant"
+		not "ship attribute: quantum keystone"
+		not "ship attribute: jump drive"
+	on offer
+		event "remnant: lost in ember waste" 14
+		fail
+
+
+
+mission "Remnant: Lost in Ember Waste"
+	landing
+	invisible
+	source
+		government "Remnant"
+	to offer
+		has "event: remnant: lost in ember waste"
+		not "license: Remnant"
+		not "ship attribute: quantum keystone"
+		not "ship attribute: jump drive"
+	on offer
+		outfit "Quantum Key Stone" 1
+		log `Became stuck in the Ember Waste, but was given a Quantum Key Stone by an old woman who claims to have once been stuck in Republic space under similar circumstances.`
+		conversation
+			`您在 <origin> 太空港中漫步，在这片陌生的太空区域中感到非常迷失。在飞行了几个星期之后，您不知道如何离开，您想知道自己是否会永远被困在这里。`
+			`你坐在长凳上，思考如何摆脱这种情况。当你思考时，一位老妇人走近你并签署了一些东西。`
+			choice
+				`“抱歉，我听不懂。”`
+			`老妇人暗自窃笑。 “你看起来迷路了，”她说。你点点头。令你惊讶的是，她并不像其他遗迹那样唱出她所说的一切。`
+			`“我猜你不知道虫洞。”`
+			choice
+				`“什么？”`
+				`“是的，我只是无法克服它们。”`
+					goto know
+			
+			`“这个空间区域周围散布着红色虫洞。不过，只有当你的船上有钥匙石时，你才能进入它们。不要问我它是如何工作的，但事实就是这样。”`
+				goto "key stone"
+			
+			label know
+			`“钥匙石丢了？”她又笑着问道。 “或者也许你的跳跃驱动，现在你被困在这里？没问题。”`
+			
+			label "key stone"
+			`女人把手伸进她随身携带的包里，递给你一块量子钥匙石。 “只要把这个放在你的船上，你就可以离开这里了。”`
+			choice
+				`“你只是把这个给我？”`
+					goto thanks
+				`“有什么问题吗？”`
+			`她又笑了。 “没发现。”`
+			
+			label thanks
+			`那个女人坐在你旁边的长凳上。 “在失去钥匙石后，我曾在共和国太空中迷失了很多年。我知道长期远离你们的人民会是什么样子，所以我不想看到你们有同样的命运。”`
+			choice
+				`“谢谢你的帮助。我会把这个安装到我的船上。”`
+				`“你是怎么到共和国太空的？”`
+					goto republic
+			
+			`你向那个女人道别，开始走向你的船。 “一路平安，船长，”当你走开时，她脸上带着灿烂的笑容唱道。`
+				decline
+			
+			label republic
+			`“我年轻时就有冒险精神，”她说。 “有一天，我找到了走出余烬荒地的出路，回到了我所知道的其他人类身边。多年来，我的人民一直藏在这里，相信阿尔法杀死了其他人，但我发现我们没什么好害怕的。`
+			`“我在共和国探索了好几个月，了解阿尔法战争以来发生的事情，但当我试图返回灰烬荒野告诉我的人民时，我发现我的钥匙石在旅途中的某个时刻被偷了。我没有办法回去。”`
+			`她长长地叹了口气。 “我不想让你厌烦所有的细节，但我已经接受了我的新生活。我遇到了一个男人，有两个女儿，但从未放弃回到我真正的家的希望。有一天，我的女儿长大了，我的丈夫在一次事故中去世后，我决定继续另一次冒险。我掸掉旧船上的灰尘，很快就发现了海号。”`
+			branch hai
+				has "First Contact: Hai: offered"
+			choice
+				`“WHO？”`
+			`“我无法理解你为何在没有首先发现海的情况下就迷失在这里了。”她咯咯地笑。 “海族是人类北部和平的外星民族。去极北无人居住的星系中寻找紫色虫洞。你可能会找到那里的路。`
+				goto next
+			
+			label hai
+			choice
+				`“你见过海吗？”`
+			`“当然了。不然我怎么能回家呢？`
+			
+			label next
+			`“让我意外的是，海族竟然拥有大量的量子钥匙石。”她停顿了一下。 “你带一些海基石来这里也许是个好主意。不管怎样，我太兴奋了，我什至没有问任何关于他们是如何拥有它们的问题。我买了一个，然后以最快的速度飞回灰烬废土，从那以后我就一直在这里。”`
+			choice
+				`“那是多久以前的事了？”`
+				`“那你的女儿们呢？”`
+					goto daughters
+			
+			`“我 17 岁时迷路了，64 岁时又回来了，所以现在我回来了，也许是 130 年前了。”当你意识到她已经快 200 岁的时候，她看着你脸上惊讶的表情，咯咯地笑起来。 “发现远古外星技术是一件非常幸运的事情。`
+				goto end
+			
+			label daughters
+			`“哦，我只告诉他们决定去银河系旅行，并没有告诉他们回家的事情。我时常去看望他们，但他们都已经是几十年前的人了，共和国似乎无法让任何人活过一百三十岁。`
+			
+			label end
+			`“我现在真的必须走了，”她说。那位女士起身准备离开，但在走开之前，她转向你唱着“一路平安，船长”，脸上挂着灿烂的笑容。你也向她道别并分道扬镳。`
+				decline
+
+
+
+mission "Remnant: Defense 1"
+	name "保卫<planet>"
+	description "协助防御 <planet> 免受科拉斯袭击，然后返回星球。"
+	source "Caelian"
+	to offer
+		has "remnant: blood test pure"
+		not "remnant: defense delay"
+	on offer
+		conversation
+			`在这个相对安静的遗迹太空港中，当警报器开始鸣叫时，一切都异常刺耳。在你周围，人们都在争先恐后地让他们的飞船升空。尽管没有人停下来向你解释正在发生的事情，但很明显这是一项行星防御行动。`
+			choice
+				`（协助防守队员。）`
+					launch
+				`（呆在这里，不要帮助他们。）`
+			`你仍然留在这个星球上。你可能刚刚错过了一个赢得余民感激之情的绝佳机会。`
+				defer
+	on defer
+		set "remnant: defense delay"
+		event "remnant: defense timer" 20
+	npc
+		government "Remnant"
+		personality staying uninterested disables plunders
+		fleet "Large Remnant"
+	npc evade
+		government "Korath"
+		personality staying heroic plunders harvests target
+		fleet "Korath Ember Waste Raid" 6
+	on visit
+		dialog "仍有科拉斯袭击者在头顶盘旋。你应该起飞并帮助残余船只与他们作战。"
+	on complete
+		payment 500000
+
+
+
+mission "Remnant: Defense 2"
+	landing
+	name "剩余赏金"
+	description "一艘科拉特飞船正在残余领地周围飞行。追捕并摧毁它，然后返回<planet>进行付款。"
+	source "Caelian"
+	to offer
+		has "Remnant: Defense 1: done"
+	on offer
+		conversation
+			`这里的人们感谢你帮助击退科拉特袭击，他们向你支付 <payment> 的报酬。他们向你解释（当然是用歌曲；解释采用史诗民谣的形式）这些袭击已经发生了近一个世纪。`
+			choice
+				`“你有没有采取任何措施来阻止科拉特人袭击你？”`
+				`“你认为科拉特人希望实现什么目标？”`
+					goto motives
+	
+			`	"Of course not," chants one of them. "Why would we give up a good opportunity to plunder new technology?" His voice is such a perfect monotone that you can't tell whether the comment was meant facetiously or not.`
+				goto next
+	
+			label motives
+			`	"Perhaps they seek new territory, or perhaps they are just innately aggressive," chants one person.`
+			`	"Of course," says another, "the fact that our ships dump their cargo when the raiders attack probably makes us a tempting target."`
+			`	A third person explains, "We do that intentionally, to keep luring them back. The technology we gain when we manage to plunder one of their ships more than outweighs the cargo we lose."`
+	
+			label next
+			`	While you're conversing with the group, a uniformed woman walks up and tells them something in sign language. They sign back and point to you. She says to you, "Thank you for your help. A Korath ship that came with the raiders and fled the battle is still lurking around our territory. Would you be willing to hunt it down?"`
+			choice
+				`“当然。”`
+				`“抱歉，我没时间帮你。”`
+					decline
+
+			`	"Thank you," she sings. "It keeps jumping between systems in our territory. Maybe its jump drive was damaged or something, and it cannot escape. I will spread the information that you've taken on the bounty for hunting it, so others will not risk their lives fighting it."`
+				accept
+	npc kill
+		government "Korath"
+		personality coward target uninterested marked waiting
+		system
+			distance 1 2
+		fleet
+			names "korath"
+			# This ship has been here for a while and all its cargo outfits are gone, it just has commodities.
+			cargo 4
+			commodities "Food" "Clothing" "Metal" "Plastic" "Medical" "Heavy Metals"
+			variant
+				"拉诺埃雷克（残废）"
+		dialog "您已经摧毁了 <planet> 袭击中留下的科拉斯船。您现在可以返回那里领取付款。"
+	on visit
+		dialog phrase "generic bounty hunting on visit"
+	on complete
+		payment 500000
+		dialog `当您降落在 <planet> 时，同一个女人遇见了您。 “再次谢谢你，”她说。 “我会向其他人建议，他们将来可能会为你提供类似的赏金工作。”她付给你<payment>。`
+		log "Factions" "Remnant" `Recently, Korath ships have begun raiding Remnant worlds. The Remnant have decided not to try to discourage these raids, because they are a perfect opportunity to steal jump drives and other valuable alien technology from the Korath.`
+
+
+
+mission "Remnant: Defense 3"
+	landing
+	name "残余监视"
+	description "前往<waypoints>星系，摧毁你在那里找到的所有科拉斯飞船，然后部署一颗残余监视卫星，向他们发出未来科拉斯袭击的预先警告。完成后返回<planet>。"
+	source
+		government "Remnant"
+	to offer
+		"Remnant: Bounty: done" >= 3
+	cargo "surveillance equipment" 13
+	waypoint "Parca"
+	on offer
+		conversation
+			`在你领取最新的赏金后不久，一名男子接近你的船，并唱道：“你在与科拉特人的战斗中发挥了最大的帮助。你愿意以其他方式帮助我们吗？”`
+			choice
+				`“当然，告诉我更多。”`
+				`“抱歉，我没兴趣再帮你了。”`
+					decline
+
+			`	He explains that they hope to gain advance notice of future raids by setting up remote surveillance equipment in the system in the Ember Waste that is closest to Korath space. The equipment will communicate with the Remnant via something called an "entangled particle pair" that does not require a hyperspace relay network. Ironically, this is technology that the Remnant acquired by raiding the Korath decades ago.`
+			`	"I will mark the target system on your map," he says, "and give you the equipment necessary to deploy the surveillance satellite. Please do not deploy it while any Korath ships are watching. Our scouts encountered Palavrets, but they have crippled them enough to where they should not be a problem."`
+				accept
+	on accept
+		event "remnant: surveillance begin"
+	npc kill
+		government "Korath"
+		personality heroic nemesis staying
+		system "Parca"
+		fleet
+			names "korath"
+			cargo 0
+			variant
+				"帕拉夫雷特（残废）"
+				"'olofez" 2
+		dialog "现在你独自一人，你可以在不被观察到的情况下部署残余监视卫星。是时候向 <planet> 报告了。"
+	on visit
+		dialog `您已返回<planet>，但尚未部署监视卫星。返回<waypoints>并确保那里的所有科拉特都已被消灭。`
+	on complete
+		event "remnant: surveillance end"
+		payment 500000
+		conversation
+			`当您返回 <planet> 时，同一个残余人会见您并说他们已经开始从您部署的监视卫星接收数据。 “谢谢你的帮助，”他唱道。他付给你<payment>。`
+			choice
+				`“不客气。”`
+					decline
+				`“你知道，表达‘谢谢’的一个好方法就是向我提供购买你的技术的许可证。”`
+
+			`	He grins, very slightly. "That is not my decision alone to make," he says, "but I will put in a word for you and see what I can do."`
+
+
+
+conversation "剩余的基石"
+	branch found
+		has "Remnant: Found Keystones: offered"
+
+	branch equipped
+		has "outfit: Quantum Keystone"
+	
+	`As you are walking through the spaceport, a man comes up to you and introduces himself as the manager of the local outfitter. "Greetings, outsider," he says. "I have heard many good things about you and your assistance to our people. Would you be interested in going on a quest for me?"`
+	choice
+		`“什么样的任务？”`
+			goto quest
+		`“抱歉，我没兴趣。”`
+
+	`	"Please, I assure you, this quest will be very lucrative for you.`
+
+	label quest
+	`	"You may have noticed the red anomalies scattered within this region of space. What you may not have known is that these are wormholes, accessible only with the possession of a Quantum Key Stone. My people highly value these Key Stones because of this, but our mines produce very few of them." The manager shows you a Key Stone that he has with him.`
+	scene "outfit/keystone"
+	
+	branch hai1
+		has "First Contact: Hai: offered"
+	
+	`	"We have explored all of the Ember Waste, but have been unable to find any large concentrations of these stones."`
+	`	"You seem to be able to easily explore outside of this region. If you manage to discover a source of Key Stones outside of the Ember Waste, would you please inform me of them?"`
+	choice
+		`“如果我发现什么，我会告诉你的。”`
+		`“不用了，谢谢。这对我来说似乎是徒劳的。”`
+			decline
+	
+	`	The outfitter manager thanks you. "We'll discuss payment once you return," he says.`
+		accept
+	
+	label found
+	`You find the outfitter manager and tell him that you have good news. "You found another world where the stones can be mined?" he asks.`
+		goto exchange
+	
+	label hai1
+	`	"I've seen that before," you say.`
+	`	He looks at you with surprise. "You found another world where these stones can be mined?"`
+		goto exchange
+	
+	label equipped
+	`As you are walking through the spaceport, a man comes up to you and introduces himself as the manager of the local outfitter. He says, "I could not help but notice that you have a Key Stone that looks different from the ones from our mines. You may have noticed the red anomalies scattered within this region of space. What you may not have known is that these are wormholes, accessible only with the possession of a Quantum Key Stone. My people highly value these Key Stones because of this, but our mines produce very few of them. Have you found another world where these stones can be mined?"`
+
+	label exchange
+	choice
+		`“是的，在离这里北部很远的一些外星人的领土上。”`
+			goto hai2
+		`“是的，但我不想告诉你在哪里。”`
+	
+	`	"That is understandable," he says. "I am a businessman and I understand how valuable certain trade secrets can be. But perhaps I can interest you in a mutually profitable endeavor?"`
+		goto more
+	
+	label hai2
+	`	"Intriguing," he sings. "Are they aware of how valuable these stones are?" You tell him about the Hai, that they are an old species and that to them the Key Stones are just good luck charms. "Perhaps they have forgotten the true use of the Stones," says the man. "This may give us an opportunity for a mutually profitable endeavor."`
+	
+	label more
+	`	"Tell me more," you say.`
+	`	He says, "If you could fetch me a large supply of these stones, say fifty of them, I would purchase them from you for a high enough price that you would earn a tidy profit. What do you say?"`
+	choice
+		`“当然，我很乐意接受这笔交易。”`
+		`“抱歉，我实在没兴趣和你们这些残民做生意。”`
+			decline
+	
+	`	After a bit of haggling, he agrees to pay you six million credits in exchange for a cargo of fifty Hai "keystones." Given how cheap they are to purchase in Hai space, you will be earning a very tidy profit on the deal.`
+	`	"We look forward to receiving this shipment," he sings. "Just instruct the dockworkers to load them into your cargo bay."`
+	`	He glances at his commlink and starts tapping at something. "We look forward to your return," he trills, before striding away still looking at his display.`
+		accept
+
+
+
+conversation "剩余的基石已完成"
+	`你拜访了当地的服装商并告诉经理你已经带来了一批“量子基石”要卖给他。他大喜过望，很乐意付给你六百万积分。你不禁会注意到，根据基石在这里的售价，他将获得比你更多的利润，即使你做了几乎所有的工作。`
+	`“你通过这样做为我们的人民做出了宝贵的贡献，”他说。 “这些石头将使我们更多的船只能够探索余烬废土并发现它所蕴藏的秘密。”`
+
+
+
+mission "Remnant: Key Stones (Pre-Hai) 1"
+	name "基石"
+	description "<planet> 上的装备商经理有兴趣寻找基石的替代来源。遗迹已经探索了整个余烬废土，所以你需要在其他地方寻找这些石头。"
+	source "Viminal"
+	to offer
+		not "outfit: Quantum Keystone"
+		not "Remnant: Key Stones (Hai): offered"
+		not "Remnant: Key Stones: offered"
+		not "First Contact: Hai: offered"
+		or
+			has "event: remnant: void sprite research"
+			has "Remnant: Defense 3: done"
+	on offer
+		conversation "剩余的基石"
+		
+	to complete
+		has "Remnant: Found Keystones: offered"
+
+
+
+mission "Remnant: Found Keystones"
+	landing
+	invisible
+	source
+		government "Hai"
+	to offer
+		has "Remnant: Key Stones (Pre-Hai) 1: active"
+		has "First Contact: Hai: offered"
+	on offer
+		conversation
+			`在探索 亥族 太空港时，您注意到一些 亥族 飞船的一些有趣的事情。其中许多似乎都装饰着与灰烬废土中发现的量子钥匙石非常相似的石头。你问附近的海族，它们是什么，她告诉你，这些石头是许多海族在船上使用的幸运符，可以从任何海族装备商处购买。`
+			`你应该回到遗迹装备店经理那里，告诉他海空间里的石头的情况。`
+				decline
+
+
+
+mission "Remnant: Key Stones (Pre-Hai) 2"
+	landing
+	name "基石"
+	description "<planet> 上的装备商经理愿意向您支付 600 万积分，以换取一批 50 颗量子基石（您必须从 亥族 购买）。"
+	source "Viminal"
+	to offer
+		has "Remnant: Key Stones (Pre-Hai) 1: done"
+	on offer
+		conversation "剩余的基石"
+		
+	on visit
+		dialog `您已返回 <planet> ，但没有 50 个“量子基石”可提供给装备商。返回这里之前，请从海购买基石。`
+	on complete
+		outfit "Quantum Keystone" -50
+		payment 6000000
+		conversation "剩余的基石已完成"
+	
+	
+	
+	
+mission "Remnant: Key Stones"
+	name "基石"
+	description "<planet> 上的装备商经理愿意向您支付 600 万积分，以换取一批 50 颗量子基石（您必须从 亥族 购买）。"
+	source "Viminal"
+	to offer
+		or
+			has "outfit: Quantum Keystone"
+			and
+				or
+					has "First Contact: Hai: offered"
+					has "First Contact: Unfettered: offered"
+				or
+					has "event: remnant: void sprite research"
+					has "Remnant: Defense 3: done"
+		has "remnant: blood test pure"
+		not "Remnant: Key Stones (Pre-Hai) 1: offered"
+		not "Remnant: Key Stones (Hai): offered"
+	on offer
+		conversation "剩余的基石"
+	on visit
+		dialog `您已返回 <planet> ，但没有 50 个“量子基石”可提供给装备商。返回这里之前，请从海购买基石。`
+	on complete
+		outfit "Quantum Keystone" -50
+		payment 6000000
+		conversation "剩余的基石已完成"
+
+
+
+mission "Remnant: Void Sprites 1"
+	name "太空生物"
+	description "<planet> 遗迹家园的一名男子要求您收集有关位于灰烬废土另一部分的 <waypoints> 系统中一些奇怪太空生物的数据。"
+	source "Aventine"
+	waypoint "Nenia"
+	cargo "scanning equipment" 8
+	to offer
+		has "remnant: blood test pure"
+	on offer
+		conversation
+			`当你探索太空港时，你会遇到一名遗迹男子，他的眼睛上戴着某种光学假体，面罩上装有几个微型摄像头。 “啊，”他唱道，“局外人。人类，但不属于我们的文化，与我们的思维方式不同。这很有用。你愿意投资一个研究项目吗？”`
+			choice
+				`“也许吧。告诉我更多。”`
+				`“抱歉，我没兴趣。”`
+					decline
+			`“太棒了，”他唱道。 “几个世纪前，我们在废土的其他地方发现了一些居住在太空的生物，并着手研究它们。犯了一些错误，低估了一些，我们无法再安全地接近这些生物。你愿意访问他们的家乡系统并收集一些传感器数据吗？我称之为投资，因为在我发布这些研究结果之前我无法付钱给你。”`
+			choice
+				`“是的，我很乐意。”`
+					goto end
+				`“等等，这听起来非常可疑。你能解释一下为什么你认为我进入那个恒星系统是安全的，但你却不能这样做吗？”`
+			action
+				set "remnant: void sprites 1: asked for more details"
+			`他说：“我们研究了这些生物体，并确定它们不可能有感知能力。因此，我们认为收集样本没有道德问题。意外的事情发生了，因此几个世纪以来，对遗迹船只一直怀有一些怨恨。”`
+			choice
+				`“好吧，只要你不让我做一些会让我陷入类似麻烦的事情，我就会帮助你。”`
+					goto end
+				`“抱歉，我没兴趣帮你。”`
+
+			`	"Are you sure?" he chants. "We could learn some incredible things."`
+			choice
+				`“不，我真的不感兴趣。”`
+					decline
+				`“好吧，告诉我你想让我做什么。”`
+
+			label end
+			`	He sings, "Thank you. To begin with, all I ask is that you visit this star system and scan the creatures with certain special equipment that I will provide. Report back to me when you are done."`
+			choice
+				`“我该怎么找到你？”`
+				`“你叫什么名字？”`
+					goto name
+
+			`	"Don't worry," he says, "I will find you. You are our only visitor from the outside in many decades; when you land here, it quickly becomes known."`
+				accept
+	
+			label name
+			`	He says, "My name is..." and then performs an elaborate gesture with his hands. "Do not worry if you can not perform my name," he says, "I will seek you out when you land. You will not need to ask around for me."`
+				accept
+	
+	npc
+		government "Indigenous Lifeform"
+		personality timid mining harvests staying mute
+		system "Nenia"
+		fleet
+			cargo 0
+			variant
+				"虚空精灵"
+				"Void Sprite (Infant)" 3
+	on enter "Nenia"
+		dialog `这个星系中确实存在着一些奇怪的太空生命体。您使用特殊传感器收集测量结果，然后准备返回 <planet> 。`
+	on visit
+		dialog `您已返回到 <planet> ，但您丢失了一些东西！要么你还没有访问<waypoints>来扫描虚空精灵，要么你携带扫描设备的护卫还没有到达系统。`
+
+
+
+mission "Remnant: Void Sprites 2"
+	landing
+	name "扫描虚空精灵"
+	description "返回<waypoints>系统，对每种类型的虚空精灵使用装备扫描仪，看看你是否能分辨出它们的推进力是如何工作的。"
+	source "Aventine"
+	waypoint "Nenia"
+	to offer
+		has "Remnant: Void Sprites 1: done"
+	on offer
+		conversation
+			`果然，在你着陆后不久，带着光学假体的遗迹研究员就到达了你的飞船。当他查看您使用特殊扫描仪收集的数据时，他很失望。他吟诵道：“我曾希望扫描仪能够向我们展示这些生物如何产生足够的力量飞出行星的重力井，但这并没有告诉我任何信息。如果你更仔细地扫描它们，也许会有所帮助。你能为你的飞船配备一台扫描仪，用于检查飞船所携带的装备，看看该扫描仪是否能产生额外的信息吗？”`
+			choice
+				`“好吧，我会安装一个服装扫描仪，看看它能告诉我什么。”`
+					accept
+				`“你确定他们不会将扫描光束解读为攻击吗？”`
+
+			`	"I doubt it," he says. "It is a very low-power beam. And after all, you were not attacked just now when you scanned them with my equipment."`
+			choice
+				`“好吧，我会安装一个服装扫描仪，看看它能告诉我什么。”`
+					accept
+				`“等等，你是说你上次以为我可能会受到攻击，但你却没有告诉我？”`
+
+			`	He says, "It was a small enough chance that I did not see a need to worry you."`
+			choice
+				`“抱歉，我不想再帮助这个项目了。”`
+					decline
+				`“好吧，我会安装一个服装扫描仪，看看它能告诉我什么。”`
+					accept
+	npc "scan outfits"
+		government "Indigenous Lifeform"
+		personality timid mining harvests staying mute
+		system "Nenia"
+		fleet
+			cargo 0
+			variant
+				"虚空精灵"
+				"虚空精灵（婴儿）"
+	on accept
+		event "remnant: nenia empty"
+	on visit
+		dialog `您降落在 <planet> 上，但尚未扫描 <waypoints> 中的虚空精灵。确保使用装备扫描仪扫描所有虚空精灵。`
+	on complete
+		event "remnant: nenia restored"
+
+
+
+mission "Remnant: Void Sprites 3"
+	landing
+	name "参观虚空精灵行星"
+	description `使用海雀探索虚空精灵居住的两个气态巨行星。然后，返回到 <planet> 。`
+	source "Aventine"
+	stopover "Nasqueron"
+	stopover "Slylandro"
+	cargo "scanning equipment" 8
+	blocked "The Remnant researcher has another job for you, but you're going to have to free up some cargo space in order to take it on."
+	to offer
+		has "Remnant: Void Sprites 2: done"
+	on offer
+		conversation
+			`遗迹研究员似乎对服装扫描没有透露有关虚空精灵的任何信息感到失望，但他也对研究它们的新想法感到兴奋。 “我发现我们有几艘旧的封存飞船适合探索气态巨行星的高层大气，”他说。 “在我发布我的结果之前，我不会有资源来补偿你，但我可以为你提供一艘我们的飞船。然后你就可以降落在虚空精灵世界上，并在它们的自然栖息地中观察它们。”`
+			choice
+				`“买一个要多少钱？”`
+				`“你之前说过你不能安全地接近这些生物。我将如何乘坐你的一艘飞船降落在他们的星球上？”`
+					to display
+						not "remnant: void sprites 1: asked for more details"
+					goto attack
+				`“你之前不是说过，任何乘坐遗迹飞船进入该系统的人都会受到攻击吗？”`
+					to display
+						has "remnant: void sprites 1: asked for more details"
+					goto attack
+				`“抱歉，我没兴趣再帮你了。”`
+					decline
+
+			`	"Only a few million credits," he says. "Do not worry, I will provide you with one. Consider it an advance on the resources I owe you. And, just think of how much you will be doing to advance the cause of science."`
+				goto end
+
+			label attack
+			`	"Do not worry about it," he says. "These exploration craft are exceptionally fast and maneuverable. Even if you do provoke a negative reaction, you should be able to dodge any direct confrontation."`
+
+			label end
+			choice
+				`“好吧，我会做的。”`
+				`“抱歉，这超出了我愿意承诺的范围。”`
+					decline
+
+			`	"Excellent," he says. "This ship is an antique, so be careful with the shields. They are projected around the ship and are unable to adapt to new obstacles. Hard-shell shields, I believe they were called at the time of the Exodus, as opposed to the skin shields of today that fit close to the hull." He pauses and looks thoughtful, then continues. "Just make sure nothing valuable is near the hull when the shields activate - it will either be sheared in two or break the shields. And it is important to know that the pressure suit included with the ship is able to remotely activate and deactivate the shields and other ship systems."`
+			`	He moves to step away, then looks back at you. "My notes indicate that there is a superstition about how visiting Crataegusa in the Cardea system was considered to bring good fortune to explorers. There is no scientific reason that should be the case, but might be worth landing on it anyway."`
+				accept
+	on accept
+		event "remnant: puffin"
+		give ship "Puffin" "Shadow in the Depths"
+	npc
+		government "Drak (Hostile)"
+		system "Nenia"
+		personality staying heroic nemesis frugal uninterested
+		ship "Archon (Cloaked)" "Lifted Lorax"
+	on stopover
+		conversation
+			`你躲过了执政官并降落在虚空精灵居住的两个气态巨行星中的第二个上。你的小船的船体在高气压下吱吱作响，但似乎仍然粘在一起。它的传感器捕捉到漂浮在行星云层之间的虚空精灵群，这些精灵可能以太小而无法在这个范围内检测到的空中生物为食。`
+			`你还观察到一些虚空精灵离开地球，在热上升气流的作用下向上翱翔。当它们上升时，它们的身体会膨胀到原来大小的几倍，就像升空气球一样。但显然它们还有另一种形式的推进力，类似于人类飞船用来从行星表面进入轨道的反重力排斥器。`
+			`在收集了一些大气样本以进行良好测量后，您准备返回 <planet> 。希望执政官在看到你没有攻击或骚扰这两颗行星上的精灵后会平静下来。`
+	on visit
+		dialog phrase "generic missing stopover or cargo"
+	on complete
+		event "remnant: void sprite research" 20
+		log "Factions" "Void Sprites" `The "void sprites" are space-dwelling lifeforms. They are apparently not sentient. They evolved in the atmosphere of a gas giant, but have some biological mechanism for altering or reflecting gravity that allows them to fly into outer space, in the same way that human ships use antigravity to escape a planet's gravity well. The void sprites are not particularly powerful or dangerous creatures, but they are guarded by a Drak Archon.`
+		log "Factions" "Archons" `Archons are partly biological, but do not seem to be naturally evolved creatures. Some of their biological characteristics may have been based on the "void sprites" that inhabit the Ember Waste.`
+		conversation
+			`当遗迹研究员看到你收集的所有数据时，他欣喜若狂。 “我将立即开始将其组装成一篇研究论文！”他唱歌。 “它可能需要几个月的时间才能出版，但当它出版时，你将被指定为共同作者，我将与你分享荣誉。”`
+			choice
+				`“你对袭击我的执政官了解多少？”`
+				`“我很高兴能为您提供帮助。我期待您的来信。”`
+					decline
+
+			`	He begins singing you a song about the Archons. The song says that the Archons are servants of the mysterious Drak, whom no one has seen but whom the Quarg claim to speak to and take orders from. "That's all our histories say," he sings, "but what interests me is the biological similarities between the Archons and the void sprites. We do not think the Archons are naturally evolved creatures. Perhaps their creators incorporated elements of void sprite biology into them when they were made. Or perhaps the Archons just feel an affinity with them because they are both space-faring organisms."`
+			choice
+				`“好吧，我期待着你的研究完成后的结果。”`
+					decline
+				`“你认为执政官会继续对我生气吗？”`
+
+			`	He says, "As long as you did not harm any of the void sprites, I doubt they will bear you a permanent grudge. The Archons are thinking creatures, after all; they cannot blame you for your curiosity."`
+			`	You thank him for the information and tell him that you will look forward to reading the results of his study (and, getting paid for your help) once it is complete.`
+
+
+
+mission "Remnant: Gascraft-Puffin Compatibility"
+	landing
+	invisible
+	non-blocking
+	to offer
+		has "event: remnant: gascraft"
+	on offer
+		event "remnant: puffin"
+		clear "event: remnant: gascraft"
+		fail
+
+
+
+mission "Remnant: Technology Available"
+	landing
+	name "执照培训"
+	description "将一名级长运送到<destination>，以便他可以告诉您有关残余许可证的更多信息。"
+	source
+		government "Remnant"
+	destination
+		government "Remnant"
+		not distance 0
+	to offer
+		has "event: remnant: void sprite research"
+		has "Remnant: Defense 3: done"
+		or
+			has "Remnant: Key Stones: done"
+			has "Remnant: Key Stones (Hai): done"
+			has "Remnant: Key Stones (Pre-Hai) 2: done"
+			has "Remnant: Broken Jump Drive 2: done"
+	on offer
+		payment 600000
+		set "license: Remnant"
+		log "The prefects have reached a consensus: now considered a valuable friend of the Remnant, and given permission to purchase their ships and technology."
+		conversation
+			`一位老人走近你的船，自我介绍为当地的“省长”，大概是某种政府职位。在一首精心制作的歌曲中，他肯定是提前创作和练习的，他告诉你，一项关于虚空精灵的科学研究刚刚发表，作为合著者，你有权获得他赠送给你的 200 万信用点的报酬。`
+			`“当你的名字出现在研究中时，”他说，“我四处询问，发现你也在其他方面帮助了我们。其他长官已经达成共识，你应该被视为遗民的宝贵朋友，并且从今以后将被允许购买我们的船只和技术。”他递给你一个小立方体，看起来像是由类似于他们的船的互锁材料块制成的。`
+			scene "outfit/remnant license"
+			choice
+				`“我很荣幸。谢谢。”`
+					goto onwards
+				`“我还能做些什么来帮助你们的人民吗？”`
+			`“我现在什么都没有，”他说，“但我相信，既然你已经表现出了你的可信度，其他遗迹将会有你可以帮助的任务。我们一直在跟踪你，你的好奇心、毅力和在大多数人将被摧毁的情况下生存的能力给我们留下了深刻的印象。这三个都是遗迹中有价值的特征，因此许多人会欢迎你在他们的项目上提供帮助。”`
+			label onwards
+			`当他说话时，他示意你和他一起走向附近的大厅。在里面，你发现它是遗迹星港中常见的众多自助餐厅之一。他从窗口拿起两个托盘，带你到一张空桌子旁。 “虽然欢迎你成为我们中的一员，但我们怀疑你是银河系的公民——在可及的空间范围内四处游荡，与物种和群体建立联盟和敌意，不受传统忠诚的束缚。因此，我们希望你能继续探索并顺便过来让我们知道你的发现。我们只要求你保守你所信任的秘密，并告诉我们任何可能影响人类长期生存的事情。”`
+			choice
+				`“你想让我保守什么秘密？”`
+					goto secret
+				`“我很荣幸能够成为遗民中的一员。”`
+					goto honored
+				`“虽然我很享受和你们在一起的时光，但我永远不能呆在一个地方。”`
+					goto traveler
+				`“什么是‘影响人类生存的事物’？”`
+			label survival
+			`他咬了一口才做出反应。 “基本上，任何可能对人类构成生存威胁的事物，或者任何我们可以从中学习并利用以确保人类生存的事物。它可能是入侵的自动化机器舰队，也可能是太空中的瘟疫。但也有可能你会发现我们可以合作的生物，以形成强有力的伙伴关系，或者利用旧技术建立古老的废墟，引导我们走向新的发现。可能性确实是无限的。”`
+				goto feast
+			label honored
+			action
+				set "remnant: desired to join them"
+			`他微笑着点点头。 “你还没有到达那里，但我想不久之后你很可能会成为我们中的一员。”他咬了一口盘子，然后继续。 “继续学习，你很可能会在我们中间赢得一席之地。”`
+			choice
+				`“你想让我保守什么秘密？”`
+					goto secret
+				`“什么是‘影响人类生存的事物’？”`
+					goto survival
+			label traveler
+			`他点点头。 “感谢您确认我们的印象。我们很高兴您能和我们在一起，并期待听到您的旅行经历。”`
+			choice
+				`“你想让我保守什么秘密？”`
+					goto secret
+				`“什么是‘影响人类生存的事物’？”`
+					goto survival
+			label secret
+			`他在回答之前喝了一口浓酒。 “很简单，我们在这里的事实。据我们所知，只有德拉克人和科拉斯人知道我们的存在，而在这些人中，只有科拉斯人袭击了我们的世界。我们的目的是成为人类最后的堡垒，我们依靠保密来实现这一目标。”他停下来吃了一会儿，然后继续。 “阿尔法是一种可怕的威胁，但在宏伟的计划中，它们可能是人类最不担心的。我们努力保持尽可能的优势，以防任何这些威胁证明自己是这样的，而我们最好的工具之一就是出其不意。如果没有人知道我们在这里，我们就比任何可能试图征服或摧毁我们的人拥有优势。`
+			`“当然，对我们的能力保密也非常重要——这也是我们让你们购买我们的船只和装备之前你们必须证明自己的原因——但这对于我们存在的基本保密来说是次要的。理想情况下，没有人应该知道我们的存在。那些知道的人应该认为我们只不过是在敌对环境中挣扎求生的难民。”`
+			label feast
+			`他不屑一顾地挥手。 “我相信您还有更多问题，但我们暂时就这样吧。我们的饭菜正在等待着，而且，好吧，我需要向您展示一些有关我们安全程序的事情。所以，吃完饭，我们前往 <destination> 。”`
+				accept
+	on enter
+		conversation
+			`一旦你到达太空，级长就会打断你的正常生活。 “我相信你已经注意到，你的‘许可证’并不完全是一张普通的身份证。这是有原因的，即它有额外的电路，并且表面有几个传感器。我不了解其中的所有内容，但安全专家向我保证，它具有极强的抵抗黑客攻击或入侵的能力。”`
+			choice
+				`“好吧，听起来不错。”`
+					goto continue
+				`“你怎么知道普通驾照是什么样子的？”`
+			`老人笑了。 “虽然我们可能无法获得现代许可证，但我们确实拥有出埃及记之前的所有旧娱乐节目。其中一些包括诸如许可证是什么样子之类的细节。虽然在这几年里情况可能发生了变化，但许可证在历史上是由小官僚机构管理的，而这些官僚机构非常抵制改变。所以看起来情况很可能没有太大变化。而且绝对不像我们的那样。”他似乎被逗乐了，但随后他的笑容消失了。`
+			`“话又说回来，祖先空间从来没有设计过能够承受太多的许可证。他们被激励不那么安全，不是吗？足够的钱和正确的联系，以及任何东西的许可证都可以获得。这些？”他持有 遗民 许可证。 “没那么多。”他摇摇头，变得严肃起来。 “现在，你的许可证底部有一些连接垫，可以连接到你的船舶的敌我识别。当你入境着陆时，只需点击许可证上的这个代码，立方体就会验证图案以及你的指纹和一些其他生物识别信息，以确保你确实活着并且有意识，然后传输加密的代码。我们的敌我识别系统将验证传输的信号并做出相应的响应。”`
+			choice
+				`“听起来很彻底。”`
+					goto thorough
+				`“那为什么我还没被击落呢？”`
+					goto "shot down"
+				`“什么是‘IFF’系统？”`
+			`“你对IFF不熟悉？”他问道，看上去有些难以置信。 “IFF 代表‘识别朋友或敌人’，是向周围的人识别你的船只的系统的通用名称。它决定哪些船只应在你的系统地图上突出显示为红色或橙色，并为盟军船只提供有限的移动细节，以便瞄准系统可以射击你。我不知道他们目前的做法，但历史上海军和大多数其他组织都有复杂的方法来验证其他船只的身份，所以这不仅仅是让你的 IFF 声明你是一个友好。”`
+			choice
+				`“谢谢你的解释。”`
+					goto continue
+				`“听起来很彻底。”`
+					goto thorough
+				`“那为什么我还没被击落呢？”`
+			label "shot down"
+			`“因为每个系统都有潜在的故障和漏洞，所以我们确保人们始终参与决策过程。我们最初的扫描显示你不太可能是 Alpha，我们很好奇你是谁以及可能会带来什么机会。从那时起，每次你接近时，系统的各个监控器都必须手动将你指定为‘友好’。这暂时有效。但现在是时候让你正式接受了。虽然我们的监控器很有效，但强迫他们跟踪你仍然浪费时间。并在您每次接近时取消警报。既然您值得信赖，最好为您提供识别身份的方法，以便我们的防御可以专注于真正的威胁。`
+				goto continue
+			label thorough
+			`知府点头同意。 “我们非常重视我们的安全。`
+			label continue
+			`“现在，在我们到达 <planet> 之前，请为自己选择一个模式。简短的内容 - 最多一两秒，并且让您难忘。”级长转身离开你，在你的一个桥台控制台一侧安装一个小设备，并将几根电线连接到面板上。 “现在，在此处插入您的许可证，然后点击许可证上的图案。”当你按照他的指示进行操作时，他会移开视线。`
+			`“完成？很好。当我们接近 <planet> 时，您将有几个选择：在一切正常的情况下进行正常接近，点击许可证上的图案。如果有威胁跟随您 - 敌方船只或您希望监视器监视的其他类型的危险，则捏或挤压许可证。如果您在船上遇到问题，例如被捕获并被迫驾驶船只进入，请以随机图案点击许可证。最后，如果您因受伤或损坏而无法着陆如果你根本不碰许可证，监视器就会认为你丧失了行动能力，或者无法指挥你的船，我们仍然会尝试让你安全着陆并提供帮助，但如果我们认为你构成威胁，我们也会随时准备摧毁你并阻止你的接近。”`
+	on complete
+		conversation
+			`当您进入 <planet> 的上层大气时，级长指着他安装在您控制台上的小支架。您插入许可证并点击您创建的图案。他检查了通讯链路，然后点点头。 “<first> 机长，您的执照和许可已被接受。继续正常着陆。”`
+			`您继续进场和着陆，级长会指出沿途值得注意的特征。他还指出了各种接近路径，包括当你被追赶时首选的路线。 “如果你的尾部有敌对威胁，就采取这个登陆走廊，这将使尾随的船只暴露在这些点的火力之下。如果你的影子里有东西紧紧地粘着，就在这个点或那个点进行翻滚。这将使它们暴露在我们的高精度电池的攻击之下。”`
+			choice
+				`“谢谢你的建议。”`
+					goto conclusion
+				`“我很惊讶你竟然告诉我这一切。”`
+			`“哦，别担心你知道得太多。还有更多我没有提到的防御措施，我们一直在改进它们。一般来说，我们的防御措施对你来说应该是不可见的——就像它们不妨碍你一样。”`
+			label conclusion
+			`你的进场很顺利，你滑过许多有条不紊地覆盖你周围天空的防空炮台。一旦 <ship> 安全落地，长官就会从插座中拔出许可证并将其交还给您。 “冒着听起来像是戏仿的风险：保守秘密，保证安全。愿余烬为你而燃烧。”说完，老知府就走下了你的船。`
+
+
+
+mission "Remnant: Learn Sign 1"
+	name "学习残迹"
+	description `前往 <destination> 获取有关如何使用残余手语说话的更多课程。`
+	minor
+	source "Caelian"
+	destination "Aventine"
+	repeat 3
+	to offer
+		has "Remnant: Void Sprites 3: done"
+		has "Remnant: Defense 3: done"
+		not "Remnant: Learn Sign 1: done"
+		not "Remnant: Learn Sign 1: active"
+		random < 30
+		or
+			has "Remnant: Key Stones: done"
+			has "Remnant: Key Stones (Hai): done"
+			has "Remnant: Key Stones (Pre-Hai) 2: done"
+			has "Remnant: Broken Jump Drive 2: done"
+	on offer
+		conversation
+			`当您穿过太空港时，您会越来越意识到这里有多么安静。环顾四周，你发现这里似乎并不比平时忙碌，只是只有少数人关注你。结果，他们恢复了正常的姿势而不是唱歌。当你意识到你周围有数百种对话，但你却无法理解其中任何一种时，你会感到一种奇怪的孤立和怪异的感觉。`
+			choice
+				`（请人教我。）`
+				`（忽略它。）`
+					decline
+					
+			`环顾太空港，你最终会发现有人在一个看起来像问讯处的地方。`
+			choice
+				`“我想学你的手语。”`
+					goto words
+				`（唱一首关于因为我的手静止而无法理解人们的短诗。）`
+					goto song
+			label words
+			`她一脸困惑地看着你，双手快速地做了几个手势。过了一会儿，她指着桌子上嵌入的手持扫描仪。`
+				goto scan
+			label song
+			`她看起来很惊讶，但随后恢复过来，唱了一首关于手如何学习但必须小心的诗句，并对嵌入桌子上的手持扫描仪做了手势。`
+			label scan
+			`当你将手放在扫描仪上时，当它扫描你的手时，你会感到一阵刺痛，然后当它抽取一滴血时，你会感到一阵刺痛。桌子后面的女士看着她的屏幕。她点点头，在屏幕上敲击了几下，然后从桌子下面取出了一个数据板。`
+			`她把便笺本递给你，并唱了一首关于坚持和希望的简短诗句。`
+			`回到你的船上，你打开垫子。数据板似乎加载了许多历史音乐剧和歌剧，其中歌词的含义已通过手势作为字幕复制。其中穿插着一些看似 遗民 儿童的视频，慢慢地解释手势，并停下来给你练习的机会。`
+			`	You spend a few hours going through the lessons. It takes a while to start vaguely understanding the signs, but you eventually learn how to sign a number of basic phrases. Eventually, the pad goes black and a note pops up on the screen informing you that additional lessons are available from the director's desk on Aventine.`
+				accept
+
+mission "Remnant: Learn Sign 2"
+	landing
+	name "学习残迹"
+	description `前往 <destination> 获取有关如何使用残余手语说话的更多课程。`
+	source "Aventine"
+	destination "Viminal"
+	to offer
+		has "Remnant: Learn Sign 1: done"
+	on offer
+		conversation
+			`在阿文丁太空港寻找主管办公桌时，您非常清楚周围发生的所有对话。你设法听懂一些单词，但还不足以理解对话内容。遇到一些麻烦，你用你所学到的知识问路，然后你到达了一个繁忙广场上的类似办公桌。`
+			`看起来桌子后面的人一直在等你。他们的手势非常缓慢，用非常基本的手势和歌曲询问你的课程进展如何。几分钟的交谈后，他们要求你将手放在扫描仪上，扫描仪会采集你的血液样本，然后给你一个包含更多课程的数据芯片。`
+			`你回到你的船上并开始学习课程。这些课程更侧重于纯粹通过手语进行交谈，几乎不唱歌。`
+			`就像上次一样，屏幕变黑并显示一条注释，上面写着 Viminal 上将有最终的课程包等着您。`
+				accept
+
+	on complete
+		event "remnant: sign studies complete" 60
+		log "Have been introduced to the basics of the Remnant sign language. Will need to practice using the video lessons for some time in order to fully understand Remnant sign language."
+		conversation
+			`着陆后，您会环顾四周寻找有人问路。你走近一位看上去并不忙碌的码头工人，小心翼翼地打招呼：“你能带我去见港口主管吗？”他好奇地看了你一会儿，然后极其缓慢地回答。你向他道谢，然后按照他的指示前往太空港。`
+			`	Once again the director seems to be expecting you, and has a simple conversation with you about how the flight was and how your lessons are progressing. You manage to convey that you have learned a bit, and he gives you a few tips on your rehearsed phrases before directing you to place your hand on the scanner. Once again, the scanner takes a sample of your blood.`
+			choice
+				`（标语询问扫描仪的用途。）`
+				`（唱一首关于我对手持扫描仪的困惑的诗句。）`
+			`该男子开始签名，但随后意识到你不太明白他签名的内容，因此他转而唱歌。 “很久以前我们就决定，被阿尔法特工渗透是一个很大的风险，我们不能依靠我们的星际网络来保持安全。因此，我们实施了一项政策，当第一次允许残余人员正式进入新星球时，他们的纯洁性和身份都会得到验证。因此，即使有人侵入我们的网络以给自己一个干净的身份，他们在开始在新星球上工作时仍然会被抓住。我们也不会在我们的网络上广播这一要求，只是在本地强制执行。这不是万无一失，但它增加了额外的安全层。”`
+			`您感谢该男子向您解释扫描仪并接受下一组课程。`
+			`你会花几个小时观看一些课程，其中一个内容是观看一部古老的节目，讲述一位商船船长带着一群不太可能的船员穿越银河系的故事，由一群“遗迹”演员重演，他们在对话中用夸张的简单方式唱歌和打手势。它有一种奇怪的熟悉感，但又无法准确定位。你注意到它似乎有很多关于操纵和政府保密的危险的潜台词，特别是围绕遗传学。`
+			`浏览其余课程，您会发现这里的内容比前两次要多得多。完成这一切可能需要一些时间，但如果练习几个月，你应该会相当流利。`
+
+
+
+mission "Remnant: Learn Sign Follow Up"
+	invisible
+	source
+		government "Remnant"
+	to offer
+		has "event: remnant: sign studies complete"
+	on offer
+		log "Have achieved a degree of fluency in the Remnant sign language sufficient for general conversation."
+		conversation
+			`当您进入太空港时，您突然想到，为您提供教学视频的信息总监之一可能会欣赏您在过去几个月的练习中学到的东西。你伸出手指，停在办公桌前，在那里你可以与信息主管进行简单的交谈。`
+			`“恭喜你，<last> 队长！”导演签名。 “你的流利程度足够好，即使是那些不愿意与陌生人一起唱歌的人也应该会很舒服地与你合作。按照这个速度，你将在更多方面成为我们的一员，而不仅仅是血统。我期待看到你与我们合作的结果。”导演被其他残兵的到来打断，询问一些事情，并以抱歉的姿态向你告别。`
+				decline
+
+
+
+mission "Remnant: Deep Surveillance"
+	name "调查伊万"
+	description "前往伊万办公室所在的<stopovers>，询问他对余烬废土的了解，然后带着你的发现返回<destination>。"
+	minor
+	source
+		government "Remnant"
+	stopover "Valhalla"
+	to offer
+		has "license: Remnant"
+		or
+			and
+				has "Terminus exploration: done"
+				not "Deep: Remnant 0: done"
+			has "Deep: Remnant Research: offered"
+	substitutions
+		"<compared>" "The complex looks pristine by <region> standards, but when compared"
+		"<compared>" "Compared"
+			or
+				has "start: deep"
+				has "start: paradise"
+				has "start: hai"
+		"<region>" "Dirt Belt"
+			has "start: default"
+		"<region>" "Earth, and even Syndicate"
+			has "start: syndicate"
+	on offer
+		conversation
+			branch "told before"
+				has "remnant: told about deep"
+			
+			branch terminus1
+				not "Deep: Remnant Research: offered"
+			
+			`当你在太空港闲逛时，你会回想起那些来自深海的科学家，你帮助发现了余烬废土。考虑到遗民重视他们的秘密，他们可能有兴趣了解这一点。`
+			choice
+				`（找个级长来诉说。）`
+					goto telling
+				`（不要告诉余民。）`
+					decline
+			
+			label terminus1
+			`在太空港闲逛时，您会回想起在终点站研究虫洞的科学家们。考虑到遗民重视他们的秘密，他们可能有兴趣了解这一点。`
+			choice
+				`（找个级长来诉说。）`
+				`（不要告诉余民。）`
+					decline
+			
+			label telling
+			action
+				set "remnant: told about deep"
+			`你询问太空港里的一名遗迹，你可以在哪里找到级长，他们给你指了一个看起来像问讯处的东西。在那里，您告诉服务员您有一些关于 遗民 安全的潜在重要问题需要讨论。他们点击几个按钮，然后给你指示沿着走廊走。你很快就会发现自己身处一个军械库，那里有几名残余守卫正在清理他们的武器。其中一个站起来并向您走来。`
+			`“你好，队长。我是托尔扎级长。有人告诉我你掌握了对我们的安全可能很重要的信息。”他在房间另一边的长凳上坐下来，远离其他“遗迹”，并示意你也这样做。 “你有什么要告诉我们的？”`
+			branch terminus2
+				not "Deep: Remnant Research: offered"
+			
+			choice
+				`“我帮助一群来自深海的科学家发现了余烬废土。”`
+				`“一群来自深海的科学家发现了余烬废土。”`
+					goto discovered
+			
+			action
+				set "remnant: admitted to helping deep"
+			`托尔扎的眼睛睁得大大的。 “你为什么要这么做？”他问道。 “你难道不明白我们的保密是最重要的吗？”`
+			choice
+				`“我不相信他们会对你构成威胁。”`
+					goto threat
+				`“我很抱歉，但在我明白这一点之前我已经帮助了他们。”`
+			
+			`托尔扎似乎稍微放松了一些。 “这很不幸。我不能因为你不明白的事情而对你生气。但既然你明白了，以后就不要再犯同样的错误了。`
+			`“他们知道什么？”`
+				goto knowledge
+			
+			label terminus2
+			choice
+				`“我帮助了一群正在研究终点站虫洞的科学家。”`
+				`“我发现一群科学家正在研究终点站的虫洞。”`
+			
+			`“他们知道如何进入吗？”托尔扎问道，听起来并不关心这个新信息。`
+			`“不，”你说。 “但他们知道，或者至少认为，这是一个虫洞，并且正在尝试学习如何进入它。”`
+			`“好吧，他们不太可能学到东西。稳定虫洞的唯一方法是使用钥匙石，但我从未听说过在先祖空间中发现过钥匙石。不过，了解这些科学家所知道的仍然会有帮助。你能给我们一份他们的发现的副本吗？”`
+			choice
+				`“我会尝试的。首席科学家告诉我他的办公室在哪里。”`
+					goto accept
+				`“抱歉，但我不相信我能做到。”`
+			`“这很不幸，”托尔扎回应道。 “但是感谢您告知我们此事。我目前预计不会有任何结果，但是，如果发生任何事情，我们可以比其他情况做好更充分的准备。”托尔扎从长凳上站起来，带你出去。 “愿余烬为你而燃烧。”`
+				decline
+			
+			label accept
+			`“这很好，”托尔扎回答道。 “一旦你得到了调查结果，只需返回这里的太空港并将其交给问讯处即可。我们很快就会查看它们。”托尔扎从长凳上站起来，带你出去。 “祝你一路平安，船长。愿余烬为你而燃烧。”`
+				accept
+			
+			label "told before"
+			`自从你上次告诉遗迹关于伊万对终点站虫洞的研究以来，你已经帮助他发现了余烬废土。遗民可能有兴趣了解伊万的最新进展。`
+			choice
+				`（找个级长来诉说。）`
+				`（不要更新 遗民。）`
+					decline
+			
+			`你走近一个太空港问讯处，要求见托尔扎长官，上次你向残余者通报深渊研究虫洞的消息时曾与他交谈过。幸运的是，托尔扎目前在世界上，并且您被告知在自助餐厅与他见面。当你到达时，你发现托尔扎刚刚吃完饭，正准备离开。`
+			`“啊，队长，听说你在找我，我们应该找个私密的地方谈谈。”`
+			`你跟随托尔扎来到一个和以前类似的军械库。 “深渊正在进行的关于阈值的研究有更新吗？”他坐下后问道。`
+			choice
+				`“我帮助科学家们学会了如何穿过虫洞。”`
+				`“科学家们已经发现了如何穿过虫洞。”`
+					goto discovered
+			
+			action
+				set "remnant: admitted to helping deep"
+			`托尔扎的眼睛睁得大大的。 “你为什么要这么做？”他问道。 “你难道不明白我们的保密是最重要的吗？”`
+			choice
+				`“我不相信他们会对你构成威胁。”`
+					goto threat
+				`“我很抱歉，但在我明白这一点之前我已经帮助了他们。”`
+			
+			action
+				set "remnant: lied to torza: understanding"
+			`“说谎者！”托尔扎从板凳上站起来，对你大喊大叫。 “在我们信任你并授予许可之后，你才告诉我们这些科学家的事。”托尔扎愤怒地从你身边走开，然后转过头。`
+			`“他们知道什么？”`
+				goto knowledge
+			
+			label threat
+			`“这不是他们构成威胁的问题，”托尔扎愤怒地说。 “他们可能是和平的，但无论他们告诉谁或向他们学习的人都可能不是和平的。`
+			`“他们知道什么？”`
+				goto knowledge
+			
+			label discovered
+			`托尔扎的眼睛睁得大大的。 “他们知道什么？”`
+			
+			label knowledge
+			choice
+				`“他们不知道遗迹，至少现在还不知道。”`
+					to display
+						has "deep: did not reveal remnant"
+				`“他们只发现了虚空精灵。”`
+					to display
+						has "deep: did not reveal remnant"
+					goto sprites
+				`“他们知道余烬废土中的遗迹在哪里。”`
+					to display
+						has "deep: did reveal remnant"
+					goto location
+				`“他们扫描了几艘残余船只。”`
+					to display
+						has "deep: did reveal remnant"
+					goto scans
+				`“他们有一些遗迹技术的样本。”`
+					to display
+						has "Deep: Remnant: Engines: done"
+					goto tech
+				`“他们正在积极监视遗迹世界。”`
+					to display
+						has "Deep: Remnant Surveillance: done"
+					goto surveilled
+			
+			action
+				set "remnant: told that deep knows nothing"
+			`听完这句话，托尔扎似乎平静了许多。 “这是最幸运的。我们需要努力确保这种情况持续下去。”`
+				goto end
+			
+			label sprites
+			action
+				set "remnant: told that deep knows sprites"
+			`听完这句话，托尔扎似乎平静了许多。 “那么他们就不会像我们一样因为好奇心而激怒执政官。”`
+				goto end
+			
+			label location
+			action
+				set "remnant: told that deep knows location"
+			`托尔扎停顿了很长时间。 “我认为他们在发现余烬废土后才会知道我们，这才有意义。”`
+				goto end
+			
+			label scans
+			action
+				set "remnant: told that deep has scans"
+			`托尔扎停顿了很长时间。 “这些科学家知道我们的行踪，比他们扫描我们的船只更令人担忧。”`
+				goto end
+			
+			label tech
+			action
+				set "remnant: told that deep has tech"
+			`“而你就是把它带给他们的人，”托尔扎回答道。`
+			branch reciprocal
+				has "Remnant: Tech Retrieval: done"
+			
+			choice
+				`“是的，不过我买了你的技术后怎么用，与你无关。”`
+					goto concern
+				`“不，他们是通过其他方式获得的。”`
+					goto other
+			
+			label reciprocal
+			choice
+				`“是的，但这和我把共和国的技术带给你没有什么不同。”`
+				`“不，他们是通过其他方式得到的。”`
+					goto other
+			
+			`对此，托尔扎皱起了眉头，但没有说什么。`
+				goto end
+			
+			label concern
+			`“我们非常关心您如何使用我们的技术！”托尔扎大喊。`
+				goto end
+			
+			label other
+			action
+				set "remnant: lied to torza: technology"
+			`托尔萨咬紧牙关。 “没有关于船只或装备失踪的报告，唯一能够提供我们技术的访客就是你。”`
+				goto end
+			
+			label surveilled
+			action
+				set "remnant: told about surveillance"
+			`“他们是怎么做到的？”托尔扎问道。`
+			choice
+				`“你们的每个太空港都安装了监控设备。”`
+				`“我不知道。我只知道他们是。”`
+					goto secret
+			
+			action
+				set "remnant: told about cubes"
+			`托尔扎愤怒地猛击墙壁，然后放松下来。 “感谢您告诉我们这一点。我们将立即搜索并删除这些设备。”`
+				goto end
+			
+			label secret
+			`“无论他们使用什么方法，我们都会在适当的时候发现他们，”托尔扎说。`
+			
+			label end
+			`Torza 开始敲击数据板。 “我们必须采取行动纠正这种情况，”他平静地说。`
+			branch repeat
+				has "retrieved before"
+			
+			`“我想你知道这些科学家的下落。你能给我们一份他们的发现吗？”`
+			choice
+				`“我会尝试的。首席科学家告诉我他的办公室在哪里。”`
+					goto accepted
+				`“抱歉，但我不相信我能做到。”`
+					goto decline
+			
+			label repeat
+			`“你给我们带来了这些科学家以前掌握的信息。我请求你再这样做一次。”`
+			choice
+				`“我会尽快带回他们的信息。”`
+					goto accepted
+				`“抱歉，但我不相信我能做到。”`
+					goto decline
+			
+			label decline
+			branch revealed
+				has "deep: did reveal remnant"
+			
+			branch admitted
+				has "remnant: admitted to helping deep"
+			
+			`“这很不幸，”托尔扎回应道。 “但是谢谢你告诉我们这件事。我们将保持高度警惕，看看这些科学家是否会进一步深入余烬废土。”托尔扎从长凳上站起来，带你出去。 “愿余烬为你而燃烧。”`
+				decline
+			
+			label admitted
+			`“这很不幸，”托尔扎回应道。 “但是谢谢你告诉我们这件事。我们将保持高度警惕，看看这些科学家是否会进一步深入余烬废土。”托尔扎从长凳上站起来，带你出去。 “我们也可能会密切关注你的未来，以避免出现类似的情况。”`
+				decline
+			
+			label revealed
+			branch liar
+				or
+					has "remnant: lied to torza: technology"
+					has "remnant: lied to torza: understanding"
+			
+			`“这很不幸，”托尔扎回应道。 “非常不幸。我们将保持高度警惕，看看这些科学家是否会采取任何行动。我至少赞扬你向我们提供了你所掌握的信息。”托尔扎从长凳上站起来，二话不说就把你带出去了。`
+				decline
+			
+			label liar
+			action
+				set "remnant: player is surveilled"
+			`“那么，也许残存者应该重新评估他们对你的信任，”托尔扎回答道。 “我们将保持高度警惕，看看这些科学家是否会采取任何行动。我至少赞扬你向我们提供了你所掌握的信息，但要知道，从现在开始，你将受到我们的密切关注。”托尔扎从长凳上站起来，二话不说就把你带出去了。`
+				decline
+			
+			label accepted
+			branch revealed2
+				has "deep: did reveal remnant"
+			
+			branch admitted2
+				has "remnant: admitted to helping deep"
+			
+			`“这很好，”托尔扎回答道。 “一旦你得到了调查结果，只需返回这里的太空港并将其交给问讯处即可。我们很快就会查看它们。”托尔扎从长凳上站起来，带你出去。 “祝你一路平安，船长。愿余烬为你而燃烧。”`
+				accept
+			
+			label admitted2
+			`“这很好，”托尔扎回答道。 “一旦你得到了调查结果，只需返回这里的太空港并将其交给问讯处即可。我们很快就会查看它们。”托尔扎从长凳上站起来，带你出去。 “祝您一路平安，船长。但请注意，我们可能会密切关注您的前进情况，以避免再次发生类似情况。”`
+				accept
+			
+			label revealed2
+			branch liar2
+				or
+					has "remnant: lied to torza: technology"
+					has "remnant: lied to torza: understanding"
+			
+			`“这很好，”托尔扎回答道。 “一旦你得到了调查结果，只需返回这里的太空港并将其交给问讯处即可。我们很快就会查看它们。”托尔扎从长凳上站起来，二话不说就把你带出去了。`
+				accept
+			
+			label liar2
+			action
+				set "remnant: player is surveilled"
+			`“这很好，”托尔扎回答道。 “一旦你得到了调查结果，只需返回这里的太空港并将其交给问讯处即可。我们很快就会查看它们。”托尔扎从长凳上站起来，带你出去。 “要知道，从现在开始，我们将密切关注你，队长。我赞扬你同意向我们提供这一信息，但我们不能允许再发生这样的情况。”`
+				accept
+	
+	on stopover
+		"retrieved information" ++
+		conversation
+			branch "retrieved before"
+				"retrieved information" == 2
+			
+			`当你帮助他拯救终点站的科学无人机时，你查了一下伊万办公室的位置，发现它位于太空港外的一栋建筑中，只是大型办公大楼中众多房间中的一个。 <compared> 与您在深海其他地方看到的架构相比，它相当野蛮。`
+			branch gone
+				has "Deep: Remnant Research: offered"
+			
+			`你问接待员伊万的房间号是多少，他给你指了二十楼的一个房间。乘电梯上去后，你敲了敲伊万办公室的门。`
+			`“是谁？”伊万在向百叶窗外看去之前说道。 “哦！队长<last>！请进来。”`
+			`伊万打开门让你进去。办公室很狭窄，墙壁几乎完全被文件柜遮住了。伊万走到一张他几乎没有空间躲开的桌子前，拿起一堆文件，把它们塞进最近的柜子里。 “抱歉把事情搞得一团糟，”他紧张地说。 “我不知道你会来。有什么可以帮到你的吗？”`
+			choice
+				`“我想知道你是否发现了有关终点站异常的任何新信息。”`
+				`“你认为我可以得到一份你对终点站异常现象的研究报告吗？”`
+					goto "terminus copy"
+			
+			`“哦，是的。我们无法用剩下的资金做太多事情，但我们有了一个重要的发现。”伊万转向他的一个文件柜，拿出某种图形，你可能会猜到它描绘了异常情况，但你无法理解它的任何意义。`
+			`“我们的一个想法是，该异常现象是某种不稳定的虫洞。有关其存在的报道至少可以追溯到第一次阿尔法战争时期，有传言称船只已经离开终点站，再也没有回来，可能已经以某种方式进入了该异常区域。现在我不是一个相信谣言的人，但它们肯定来自某个地方，所以这个想法至少值得调查。`
+			`“假设它是一个虫洞，太不稳定，无法让船只通过，我们想看看是否可以让任何东西穿过它。我们发现，只要有一个足够小且足够光滑的物体，我们就可以让它在异常现象中消失得不留痕迹。”然后，他从其中一个柜子中取出一个乒乓球大小的小金属球，并将其挂在一根连接的电线上。`
+			`“现在这只是一个模型，但我们创建了许多与此大小相同的小型传感器，并将它们发送到异常体中。我们希望能够从异常体另一侧的任何物体中获取一些读数，因为它显然去了某个地方，但我们只能通过电线返回静电，几分钟后就什么也没有了。不幸的是，无论我们发送进去什么，我们似乎都无法拉回来。电线总是断裂。`
+			`“所以这个异常显然是一个虫洞。现在我们只需要弄清楚如何让我们发送到其中的任何东西返回，以及如何让船大小的东西进入它。”`
+			`“听起来你进步很大，”你回答道。 “你认为我能得到一份你迄今为止的研究成果吗？”`
+			
+			label "terminus copy"
+			`“一份？”伊万向太空看了一会儿。 “好吧，我想既然你帮助我们避免了失去宝贵的设备，我可以为你破例。在最终确定之前，我通常不会与那些不属于我的研究团队的人分享研究结果。因此，我已经被烧伤过太多次了。”`
+			`伊万走到另一个文件柜前，拿出一些文件夹。 “这仅供您查看。保证您不会与任何人分享。”`
+			choice
+				`“我保证。”`
+					goto digitize
+				`“我会尽力。”`
+			`“有趣，”伊万面无表情地说。`
+			label digitize
+			`“让我把这些文件夹数字化给你，然后我就可以给你一个包含所有内容的数据芯片。只需要几分钟。”`
+			action
+				set "remnant: got deep anomaly research"
+			`伊万带着文件夹离开房间，当他回来时，他递给你一个数据芯片，然后将所有文件夹推回文件柜。 “嗯，你还需要什么吗？”`
+			`“不。这就是我来这里的全部目的，”你回答道。 “祝你接下来的工作一切顺利。”`
+			`“谢谢你，”伊万说。 “我们将来可能会联系。我可能会再次需要你为这个项目提供帮助，希望情况不会比上次那么糟糕。”`
+				decline
+			
+			label "retrieved before"
+			`你回到 Ivan 办公室所在的办公大楼，询问接待员 Ivan 是否有空，他困惑地看着你。`
+				goto moved
+			
+			label gone
+			`你问接待员伊万的房间号是多少，他困惑地看着你。`
+			
+			label moved
+			`“伊万·哈塔贾（Ivan Haataja）？他几周前就搬走了。一边把一托盘文件柜拖出大楼，一边说了一些‘在这个世界上进步’之类的话。如果你需要的话，我可以查一下他现在在哪里。”`
+			`“我会很感激，”你说。`
+			`接待员花了几分钟敲击键盘。 “看来他的办公室搬到了……瓦尔哈拉深理工学院？”他一脸惊讶地说。 “哦哇，一定是引起了政府里某人的注意才搬到那里的。你需要指路吗？”`
+			choice
+				`“是的，请。”`
+					goto directions
+				`“他到底会引起谁的注意？”`
+			`“这里有很多官员从事他的工作，所以很难说。”`
+			label directions
+			`您从接待员那里得到指示并感谢他抽出时间。原来，这个研究所就在航天港城大学区的中心地带。深海、天堂世界、甚至地球附近的许多行星都有类似的大学区，但瓦尔哈拉上的大学区是整个共和国同类大学区中最大的。`
+			`当你进入这个地区时，你会发现这里的建筑比伊万旧办公楼的粗犷风格更吸引人。每座建筑都由比直角更多的曲线组成，其表面装饰着有纹理的金属光泽。明亮的外墙会散射阳光，为该区域带来温暖的光芒，而不是在您碰巧站在错误的位置时将阳光直接射入您的眼睛。即使在所有的金属建筑中，仍然有大量的绿色植物：街道两旁都是修剪整齐的灌木丛和树木，许多建筑物的顶部都有花园。`
+			`你登上研究所的楼梯，当你走近时，巨大的建筑就在你面前若隐若现。其更古老的设计使该建筑在该地区的其他建筑中脱颖而出。入口处有巨大的大理石柱子守卫，这些柱子设法不与附近其他建筑的金属光泽发生冲突。内部同样奢华，宽敞的大堂区布满了接待区，中心是一个巨大的喷泉。`
+			choice
+				`（走到其中一个接待台并要求见 Ivan Haataja。）`
+			`接待员微笑着向您打招呼，然后敲击电脑。 “看来他现在有空，”她说。 “我们会让他知道你要来，并很快就会有人护送你到哈塔贾医生的办公室。”`
+			`一名工作人员向您招手，您跟着他穿过看似无尽的走廊和楼梯间，前往目的地。整座建筑似乎和大堂一样装饰得令人印象深刻，有漂亮的家具和精美的艺术品。过了一会儿，你终于到达了伊万的办公室。你感谢护送者把你带到这里，因为如果没有他，你肯定会迷路几个小时，然后敲了敲伊万的门。`
+			`伊万打开门，脸上露出灿烂的笑容。 “<last> 队长！很高兴在这里见到您。请坐。”他带你走进他的办公室，这是一间大房间，有一面窗户墙，可以俯瞰风景优美的庭院。您坐在桌子对面的一把毛绒椅子上，向后靠以保持舒适。 “我知道椅子很舒服，”伊万笑着说。 “不过，别在我身上睡着。”`
+			branch second
+				"retrieved information" == 2
+			`然后他在自己的带软垫的椅子上坐下。 “欢迎来到我的办公室。这比我习惯的地方高出好几英里。我们的发现终于引起了深层政府的注意，他们立即让我的办公室从原来肮脏的建筑群搬到了这里。我要感谢你们所做的大部分工作。`
+				goto reason
+			
+			label second
+			`然后他在自己的带软垫的椅子上坐下。 “欢迎来到我的办公室。比原来的地方好多了，不是吗？我们的发现终于引起了深层政府的注意，他们立即让我的办公室从原来肮脏的建筑群搬到了这里。我要感谢你所做的大部分工作。`
+			
+			label reason
+			`“那么，是什么风把你吹到这里来的，队长？”他问道。`
+			branch remnant
+				has "deep: did reveal remnant"
+			choice
+				`“我想知道你对虫洞和外星生物的研究得出了什么成果。”`
+				`“我可以得到一份你关于虫洞和外星生物的研究报告吗？”`
+					goto "sprites copy"
+			`“啊。好吧，有很多话要说。”伊万斜靠在椅子上。`
+			`“就虫洞而言，我们仍在尝试对这个空间区域的虫洞如何运作进行理论化。经典意义上的虫洞是时空结构中的某种畸变，允许两点之间的瞬时运动。你可以把它想象成一条隧道，你可以在其中单向或另一向移动。但是你发现的一系列虫洞是如何运作的？四个不同的虫洞以某种方式创建了一个单向旅行的循环。”伊万转动椅子，望向庭院。 “我们还不确定它们是如何以这种方式运作的。我们想出的任何东西似乎都违反了一些我们确信是正确的物理定律。”`
+			`伊万转身面向你。 “至于那些外星生物，它们同样令人着迷。人类以前在其他星球上发现过生命，但考虑到我们几个世纪前在地球上的经历，它总是符合我们对生命是什么的看法。但这些生物完全是另一回事。你发现它们的系统中没有适合生命存在的类地行星，所以它们一定是在气态巨行星上进化的。生命是如何在这样的环境中开始的，更不用说进化到能够在真空太空中旅行了——这就是一个问题。对我们来说是个谜。`
+			`“顺便问一下，你愿意为这些生物命名吗？我的团队有一些想法，但我们对其中任何一个都不是特别确信，所以我想我应该问你。”`
+			choice
+				`“‘虚空精灵’怎么样？”`
+					goto sprites
+				`“‘Floaty McFloat Face’怎么样？”`
+					goto joke
+				`“抱歉，我没有什么想法。”`
+			
+			`“这很不幸，”伊万说。 “我一直在想一个能代表太空虚无的名字。我最终会想出一些办法。”`
+				goto ask
+			
+			label joke
+			`“我明白了，这是出于开玩笑的心情。我们不会将它们命名为‘Floaty McFloat Face’，”Ivan 面无表情地说。 “我一直在思考一些与太空有关的事情。我最终会想出一些办法。”`
+				goto ask
+			
+			label sprites
+			action
+				set "deep: named void sprites"
+			`“虚空精灵，”伊万缓缓说道，仿佛让这个名字留在舌尖上。 “虚空精灵……我喜欢。”`
+			
+			label ask
+			`“你认为我可以得到一份你的研究报告吗？”你问。`
+			label "sprites copy"
+			branch again
+				"retrieved information" == 2
+			
+			`“一份？”伊万向太空看了一会儿。 “好吧，我想既然你帮了我这么大的忙，我可以为你破例。在最终确定之前，我通常不会与那些不在我的研究团队中的人分享研究结果。因此，我已经被烧伤过太多次了。”`
+			`伊万靠在办公桌前。 “这只是给你看的。”`
+				goto next
+			
+			label again
+			`“再次？”伊万问道。他靠向办公桌。 “我喜欢你对我的研究如此感兴趣。我想只有你帮助我才有意义，但通常商船船长对跟进他们所做的零工不感兴趣。”`
+			
+			label next
+			action
+				set "remnant: got deep wormhole and sprite research"
+			`他按下桌子上的一个按钮。 “阿比盖尔，您能否将研究所网络上我名下的加密文件夹‘TAB-RP’、‘WLT-RP’和‘GGA-RP’复制一份，并通过数据芯片带到我的办公室？谢谢。”`
+				goto reencrypt
+			
+			label remnant
+			action
+				"ivan 的怀疑" = ( "检索到的信息" / 2 * "深度：比科学家更早了解石头" ) + "深度：比科学家更早了解石头" + 2 * "深度：遗迹：引擎：拒绝" + 2 * "深度：遗迹：引擎：失败" + "深度：遗迹监视：拒绝" + "深度：遗迹监视：失败"
+			
+			branch technology
+				has "remnant: told that deep has technology"
+			
+			branch surveillance
+				has "remnant: told about surveillance"
+			
+			choice
+				`“我想知道你对那些残舰扫描的研究得出了什么结果。”`
+				`“我可以得到一份你对遗迹飞船扫描的研究报告吗？”`
+					goto suspicion
+			branch cubes
+				has "Deep: Remnant Surveillance: done"
+			`“啊。好吧，有很多话要说。”伊万斜靠在椅子上。`
+			`“船舶扫描看起来与我们以前见过的任何东西都不一样。这些船舶似乎具有某种......有机属性。在这里，让我向您展示。”伊万在他的电脑上调出了你扫描到的遗迹飞船的示意图。你有点惊讶他能从服装扫描中获取如此多的信息。 “这些船大部分看起来相对正常，但它们的船体几乎是有机结构。”他放大了示意图中突出显示船体结构的部分。 “现在，参宿四甚至海军设计的船舶，船体支撑都是三角形或方形截面。但这些船舶有伪六边形设计，完全不均匀。它几乎看起来像一些植物的细胞结构。`
+			`“除了奇怪的船体结构之外，它们似乎还有相当多的设备直接集成到船舶本身中。例如，内置扫描仪和冲压铲。扫描仪表面没有出现但我们可以看出的东西就在那里。你扫描的两艘船中较小的一艘也有某种我们无法理解的内置设备。它看起来不像我们以前见过的任何类型的设备，但它占据了相当大的一部分船的结构，所以我们需要仔细观察才能弄清楚它是什么。”`
+			`“你认为我可以得到一份你的研究报告吗？”你问。`
+				goto suspicion
+			
+			label technology
+			choice
+				`“我想知道你对遗迹技术的研究带来了什么成果。”`
+				`“我可以得到一份你关于遗迹技术的研究报告吗？”`
+					goto suspicion
+			branch cubes
+				has "Deep: Remnant Surveillance: done"
+			`“啊。好吧，有很多话要说。”伊万斜靠在椅子上。`
+			`伊万拿出一张示意图，显示你带来的引擎。 “你给我们带来的发动机非常有趣。我们已经向你提到过，它们的尺寸相当强大，甚至比类似尺寸的原子发动机还要强大，但根本不产生太多热量。不过，它们的主要缺点似乎是它们消耗的巨大能量。考虑到它们似乎是改进的离子发动机，能量消耗并不奇怪，但离子发动机的尺寸可能比原子发动机更强大，这一事实是令人惊叹的。推进器似乎也有能力提供反向推力，使任何船舶与他们一起相当机动。”`
+			
+			branch skip
+				not "Deep: Remnant: Generators: done"
+			`他拿出了发电机的原理图。 “另一方面，发电机并不是太有趣。只不过是一种改进的发电机，你可能会在环缘发现这种类型的发电机。有点有趣的是，考虑到发动机的能量需求，与聚变反应堆之类的东西相比，它不会产生太多能量，但我想这些人更关心的是保持他们的飞船保持凉爽，而不是拥有额外的功率输出。我们发现的另一个有趣的特性是，发电机似乎改善了电离效应，就像海离子炮所应用的那样，这似乎是发电机设计的有意为之。”`
+			
+			branch skip
+				not "Deep: Remnant: Inhibitor Cannon: done"
+			`然后他拿出了该武器的示意图。 “最后，你给我们带来的武器。抑制剂大炮是一个技术奇迹，具有我们以前从未见过的特性。想象一下粒子大炮，但尺寸只有一半，射程更大。两门抑制剂大炮所占的空间与单个粒子大炮差不多，但抑制剂大炮会造成更大的伤害。最重要的是，抑制剂大炮的射弹有一种奇怪的能力，可以减慢它们击中的任何船只的速度。我们对它们进行了测试，发现它们无法以正常速度转弯和加速。”`
+			
+			label skip
+			`“你认为我可以得到一份你的研究报告吗？”你问。`
+			
+			label suspicion
+			branch cubes
+				has "Deep: Remnant Surveillance: done"
+			branch again2
+				"retrieved information" == 2
+			
+			`“一份？”伊万向太空看了一会儿。 “好吧，我想既然你帮了我这么大的忙，我可以为你破例。在最终确定之前，我通常不会与那些不在我的研究团队中的人分享研究结果。因此，我已经被烧伤过太多次了。”`
+			`伊万靠在办公桌前。 “这只是给你看的。”`
+			choice
+				`“明白了。”`
+					goto branches
+				`“其实，我只是想把它展示给其他感兴趣的人。”`
+			action
+				set "remnant: honest about deep research"
+			`伊万盯着你看了一会儿。 “我……明白了。谢谢你的诚实，但我不能给你一份副本。这项研究是机密的。”`
+				goto leave
+			
+			label again2
+			`“再次？”伊万问道。他靠向办公桌。 “我喜欢你对我的研究如此感兴趣。我想只有你帮助我才有意义，但通常商船船长对跟进他们所做的零工不感兴趣。”`
+			
+			label branches
+			branch one
+				"ivan's suspicion" == 1
+			
+			branch two
+				"ivan's suspicion" == 2
+			
+			branch three
+				"ivan's suspicion" == 3
+			
+			branch four
+				"ivan's suspicion" == 4
+			
+			label one
+			action
+				set "remnant: got deep research"
+			`他按下桌子上的一个按钮。 “阿比盖尔，您能否将研究所网络上我名下的加密文件夹‘TAB-RP’和‘RTS-RP’复制一份，并通过数据芯片带到我的办公室？谢谢。”`
+				goto reencrypt
+			
+			label two
+			action
+				set "remnant: got deep research"
+			`他犹豫了一会儿，按下了桌子上的按钮。 “阿比盖尔，您能否将研究所网络上我名下的加密文件夹‘TAB-RP’和‘RTS-RP’复制一份，并通过数据芯片带到我的办公室？谢谢。`
+			`“所以，我们不会把这个交给任何人，是吗？”他问你。`
+			choice
+				`“当然不是。”`
+					goto course
+				`“没有。你为什么这么问？”`
+			`“只是好奇，”他回答道。`
+				goto reencrypt
+			label course
+			`“很好，”他回答道。`
+				goto reencrypt
+			
+			label three
+			action
+				set "remnant: got old deep research"
+			`他犹豫了一会儿，抬头看着你，然后按下桌子上的按钮，同时仍然看着你的眼睛。 “阿比盖尔，你能复制一份我名下研究所网络上的加密文件夹……‘TAI-RP’，然后用数据芯片将它们带到我的办公室吗？谢谢。”`
+			`“所以，你说你在和我合作之前就知道遗迹，对吗？”他问你。`
+			choice
+				`“是啊。你为什么这么问？”`
+				`“我不记得了。”`
+					goto recall
+			`“只是好奇。你愿意告诉我你和他们的关系怎么样吗？”`
+				goto relationship
+			label recall
+			`“嗯，我好像记得你是这么跟我说的，你愿意告诉我你和他们的关系怎么样吗？”`
+			label relationship
+			choice
+				`“我只是为他们做一些零工。没有什么官方的。”`
+				`“我宁愿不透露这一点。”`
+			`“有趣，”他说。`
+				goto reencrypt
+			
+			label four
+			action
+				set "remnant: got no deep research"
+			`他伸手去拿桌子上的一个按钮，然后将其拉开，将椅子转向庭院。 “没关系。我不能给你一份副本。这项研究是机密的。”`
+			choice
+				`“好吧，那我就出去了。”`
+					goto leave
+				`“可是我帮你做了，我真的看不出来吗？”`
+			
+			`“不，你看不到它。这有什么问题吗？”`
+			choice
+				`“是的。我需要这项研究。”`
+				`“不，没问题。我自己出去就好。”`
+					goto leave
+			
+			`他把椅子转回给你并站起来。 “新闻快报，朋友。我发现你了。你要求我提供在我们进入终点站虫洞之前所做的研究，然后你后来告诉我，你已经穿过那里并遇到了这些遗迹。然后，当我要求你帮助我更多地了解他们时，你说不。我认为你在以某种方式掩盖他们，并向他们提供我所知道的信息。为什么你要这样做，我不知道，但这就是我的直觉说，我已经学会相信自己的直觉，现在离开我的办公室。”`
+			choice
+				`“你抓住了我。我要走了。”`
+					goto out
+				`“你完全错了，伊万。”`
+			`“我说离开我的办公室。或者我需要打电话给保安吗？”伊万将手指悬停在桌子上的按钮上。`
+			choice
+				`“好吧好吧，我这就走了。”`
+					goto out
+				`“我认为你确实需要打电话给保安。我不会在没有进行调查的情况下离开。”`
+			`伊万按下按钮。 “保安。我的办公室里有一位不再受欢迎的客人。”`
+			`不到三十秒，一群保安就进入了办公室。 “<first> <last>，你需要和我们一起去，”其中一位说道。`
+			choice
+				`“好吧好吧，我这就走了。”`
+					goto escorted
+				`“我不这么认为。”`
+					goto resist
+			
+			label resist
+			`“嗯，我想是的，”保安打趣道，从皮套里掏出一把泰瑟枪。其他保安配备了自己的各种装备，其中一些看起来是致命的。 “我再给你一次离开的机会。”`
+			choice
+				`“好吧好吧，我这就走了。”`
+					goto escorted
+				`“好吧，你得让我离开。”`
+			
+			`还没等你说完这句话，你就已经能感觉到泰瑟枪带来的肌肉紧张了。你倒下了，头撞到了伊万的桌子上。在你因撞击而失去知觉之前，你听到伊万大喊：“快点！现在我需要买一张新桌子。”`
+			`你最终在牢房里醒来，戴着手铐。你环顾四周，发现一名保安在牢房外面看着你。 “啊，你终于醒了。”警卫打开牢房。 “哈塔贾医生说他不会提出指控。请这边走。”`
+			`警卫护送你走出牢房，牢房位于研究所保安办公室内，靠近大厅。当你被戴着手铐的保安护送时，大堂里的人都露出困惑的表情。把你带到外面后，警卫打开了手铐。 “现在别再惹麻烦了，”他说。`
+				decline
+			
+			label escorted
+			`保安护送你走出伊万的办公室，然后走出大楼。看来残余势力不会得到他们所希望的。`
+				decline
+				
+			label out
+			`你从伊万的办公室出来，他一直看着你。看来残余势力不会得到他们所希望的。`
+				decline
+			
+			label leave
+			`伊万微笑着，但看起来很勉强。 “你想什么时候回来就什么时候回来。只要你愿意，你可以在研究所里自由漫步。这座建筑的大部分地方不对公众开放，但只要你有兴趣四处看看，我总是可以将你标记为我的客人。”`
+				decline
+			
+			label cubes
+			`伊万靠在椅子上笑了起来。 “管他的。你应该看看我能从你放置的那些传感器立方体中恢复什么。`
+				goto ramble
+			
+			label surveillance
+			choice
+				`“我想知道我放置的那些传感器立方体会发生什么。”`
+				`“我可以得到一份你从那些传感器立方体中发现的东西吗？”`
+					goto "surveillance copy"
+			`伊万靠在椅子上笑了起来。 “哦，我所发现的东西绝对令人着迷。`
+			label ramble
+			`“通过每个遗迹系统中的一个立方体，我能够跟踪他们所有的舰队活动，并且发现了一些有趣的事情。首先，船只要么在三个系统之间进行旅行，要么完全离开星系团相当长的时间，通常至少一个月。没有多少船只或舰队在星系团中进行较短的旅行，比如只有一到两周的时间。似乎他们正在派人执行相当漫长的任务。`
+			`“除了舰队运动之外，船只的数量也值得注意。立方体跟踪所看到的独特船只的数量，并且它们很少跟踪同一艘船超过几次。遗迹似乎拥有令人难以置信的船只数量，可能比深度安全和海军的总和还多。对于仅由三个恒星系统组成的群体来说，这当然令人印象深刻。立方体还能够对系统中的任何船只进行低质量扫描。虽然每次单独扫描提供的信息少于装备扫描所能提供的扫描量，但前提是扫描足够多，人们可以更清楚地了解这艘船的构成。不过，像你扫描的那些船似乎很少。也许那些是他们最先进的船，但我看到的其他船似乎并不比你们的普通商船更强大。”`
+			`“实际上我几周前就失去了与立方体的联系，但我已经收集了足够的信息。”`
+			`“你认为我可以得到一份你的研究报告吗？”你问。`
+			label "surveillance copy"
+			`“副本？当然！当然！你是我首先获得这些信息的原因，所以你完全有权获得它。”伊万按下办公桌上的按钮。 “阿比盖尔，你能以我的名义复制研究所网络上的所有内容，然后将其放在数据芯片中带到我的办公室吗？谢谢。”`
+			action
+				set "remnant: got all deep research"
+				
+			label reencrypt
+			`仅仅几分钟后，有人敲门。伊万从带来它的人那里取回数据芯片，然后将其插入他办公桌上的电脑。 “让我重新加密这些内容，然后将新密钥留在芯片中。将钥匙放在锁旁边并不是最安全的做法，但我认为只要您使用它，您就会足够聪明地弥补这一点。啊啊……完成了。”他从计算机中取出芯片并将其交给您。`
+			`“还要别的吗？”他问道。`
+			`“不。这就是我来这里的全部目的，”你回答道。 “祝你接下来的工作一切顺利。”`
+			`“谢谢你，”伊万说。 “你想什么时候回来就什么时候回来。只要你愿意，你可以在研究所里自由漫步。这座建筑的大部分地方不对公众开放，但只要你有兴趣四处看看，我总是可以将你标记为我的客人。”`
+				decline
+			
+	on complete
+		payment 1000000
+		conversation
+			`当您返回 <origin> 时，您前往 Torza 让您前往的问讯处。你告诉前台的人你是来见托尔扎的。他们让你在附近的长凳上等待，托尔扎稍后到达。 “你好，队长。我想你有一份调查结果的副本。”`
+			
+			branch terminus
+				"retrieved information" == 1
+				has "remnant: got deep anomaly research"
+			
+			branch sprites
+				has "remnant: got deep wormhole and sprite research"
+			
+			branch everything
+				has "remnant: got all deep research"
+			
+			branch research
+				has "remnant: got deep research"
+			
+			branch old
+				"retrieved information" == 1
+				has "remnant: got old research"
+			
+			branch repeat
+				"retrieved information" == 2
+				has "remnant: got old research"
+			
+			branch nothing
+				has "remnant: got no deep research"
+			
+			branch refused
+				has "remnant: honest about deep research"
+			
+			label terminus
+			`你把伊万给你的数据芯片交给托尔扎。 Torza 接过它并将其插入桌子后面的终端。他似乎很快地读完了研究报告，时不时地点头、抓着下巴。 “他们做了有趣的研究，”他说。 “所以他们知道这是一个虫洞，但仍然没有办法穿过到另一边。” Torza 从终端上取下数据芯片并将其装进口袋。 “我们会保留这些信息。目前我们没什么可担心的，但我请求你通知我们他们是否取得了任何进一步的进展。愿余烬为你而燃烧。”`
+				decline
+			
+			label sprites
+			`你把伊万给你的数据芯片交给托尔扎。 Torza 接过它并将其插入桌子后面的终端。他似乎很快地读完了研究报告，时不时地点头、抓着下巴。 “他们似乎很喜欢虚空精灵，”他说。 “好奇是人的天性，他们会被虚空精灵保持一段时间的好奇，这为我们赢得了时间。” Torza 从终端上取下数据芯片并将其装进口袋。 “我们将保留这些信息，并密切关注阈值，以防他们决定进一步冒险进入灰烬废土。如果发生这种情况，我们会拜访你。愿余烬为你而燃烧。”`
+				decline
+			
+			label everything
+			`你把伊万给你的数据芯片交给托尔扎。 Torza 接过它并将其插入桌子后面的终端。他似乎很快地读完了研究报告，时不时地点头、抓着下巴。 “你给我们带来了这么多，令人印象深刻，”他说。 “这似乎是他们所知道的关于我们的一切。虽然情况并不理想，但至少我们现在知道他们所知道的，并可以利用这些来为我们带来优势。” Torza 从终端上取下数据芯片并将其装进口袋。然后他拿出你认为放置在遗迹世界上的传感器立方体并将它们放在桌子上。 “我们不久前禁用了这些功能，但之前向他们提供了一些垃圾数据。从这些信息来看，它起作用了。我们将保留这些信息并密切关注阈值，以防他们决定冒险进入灰烬废土。如果发生这种情况，我们会拜访你。愿余烬为你燃烧光明。”`
+				decline
+			
+			label research
+			`你把伊万给你的数据芯片交给托尔扎。 Torza 接过它并将其插入桌子后面的终端。他似乎很快地读完了研究报告，时不时地点头、抓着下巴。 “因此，他们了解我们的部分技术能力，但不是全部，”他说。 “如果需要的话，我们可以利用这种战争迷雾来发挥我们的优势。” Torza 从终端上取下数据芯片并将其装进口袋。 “我们将保留这些信息，并密切关注阈值，以防他们决定进一步冒险进入灰烬废土。如果发生这种情况，我们会拜访你。愿余烬为你而燃烧。”`
+				decline
+			
+			label old
+			`你把伊万给你的数据芯片交给托尔扎。 Torza 接过它并将其插入桌子后面的终端。他似乎很快地读完了研究报告，脸上带着困惑的表情。 “这里没有像你提到的那样是深渊知道的。你确定你收到了正确的信息吗？”`
+				goto tricked
+			
+			label repeat
+			`你把伊万给你的数据芯片交给托尔扎。 Torza 接过它并将其插入桌子后面的终端。他似乎很快地读完了研究报告，脸上带着困惑的表情。 “这和你上次给我们带来的信息是一样的，你确定你收到的信息是正确的吗？”`
+			
+			label tricked
+			`Torza 将终端转向您。你读完它，发现所有的数据都在终点站的虫洞上，但它说他们仍在寻找穿过虫洞的方法。 “这不是我要求的，”你说。 “他一定是故意向我提供了错误的信息。”`
+			`“然后他就明白你为什么要求它了，”托尔扎回答道，他把终端转回去，把数据芯片装进口袋。`
+				goto disappointing
+			
+			label refused
+			`“不，”你回答道。 “首席科学家不愿意给我一份他的研究副本，除非我知道我会把它留给自己。当我告诉他我想分享它时，他把我打发走了。”`
+			`托尔扎扬起了一边眉毛。 “那你就不能简单地对他撒谎吗？”`
+			`“你想让我养成对同事撒谎的习惯吗？”你问。`
+			`他沉默了一会儿，然后叹了口气。 “我想这很公平。”`
+				goto disappointing
+			
+			label nothing
+			`“不，”你回答道。 “首席科学家猜对了，我是想把他的研究成果提供给你。”`
+			
+			label disappointing
+			`托尔扎抓着下巴。 “这……令人失望。你帮助我们陷入了这样的境地：潜在对手对我们了解很多，但我们对他们知之甚少。”托尔扎盯着你，但似乎并没有生气。 “也许间谍活动是正常的。但鉴于你与深海的联系，我们将自行采取此类行动。如果将来出现需要你的事情，我们会联系你。在那之前，不要再让我们的立场妥协。我们不会再这么掉以轻心。”`
+				decline
+
+
+
+mission "Remnant: Tech Retrieval"
+	name "人类遗迹技术检索"
+	description "遗迹有兴趣了解人类在过去几个世纪中取得的进步。给他们带来先进技术的样品，例如新开发的冲压铲、武器或盾牌。"
+	source "Viminal"
+	to offer
+		has "Remnant: Technology Available: offered"
+		random < 30
+	on offer
+		"remnant met taely" ++
+		conversation
+			branch familiar
+				has "remnant met taely"
+			`当您进入太空港时，您注意到广场对面有人似乎一直在等您。一位身着短袖工作服、身材高大、体格健壮的女士从咨询台附近站了起来。她对柜台后面的人做了几个快速的手势，然后自信地大步走向你。当她走近时，你注意到广场上走动的人群似乎都在避开她，就好像她是一个重要人物一样。`
+			`相反，她让你想起了在 <home planet> 维护纺织工厂的机械师。特别是，她腰带上的工具和衣服上的磨损痕迹表明，她在船舶通道管道内比在桌子后面更舒服。`
+				to display
+					has "start: default"
+			`在你决定是否要避开这个人之前，她就站在你面前，清了清嗓子。 “您是 <ship> 的 <first> <last> 队长？”她用抒情的歌声问道。`
+			choice
+				`“这就是我。”`
+					goto admit
+				`“我不知道那是谁。”`
+			`她用一种难以理解的表情看了你一会儿。 “努力不引人注目是令人钦佩的。而忽视自己像太空中的星星一样脱颖而出的事实则不然。”`
+			label admit
+			`“如果你有兴趣为遗民提供帮助，我有一个机会给你。”当您表达兴趣时，她会带您到俯瞰主要造船厂的阳台。当她靠在栏杆上时，一阵冷风让你​​瑟瑟发抖，但她似乎对此浑然不觉。 “我被称为泰利。作为遗迹中的长官，我对此负有责任。”她指着造船厂，在那里你可以看到无数处于不同建造或维修阶段的遗迹外星飞船。 “我们现有的船只为我们提供了良好的服务，但它们都是旧设计。只有宜必思号相对较新。我们需要新想法、新灵感。”她停了下来，短暂地将注意力集中在一个小海湾上，那里有几个人似乎正在从海雀身上拔出一个看起来像超级电容器的东西。`
+				goto question
+			label familiar
+			`当你进入太空港时，你注意到广场对面的泰利。她立即​​开始接近你，似乎一直在等你。 “您好，<first>。希望您不要太忙，因为我有机会给您。”当您表达兴趣时，她会带您到一个俯瞰主要造船厂的阳台。她靠在栏杆上，似乎没有注意到寒冷的微风。 “正如您在与我们共事期间可能已经注意到的那样，我们的许多船舶虽然确实为我们提供了良好的服务，但都是旧设计。虽然我们最近在新概念方面取得了重大进展，但我们仍然需要新的想法和灵感。”她停了下来，短暂地将注意力集中在一个小海湾上，那里有几个人似乎正在从海雀身上拔出一个看起来像超级电容器的东西。`
+			label question
+			choice
+				`“那么，你想问什么？”`
+					goto request
+				`“他们在做什么？”`
+			`“哦，那些是学徒，”她带着一丝有趣的颤音说道。 “他们需要学习如何处理不寻常的技术。第一步就是处理旧技术。比如从海雀身上回收过时的超级电容器，这样它就可以重新加工成有用的东西，并用更新的集成能源存储取代它。”她有趣地看着你。 “你驾驶过海雀号，你知道那艘船有多老了：原始的能源系统，必须手动升降的古董‘硬壳’防护罩……”她的声音逐渐减弱，陷入了短暂的沉默。 “很高兴你在访问内尼亚之前得到了一辆已经翻新过的车。至少它有现代化的发动机和更新的传感器阵列。”`
+			label request
+			`“说到重点了，”她的语气变得更加军事化。 “我们想知道人类在过去五个半世纪中取得了怎样的进步。如果你找到了我们，我相信阿尔法、他们的仆人或其他意图统治银河系的人发现我们只是时间问题。我们需要知道他们将使用什么样的武器，他们的飞船将如何受到保护，以及他们在深空旅行的速度有多快。”`
+			choice
+				`“好吧，我看看能找到什么。”`
+					goto find
+				`“你能详细说明一下‘它们在深空旅行的速度有多快’吗？”`
+				`“不，我不想卷入这件事。”`
+					goto "not help"
+			`她简单地考虑了一下自己的想法，然后吟诵道：“一艘船能在深空区域移动多快，基本上取决于它们收集燃料的速度。在出埃及记中，冲头很常见，如果人类开发出更好的冲头或其他产生燃料的方法，这些将显着提高他们探索或穿越大片太空的速度。”`
+			choice
+				`“好吧，我看看能找到什么。”`
+				`“不，我不想卷入这件事。”`
+					goto "not help"
+			label find
+			`泰利点点头，“我很期待看到你的发现。与此同时，我应该回去工作了。”说完，她翻过栏杆，快速地顺着墙往造船厂的方向爬去，似乎并不在意高度。`
+				accept
+			label "not help"
+			`泰利面无表情地看着你，然后用单调的声音念叨着。 “如果这是你的选择，你就不太可能在我们中间找到很多兴趣。”说完，她从栏杆边缘一跃而下，从视野中消失了。当你迅速越过栏杆往外看时，你发现她一定是抓住了一个把手，因为她像蜘蛛一样以受控的方式快速沿着墙壁移动。`
+				decline
+	to complete
+		never
+	to fail
+		or
+			has "Remnant: Heavy Laser: done"
+			has "Remnant: Catalytic Ramscoop: done"
+			has "Remnant: Plasma Cannon: done"
+			has "Remnant: Electron Beam: done"
+			has "Remnant: D94-YV Shield Generator: done"
+			has "Remnant: S-970 Regenerator: done"
+	on fail
+		clear "Remnant: Tech Retrieval: failed"
+		set "Remnant: Tech Retrieval: done"
+	on abort
+		# Empty, just here so aborting this mission doesn't trigger the failure action.
+
+
+
+mission "Remnant: Heavy Laser"
+	name "回收重型激光"
+	description "一名残余工程师要求您向 <planet> 运送两架重型激光器供他们研究。"
+	source "Viminal"
+	destination
+		government "Remnant"
+		attributes outfitter
+		not attributes "requires: gaslining"
+		not distance 0
+	to offer
+		or
+			has "Remnant: Tech Retrieval: active"
+			has "Remnant: Tech Retrieval: done"
+	on offer
+		require "Heavy Laser"
+		conversation
+			`你记得泰利有兴趣看到来自人类太空的技术例子。你想向她展示你的重型激光吗？`
+			choice
+				`（现在不要。）`
+					defer
+				`（是的。）`
+			branch familiar
+				has "Remnant: Tech Retrieval: done"
+			`问了几个人后，你终于被引导到造船厂的一个海湾，在那里你发现泰利刚刚完成在椋鸟上安装鸫鸫炮。 “您好，<first>。我马上就下来。”她在面板内做了更多的事情，重新密封舱口，然后滑下鳍降落在你旁边。 “那么，你有什么事情要给我吗？”`
+				goto next
+			label familiar
+			`你记得泰利负责造船厂，所以你直接前往那里询问最近的机械师。他们将你带到一个隐藏在悬崖表面的大型机库，在那里你会发现她在一个装满原理图的终端上工作。在她身后，房间很快消失在黑暗中，你可以隐约看到一个大坦克和许多嗡嗡作响的机械。当你走近时，她从工作中抬起头，转身面对你。 “啊，你回来了，有什么新东西要给我吗？”`
+			label next
+			`你带她回到你的船上，向她展示重型激光。 “激光炮？”她问。 “我们的记录表明，人类在出埃及时拥有原始的激光技术，但没有任何东西被认为是有用的武器。”她停下来低头看着她的扫描仪。 “然而我的扫描表明它们能够输出大量的功率。”她停顿了一下，然后继续说道：“这些对于更彻底的检查非常有用。请将其中两颗重型激光器交给 <planet> 的研究小组。”`
+				accept
+	on visit
+		dialog `您已返回 <planet>，但没有泰利要求的两把重型激光器。回来之前去买两把重型激光器。`
+	on complete
+		outfit "Heavy Laser" -2
+		payment 870000
+		"remnant met taely" ++
+		conversation
+			`当你降落在研究中心附近的一个平台上时，一组研究人员将某种武器安装在平台上，瞄准射程。研究人员撤退到厚厚的屏障后面，按下按钮启动武器。当目标射程被切成两半时，枪口发出一道闪光。武器的枪管升到空中，研究人员带着工具和设备冲到靶场检查损坏情况。`
+			`注意到你的到来，一名研究人员转身朝你走来。 “这么说，你就是人类激光武器样本的持有者？”研究人员喊道。 “看到新事物总是很有趣。”他转身向站在停机坪边缘附近的一名残兵挥手，他的马车上拴着一头骆驼。`
+			`研究人员迅速从你的船上卸下重型激光器，并交给你一个带有 <payment> 的信用棒。 “谢谢你给我们带来了一些新的东西来检查。我们很高兴呼吸新鲜空气。”说完，他们迅速前往附近的一个实验室，用奇怪的老式交通工具护送武器货物。`
+
+
+
+mission "Remnant: Plasma Cannon"
+	name "取回等离子炮"
+	description "一名残余工程师向您提供了一份奖励，以换取您向 <planet> 上的一个团队交付两门等离子炮。"
+	source "Viminal"
+	destination
+		government "Remnant"
+		attributes outfitter
+		not attributes "requires: gaslining"
+		not distance 0
+	to offer
+		or
+			has "Remnant: Tech Retrieval: active"
+			has "Remnant: Tech Retrieval: done"
+	on offer
+		require "Plasma Cannon"
+		conversation
+			`你记得泰利有兴趣研究来自祖先空间的技术示例。你想给她看看你取回的等离子炮吗？`
+			choice
+				`（现在不要。）`
+					defer
+				`（是的。）`
+			branch familiar
+				has "Remnant: Tech Retrieval: done"
+			`问了几个人后，你终于被引导到造船厂的一个海湾，在那里你发现泰利刚刚完成在椋鸟上安装鸫鸫炮。 “您好，<first>。我马上就下来。”她在面板内做了更多的事情，重新密封舱口，然后滑下鳍降落在你旁边。 “那么，你有什么事情要给我吗？”`
+				goto next
+			label familiar
+			`意识到泰利的主要职责范围是在造船厂，你径直前往那里，快要到达时，另一名残兵向你走来，她自称是泰利的助手之一。 “你好，船长”她用颤音说道。 “我们的扫描发现了未编录的人类武器的迹象。你带它来给我们看吗？”`
+			label next
+			`你带她回到你的船，在那里你向她展示了等离子炮。 “我从未见过能够处理如此高热量输出的武器！这是某种基于等离子的武器吗？”她指着一门大炮问道。你点点头，她继续说道，“有趣。我们注意到科拉斯飞船似乎运行得特别热，并推测使它们过热可能是使它们失效的有效方法。我很乐意对这些进行更多研究。如果你能为我们运送两艘到<planet>，你将得到很好的补偿。”`
+				accept
+	on visit
+		dialog `您已返回<planet>，但没有泰利要求的两门等离子炮。回来之前去买两门等离子炮。`
+	on complete
+		outfit "Plasma Cannon" -2
+		payment 1130000
+		"remnant met taely" ++
+		conversation
+			`当 <ship> 落在最靠近研究设施的发射台上时，您可以看到一名武器专家正在检查附近信天翁下方平台上的一门大炮。当他看到你开始卸下两门等离子炮时，他猛地合上外壳，并向视线之外的某人做了个手势。不一会儿，他和一张空平板就到了那里拿起武器。`
+			`“谢谢你的帮助，”他说。 “我们的抑制剂为我们提供了对抗科拉特的移动优势，但它们在禁用科拉特方面并不是特别有效。这些等离子炮将为我们开辟新的研究途径。”他停顿了一下，然后继续说道。 “我还为你准备了一份奖金。这是‘发现者费用’，因为我们总是欣赏新技术。”`
+			branch wave
+				has "Remnant: Learn Sign 1: done"
+			`武器技术人员绑好等离子炮并向你做了个手势，然后朝实验室走去。`
+				goto end
+			label wave
+			`武器技术人员绑好等离子炮并做出一个你认为是“告别”的手势，然后前往实验室。`
+			label end
+			`当你看着残余者带着他们的新武器去研究时，你不禁想知道它会产生什么结果。`
+
+
+
+mission "Remnant: Catalytic Ramscoop"
+	name "取回催化活塞"
+	description "遗民 工程师已向您提供 <payment> 奖励，让您向 <planet> 上的实验室运送两个催化拉姆铲。"
+	source "Viminal"
+	destination
+		government "Remnant"
+		attributes outfitter
+		not attributes "requires: gaslining"
+		not distance 0
+	to offer
+		or
+			has "Remnant: Tech Retrieval: active"
+			has "Remnant: Tech Retrieval: done"
+	on offer
+		require "Catalytic Ramscoop"
+		conversation
+			`您还记得泰利（Taely）对看到新人类技术的例子很感兴趣，而催化拉姆斯库（Catalytic Ramscoop）绝对符合标准。你想给她看吗？`
+			choice
+				`（现在不要。）`
+					defer
+				`（是的。）`
+			branch familiar
+				has "Remnant: Tech Retrieval: done"
+			`问了几个人后，你终于被引导到造船厂的一个海湾，在那里你发现泰利正在信天翁上校准抑制剂炮。 “您好，<first>。我刚刚完成这些校准。”她在外壳内又做了一些事情，重新密封舱口，然后用绳子掉到地上。 “那么，你有恢复到什么东西吗？”`
+				goto next
+			label familiar
+			`记得她大部分时间都在造船厂度过，你直奔那里，几乎立刻就被另一名残兵拦截，他介绍自己是泰利的助手之一。 “美好的一天，船长”她喊道。 “我们的扫描在你的船上发现了一种新型的冲压铲。你把它带来给我们看了吗？”`
+			label next
+			`你带她回到你的船上，在那里你向她展示了催化拉姆斯库普。 “有趣。这是新设计的？”她指着公羊铲问道。你点点头，她继续说道，“即使表现不佳，对问题的新视角也可能很有价值。<planet> 上有一个研究团队目前正在研究新的公羊勺设计。如果您可以向他们提供两个催化公羊勺，我们可以为您提供 <payment>。”`
+				accept
+	on visit
+		dialog `您已返回 <planet> ，但没有泰利要求的两个催化拉姆铲。回来之前去买两个催化活塞。`
+	on complete
+		outfit "Catalytic Ramscoop" -2
+		payment 1390000
+		"remnant met taely" ++
+		conversation
+			`当 <ship> 降落在最靠近研究实验室的停机坪上时，您可以看到几个人拖着骆驼拉着的拖车离开邻近的机库。他们会快速接近您的着陆场，等待您完成关闭程序，然后再登机并开始卸载冲压铲。一旦他们完成，其中一位就会向您走来并交给您 <payment> 的付款。 “谢谢你的交付，船长。我们期待看到他们所做的不同的事情。”`
+
+
+
+mission "Remnant: Electron Beam"
+	name "取回电子束以寻找残余物"
+	description "遗民 工程师向您提供奖励，奖励您将两束电子束传送到 <planet> 的测试范围。"
+	source "Viminal"
+	destination
+		government "Remnant"
+		attributes outfitter
+		not attributes "requires: gaslining"
+		not distance 0
+	to offer
+		or
+			has "Remnant: Tech Retrieval: active"
+			has "Remnant: Tech Retrieval: done"
+	on offer
+		require "Electron Beam"
+		conversation
+			`你记得泰利对看到新人类技术的例子很感兴趣，而电子束当然符合标准。你想给她看吗？`
+			choice
+				`（现在不要。）`
+					defer
+				`（是的。）`
+			branch familiar
+				has "Remnant: Tech Retrieval: done"
+			`问了几个人后，你终于被引导到造船厂的一个海湾，在那里你发现泰利正在关闭 Thrasher 炮塔上的面板。 “您好，<first>。您的时机很好：我刚刚结束。”她重新密封舱门，然后用绳子掉到地上。 “那么，你有恢复到什么东西吗？”`
+				goto next
+			label familiar
+			`根据您对泰利的了解，您决定跳过太空港并前往造船厂。经过令人沮丧的半个小时四处闲逛试图找到她后，你终于遇到了一位乐于助人的武器技术人员，他说他们可以代表泰利检查武器。`
+			label next
+			`你陪她回到你的飞船，她在那里检查电子束。 “这可能很有用。几个世纪以来，将能量集中到连续光束中一直是一个流行的想法。知道他们最终成功地将其变成一种有效的武器是非常有用的。如果你可以将两束电子束传送到我们在 <planet> 上的一个测试靶场，你将得到很好的补偿。”`
+				accept
+	on visit
+		dialog `您已返回 <planet> ，但没有泰利要求的两束电子束。回去之前去买两根电子束。`
+	on complete
+		outfit "Electron Beam" -2
+		payment 1090000
+		"remnant met taely" ++
+		conversation
+			`在 <planet>，您按照着陆说明到达一个小型测试场和车间旁边的停机坪。当你坐在试验台上时，一群技术人员刚刚完成从试验台上拆卸武器，几分钟后他们到达并从你的船上卸下电子束。他们急切地将新武器固定在平板上，并迅速将 <payment> 的付款交给您，然后消失在实验室中。`
+
+
+
+mission "Remnant: D94-YV Shield Generator"
+	name "取回 D94-YV 护盾发生器"
+	description "一名残余工程师向您提供了 <payment> 报酬，要求您向 <planet> 上的研究设施运送两台 D94-YV 护盾发生器。"
+	source "Viminal"
+	destination
+		government "Remnant"
+		attributes outfitter
+		not attributes "requires: gaslining"
+		not distance 0
+	to offer
+		or
+			has "Remnant: Tech Retrieval: active"
+			has "Remnant: Tech Retrieval: done"
+	on offer
+		require "D94-YV Shield Generator"
+		conversation
+			`您知道 Taely 对查看最近开发的人类技术的示例很感兴趣，而 D94-YV 护盾发生器可能符合标准。你想给她看吗？`
+			choice
+				`（现在不要。）`
+					defer
+				`（是的。）`
+			branch familiar
+				has "Remnant: Tech Retrieval: done"
+			`问了几个人后，你终于被带到造船厂的一个海湾，在那里你发现泰利正在船体的一个洞上涂上某种材料。 “您好，<first>。今天是什么风把您吹到这里来的？”她重新密封舱门，然后用绳子掉到地上。 “你给我们带了什么东西吗？”`
+				goto next
+			label familiar
+			`你认为你更有可能在造船厂找到她，所以你跳过星港并前往船只之间。当你在院子里搜寻时，很快就会有另一位工程师走近你。 “初次见面，船长。泰利说你可能会从远古空间带回新技术的样本。你有什么东西要给我们看吗？”`
+			label next
+			`你点头肯定，然后带她回到你的船上，她在那里检查 D94-YV 护盾发生器。 “它看起来确实令人印象深刻，”她在这台巨大的设备周围踱步时喊道。 “了解我们的敌人可能受到什么保护是很有价值的，也许我们也可以从中学到一些东西。”她在你面前停了下来。 “如果您可以将其中两份送到 <planet> 的实验室，我们可以向您支付 <payment> 的补偿。”`
+				accept
+	on visit
+		dialog `您已返回 <planet> ，但没有泰利要求的两个 D94-YV 护盾发生器。回来之前去买两个护盾发生器。`
+	on complete
+		outfit "D94-YV Shield Generator" -2
+		payment 1150000
+		"remnant met taely" ++
+		conversation
+			`在<planet>，您按照着陆说明到达大型仓库旁边的停机坪。当你完成关闭程序时，门会滑开，一条巨大的爬行者会出现，伴随着几个残余物。他们小心地卸下 D94-YV 护盾发生器并将其绑好。当他们开始返回仓库时，其中一位过来递给你 <payment> 。 “感谢您的交付。我们的团队渴望看到人类在过去几个世纪中取得的成就。”`
+
+
+
+mission "Remnant: S-970 Regenerator"
+	name "取回 S-970 再生器"
+	description "遗民 工程师向您提供了 <payment> 的报酬，要求您将两台 S-970 再生器运送到 <planet> 上的冲击测试设施。"
+	source "Viminal"
+	destination
+		government "Remnant"
+		attributes outfitter
+		not attributes "requires: gaslining"
+		not distance 0
+	to offer
+		or
+			has "Remnant: Tech Retrieval: active"
+			has "Remnant: Tech Retrieval: done"
+	on offer
+		require "S-970 Regenerator"
+		conversation
+			`您还记得 Taely 对看到新人类技术的实例很感兴趣，而 S-970 再生器绝对是最近的发展。你想给她看吗？`
+			choice
+				`（现在不要。）`
+					defer
+				`（是的。）`
+				`（绝不。）`
+					to display
+						not "event: syndicate tech available"
+					decline
+			branch familiar
+				has "Remnant: Tech Retrieval: done"
+			`问了几个人后，你终于被引导到造船厂的一个海湾，在那里你发现泰利正在调整船体上的一些你看不到的东西。 “您好，<first>。今天是什么风把您吹到这里来的？”她轻敲了一些东西，然后把工具挂在腰带上，用绳子掉到地上。 “你给我们带了什么东西吗？”`
+				goto next
+			label familiar
+			`泰莉似乎是那种大部分时间都直接在船上工作的人，所以寻找修理船只的人似乎是最有可能找到她的地方。当您进入维修区时，您会发现一位工程师正在等您。她很快介绍自己是一名与 Taely 合作的工程师。 “她不能来这里，所以她派我来看看你带来了什么”工程师喊道。`
+			label next
+			`你点头同意并带她回到你的飞船，在那里她粗略地扫描了 S-970 再生器。 “嗯，”她一边在再生器上上下挥动仪器，一边凝视着仪器上的读数，低声说道。 “看来他们可能已经找到了一些对我们研究有益的技术。如果您可以将其中两项技术交付到 <planet> 上的实验室，我们可以向您提供 <payment> 补偿。”`
+				accept
+	on visit
+		dialog `您已返回 <planet> ，但没有泰利要求的两个 S-970 再生器。回来之前去买两个护盾再生器。`
+	on complete
+		outfit "S-970 Regenerator" -2
+		payment 2350000
+		"remnant met taely" ++
+		conversation
+			`在 <planet>，您按照着陆说明到达一个停机坪，该停机坪靠近一个具有大型设备舱的重要设施。当你完成关闭程序后，海湾的门就会打开，一条履带车会出现，并伴随着几只残余物。他们小心翼翼地卸下 S-970 再生器并绑好。当他们开始返回海湾时，其中一个过来递给你 <payment> 。 “感谢您提供可供研究的新服装。我们的团队非常有兴趣了解自我们大迁徙以来人类取得的成就。”`
+
+
+
+# For players who did the original versions of these missions before ccbc671.
+# The main "Remnant: Tech Retrieval" mission did not exist and only the
+# Heavy Laser, Plasma Cannon, and Catalytic Ramscoop missions existed.
+mission "Remnant: Tech Retrieval Patch"
+	landing
+	invisible
+	non-blocking
+	to offer
+		not "Remnant: Tech Retrieval: offered"
+		or
+			has "Remnant: Heavy Laser: done"
+			has "Remnant: Plasma Cannon: done"
+			has "Remnant: Catalytic Ramscoop: done"
+	on offer
+		set "Remnant: Tech Retrieval: done"
+		fail
+
+
+
+mission "Remnant: Taely Intro Log"
+	invisible
+	non-blocking
+	source
+		government "Remnant"
+	to offer
+		"remnant met taely" >= 1
+	on offer
+		log "People" "Taely" `As an engineering prefect, Taely is the foremost authority among the Remnant on salvaged technology and a senior leader in their reverse engineering program.`
+		fail
+
+
+
+mission "Remnant: Taely Penguin Log"
+	invisible
+	non-blocking
+	to offer
+		has "Remnant: Taely Intro Log: failed"
+		has "Remnant: Face to Maw 2: done"
+	on offer
+		log "People" "Taely" `One of Taely's main priorities is improving the maneuverability characteristics of Remnant ships. To this end she has been working on building a new prototype ship based on the void sprites.`
+		fail
+
+
+
+mission "Remnant: Chilia Intro Log"
+	invisible
+	non-blocking
+	source
+		government "Remnant"
+	to offer
+		"remnant chilia" >= 1
+	on offer
+		log "People" "Chilia" `As a military prefect, Chilia is responsible for the defense of Remnant space. He can usually be found on the front lines of combat unless required to work on tactics for the Remnant as a whole.`
+		fail
+
+
+
+mission "Remnant: Chilia Intro Log 2"
+	invisible
+	non-blocking
+	source
+		government "Remnant"
+	to offer
+		"remnant chilia" >= 2
+	on offer
+		log "People" "Chilia" `Despite being quite young, Chilia is highly respected among Remnant society.`
+		fail
+
+
+
+mission "Remnant: Chilia Intro Log 3"
+	invisible
+	non-blocking
+	source
+		government "Remnant"
+	to offer
+		"remnant chilia" >= 3
+	on offer
+		log "People" "Chilia" `Prefect Chilia is an unusual person compared to most military leaders: He is inclined to do things himself and rarely stands on protocol.`
+		fail
+
+
+
+mission "Remnant: Return the Samples"
+	name "返回样品"
+	description "<planet> 的一名研究员要求您将遗民多年前偷走的虚空精灵蛋归还给纳斯克隆。"
+	source "Aventine"
+	stopover "Nasqueron"
+	cargo "void sprite eggs" 6
+	to offer
+		has "Remnant: Technology Available: offered"
+		random < 50
+	on offer
+		conversation
+			`当你穿过太空港时，你之前协助研究虚空精灵的研究员匆忙地向你走来。 “我们有了一些新发现！”他颤声惊呼。 “我们多年前采集的一些样本实际上是某种鸡蛋。所以执政官必须认为我们之前的研究破坏了虚空精灵的生命周期。`
+			`“我们一直将这些卵储存在低温停滞罐中，所以它们应该仍然是可行的且完好无损。好吧，无论如何，它们中的大多数。”他的笔记以悲伤的语气逐渐减弱。`
+			`“你能将其中一些送回纳斯奎隆吗？根据我们的日志，它们被发现漂浮在大气层的较低层，它们的自然浮力应该使它们漂浮在水面上。”`
+			choice
+				`“当然，我很乐意归还它们。”`
+				`“抱歉，我实在没兴趣再躲避执政官了。”`
+					decline
+
+			`	"Thank you. Since we are continuing to work together, I would like to introduce myself again." He takes a breath, thinks for a second, and speaks a short verse about plumage with a complex chord that sounds at once grandiose and self-deprecating. The best you can make out is that his name is "Plume."`
+			`	"Just remember: you will need to use a Puffin to make this delivery. If you don't still have one, there are a few in storage in Viminal." He taps on his commlink, and an assistant emerges from a nearby building with a flatbed truck. Onboard is a large collection of cocoon-like pods cradling large eggs, as well as a big spacesuit that looks more reminiscent of an ancient deep-sea diving suit than anything carried on a modern ship. "Now, remember, you need to remove the eggs from the cocoons and release them gently. Please make sure they don't hit anything on the way out."`
+				accept
+	npc
+		government "Drak (Hostile)"
+		system "Nenia"
+		personality staying heroic nemesis frugal uninterested
+		ship "Archon (Cloaked)" "Lifted Lorax"
+	on accept
+		log "People" "Plume" `A Remnant researcher specializing in xenobiology, Plume is at the forefront of recent efforts to restart research on the void sprites and a leading expert in non-carbon based lifeforms.`
+	on stopover
+		conversation
+			`你再次成功躲避执政官并降落在纳斯奎隆。不知何故，知道它会在那里比第一次的惊喜既好又坏。`
+			`当 <ship> 穿过云层下沉时，您轻轻启动斥力器以减慢下降速度，以避免惊动虚空精灵。附近的一些精灵会随着你下降，似乎与你的速度相匹配。当您到达日志中列出的释放卵的高度时，您会放慢速度。`
+			`将船设置为自动驾驶仪，你走到后面，挣扎着穿上压力服。在货舱中准备好鸡蛋，您可以平衡主货舱中的压力与外面旋转的云层，然后打开舱门。正如预测的那样，在这个压力水平下，鸡蛋几乎没有重量，并且很容易被运送到船门口并释放。`
+			`当你把蛋放回云中时，几个虚空精灵已经聚集在你的船上，似乎正在用翅膀轻轻拍打把蛋从你身边赶走。在关闭舱门并用新鲜空气净化飞船之前，您需要花点时间欣赏这些生物的外星之美。`
+	on visit
+		dialog phrase "generic stopover on visit"
+	on complete
+		conversation
+			`回到地面后，您报告发布的情况。研究人员很高兴听到虚空精灵对它们的存在做出了反应。 “我们会给他们几周的时间，然后尝试派另一艘船来监视他们。希望执政官能够因此安定下来。如果你有兴趣的话，可以在太空港附近的外星环境实验室与我见面。”`
+
+
+
+mission "Remnant: Return the Samples 2"
+	name "返回样品"
+	description "普鲁姆要求你归还更多被盗的蛋，这次是归还给斯莱兰德罗。然后带着虚空精灵的镜头返回<planet>。"
+	source "Aventine"
+	stopover "Slylandro"
+	cargo "void sprite eggs" 6
+	to offer
+		has "Remnant: Return the Samples: done"
+	on offer
+		conversation
+			`按照 Plume 的指示，你会发现一个实验室隐藏在太空港主要区域的后面，那里有一条很短的走道通向地下结构。走进门，你会发现一架迷彩网就放在手边。鉴于你对他们历史的了解，这可能是他们需要隐藏入口以防止袭击的最后一搏。`
+			`实验室本身就是遗迹开发的一个缩影。该结构似乎是某种奇怪的半有机材料，你可以看到桌子上堆满了熟悉和不熟悉的形状的折衷组合。如果你必须猜测，你会说这个实验室是几个不同技术家族的成果，其中只有一种是人类技术。`
+			`羽和其他几个遗迹正在房间后面检查一堆像茧一样的容器，类似于将最后一批鸡蛋带回纳斯奎隆的容器。检查完屏幕后，他抬起头，看到你似乎立刻感到惊讶。`
+			`“啊，<first>！你来得正是时候，”Plume 快速地喊道，他的双手无意识地做出一系列快速的手势。 “这些蛋已经准备好了，这次是送到斯莱兰德罗。你能像以前那样把它们扔掉吗？”`
+			choice
+				`“是的，我很乐意带他们回家。”`
+				`“抱歉，我实在没兴趣第三次拿执政官去冒险。”`
+					decline
+
+			`	"Thank you. Like last time, we can't pay you for this. But we are still hopeful that the Archon might let us resume our studies." He follows you out to the <ship> and helps you load the cocoons holding the eggs. Just before parting ways he asks, "Oh, could you record the void sprites this time? We would like to see the behaviors you mentioned last time."`
+				accept
+	npc
+		government "Drak"
+		system "Nenia"
+		personality staying heroic nemesis uninterested frugal
+		ship "Archon" "Lifted Lorax"
+	on stopover
+		conversation
+			`当你接近斯莱兰德罗时，你会像鹰一样注视着执政官，但这一次它并没有试图用白色能量的三叉戟将你赶走。你小心翼翼地前往斯莱兰德罗并开始下降。`
+			`当 <ship> 穿过云层时，您注意到虚空精灵似乎在尾随您。有一些以惊人的速度从你身边飞过，只有当你接近指定高度时才从下面重新出现。在最后一刻，你想起了 Plume 要求记录它们的请求，并按下开关激活外部摄像机的记录器。`
+			`将船设置为自动驾驶仪，你返回并再次穿上笨重的压力服。在货舱中准备好鸡蛋，平衡压力并打开舱门。和以前一样，当你打开茧并轻轻地将它们带到门口时，鸡蛋已经漂浮起来。`
+			`几乎在你释放第一个蛋的同时，一个虚空精灵就出现了，擦过飞船，将蛋舀进旋转的迷雾中。当你带着下一个精灵回来时，另一个精灵已经在门口等着了，在诡异的光线中波动。当最后一个蛋被释放时，您可以看到数十种奇怪的生物聚集在蛋的周围。你突然想到很少有人有机会看到这样的事情。`
+			`欣赏了一会儿美景后，您尽可能轻轻地关上门，用新鲜空气净化船上，然后开始返回阿文丁的旅程。`
+	on visit
+		dialog phrase "generic stopover on visit"
+	on complete
+		"reputation: Drak" += 1
+		event "remnant: return the samples timer" 2 4
+		set "remnant: travel restrictions cleared"
+		conversation
+			`回到阿文丁，你与 Plume 分享了虚空精灵行为的记录。 “这些精灵表现出的沟通能力比我们最初想象的要多得多。显然，他们一定传达了你在纳斯奎隆上所做的事情。有趣……”当普卢姆开始在手边的数据板上做笔记时，他兴奋的断断续续的感叹声逐渐减弱。 “感谢您的帮助，我们会将发现的情况告诉您。”`
+
+
+
+# Compatibility patch for those who completed Return the Samples 2 before 0.10.13, where it did not clear travel restrictions.
+mission "Remnant: Travel Restrictions Patch"
+	landing
+	invisible
+	non-blocking
+	to offer
+		has "Remnant: Return the Samples 2: done"
+		not "remnant: travel restrictions cleared"
+	on offer
+		event "remnant: return the samples timer" 2
+		fail
+
+
+
+# "This mission is intended to serve as a notification that one timer has elapsed and how long to wait until the missions start again."
+mission "Remnant: Return the Samples 3 Exploration Hint"
+	landing
+	source "Aventine"
+	to offer
+		has "event: remnant: return the samples timer"
+		or
+			has "Remnant: Face to Maw 2: done"
+			has "Remnant: Face to Maw 2B: done"
+			and
+				not "Remnant: Face to Maw 1: active"
+				not "Remnant: Face to Maw 1: done"
+				not "Remnant: Face to Maw 1B: active"
+				not "Remnant: Face to Maw 1B: done"
+				not "Remnant: Face to Maw 2: active"
+				not "Remnant: Face to Maw 2B: active"
+	on offer
+		event "remnant: wait for plume" 7 14
+		conversation
+			`当您从 <ship> 下机时，您差点撞见 Plume，他正在大步穿过着陆区。 “<first>队长，我没看到你！”你回头看了一眼刚刚走出的飞船，好奇地看着他，想知道他怎么会错过看到一艘宇宙飞船降落在他面前。他的歌声带有一丝歉意。 “我一直在思考我们最近发现的一切，尤其是你最近录制的录音。不过，我还有很多东西需要分析。”他停了下来，看上去若有所思。 “话虽这么说，一两周后我可能会给你做更多的工作。”`
+			`普卢姆又问了几个关于你一直在做什么的问题，然后礼貌地告辞继续他的研究。 “如果你还发现了关于妮妮亚的任何其他事情，请告诉我！”当他离开时，他会用颤音对你说。`
+				decline
+
+
+
+conversation "泰利文化资料"
+	branch return
+		has "Remnant: Salvage 1B: done"
+	`当你走进寒冷的维米纳尔时，你收到了工程部级长泰利的消息，询问你是否可以在自助餐厅与她见面。`
+	choice
+		`（接受她的邀请。）`
+		`（现在不行。）`
+			defer
+	`你回答说可以，然后穿过人群，找到一张空桌子。过了一会儿，泰利出现了，从分配器中抓起两个托盘，然后朝你走来。她坐在对面的椅子上，一脸疲惫。`
+	`“很高兴再次见到你，<first>，”她轻声唱道。当你在回复上签名时，她会坐起来，微笑着，然后开始签名。 “哎呀，你学东西真快，这样就快多了。”她快速的手势很难跟上，但语言视频似乎侧重于实用词汇，其中包含她使用的大部分单词。`
+	`“我还没有完全……”（她做了一个你不明白的手势，但似乎类似于“打破”和“理解”的手势。）“……你为我们取回的技术，但我们正在从我们已经发现的东西中学到很多东西。你能帮助我们了解自从我们出埃及以来在祖先空间中发生的事情吗？”`
+	choice
+		`“是的。有什么可以帮忙的吗？”`
+		`“抱歉，没兴趣。”`
+			decline
+	branch data
+		has "human cultural data"
+	`“太好了！据我一位精通战争历史的朋友说，有传言说，深海中正在建造一座宏伟的图书馆，以容纳所有人类知识。如果它存在，那很可能就是去的地方。”`
+		accept
+	label data
+	`“太好了！据我一位精通战争历史的朋友说，有传言说，在深海中正在建造一座宏伟的图书馆，以容纳所有人类知识。如果它存在的话……”当她注意到你带着心照不宣地点点头时，她停了下来。 “你已经去过那里了？嗯，你当然能到处走走，<last> 队长。我想这会让事情变得相当简单。”`
+	`“事实上，我的飞船上已经有一份图书馆数据的副本，”你回答道。`
+	`“哦，那更好了，”泰利颤声说道。 “去拿吧。”`
+	`你返回飞船去拿数据芯片，但当你看向驾驶舱时，你发现太空港比平时更加​​活跃。当你注意到泰利在你的船边的一半处固定加油软管和充电电缆时，残余人员看起来正在以最快的速度跑向他们的船。当你伸手去拿通讯装置时，她爬到舰桥窗户前，迅速向你发出一系列信号。你只能听到“保持热度，即将到来！”在你做出答复之前，她已经跑过你的机翼，跳到停在你旁边的信天翁上。`
+		goto launch
+	
+	label return
+	`获得档案副本后，您轻轻地将船停在维米纳尔，希望这些信息能有所帮助。港口似乎异常繁忙，但通讯通道却安静得超出了保持交通秩序的最低限度。`
+	`在你花时间关闭发动机之前，泰利已经在你的船舷侧的一半处固定加油软管和充电电缆。当你伸手去拿通讯装置时，她爬到舰桥窗户前，迅速向你发出一系列信号。你只能听到“保持热度，即将到来！”在你做出答复之前，她已经跑过你的机翼，跳到停在你旁边的信天翁上。`
+	
+	label launch
+	`更仔细地环顾四周，您会发现港口中的每艘船都在空转，燃油管线仍然连接着。如果这是共和国的某个港口，安全检查员将会遭遇一场噩梦。尽管机组人员似乎正在执行飞行准备检查表，但其中一只椋鸟正在修补机翼上的漏洞。看起来每艘船都有一名守卫。有些事情告诉你，现在不是在城里散步的好时机。`
+	`经过几分钟紧张的等待后，行星防御警报响起，闲置的飞船开始一艘一艘地上升。您可以快速找出自己在发射序列中的位置，并跟随前往轨道的飞船流。`
+		launch
+
+
+
+mission "Remnant: Salvage 1"
+	name "遗迹历史更新"
+	description `幸存者有兴趣了解自从他们离开后人类太空中发生的事情。在 <destination> 上找到人类历史的副本。`
+	minor
+	source "Viminal"
+	destination "Alexandria"
+	to offer
+		not "human cultural data"
+		has "Remnant: Learn Sign Follow Up: offered"
+		random < 50
+		has "Remnant: Tech Retrieval: done"
+	on offer
+		conversation "泰利文化资料"
+	on visit
+		dialog
+			`车站有一家小型博物馆礼品店，出售数据卡上的整个档案的副本。它只需要 40 个学分，但由于您在财务管理方面做得很糟糕，所以您现在手头甚至没有那么多现金。`
+			`去赚点钱，然后再回来。`
+	on complete
+		set "human cultural data"
+		payment -40
+
+
+
+mission "Remnant: Salvage 1B"
+	name "遗迹历史更新"
+	description `将人类历史的副本归还给 <destination> 。`
+	landing
+	source "Alexandria"
+	destination "Viminal"
+	to offer
+		has "Remnant: Salvage 1: done"
+	on offer
+		conversation
+			`在穿越银河系之后，你终于到达了人类历史档案馆。当你向图书管理员询问哪里可以得到空间站档案的副本时，你惊讶地发现他们给你指出了一家礼品店。您可以在数据卡上找到档案的副本。 （“给你家中崭露头角的历史学家的完美礼物！将所有人类历史掌握在手掌中。现在仅售 39.99 美元！”）考虑到一张便宜的数据卡只需要一小部分信用点，这有点敲诈，但你很乐意买一张带回泰利。`
+				accept
+
+
+
+mission "Remnant: Salvage 2"
+	landing
+	name "保卫<planet>"
+	description "协助防御 <planet> 免受科拉斯袭击，然后返回星球。"
+	source "Viminal"
+	to offer
+		or
+			has "Remnant: Salvage 1B: done"
+			and
+				has "human cultural data"
+				has "Remnant: Learn Sign Follow Up: offered"
+				random < 50
+				has "Remnant: Tech Retrieval: done"
+	on offer
+		conversation "泰利文化资料"
+	npc
+		government "Remnant"
+		personality staying uninterested disables plunders
+		fleet "Large Remnant" 2
+	npc evade
+		government "Korath"
+		personality heroic plunders harvests target
+		fleet "Korath Ember Waste Raid" 7
+		fleet
+			names "korath"
+			cargo 3
+			commodities "Food" "Clothing" "Metal" "Plastic" "Medical" "Heavy Metals"
+			outfitters "Korath Exiles Remnant Donations"
+			variant
+				"拉诺埃雷克"
+				"'olofez" 4
+	on visit
+		dialog "仍有科拉斯袭击者在头顶盘旋。你应该起飞并帮助残余船只与他们作战。"
+	on complete
+		payment 1000000
+		conversation
+			`由于一些船舶保持轨道哨兵位置，大多数船舶返回其泊位。机械师很快就蜂拥到船上，你猜救护车正在坡道上等待接收伤员。再远一点的地方，平板牵引车正等待着拾取所有已收集到的废品。`
+			`最终，一位疲惫但看上去很高兴的长官停在了你的船上。他开始喊道：“你能听懂我们的语言吗？还是我需要唱歌？”当你回答说只要他慢慢地签名你就能听懂大部分内容时，他看上去松了口气。 “感谢你们在突袭期间提供的协助。你们放置在帕尔卡的传感器检测到了即将到来的舰队，并向我们发出了足够的警告，让所有人做好准备。”`
+			`他沉默了一会儿，一副很享受一段时间以来第一次不用跑步的样子。 “哦，泰利说你可能有一些历史记录给我们？”作为回应，你交出了档案副本，告诉他这可能是最好的。他将存档复制到数据板上，然后将其与带有 <payment> 的信用芯片一起返回给您。 “谢谢你，我会确保它到达需要的地方。与此同时，我们可以在太空港得到你的帮助。”`
+
+
+
+mission "Remnant: Salvage 3"
+	name "运输受伤残骸"
+	description `一些受伤的残兵需要从前线运往阿文廷。`
+	source "Viminal"
+	passengers 8
+	cargo "medical gear" 5
+	blocked "A prefect informs you that they need to evacuate some injured to a hospital on Aventine, but you will need 8 free bunks and 5 tons of cargo space in order to handle the injured."
+	stopover Aventine
+	to offer
+		has "Remnant: Salvage 2: done"
+	on offer
+		conversation
+			`观看机械师开始修复 <ship> 后，您徒步前往太空港公共区域。随着船只不断靠岸，人们仍在四处奔波。到目前为止还没有沉船，从滚动到达的显示来看，仍然有相当多的船只正在接近。环顾四周寻找可以交谈的人，你发现了刚刚访问过你的船的级长。他注意到你并走过来。 “还没有丢失任何船只，”他严厉地比划着，“但有几艘船只还没有登记。”`
+			`他摇摇头，继续说道：“我们需要尽可能保持我们的医疗设施的自由。你能把我们的一些伤员带到阿文丁吗？他们的情况稳定且健康，足以进行无人值守的运输，这将释放这里的医务人员和空间。”`
+			choice
+				`“当然。”`
+				`“我宁愿不。”`
+					decline
+			`他看上去松了口气。 “谢谢。我得转移我们的一名哨兵来抓捕他们。”他停了下来，查阅了他的通讯链接。 “医疗队很快就会把伤员安置在船上，并提供确保他们安全抵达所需的一切。他们可能会派一些新的船员和你一起回去。”`
+				accept
+	on stopover
+		dialog
+			`受伤的船员从维米纳尔前往阿文丁，出奇地安静。他们不唱歌，也很少签名。有些人在旅途中服用了强效止痛药，而少数离开房间的人似乎主要专注于进行规定的伸展运动和运动，以帮助受损的肌肉愈合。你看到的其他人似乎正在冥想，同时静脉注射系统正在将静脉注射到他们的手套中。有些人有兴趣拜访灰烬废土之外的人，但他们缺乏长期这样做的精力。`
+			`在阿文丁，救护车和医务人员正在等待将伤者送往长期医疗机构。当他们离开时，一批新的船员到来接替他们的位置。`
+	on visit
+		dialog phrase "generic cargo and passenger on visit"
+	on complete
+		payment 100000
+		set "license: Remnant Capital"
+		conversation
+			`当你返回维米纳尔时，残余船员离开你的船，穿过停机坪分散到他们被分配到的船上，每个人在离开时都签署了感谢信。他们离开后几分钟，您的通讯链路会发出蜂鸣声，通知您来自级长的消息已到达：`
+			`“<last> 船长！感谢您在保卫维米纳尔和运送伤员方面所提供的帮助。我已经向您转达了一份小小的谢意。话虽这么说，也许您会更感激这一点：其他长官和我已经同意让您使用更广泛的船只。我们的资本级船只现在可供您使用，包括信天翁号和鹈鹕号。按照这些袭击的速度，您拥有这些船只符合每个人的最大利益。请使用更好的战舰，在太空港与我们会面，进一步讨论情况。”`
+
+
+
+mission "Remnant: Salvage 4"
+	name "追踪<npc>"
+	description "追踪并摧毁一艘逃离维米纳尔袭击的科拉斯船，以便残党可以将其打捞以获取技术。"
+	source "Viminal"
+	to offer
+		has "Remnant: Salvage 3: done"
+	on offer
+		conversation
+			`走进食堂，立刻感受到欢快的气氛。根据视频屏幕上的报告，实际上损失的残余船只很少。此外，在失事的船只中，逃生舱运行良好，确保没有船员死亡。成群结队的船员聚集在摆满食物的桌子周围，与维持船只运转的地面团队混在一起。根据你能捕捉到的片段，他们似乎在交流精彩镜头和巧妙的即兴创作的故事。`
+			`泰莉和在码头接你的省长以及其他几个机械师一起坐在角落的一个摊位上，她向你招手。 “<last>舰长！那么，你喜欢和我们的舰队一起战斗吗？”一位机械师问道。`
+			choice
+				`“有一支行星防御舰队进行掠夺似乎很奇怪。”`
+				`“这是一场艰苦的战斗。”`
+					goto next
+	
+			`	"I suppose it would," chants one of them. "We need access to their tech, though. Otherwise we'll fall behind." Judging by the finality of his statement, this is held to be common knowledge among the Remnant.`
+				goto next
+	
+			label next
+			`	While you're conversing with the group, the prefect suddenly glances down at his commlink, reads a message, then looks up at you. "It appears that a Korath ship survived the raid and has destroyed a few ships without taking cargo. Could you deal with it?"`
+			choice
+				`“当然。”`
+				`“抱歉，我没时间帮你。”`
+					decline
+
+			`	"Thank you," he signs. "It is acting oddly, jumping around destroying ships instead of looting and running. If it simply looted and left we would be pleased, but now it is learning about us instead, so it has reached the end of its usefulness. Please disable it so that we can salvage parts from it." He pauses, then continues, "I doubt we'll be able to salvage the ship itself - they pack those things with soldiers - and we do not want it to be captured, even if that is possible for you. The ship and crew should remain intact, and we will salvage what we can after you have it disabled. If you salvage anything we will happily compensate you for it in the outfitter, but do not feel obliged to do so. Destroying the ship should be a last resort."`
+				accept
+	npc save disable
+		government "Korath"
+		personality heroic vindictive target uninterested waiting marked
+		system
+			distance 1 2
+		fleet
+			names "korath"
+			cargo 3
+			variant
+				"帕拉维特（超光速引擎）"
+		dialog "您已经禁用了 <planet> 突袭中留下的科拉斯船。您现在可以返回那里领取付款。"
+	on abort
+		# No action, the player choose to just walk away from this mission(string)
+	on fail
+		payment 350000
+		dialog `你遇到了一位看起来很沮丧的级长。 “这艘船应该被毁掉，这样里面的东西就可以被打捞出来！”他愤怒地签了字。尽管如此，他还是将价值<payment>的信用筹码塞到了你的手中。 “如果这艘船报废的话，你能挣到的钱只有一半。”他停了下来，摇摇头。 “我想泰利在太空港可能还有更多的工作等着你，但与此同时，你为什么不去找一些科拉特来练习失能呢？这对遗迹来说是一项很有价值的技能。”`
+	on complete
+		payment 700000
+		dialog `一位级长会见您，他感谢您禁用它，并给您一张 <payment> 的信用芯片。 “我认为泰利可能会在太空港为你做更多的工作，但与此同时，别忘了把任何回收的衣服扔到服装店，以便研究人员可以查看。”`
+
+
+
+mission "Remnant: Salvage 5"
+	name "救助运送"
+	description `将 <cargo> 交给 Caelian。`
+	source "Viminal"
+	destination "Caelian"
+	cargo "Korath salvage" 20
+	blocked `Taely would like you to deliver some valuable Korath equipment to Caelian, but you will need 20 tons of space to carry it.`
+	to offer
+		or
+			has "Remnant: Salvage 4: done"
+			and
+				has "Remnant: Salvage 4: failed"
+				not "Remnant: Salvage 4: aborted"
+	on offer
+		conversation
+			`当您漫步穿过大圆顶下的停机坪时，您会发现泰利开着一辆装满组件的平板拖拉机朝您走来。`
+			`“<first>！我很高兴遇到你。上次突袭给了我们一些特别好的装备供我们研究。你能把这些带到凯里安的武器实验室吗？”`
+			choice
+				`“我能做到。”`
+				`“我对此不感兴趣。”`
+					decline
+			`Taely 快速帮助您将货物装载到船上。它似乎不再是真正的完整物品，而是其中的碎片。 “他们会等你，但你可能得把他们从实验室里撬出来，才能得到一些卸载的帮助。当他们有一些有趣的事情要做时，他们可能会有点专一。”`
+				accept
+	
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment 150000
+		dialog `在 Caelian 上，您可以在主着陆场附近找到合适的研究仓库。几分钟后，一名实验室技术人员从一个项目中解脱出来，带着一辆马车和骆驼队到船上卸下残骸。实验室技术人员使用引力斥力升降机将货物从船上装载到骆驼拉的马车上，这让您觉得有点不协调。 “如果可以的话，如果你今天下午能在自助餐厅见我的话，我应该送一些东西给泰利。”`
+
+
+
+mission "Remnant: Salvage 6"
+	name "将服装运送到泰利"
+	description `将 <cargo> 交付给 Viminal。`
+	source "Caelian"
+	destination "Viminal"
+	cargo "ship parts" 20
+	blocked `The technician you delivered Taely's salvaged parts to would like you to take some finished parts back to Taely, but you will need 20 tons of space to do so.`
+	to offer
+		has "Remnant: Salvage 5: done"
+	on offer
+		event "remnant salvage available"
+		conversation
+			`您发现实验室技术员进入自助餐厅，她向您走来。`
+			`“谢谢您的等待。我已经为泰莉准备了一批零件，随着最近攻击的增加，她需要这些零件宜早不宜迟。请把它们带给她。”`
+			`在外面，您会发现一头骆驼拉着一辆装满船舶零件的马车，准备装载到 <ship> 上。`
+				accept
+		
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment 150000
+		conversation
+			`泰利在码头与您会面，并准备好平板车来卸货。当你执行关闭程序时，你按下了货舱门的开关，当你下到货舱时，泰利已经卸下了一半的货物。`
+			`她的手势温柔地向你闪烁，你慢慢地认为这等同于一种欢快的语气。 “感谢您为回收这些残骸提供的所有帮助，”她将 <payment> 递给您时说道。 “我已经和其他工程师讨论过了，我们决定让你接触我们的救援成果。”`
+			`她带你到仓库，在控制台上扫描她的身份证，然后点击一些命令。然后她扫描你的身份证。 “好了，我已经更新了你的访问代码，”她高兴地签名。她递给你身份证，然后把你拉到服装店另一边的一扇门前。门的另一边是一个巨大的房间，里面装满了服装和武器，显然与其他遗迹技术的风格不符。你已经在扫描和从其他船上抢救设备时看到了这里的大部分东西，但很少近距离看到。`
+			`“我们仓库的这一部分是废品区。这里的所有东西，我们都收集了足够数量的，可供一般使用。”当她解释时，她对着科拉斯热分流器架点点头，然后转向你。`
+			`“当然，真正先进和稀有的东西仍然首先进入实验室，直到我们从中了解到所有信息后才能使用。”她自豪地环顾四周。 “我们没有足够的工业能力或研究人员数量来跟上阿尔法人、科拉特人以及其他任何人的步伐。但我们非常擅长弄清楚其他人已经建造了什么并从中学习。`
+			`“任何回收的或未被识别的技术都会在我们的隔离区进行扫描以查找威胁，然后检查是否有新的东西。如果有，它会被运送到实验室供我们的研究人员进行剖析。我们已经发现的任何东西都会在这里，欢迎少数几位船长在他们认为合适的时候使用它。”`
+			choice
+				`“威胁？”`
+					goto threats
+				`“有趣的。”`
+			`“是的，是的，不是吗？有很多新事物等待我们去发现和学习。`
+				goto end
+			label threats
+			`“是的，有时带来的抢救是危险的。例如，系统核心配备了微型机器人舰队。如果它们没有正确停用，它们就会继续尝试以它们配置服务的最后一艘船的形式重建周围环境。虽然这还没有发生，但我们担心有一天我们可能会遇到有人在他们的设备中设置陷阱，或者使用失控的纳米机器人。我们还没有看到这些，但我们的科幻小说故事充满了纳米技术启示录之类的故事。`
+			label end
+			`“好吧，我需要回去工作了。最后一场战斗使我们的维修工作落后于计划。祝你有美好的一天！”泰利最后做了一个你认为相当于感叹号的华丽动作，大步走出旅行用品店，朝另一个着陆区走去。`
+
+
+
+mission "Remnant: Scanning Tolerances"
+	landing
+	name "将数据传送至<planet>"
+	description `将数据晶体传送至 <destination> 上名为 Torza 的遗迹。`
+	deadline 15
+	source
+		government "Remnant"
+	destination
+		government "Remnant"
+		not distance 0
+		not attributes "remnant station"
+	to offer
+		has "license: Remnant Capital"
+		not "remnant untrusted"
+		not "Deep: Remnant 3: Revealed: done"
+		"reputation: Remnant" >= 100
+		random < 30
+	on offer
+		conversation
+			`当你刚刚从 <ship> 下船时，一个年轻的遗迹小跑向你走来。 “您好，<first> 队长。很抱歉打扰您，但我们有一件紧急货物需要在 <destination> 发往托尔扎。您能送这个吗？”`
+			choice
+				`“是的，我可以。”`
+					goto agreement
+				`“那是什么？”`
+					goto questioning
+				`“抱歉，现在不行。”`
+					defer
+			label questioning
+			`“包含最新简报和分析的数据档案。当然，经过严格屏蔽和加密，因此无需担心它会出现在扫描中。它必须通过 <date> 到达那里。所以，你能做到吗？”他们拿出一个小箱子，透过窗户可以看到里面有一个数据晶体。`
+			choice
+				`“是的，我可以。”`
+					goto agreement
+				`“抱歉，现在不行。”`
+					defer
+			label agreement
+			`“谢谢。”他们把案子交给你。 “由 <date> 将其带到 <destination>。Torza 会在那里与你会面。”`
+				accept
+	on complete
+		event "remnant: scanning tolerance"
+		conversation
+			`你走出<ship>，看到一个不起眼的遗迹正聚精会神地站在着陆场旁边。 “<first>队长！我们一直在等你。”他们带你进入附近的一个掩体。在里面，一个残骸站在全息图上，显示防御工事以及似乎正在移动的部队和船只。`
+			`“Torza，<first> 队长来了。”遗民的手势表达了深深的敬意。`
+			`余民走上前来并接受你的案件。盒子弹开，他将水晶插入显示器上的一个位置。当显示屏弹出几项数据完整性确认信息时，他点点头。 “好吧，自从你来到我们银河系的小角落以来，你确实引起了很多涟漪。”他做了个手势，大显示屏就会放大某个地点，向你展示穿过太空港装备店的情景。显示屏发生变化，显示您正在帮助伤员上船。场景再次切换，显示您正在发射小型隐形监视卫星。然后桌子又转回显示部队动向。`
+			`“你和我们在一起的时间不长，但你已经表现出了值得信赖和乐于助人的一面。”他指着显示屏。 “正如你所看到的，你的行为并没有被忽视。因此，我们决定修改你的 IFF 注册。”他指着桌子旁边的一组插槽，类似于安装在你的船上的插槽。 “请将您的两个许可证放入这些插槽中，我将确认您方面的更改。”`
+			choice
+				`（将我的许可证放在指定位置。）`
+					goto comply
+				`“你一直在看着我？”`
+			`“是的。我们的世界里发生的事情几乎没有不被人观察到的，有时这些事件比其他事件更能引起人们的关注。”他看着你。 “你就是这样的人。作为我们当中的一个陌生人，你受到了很多关注，尽管你可能没有注意到大部分。有些人觉得像我们这样信任你风险太大，但共识是你值得信任。现在，”他再次指着控制台，“请把你的许可证放在那里。”`
+			label comply
+			`一旦您按照指示进行操作，他就会将几个与您的许可证有相似之处的独特对象插入到桌子一侧的插槽中，并点击几个控件。 “你还不是我们中的一员，但这让你更近了一步。你的敌我识别签名已经更新，我们船舶的数据库将在一天内更新。”他取下许可证并把你的许可证还给你，表情如释重负。 “我们是一群充满好奇心的人，我们完全理解对知识的探索和对周围环境的更多了解。但我们也知道保守秘密是多么重要。`
+			`“展望未来，你现在被授权扫描残余船只，我们鼓励你这样做，尽管你应该等待一两天才能在我们的舰队中传播更新。”他看起来好像被什么逗乐了，但又恢复了严肃的表情。 “毕竟，相互扫描是一种有价值的安全形式，让我们有机会在返回的船上发现渗透者和未知污染物。扫描结果会上传到我们的数据库，通过您船上敌我识别机制中内置的量子纠缠通信器进行签名匹配，我们将尽可能返回诸如外星人装备识别和战术扫描读数等信息来帮助您。”`
+			`他疲倦地叹了口气。 “虽然我很乐意回答你的一些问题，但我应该回去监督手术。”他指着显示屏，显示屏已恢复显示部队的战术行动。 “再次感谢您的帮助，<first>。”`
+
+
+
+mission "Remnant: Expanded Horizons Quarg 1"
+	minor
+	name "参观夸格"
+	description "带着遗迹研究人员前往 <destination> 参观夸格。"
+	source
+		government "Remnant"
+		attributes "remnant primary"
+	destination "Wayfarer"
+	passengers 3
+	to offer
+		has "Remnant: Learn Sign Follow Up: offered"
+		has "Remnant: Salvage 2: done"
+		has "First Contact: Quarg: offered"
+		random < 40
+	on offer
+		conversation
+			`当您在 <origin> 的自助餐厅放松时，一名年轻的遗迹向您走来。从她腰带上挂着的手持传感器和工具来看，你会认为她是一名研究员或工程师。`
+			`“<last> 队长您好。我叫 Dawn，这几天我一直在浏览您检索到的档案。我想问您几个问题。可以吗？”`
+			`她没有等你的答复就滑到你对面的椅子上，然后拿出一个数据板。 “首先，我们的历史提到了人类如何遇到了一个叫做‘夸格’的种族，并与他们进行了一些持续的对话，但除此之外没有太多对话。现在在你给我们带来的这段历史中，它说人类已经开始与他们交换技术！这是真的吗？”她专注地看着你。你否定地签名，她沮丧地继续。 “那你能解释一下它们吗？”你回答说夸格人允许人类在他们附近生活，并且夸格人通常愿意回答问题，包括科学问题。你继续阐述说，虽然夸格人似乎并不介意让一个创新的造船厂尽可能地研究他们，但他们实际上并没有与任何人分享他们的技术。`
+			`在几个小时告诉她关于与夸格人见面并参观他们的世界的事情之后，你终于想到带她参观塔拉兹星系是很容易的。`
+			choice
+				`（提出带她去那里。）`
+				`（不提供。）`
+					decline
+			`你提议带她和她的几个同事去看夸格人。她热切地接受了，尽管她表示更愿意登陆人类世界，这样他们就可以从远处观察夸格飞船，因为他们不想引起任何注意。她告诉你半小时后会在你的船上与你会面，然后她就跑出了自助餐厅。`
+				accept
+	on visit
+		dialog `您降落在 <planet> 上，但意识到您将 Dawn 和她的同事留在了尚未进入系统的一名护卫身上。最好出发并等待它的到来。`
+	on complete
+		log "People" "Dawn" `Dawn is a young Remnant researcher with a strong interest in engineering. She has yet to pick a specialty, but appears to have a talent for exo-engineering.`
+		conversation
+			`道恩和她的同事对这次旅行感到非常兴奋。虽然他们都曾在遗迹飞船上探索灰烬废土或在自己的领地巡逻，但没有人曾离开自己的空间超过几次跳跃。他们解释说，他们的飞船总是小心翼翼地远离人类太空，以免把任何人带回来。`
+			`你会发现，黎明和她的同事们似乎比大多数遗迹人要少得多。你不确定是因为他们更年轻、不那么神秘，还是因为残余势力一直对你有所保留。也有可能你现在有了更好的机会来弄清楚它们的标志。`
+			`到达旅人后，他们花了相当多的时间观察少数夸格人的踪迹。然而，很容易看出，真正吸引他们注意力的是船只。您在造船厂的扫描仪上挥动您的身份证件，然后带他们进去看看 Tarazed 造船厂展示了什么。`
+			branch rich
+				"net worth" >= 20000000
+			`几分钟后，一名销售代理走过来询问是否有什么可以帮忙的。为了黎明的利益，你问了一些关于不同船只的问题，听销售代理重复显示屏上的几句话，然后礼貌地告诉他你自己浏览一下。`
+				goto end
+			label rich
+			`几乎在您到达大厅之前，一位销售经理就在您身边，询问他可以提供什么帮助。你几乎可以看到他眼中的信用标志，你怀疑扫描你的执照也可能快速检查你的净资产。`
+			`你问了一些关于新设计的引导性问题，并扮演了一位钱多于脑子的船长，经理热切地引导你到靠近尽头的大型机库，那里停放着他们最大、最豪华的船只。当你发现他没有任何驾驶飞机的经验后，你礼貌地从他身边解开，平静地看着船只。`
+			label end
+			`经过一小时的浏览后，年轻的遗迹同意一小时后在太空港与您会面，然后出发去装备店。`
+
+
+
+mission "Remnant: Expanded Horizons Quarg 2"
+	name "夸格扫描"
+	description "对夸格飞船 <npc> 执行装备扫描，然后再次降落在 <destination> 上。"
+	source "Wayfarer"
+	to offer
+		has "Remnant: Expanded Horizons Quarg 1: done"
+	on offer
+		conversation
+			`黎明和她的研究同事们在你几分钟后出现，兴奋地谈论他们所看到的各种事情。 “ <first> ，有一艘夸格飞船即将起飞，我们希望您能够在它飞行时对其进行扫描。这对于我们了解它们的工作原理非常有帮助。”`
+				accept
+
+	on accept
+		log "Volunteered to show Dawn and some of her fellow researchers the world where humans and Quarg co-exist."
+	
+	npc "scan outfits"
+		government "Quarg"
+		personality staying uninterested target launching
+		fleet
+			names "quarg"
+			cargo 3
+			variant
+				"夸格·林德龙"
+			variant
+				"夸格德雷克"
+			variant
+				"夸格战龙"
+		dialog
+			`黎明和她的同胞们在进来时急切地仔细阅读读数，然后询问是否可以再次着陆，将他们的扫描结果与地面上的扫描结果进行比较。`
+
+	on visit
+		dialog `您已登陆 <planet> ，但尚未扫描 <npc> 。出发并使用装备扫描仪扫描船舶。`
+	on complete
+		conversation
+			`遗迹研究人员对细节的关注令人印象深刻。他们仔细量化扫描的各个方面，包括有关船舶行为的注释。当你再次到达地面时，他们已经收集了大量充满分析的数据晶体。您注意到他们非常小心地确保他们收集的所有东西都备份在多个位置，包括看起来像是一个衬铅的小盒子。`
+			`黎明对闲置的夸格飞船进行了一些后续扫描，她的研究人员同事花了一些时间来确保他们所有的照片清晰而详细。他们告诉您，一旦完成，他们将在太空港酒吧与您会面。`
+
+
+
+mission "Remnant: Expanded Horizons Quarg 3"
+	name "拓展视野回归"
+	description "将残余研究人员送回 <planet> 。"
+	source "Wayfarer"
+	destination
+		government "Remnant"
+		not attributes "requires: gaslining"
+	passengers 3
+	blocked `This mission requires bunks for three passengers.`
+	to offer
+		has "Remnant: Expanded Horizons Quarg 2: done"
+	on offer
+		conversation
+			`回到太空港酒吧，你等了几个小时。就在你正要去找他们的时候，三人走了进来，看起来他们已经在移动了一整天，但其他方面却难以辨认。`
+			`“好的，我想我们已经准备好了。你能带我们去<planet>吗？”`
+				accept
+	on visit
+		dialog `您降落在 <planet> 上，但意识到您将 Dawn 和她的同事留在了尚未进入系统的一名护卫身上。最好出发并等待它的到来。`
+	on complete
+		payment 150000
+		conversation
+			`一旦你回到 <ship> 的私密环境中，石质保护区就会逐渐变得欢快起来，因为三人组的动作模糊，用他们的标志来回喋喋不休。显然，自从他们第一次从科拉斯袭击者身上抢救装备以来，这将是他们研究的最大推动力之一。`
+			`他们最终放慢了信号速度，并解释说，在遗迹离开祖先空间之前，人类扫描仪一直无法穿透夸格飞船的外层。黎明的一位研究员同事继续解释。`
+			`“我们的历史记录只有夸格飞船的一些图片和视频，以及基本扫描，但只能提供飞船的总体轮廓。这些扫描，”他在点击数据库时说，“实际上获取了详细的结构布局，甚至识别了一些关键部件。这还不足以复制它们，但足以让我们开始尝试弄清楚它们是如何工作的。”`
+			`到达 <planet> 后，他们很快感谢您，将 <payment> 交给您，然后跑回办公室完成准备发布和分发的材料。`
+
+
+
+phrase "broken jump drive on visit"
+	word
+		`You've landed on <planet>, but you don't have a broken jump drive to give to the Remnant. You may need to steal one from Palavrets or Rano'ereks found through Remnant jobs, or depart and wait for an escort carrying one to enter the system.`
+
+mission "Remnant: Broken Jump Drive 1"
+	repeat
+	minor
+	landing
+	name "损坏的跳跃驱动交付"
+	description "您已被要求向 <planet> 上的研究人员提供损坏的跳跃驱动器。"
+	to offer
+		has "remnant: blood test pure"
+		not "Remnant: Broken Jump Drive 1: active"
+		not "Remnant: Broken Jump Drive 1: done"
+	source
+		government "Remnant"
+		attributes outfitter
+	destination
+		government "Remnant"
+		attributes outfitter
+		not attributes "requires: gaslining"
+		not attributes "remnant station"
+		not distance 0
+	on offer
+		require "Jump Drive (Broken)"
+		conversation
+			branch repeated
+				has "Remnant: Broken Jump Drive 1: offered"
+			`当 <ship> 降落在指定的着陆场时，您会看到有人从附近的旅行用品店出现并迅速朝您走来。当你骑上舱门并下船后，该男子会等待一段安全距离，然后才靠近。 “你好，<last> 船长，”遗迹颤抖着声音，“我们看到新闻说我们当中的新人正在追踪一艘不稳定的科拉特飞船。当你登陆陆地时，我们在扫描中看到你抢救了它故障的跳跃引擎。我们可以带它去研究吗？”`
+			choice
+				`“也许以后吧。”`
+					goto refuse
+				`“这将是它的一个很好的用途。”`
+					goto accept
+			
+			label repeated
+			`你有一个损坏的跳跃引擎，残余者可能会对它感兴趣。你想找人把它交给吗？`
+			choice
+				`（也许稍后。）`
+					defer
+				`（是的。）`
+			`你找到了一名遗迹主管，并告诉他们你的跳跃驱动器坏了。`
+			
+			label accept
+			`“出色的！”他看了一眼数据板。 “有几个团队正在研究跳跃驱动的各个方面，其中优先级最高的团队在 <planet> 上。我会通知他们期待您的到来。”`
+				accept
+			label refuse
+			`他想了想，唱道：“如果你愿意的话。无论你什么时候选择回来，我们的提议都有效。”`
+				decline
+	on visit
+		dialog phrase "broken jump drive on visit"
+	on complete
+		outfit "Jump Drive (Broken)" -1
+		"remnant: broken jump drive count" ++
+		payment 300000
+		"reputation: Remnant" ++
+		conversation
+			`当您到达 <planet> 时，会有一组工程师和机械师以及一辆平板货运卡车在等着您。一旦你打开货舱门，他们就会迅速将损坏的跳跃驱动器从系泊装置上释放出来，然后小心翼翼地将其装载到卡车上。首席工程师过来将 <payment> 交给您。 “谢谢你挽救了这个。我怀疑和你说话的同胞从来没有提到过这一点，但我们有一笔基金专门用于奖励那些引进稀有外星技术的船长。如果你找到更多这样的驱动器，肯定会有一个研究小组愿意为此奖励你。”`
+			choice
+				`“我会留意更多。”`
+					goto end
+				`“你不打算用超光速引擎取代它吗？”`
+			`工程师难以置信地看着你。 “你的意思是你实际上正在尝试使用这个驱动器？”他难以置信地摇摇头。 “那么，你能走到这一步就很幸运了。令人惊讶的是它们的存在，所以期望它们也能工作就太过分了。如果你需要更换驱动器，装备商里有很多可用的。`
+			label end
+			`“下次你找到这些驱动器时，只需咨询一位星港主管即可。他们会知道它需要去哪里。不过请注意，我强烈建议不要尝试使用这些驱动器 - 它们可能会在最不方便的时候消失，而且手头上并不总是有装备商。”他转身和团队的其他成员一起出发，在他们下船时短暂地转身向你友好地挥手致意。`
+
+
+
+mission "Remnant: Broken Jump Drive 2"
+	name "损坏的跳跃驱动交付"
+	description "<planet> 的研究人员已请求您损坏的跳跃驱动器。"
+	to offer
+		has "Remnant: Broken Jump Drive 1: done"
+	source
+		government "Remnant"
+	destination
+		government "Remnant"
+		attributes outfitter
+		not attributes "requires: gaslining"
+		not attributes "remnant station"
+		not distance 0
+	on offer
+		require "Jump Drive (Broken)"
+		conversation
+			`你又掠夺了另一个损坏的跳跃驱动器。你想找一位导演来给它吗？`
+			choice
+				`（也许稍后。）`
+					defer
+				`（是的。）`
+			`信息必须在残余人员中快速流动，因为当你到达主管办公桌时，她已经为你准备好了信息。`
+			`“你好，新人，”她喊道。 “你有兴趣将你抢救出来的损坏的跳跃驱动器交给我们的研究人员吗？”`
+			`你点点头。`
+			`“他们肯定会喜欢新的研究材料。团队位于 <planet> 。我会提前发送通知，以便他们期待您的到来。”`
+				accept
+	on visit
+		dialog phrase "broken jump drive on visit"
+	on complete
+		outfit "Jump Drive (Broken)" -1
+		"remnant: broken jump drive count" ++
+		payment 300000
+		"reputation: Remnant" ++
+		conversation
+			`正如所承诺的，当您在指定的着陆场安顿下来时，会有一组研究人员在等待。其中一人过来将 <payment> 交给您，而其他人则小心地卸下损坏的驱动器并开始将其拖回实验室。`
+			`“我们非常感谢，<last> 队长。拥有这样的驱动器残骸将对我们的努力非常有益。”他的声音有些沙哑，似乎不习惯被人频繁使用。`
+			choice
+				`“太好了！我会找到更多。”`
+					goto end
+				`“你在学什么？”`
+			`“我们之前对跳跃驱动器的研究确定，这些驱动器毫无疑问是多部分系统。我们知道我们能看到和处理的外部部分主要是产生某种遏制场或口袋的机械。至于它如何工作或为什么需要它......”他的歌声逐渐减弱，他做出了一个你怀疑可能相当于耸肩的手势。 “无论如何，我们的团队专注于这个外部系统的本质。我们希望，尽管它已经被损坏，但它的继续存在可以让我们更深入地了解它的内部运作，以弄清楚该场到底有什么作用以及如何使用它。`
+			label end
+			`“好吧，我的同胞们很快就卸完货了，我也该走了。看在我们的份上，我希望你能帮我们找到更多这样的东西。”`
+
+
+
+mission "Remnant: Broken Jump Drive 3"
+	name "损坏的跳跃驱动交付"
+	description "<planet> 的研究人员需要一个损坏的跳跃驱动器来进行测试。"
+	to offer
+		has "Remnant: Broken Jump Drive 2: done"
+	source
+		government "Remnant"
+	destination
+		government "Remnant"
+		attributes outfitter
+		not attributes "requires: gaslining"
+		not attributes "remnant station"
+		not distance 0
+	on offer
+		require "Jump Drive (Broken)"
+		conversation
+			`你又掠夺了另一个损坏的跳跃驱动器。你想找一位导演来给它吗？`
+			choice
+				`（也许稍后。）`
+					defer
+				`（是的。）`
+			`当你走近航天港大厅的主管时，他抬起头向你挥手。 “时机好，<first> 队长，”他唱道。 “我们在 <planet> 上有一个研究小组，他们要求提供一个损坏的跳跃驱动器。你能给他们提供一个吗？”`
+			`“我可以，”你回答道。`
+			`“太棒了。最近发现的这些损坏的驱动器引起了各个方面的讨论和兴奋。我们的团队研究跳跃驱动器至少有一个世纪了，但没有取得很大成功。我听说它们相当复杂，但你的发现正在开辟新的调查途径。话虽这么说，我会通过 <planet> 通知团队期待你的到来。”`
+				accept
+	on visit
+		dialog phrase "broken jump drive on visit"
+	on complete
+		outfit "Jump Drive (Broken)" -1
+		"remnant: broken jump drive count" ++
+		payment 300000
+		"reputation: Remnant" ++
+		conversation
+			`在 <planet> 等待您的团队肯定已经迫不及待地想要开始了。舱门刚打开，他们就开始用骆驼拉的马车驶上坡道。尽管他们的动作很微妙，但他们加载破损的跳跃驱动器的速度却出奇地快。`
+			`“这是激动人心的一天，<first> 队长！根据我们对此进行的测试，无数的理论可能会被证明或重新投入改进之火！”`
+			choice
+				`“太好了！我会找到更多。”`
+					goto end
+				`“有什么值得注意的理论吗？”`
+			`他看起来若有所思了一会儿，然后颤抖着说道，“正如你所知，标准超空间驱动器的工作原理是产生聚变反应并将其折叠到时空结构中，这些折叠自然地沿着已知的超车道落下。我想人们可以将这些车道视为宇宙的‘折痕线’。我最喜欢的理论是跳跃驱动器有一些额外的机械来引导折叠。这样它们就可以决定折叠发生的位置，而不仅仅是与最近的折痕对齐。考虑到它们增加的燃料消耗，它使得感觉产生新的折痕比重复使用现有的折痕需要更多的燃料。`
+			label end
+			`“哦，趁我忘了……”他递给你 <payment> 。 “开始设置测试。”当他跟在马车后面慢慢走开时，他半自言自语地唱着歌。`
+
+
+
+mission "Remnant: Broken Jump Drive 4"
+	name "损坏的跳跃驱动交付"
+	description "您已被要求向 <planet> 上的研究人员提供损坏的跳跃驱动器。"
+	to offer
+		has "Remnant: Broken Jump Drive 3: done"
+	source
+		government "Remnant"
+	destination
+		government "Remnant"
+		attributes outfitter
+		not attributes "requires: gaslining"
+		not attributes "remnant station"
+		not distance 0
+	on offer
+		require "Jump Drive (Broken)"
+		conversation
+			`你又掠夺了另一个损坏的跳跃驱动器。你想找一位导演来给它吗？`
+			choice
+				`（也许稍后。）`
+					defer
+				`（是的。）`
+			`你走到导演办公桌前，看看谁需要下一个坏掉的跳跃驱动器。导演对你微笑，浏览了屏幕上的几条信息，然后清了清嗓子。`
+			`“你的发现非常受欢迎，”她唱道。 “您能将这个带到从事 <planet> 工作的团队吗？”`
+			`你点头回应。`
+			`“谢谢。我们期待看到结果。”`
+				accept
+	on visit
+		dialog phrase "broken jump drive on visit"
+	on complete
+		outfit "Jump Drive (Broken)" -1
+		"remnant: broken jump drive count" ++
+		payment 300000
+		"reputation: Remnant" ++
+		conversation
+			`当您接近指定的平台时，您会发现一队研究人员带着卸载设备从附近的入口匆匆跑出。一旦您完成关闭程序，他们就会快速开始卸载驱动器。任务完成后，他们会暂停片刻，将 <payment> 交给您。 “谢谢你找到这个，”他们异口同声地唱道。 “我们的实验室渴望开始研究您最近的发现，<first> 船长。我们的感谢！”`
+			choice
+				`“祝你好运。”`
+					goto end
+				`“你的研究进行得怎么样了？”`
+			`“很好，而且会变得更好，”他们唱道。 “我们正在研究一种理论的各个方面，即跳跃驱动器实际上完全无视传统的跳跃，并使用折叠机制将飞船本身放入口袋中，同时以某种方式触发目标系统中所述口袋的打开。”其中一位继续说道，“如果这是真的，那么尝试在靠近城市或山脉等脆弱物体的任何地方激活这些装置可能会相当危险，这就是为什么他们把我们的实验室放在地球远离所有这些物体的一侧。`
+			label end
+			`“好吧，我们还有一段路程才能到达我们的实验室，但是一旦我们到达那里，应该会很令人兴奋。再见！”说完，他们就朝附近的一辆大型车辆走去。`
+
+
+
+mission "Remnant: Broken Jump Drive 5"
+	name "损坏的跳跃驱动交付"
+	description "<planet> 的工程师团队想要研究损坏的跳跃驱动器。"
+	to offer
+		has "Remnant: Broken Jump Drive 4: done"
+	source
+		government "Remnant"
+	destination
+		government "Remnant"
+		attributes outfitter
+		not attributes "requires: gaslining"
+		not attributes "remnant station"
+		not distance 0
+	on offer
+		require "Jump Drive (Broken)"
+		conversation
+			`你又掠夺了另一个损坏的跳跃驱动器。你想找一位导演来给它吗？`
+			choice
+				`（也许稍后。）`
+					defer
+				`（是的。）`
+			`你在主任办公桌前停下来报告说，你为他们的一个研究团队抢救了另一个损坏的跳跃驱动器。主任赞赏地点点头，检查了他的名单。 “有一个新团队在 <planet> 上启动了一个项目。您能把它带到那里吗？”`
+			`“当然，”你回答。`
+			`“非常感谢。他们越早得到它，他们就能越早开始他们的项目。话虽这么说，我已经和其他董事谈过了，我们决定，我们收到了如此多的请求，我们将把这些请求放入工作委员会。每当着陆扫描检测到其中一个损坏的跳跃驱动器时，系统就会在工作委员会上显示一条消息，列出下一个需要交付的位置。”`
+				accept
+	on visit
+		dialog phrase "broken jump drive on visit"
+	on complete
+		outfit "Jump Drive (Broken)" -1
+		"remnant: broken jump drive count" ++
+		payment 300000
+		event "remnant: research update bjd1" 100 200
+		"reputation: Remnant" ++
+		conversation
+			`<planet> 上的着陆场隐藏在太空港后面。少数工程师已经设置了一条传送带，以便在您到达时从您的船上卸下驱动器。当您打开舱门时，它们会将其延伸到坡道上，并快速将驱动器装载到上面。机器迅速将驱动器及其护送物快速运送到附近的建筑物中。几位工程师过来与您交谈并向您提供 <payment> 。`
+			`“感谢您为我们带来了这款驱动器。对于我们来说，这是一项罕见的技术。”`
+			choice
+				`“我就交给你了。”`
+					goto end
+				`“你在学什么？”`
+			`他们带着高兴的表情唱起了关于挖掘深海寻找天空奥秘的歌曲。据您所知，他们正在尝试找出制造驱动器的材料，然后进行实验来复制这些材料。`
+			label end
+			`“我们的实验正在等待着。祝你的探索富有成果！”他们出发时发出颤音。`
+
+
+
+mission "Remnant: remnant research update compatibility"
+	landing
+	invisible
+	non-blocking
+	to offer
+		has "event: remnant research update bjd1"
+	on offer
+		event "remnant: research update bjd1"
+		clear "event: remnant research update bjd1"
+		fail
+
+
+
+mission "Remnant: Face to Maw 1"
+	landing
+	name "与 Plume 谈论虚空精灵"
+	description "普鲁姆会对有关虚空精灵发生的事情的报告非常感兴趣。"
+	to offer
+		has "event: remnant: return the samples timer"
+		has "flagship model: Puffin"
+		or
+			not "Remnant: Cognizance 1: offered"
+			has "Remnant: Cognizance 19: done"
+	source
+		system "Nenia"
+	destination "Aventine"
+	on offer
+		conversation
+			`当气体漩涡接近 <ship> 时，您不禁想知道是什么让您回到了这里。这一次，研究人员不会带着歉意要求你冒着生命危险进行研究，或者将鸡蛋从被盗的地方归还。当执政官揭开斗篷时，你瞥见执政官在云层上方显现，让你知道你正在被监视，但你什么也没说；现在，它只不过是尼尼亚天空中一个沉默的、沉思的存在。外星世界的寂静深处笼罩着你，逐渐将银河系的其余部分从视野中抹去。`
+			`当 <ship> 稳定在指定高度时，您穿上压力服。走进气闸室，你对这些古老的“硬壳”防护罩系统做了个鬼脸，然后放下防护罩，这样你就可以进入船体了。在地面上，您可以欣赏到迷雾万花筒般的色彩透过云层渗透下来，在雾气中移动的远处形状上发挥作用。`
+			`不多时，数道虚空精灵浮现而出，在云间编织舞动。它们在货舱门周围旋转几分钟，好像在等待什么，然后闪烁着光芒，落入下面的云层中。另一个虚空精灵在 <ship> 周围飘动，戳着船体并用触手滑过它。您很快就想打开录像机来捕捉这一场景。虚空精灵注意到你短暂的动作，然后猛地转向你。当它靠近你时，你的注意力被你怀疑是它的嘴所吸引：一条锯齿形的裂缝，像拉链一样剥开，露出一个类似于工业研磨机的开口。`
+			`近距离观察，虚空精灵非常庞大。它的大部分触手很容易就和你的腿一样粗，并且以惊人的速度和精确度移动。它在空中移动，就像水中奇怪的深海鱼一样。当虚空精灵靠近你时，你可以辨别出轻微的振动，你怀疑这是从虚空精灵上方呼啸而过的空气发出的。当这个巨大的生物迅速接近时，你会感到一种沉重的麻痹感压在你身上。突然，你想起你的护盾是与你的装备相连的；你可以激活它们来保护自己，它们会在你周围延伸。不过，对于虚空精灵来说，它可能不太健康。`
+			choice
+				`（激活护盾。）`
+				`（不要激活护盾。）`
+					goto "hold ground"
+			action
+				set "remnant: face to maw: raised shields"
+			`你推动麻痹并快速触发护盾。接下来的毫秒感觉就像永恒。虚空精灵就在几米开外，一根卷须伸出来触碰你，就在盾牌猛地撞到位的时候。卷须被卡在盾牌的两侧，将其劈成两半。在那一瞬间，你心中的压力消失得无影无踪，仿佛这只是一场梦。你暂时盯着一动不动的虚空精灵，对刚刚发生的事情感到震惊。然后时间重新出现，精灵们随着不和谐音调的神秘渐强而痉挛地离开了船。它会坠入云端，让你站在你的船体上，卷须的碎片漂浮在空中。`
+			`你小心地将卷须舀入容器中并密封。虽然这次袭击破坏了美好的时刻，但至少你有 Plume 可能感兴趣的样本和一些录音。`
+				launch
+			label "hold ground"
+			action
+				set "remnant: face to maw: did not raise shields"
+			`当虚空精灵距离您只有几米时，麻痹的感觉离开了您的身体，但您决心在不触发护盾的情况下面对该生物。当精灵冲向你并且它的主要触手伸出来触碰你时，时间似乎变慢了。当你做好迎接撞击的准备时，你意识到精灵已经成功地让自己完全停止了，而且触手也稍微向内收缩了。你可以看到它正在触动你，但你甚至感觉不到它的影响。你和虚空精灵僵立了一会儿，试图麻痹你的力量突然消失，取而代之的是一种失重的感觉。片刻之后，虚空精灵向后拉了回来，带着神秘的声音喷泉冲向天空，围绕 <ship> 旋转，然后消失在漩涡云中。`
+			`当你重新进入飞船时，你注意到你的套装上覆盖着某种半透明的粘液。你将尽可能多的东西刮到密封容器中，但你的压力服似乎因此永久地染上了虹彩紫色。你决定去找普鲁姆，因为他几乎肯定会觉得这很有趣。`
+				accept
+	on accept
+		fail "Remnant: Face to Maw 1B"
+	on complete
+		conversation
+			`当你走进普鲁姆在阿文丁的实验室时，你会发现他埋在你的蛋返回任务的某种全息投影中。您可以看到，当他在数据板上敲击笔记时，他似乎正在慢动作地观看视频。几分钟后，他抬起头，看到你站在入口处。他迅速将自己从投影中拉出来，按下了你认为一定是暂停按钮的按钮。`
+			`“<first> 队长！真是一个惊喜，”他颤声说道。 “如果你想找更多的工作，我现在没有什么可以给你的。”`
+			branch threatening
+				has "remnant: face to maw: raised shields"
+			`你告诉普鲁姆你如何访问内尼亚并与虚空精灵进行一次有趣的邂逅，并向他提供录音和粘液容器。他热切地接受了你的数据芯片和容器。将容器滑入某种机器中，当他将数据芯片插入控制台时，机器立即开始旋转。片刻之后，他的全息投影切换到新的镜头。他检查了时间戳，然后喊道：“这些需要我花一些时间来分析。几个小时后我将在太空港与你会面，讨论我的初步发现。”`
+				decline
+			label threatening
+			`你告诉普鲁姆你是如何访问内尼亚并与虚空精灵发生威胁的遭遇的，并向他提供了录音和带有触手的容器。羽毛厌恶地从你身边退开。 “在我们努力重建与执政官和虚空精灵的信任之后，你去冒险……到底是为了什么呢？观光？狩猎的刺激？”他的吟唱变成了愤怒的语气。 “把录音留在控制台上。不过，我不想要那条触手的任何一部分。”`
+			`当你离开 Plume 的实验室时，一名技术人员将你拉到一边。 “我们的记录提到，触手有一些有趣的特性，在战斗中很有用。如果你有兴趣，几个小时后在太空港见我。”`
+
+
+
+mission "Remnant: Face to Maw 2"
+	name "将粘液带到<planet>"
+	description "<planet> 上的工程师团队对虚空精灵粘液的属性感兴趣。"
+	to offer
+		has "Remnant: Face to Maw 1: done"
+		not "remnant: face to maw: raised shields"
+	source "Aventine"
+	destination "Viminal"
+	cargo "slime sample" 1
+	on offer
+		conversation
+			`当 Plume 终于到来时，你可以从他的脚步看出他很兴奋。他滑到你对面的长凳上，拿出一个数据板。 “我钦佩你的勇敢，队长。我想我没有勇气在这样的虚空精灵面前坚守阵地，”他恭敬地吟诵道，然后将语气变成了惊奇。 “在最后一刻，它看起来几乎像是在打量你或检查你。”他一脸有趣地摇摇头。 “我花了很多时间研究非人类生物，有​​时我会疏忽并开始将它们拟人化。”他的声音变得更加激进。 "That was probably some kind of territorial display, or possibly some kind of dominance challenge. We don't know enough about void sprite behavior to speculate further, though.`
+			`“不管怎样，对你的好奇心来说，更直接的回报就在这个样本中，”他兴奋地颤抖着说道。 “我们维米纳尔上的几个实验室一直致力于新一代船舶技术的开发，这种物质含有一些可能是关键成分的化学物质。我已经把数据传给他们了，但他们想与原始数据进行比较。你能把这个样本带给他们吗？”`
+			choice
+				`“是的，我可以。”`
+					accept
+				`“我宁愿不。”`
+			`羽点点头，坚忍地接受了这一点。 “那是你的选择，我会安排另一艘船来运送。”`
+				decline
+	on accept
+		event "remnant: penguin"
+	on complete
+		"remnant met taely" ++
+		give ship "Penguin" "Shadow Hope"
+		conversation
+			branch taely
+				has "remnant met taely"
+			`当您降落在维米纳尔时，一位身着工作服、身材魁梧的女性遗迹正等着您。 “您好，<first> 船长。我叫泰利，是遗迹中的一名级长。最重要的是，我研究运动，特别是我们的星舰如何移动。”`
+				goto main
+			label taely
+			`当你降落在维米纳尔时，你会发现泰利正在等你。 “您好，<first> 队长。很高兴再次见到您。”`
+			label main
+			`她做出了一个你开始认为是好奇的手势。 “那么，Plume 向我们发送了一些非常有趣的数据，以及一条消息，希望您提供样本？”你把装有粘液样本的容器递给她，她把它举到灯光下。 “看起来很有趣的物质，”她喊道。 “我们回我的工作室吧。”`
+			choice
+				`“好吧，我们走吧。”`
+					goto follow
+				`“我能在一分钟内赶上你吗？”`
+			`“当然可以，只是别拖太久，我的项目已经进入最后阶段了。”`
+			`你慢慢地到达车间，欣赏沿途的景色。当你终于到达车间时，你可以听到里面传来奇怪的声音，还伴随着沼泽地雷雨的气味。你走进车间，停下来盯着面前的东西。`
+				goto skip
+			label follow
+			`她带路穿过几条侧道，到达一个与大型机库相连的偏僻着陆场。在里面，你可以看到一个巨大的水箱，里面装满了浑浊的液体，周围都是设备和显示器。她走到一台带有几个插槽的大型机器前，将容器滑入其中。`
+			`当机器开始工作时，她转向你。 “作为太空生命的主要例子，虚空精灵一直引起我的兴趣。它们拥有我们作为大气层生物只能梦想的许多优势，例如能够以更直接的方式体验太空。我一直在从事一个业余项目，即建造新一代的飞船，将这些想法与我们当前的技术融合在一起，但我们拥有的关于虚空精灵的数据已有数百年历史且不完整。”当她拉起一个显示着你的原始扫描件的显示器时，她的歌声逐渐减弱。 “不过，你最近的探索提供了新的数据，我可以用它来更新我的设计。你取回的这种粘液就是最终的成分。”`
+			choice
+				`“所以我的数据有助于开发新技术？”`
+				`“那就好。我有机会获得奖金吗？”`
+			`机器发出叮当声，她查看了结果，然后兴奋地颤抖起来。 “是的，匹配！那么现在是时候开始最后的激活了。”她大步走向中央控制台，输入一系列命令，然后进行虹膜扫描和刺血。房间里的工业嗡嗡声突然变得越来越强，你的鼻子被你只能形容为沼泽中雷暴的气味袭击。几秒钟后，噪音减弱，水箱开始下降到地板上，液体中出现一个形状。`
+			label skip
+			`你面前的这艘船有一些你飞往内尼亚的海雀的微弱痕迹，以及遗迹设计的其他元素，但它显然是新的东西。它的触角旋转着，仿佛在吸收周围的环境，而侧面的触手抽搐着伸出来触摸周围的环境。当它从支撑物上抬起并开始四处移动时，其下方坚固的卷须会弯曲。您会瞬间看到这艘船在尼尼亚天空中的样子。`
+			scene "scene/penguinscene"
+			`泰利对技术细节的嗡嗡声终于渗入了你的遐想：“……所以从船长的角度来看，驾驶企鹅号应该与一艘普通的船非常相似，除了她自己飞行并且不需要机组人员来运行她的系统。”她停了下来，看着你。 “你的好奇心提供了让她复活的最终成分。你应该是第一个拥有它的人。”她拍拍企鹅的鼻子，企鹅发出嘶嘶的声音。 “我称她为‘影子希望’，但你可以随意给她重命名。”过了一会儿，她开始用扫描仪扫描这艘船，让你静静地沉思。`
+
+
+
+mission "Remnant: Face to Maw 2B"
+	name "将触手带到<planet>"
+	description "触手具有可供 <planet> 上的工程师使用的属性。"
+	to offer
+		or
+			has "Remnant: Face to Maw 1B: done"
+			and
+				has "Remnant: Face to Maw 1: done"
+				has "remnant: face to maw: raised shields"
+	source "Aventine"
+	destination "Caelian"
+	cargo "tentacle" 1
+	on offer
+		conversation
+			`当技术人员到达太空港时，他立即大步走向您。 “我检查了记录，我的记忆是正确的。我们的一个研究小组几个世纪前就发现这些触手可以在近距离战斗中用作毁灭性武器。”`
+			`他拿出一张看起来很奇怪的步枪的图片，继续念叨着：“奇利亚级长手下的私人武器实验室有一些旧的武器框架。如果你去阿文廷参观，他们可以把这条触手变成你的强大武器。”`
+			choice
+				`“听起来很好。”`
+					accept
+				`“我宁愿不。”`
+			`技术人员看起来很失望。 “哦，好吧，享受你的奖杯吧。”`
+				decline
+	on complete
+		payment 250000
+		"remnant chilia" ++
+		outfit "Void Rifle"
+		conversation
+			branch chilia
+				has "remnant chilia"
+			`你按照提供给你的指示进行操作，最终发现自己来到了遗迹武器实验室。您进入后会遇到保安，并要求您稍等。几分钟后，一个健康的年轻人从另一扇门里走了出来。 “你好，<first> 队长，”他唱道。 “我是奇利亚级长。我名义上负责残余空间的整体防御和军事行动。”他不以为然地笑了笑。 “我说‘名义’，因为实际上我们所有的活动在某种程度上都是军国主义的，但通常属于那些更了解它们的人的权限范围内。”`
+				goto main
+			label chilia
+			`你按照提供给你的指示进行操作，最终发现自己来到了遗迹武器实验室。您进入后会遇到保安，并要求您稍等。几分钟后，一个健康的年轻人从另一扇门里走了出来。 “你好，<first> 队长，”他唱道。 “我们又见面了。”你立即认出那个声音就是说服你提供血样并了解残余者的那个人。 “上次我们没有得到适当的介绍，但你可能已经发现我名义上负责残余空间的整体防御和军事行动。”他不以为然地笑了笑，“我说‘名义’，因为实际上我们所有的活动在某种程度上都是军事活动，但通常属于那些更了解这些活动的人的权限范围内。”`
+			label main
+			`他带你来到一个看起来像军械库的房间，一群技术人员正在对步枪枪托进行最后的修饰。 “技术人员代表你提出的请求引起了我的注意，因为我们几个世纪以来一直没有制造虚空步枪的关键资源。幸运的是，自从我们解决了最初困扰我们定居点的威胁以来，我们并不真正需要它们。”`
+			choice
+				`“这叫‘虚空步枪’？”`
+				`“我不需要细节。”`
+					goto end
+			`“是的，虚空步枪。我不知道是谁发现了它，但有人发现，如果以特定的模式向触手的神经系统注入特别高的电荷，它会在相当大的范围内发出令人麻痹的锥形能量。我既不是工程师也不是生物学家，所以我不太了解它的原理。”他停下来观看技术人员将现在笼中的触手安装在枪托顶部。 “可以这么说，它对于狙击来说毫无用处，但它能够穿透墙壁并影响区域的能力使其非常适合扫荡船只和建筑物间的清理行动。`
+			label end
+			`“好吧，历史够了。”他转向正在完成组装的技术人员。 “触手经过了抗腐处理，只要你定期充电，库存机制就能提供基本的日常维护。”他大步走过去，拿起已经完成的虚空步枪，然后递给了你。 “你掌握着我们历史的一部分，队长。好好利用它！”`
+			scene "outfit/void rifle"
+
+
+
+mission "Remnant: Keystone Research 1"
+	minor
+	name "找回更多基石"
+	description `从 亥族 中检索量子基石，供遗迹研究，从 <destination> 开始。`
+	source "Viminal"
+	destination "Greenwater"
+	cargo "(reserved)" 19
+	to offer
+		random < 30
+		has "Remnant: Learn Sign 2: done"
+		has "Remnant: Technology Available: offered"
+		or
+			has "Remnant: Key Stones: done"
+			has "Remnant: Key Stones (Hai): done"
+			has "Remnant: Key Stones (Pre-Hai) 2: done"
+	on offer
+		log "People" "Aeolus" `As an outfitter, Aeolus is responsible for managing the logistics that supply the Remnant with materials, equipment, and resources. In contrast to outfitters in what the Remnant term "ancestral space," he is focused on ensuring the efficient optimization of Remnant ships, not making a profit.`
+		conversation
+			`在太空港的自助餐厅里，你发现了一位装备商，他要求你取回一批海基石。他注意到你，向你招手，指着他对面的一张空椅子。`
+			`“您好，<first>！我相信您已经在我们中间安顿下来了？”他用简单的手势打手势。 “我听说你也在学习我们的语言。”当您坐下时，您签署了同意书。 “不错，很有用。”他停顿了一下，然后继续说道，“我以前从未自我介绍过。我叫风神，我帮助管理我们舰队的资源后勤。”他看了你一会儿，然后冒险问道：“你进来的样子，好像是在找什么东西。你有什么心事吗？”`
+			choice
+				`“服装生意怎么样？”`
+				`“上一份工作报酬相当不错。你还有类似的吗？”`
+					goto "crystal jobs"
+			`“嗯，相当不错。库存上涨了，目前有很多新设备，而且最近的一些供应线中断已经得到解决，”他赞赏地比划着。 “我听说我们要感谢你。`
+			`“你带回来的那些‘量子基石’非常有趣。拆解它们进行分析的过程产生了一些有趣的结果。”他注意到你的表情。 “哦，你以为我会把它们卖掉，不是吗？”`
+			choice
+				`（肯定地点头。）`
+					goto "not for sale"
+				`（不置可否地耸耸肩。）`
+					goto "not for sale"
+				`“不，我怀疑他们会被研究。”`
+					goto "not really"
+				`“‘流行服装’是什么意思？”`
+			`「哦，这只是一个表达而已。‘流’指的是空气或水流，比喻开发过程。意思是有一些服装正在开发过程中。”他敲击了通讯器一会儿。 “早在出埃及之前，就有一句话：‘产品正在酝酿之中。’我认为这与我们拥有“当前的事物”具有类似的意义。不过我很好奇。你是指望我把它们卖掉吗？”`
+			choice
+				`（肯定地点头。）`
+					goto "not for sale"
+				`（不置可否地耸耸肩。）`
+					goto "not for sale"
+				`“不，我怀疑他们会被研究。”`
+			label "not really"
+			`风神看起来很高兴。 “你是对的。找到一种能完成量子钥匙的功能但又不完全相同的东西作为研究对象显然比作为杂项商品更有价值。再加上在没有彻底拆除的情况下将外星装置放在船上的安全影响，以及我们实际上并不关心传统意义上的利润这一事实，很明显，它们不应该被简单地扔进舾装库存。”`
+				goto clarification
+			label "not for sale"
+			`他看起来有点尴尬。 “很抱歉让你失望了，但由于多种不同的原因，这些服装都不会以原来的形式使用。”当他列出它们时，他用手指勾掉它们。 “首先，安全性：在没有彻底拆除的情况下，在每艘船上安装外星装置将导致被追踪。其次，研究：能够完成量子钥匙石的功能，但又不完全相同？我们的研究人员绝对感兴趣。第三，目的。”`
+			`他停下来喝了一杯。 “与你在祖先世界中打交道的装备商所习惯的不同，我的目的不是赚钱。相反，我确保遗迹船长拥有他们需要的资源。你看到的列出的‘价格’，遗迹船长看到的列为‘后勤调整’，表明供应该组件所需的资源量。每艘船都有分配给它的资源预算，决定它可以用于维修、补货和运输的资源预算。改进。”`
+			label clarification
+			choice
+				`“等等，你什么也没卖？”`
+				`“好吧，那么你让我收到的那批货物……？”`
+			label "crystal jobs"
+			`“我必须为此道歉。我们从历史中知道，来自祖先世界的任何人都会被赚取利润的机会所吸引，我们需要给你们一个留下来的理由，以及一种衡量你们提供帮助的意愿的方法。你们的货物绝对有用，但我们必须确保我们以一种有意义的方式来安排你们的工作，而不透露我们实际上在做什么。`
+			`“所以不，我没有‘像上一份一样’的工作，但我知道我们的研究人员想要另一批货物。你有兴趣吗？”`
+			choice
+				`“是的。”`
+				`（签名表示肯定。）`
+				`“你为什么认为我需要经济动机？”`
+					goto greed
+				`（衰退。）`
+					decline
+			label "crystal decision"
+			`“太好了。他们希望你再捡起 19 块基石。这次有两个不同之处：第一，我们希望你从几个不同的星球捡起它们。第二，当你到达 亥族 空间时，我们会做好安排，以便运输费用已经支付并等待你。在 Greenwater 上捡起第一批石头，然后在 Allhome 上捡起下一组。当你到达 Allhome 时，我会向你发送一份清单。”`
+			`“话虽如此，如果你碰巧捡到了额外的基石，你可以将它们交给后勤处，他们会负责分配，并给予你相应的补偿。”`
+			choice
+				`“等等，你要如何把这一切都安排好？”`
+				`“听起来不错。”`
+					accept
+			branch "remnant untrusted"
+				has "remnant untrusted"
+			`风神看上去有些好笑。 “虽然你确实很喜欢冒险，但你并不是唯一一个游历广泛的人。我们很久以前就用隐身飞船绘制了海星系的地图，但从未登陆或联系过任何一艘。所以我们除了从轨道或扫描飞船上观察到的之外一无所知。但你为他们所熟知，并且拥有相当的公众声誉。通过使用你的转发器代码，我们可以通过超空间中继下订单并支付订单。我们所需要的只是一艘就位的飞船将信号馈送到网络中。”`
+				accept
+			label "remnant untrusted"
+			`风神对你神秘地微笑。 “这么说吧，你并不是遗迹中唯一足智多谋的人。一旦你表现出你的忠诚，我们将与你分享更多。”`
+				accept
+			label greed
+			`“虽然我们不知道祖先空间的行星表面正在发生什么，但我们确实收到了相当数量的传输。根据这些信息和我们的历史记录，我们很清楚，‘赚钱’是祖先空间中的人们做任何事情的主要动机。无论是运送货物、建造建筑物还是保护某人；我们所看到的一切都表明，祖先空间中的人类所做的一切都需要信用。除此之外，信用的数量越大，他们就越有热情去做这件事。”风神摇摇头，看上去很不安。 “这就是我们所看到的。告诉我，我们错了吗？我们多次看到的一句话是‘金钱使世界运转’，我们所看到的一切都支持这种态度。”`
+			choice
+				`“不，你没有错。金钱是人们工作的原因。”`
+					goto "greed confirmation"
+				`“是的，也不是。大多数人工作都是为了钱，但这并不是他们唯一的动机。”`
+					goto "greed partial"
+				`“你错了。有些人就是为了钱，但不是所有人。”`
+				`“这不是关于每个人的，这是关于我的。我来这里不是为了钱。”`
+			`“我很高兴有些人愿意为了正确的、必要的甚至只是好奇而采取行动；而不仅仅是为了他们得到的报酬。这给了我对人类祖先的希望。”他的神情变得明亮了一些。 “那么，你有兴趣找另一份工作来帮助我们吗？”`
+			label "greed choice"
+			choice
+				`“是的。”`
+					goto "crystal decision"
+				`“不。”`
+					decline
+			label "greed confirmation"
+			`风神悲伤地点点头。 “我们对这一确认表示感谢，并希望更多地了解那些留在祖先土地上的人。然而，令人沮丧的是，人类是如此以自我为中心，将金融财富视为如此重要的优先事项。尽管如此，我们确实为你提供了另一份工作。你有兴趣吗？”`
+				goto "greed choice"
+			label "greed partial"
+			`风神点头。 “因此，金融财富是必要的优先事项，但不一定是他们更愿意关注的。有趣。这给了我一点希望。”他停下来想了想，然后继续说道。 “除了人类的经济信仰之外，你有兴趣帮助我们吗？”`
+				goto "greed choice"
+	on complete
+		dialog
+			`联系堆场场长需要几分钟的时间，但一旦你联系了，一群由海工和人类码头工人组成的混合团队就会迅速将板条箱从仓库转移到你的货舱。海和人类似乎习惯了在这里一起工作。`
+
+
+
+mission "Remnant: Keystone Research 2"
+	landing
+	name "找回更多基石"
+	description `从 亥族 中检索量子基石供遗迹研究，接下来从 <destination>`
+	source "Greenwater"
+	destination "Allhome"
+	cargo "Keystones" 2
+	to offer
+		has "Remnant: Keystone Research 1: done"
+	on complete
+		payment 250000
+
+
+
+mission "Remnant: Keystone Research 3"
+	landing
+	name "找回更多基石"
+	description `从几个海世界取回量子基石，结束于纽霍姆。`
+	source "Allhome"
+	destination "Newhome"
+	stopover "Makerplace"
+	stopover "Stonebreak"
+	stopover "Giverstone"
+	stopover "Cloudfire"
+	stopover "Snowfeather"
+	stopover "Icelake"
+	stopover "Heartvalley"
+	cargo "Keystones" 4
+	to offer
+		has "Remnant: Keystone Research 2: done"
+	on offer
+		conversation
+			`正如风神所说，有一箱海量子基石在等着你。当您确保它们已安全加载时，您的通信系统会通知您消息已到达。它没有表明出处，但似乎是一条通知，表明已向您的帐户支付了 250,000 个标记为“作业津贴”的学分。`
+			`所附消息简短而切题。 “您好，<first> 队长。希望货物已经在等您了。我们已经安排好从 Makerplace、Stonebreak、Giverstone、Cloudfire、Snowfeather、Icelake 和 Heartvalley 获取样品。收集完所有这些后，前往 Newhome。我们还在努力建立其他一些地方，在您到达 Newhome 时我们应该已经准备好。”`
+				accept
+	on complete
+		payment 250000
+		dialog
+			`当您的通讯链接显示有一对消息传入时，您正在向港口当局检查以查找您的货物。当您等待第二条消息加载时，您会看到第一条消息是存款对账单，表明已从“Solar Winds Logistics Ltd”存入了 <payment> 的付款。`
+
+
+
+mission "Remnant: Keystone Research 3A"
+	invisible
+	landing
+	source
+		planet "Makerplace" "Stonebreak" "Giverstone" "Cloudfire" "Snowfeather" "Icelake" "Heartvalley"
+	destination "Newhome"
+	cargo "Keystones" 2
+	to offer
+		has "Remnant: Keystone Research 3: active"
+	on offer
+		conversation
+			`您可以快速定位并装载量子基石货物。包装上附有小册子和图片，描绘了看起来舒适的海在宇宙飞船观景台上放松的样子。 “保证为您的乘客提供最顺畅的飞行！”读取其中一个标签。`
+				accept
+
+
+
+mission "Remnant: Keystone Research 3B"
+	invisible
+	landing
+	source
+		planet "Makerplace" "Stonebreak" "Giverstone" "Cloudfire" "Snowfeather" "Icelake" "Heartvalley"
+	destination "Newhome"
+	cargo "Keystones" 2
+	to offer
+		has "Remnant: Keystone Research 3A: active"
+	on offer
+		conversation
+			`果然，有一对板条箱在等着你。这次的宣传册描绘了一对尊贵的海老人在一幅哑光画前放松的样子。`
+				accept
+
+
+
+mission "Remnant: Keystone Research 3C"
+	invisible
+	non-blocking
+	landing
+	source
+		planet "Makerplace" "Stonebreak" "Giverstone" "Cloudfire" "Snowfeather" "Icelake" "Heartvalley"
+	destination "Newhome"
+	cargo "Keystones" 2
+	to offer
+		has "Remnant: Keystone Research 3B: active"
+
+
+
+mission "Remnant: Keystone Research 3D"
+	invisible
+	non-blocking
+	landing
+	source
+		planet "Makerplace" "Stonebreak" "Giverstone" "Cloudfire" "Snowfeather" "Icelake" "Heartvalley"
+	destination "Newhome"
+	cargo "Keystones" 2
+	to offer
+		has "Remnant: Keystone Research 3C: active"
+
+
+
+mission "Remnant: Keystone Research 3E"
+	invisible
+	non-blocking
+	landing
+	source
+		planet "Makerplace" "Stonebreak" "Giverstone" "Cloudfire" "Snowfeather" "Icelake" "Heartvalley"
+	destination "Newhome"
+	cargo "Keystones" 2
+	to offer
+		has "Remnant: Keystone Research 3D: active"
+
+
+
+mission "Remnant: Keystone Research 3F"
+	invisible
+	non-blocking
+	landing
+	source
+		planet "Makerplace" "Stonebreak" "Giverstone" "Cloudfire" "Snowfeather" "Icelake" "Heartvalley"
+	destination "Newhome"
+	cargo "Keystones" 2
+	to offer
+		has "Remnant: Keystone Research 3E: active"
+
+
+
+mission "Remnant: Keystone Research 3G"
+	invisible
+	non-blocking
+	landing
+	source
+		planet "Makerplace" "Stonebreak" "Giverstone" "Cloudfire" "Snowfeather" "Icelake" "Heartvalley"
+	destination "Newhome"
+	cargo "Keystones" 2
+	to offer
+		has "Remnant: Keystone Research 3F: active"
+
+
+
+mission "Remnant: Keystone Research 4"
+	landing
+	name "找回更多基石"
+	description `将量子基石归还给维米纳尔。`
+	blocked `The cargo is ready to load, however you do not have enough free space. Come back when you have <tons> of free space.`
+	source "Newhome"
+	destination "Viminal"
+	cargo "Keystones" 19
+	to offer
+		has "Remnant: Keystone Research 3: done"
+	on offer
+		conversation
+			`当您阅读上一条消息时，一名货运司机带着最后几个板条箱到达并开始卸货。查看组装的堆栈，您会注意到每个板条箱都带有不同组织、托运人或企业的徽标和广告。第二条消息是确认您已拾取 19 块基石。虽然没有新的指示，但潜台词很明确：是时候回去了。`
+				accept
+	on complete
+		payment 2000000
+		conversation
+			`当您穿过云层下降到维米纳尔时，您会感觉到有人在注视您，但您的传感器只显示远处有一些海鸥和一支巡逻队。往下看，你会发现太空港主入口旁边有一个额外的防空炮连。您注意到武器正在跟踪您，并快速将您的识别码输入敌我识别系统。几秒钟之内，大炮就向后摆动以掩护最初的接近。`
+			`穿过一个巨大的太空港圆顶的巨大开口，你旁边的空气中会闪烁着微光，一只八哥逐渐消失在视野中，落在邻近的平台上。飞行员快速地挥手示意“您好，期待与您交谈”，然后返回锁定处。在他们身后，椋鸟号在没有任何监督的情况下继续进行关闭检查。`
+			`当您完成自己的关闭例程时，您的通信链接会通知您您的帐户已更新为 <payment> 。`
+
+
+
+ship "Starling" "Starling (Keystone)"
+	outfits
+		"Inhibitor Cannon" 3
+		"Point Defense Turret"
+		
+		"Epoch Cell"
+		"Crystal Capacitor"
+		"Emergency Ramscoop" 2
+		"Quantum Keystone"
+		"Salvage Scanner"
+		
+		"Forge-Class Thruster"
+		"Forge-Class Steering"
+		"Crucible-Class Steering"
+		"Hyperdrive"
+
+
+
+mission "Remnant: Keystone Research 5"
+	landing
+	name "扫描<npc>"
+	description `去扫描<waypoints>中的<npc>来记录虫洞后的梯形石。`
+	waypoint "Peragenor"
+	source "Viminal"
+	to offer
+		has "Remnant: Keystone Research 4: done"
+	on offer
+		conversation
+			`你下了船，发现领航员实际上是风神，他已经召集了一些码头工人，用一些货车和升降机来卸货。`
+			`“啊，<first>，谢谢你找回了所有这些基石。”他用某种装置扫过板条箱，然后打开其中一个。他翻阅了里面的内容，拿出一本小册子，上面有一张量子梯形石的图片和一对看起来很受人尊敬的海。 “这是什么？”他好奇地问道。 “因为我买了一块基石，他们认为我可能需要更多？这似乎是一种明显低效的产品推广方式。”`
+			choice
+				`“我也不喜欢它。”`
+				`“那些‘效率低下’的资本家确实以二十分之一的成本提供了基石。”`
+					goto capitalists
+			`“那么，你在这里可能会做得很好。让生产和资源集中在目标上，这对我来说总是最有意义的，”风神自信地说道。 “但除了经济理论之外，我们还有一些科学工作要做。`
+				goto work
+			label capitalists
+			`“你说得有道理，”风神示意道。 “假设他们与我们一样重视信用并且他们没有遭受损失，那么他们似乎确实拥有显着的生产和加工成本优势。”他采取防御的语气。 “但据我们所知，海空间的原材料供应量要大得多，或者这些基石中的大部分可以简单地从旧船上回收。这就是我们想要弄清楚的事情。”他再次容光焕发。 “话虽如此，我们已经制定了第一步。”`
+			label work
+			`“我们的研究人员决定，我们需要测试一艘使用其中一种基石的飞船与普通基石相比的性能。我的飞船配备了一艘根据您之前带给我们的样本建造的飞船。我们要求您在佩拉吉诺与我们会面，在那里您将在穿过虫洞后对我们进行扫描。然后我们将返回这里，用我们的其中一颗基石替换海基石。然后我们将返回佩拉吉诺并进行另一次扫描。通过使用相同的船舶进行两次测试，我们应该能够获得最好的数据。”`
+			choice
+				`“等等，你是飞行员？”`
+				`“好的。”`
+					accept
+			`“哦，是的。这实际上在遗迹中很常见。我不是一个特别优秀的飞行员，但它被认为是一项重要技能，作为普通教育的一部分向几乎每个人教授。对于我们这些每天直接与星舰一起工作并且可能会被要求立即移动或驾驶一艘星舰的人来说，这是特别值得的。”当他谈论自己的驾驶技能时，他的手势既显得自豪又谦虚。 “不管怎样，我们走吧！”`
+				accept
+	npc "scan outfits" "save"
+		government "Remnant (Research)"
+		personality coward decloaked disables mining plunders staying surveillance target
+		system "Peragenor"
+		ship "Starling (Keystone)" "Winds of Light"
+		dialog
+			`扫描仪发出轻柔的铃声，通知您它已完成对光之风的扫描并已成功存档数据。`
+	on visit
+		dialog `您降落在 <planet> 上，但尚未扫描 <waypoints> 中的椋鸟。返回前请务必扫描船舶。`
+	on complete
+		payment 150000
+
+
+
+mission "Remnant: Keystone Research 6"
+	landing
+	name "扫描<npc>"
+	description `去扫描<waypoints>中的<npc>，记录虫洞后的钥匙石。`
+	waypoint "Peragenor"
+	source "Viminal"
+	npc "scan outfits" "save"
+		government "Remnant (Research)"
+		personality coward decloaked disables mining plunders staying surveillance target
+		system "Peragenor"
+		ship "Starling" "Winds of Light"
+		dialog
+			`扫描仪再次发出轻柔的铃声，通知您它已完成对光之风的扫描，并已成功存档第二次扫描的数据。`
+	to offer
+		has "Remnant: Keystone Research 5: done"
+	on offer
+		conversation
+			`当您和 <npc> 回到着陆场时，已经有一名码头工人拿着钥匙石在等待。一旦椋鸟安定下来，码头工人就会爬上船的外部，将梯形石挂在升降机上，然后将其与船断开。当基石被拖到屋顶时，另一台升降机会降低替换的基石。码头工人迅速安装好并跳下，从数米高的落差中优雅落地。`
+			`“准备好了吗？我们走吧！”风神在启动系统时打了个手势，并向码头工人做出了致谢的手势。你检查了相机，发现当两艘船驶出圆顶时，工作人员敏捷地从发动机排气口走开。`
+				launch
+	on visit
+		dialog `您登陆 <planet> ，但尚未扫描 <waypoints> 中的 <npc> 。返回前请务必扫描船舶。`
+	on complete
+		payment 150000
+		conversation
+			`在运输途中，您借此机会检查了扫描的初步结果：两块宝石之间存在一些差异，但两者的功能似乎相似。登陆维米纳尔后，风神过来为研究人员收集数据副本。`
+			`“感谢您的帮助，<first> 队长。这些信息对于理解虫洞的工作原理可能很有价值。”他停顿了一下，然后若有所思地继续说道。 “也许更重要的是，它可以帮助我们了解余烬废物的虫洞与其他不需要此类帮助的虫洞有何不同。”`
+			`他低头看着数据晶体。 “我还有一项任务要交给你。一小时后到自助餐厅与我会面讨论。愿余烬为你而燃烧，队长。”他挥了挥手，似乎有点像敬礼，然后就走开了。`
+			`当他从视线中消失时，您会听到通讯链接发出微弱的提示音，其中显示一条消息，表明已将两笔 <payment> 的付款分配到您的帐户。您记得在上次任务后您没有收到消息，因此无论哪个残余人员或机构向您发送这些付款，都必须将它们合并起来。然而，你确实觉得奇怪，他们似乎总是确切地知道你什么时候完成交货。`
+
+
+
+mission "Remnant: Keystone Research 7"
+	name "将数据传送至<planet>"
+	description `需要将扫描仪数据的副本发送给 <destination> 上的研究人员。`
+	source "Viminal"
+	destination
+		government "Remnant"
+		not distance 0
+	to offer
+		has "Remnant: Keystone Research 6: done"
+	on offer
+		conversation
+			`你走进自助餐厅，发现风神正在吃一顿令人印象深刻的大餐。他向你招手，当你坐下时，一个托盘上已经有一份小得多的饭菜等着你了。虽然有些菜品你已经习惯了，但大多数菜品还是很没有胃口。`
+			choice
+				`“遗迹确实喜欢吃东西。”`
+				`“为什么残民吃这么多？”`
+					goto "food volume"
+					to display
+						not "remnant symbionts info"
+				`“也许我应该进口一些香料。”`
+					goto spices
+				`“我们的下一步是什么？”`
+					goto "deliver data"
+			`风神咯咯地笑着，做出了一个有趣的手势。 “军队靠粮而生，靠粮而亡！士兵吃不好，离逃兵、叛徒只有一步之遥。以前我们也吃过苦头，现在我们保证大家吃饱。”`
+				goto "deliver data"
+			label "food volume"
+			branch "capital license"
+				has "license: Remnant Capital"
+			`他用评价的眼光看着你。 “有些事情你还学不到。等你赢得了我们更多的信任后，再问我们。”`
+				goto "deliver data"
+			label "capital license"
+			action
+				"remnant symbionts info" += 1
+			`他向前倾身，举起双手，戳戳他戴着的无指皮手套，你会发现它们一直延伸到他的袖子下面。您注意到，这种皮革实际上看起来并不像您见过的任何皮革 - 它上面有精细的鳞片和粗糙的脊线。然而，最引人注目的是它似乎有微弱的脉动。`
+			`“事实是，当我们吃饭时，我们吃的是两个人的食物。你必须问别人它们是如何形成的，或者是如何运作的，但只要说我们已经与在这里发现的各种生物建立了共生关系就足够了。这些生物，”他举起双手解释道，“具有精确性和耐用性的诀窍。有了它们，我比其他时候更精确，也更坚强。作为交换，它们通过我们进食，需要定期护理和关注。通常，这会导致我们没有困难，但如果我们吃得不够，我们消耗储备的速度就会比平时快得多。”`
+			choice
+				`“这真是一个启示。”`
+				`“谢谢你的解释。”`
+				`“这就是为什么有些食物味道很糟糕吗？”`
+					goto "terrible flavor"
+				`“听起来令人毛骨悚然。”`
+					goto creepy
+			`风神点头。 “据我所知，祖先的世界似乎没有太多外骨骼或控制论的东西。我们穿着的生物体肯定像是科幻小说中的境界。”他沉思了几秒钟，心不在焉地吃了更多的饭菜。 “但除了教育之外，还有工作要做。”`
+				goto "deliver data"
+			label spices
+			`他摇摇头。 “我不会阻止你这样做——我相信有些人可能会欣赏它们——但我们大多数人都喜欢我们的食物本来的样子。”他笑了笑，然后继续说道。 “但仍有工作要做。”`
+				goto "deliver data"
+			label "terrible flavor"
+			`“我想可能会。我们的共生体有不同的饮食要求，而我们食物中的这种不寻常的化合物不可避免地会改变味道。我们早就习惯了，但对于外人来说肯定会有所不同。”他似乎对此感到好笑。 “但是食物已经足够了——还有工作要做！”`
+				goto "deliver data"
+			label creepy
+			`“令人毛骨悚然？我不明白如此有用和有益的东西怎么会‘令人毛骨悚然’，但我想有些人可能会把我们的共生体等同于水蛭。我想，每个人都有自己的共生体。”他耸耸肩，然后继续说道。 “但是够了。我们还有工作要做。”`
+			label "deliver data"
+			`他拿出一个小金属公文包，放在桌子上。 “你的另一项交付任务，队长。一个简短的任务。我们需要你把这箱数据晶体和我们的初步数据交给<destination>上的一些研究人员。这将使他们能够将我们收集的数据与他们的最新发现结合起来，也许可以帮助我们在了解这些石头和虫洞的性质方面向前迈出一步。你愿意吗？”`
+			choice
+				`“好的。”`
+					accept
+	on complete
+		payment 100000
+		conversation
+			`当您退出 <ship> 时，一位年轻的研究员正在等您。 “谢谢你的帮助，队长。”她用一只手示意，另一只手接过公文包。 “在过去的几个世纪里，人们对虫洞进行了大量的集中研究。虽然我们对它们了解很多……”她做出了一个令人费解的手势，你认为这意味着“知道你不知道”。`
+			`“现在，多亏了你的收购，我们有机会获得新的见解。我们期待着更多地了解这些异常现象。愿余烬为你而燃烧，船长。”说完，她转身朝实验室走去。`
+			`当您思考遗迹研究虫洞的影响时，您的通讯链接响起了另一笔 <payment> 付款到您帐户的通知。`
+
+
+
+mission "Remnant: Expanded Horizons Astral 1"
+	minor
+	name "探险准备"
+	description "前往 <destination> 准备前往人马座 A* 的探险。确保您有至少六吨的可用装备空间。"
+	passengers 1
+	source
+		government "Remnant"
+		attributes "remnant primary"
+	destination
+		government "Remnant"
+		not distance 0
+		not attributes "requires: gaslining"
+	to offer
+		has "Remnant: Expanded Horizons Quarg 3: done"
+		random < 25
+	on offer
+		conversation
+			`你瞥了一眼星港自助餐厅，发现道恩坐在一张桌子旁，一脸忧心忡忡。她还没有注意到你。你接近她吗？`
+			choice
+				`（是的。）`
+				`（现在不行。）`
+					defer
+			`她一看到你就微笑，招手让你到她对面的座位上。 “从银河系游荡回来，有更多故事要分享吗？”她签了字。`
+			choice
+				`“是的，事实上……”`
+				`“不，只是猎杀科拉斯……”`
+				`“没有，只是测试一些东西……”`
+				`“你看起来很担心，是不是有什么事情发生？”`
+					goto worried
+			`当你告诉她你最近在做什么时，她会听一两分钟，但很明显她心里有别的事情。`
+			choice
+				`“你看起来很担心。一切都好吗？”`
+				`“你看起来很心烦意乱，想谈谈吗？”`
+			label worried
+			`她做了一个表示赞赏的手势。 “是的，我很担心，<first>。我总感觉好像缺少了一些东西。”她皱起眉头，思考着一些看不见的事情。 “我应该退后一步。自从我们上次谈话以来，我被分配到天体物理学团队工作一年。我目前的工作是量子凝聚织物密度项目的一部分，我的任务是审查我们的大量天体物理数据。这很平常，但我一直有一种刺痛的感觉，我错过了一个问题。当然，没有什么明显的。我们的神经网络会很快拾取一些明确或重复的东西。但这种感觉不会消失。”`
+			choice
+				`“你有没有向更有经验的人请教？”`
+				`“别担心。”`
+					goto worry
+				`“我能帮忙做点什么吗？”`
+					goto help
+				`“什么是量子凝聚织物密度项目？”`
+					goto "quantum condensate"
+			`“我做到了。高级研究员告诉我，团队中的大多数人都觉得有些事情不太对劲。他们说有一些潜在的理论，但没有确定的，所以他们希望我自己调查，暂时不要用他们的想法污染我的想法。”`
+				goto help
+			label "quantum condensate"
+			`“这基本上是一个项目，检查玻色-爱因斯坦凝聚体的密度，与修正后的相对论范式的时空结构概念相关。它有很多潜在的影响，特别是对于冲压器、扫描仪和武器技术。至少，这是希望。不过现在，我正在试图找出这些数据的问题所在。”`
+			choice
+				`“你有没有向更有经验的人请教？”`
+				`“别担心。”`
+					goto worry
+				`“我能帮忙做点什么吗？”`
+					goto help
+			`“我做到了。高级研究员告诉我，团队中的大多数人都觉得有些事情不太对劲。他们说有一些潜在的理论，但没有确定的，所以他们希望我自己调查，暂时不要用他们的想法污染我的想法。”`
+				goto help
+			label worry
+			`“谢谢你的建议，但这就是我们来这里的目的——担心人类无法处理或视而不见的所有事情。不，如果数据中有什么东西引起担忧，我们需要找到它。”`
+			label help
+			`“如果你愿意帮忙，你可以做点什么。我目前正在组织一次前往人马座 A* 的探险，收集一些新数据，我可以用它来检查我们的记录，而且我可以使用交通工具……”她满怀希望地看着你。`
+			choice
+				`“我不知道那是哪里。”`
+					goto center
+				`“那不是银河系的中心吗？”`
+					goto "center alt"
+				`“我去过那里。”`
+			`“真的吗？”她看起来很惊讶。 “我看过之前访问的传感器日志和记录，但实际上去过那里的人并不多。”她停下来咬了一口被忽视的饭菜。 “能够参加这些实地考察是我多年来一直期待的事情，所以 Sagittarius A* 当然是我名单上的第一位。”`
+				goto center
+			label "center alt"
+			`“是的，没错。”她坚定地签了字。`
+			label center
+			`她的手语节奏有节奏，仿佛在背诵什么。 “人马座 A* 是一个强大的天文射电源，也是一个位于银河系中心的超大质量黑洞。根据我们的最佳测量，它的质量为 3F6290 个太阳质量，周围环绕着一圈气体和尘埃，温度范围为 63 到 24D2 开氏度。”`
+			`她又恢复了谈话的节奏。 “你有兴趣参加这次探险吗？”`
+			choice
+				`“当然可以，你需要什么？”`
+					goto "science equipment"
+				`“你想让我带你去黑洞？！”`
+				`“抱歉，我对参观黑洞不感兴趣。”`
+					decline
+			`她看起来对你的反应感到惊讶。 “是的，正是如此。当前的引力斥力引擎可以消除大部分引力，一两个额外的热电冷却器应该足以控制热量。因此，只要你不尝试接近事件视界，风险是可以控制的。`
+			label "science equipment"
+			`“对于这个特殊的任务，我们需要一些额外的科学设备，这些设备实际上是硬连线到你的船上的，而不仅仅是随身携带。当我们到达<planet>时，他们将准备好安装设备。请注意，这将需要六吨的装备空间和一名科学家来运行它，所以你也需要为他们提供一个免费的铺位。`
+			`“一旦实验室模块安装完毕，只需前往人马座 A* 即可。在我们的测量、记录和观察完成后，我们将返回并报告我们的发现。”`
+			`她低头看了一眼刚吃完的饭菜。 “我已经收拾好行李，准备出发。吃完饭后，我会在 <ship> 上与您会面。”`
+			branch "dawn symbiont"
+				has "remnant symbionts info"
+			choice
+				`“好的，我到船上接你。”`
+					accept
+				`“你的胃口已经很大了，不是吗？”`
+			branch "dawn license"
+				has "license: Remnant Capital"
+			`她耸耸肩。 “我消耗的热量很多，健康饮食很重要。另外，我不知道你们船上的食物会有多好吃。”她继续吃得很有劲，似乎不想继续谈话。`
+				accept
+			label "dawn license"
+			`“我还没有习惯维持共生体所需的营养摄入，所以我必须有意识地确保我吃得足够多来维持它。”`
+			choice
+				`“共生体？那是什么？”`
+					goto "what is"
+				`“什么？你开玩笑吧？”`
+			`“随便吧。等我忙完了就在船上接你。”她耸耸肩，继续吃饭。`
+				accept
+			label "what is"
+			action
+				"remnant symbionts info" += 1
+			`“哦，没有人告诉过你关于它们的事吗？我想一旦你表现出你的可信度并获得了主力舰许可证，你就会发现的。”她停下来又咬了一口，然后继续。`
+				goto "dawn details"
+			label "dawn symbiont"
+			choice
+				`“好的，我到船上接你。”`
+					accept
+				`“你的胃口已经很大了，不是吗？”`
+			`她点点头。 “是的，我还没有习惯维持共生体所需的营养摄入，所以我必须有意识地确保我吃得足够多来维持它。”`
+			choice
+				`“有趣。我会在 <ship> 上见到你。”`
+					accept
+				`“你能告诉我更多关于他们的事吗？”`
+			label "dawn details"
+			action
+				"remnant symbionts info" += 1
+			`“简而言之，我们驯化了很久以前在这里发现的一些生物，并发现它们可以附着在我们身上形成共生关系。”她又停下来吃东西。 “我最近才收到我的，所以我还没有完全适应它。”`
+			choice
+				`“好吧，我需要知道的就这么多了。”`
+					goto onwards
+				`“拥有共生体是什么感觉？”`
+			`“哦，太棒了。很难描述。一开始只是粘糊糊的，然后很刺痛。这种刺痛持续了几个小时，然后就像醒来一样：从黑暗中升起，来到一个更明亮的世界，有很多东西可以看到和学习​​。突然间，好像一切都变慢了，我可以长时间仔细地观察一切……” Dawn 显然很兴奋，签名速度太快了，你很难跟上。`
+			choice
+				`“感谢您的描述。我现在应该去准备 <ship>。”`
+					accept
+				`“你的共生体在哪里？你的共生体似乎并不明显。”`
+					goto "dawn where"
+				`“我可以看看你的共生体吗？”`
+			`黎明用一种有趣的表情看着你。 “我们彼此还不够了解。最好专注于这次探险。我会在船上追上你。”`
+				accept
+			label onwards
+			`她点点头。 “好吧，我会吃完饭，很快就在 <ship> 与您见面。”说完，她又继续吃饭了。`
+				accept
+			label "dawn where"
+			`黎明用一种有趣的表情看着你。 “正如每个人都是独特的个体一样，每个共生体也是独一无二的。因此，它们附着在身体的不同部位。我们彼此了解不够，我无法告诉你更多。`
+			`“不过，我们或许应该专注于这次探险。你去准备<ship>的发射，我很快就会到达那里。”`
+				accept
+	on accept
+		event "remnant: lab availability"
+	on complete
+		outfit "Research Laboratory"
+		conversation
+			`您按照星港控制中心的指示，在装备商旁边的垫子上坐下。你几乎没有机会完成着陆检查，一队残余人员已经在你的装载坡道上等待着一个紧凑的吊舱。一旦你打开货舱门，他们就会把它捡起来并在里面操纵。当黎明和一位科学家接近你时，他们开始将其固定在船上。`
+			`“我们已经将研究实验室装载到船上。如果他们能找到空间，团队就会安装它，但如果找不到，它将被固定在货舱中，”遗迹科学家解释道。 “出发前，请确认实验室安装在正确的位置。毕竟，你比我们更了解你的飞船。”她转身面向Dawn，做了一个尊重的手势。 “余烬指引你的道路，探索者。”说完，她大步走进热闹的舾装区。`
+			choice
+				`“那么，我们的下一步是什么？”`
+					goto "lab next"
+				`“搜寻者？”`
+			`黎明看上去有些尴尬。 “探索者是对深空探索者的尊重。它是非官方的——只是一种尊重的象征——但这是一个我既渴望获得又觉得自己不值得获得的头衔。”`
+			choice
+				`“我以为所有的遗迹都是太空人？”`
+				`“好吧。那么接下来怎么办？”`
+					goto "lab next"
+			`“哦，我们是的。每个遗迹都在太空中有过一些经验。但是在太空岗位上工作几周和在遥远星系周围的虚空中漂流数月或数年之间有很大的区别。”`
+			choice
+				`“虚空漂流岁月？”`
+				`“好吧，我们继续处理这个吧。”`
+					goto "lab next"
+			`“如果你想要好的数据，你需要花时间来获取它。特别是当我们跟踪恒星现象时，你需要长时间的观察。天空的快照很好——这就是我们这次旅行将收集的内容。但是对于观察整个星系、其他文明以及类似的事物......没有什么比长期观察更好的了。”她看上去陷入了片刻的沉思。 “然而，这既不在这里也不在那里。`
+			label "lab next"
+			`“现在你已经有了研究实验室，你需要找到一个跳跃驱动器才能到达人马座 A*。”她停下来检查她的通讯链路。 “如果你还没有，你可以从科拉斯袭击者那里抢救一个。我们的预警系统表明，有几支即将到来的科拉斯舰队应该会在接下来的一两天内到达这里。其中任何一支都应该有一个你可以乘坐的跳跃驾驶。一旦你有了跳跃驾驶，就到星港来见我。”`
+
+
+
+mission "Remnant: Expanded Horizons Astral 2"
+	name "人马座 A* 研究考察"
+	description "前往安装有研究实验室的人马座 A*，以便对超大质量黑洞进行测量，然后返回 <destination> 。"
+	blocked "You need a jump drive and a research laboratory to take this mission."
+	source
+		government "Remnant"
+	destination
+		government "Remnant"
+		not attributes "requires: gaslining"
+	waypoint "Sagittarius A*"
+	to offer
+		has "Remnant: Expanded Horizons Astral 1: done"
+	on offer
+		require "Jump Drive"
+		require "Research Laboratory"
+		conversation
+			`当你进入太空港自助餐厅时，黎明刚刚吃完饭。当你走近时，她站起来，把托盘放在她桌子旁边的容器里。 “嗯，准备好了吗？”`
+			choice
+				`“是的。”`
+					goto "astral onwards"
+				`“我应该仔细检查一切。”`
+					defer
+			`她点点头。 “我已经准备好了，所以我会和你一起去，在 <ship> 上等你检查。”`
+			label "astral onwards"
+			`She gestures towards the exit closest to your ship and heads off at a quick pace.在外面，她平静地穿过星港的喧嚣，绕过快速移动的货运车和骆驼车。到达 <ship> 时，她转身等你追上。`
+			`当您到达并伸手去操作控制台打开气闸时，您感觉到周围环境发生了变化。环顾四周，你看到一群遗迹聚集在你们两个周围，专注于黎明。一个年轻的遗迹——几乎不比一个孩子大——向前走来。 “谢谢你的耐心，”他说，然后退后一步。一名年长的遗民走上前来。 “谢谢你的好奇心，”她说，然后退后一步。一名中年残人走上前来。 “带着我们的祝福去吧，探索者，要知道无论你去哪里，遗民都会跟着你。”她说得很简单，但你会感受到背后传统的分量。她转向你。 “而你，行走在星辰之中的陌生人……愿余烬指引你的脚步，当你行走在我们中间。” She nods respectfully, then steps back.`
+			`当她第三步后退时，现场出现了一阵骚动，在场的每个遗迹都迅速向前走去，给了她一个快速的拥抱，然后匆匆跑进了星港。在你处理正在发生的事情之前，聚集在你周围的所有遗迹都消失了。你看着黎明，她的表情混合着敬畏和谦卑。`
+			choice
+				`“他们知道你会回来，对吧？”`
+				`“那是什么事？”`
+				`“好吧，我们走吧。”`
+					goto "astral moving"
+			`“好吧，我们正在做的事情很危险。我们将穿越科拉特领地，一片广阔的无人居住空间，然后扫描一个黑洞。我有信心我们会回来，但尽管如此，我们仍然有可能在这个过程中死亡。`
+			`“很久以前，我们作为一个民族，决定必须面对分离、未知和危险的恐惧。我们做到这一点的方法之一就是举行这些非正式的仪式。当我们中的一个人即将启程前往敌对领土进行第一次长途航行时，一群遗民聚集在一起向他们告别。这是一种增强我们自己并提醒彼此联系的方式。”`
+			choice
+				`“谢谢你的解释。”`
+					goto "astral moving"
+				`“有点像葬礼，朋友和家人聚集在一起送行？”`
+			`“哦，不。我在离开之前向我的朋友和亲戚道别。今天聚集在一起为我送行的人更多的是残存社会的代表。我只认识他们中的几个，但他们在我离开前抽出时间来到<ship>来见我。他们来看我并祝我一切顺利，这样无论我面临什么挑战，我都会知道残存会记住我并欣赏我所做的事情。”她的手势暂时陷入沉思般的静止，然后又恢复动作。`
+			label "astral moving"
+			`她指着气闸门。 “带路吧，队长。”`
+				accept
+	on enter "Sagittarius A*"
+		conversation
+			`随着跳跃驱动器的能量涟漪逐渐消失，人马座 A* 的壮观虚空在您面前成形。与你所习惯的广阔黑暗的太空相比，这里的现实感觉几乎就像是彩色负片：即使你的窗户有自动过滤功能，太空仍然非常明亮，密集的星星为其漆黑的质量提供了背景。当 <ship> 开始向黑洞坠落时，你的厄运即将来临的警报打破了敬畏的时刻。你快速启动你的斥力引擎，虽然它的动力远远不足以应对黑洞的巨大拉力，但只要你与黑洞保持安全距离，它确实可以提供一定程度的保护。`
+			`在欣赏了眼前的景象几分钟后，道恩从驾驶舱窗户上站起来，急忙跑到实验室。让您自行思考，她很快就建立了实验室并运行各种记录、测试和观察。经过几个小时的工作，她再次出现在桥上。`
+			`“一切进展顺利，队长。所有传感器都正常工作，我们也在创建大量的天文数据档案。再过几个小时，我们就应该得到我们需要的所有数据了。”`
+			choice
+				`“干得好。你正在记录什么样的数据？”`
+				`“听起来不错。当你准备离开时请告诉我。”`
+					goto "astral done"
+			`她微笑着回答。 “问我们遗漏了什么可能会更容易。我们收集的数据大致分为三组：人马座 A* 本身的数据、其环境的数据以及从这里对周围星系的观测。显然，我们不能去人马座 A* 本身采集样本，也不能直接测量它的大部分特性，但我们可以从距事件视界越来越近的距离获取数据。然后，我们可以将这些数据添加到之前探险收集的数据中，记下差异，并将其用于我们的研究中。建模。”`
+			choice
+				`“这么说，这不是第一次远征这里了？”`
+				`“数据有什么异常吗？”`
+					goto "astral data"
+				`“设备还需要多长时间？”`
+					goto "astral finish"
+			`“不，这是第 43 次此类探险。人马座 A* 是我们的探险家在获得跳跃驱动器后首先寻求访问的地方之一，从那时起我们就定期回来。我知道我们的一些侦察飞行员认为访问这里是一种朝圣。在回顾了过去探险的如此多的数据集之后，我本人感到很荣幸。”她看上去若有所思，凝视着窗外的银河中心，仿佛她的思绪在从一个想法跳到另一个想法。`
+			choice
+				`“数据有什么异常吗？”`
+				`“设备还需要多长时间？”`
+					goto "astral finish"
+			label "astral data"
+			`“这个地方有很多奇怪之处。每次访问都有助于更接近地修改我们的物理模型。但它们也揭示了问题。”她皱起眉头，手势带着好奇的语气。 “例如，你会注意到你的冲压勺没有拾取任何东西。根据标准天文学理论，这个系统应该是一条名副其实的合适物质的河流，但什么也没有。甚至连我们在深空发现的正常背景微量也没有。我们访问过其他黑洞，它们在这方面符合标准模型。但人马座 A* 却没有。”她停了下来，思考了一会儿。`
+			choice
+				`“装备完成了吗？”`
+				`“设备还需要多长时间？”`
+			label "astral finish"
+			`“设备很快就会完成，<first> 舰长。我只需要进行一些观察，然后我们就可以出发了。与此同时，我建议不要保持主动斗篷或启用任何消耗燃料的系统。无论出于何种原因，人马座 A* 仍然是一个完全没有任何恒星风可以收集作为燃料的地方。”`
+			`“我要出去几分钟，”多恩宣称。 “我就在船体上。”`
+			choice
+				`“完成后请告诉我。”`
+					goto "astral done"
+				`“如果我也来的话，你介意吗？”`
+			`“一点也不，队长。视野应该很不错，只要我们待在防护罩内，辐射就不会造成问题。”你迅速穿上宇航服，和黎明一起来到船体外面。正如所承诺的，景色确实很壮丽。黎明偶尔会出现迹象，指出各种特征，你会意识到，在这里，声音与自然的辉煌格格不入。`
+			scene "scene/sagittarius a"
+			label "astral done"
+			`感觉像是几个小时后，设备通知您它已完成读数，并且 Dawn 将数据打包在精心屏蔽的数据晶体中。一切准备就绪，可以返回 <destination> 了。`
+	on complete
+		payment 500000
+		conversation
+			`返回 <planet> 的旅程是银河形成的一课，因为 <ship> 跨越了稳定的星系流。渐渐地，构成内核的明亮恒星密度消失在余烬荒地不祥但又令人舒适的熟悉红色光芒中。最后，您滑入 <planet> 的接近模式，快速将代码输入到敌我识别系统中，并观察防空炮台的保护目光扫过您周围的天空，以跟踪飞行器。`
+			`你坐在指定的垫子上，几秒钟之内，残余技术人员就连接好了补给电缆，而一群快乐的人迎接了黎明，然后帮助她卸下行李和数据晶体。 “嗯，<first>，这是一次愉快的旅行。”她敲击通讯链接。 “我已经将我们探险队的<payment>后勤分配转移给了你。如果你想知道如何处理你的研究实验室，你可以保留它。我们总是需要新鲜数据，如果你感兴趣，你可以检查工作板上指定的位置。虽然我在这次探险中处理科学，但如果你保留它，你的船舶系统会自动雇用一名科学家来运行它。”她向你点点头。 “谢谢你，愿余烬守护着你。”她转身走进人流中。`
+
+
+
+outfit "_Ion Storm Timer: Generator"
+	# This generator will fail when an ion storm comes and the ship runs out of energy
+	"hull repair rate" 60000
+	"hull energy" 1
+
+
+
+ship "_Ion Timer Ship"
+	# The Timer Weapon causes this ship to continually lose hull points
+	# The _Ion Storm Timer: Generator outfit counteracts this until there is an ion storm
+	# sprite "ship/shuttle" # uncomment this for debugging
+	attributes
+		category "Game Mechanics"
+		"heat dissipation" 1
+		"hull" 1.0
+		"mass" 100
+		"drag" 5
+		"automaton" 1
+		"energy generation" 1
+		"thrust" 10
+		"turn" 600
+	outfits
+		"Timer Weapon"
+		"_Ion Storm Timer: Generator"
+	gun 0 0
+
+
+
+mission "Remnant: Expanded Horizons Storms 1"
+	name "余烬废物风暴扫描"
+	description "黎明要求你扫描位于 <waypoints> 的余烬废土风暴之一，并将数据返回至 <planet>。"
+	passengers 1
+	source
+		government "Remnant"
+		attributes "remnant primary"
+	waypoint
+		system "Aescolanus"
+	to offer
+		has "Remnant: Expanded Horizons Astral 2: done"
+		random < 30
+	on offer
+		require "Research Laboratory"
+		conversation
+			`当你穿过星港时，你突然遭到从侧走廊出现的黎明的伏击。 “<first> 队长！我一直希望能抓住你。我需要一些帮助。”她赶紧走上前，挥舞着装满图表的数据板。 "I have some additional leads for my research project, and I need a pilot who can take me out to Aescolanus."她充满希望地看着你。`
+			choice
+				`“当然，我总是愿意帮忙。”`
+				`“今天不行，抱歉。”`
+					decline
+			`“太好了！船上已经有一个研究实验室了，里面有我需要的所有设备。现在，在我们出发之前，你应该知道，这次任务的目标是对即将在系统中爆发的风暴的前缘进行一些分析。我们不需要经历整个风暴，但至少在第一部分我们必须在那里。”`
+			choice
+				`“有什么需要特别调整的地方吗？”`
+				`“<ship> 已准备就绪。”`
+					goto "ready for storms"
+			`"Well, I expect you are already set up to handle the normal 灰烬荒原 heat, correct?"她不等你回复就继续说。 “余烬废物风暴主要对电力系统造成威胁——通常会耗尽你的电力。所以你可以通过确保有多余的电力可供使用来进行补偿。我知道有些船长携带额外的发电机以确保他们始终有额外的电力，但其他船长则携带额外的水晶电容器，这样他们就可以度过风暴。理论上，你可以接受你的船将在风暴最严重的时候关闭，然后简单地重新启动一切。只要不存在威胁，它是安全的，但有点安全 nerve-wracking. Which strategy fits the <ship> is up to you."`
+			label "ready for storms"
+			`“我会在铺位上坐下来做一些预先计算。当我们到达埃斯科拉努斯时请告诉我。”`
+				accept
+	on waypoint
+		dialog `道恩很快就开始扩大实验室并安装仪器。几分钟后，她回到驾驶舱，坐在窗边的椅子上。 “一切都准备好了，队长。现在我们只需要等待风暴到来。当我们准备好出发时，我会通知你。”`
+	npc kill
+		government "Test Dummy"
+		system "Aescolanus"
+		ship "_Ion Timer Ship" "Timer"
+		personality unconstrained heroic nemesis
+		dialog `当风暴开始在您周围膨胀时，仪器会发出提示音，表明它已收集了所需的所有数据。 Dawn 快速开始关闭例程以保护设备免受潜在损坏，让您可以返回到 <planet> 。`
+	on complete
+		payment 250000
+		conversation
+			`“感谢您的帮助，<first>。有时我必须等待一段时间才能有一艘船可以执行此类任务。”她停顿了一下，然后点击了通讯链接。 “话说，我已确认将<payment>的物流费转入您的账户。”`
+			choice
+				`“我总是很乐意提供帮助。你现在在做什么？”`
+				`“我总是很乐意提供帮助。再见！”`
+					goto "storm end"
+			`“你对太空的本质有多熟悉？”`
+			choice
+				`“说实话，不太好。”`
+				`“我知道太空是真空的，根据情况可能会非常热或非常冷......”`
+					goto basics
+			`她点点头：“诚实是好事。当我们不愿意承认自己不知道某事时，就很难学习。”`
+				goto explanation
+			label basics
+			`她点点头：“这些是基础知识，是一个很好的起点。”`
+			label explanation
+			`她的通讯链路上出现了灰烬废土的全息图。 “正如你所知道的，余烬废物不符合人类普遍理解的太空规则。例如，标准背景温度是2.B1度，星际介质的平均密度是每立方米F4240个粒子。而在余烬废物中，平均背景温度要高出一个数量级，平均密度是每立方米E8D4A51000个粒子。”`
+			`随着一层薄雾的出现，显示内容发生变化，强度不断脉动。 “不过，最有趣的是，这个区域比银河系其他区域的变化要大得多。这里显示的雾霾代表了我们为船长制作的热危险示意图。它将局部密度与测量的热值相结合，以估计船舶在该区域将暴露于多少热量。”`
+			choice
+				`“有趣！这就是红光的原因吗？”`
+				`“等一下。为什么你的号码里有字母？”`
+					goto "numeric system"
+				`“谢谢！我想这就是我现在能处理的所有细节。”`
+					goto "storm end"
+			label "storm resume"
+			`“不完全是，尽管它确实对此有所贡献。大多数红光似乎是大约2710度的氢气云的结果，很像早期地球天文学家研究星云所记录的过程。除了大多数这些云之外，没有明显的能量来源来保持氢的激发。显然仍然有能量被添加到系统中，但是……”她声音逐渐减弱，并做出了不赞成的手势。 “又一个让我们保持警惕和专注的谜团。”`
+			`她若有所思地微笑着，显示器发生了变化，红色的薄雾消失了，取而代之的是银色的薄雾。 “但这就是今天的研究的切入点。自从我们到达余烬废土以来，我们一直在测量这些风暴。人眼只能在显示屏上识别出其中的一些风暴，但我们的算法已经识别出大量的能量涟漪。”她显得若有所思。`
+			`“这几乎就像在暴风雨中观察池塘的表面：表面看起来很混乱，但通过足够详细的仪器，人们可以找出单个涟漪并向后追踪它们的路径......只是我们还没有找到它们中任何一个的实际来源。我们可以追踪暴风雨中池塘上的每一个涟漪并找到其起源，但我们还没有学会我们已经生活了半个千年的舞蹈。”`
+			choice
+				`“暴风雨和炎热有什么关系？”`
+				`“你用什么单位来表示温度？”`
+					goto "temperature units"
+				`“我认为这就是我能掌握的所有技术细节。”`
+					goto "storm end"
+			`她看上去很调皮。 “我无法告诉你我们在哪里或如何得到它，但看看这个。”随着薄雾消失，她的显示屏再次发生变化，并显示出有一个关键区别的星系图。 “是的，余烬废土是紫色的。实际上，它们不在可见光谱范围内，进入了紫外线，但这会降低它的波长，以便我们可以看到它。这就是余烬废土很久以前的样子。”`
+			`她语气严肃。 “这些数据表明该区域有足够的能量将氢维持在超过 61A8 度的某个地方。它没有告诉我们该能量的来源，但根据我们收集的模式和其他一些数据，两者似乎是交织在一起的。至少，离子风暴是能量转移到云中的方式之一。”她的显示器消失了，她把背包挎在肩上。`
+				goto "storm end"
+			label "numeric system"
+			`她在回答之前显得有些困惑。 “它被称为十六进制。它是一个以 16 为基数的数字系统。”她停下来看着你。 “根据你的反应，我认为 10 进制仍然是人类太空的标准？”`
+			choice
+				`“是的。”`
+					goto "storm continue"
+				`“那是怎么运作的？”`
+			`“很简单：我们添加了一些额外的字符。在计数时，它们不是每 10 个从 0 重新开始一个数字位置，而是每 16 个循环一次。因此，当我们计数时，我们从 1 开始，但当我们达到 9 时，下一个数字将是 A。然后是 B、C、D、E 和 F。然后，就在那时，我们添加一个额外的数字，并以 10 从 0 重新开始。因此，在十六进制中，F 将等于以 10 为基数的 15。使用基数较高的数字系统的优点之一是我们可以用更少的数字处理更大的数字。例如，使用两位数字，我们可以表达以 10 为基数的 255 的任何整数。或者使用三位数字，我们可以达到 4095。在书面格式中，在这里或那里保留一个额外的数字毫无意义，在口头交流中也没有太大区别。但是，当人们通过手势进行交流时，尽可能缩短数字是有帮助的。”`
+			label "storm continue"
+			`“现在你对我们的数字有了更好的了解，你将能够认识到有大量无法解释的能量正在被转移到那里。”`
+			choice
+				`“对了。这就是红光的原因吗？”`
+					goto "storm resume"
+				`“谢谢！我想这就是我现在能处理的所有细节。”`
+					goto "storm end"
+			
+			label "temperature units"
+			`她好奇地看着你。 “当然是修正开尔文度数。为什么呢？”`
+			choice
+				`“什么是‘修正开氏度’？”`
+				`“只是澄清一下。我更喜欢使用摄氏度。”`
+					goto centigrade
+				`“只是澄清一下。我更喜欢使用华氏度。”`
+					goto fahrenheit
+			`“校正开尔文度基本上是几千年前开发的标准开尔文温标，但有一个轻微的修正因子来考虑由 2730 的合相确定的调整。这是对温标的一个相当微小的变化，主要只适用于需要微度温度精度的实验或工业应用，但在更大的尺度上可能很重要。”当她把背包挎在肩上时，显示屏和星星区域消失了。`
+				goto "storm end"
+			label centigrade
+			`“人们还在使用它吗？我们在研究中了解到它，主要是为了在我们的图书馆中遇到对它的引用。我见过它几次，但我们很少使用它。”当她把背包挎在肩上时，显示屏和星星区域消失了。`
+				goto "storm end"
+			label fahrenheit
+			`她疑惑地看了你一会儿，然后她的显示变成了一堆符号。她简短地浏览了一下。 “我从来没有听说过这样的装置。不过，显然它是一个非常古老的装置。我们的记录显示，它在 21 世纪初基本上已经停止使用。好吧，我今天学到了一些新东西。”当她将背包挎在肩上时，显示屏及其符号区域消失了。`
+			label "storm end"
+			`“谢谢你的搭车，船长。我必须开始处理这些数据，但如果你有兴趣提供更多帮助，我希望很快能计划更多的研究探险。”`
+
+
+
+mission "Remnant: Logistics 1"
+	name "加急送货至 <planet>"
+	description `由 <date> 将 <cargo> 递送至 <destination>。`
+	source "Caelian"
+	destination "Viminal"
+	cargo "Generator (Furnace Class)" 39
+	deadline 2
+	to offer
+		has "remnant: blood test pure"
+		has "Remnant: Defense 1: done"
+	on offer
+		conversation
+			`您走进了 <origin> 太空港的奇怪景象。着陆场周围的结构看起来和建造的一样多，而且它们似乎融入了着陆场本身。和往常一样，码头入口处一片繁忙。当你的通讯链振动时，你必须找到一个交通涡流的地方，这样你才能躲到一边。当您这样做时，您会发现您需要到问讯处办理登记。`
+			`当你走近时，前台的那位女士似乎很惊讶地看到你。当她用熟练的眼光审视你时，你可以看到她顿悟了。 “啊，”她唱道，“你是我们中间的祖先寄居者。”`
+			`人们通常会呆呆地看着你，所以你会唱着回应：“我被引导到了我不认识的朋友那里，而你的信息邀请我去见一个新朋友。”`
+			`她的双手短暂地颤抖了一下，过了一会儿，她记得为你笑了。迟到的反应让她又笑了，这次是自发的，你们俩也一起笑了起来。当她恢复过来后，她唱道：“物流部门要求我们找一个人可以将 <tons> 的货物运送到 <planet> 。<ship> 可以立即使用吗？”`
+			choice
+				`“当然！”`
+					goto "will do"
+				`“抱歉，事实并非如此。”`
+					goto "not interested"
+			label "will do"
+			`“太好了，”她用高音回答，“我会让项目经理知道货物会及时到达。”她签了一个你认为是告别的签名，然后转向其他站出来的人。`
+			`你设法喊着口号并指着路穿过自助餐厅的队伍，你意识到周围有一系列的标志。似乎没有办法付款，所以你找到一张桌子，独自坐下，直到你的通讯器响起提示音，让你知道 <ship> 已经加油并且神秘货物已装载。`
+				accept
+			label "not interested"
+			`“这太不幸了，”她一边在终端上记下一边唱道。 “但是会有其他人愿意提供帮助。”`
+				decline
+	on complete
+		payment
+		conversation
+			`您走下 <planet> 上的 <ship>，看到一个人在您的船上闲逛，用数据板拍摄视频，并轻声口述一些实时评论。他在码头卸货和加油的工人周围躲避，似乎全神贯注地记录着你的船的每一个方面。`
+			`“表哥！”当你走向他时，他会兴奋地唱歌。 “很高兴见到你并看到你的精彩飞船。能够根据我们的球探报告检查一些我只在娱乐节目中看到的东西让我很兴奋。”他举起数据板对着你说：“我正在为我的同伴制作一段视频。除非我有证据，否则他不会相信我，甚至可能也不会相信我！”他笑了。你向摄像机挥手，他就停止录制。`
+			`“我希望我没有冒犯你。我看着船就着迷了。”他用手沿着着陆支柱抚摸，但随后似乎镇定下来并转向你。 “我叫 Eon，”他说。 “您有时间谈谈后勤保障的事情吗？”`
+			choice
+				`“是的，我一直在寻找与遗迹的更多合作。”`
+				`“是的，目前为止还没有多少机会。”`
+			`Eon 带领您来到熙熙攘攘的自助餐厅，谈论自阿尔法战争以来的船舶设计。他点了几杯热饮，然后带你到一张安静的桌子旁，俯瞰着码头。你尝尝你的饮料。它的味道很浓，但有点奇怪，就像某人记忆中的咖啡应该是什么味道，由当地食物重新配制而成。`
+			`埃恩开始谈话时没有碰他。 “我们这些从事物流工作的人注意到，您在我们的系统中花费了时间，我们想看看您是否可以为我们接工作。这将是送货工作，就像您为住房项目带来的发电机一样。”`
+			choice
+				`（点头。）`
+					goto delivery
+				`“你在你的房子里放了星舰放射热装置吗？”`
+			`“你不知道吗？”他开玩笑地回应。 “好吧，‘每个社区的发电机’会更准确。我们维护一个分散的电网，这样我们在发生攻击或自然灾害时就有更大的弹性。它还利用了我们从科拉特号打捞出来的发电厂以及我们从我们自己受损的船上恢复的发电厂。此外，广泛部署该技术确保我们拥有专业知识来维护和修复整个遗迹。但是，”他签署了一项推动动议，“土木工程是另一个主题。我希望你更感兴趣的是我们如何移动我们的各种货物。”`
+				goto delivery
+			label delivery
+			`“该发电机原定于 30 天后交付，但它已经提前准备好，项目现在可以安装它。因此，通过将其交付，您使我们能够推进项目并释放下个月的交付能力。”`
+			`“那么，你为什么要给我这份工作呢？”你问，试图模仿你所看到的你认为代表自己的手势。`
+			`他微笑着回答：“很好！很好！我们安排了一切，但我们在系统中保持松弛，以利用电力系统提前准备好的机会，或者处理紧急情况。当然，有时我们必须放下一切，稍后再整理时间表。但是，在正常情况下，我们将这些职位发布在工作板上，有能力的船长可以接替他们。项目提供资源分配来支付运营和船员成本，但没有……这个词是什么？保证金，是的！由于您的船不在我们的计划资源范围内，因此您提供了额外的容量，当您在我们的空间中时，我们也许能够推进一些更大的项目。”`
+			choice
+				`“谢谢你给我这个机会。”`
+					goto thanks
+				`“你们的飞行员会对竞争感到不安吗？”`
+			`听到这个问题，伊恩微笑着。 “你应该和其他飞行员谈谈，看看，但我认为祖传的方法是不同的。我们的工作方式更像是一支军队：船只归遗民所有，但每个船长都负责船只、船员和需要完成的运输工作。我认为他们会很高兴看到新房屋的建造，并为他们和船员腾出更多时间在社区中度过。”`
+				goto thanks
+			label thanks
+			`在你可以询问更多有关运输工作的信息之前，Eon 拿出了他的通讯链接并点击了几分钟。 “您现在可以访问后勤工作板。当您检查时，您应该能够看到我们每个系统当前的工作列表。”`
+			`你一边喝着饮料，一边继续和 Eon 聊天。当你完成后，他的通讯器会发出鸣叫声。当他站起来时，他签署了你认为意味着“再见”的手势，因为他说他必须离开去参加另一个会议。他低着头看着数据板，快步走开。您的通讯链接通知您 <payment> 已添加到您的帐户。`

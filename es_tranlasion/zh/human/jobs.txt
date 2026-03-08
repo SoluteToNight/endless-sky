@@ -1,0 +1,4665 @@
+# Copyright (c) 2014 by Michael Zahniser
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program. If not, see <https://www.gnu.org/licenses/>.
+
+mission "Escort (Tiny, Northern, Dangerous Destination)"
+	name "护送至<planet>"
+	description "尽管您相对缺乏经验，<npc> 的船长还是愿意支付 <payment> 来护送您进入危险的太空区域，并在 <date> 到达 <destination>。"
+	repeat
+	job
+	deadline 8
+	to offer
+		random < 40
+		"combat rating" < 6
+		or
+			"combat rating" > 0
+			has "ships: Interceptor"
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "deep" "paradise" "near earth"
+	destination
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "frontier" "north"
+		distance 2 4
+	npc
+		government "Pirate"
+		personality nemesis staying harvests plunders
+			confusion 40
+		system destination
+		fleet
+			names "pirate"
+			variant
+				"Sparrow"
+			variant
+				"Fury"
+			variant
+				"Berserker"
+			variant
+				"Scrapper"
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+			confusion 40
+		system destination
+		fleet
+			names "pirate"
+			variant
+				"Sparrow"
+			variant
+				"Fury"
+			variant
+				"Berserker"
+			variant
+				"Scrapper"
+	
+	npc accompany save
+		government "Merchant"
+		personality escort timid
+		fleet
+			names "civilian"
+			variant
+				"Shuttle"
+			variant
+				"Star Barge"
+	on complete
+		payment 15000
+		dialog phrase "generic safe escort completion dialog"
+	on visit
+		dialog phrase "generic arrived-without-npc dialog"
+
+mission "Escort (Tiny, Northern, Dangerous Origin)"
+	name "护送至<planet>"
+	description "尽管您相对缺乏经验，<npc> 的船长还是愿意支付 <payment> 的费用，让您护送您离开这个危险的太空区域，并在 <date> 到达 <destination>。"
+	repeat
+	job
+	deadline 8
+	to offer
+		random < 40
+		"combat rating" < 6
+		or
+			"combat rating" > 0
+			has "ships: Interceptor"
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "frontier" "north"
+	destination
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "deep" "paradise" "near earth" "core"
+		distance 2 4
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+			confusion 40
+		fleet
+			names "pirate"
+			variant
+				"Sparrow"
+			variant
+				"Fury"
+			variant
+				"Berserker"
+			variant
+				"Scrapper"
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+			confusion 40
+		system
+			distance 1
+		fleet
+			names "pirate"
+			variant
+				"Sparrow"
+			variant
+				"Fury"
+			variant
+				"Berserker"
+			variant
+				"Scrapper"
+	
+	npc accompany save
+		government "Merchant"
+		personality escort timid
+		fleet
+			names "civilian"
+			variant
+				"Shuttle"
+			variant
+				"Star Barge"
+	on complete
+		payment 15000
+		dialog phrase "generic safe escort completion dialog"
+	on visit
+		dialog phrase "generic arrived-without-npc dialog"
+
+mission "Escort (Small, Northern, Dangerous Destination)"
+	name "护送至<planet>"
+	description "<npc> 的船长将支付您 <payment> 来护送他们安全进入危险的太空区域，并于 <date> 到达 <destination>。"
+	repeat
+	job
+	deadline 10
+	to offer
+		random < 70
+		"combat rating" > 5
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "deep" "paradise" "near earth"
+	destination
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "frontier" "north"
+		distance 3 4
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+			confusion 30
+		system destination
+		fleet "Small Northern Pirates"
+	npc
+		government "Pirate"
+		personality nemesis entering harvests plunders
+			confusion 30
+		system destination
+		fleet "Small Northern Pirates"
+	npc
+		government "Pirate"
+		personality nemesis staying harvests plunders
+			confusion 30
+		system destination
+		fleet "Small Northern Pirates"
+	
+	npc accompany save
+		government "Merchant"
+		personality escort timid
+		fleet
+			names "civilian"
+			variant
+				"Freighter"
+	on complete
+		payment 60000
+		dialog phrase "generic safe escort completion dialog"
+	on visit
+		dialog phrase "generic arrived-without-npc dialog"
+
+mission "Escort (Small, Northern, Dangerous Origin)"
+	name "护送至<planet>"
+	description "<npc> 的船长将支付您 <payment> 来护送他们安全离开这个危险的太空区域，并于 <date> 到达 <destination>。"
+	repeat
+	job
+	deadline 10
+	to offer
+		random < 40
+		"combat rating" > 5
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "frontier" "north"
+	destination
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "deep" "paradise" "near earth" "core"
+		distance 3 4
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+			confusion 30
+		fleet "Small Northern Pirates"
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+			confusion 30
+		system
+			distance 1
+		fleet "Small Northern Pirates"
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+			confusion 30
+		system
+			distance 1
+		fleet "Small Northern Pirates"
+	
+	npc accompany save
+		government "Merchant"
+		personality escort timid
+		fleet
+			names "civilian"
+			variant
+				"Freighter"
+	on complete
+		payment 60000
+		dialog phrase "generic safe escort completion dialog"
+	on visit
+		dialog phrase "generic arrived-without-npc dialog"
+
+mission "Escort (Medium, Northern, Dangerous Destination)"
+	name "护送至<planet>"
+	description "<npc> 的船长将支付您 <payment> 来护送他们安全进入危险的太空区域，并于 <date> 到达 <destination>。"
+	repeat
+	job
+	deadline 10
+	to offer
+		random < 40
+		"combat rating" > 20
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "deep" "paradise" "near earth"
+	destination
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "frontier" "north"
+		distance 3 4
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+			confusion 20
+		system destination
+		fleet "Small Northern Pirates"
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+			confusion 20
+		system destination
+		fleet "Small Northern Pirates"
+	npc
+		government "Pirate"
+		personality nemesis entering harvests plunders
+			confusion 20
+		system destination
+		fleet "Small Northern Pirates"
+	npc
+		government "Pirate"
+		personality nemesis staying harvests plunders
+			confusion 20
+		system destination
+		fleet "Small Northern Pirates" 2
+	
+	npc accompany save
+		government "Merchant"
+		personality escort timid
+		fleet
+			names "civilian"
+			variant
+				"Freighter"
+	on complete
+		payment 90000
+		dialog phrase "generic safe escort completion dialog"
+	on visit
+		dialog phrase "generic arrived-without-npc dialog"
+
+mission "Escort (Medium, Northern, Dangerous Origin)"
+	name "护送至<planet>"
+	description "<npc> 的船长将支付您 <payment> 来护送他们安全离开这个危险的太空区域，并于 <date> 到达 <destination>。"
+	repeat
+	job
+	deadline 10
+	to offer
+		random < 40
+		"combat rating" > 20
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "frontier" "north"
+	destination
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "deep" "paradise" "near earth" "core"
+		distance 3 4
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+			confusion 20
+		fleet "Small Northern Pirates" 2
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+			confusion 20
+		system
+			distance 1 2
+		fleet "Small Northern Pirates"
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+			confusion 20
+		system destination
+		fleet "Small Northern Pirates"
+	npc
+		government "Pirate"
+		personality nemesis staying harvests plunders
+			confusion 20
+		system destination
+		fleet "Small Northern Pirates"
+	
+	npc accompany save
+		government "Merchant"
+		personality escort timid
+		fleet
+			names "civilian"
+			variant
+				"Freighter"
+	on complete
+		payment 90000
+		dialog phrase "generic safe escort completion dialog"
+	on visit
+		dialog phrase "generic arrived-without-npc dialog"
+
+mission "Escort (Large, Northern, Dangerous Destination)"
+	name "护送至<planet>"
+	description "<npc> 的船长将支付您 <payment> 来护送他们安全进入危险的太空区域，并于 <date> 到达 <destination>。"
+	repeat
+	job
+	deadline 10
+	to offer
+		random < 30
+		"combat rating" > 60
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "deep" "paradise" "near earth"
+	destination
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "frontier" "north"
+		distance 3 4
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+		system destination
+		fleet "Large Northern Pirates"
+	npc
+		government "Pirate"
+		personality nemesis entering harvests plunders
+		system destination
+		fleet "Small Northern Pirates"
+	npc
+		government "Pirate"
+		personality nemesis staying harvests plunders
+		system destination
+		fleet "Large Northern Pirates"
+	
+	npc accompany save
+		government "Merchant"
+		personality escort timid
+		fleet
+			names "civilian"
+			variant
+				"Behemoth"
+	on complete
+		payment 120000
+		dialog phrase "generic safe escort completion dialog"
+	on visit
+		dialog phrase "generic arrived-without-npc dialog"
+
+mission "Escort (Large, Northern, Dangerous Origin)"
+	name "护送至<planet>"
+	description "<npc> 的船长将支付您 <payment> 来护送他们安全离开这个危险的太空区域，并于 <date> 到达 <destination>。"
+	repeat
+	job
+	deadline 10
+	to offer
+		random < 30
+		"combat rating" > 60
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "frontier" "north"
+	destination
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "deep" "paradise" "near earth" "core"
+		distance 3 4
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+		fleet "Large Northern Pirates"
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+		system
+			distance 1
+		fleet "Large Northern Pirates"
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+		system
+			distance 1 2
+		fleet "Small Northern Pirates"
+	
+	npc accompany save
+		government "Merchant"
+		personality escort timid
+		fleet
+			names "civilian"
+			variant
+				"Behemoth"
+	on complete
+		payment 120000
+		dialog phrase "generic safe escort completion dialog"
+	on visit
+		dialog phrase "generic arrived-without-npc dialog"
+
+mission "Escort (Extra Large, Northern, Dangerous Destination)"
+	name "护送至<planet>"
+	description "<npc> 的船长将支付您 <payment> 来护送他们安全进入危险的太空区域，并于 <date> 到达 <destination>。"
+	repeat
+	job
+	deadline 10
+	to offer
+		random < 15
+		"combat rating" > 100
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "deep" "paradise" "near earth"
+	destination
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "frontier" "north"
+		distance 3 4
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+		system destination
+		fleet "Small Northern Pirates"
+		fleet "Large Northern Pirates"
+	npc
+		government "Pirate"
+		personality nemesis entering harvests plunders
+		system destination
+		fleet "Large Northern Pirates"
+	npc
+		government "Pirate"
+		personality nemesis staying harvests plunders
+		system destination
+		fleet "Small Northern Pirates"
+		fleet "Large Northern Pirates"
+	
+	npc accompany save
+		government "Merchant"
+		personality escort timid
+		fleet
+			names "civilian"
+			variant
+				"Behemoth"
+	on complete
+		payment 150000
+		dialog phrase "generic safe escort completion dialog"
+	on visit
+		dialog phrase "generic arrived-without-npc dialog"
+
+mission "Escort (Extra Large, Northern, Dangerous Origin)"
+	name "护送至<planet>"
+	description "<npc> 的船长将支付您 <payment> 来护送他们安全离开这个危险的太空区域，并于 <date> 到达 <destination>。"
+	repeat
+	job
+	deadline 10
+	to offer
+		random < 15
+		"combat rating" > 100
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "frontier" "north"
+	destination
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "deep" "paradise" "near earth" "core"
+		distance 3 4
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+		fleet "Small Northern Pirates"
+		fleet "Large Northern Pirates"
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+		system
+			distance 1 2
+		fleet "Small Northern Pirates"
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+		system
+			distance 1 1
+		fleet "Large Northern Pirates"
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+		system destination
+		fleet "Large Northern Pirates"
+	
+	npc accompany save
+		government "Merchant"
+		personality escort timid
+		fleet
+			names "civilian"
+			variant
+				"Behemoth"
+	on complete
+		payment 150000
+		dialog phrase "generic safe escort completion dialog"
+	on visit
+		dialog phrase "generic arrived-without-npc dialog"
+
+
+mission "Escort (Tiny, Core, Dangerous Destination)"
+	name "护送至<planet>"
+	description "尽管您相对缺乏经验，<npc> 的船长还是愿意支付 <payment> 来护送您进入危险的太空区域，并在 <date> 到达 <destination>。"
+	repeat
+	job
+	deadline 8
+	to offer
+		random < 40
+		"combat rating" < 6
+		or
+			"combat rating" > 0
+			has "ships: Interceptor"
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "core" "near earth"
+	destination
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "core" "north" "frontier" "dirt belt"
+		distance 2 4
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+			confusion 40
+		system destination
+		fleet
+			names "pirate"
+			variant
+				"Sparrow"
+			variant
+				"Fury"
+			variant
+				"Berserker"
+			variant
+				"Scrapper"
+	npc
+		government "Pirate"
+		personality nemesis staying harvests plunders
+			confusion 40
+		system destination
+		fleet
+			names "pirate"
+			variant
+				"Sparrow"
+			variant
+				"Fury"
+			variant
+				"Berserker"
+			variant
+				"Scrapper"
+	
+	npc accompany save
+		government "Merchant"
+		personality escort timid
+		fleet
+			names "civilian"
+			variant
+				"Shuttle"
+			variant
+				"Star Barge"
+	on complete
+		payment 20000
+		dialog phrase "generic safe escort completion dialog"
+	on visit
+		dialog phrase "generic arrived-without-npc dialog"
+
+mission "Escort (Tiny, Core, Dangerous Origin)"
+	name "护送至<planet>"
+	description "尽管您相对缺乏经验，<npc> 的船长还是愿意支付 <payment> 的费用，让您护送您离开这个危险的太空区域，并在 <date> 到达 <destination>。"
+	repeat
+	job
+	deadline 8
+	to offer
+		random < 40
+		"combat rating" < 6
+		or
+			"combat rating" > 0
+			has "ships: Interceptor"
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "core" "north" "frontier"
+	destination
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "paradise" "near earth"
+		distance 2 5
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+			confusion 40
+		system
+			distance 2 2
+		fleet
+			names "pirate"
+			variant
+				"Sparrow"
+			variant
+				"Fury"
+			variant
+				"Berserker"
+			variant
+				"Scrapper"
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+			confusion 40
+		fleet
+			names "pirate"
+			variant
+				"Sparrow"
+			variant
+				"Fury"
+			variant
+				"Berserker"
+			variant
+				"Scrapper"
+	
+	npc accompany save
+		government "Merchant"
+		personality escort timid
+		fleet
+			names "civilian"
+			variant
+				"Shuttle"
+			variant
+				"Star Barge"
+	on complete
+		payment 20000
+		dialog phrase "generic safe escort completion dialog"
+	on visit
+		dialog phrase "generic arrived-without-npc dialog"
+
+mission "Escort (Small, Core, Dangerous Destination)"
+	name "护送至<planet>"
+	description "<npc> 的船长将支付您 <payment> 来护送他们安全进入危险的太空区域，并于 <date> 到达 <destination>。"
+	repeat
+	job
+	deadline 10
+	to offer
+		random < 70
+		"combat rating" > 5
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "paradise" "near earth"
+	destination
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "core" "north" "frontier" "dirt belt"
+		distance 3 4
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+			confusion 30
+		system destination
+		fleet "Small Core Pirates"
+	npc
+		government "Pirate"
+		personality nemesis entering harvests plunders
+			confusion 30
+		system destination
+		fleet "Small Core Pirates"
+	npc
+		government "Pirate"
+		personality nemesis staying harvests plunders
+			confusion 30
+		system destination
+		fleet "Small Core Pirates"
+	
+	npc accompany save
+		government "Merchant"
+		personality escort timid
+		fleet
+			names "civilian"
+			variant
+				"Freighter"
+	on complete
+		payment 60000
+		dialog phrase "generic safe escort completion dialog"
+	on visit
+		dialog phrase "generic arrived-without-npc dialog"
+
+mission "Escort (Small, Core, Dangerous Origin)"
+	name "护送至<planet>"
+	description "<npc> 的船长将支付您 <payment> 来护送他们安全离开这个危险的太空区域，并于 <date> 到达 <destination>。"
+	repeat
+	job
+	deadline 10
+	to offer
+		random < 70
+		"combat rating" > 5
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "core" "north" "frontier"
+	destination
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "paradise" "near earth"
+		distance 3 5
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+			confusion 30
+		system
+			distance 1
+		fleet "Small Core Pirates"
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+			confusion 30
+		system
+			distance 1 2
+		fleet "Small Core Pirates"
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+			confusion 30
+		fleet "Small Core Pirates"
+	
+	npc accompany save
+		government "Merchant"
+		personality escort timid
+		fleet
+			names "civilian"
+			variant
+				"Freighter"
+	on complete
+		payment 60000
+		dialog phrase "generic safe escort completion dialog"
+	on visit
+		dialog phrase "generic arrived-without-npc dialog"
+
+mission "Escort (Medium, Core, Dangerous Destination)"
+	name "护送至<planet>"
+	description "<npc> 的船长将支付您 <payment> 来护送他们安全进入危险的太空区域，并于 <date> 到达 <destination>。"
+	repeat
+	job
+	deadline 10
+	to offer
+		random < 40
+		"combat rating" > 20
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "paradise" "near earth"
+	destination
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "core" "north" "frontier" "dirt belt"
+		distance 3 4
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+			confusion 20
+		system destination
+		fleet "Small Core Pirates" 2
+	npc
+		government "Pirate"
+		personality nemesis entering harvests plunders
+			confusion 20
+		system destination
+		fleet "Small Core Pirates"
+	npc
+		government "Pirate"
+		personality nemesis staying harvests plunders
+			confusion 20
+		system destination
+		fleet "Small Core Pirates" 2
+	
+	npc accompany save
+		government "Merchant"
+		personality escort timid
+		fleet
+			names "civilian"
+			variant
+				"Freighter"
+	on complete
+		payment 90000
+		dialog phrase "generic safe escort completion dialog"
+	on visit
+		dialog phrase "generic arrived-without-npc dialog"
+
+mission "Escort (Medium, Core, Dangerous Origin)"
+	name "护送至<planet>"
+	description "<npc> 的船长将支付您 <payment> 来护送他们安全离开这个危险的太空区域，并于 <date> 到达 <destination>。"
+	repeat
+	job
+	deadline 10
+	to offer
+		random < 40
+		"combat rating" > 20
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "core" "north" "frontier"
+	destination
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "paradise" "near earth"
+		distance 3 5
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+			confusion 20
+		system
+			distance 1
+		fleet "Small Core Pirates"
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+			confusion 20
+		system
+			distance 1
+		fleet "Small Core Pirates"
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+			confusion 20
+		system
+			distance 1 2
+		fleet "Small Core Pirates"
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+			confusion 20
+		fleet "Small Core Pirates" 2
+	
+	npc accompany save
+		government "Merchant"
+		personality escort timid
+		fleet
+			names "civilian"
+			variant
+				"Freighter"
+	on complete
+		payment 90000
+		dialog phrase "generic safe escort completion dialog"
+	on visit
+		dialog phrase "generic arrived-without-npc dialog"
+
+mission "Escort (Large, Core, Dangerous Destination)"
+	name "护送至<planet>"
+	description "<npc> 的船长将支付您 <payment> 来护送他们安全进入危险的太空区域，并于 <date> 到达 <destination>。"
+	repeat
+	job
+	deadline 10
+	to offer
+		random < 50
+		"combat rating" > 60
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "paradise" "near earth"
+	destination
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "core" "north" "frontier" "dirt belt"
+		distance 3 4
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+		system destination
+		fleet "Large Core Pirates"
+	npc
+		government "Pirate"
+		personality nemesis entering harvests plunders
+		system destination
+		fleet "Small Core Pirates"
+	npc
+		government "Pirate"
+		personality nemesis staying harvests plunders
+		system destination
+		fleet "Large Core Pirates"
+	
+	npc accompany save
+		government "Merchant"
+		personality escort timid
+		fleet
+			names "civilian"
+			variant
+				"Container Transport"
+	on complete
+		payment 120000
+		dialog phrase "generic safe escort completion dialog"
+	on visit
+		dialog phrase "generic arrived-without-npc dialog"
+
+mission "Escort (Large, Core, Dangerous Origin)"
+	name "护送至<planet>"
+	description "<npc> 的船长将支付您 <payment> 来护送他们安全离开这个危险的太空区域，并于 <date> 到达 <destination>。"
+	repeat
+	job
+	deadline 10
+	to offer
+		random < 50
+		"combat rating" > 60
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "core" "north" "frontier"
+	destination
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "paradise" "near earth"
+		distance 3 5
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+		system
+			distance 1
+		fleet "Large Core Pirates"
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+		system
+			distance 1 2
+		fleet "Small Core Pirates"
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+		fleet "Large Core Pirates"
+	
+	npc accompany save
+		government "Merchant"
+		personality escort timid
+		fleet
+			names "civilian"
+			variant
+				"Container Transport"
+	on complete
+		payment 120000
+		dialog phrase "generic safe escort completion dialog"
+	on visit
+		dialog phrase "generic arrived-without-npc dialog"
+
+mission "Escort (Extra Large, Core, Dangerous Destination)"
+	name "护送至<planet>"
+	description "<npc> 的船长将支付您 <payment> 来护送他们安全进入危险的太空区域，并于 <date> 到达 <destination>。"
+	repeat
+	job
+	deadline 10
+	to offer
+		random < 20
+		"combat rating" > 100
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "paradise" "near earth"
+	destination
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "core" "north" "frontier" "dirt belt"
+		distance 3 4
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+		system destination
+		fleet "Large Core Pirates"
+		fleet "Small Core Pirates"
+	npc
+		government "Pirate"
+		personality nemesis entering harvests plunders
+		system destination
+		fleet "Small Core Pirates"
+	npc
+		government "Pirate"
+		personality nemesis staying harvests plunders
+		system destination
+		fleet "Large Core Pirates"
+		fleet "Small Core Pirates"
+	
+	npc accompany save
+		government "Merchant"
+		personality escort timid
+		fleet
+			names "civilian"
+			variant
+				"Container Transport"
+	on complete
+		payment 150000
+		dialog phrase "generic safe escort completion dialog"
+	on visit
+		dialog phrase "generic arrived-without-npc dialog"
+
+mission "Escort (Extra Large, Core, Dangerous Origin)"
+	name "护送至<planet>"
+	description "<npc> 的船长将支付您 <payment> 来护送他们安全离开这个危险的太空区域，并于 <date> 到达 <destination>。"
+	repeat
+	job
+	deadline 10
+	to offer
+		random < 20
+		"combat rating" > 100
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "core" "north" "frontier"
+	destination
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "paradise" "near earth"
+		distance 3 5
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+		system
+			distance 1
+		fleet "Large Core Pirates"
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+		system
+			distance 1
+		fleet "Small Core Pirates"
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+		system
+			distance 1 2
+		fleet "Small Core Pirates"
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+		fleet "Small Core Pirates"
+		fleet "Large Core Pirates"
+	
+	npc accompany save
+		government "Merchant"
+		personality escort timid
+		fleet
+			names "civilian"
+			variant
+				"Container Transport"
+	on complete
+		payment 150000
+		dialog phrase "generic safe escort completion dialog"
+	on visit
+		dialog phrase "generic arrived-without-npc dialog"
+
+
+mission "Escort (Tiny, Southern, Dangerous Origin or Destination)"
+	name "护送至<planet>"
+	description "尽管您的经验相对不足，<npc> 的船长还是愿意支付 <payment> 的费用，让您护送您穿过这个危险的太空区域，并在 <date> 到达 <destination>。"
+	repeat
+	job
+	deadline 8
+	to offer
+		random < 50
+		"combat rating" < 6
+		or
+			"combat rating" > 0
+			has "ships: Interceptor"
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "frontier" "south" "rim" "dirt belt"
+	destination
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "frontier" "south" "rim" "dirt belt"
+		distance 2 4
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+			confusion 40
+		fleet
+			names "pirate"
+			variant
+				"Sparrow"
+			variant
+				"Fury"
+			variant
+				"Hawk"
+			variant
+				"Scrapper"
+	npc
+		government "Pirate"
+		personality nemesis staying harvests plunders
+			confusion 40
+		system destination
+		fleet
+			names "pirate"
+			variant
+				"Sparrow"
+			variant
+				"Fury"
+			variant
+				"Hawk"
+			variant
+				"Scrapper"
+	
+	npc accompany save
+		government "Merchant"
+		personality escort timid
+		fleet
+			names "civilian"
+			variant
+				"Shuttle"
+			variant
+				"Star Barge"
+	on complete
+		payment 15000
+		dialog phrase "generic safe escort completion dialog"
+	on visit
+		dialog phrase "generic arrived-without-npc dialog"
+
+mission "Escort (Small, Southern, Dangerous Origin or Destination)"
+	name "护送至<planet>"
+	description "<npc> 的船长将支付您 <payment> 的费用，以护送他们安全穿过这个危险的太空区域，并于 <date> 到达 <destination>。"
+	repeat
+	job
+	deadline 10
+	to offer
+		random < 70
+		"combat rating" > 5
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "frontier" "south" "rim" "dirt belt"
+	destination
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "frontier" "south" "rim" "dirt belt"
+		distance 3 4
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+			confusion 30
+		fleet "Small Southern Pirates"
+	npc
+		government "Pirate"
+		personality nemesis staying harvests plunders
+			confusion 30
+		system destination
+		fleet "Small Southern Pirates"
+	
+	npc accompany save
+		government "Merchant"
+		personality escort timid
+		fleet
+			names "civilian"
+			variant
+				"Freighter"
+	on complete
+		payment 60000
+		dialog phrase "generic safe escort completion dialog"
+	on visit
+		dialog phrase "generic arrived-without-npc dialog"
+
+mission "Escort (Medium, Southern, Dangerous Origin or Destination)"
+	name "护送至<planet>"
+	description "<npc> 的船长将支付您 <payment> 的费用，以护送他们安全穿过这个危险的太空区域，并于 <date> 到达 <destination>。"
+	repeat
+	job
+	deadline 10
+	to offer
+		random < 40
+		"combat rating" > 20
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "frontier" "south" "rim" "dirt belt"
+	destination
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "frontier" "south" "rim" "dirt belt"
+		distance 3 4
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+			confusion 20
+		fleet "Small Southern Pirates" 2
+	npc
+		government "Pirate"
+		personality nemesis staying harvests plunders
+			confusion 20
+		system destination
+		fleet "Small Southern Pirates" 2
+	
+	npc accompany save
+		government "Merchant"
+		personality escort timid
+		fleet
+			names "civilian"
+			variant
+				"Freighter"
+	on complete
+		payment 90000
+		dialog phrase "generic safe escort completion dialog"
+	on visit
+		dialog phrase "generic arrived-without-npc dialog"
+
+mission "Escort (Large, Southern, Dangerous Origin or Destination)"
+	name "护送至<planet>"
+	description "<npc> 的船长将支付您 <payment> 的费用，以护送他们安全穿过这个危险的太空区域，并于 <date> 到达 <destination>。"
+	repeat
+	job
+	deadline 10
+	to offer
+		random < 50
+		"combat rating" > 60
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "frontier" "south" "rim" "dirt belt"
+	destination
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "frontier" "south" "rim" "dirt belt"
+		distance 3 4
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+		fleet "Large Southern Pirates"
+	npc
+		government "Pirate"
+		personality nemesis staying harvests plunders
+		system destination
+		fleet "Large Southern Pirates"
+	
+	npc accompany save
+		government "Merchant"
+		personality escort timid
+		fleet
+			names "civilian"
+			variant
+				"Bulk Freighter"
+	on complete
+		payment 120000
+		dialog phrase "generic safe escort completion dialog"
+	on visit
+		dialog phrase "generic arrived-without-npc dialog"
+
+mission "Escort (Extra Large, Southern, Dangerous Origin or Destination)"
+	name "护送至<planet>"
+	description "<npc> 的船长将支付您 <payment> 的费用，以护送他们安全穿过这个危险的太空区域，并于 <date> 到达 <destination>。"
+	repeat
+	job
+	deadline 10
+	to offer
+		random < 20
+		"combat rating" > 100
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "frontier" "south" "rim" "dirt belt"
+	destination
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "frontier" "south" "rim" "dirt belt"
+		distance 3 4
+	npc
+		government "Pirate"
+		personality nemesis harvests plunders
+		fleet "Large Southern Pirates"
+		fleet "Small Southern Pirates"
+	npc
+		government "Pirate"
+		personality nemesis staying harvests plunders
+		system destination
+		fleet "Large Southern Pirates"
+		fleet "Small Southern Pirates"
+	
+	npc accompany save
+		government "Merchant"
+		personality escort timid
+		fleet
+			names "civilian"
+			variant
+				"Behemoth"
+	on complete
+		payment 150000
+		dialog phrase "generic safe escort completion dialog"
+	on visit
+		dialog phrase "generic arrived-without-npc dialog"
+
+
+
+mission "Southern Pirate Attack"
+	name "保卫<planet>"
+	description "击败对 <destination> 的海盗袭击。"
+	minor
+	repeat
+	to offer
+		"combat rating" > 100
+		random < 10
+	source
+		not government "Pirate"
+		attributes "frontier"
+		attributes "rim" "south" "dirt belt"
+	npc evade
+		government "Pirate"
+		personality heroic staying target harvests plunders
+		fleet "Small Southern Pirates"
+		fleet "Large Southern Pirates" 2
+	npc
+		government "Militia"
+		personality heroic staying
+		fleet "Small Militia" 2
+	on offer
+		conversation
+			`突然你听到外面有人大声喊叫：“我们受到攻击！<planet>受到海盗的攻击！我们需要每艘有战斗力的船只加入防御！”如果你协助当局，他们可能会付给你相当丰厚的报酬，但这也可能是一个让你自己丧命的简单方法。`
+			choice
+				`（待在这里直到战斗结束。）`
+					decline
+				`（加入防御舰队。）`
+			`一些民兵飞行员聚集在一起帮助击退海盗袭击。你加入他们，一起出发……`
+				launch
+	on visit
+		dialog phrase "generic pirate fleet battle on visit"
+	on complete
+		payment 150000
+		dialog phrase "generic pirate attack payment dialog"
+
+mission "Northern Pirate Attack"
+	name "保卫<planet>"
+	description "击败对 <destination> 的海盗袭击。"
+	minor
+	repeat
+	to offer
+		"combat rating" > 100
+		random < 10
+	source
+		not government "Pirate"
+		attributes "frontier"
+		attributes "north" "paradise" "deep"
+	npc evade
+		government "Pirate"
+		personality heroic staying target harvests plunders
+		fleet "Small Northern Pirates"
+		fleet "Large Northern Pirates" 2
+	npc
+		government "Republic"
+		personality heroic staying
+		fleet "Small Republic" 2
+	on offer
+		conversation
+			`突然你听到外面有人大声喊叫：“我们受到攻击！<planet>受到海盗的攻击！我们需要每艘有战斗力的船只加入防御！”如果你协助当局，他们可能会付给你相当丰厚的报酬，但这也可能是一个让你自己丧命的简单方法。`
+			choice
+				`（待在这里直到战斗结束。）`
+					decline
+				`（加入防御舰队。）`
+			`当地海军驻军正准备击退海盗袭击。你加入他们，一起出发……`
+				launch
+	on visit
+		dialog phrase "generic pirate fleet battle on visit"
+	on complete
+		payment 250000
+		dialog phrase "generic pirate attack payment dialog"
+
+mission "Core Pirate Attack"
+	name "保卫<planet>"
+	description "击败对 <destination> 的海盗袭击。"
+	minor
+	repeat
+	to offer
+		"combat rating" > 100
+		random < 10
+	source
+		not government "Pirate"
+		attributes "frontier"
+		attributes "core" "near earth"
+	npc evade
+		government "Pirate"
+		personality heroic staying target harvests plunders
+		fleet "Small Core Pirates"
+		fleet "Large Core Pirates" 2
+	npc
+		government "Syndicate"
+		personality heroic staying
+		fleet "Small Syndicate" 2
+	on offer
+		conversation
+			`突然你听到外面有人大声喊叫：“我们受到攻击！<planet>受到海盗的攻击！我们需要每艘有战斗力的船只加入防御！”如果你协助当局，他们可能会付给你相当丰厚的报酬，但这也可能是一个让你自己丧命的简单方法。`
+			choice
+				`（待在这里直到战斗结束。）`
+					decline
+				`（加入防御舰队。）`
+			`当地辛迪加防御部队正准备击退海盗的袭击。你加入他们，一起出发……`
+				launch
+	on visit
+		dialog phrase "generic pirate fleet battle on visit"
+	on complete
+		payment 200000
+		dialog phrase "generic pirate attack payment dialog"
+
+mission "Raider Attack 1"
+	name "保卫<planet>"
+	description "击败 <destination> 上的外星人袭击。"
+	minor
+	repeat
+	to offer
+		"combat rating" > 550
+		random < 7
+		has "main plot completed"
+	source
+		planet "Sundive"
+		planet "Shangri-La"
+		planet "Nimbus"
+	npc evade
+		government "Korath"
+		personality target timid unconstrained uninterested harvests plunders
+		fleet "Korath Raid" 2
+	npc
+		government "Syndicate"
+		personality heroic staying vindictive
+		fleet "Large Syndicate"
+		fleet "Small Syndicate"
+	on offer
+		conversation
+			`突然你听到外面有人大声喊叫：“我们受到攻击！<planet>受到外星袭击者的攻击！我们需要每艘有战斗力的船只加入防御！”如果你协助当局，他们可能会付给你相当丰厚的报酬，但这也可能是一个让你自己丧命的简单方法。`
+			choice
+				`（待在这里直到战斗结束。）`
+					decline
+				`（加入防御舰队。）`
+			`当地的辛迪加防御部队正准备击退外星人的攻击。你加入他们，一起出发……`
+				launch
+	on visit
+		dialog `您已降落在 <planet> 上，但仍有科拉特在头顶盘旋。你应该起飞并帮助解决它们。`
+	on complete
+		payment 550000
+		dialog `<planet> 政府向您支付 <payment>，以奖励您帮助击退袭击者。`
+
+mission "Raider Attack 2"
+	name "保卫<planet>"
+	description "击败 <destination> 上的外星人袭击。"
+	minor
+	repeat
+	to offer
+		"combat rating" > 750
+		random < 5
+		has "main plot completed"
+	source
+		planet "Sundive"
+		planet "Shangri-La"
+		planet "Nimbus"
+	npc evade
+		government "Korath"
+		personality target timid unconstrained uninterested harvests plunders
+		fleet "Korath Raid" 3
+		
+	npc
+		government "Syndicate"
+		personality heroic staying vindictive
+		fleet "Large Syndicate" 2
+	on offer
+		conversation
+			`突然你听到外面有人大声喊叫：“我们受到攻击！<planet>受到外星袭击者的攻击！我们需要每艘有战斗力的船只加入防御！”如果你协助当局，他们可能会付给你相当丰厚的报酬，但这也可能是一个让你自己丧命的简单方法。`
+			choice
+				`（待在这里直到战斗结束。）`
+					decline
+				`（加入防御舰队。）`
+			`当地的辛迪加防御部队正准备击退外星人的攻击。你加入他们，一起出发……`
+				launch
+	on visit
+		dialog `您已降落在 <planet> 上，但仍有科拉特在头顶盘旋。你应该起飞并帮助解决它们。`
+	on complete
+		payment 750000
+		dialog `<planet> 政府向您支付 <payment>，以奖励您帮助击退袭击者。`
+
+
+
+mission "Cargo [0]"
+	name "递送至<planet>"
+	job
+	repeat
+	description "将 <cargo> 传送至 <destination>。付款方式为 <payment>。"
+	cargo random 5 2 .1
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		distance 2 8
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		dialog phrase "generic cargo delivery payment"
+
+mission "Cargo [1]"
+	name "递送至<planet>"
+	job
+	repeat
+	description "将 <cargo> 传送至 <destination>。付款方式为 <payment>。"
+	cargo random 5 2 .1
+	to offer
+		random < 90
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		distance 2 10
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		dialog phrase "generic cargo delivery payment"
+
+mission "Cargo [2]"
+	name "递送至<planet>"
+	job
+	repeat
+	description "将 <cargo> 传送至 <destination>。付款方式为 <payment>。"
+	cargo random 5 2 .1
+	to offer
+		random < 80
+	source
+		attributes "mining" "textiles" "factory" "farming" "fishing" "oil"
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		distance 2 12
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		dialog phrase "generic cargo delivery payment"
+
+mission "Cargo [3]"
+	name "递送至<planet>"
+	job
+	repeat
+	description "将 <cargo> 传送至 <destination>。付款方式为 <payment>。"
+	cargo random 5 2 .1
+	to offer
+		random < 70
+	source
+		attributes "mining" "textiles" "factory" "farming" "fishing" "oil"
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		distance 3 14
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 2000
+		dialog phrase "generic cargo delivery payment"
+
+mission "Cargo [4]"
+	name "递送至<planet>"
+	job
+	repeat
+	description "将 <cargo> 传送至 <destination>。付款方式为 <payment>。"
+	cargo random 5 2 .1
+	to offer
+		random < 60
+	source
+		attributes "mining" "textiles" "factory" "farming" "fishing" "oil"
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		distance 4 16
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 4000
+		dialog phrase "generic cargo delivery payment"
+
+mission "Cargo [5]"
+	name "递送至<planet>"
+	job
+	repeat
+	description "将 <cargo> 传送至 <destination>。付款方式为 <payment>。"
+	cargo random 5 2 .1
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		distance 1 3
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		dialog phrase "generic cargo delivery payment"
+
+mission "Bulk Delivery [0]"
+	name "批量递送至<planet>"
+	job
+	repeat
+	description "将 <cargo> 传送至 <destination>。付款方式为 <payment>。"
+	cargo random 25 2 .05
+	to offer
+		random < 70
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		distance 2 8
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		dialog phrase "generic cargo delivery payment"
+
+mission "Bulk Delivery [1]"
+	name "批量递送至<planet>"
+	job
+	repeat
+	description "将 <cargo> 传送至 <destination>。付款方式为 <payment>。"
+	cargo random 25 2 .05
+	to offer
+		random < 60
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		distance 3 12
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 2000
+		dialog phrase "generic cargo delivery payment"
+
+mission "Bulk Delivery [2]"
+	name "批量递送至<planet>"
+	job
+	repeat
+	description "将 <cargo> 传送至 <destination>。付款方式为 <payment>。"
+	cargo random 25 2 .05
+	to offer
+		random < 50
+	source
+		attributes "mining" "textiles" "factory" "farming" "fishing" "oil"
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		distance 4 16
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 4000
+		dialog phrase "generic cargo delivery payment"
+
+mission "Bulk Delivery [3]"
+	name "批量递送至<planet>"
+	job
+	repeat
+	description "将 <cargo> 传送至 <destination>。付款方式为 <payment>。"
+	cargo random 25 2 .05
+	to offer
+		random < 70
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		distance 1 3
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		dialog phrase "generic cargo delivery payment"
+
+mission "Rush Delivery [0]"
+	name "加急送货至 <planet>"
+	job
+	repeat
+	deadline
+	description "由 <date> 将 <cargo> 递送至 <destination>。付款方式为<payment>。"
+	cargo random 5 2 .1
+	to offer
+		random < 90
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		distance 4 10
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 16000
+		dialog phrase "generic cargo delivery payment"
+
+mission "Rush Delivery [1]"
+	name "加急送货至 <planet>"
+	job
+	repeat
+	deadline
+	description "由 <date> 将 <cargo> 递送至 <destination>。付款方式为<payment>。"
+	cargo random 5 2 .1
+	to offer
+		random < 80
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		distance 5 12
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 18000
+		dialog phrase "generic cargo delivery payment"
+
+mission "Rush Delivery [2]"
+	name "加急送货至 <planet>"
+	job
+	repeat
+	deadline
+	description "由 <date> 将 <cargo> 递送至 <destination>。付款方式为<payment>。"
+	cargo random 5 2 .1
+	to offer
+		random < 70
+	source
+		attributes "mining" "textiles" "factory" "farming" "fishing" "oil"
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		distance 6 14
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 20000
+		dialog phrase "generic cargo delivery payment"
+
+mission "Rush Delivery [3]"
+	name "加急送货至 <planet>"
+	job
+	repeat
+	deadline
+	description "由 <date> 将 <cargo> 递送至 <destination>。付款方式为<payment>。"
+	cargo random 5 2 .1
+	to offer
+		random < 60
+	source
+		attributes "mining" "textiles" "factory" "farming" "fishing" "oil"
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		distance 7 16
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 22000
+		dialog phrase "generic cargo delivery payment"
+
+mission "Rush Delivery [4]"
+	name "加急送货至 <planet>"
+	job
+	repeat
+	deadline
+	description "由 <date> 将 <cargo> 递送至 <destination>。付款方式为<payment>。"
+	cargo random 5 2 .1
+	to offer
+		random < 90
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		distance 1 3
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 10000
+		dialog phrase "generic cargo delivery payment"
+
+
+
+mission "Passengers [0]"
+	name "前往 <planet> 的客运交通"
+	job
+	repeat
+	description "将 <fare> 带到 <destination> 。付款方式为 <payment>。"
+	passengers 1 10 .9
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		distance 2 10
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment
+		payment 2000
+		dialog phrase "generic passenger dropoff payment"
+
+mission "Passengers [1]"
+	name "前往 <planet> 的客运交通"
+	job
+	repeat
+	description "将 <fare> 带到 <destination> 。付款方式为 <payment>。"
+	passengers 1 10 .9
+	to offer
+		random < 75
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		distance 2 10
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment
+		dialog phrase "generic passenger dropoff payment"
+
+mission "Passengers [2]"
+	name "前往 <planet> 的客运交通"
+	job
+	repeat
+	description "将 <fare> 带到 <destination> 。付款方式为 <payment>。"
+	passengers 1 10 .9
+	to offer
+		random < 50
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		distance 2 10
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment
+		dialog phrase "generic passenger dropoff payment"
+
+mission "Passengers [3]"
+	name "前往 <planet> 的客运交通"
+	job
+	repeat
+	description "将 <fare> 带到 <destination> 。付款方式为 <payment>。"
+	passengers 1 10 .9
+	to offer
+		random < 25
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		distance 2 10
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment
+		dialog phrase "generic passenger dropoff payment"
+
+mission "Passengers [4]"
+	name "前往 <planet> 的客运交通"
+	job
+	repeat
+	description "这些 <bunks> 乘客希望逃离 <origin> 上的污染和犯罪，并定居在 <destination> 上。付款方式为<payment>。"
+	passengers 2 10 .9
+	to offer
+		random < 50
+	source
+		attributes "urban"
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		distance 2 10
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment
+		payment 2000
+		dialog phrase "generic passenger dropoff payment"
+
+mission "Passengers [5]"
+	name "前往 <planet> 的客运交通"
+	job
+	repeat
+	description "将 <fare> 带到 <destination> 。付款方式为 <payment>。"
+	passengers 1 10 .9
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		distance 1 3
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment
+		payment 500
+		dialog phrase "generic passenger dropoff payment"
+
+mission "Passengers to Quarg [1]"
+	name "前往 <planet> 的客运交通"
+	description "将 <fare> 带到 <destination> 的夸格行星。付款方式为 <payment>。"
+	job
+	repeat
+	passengers 1 10 .9
+	to offer
+		random < 10
+		has "landing access: Humanika"
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination "Humanika"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment
+		payment 10000
+		dialog phrase "generic passenger dropoff payment"
+
+mission "Passengers to Quarg [2]"
+	name "前往 <planet> 的客运交通"
+	description "将 <fare> 带到 <destination> 的夸格行星。付款方式为 <payment>。"
+	job
+	repeat
+	passengers 1 10 .9
+	to offer
+		random < 10
+		has "landing access: Humanika"
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination "Humanika"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment
+		payment 10000
+		dialog phrase "generic passenger dropoff payment"
+
+mission "Transport miners to <planet>"
+	job
+	repeat
+	description "这个 <bunks> 矿工家族希望在 <destination> 上找到工作，他们会付给您 <payment> 让您带他们去那里。"
+	passengers 2 2 .8
+	to offer
+		random < 50
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		attributes "mining"
+		distance 3 12
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment
+		payment 2000
+		dialog "您祝愿挖矿家族在 <planet> 好运，并收取 <payment> 的付款。"
+
+mission "Transport farmers to <planet>"
+	job
+	repeat
+	description "这个 <bunks> 农民家庭希望在 <destination> 找到工作，他们会付给您 <payment> 让您带他们去那里。"
+	passengers 2 2 .8
+	to offer
+		random < 50
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		attributes "farming"
+		distance 3 12
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment
+		payment 2000
+		dialog "您祝农场家庭在 <planet> 好运，并收取 <payment> 的付款。"
+
+mission "Transport mill workers to <planet>"
+	job
+	repeat
+	description "这个 <bunks> 工厂工人家庭希望在 <destination> 找到工作，他们将支付您 <payment> 让您带他们去那里。"
+	passengers 2 2 .8
+	to offer
+		random < 50
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		attributes "textiles"
+		distance 3 12
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment
+		payment 2000
+		dialog "您祝愿工作人员在 <planet> 一切顺利，并收取 <payment> 的付款。"
+
+mission "Transport workers to <planet>"
+	job
+	repeat
+	description "这个 <bunks> 工厂工人家庭希望在 <destination> 找到工作，他们将支付您 <payment> 让您带他们去那里。"
+	passengers 2 2 .8
+	to offer
+		random < 80
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		attributes "factory"
+		distance 3 12
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment
+		payment 2000
+		dialog "您祝愿工作人员在 <planet> 一切顺利，并收取 <payment> 的付款。"
+
+mission "Tourists out [0]"
+	name "带一名游客到 <planet>"
+	job
+	repeat
+	description "该游客想要参观 <destination> ，并将向您支付 <payment> 。"
+	passengers 1
+	to offer
+		random < 20
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		attributes "tourism"
+		distance 6 35
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment
+		payment 6000
+		dialog phrase "generic passenger dropoff payment"
+
+mission "Tourists out [1]"
+	name "将游客带到<planet>"
+	job
+	repeat
+	description "这些 <bunks> 游客想要参观 <destination>。他们愿意支付给您 <payment> 。"
+	passengers 2 10 .9
+	to offer
+		random < 50
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		attributes "tourism"
+		distance 2 25
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment
+		payment 4000
+		dialog phrase "generic passenger dropoff payment"
+
+mission "Wealthy tourists out"
+	name "将富有的游客带到<planet>"
+	job
+	repeat
+	description "这些<bunks>富有的游客想要去看<destination>，并希望乘坐豪华游船进行旅程。他们愿意支付给您 <payment> 。"
+	passengers 2 10 .9
+	to offer
+		random < 75
+	to accept
+		has "outfit (installed): Luxury Accommodations"
+	source
+		attributes "rich" "urban"
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		attributes "tourism"
+		distance 4 30
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment 10000 200
+		dialog phrase "generic passenger dropoff payment"
+
+mission "Wealthy tourist group out [0]"
+	name "富裕旅游团前往<planet>"
+	job
+	repeat
+	description "一群富有的游客，由<bunks>成员组成，想要去看<destination>，并希望乘坐豪华游轮进行旅程。他们愿意支付给您 <payment> 。"
+	passengers 15 5 .09
+	to offer
+		random < 75
+		random < ( "passenger space" - 35 ) * 2
+	to accept
+		has "outfit (installed): Luxury Accommodations"
+	source
+		attributes "rich" "urban"
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		attributes "tourism"
+		distance 4 30
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment 210000 135
+		dialog phrase "generic passenger dropoff payment"
+
+mission "Wealthy tourist group out [1]"
+	name "富裕旅游团前往<planet>"
+	job
+	repeat
+	description "一群富有的游客，由<bunks>成员组成，想要去看<destination>，并希望乘坐豪华游轮进行旅程。他们愿意支付给您 <payment> 。"
+	passengers 15 5 .09
+	to offer
+		random < 75
+		random < ( "passenger space" - 35 ) * 2
+	to accept
+		has "outfit (installed): Luxury Accommodations"
+	source
+		attributes "rich" "urban"
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		attributes "tourism"
+		distance 4 30
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment 210000 135
+		dialog phrase "generic passenger dropoff payment"
+
+mission "Tourists back [0]"
+	name "将游客带回 <planet>"
+	job
+	repeat
+	description "该游客将返回 <destination>，并将向您支付 <payment>。"
+	passengers 1
+	to offer
+		random < 20
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "tourism"
+	destination
+		distance 6 35
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment
+		payment 6000
+		dialog phrase "generic passenger dropoff payment"
+
+mission "Tourists back [1]"
+	name "将游客带回家<planet>"
+	job
+	repeat
+	description "这些 <bunks> 游客将返回 <destination>。他们愿意支付给您 <payment> 。"
+	passengers 2 10 .9
+	to offer
+		random < 50
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "tourism"
+	destination
+		distance 2 25
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment
+		payment 4000
+		dialog phrase "generic passenger dropoff payment"
+
+mission "Wealthy tourists back"
+	name "<planet> 的富有游客的家"
+	job
+	repeat
+	description "这些 <bunks> 富有的游客正前往 <destination> 的家，并希望乘坐豪华游轮旅行。他们愿意支付给您 <payment> 。"
+	passengers 2 10 .9
+	to offer
+		random < 75
+	to accept
+		has "outfit (installed): Luxury Accommodations"
+	source
+		attributes "tourism"
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		attributes "rich" "urban"
+		distance 4 30
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment 10000 200
+		dialog phrase "generic passenger dropoff payment"
+
+mission "Wealthy tourist group back [0]"
+	name "<planet> 的富有游客的家"
+	job
+	repeat
+	description "一群由 <bunks> 成员组成的富有游客正前往 <destination> 的家，并希望乘坐豪华游轮进行旅程。他们愿意支付给您 <payment> 。"
+	passengers 15 5 .09
+	to offer
+		random < 75
+		random < ( "passenger space" - 35 ) * 2
+	to accept
+		has "outfit (installed): Luxury Accommodations"
+	source
+		attributes "tourism"
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		attributes "rich" "urban"
+		distance 4 30
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment 210000 135
+		dialog phrase "generic passenger dropoff payment"
+
+mission "Wealthy tourist group back [1]"
+	name "<planet> 的富有游客的家"
+	job
+	repeat
+	description "一群由 <bunks> 成员组成的富有游客正前往 <destination> 的家，并希望乘坐豪华游轮进行旅程。他们愿意支付给您 <payment> 。"
+	passengers 15 5 .09
+	to offer
+		random < 75
+		random < ( "passenger space" - 35 ) * 2
+	to accept
+		has "outfit (installed): Luxury Accommodations"
+	source
+		attributes "tourism"
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		attributes "rich" "urban"
+		distance 4 30
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment 210000 135
+		dialog phrase "generic passenger dropoff payment"
+
+mission "Family [0]"
+	name "将家人运送到<planet>"
+	job
+	repeat
+	description "该 <bunks> 系列正在迁移到 <destination> 。他们将支付您 <payment> 让您带他们去那里。"
+	passengers 2 4 .5
+	to offer
+		random < 60
+		"passenger space" >= 5
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		distance 4 16
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment
+		payment 4000
+		dialog "您所运送的家人在向您支付 <payment> 后离开您的船。"
+
+mission "Family [1]"
+	name "将家人运送到<planet>"
+	job
+	repeat
+	description "该 <bunks> 系列正在迁移到 <destination> 。他们将支付您 <payment> 让您带他们去那里。"
+	passengers 2 4 .5
+	to offer
+		random < 50
+		"passenger space" >= 5
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		distance 5 20
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment
+		payment 6000
+		dialog "您所运送的家人在向您支付 <payment> 后离开您的船。"
+
+mission "Family [2]"
+	name "将家人运送到<planet>"
+	job
+	repeat
+	description "该 <bunks> 系列正在迁移到 <destination> 。他们将支付您 <payment> 让您带他们去那里。"
+	passengers 2 4 .5
+	to offer
+		random < 40
+		"passenger space" >= 5
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		distance 6 24
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment
+		payment 8000
+		dialog "您所运送的家人在向您支付 <payment> 后离开您的船。"
+
+mission "Family [3]"
+	name "将家人运送到<planet>"
+	job
+	repeat
+	description "该 <bunks> 系列正在迁移到 <destination> 。他们将支付您 <payment> 让您带他们去那里。"
+	passengers 2 4 .5
+	to offer
+		random < 30
+		"passenger space" >= 5
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		distance 8 32
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment
+		payment 10000
+		dialog "您所运送的家人在向您支付 <payment> 后离开您的船。"
+
+mission "Strike Breakers [mining]"
+	name "罢工断路器到<planet>"
+	job
+	repeat
+	description "将 <bunks> 罢工破坏者带到 <destination> ，以代替罢工的矿工。公司将向您支付<payment>。"
+	passengers 5 5 .2
+	to offer
+		random < 10
+		"passenger space" > 15
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		attributes "mining"
+		distance 2 20
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment
+		payment 10000
+		dialog "在被警察拦住的愤怒抗议人群中，你卸下了罢工破坏者。当您返回船上时，您发现公司已将约定的付款<payment>转入您的账户。"
+
+mission "Strike Breakers [large mining]"
+	name "罢工断路器到<planet>"
+	job
+	repeat
+	description "将 <bunks> 罢工破坏者带到 <destination> ，以代替罢工的矿工。公司将向您支付<payment>。"
+	passengers 40 4 .08
+	to offer
+		random < "passenger space" - 45
+		random < 10
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		attributes "mining"
+		distance 2 20
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment 130000 100
+		dialog "在被警察拦住的愤怒抗议人群中，你卸下了罢工破坏者。当您返回船上时，您发现公司已将约定的付款<payment>转入您的账户。"
+
+mission "Strike Breakers [textile]"
+	name "罢工断路器到<planet>"
+	job
+	repeat
+	description "将 <bunks> 罢工破坏者带到 <destination> ，以代替罢工的纺织工人。公司将向您支付<payment>。"
+	passengers 5 5 .2
+	to offer
+		random < 10
+		"passenger space" > 15
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		attributes "textiles"
+		distance 2 20
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment
+		payment 10000
+		dialog "在被警察拦住的愤怒抗议人群中，你卸下了罢工破坏者。当您返回船上时，您发现公司已将约定的付款<payment>转入您的账户。"
+
+mission "Strike Breakers [large textile]"
+	name "罢工断路器到<planet>"
+	job
+	repeat
+	description "将 <bunks> 罢工破坏者带到 <destination> ，以代替罢工的纺织工人。公司将向您支付<payment>。"
+	passengers 40 4 .08
+	to offer
+		random < "passenger space" - 45
+		random < 10
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		attributes "textiles"
+		distance 2 20
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment 130000 100
+		dialog "在被警察拦住的愤怒抗议人群中，你卸下了罢工破坏者。当您返回船上时，您发现公司已将约定的付款<payment>转入您的账户。"
+
+mission "Strike Breakers [factory]"
+	name "罢工断路器到<planet>"
+	job
+	repeat
+	description "将 <bunks> 罢工破坏者带到 <destination> ，以代替正在罢工的工厂工人。公司将向您支付<payment>。"
+	passengers 5 5 .2
+	to offer
+		random < 10
+		"passenger space" > 15
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		attributes "factory"
+		distance 2 20
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment
+		payment 10000
+		dialog "在被警察拦住的愤怒抗议人群中，你卸下了罢工破坏者。当您返回船上时，您发现公司已将约定的付款<payment>转入您的账户。"
+
+mission "Strike Breakers [large factory]"
+	name "罢工断路器到<planet>"
+	job
+	repeat
+	description "将 <bunks> 罢工破坏者带到 <destination> ，以代替正在罢工的工厂工人。公司将向您支付<payment>。"
+	passengers 40 4 .08
+	to offer
+		random < "passenger space" - 45
+		random < 10
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		attributes "factory"
+		distance 2 20
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment 130000 100
+		dialog "在被警察拦住的愤怒抗议人群中，你卸下了罢工破坏者。当您返回船上时，您发现公司已将约定的付款<payment>转入您的账户。"
+
+mission "Colonists [0]"
+	name "<planet> 的殖民者"
+	job
+	repeat
+	description "这些 <bunks> 人希望加入 <destination> 上的殖民地。他们将支付您 <payment> 让您带他们去那里。"
+	passengers 10 4 .1
+	to offer
+		random < ( "passenger space" - 20 ) / 2
+	source
+		attributes "urban" "near earth" "core" "factory"
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		attributes "frontier" "dirt belt" "south" "farming" "mining" "rim" "forest"
+		not attributes "station" "urban"
+		distance 2 20
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment 70000 100
+		dialog "殖民者在离开您的船之前将 <payment> 交给您，渴望在 <planet> 上开始他们的新生活。"
+
+mission "Colonists [1]"
+	name "<planet> 的殖民者"
+	job
+	repeat
+	description "这些 <bunks> 人希望加入 <destination> 上的殖民地。他们将支付您 <payment> 让您带他们去那里。"
+	passengers 10 4 .1
+	to offer
+		random < ( "passenger space" - 20 ) / 2
+	source
+		attributes "urban" "near earth" "core" "factory"
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		attributes "frontier" "dirt belt" "south" "farming" "mining" "rim" "forest"
+		not attributes "station" "urban"
+		distance 4 30
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment 80000 100
+		dialog "殖民者在离开您的船之前将 <payment> 交给您，渴望在 <planet> 上开始他们的新生活。"
+
+mission "Colonists [2]"
+	name "<planet> 的殖民者"
+	job
+	repeat
+	description "这些 <bunks> 人希望加入 <destination> 上的殖民地。他们将支付您 <payment> 让您带他们去那里。"
+	passengers 10 4 .1
+	to offer
+		random < ( "passenger space" - 20 ) / 2
+	source
+		attributes "urban" "near earth" "core" "factory"
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		attributes "frontier" "dirt belt" "south" "farming" "mining" "rim" "forest"
+		not attributes "station" "urban"
+		distance 2 20
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment 90000 100
+		dialog "殖民者在离开您的船之前将 <payment> 交给您，渴望在 <planet> 上开始他们的新生活。"
+
+mission "Colonists [3]"
+	name "<planet> 的殖民者"
+	job
+	repeat
+	description "这些 <bunks> 人希望加入 <destination> 上的殖民地。他们将支付您 <payment> 让您带他们去那里。"
+	passengers 10 4 .1
+	to offer
+		random < ( "passenger space" - 20 ) / 2
+	source
+		attributes "urban" "near earth" "core" "factory"
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		attributes "frontier" "dirt belt" "south" "farming" "mining" "rim" "forest"
+		not attributes "station" "urban"
+		distance 4 30
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment 100000 100
+		dialog "殖民者在离开您的船之前将 <payment> 交给您，渴望在 <planet> 上开始他们的新生活。"
+
+mission "Stranded Field Trip"
+	name "<planet> 实地考察陷入困境"
+	job
+	repeat
+	description `由于预订的交通意外中断，这些 <bunks> 学生在实地考察中被困。他们可以获得 <payment> 的奖励，并将他们的 <tons> 行李送回家中 <destination>。`
+	passengers 20 4 .1
+	cargo "educational supplies" 2 10 .6
+	to offer
+		random < ( "passenger space" - 30 ) / 2
+		random < 10
+	source
+		attributes "near earth" "deep" "paradise" "tourism"
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		attributes "education" "near earth" "deep" "paradise" "urban"
+		not attributes "station" "urban"
+		distance 4 16
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment 100000 150
+		dialog `学生们兴奋地冲下船，投入等待的父母的怀抱。这次冒险很有趣，但他们很高兴在这么长时间后安全回家。学校将 <payment> 存入您的帐户。`
+
+mission "Prisoners [0]"
+	name "将囚犯运送至 <planet>"
+	job
+	repeat
+	description "将 <bunks> 轻罪犯带到 <destination>，他们将在那里作为矿工服刑。他们必须被关押在为转移罪犯而建造的适当设施中。付款方式为 <payment>。"
+	passengers 2 10 .9
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		distance 2 10
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "mining"
+		attributes "north" "south" "rim" "frontier" "core"
+	to offer
+		random < 15
+	to accept
+		has "outfit (installed): Brig"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment 5000 165
+		dialog "乘客们在几名全副武装的警卫的注视下，闷闷不乐地走出了船，准备在 <planet> 的矿井里充当强制劳工，偿还社会债务。您收到了 <payment> 的付款。"
+
+mission "Prisoners [1]"
+	name "将囚犯运送至 <planet>"
+	job
+	repeat
+	description "将<bunks>轻罪罪犯运送到<destination>，他们将在那里作为工厂工人服刑。他们必须被关押在为转移罪犯而建造的适当设施中。付款方式为 <payment>。"
+	passengers 2 10 .9
+	to offer
+		random < 15
+	to accept
+		has "outfit (installed): Brig"
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		distance 2 10
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "factory"
+		attributes "north" "south" "rim" "frontier" "core"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment 5000 165
+		dialog "乘客们在几名全副武装的警卫的注视下，不高兴地拖着步子下了船，准备在 <planet> 的工厂里当强迫劳工，偿还社会的债务。您收到了 <payment> 的付款。"
+
+mission "Prisoners [2]"
+	name "将囚犯运送至 <planet>"
+	job
+	repeat
+	description "将 <bunks> 轻罪犯运送到 <destination>，他们将在那里作为家庭佣人服刑。他们必须被关押在为转移罪犯而建造的适当设施中。付款方式为 <payment>。"
+	passengers 2 10 .9
+	to offer
+		random < 15
+	to accept
+		has "outfit (installed): Brig"
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		distance 2 10
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "paradise"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment 5000 165
+		dialog "乘客们在几名全副武装的警卫的注视下，不高兴地拖着步子走出了船，准备作为 <planet> 富有精英的家庭仆人来偿还社会债务。您收到了 <payment> 的付款。"
+
+mission "Prisoners [3]"
+	name "将囚犯运送至 <planet>"
+	job
+	repeat
+	description "将 <bunks> 轻微罪犯送往 <destination> 的流放地。他们必须被关押在为转移罪犯而建造的适当设施中。付款方式为 <payment>。"
+	passengers 2 15 .9
+	to offer
+		random < 15
+	to accept
+		has "outfit (installed): Brig"
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		distance 2 10
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "frontier" "moon" "military"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment 5000 165
+		dialog "乘客们在几个全副武装的警卫的注视下，不高兴地走出了船，准备在这个偏远世界的流放地偿还对社会的债务。您收到了 <payment> 的付款。"
+
+mission "Prisoners [4]"
+	name "将囚犯运送至 <planet>"
+	job
+	repeat
+	description "将 <bunks> 暴力重罪犯送往 <destination> 的流放地。他们必须被关押在为转移罪犯而建造的适当设施中。付款方式为 <payment>。"
+	passengers 2 10 .9
+	to offer
+		random < 10
+		"combat rating" > 50
+	to accept
+		has "outfit (installed): Brig"
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		distance 2 10
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "frontier" "moon" "military"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment 25000 175
+		dialog "戴着镣铐的乘客们发出苦涩的咒骂，而魁梧、装备精良的警卫几乎把他们赶出了你的船，把他们赶向这个遥远世界的流放地。您收到了 <payment> 的付款。"
+	npc
+		government "Pirate"
+		personality nemesis plunders
+		system
+			distance 3 4
+		fleet "pirate raid"
+
+mission "Released Prisoners [0]"
+	name "假释犯被送往 <planet>"
+	job
+	repeat
+	description "<bunks> 囚犯服完苦役后送回家。付款方式为<payment>。"
+	passengers 2 10 .9
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "mining" "factory"
+		attributes "north" "south" "rim" "frontier" "core"
+	destination
+		distance 2 10
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	to offer
+		random < 15
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment 3000 150
+		dialog "被释放的囚犯走进太空港，除了他们微薄的物品和释放的文件外什么都没有。您收到了 <payment> 的付款。"
+
+mission "Released Prisoners [1]"
+	name "假释犯被送往 <planet>"
+	job
+	repeat
+	description "<bunks> 囚犯在服完刑期后作为家庭佣人被送回家。付款方式为<payment>。"
+	passengers 2 10 .9
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "paradise"
+	destination
+		distance 2 10
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	to offer
+		random < 15
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment 3000 150
+		dialog "被释放的囚犯走进太空港，除了他们微薄的物品和释放的文件外什么都没有。您收到了 <payment> 的付款。"
+
+mission "Released Prisoners [2]"
+	name "假释犯被送往 <planet>"
+	job
+	repeat
+	description "在流放地服完刑期后将 <bunks> 囚犯运送回家。付款方式为<payment>。"
+	passengers 2 10 .9
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "frontier" "moon" "military"
+	destination
+		distance 2 10
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	to offer
+		random < 15
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment 3000 150
+		dialog "被释放的囚犯走进太空港时，除了释放的文件和背上的衣服外，什么都没有。您收到了 <payment> 的付款。"
+
+mission "Passenger Runoff [0]"
+	name "前往 <planet> 的客运交通"
+	description "将一个戴兜帽的人物带到 <destination> 。付款方式为<payment>。"
+	job
+	repeat
+	passengers 1
+	"apparent payment" 12000
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		distance 2 8
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	to offer
+		random < 1
+		random < 10
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		dialog `当您的船降落在停机坪上时，闪烁的灯光会通知您货舱门已使用紧急释放装置打开。你瞥见乘客跑进太空港。`
+
+mission "Passenger Runoff [1]"
+	name "前往 <planet> 的客运交通"
+	description "将一名青少年带到 <destination> 。付款方式为<payment>。"
+	job
+	repeat
+	passengers 1
+	"apparent payment" 12000
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		distance 2 8
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	to offer
+		random < 1
+		random < 10
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		dialog `落地后，您到客舱通知他们到达并要求付款。当你举手敲门时，门打开了，一个少年从你身边冲了过去。在你回过神来之前，他们已经离开了，正在前往太空港的深处。`
+
+mission "Passenger Runoff With Payment [0]"
+	name "前往 <planet> 的客运交通"
+	description "将一个戴兜帽的人物带到 <destination> 。付款方式为<payment>。"
+	job
+	repeat
+	passengers 1
+	"apparent payment" 12000
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		distance 2 8
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	to offer
+		random < 1
+		random < 40
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment 10000
+		dialog `当您的船降落在停机坪上时，闪烁的灯光会通知您货舱门已使用紧急释放装置打开。检查海湾时，您发现了 <payment> 的付款，并发现您的乘客跑进了太空港。`
+
+mission "Passenger Runoff With Payment [1]"
+	name "前往 <planet> 的客运交通"
+	description "将一名青少年带到 <destination> 。付款方式为<payment>。"
+	job
+	repeat
+	passengers 1
+	"apparent payment" 12000
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		distance 2 8
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	to offer
+		random < 1
+		random < 40
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment 10000
+		dialog `当您的船降落在停机坪上时，闪烁的灯光会通知您货舱门已使用紧急释放装置打开。检查海湾时，您发现了 <payment> 的付款，并发现您的乘客跑进了太空港。`
+
+mission "Large Bulk Delivery [0]"
+	name "大批量交货至 <planet>"
+	job
+	repeat
+	description "将 <cargo> 传送至 <destination>。付款方式为 <payment>。"
+	cargo random 40 2 .02
+	to offer
+		random < 70
+		"cargo space" > 100
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		distance 2 8
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 4000
+		dialog phrase "generic cargo delivery payment"
+
+mission "Large Bulk Delivery [1]"
+	name "大批量交货至 <planet>"
+	job
+	repeat
+	description "将 <cargo> 传送至 <destination>。付款方式为 <payment>。"
+	cargo random 40 2 .02
+	to offer
+		random < 60
+		"cargo space" > 100
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		distance 3 12
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 6000
+		dialog phrase "generic cargo delivery payment"
+
+mission "Large Bulk Delivery [2]"
+	name "大批量交货至 <planet>"
+	job
+	repeat
+	description "将 <cargo> 传送至 <destination>。付款方式为 <payment>。"
+	cargo random 40 2 .02
+	to offer
+		random < 50
+		"cargo space" > 100
+	source
+		attributes "mining" "textiles" "factory" "farming" "fishing" "oil"
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		distance 4 16
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 8000
+		dialog phrase "generic cargo delivery payment"
+
+mission "Large Rush Delivery [0]"
+	name "大量紧急送货至 <planet>"
+	job
+	repeat
+	deadline
+	description "由 <date> 将 <cargo> 递送至 <destination>。付款方式为<payment>。"
+	cargo random 20 6 .1
+	to offer
+		random < 90
+		"cargo space" >= 50
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		distance 4 10
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 36000
+		dialog phrase "generic cargo delivery payment"
+
+mission "Large Rush Delivery [1]"
+	name "大量紧急送货至 <planet>"
+	job
+	repeat
+	deadline
+	description "由 <date> 将 <cargo> 递送至 <destination>。付款方式为<payment>。"
+	cargo random 20 6 .1
+	to offer
+		random < 80
+		"cargo space" >= 50
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		distance 5 12
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 38000
+		dialog phrase "generic cargo delivery payment"
+
+mission "Large Rush Delivery [2]"
+	name "大量紧急送货至 <planet>"
+	job
+	repeat
+	deadline
+	description "由 <date> 将 <cargo> 递送至 <destination>。付款方式为<payment>。"
+	cargo random 20 6 .1
+	to offer
+		random < 70
+		"cargo space" >= 50
+	source
+		attributes "mining" "textiles" "factory" "farming" "fishing" "oil"
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		distance 6 14
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 40000
+		dialog phrase "generic cargo delivery payment"
+
+mission "Large Rush Delivery [3]"
+	name "大量紧急送货至 <planet>"
+	job
+	repeat
+	deadline
+	description "由 <date> 将 <cargo> 递送至 <destination>。付款方式为<payment>。"
+	cargo random 20 6 .1
+	to offer
+		random < 60
+		"cargo space" >= 50
+	source
+		attributes "mining" "textiles" "factory" "farming" "fishing" "oil"
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	destination
+		distance 7 16
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment
+		payment 42000
+		dialog phrase "generic cargo delivery payment"
+
+mission "Recycle garbage"
+	name "回收垃圾"
+	description "<origin> 产生大量垃圾，需要在站外处理。将 <cargo> 运输至 <destination> 上的工业固体废物回收站。付款方式为<payment>。"
+	job
+	repeat
+	to offer
+		random < 70
+	cargo "Garbage" 15 100
+	source
+		attributes station
+	destination
+		attributes "factory" "mining" "dirt belt"
+		distance 9 12
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		dialog "您将 <commodity> 交给一家特别臭的固体废物回收商，并收取 <payment> 的付款。"
+		payment
+		payment 20000
+
+mission "FW Wildfire Aid [1]"
+	job
+	repeat
+	name "向 <planet> 提供野火援助"
+	substitutions
+		"<problem>" "forest fire"
+		"<problem>" "brush fire"
+			"random" < 60
+		"<problem>" "wildfire"
+			"random" < 30
+	description "<destination> 发生了重大 <problem> 事件，该星球上的多个定居点都受到了影响。由 <date> 将 <cargo> 带到 <planet>，以协助消防工作。付款方式为<payment>。"
+	cargo "flames aid" 25 2 .05
+	deadline
+	to offer
+		random < 5
+	source
+		government "Free Worlds"
+	destination
+		government "Free Worlds"
+		distance 2 8
+		attributes "forest"
+	on visit
+		dialog phrase "generic cargo on visit"
+	on complete
+		payment 8500 80
+		dialog "您将 <commodity> 的货物交付并收取 <payment> 的付款。 <planet> 市民感谢您的协助并向您告别。"
+
+mission "FW Wildfire Aid [2]"
+	job
+	repeat
+	name "消防员前往<planet>"
+	substitutions
+		"<problem>" "forest fire"
+		"<problem>" "brush fire"
+			"random" < 60
+		"<problem>" "wildfire"
+			"random" < 30
+	description "<destination> 发生了重大 <problem> 事件，该星球上的多个定居点都受到了影响。由 <date> 将一支 <bunks> 消防队员运送到 <planet>，以协助灭火工作。付款方式为<payment>。"
+	passengers 5 10
+	deadline
+	to offer
+		random < 5
+	source
+		government "Free Worlds"
+	destination
+		government "Free Worlds"
+		distance 2 8
+		attributes "forest"
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		payment 10500 80
+		dialog "您祝愿消防队一切顺利，并收取 <payment> 的付款。一群 <planet> 市民前来引导团队前往附近的帐篷，感谢您的协助。"
+
+mission "FW Cold Aid [1]"
+	name "冷泄压至 <planet>"
+	description `<destination> 发生了重大 <problem> 事件，该星球上的多个定居点都受到了影响。由 <date> 将 <cargo> 运送到 <planet> 以协助恢复工作。付款方式为<payment>。`
+	job
+	repeat
+	deadline
+	source
+		government "Free Worlds"
+	destination
+		government "Free Worlds"
+		distance 2 8
+		attributes "frozen"
+	substitutions
+		"<problem>" "cold snap"
+		"<problem>" "freeze"
+			"random" < 60
+		"<problem>" "snowstorm"
+			"random" < 30
+		"<problem>" "blizzard"
+			"random" < 10
+	cargo "cold aid" 10 15 0.5
+	to offer
+		random < 1
+	on complete
+		payment 8500 80
+		dialog `您将 <cargo> 的货物转交给有需要的社区，以换取 <payment> 。`
+
+mission "FW Cold Aid [2]"
+	name "冷泄压至 <planet>"
+	description `<destination> 发生了重大 <problem> 事件，该星球上的多个定居点都受到了影响。由 <date> 将 <cargo> 运送到 <planet> 以协助恢复工作。付款方式为<payment>。`
+	job
+	repeat
+	deadline
+	source
+		government "Free Worlds"
+	destination
+		government "Free Worlds"
+		distance 2 8
+		attributes "frozen"
+	substitutions
+		"<problem>" "cold snap"
+		"<problem>" "freeze"
+			"random" < 60
+		"<problem>" "snowstorm"
+			"random" < 30
+		"<problem>" "blizzard"
+			"random" < 10
+	cargo "cold aid" 10 15 0.5
+	to offer
+		random < 1
+	on complete
+		payment 8500 80
+		dialog `您将 <cargo> 的货物转交给有需要的社区，以换取 <payment> 。`
+
+
+
+mission "Bounty Hunting (Very Tiny)"
+	name "<system>附近通缉战斗机"
+	description "一个名为 <npc> 的小型海盗战士一直在攻击 <system> 系统附近的商人。通过 <day> 销毁它以支付费用 (<payment>)。"
+	repeat
+	job
+	deadline 14
+	"apparent payment" 25000
+	to offer
+		or
+			"combat rating" > 2
+			has "ships: Interceptor"
+			has "ships: Light Warship"
+		or
+			and
+				"combat rating" < 80
+				random < 55
+			and
+				"combat rating" < 54
+				random < 50
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		not attributes "deep" "near earth" "paradise"
+	npc kill
+		government "Bounty"
+		personality heroic staying marked target tracked
+		system
+			distance 1 3
+			attributes "rim" "south" "north" "dirt belt" "core" "frontier"
+			not system "Ultima Thule"
+		fleet "Bounty (Very Tiny)"
+		dialog phrase "generic hunted bounty eliminated and payment dialog"
+		on kill
+			payment 25000
+			fail
+
+mission "Bounty Hunting (Very Tiny, Local)"
+	name "通缉战士进入<system>"
+	description "一架名为<npc>的小型海盗战斗机一直在攻击附近星系中的商人，据报道正在进入该星系。请通过 <day> 销毁它以支付费用 (<payment>)。"
+	repeat
+	job
+	deadline 3
+	"apparent payment" 25000
+	to offer
+		or
+			"combat rating" > 2
+			has "ships: Interceptor"
+			has "ships: Light Warship"
+		"combat rating" < 80
+		random < 10
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "rim" "south" "north" "dirt belt" "core" "frontier"
+	npc kill
+		government "Bounty"
+		personality heroic entering staying marked target
+		fleet "Bounty (Very Tiny)"
+		dialog phrase "generic hunted bounty eliminated and payment dialog"
+		on kill
+			payment 25000
+			fail
+
+
+
+mission "Bounty Hunting (Tiny)"
+	name "通缉 <system> 附近的拦截器"
+	description "一个名为 <npc> 的装备精良的海盗拦截器一直在攻击 <system> 系统附近的商人。通过 <day> 销毁它以支付费用 (<payment>)。"
+	repeat
+	job
+	deadline 14
+	"apparent payment" 50000
+	to offer
+		or
+			"combat rating" > 7
+			has "ships: Interceptor"
+			has "ships: Light Warship"
+		or
+			and
+				"combat rating" < 125
+				random < 55
+			and
+				"combat rating" < 54
+				random < 50
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		not attributes "deep" "near earth" "paradise"
+	npc kill
+		government "Bounty"
+		personality heroic staying marked target tracked
+		system
+			distance 2 3
+			attributes "rim" "south" "north" "dirt belt" "core" "frontier"
+			not system "Ultima Thule"
+		fleet "Bounty (Tiny)"
+		dialog phrase "generic hunted bounty eliminated and payment dialog"
+		on kill
+			payment 50000
+			fail
+
+mission "Bounty Hunting (Tiny, Local)"
+	name "通缉拦截器进入 <system>"
+	description "一个名为 <npc> 的装备精良的海盗拦截器一直在攻击附近恒星系统中的商人，据报道正在进入该系统。请通过 <day> 销毁它以支付费用 (<payment>)。"
+	repeat
+	job
+	deadline 3
+	"apparent payment" 50000
+	to offer
+		or
+			"combat rating" > 7
+			has "ships: Interceptor"
+			has "ships: Light Warship"
+		"combat rating" < 54
+		random < 10
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "rim" "south" "north" "dirt belt" "core" "frontier"
+	npc kill
+		government "Bounty"
+		personality heroic entering staying marked target
+		fleet "Bounty (Tiny)"
+		dialog phrase "generic hunted bounty eliminated and payment dialog"
+		on kill
+			payment 50000
+			fail
+
+mission "Bounty Hunting (Very Small)"
+	name "通缉 <system> 附近的小海盗"
+	description "一艘名为 <npc> 的小型海盗船一直在攻击 <system> 系统附近的商人。通过 <day> 销毁它以支付费用 (<payment>)。"
+	repeat
+	job
+	deadline 14
+	"apparent payment" 95000
+	to offer
+		or
+			"combat rating" > 54
+			has "ships: Light Warship"
+			has "ships: Medium Warship"
+		or
+			and
+				"combat rating" < 220
+				random < 45
+			and
+				"combat rating" < 80
+				random < 35
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		not attributes "deep" "near earth" "paradise"
+	npc kill
+		government "Bounty"
+		personality heroic staying marked target tracked
+		system
+			distance 2 3
+			attributes "rim" "south" "north" "dirt belt" "core" "frontier"
+			not system "Ultima Thule"
+		fleet "Bounty (Very Small)"
+		dialog phrase "generic hunted bounty eliminated and payment dialog"
+		on kill
+			payment 95000
+			fail
+
+mission "Bounty Hunting (Very Small, Local)"
+	name "通缉小海盗进入<system>"
+	description "一艘名为<npc>的小型海盗船一直在攻击附近星系中的商人，据报道正在进入该星系。请通过 <day> 销毁它以支付费用 (<payment>)。"
+	repeat
+	job
+	deadline 3
+	"apparent payment" 95000
+	to offer
+		or
+			"combat rating" > 54
+			has "ships: Light Warship"
+			has "ships: Medium Warship"
+		"combat rating" < 80
+		random < 10
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "rim" "south" "north" "dirt belt" "core" "frontier"
+	npc kill
+		government "Bounty"
+		personality heroic entering staying marked target
+		fleet "Bounty (Very Small)"
+		dialog phrase "generic hunted bounty eliminated and payment dialog"
+		on kill
+			payment 95000
+			fail
+
+mission "Bounty Hunting (Small)"
+	name "<system>附近通缉轻型战舰"
+	description "一艘名为<npc>的轻型海盗战舰一直在攻击<system>星系附近的商人。通过 <day> 销毁它以支付费用 (<payment>)。"
+	repeat
+	job
+	deadline 14
+	"apparent payment" 180000
+	to offer
+		or
+			"combat rating" > 80
+			has "ships: Light Warship"
+			has "ships: Medium Warship"
+			has "ships: Heavy Warship"
+		or
+			and
+				"combat rating" < 403
+				random < 40
+			and
+				"combat rating" < 350
+				random < 30
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		not attributes "deep" "near earth" "paradise"
+	npc kill
+		government "Bounty"
+		personality heroic staying marked target tracked
+		system
+			distance 2 3
+			attributes "rim" "south" "north" "dirt belt" "core" "frontier"
+			not system "Ultima Thule"
+		fleet "Bounty (Small)"
+		dialog phrase "generic hunted bounty eliminated and payment dialog"
+		on kill
+			payment 180000
+			fail
+
+mission "Bounty Hunting (Small, Local)"
+	name "通缉轻型战舰进入<system>"
+	description "一艘名为<npc>的轻型海盗战舰一直在攻击附近星系中的商人，据报道正在进入该星系。请通过 <day> 销毁它以支付费用 (<payment>)。"
+	repeat
+	job
+	deadline 3
+	"apparent payment" 180000
+	to offer
+		or
+			"combat rating" > 80
+			has "ships: Light Warship"
+			has "ships: Medium Warship"
+			has "ships: Heavy Warship"
+		"combat rating" < 350
+		random < 10
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "rim" "south" "north" "dirt belt" "core" "frontier"
+	npc kill
+		government "Bounty"
+		personality heroic entering staying marked target
+		fleet "Bounty (Small)"
+		dialog phrase "generic hunted bounty eliminated and payment dialog"
+		on kill
+			payment 180000
+			fail
+
+mission "Bounty Hunting (Medium)"
+	name "<system>附近通缉中型战舰"
+	description "一艘名为<npc>的中型海盗战舰一直在攻击<system>星系附近的商人。通过 <day> 销毁它以支付费用 (<payment>)。"
+	repeat
+	job
+	deadline 16
+	"apparent payment" 240000
+	to offer
+		"combat rating" > 125
+		or
+			random < 30
+			and
+				"combat rating" < 650
+				random < 30
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		not attributes "deep" "near earth" "paradise"
+	npc kill
+		government "Bounty"
+		personality heroic staying marked target tracked
+		system
+			distance 2 4
+			attributes "rim" "south" "north" "dirt belt" "core" "frontier"
+			not system "Ultima Thule"
+		fleet "Bounty (Medium)"
+		dialog phrase "generic hunted bounty eliminated and payment dialog"
+		on kill
+			payment 240000
+			fail
+
+mission "Bounty Hunting (Medium, Local)"
+	name "通缉中型战舰进入<system>"
+	description "一艘名为<npc>的中型海盗战舰一直在攻击附近星系中的商人，据报道正在进入该星系。请通过 <day> 销毁它以支付费用 (<payment>)。"
+	repeat
+	job
+	deadline 3
+	"apparent payment" 240000
+	to offer
+		"combat rating" > 125
+		or
+			random < 5
+			and
+				"combat rating" < 1300
+				random < 5
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "rim" "south" "north" "dirt belt" "core" "frontier"
+	npc kill
+		government "Bounty"
+		personality heroic entering staying marked target
+		fleet "Bounty (Medium)"
+		dialog phrase "generic hunted bounty eliminated and payment dialog"
+		on kill
+			payment 240000
+			fail
+
+mission "Bounty Hunting (Big)"
+	name "<system>附近通缉重型战舰"
+	description "一艘名为 <npc> 的重型战舰一直在攻击 <system> 星系附近的商人。通过 <day> 销毁它以支付费用 (<payment>)。"
+	repeat
+	job
+	deadline 16
+	"apparent payment" 300000
+	to offer
+		"combat rating" > 403
+		or
+			random < 35
+			and
+				"combat rating" < 2000
+				random < 20
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		not attributes "deep" "near earth" "paradise"
+	npc kill
+		government "Bounty"
+		personality heroic staying marked target tracked
+		system
+			distance 3 4
+			attributes "rim" "south" "north" "dirt belt" "core" "frontier"
+			not system "Ultima Thule"
+		fleet "Bounty (Big)"
+		dialog phrase "generic hunted bounty eliminated and payment dialog"
+		on kill
+			payment 300000
+			fail
+
+mission "Bounty Hunting (Big, Local)"
+	name "需要重型战舰进入<system>"
+	description "一艘名为<npc>的重型战舰一直在攻击附近星系中的商人，据报道正在进入该星系。请通过 <day> 销毁它以支付费用 (<payment>)。"
+	repeat
+	job
+	deadline 3
+	"apparent payment" 300000
+	to offer
+		"combat rating" > 403
+		or
+			random < 5
+			and
+				"combat rating" < 2000
+				random < 5
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "rim" "south" "north" "dirt belt" "core" "frontier"
+	npc kill
+		government "Bounty"
+		personality heroic entering staying marked target
+		fleet "Bounty (Big)"
+		dialog phrase "generic hunted bounty eliminated and payment dialog"
+		on kill
+			payment 300000
+			fail
+
+mission "Bounty Hunting (Small, Hidden)"
+	name "<system>附近伪装的轻型战舰"
+	description "一艘名为 <npc> 的轻型海盗战舰正在 <system> 系统的跳跃内冒充商船。找到一艘名称匹配的商船并通过 <day> 销毁它以支付费用 (<payment>)。"
+	repeat
+	job
+	deadline 30
+	"apparent payment" 360000
+	to offer
+		"combat rating" > 80
+		or
+			random < 2
+			and
+				"combat rating" < 403
+				random < 7
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "rim" "south" "north" "dirt belt" "core" "frontier"
+	npc kill
+		government "Bounty (Disguised)"
+		personality heroic marked staying
+		system
+			distance 1 1
+		fleet "Bounty (Small)"
+		dialog phrase "generic hunted bounty eliminated and payment dialog"
+		on kill
+			payment 360000
+			fail
+
+mission "Bounty Hunting (Medium, Hidden)"
+	name "<system>附近伪装的中型战舰"
+	description "一艘名为 <npc> 的中型海盗战舰正在 <system> 系统的跳跃内冒充商船。找到一艘名称匹配的商船并通过 <day> 销毁它以支付费用 (<payment>)。"
+	repeat
+	job
+	deadline 30
+	"apparent payment" 480000
+	to offer
+		"combat rating" > 125
+		or
+			random < 2
+			and
+				"combat rating" < 1300
+				random < 7
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "rim" "south" "north" "dirt belt" "core" "frontier"
+	npc kill
+		government "Bounty (Disguised)"
+		personality heroic marked staying
+		system
+			distance 1 1
+		fleet "Bounty (Medium)"
+		dialog phrase "generic hunted bounty eliminated and payment dialog"
+		on kill
+			payment 480000
+			fail
+
+mission "Bounty Hunting (Big, Hidden)"
+	name "<system>附近伪装的重型战舰"
+	description "一艘名为 <npc> 的重型战舰正在 <system> 系统的跳跃内冒充商船。找到一艘名称匹配的商船并通过 <day> 销毁它以支付费用 (<payment>)。"
+	repeat
+	job
+	deadline 30
+	"apparent payment" 600000
+	to offer
+		"combat rating" > 403
+		or
+			random < 2
+			and
+				"combat rating" < 2000
+				random < 7
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "rim" "south" "north" "dirt belt" "core" "frontier"
+	npc kill
+		government "Bounty (Disguised)"
+		personality heroic marked staying
+		system
+			distance 1 1
+		fleet "Bounty (Big)"
+		dialog phrase "generic hunted bounty eliminated and payment dialog"
+		on kill
+			payment 600000
+			fail
+
+mission "Bounty Hunting (Small, Boarding, Entering)"
+	name "<system>附近被盗的船只"
+	description "一名通缉犯正在乘坐一艘被盗的船 <npc> 逃跑，该船即将进入该系统。登船并将罪犯拘留在双桅船中，然后由 <date> 将他们带到 <destination>。捕获奖励：<payment>。"
+	passengers 1
+	deadline 14
+	repeat
+	job
+	to offer
+		"combat rating" > 20
+		random < 15
+	to accept
+		has "outfit (installed): Brig"
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "rim" "south" "north" "dirt belt" "core" "frontier"
+	destination
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "rim" "south" "north" "dirt belt" "core" "frontier"
+		distance 2 6
+	npc board
+		government "Bounty"
+		personality timid fleeing marked uninterested entering target
+		fleet
+			names "civilian"
+			variant
+				"Flivver (Racing)"
+			variant
+				"Arrow"
+			variant
+				"Scout (Speedy)"
+			variant
+				"Clipper (Speedy)"
+		dialog "你用炸药冲上船，将逃跑的罪犯限制在你的双桅船里。是时候将它们交付给 <planet> 了。"
+	on visit
+		dialog phrase "generic bounty hunting boarding on visit"
+	on complete
+		payment 175000
+		dialog "<planet> 政府感谢您逮捕罪犯，并支付 <payment>。"
+
+mission "Bounty Hunting (Medium, Boarding, Entering)"
+	name "<system>附近被盗的战舰"
+	description "几名通缉犯正乘坐一艘被盗的战舰<npc>逃跑，这艘战舰即将进入这个系统。登船并将罪犯拘留在双桅船中，然后由 <date> 将他们带到 <destination>。捕获奖励：<payment>。"
+	passengers 4
+	deadline 14
+	repeat
+	job
+	to offer
+		"combat rating" > 148
+		random < 15
+	to accept
+		has "outfit (installed): Brig"
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "rim" "south" "north" "dirt belt" "core" "frontier"
+	destination
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "rim" "south" "north" "dirt belt" "core" "frontier"
+		distance 2 6
+	npc board
+		government "Bounty"
+		personality timid fleeing marked uninterested entering target
+		fleet
+			names "civilian"
+			variant
+				"Corvette (Speedy)"
+			variant
+				"Osprey (Missile)"
+			variant
+				"Argosy (Missile)"
+			variant
+				"Modified Argosy (Heavy)"
+			variant
+				"Raven (Heavy)"
+		dialog "你用炸药冲上船，制服了逃跑的罪犯，并将他们限制在你的船的双桅船里。是时候将它们交付给 <planet> 了。"
+	on visit
+		dialog phrase "generic bounty hunting boarding on visit"
+	on complete
+		payment 350000
+		dialog "<planet> 政府感谢您逮捕犯罪团伙，并向您支付 <payment>。"
+
+mission "Bounty Hunting (Solo Marauder I)"
+	name "<system> 附近的掠夺者拦截器"
+	description "名为 <npc> 的掠夺者拦截器一直在攻击 <system> 系统附近的商家。通过 <day> 销毁它以支付费用 (<payment>)。"
+	repeat
+	job
+	deadline 16
+	"apparent payment" 130000
+	to offer
+		or
+			"combat rating" > 54
+			has "ships: Interceptor"
+			has "ships: Light Warship"
+		"combat rating" > 20
+		"combat rating" < 220
+		random < 3
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		not attributes "deep" "near earth" "paradise"
+	npc kill
+		government "Bounty"
+		personality heroic staying marked target tracked
+		system
+			distance 2 3
+			attributes "rim" "south" "north" "dirt belt" "core" "frontier"
+			not system "Ultima Thule"
+		fleet "Marauder I"
+		dialog phrase "generic hunted bounty eliminated and payment dialog"
+		on kill
+			payment 130000
+			fail
+
+mission "Bounty Hunting (Solo Marauder II)"
+	name "<system>附近的小型掠夺者"
+	description "一艘名为 <npc> 的小型掠夺者飞船一直在攻击 <system> 星系附近的商人。通过 <day> 销毁它以支付费用 (<payment>)。"
+	repeat
+	job
+	deadline 16
+	"apparent payment" 200000
+	to offer
+		or
+			"combat rating" > 80
+			has "ships: Light Warship"
+			has "ships: Medium Warship"
+		"combat rating" > 54
+		"combat rating" < 220
+		random < 3
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		not attributes "deep" "near earth" "paradise"
+	npc kill
+		government "Bounty"
+		personality heroic staying marked target tracked
+		system
+			distance 2 3
+			government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		fleet "Marauder II"
+		dialog phrase "generic hunted bounty eliminated and payment dialog"
+		on kill
+			payment 200000
+			fail
+
+mission "Bounty Hunting (Solo Marauder III)"
+	name "<system>附近的掠夺者"
+	description "一艘名为 <npc> 的掠夺者飞船一直在攻击 <system> 星系附近的商人。通过 <day> 销毁它以支付费用 (<payment>)。"
+	repeat
+	job
+	deadline 16
+	"apparent payment" 310000
+	to offer
+		"combat rating" > 125
+		"combat rating" < 650
+		random < 3
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		not attributes "deep" "near earth" "paradise"
+	npc kill
+		government "Bounty"
+		personality heroic staying marked target tracked
+		system
+			distance 2 4
+			government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		fleet "Marauder III"
+		dialog phrase "generic hunted bounty eliminated and payment dialog"
+		on kill
+			payment 310000
+			fail
+
+mission "Bounty Hunting (Solo Marauder IV)"
+	name "<system>附近的大型掠夺者"
+	description "一艘名为 <npc> 的大型掠夺者飞船一直在攻击 <system> 星系附近的商人。通过 <day> 销毁它以支付费用 (<payment>)。"
+	repeat
+	job
+	deadline 18
+	"apparent payment" 500000
+	to offer
+		"combat rating" > 403
+		"combat rating" < 1300
+		random < 3
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		not attributes "deep" "near earth" "paradise"
+	npc kill
+		government "Bounty"
+		personality heroic staying marked target tracked
+		system
+			distance 3 4
+			government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		fleet "Marauder IV"
+		dialog phrase "generic hunted bounty eliminated and payment dialog"
+		on kill
+			payment 500000
+			fail
+
+mission "Bounty Hunting (Marauder I)"
+	name "<system>附近的小型掠夺者"
+	description "由一艘名为 <npc> 的船只率领的小型掠夺者船队一直在攻击 <system> 星系附近的商人。在 <day> 之前摧毁整个舰队以支付费用 (<payment>)。"
+	repeat
+	job
+	deadline 16
+	"apparent payment" 360000
+	to offer
+		"combat rating" > 220
+		or
+			and
+				"combat rating" < 500
+				random < 30
+			and
+				"combat rating" < 350
+				random < 30
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		not attributes "deep" "near earth" "paradise"
+	npc kill
+		government "Bounty"
+		personality heroic staying marked target tracked
+		system
+			distance 3 4
+			government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		fleet "Marauder fleet I"
+		dialog phrase "generic hunted bounty fleet eliminated and payment dialog"
+		on kill
+			payment 360000
+			fail
+
+mission "Bounty Hunting (Marauder II)"
+	name "<system>附近的小型掠夺者"
+	description "由一艘名为 <npc> 的船只率领的小型掠夺者船队一直在攻击 <system> 星系附近的商人。在 <day> 之前摧毁整个舰队以支付费用 (<payment>)。"
+	repeat
+	job
+	deadline 16
+	"apparent payment" 410000
+	to offer
+		"combat rating" > 350
+		or
+			and
+				"combat rating" < 1600
+				random < 30
+			and
+				"combat rating" < 403
+				random < 20
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		not attributes "deep" "near earth" "paradise"
+	npc kill
+		government "Bounty"
+		personality heroic staying marked target tracked
+		system
+			distance 3 4
+			attributes "rim" "south" "north" "dirt belt" "core" "frontier"
+			not system "Ultima Thule"
+		fleet "Marauder fleet II"
+		dialog phrase "generic hunted bounty fleet eliminated and payment dialog"
+		on kill
+			payment 410000
+			fail
+
+mission "Bounty Hunting (Marauder III)"
+	name "<system>附近的小型掠夺者"
+	description "由一艘名为 <npc> 的船只率领的小型掠夺者船队一直在攻击 <system> 星系附近的商人。在 <day> 之前摧毁整个舰队以支付费用 (<payment>)。"
+	repeat
+	job
+	deadline 16
+	"apparent payment" 450000
+	to offer
+		"combat rating" > 500
+		or
+			random < 20
+			and
+				"combat rating" < 650
+				random < 20
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "rim" "south" "north" "dirt belt" "core" "frontier"
+	npc kill
+		government "Bounty"
+		personality heroic staying marked target tracked
+		system
+			distance 3 4
+			attributes "rim" "south" "north" "dirt belt" "core" "frontier"
+			not system "Ultima Thule"
+		fleet "Marauder fleet III"
+		dialog phrase "generic hunted bounty fleet eliminated and payment dialog"
+		on kill
+			payment 450000
+			fail
+
+mission "Bounty Hunting (Marauder IV)"
+	name "<system> 附近的掠夺者"
+	description "由一艘名为 <npc> 的船只率领的掠夺者舰队一直在攻击 <system> 星系附近的商人。在 <day> 之前摧毁整个舰队以支付费用 (<payment>)。"
+	repeat
+	job
+	deadline 18
+	"apparent payment" 510000
+	to offer
+		"combat rating" > 650
+		or
+			random < 20
+			and
+				"combat rating" < 800
+				random < 20
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		not attributes "deep" "near earth" "paradise"
+	npc kill
+		government "Bounty"
+		personality heroic staying marked target tracked
+		system
+			distance 3 5
+			attributes "rim" "south" "north" "dirt belt" "core" "frontier"
+			not system "Ultima Thule"
+		fleet "Marauder fleet IV"
+		dialog phrase "generic hunted bounty fleet eliminated and payment dialog"
+		on kill
+			payment 510000
+			fail
+
+mission "Bounty Hunting (Marauder V)"
+	name "<system> 附近的掠夺者"
+	description "由一艘名为 <npc> 的船只率领的掠夺者舰队一直在攻击 <system> 星系附近的商人。在 <day> 之前摧毁整个舰队以支付费用 (<payment>)。"
+	repeat
+	job
+	deadline 18
+	"apparent payment" 550000
+	to offer
+		"combat rating" > 800
+		or
+			random < 20
+			and
+				"combat rating" < 1000
+				random < 10
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		not attributes "deep" "near earth" "paradise"
+	npc kill
+		government "Bounty"
+		personality heroic staying marked target tracked
+		system
+			distance 3 5
+			attributes "rim" "south" "north" "dirt belt" "core" "frontier"
+			not system "Ultima Thule"
+		fleet "Marauder fleet V"
+		dialog phrase "generic hunted bounty fleet eliminated and payment dialog"
+		on kill
+			payment 550000
+			fail
+
+
+mission "Bounty Hunting (Marauder VI)"
+	name "<system> 附近的掠夺者"
+	description "由一艘名为 <npc> 的船只率领的掠夺者舰队一直在攻击 <system> 星系附近的商人。在 <day> 之前摧毁整个舰队以支付费用 (<payment>)。"
+	repeat
+	job
+	deadline 18
+	"apparent payment" 590000
+	to offer
+		"combat rating" > 1000
+		or
+			random < 20
+			and
+				"combat rating" < 1300
+				random < 5
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		not attributes "deep" "near earth" "paradise"
+	npc kill
+		government "Bounty"
+		personality heroic staying marked target tracked
+		system
+			distance 3 5
+			attributes "rim" "south" "north" "dirt belt" "core" "frontier"
+			not system "Ultima Thule"
+		fleet "Marauder fleet VI"
+		dialog phrase "generic hunted bounty fleet eliminated and payment dialog"
+		on kill
+			payment 590000
+			fail
+
+mission "Bounty Hunting (Marauder VII)"
+	name "<system>附近的大型掠夺者"
+	description "由一艘名为 <npc> 的船只率领的大型掠夺者舰队一直在攻击 <system> 星系附近的商人。在 <day> 之前摧毁整个舰队以支付费用 (<payment>)。"
+	repeat
+	job
+	deadline 18
+	"apparent payment" 680000
+	to offer
+		"combat rating" > 1300
+		random < 25
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		not attributes "deep" "near earth" "paradise"
+	npc kill
+		government "Bounty"
+		personality heroic staying marked target tracked
+		system
+			distance 4 5
+			attributes "rim" "south" "north" "dirt belt" "core" "frontier"
+			not system "Ultima Thule"
+		fleet "Marauder fleet VII"
+		dialog phrase "generic hunted bounty fleet eliminated and payment dialog"
+		on kill
+			payment 680000
+			fail
+
+mission "Bounty Hunting (Marauder VIII)"
+	name "<system>附近的大型掠夺者"
+	description "由一艘名为 <npc> 的船只率领的大型掠夺者舰队一直在攻击 <system> 星系附近的商人。在 <day> 之前摧毁整个舰队以支付费用 (<payment>)。"
+	repeat
+	job
+	deadline 18
+	"apparent payment" 740000
+	to offer
+		"combat rating" > 1600
+		random < 20
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		not attributes "deep" "near earth" "paradise"
+	npc kill
+		government "Bounty"
+		personality heroic staying marked target tracked
+		system
+			distance 4 5
+			attributes "rim" "south" "north" "dirt belt" "core" "frontier"
+			not system "Ultima Thule"
+		fleet "Marauder fleet VIII"
+		dialog phrase "generic hunted bounty fleet eliminated and payment dialog"
+		on kill
+			payment 740000
+			fail
+
+mission "Bounty Hunting (Marauder IX)"
+	name "<system>附近的大型掠夺者"
+	description "由一艘名为 <npc> 的船只率领的大型掠夺者舰队一直在攻击 <system> 星系附近的商人。在 <day> 之前摧毁整个舰队以支付费用 (<payment>)。"
+	repeat
+	job
+	deadline 18
+	"apparent payment" 800000
+	to offer
+		"combat rating" > 2000
+		random < 20
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		not attributes "deep" "near earth" "paradise"
+	npc kill
+		government "Bounty"
+		personality heroic unconstrained staying marked target tracked
+		system
+			distance 4 5
+			attributes "rim" "south" "north" "dirt belt" "core" "frontier"
+			not system "Ultima Thule"
+		fleet "Marauder fleet IX"
+		dialog phrase "generic hunted bounty fleet eliminated and payment dialog"
+		on kill
+			payment 800000
+			fail
+
+mission "Bounty Hunting (Marauder X)"
+	name "<system> 附近臭名昭著的掠夺者"
+	description "传奇的 <npc> 及其伴随舰队一直在恐吓该太空区域的商人和执法部门。销毁整个舰队以支付费用 (<payment>)。请注意，<npc> 会伏击那些试图追捕它们的人。"
+	repeat
+	job
+	"apparent payment" 10000000
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+	to offer
+		"combat rating" > 8103
+		random < 5
+	npc kill
+		government "Bounty"
+		personality heroic unconstrained marked target tracked
+		system
+			distance 7 9
+			attributes "rim" "south" "north" "dirt belt" "core" "frontier"
+			not system "Ultima Thule"
+		fleet "Marauder fleet X"
+		dialog phrase "generic hunted bounty fleet eliminated and payment dialog"
+		on kill
+			payment 5000000
+			fail
+
+
+
+mission "Republic Navy Advisory System [frozen]"
+	name "冷泄压至 <planet>"
+	description "在严寒天气发生后，在 <date> 之前向 <destination> 提供 <cargo> 的人道主义援助。付款方式为<payment>。"
+	minor
+	repeat
+	deadline
+	source
+		government "Republic" "Syndicate"
+	destination
+		government "Republic" "Syndicate" "Independent" "Neutral"
+		distance 1 8
+		attributes "frozen"
+	substitutions
+		"<problem>" "cold snap"
+		"<problem>" "freeze"
+			"random" < 60
+		"<problem>" "snowstorm"
+			"random" < 30
+		"<problem>" "blizzard"
+			"random" < 10
+	cargo "cold aid" 10 15 0.5
+	to offer
+		random < 1
+	on offer
+		dialog `太空港的扬声器中传出一个声音。 “这是共和国海军咨询系统。<planet> 正在经历严重的 <problem> 。要求志愿者在 <date> 之前向 <planet> 提供 <cargo> 。提供 <payment> 的津贴，用于支付燃料、船员和任何杂费。”`
+	on complete
+		payment 8500 80
+		dialog `心怀感激的救援人员浑身颤抖地欢迎您的货物。您在一旁看着，并感到满意，<cargo> 很快就会到达那些最需要它的人手中。回到您的飞船后，您会收到通知，您已收到服务的 <payment>。`
+
+mission "Republic Navy Advisory System [volcanic]"
+	name "<planet> 的火山缓解"
+	description "在严重火山喷发后，在 <date> 之前向 <destination> 提供 <cargo> 的人道主义援助。付款方式为<payment>。"
+	minor
+	repeat
+	deadline
+	source
+		government "Republic" "Syndicate"
+	destination
+		government "Republic" "Syndicate" "Independent" "Neutral"
+		distance 1 8
+		attributes "volcanic" "lava"
+	substitutions
+		"<problem>" "volcanic event"
+		"<problem>" "volcanic eruption"
+			"random" < 60
+		"<problem>" "gas eruption"
+			"random" < 30
+	cargo "flames aid" 10 15 0.5
+	to offer
+		random < 1
+	on offer
+		dialog `太空港的扬声器中传出一个声音。 “这是共和国海军咨询系统。<planet> 正在经历严重的 <problem> 。要求志愿者在 <date> 之前向 <planet> 提供 <cargo> 。提供 <payment> 的津贴，用于支付燃料、船员和任何杂费。”`
+	on complete
+		payment 8500 80
+		dialog `救援人员一脸轻松地欢迎您的货物。您在一旁看着，并感到满意，<cargo> 很快就会到达那些最需要它的人手中。回到您的飞船后，您会收到通知，您已收到服务的 <payment>。`
+
+mission "Republic Navy Advisory System [wildfire cargo]"
+	name "为 <planet> 提供野火救援"
+	description "在严重野火发生后，在 <date> 之前向 <destination> 提供 <cargo> 的人道主义援助。付款方式为<payment>。"
+	minor
+	repeat
+	deadline
+	source
+		government "Republic"
+	destination
+		government "Republic" "Syndicate" "Independent" "Neutral"
+		distance 1 8
+		attributes "forest"
+	substitutions
+		"<problem>" "forest fire"
+		"<problem>" "brush fire"
+			"random" < 60
+		"<problem>" "wildfire"
+			"random" < 30
+	cargo "flames aid" 10 15 0.5
+	to offer
+		random < 1
+	on offer
+		dialog `太空港的扬声器中传出一个声音。 “这是共和国海军咨询系统。<planet> 正在经历严重的 <problem> 。要求志愿者在 <date> 之前向 <planet> 提供 <cargo> 。提供 <payment> 的津贴，用于支付燃料、船员和任何杂费。”`
+	on complete
+		payment 8500 80
+		dialog `满身灰烬的救援人员如释重负地欢迎您的货物。您在一旁看着，并感到满意，<cargo> 很快就会到达那些最需要它的人手中。回到您的飞船后，您会收到通知，您已收到服务的 <payment>。`
+
+mission "Republic Navy Advisory System [wildfire firefighters]"
+	name "运输消防员"
+	description "由 <date> 将 <bunks> 消防员运送到 <planet>。付款方式为<payment>。"
+	minor
+	repeat
+	deadline
+	source
+		government "Republic" "Syndicate"
+	destination
+		government "Republic" "Syndicate" "Independent" "Neutral"
+		distance 1 8
+		attributes "forest"
+	substitutions
+		"<problem>" "forest fire"
+		"<problem>" "brush fire"
+			"random" < 60
+		"<problem>" "wildfire"
+			"random" < 30
+	passengers 5 15
+	to offer
+		random < 1
+	on offer
+		dialog `太空港的扬声器中传出一个声音。 “这是共和国海军咨询系统。<planet> 正在经历严重的 <problem>。请志愿者在 <date> 之前将 <bunks> 消防员运送到 <planet>。提供 <payment> 的津贴，用于支付燃料、人员和任何杂费。”`
+	on complete
+		payment 9000 85
+		dialog "你降落在距离大火仅几分钟路程的临时着陆点。当消防员打开舱门离开时，烟雾飘进你的船，让你的眼睛和鼻子发痒。当您看着乘客前往附近的停靠区时，您会想到他们很快就会自愿进入的地狱。您的通信系统发出一声鸣叫，表明您的 <payment> 津贴已存入，您开始大气层飞行返回 <planet> 的主太空港。"
+
+mission "Mineral Shortages (Silicon)"
+	name "已收获硅至 <planet>"
+	job
+	repeat
+	deadline 7
+	description "<planet> 上的工厂正遭受矿物短缺的困扰。收获 <amount> 吨 <mineral> 并由 <date> 返回 <destination>。付款方式为<payment>。"
+	substitutions
+		"<mineral>" "Silicon"
+		"<amount>" "120"
+	to offer
+		random < 5
+		"outfit (all): Silicon" < 30
+	to accept
+		"cargo space" >= 120
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "factory"
+	on visit
+		dialog phrase "generic mineral on visit"
+	on complete
+		payment 55200
+		outfit "Silicon" -120
+		dialog phrase "generic mineral delivery payment"
+
+mission "Mineral Shortages (Lead)"
+	name "已收获 <planet> 的线索"
+	job
+	repeat
+	deadline 7
+	description "<planet> 上的工厂正遭受矿物短缺的困扰。收获 <amount> 吨 <mineral> 并由 <date> 返回 <destination>。付款方式为<payment>。"
+	substitutions
+		"<mineral>" "Lead"
+		"<amount>" "120"
+	to offer
+		random < 5
+		"outfit (all): Lead" < 30
+	to accept
+		"cargo space" >= 120
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "factory"
+	on visit
+		dialog phrase "generic mineral on visit"
+	on complete
+		payment 124200
+		outfit "Lead" -120
+		dialog phrase "generic mineral delivery payment"
+
+mission "Mineral Shortages (Iron)"
+	name "已收获铁至 <planet>"
+	job
+	repeat
+	deadline 7
+	description "<planet> 上的工厂正遭受矿物短缺的困扰。收获 <amount> 吨 <mineral> 并由 <date> 返回 <destination>。付款方式为<payment>。"
+	substitutions
+		"<mineral>" "Iron"
+		"<amount>" "120"
+	to offer
+		random < 5
+		"outfit (all): Iron" < 30
+	to accept
+		"cargo space" >= 120
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "factory"
+	on visit
+		dialog phrase "generic mineral on visit"
+	on complete
+		payment 165600
+		outfit "Iron" -120
+		dialog phrase "generic mineral delivery payment"
+
+mission "Mineral Shortages (Aluminum)"
+	name "已收获铝至 <planet>"
+	job
+	repeat
+	deadline 7
+	description "<planet> 上的工厂正遭受矿物短缺的困扰。收获 <amount> 吨 <mineral> 并由 <date> 返回 <destination>。付款方式为<payment>。"
+	substitutions
+		"<mineral>" "Aluminum"
+		"<amount>" "90"
+	to offer
+		random < 5
+		"outfit (all): Aluminum" < 20
+	to accept
+		"cargo space" >= 90
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "factory"
+	on visit
+		dialog phrase "generic mineral on visit"
+	on complete
+		payment 186300
+		outfit "Aluminum" -90
+		dialog phrase "generic mineral delivery payment"
+
+mission "Mineral Shortages (Titanium)"
+	name "已收获钛至 <planet>"
+	job
+	repeat
+	deadline 7
+	description "<planet> 上的工厂正遭受矿物短缺的困扰。收获 <amount> 吨 <mineral> 并由 <date> 返回 <destination>。付款方式为<payment>。"
+	substitutions
+		"<mineral>" "Titanium"
+		"<amount>" "90"
+	to offer
+		random < 5
+		"outfit (all): Titanium" < 20
+	to accept
+		"cargo space" >= 90
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "factory"
+	on visit
+		dialog phrase "generic mineral on visit"
+	on complete
+		payment 258750
+		outfit "Titanium" -90
+		dialog phrase "generic mineral delivery payment"
+
+mission "Mineral Shortages (Copper)"
+	name "已收获铜至 <planet>"
+	job
+	repeat
+	deadline 7
+	description "<planet> 上的工厂正遭受矿物短缺的困扰。收获 <amount> 吨 <mineral> 并由 <date> 返回 <destination>。付款方式为<payment>。"
+	substitutions
+		"<mineral>" "Copper"
+		"<amount>" "90"
+	to offer
+		random < 5
+		"outfit (all): Copper" < 20
+	to accept
+		"cargo space" >= 90
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "factory"
+	on visit
+		dialog phrase "generic mineral on visit"
+	on complete
+		payment 310500
+		outfit "Copper" -90
+		dialog phrase "generic mineral delivery payment"
+
+mission "Mineral Shortages (Neodymium)"
+	name "已收获到 <planet> 的钕"
+	job
+	repeat
+	deadline 14
+	description "<planet> 上的工厂正遭受矿物短缺的困扰。收获 <amount> 吨 <mineral> 并由 <date> 返回 <destination>。付款方式为<payment>。"
+	substitutions
+		"<mineral>" "Neodymium"
+		"<amount>" "60"
+	to offer
+		random < 5
+		"outfit (all): Neodymium" < 10
+	to accept
+		"cargo space" >= 60
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "factory"
+	on visit
+		dialog phrase "generic mineral on visit"
+	on complete
+		payment 262200
+		outfit "Neodymium" -60
+		dialog phrase "generic mineral delivery payment"
+
+mission "Mineral Shortages (Tungsten)"
+	name "已收获钨至 <planet>"
+	job
+	repeat
+	deadline 14
+	description "<planet> 上的工厂正遭受矿物短缺的困扰。收获 <amount> 吨 <mineral> 并由 <date> 返回 <destination>。付款方式为<payment>。"
+	substitutions
+		"<mineral>" "Tungsten"
+		"<amount>" "60"
+	to offer
+		random < 5
+		"outfit (all): Tungsten" < 10
+	to accept
+		"cargo space" >= 60
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "factory"
+	on visit
+		dialog phrase "generic mineral on visit"
+	on complete
+		payment 310500
+		outfit "Tungsten" -60
+		dialog phrase "generic mineral delivery payment"
+
+mission "Mineral Shortages (Uranium)"
+	name "已收获铀至 <planet>"
+	job
+	repeat
+	deadline 14
+	description "<planet> 上的工厂正遭受矿物短缺的困扰。收获 <amount> 吨 <mineral> 并由 <date> 返回 <destination>。付款方式为<payment>。"
+	substitutions
+		"<mineral>" "Uranium"
+		"<amount>" "60"
+	to offer
+		random < 5
+		"outfit (all): Uranium" < 10
+	to accept
+		"cargo space" >= 60
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "factory"
+	on visit
+		dialog phrase "generic mineral on visit"
+	on complete
+		payment 345000
+		outfit "Uranium" -60
+		dialog phrase "generic mineral delivery payment"
+
+mission "Mineral Shortages (Silver)"
+	name "已收获银币至 <planet>"
+	job
+	repeat
+	deadline 28
+	description "<planet> 上的工厂正遭受矿物短缺的困扰。收获 <amount> 吨 <mineral> 并由 <date> 返回 <destination>。付款方式为<payment>。"
+	substitutions
+		"<mineral>" "Silver"
+		"<amount>" "30"
+	to offer
+		random < 5
+		"outfit (all): Silver" < 5
+	to accept
+		"cargo space" >= 30
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "factory"
+	on visit
+		dialog phrase "generic mineral on visit"
+	on complete
+		payment 207000
+		outfit "Silver" -30
+		dialog phrase "generic mineral delivery payment"
+
+mission "Mineral Shortages (Gold)"
+	name "已收获黄金至 <planet>"
+	job
+	repeat
+	deadline 28
+	description "<planet> 上的工厂正遭受矿物短缺的困扰。收获 <amount> 吨 <mineral> 并由 <date> 返回 <destination>。付款方式为<payment>。"
+	substitutions
+		"<mineral>" "Gold"
+		"<amount>" "30"
+	to offer
+		random < 5
+		"outfit (all): Gold" < 5
+	to accept
+		"cargo space" >= 30
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "factory"
+	on visit
+		dialog phrase "generic mineral on visit"
+	on complete
+		payment 276000
+		outfit "Gold" -30
+		dialog phrase "generic mineral delivery payment"
+
+mission "Mineral Shortages (Platinum)"
+	name "已收获白金至 <planet>"
+	job
+	repeat
+	deadline 28
+	description "<planet> 上的工厂正遭受矿物短缺的困扰。收获 <amount> 吨 <mineral> 并由 <date> 返回 <destination>。付款方式为<payment>。"
+	substitutions
+		"<mineral>" "Platinum"
+		"<amount>" "30"
+	to offer
+		random < 5
+		"outfit (all): Platinum" < 5
+	to accept
+		"cargo space" >= 30
+	source
+		government "Republic" "Free Worlds" "Syndicate" "Neutral" "Independent"
+		attributes "factory"
+	on visit
+		dialog phrase "generic mineral on visit"
+	on complete
+		payment 345000
+		outfit "Platinum" -30
+		dialog phrase "generic mineral delivery payment"
+
+mission "Student transport"
+	job
+	repeat
+	name "将学生运送至<planet>"
+	description "该学生需要由 <date> 乘车前往 <destination>，在 <planet> 的一所大学学习。他们将向您支付 <payment> 。"
+	deadline
+	to offer
+		random < 20
+	source
+		government "Free Worlds" "Independent" "Neutral" "Republic" "Syndicate"
+	passengers 1
+	destination
+		attributes "education"
+		distance 2 20
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		dialog phrase "generic passenger dropoff payment"
+		payment
+		payment 4000
+
+mission "Rich student transport"
+	job
+	repeat
+	name "将富有的学生运送到<planet>"
+	description "这位富有的学生需要由 <date> 乘车前往 <destination>，在 <planet> 的一所高端大学学习。他们将向您支付 <payment> 。"
+	deadline
+	passengers 1
+	to offer
+		random < 10
+	to accept
+		has "outfit (installed): Luxury Accommodations"
+	source
+		government "Free Worlds" "Independent" "Neutral" "Republic" "Syndicate"
+	destination
+		attributes "education"
+		distance 2 20
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		dialog phrase "generic passenger dropoff payment"
+		payment
+		payment 10000
+
+mission "Student field research (farming)"
+	job
+	repeat
+	name "将学生运送至<planet>"
+	description "该学生需要前往 <destination> ，在那里他们将对 <student research> <planet> 进行实地研究。他们将向您支付 <payment> 。"
+	to offer
+		random < 5
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
+		attributes "education"
+	passengers 1
+	substitutions
+		"<student research>" "farms of"
+		"<student research>" "soil quality of"
+			random < 80
+		"<student research>" "river water quality of"
+			random < 60
+		"<student research>" "agricultural industry of"
+			random < 40
+	destination
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
+		attributes farming
+		distance 2 10
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		dialog phrase "generic passenger dropoff payment"
+		payment
+		payment 4000
+
+mission "Student field research (mining / oil)"
+	job
+	repeat
+	name "将学生运送至<planet>"
+	description "该学生需要前往 <destination> ，在那里他们将对 <student research> <planet> 进行实地研究。他们将向您支付 <payment> 。"
+	to offer
+		random < 5
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
+		attributes "education"
+	passengers 1
+	substitutions
+		"<student research>" "geology of"
+		"<student research>" "working conditions of"
+			random < 80
+		"<student research>" "tectonic activity of"
+			random < 60
+		"<student research>" "mining industry of"
+			random < 40
+		"<student research>" "petroleum industry of"
+			random < 20
+	destination
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
+		attributes mining oil
+		distance 2 10
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		dialog phrase "generic passenger dropoff payment"
+		payment
+		payment 4000
+
+mission "Student field research (forest)"
+	job
+	repeat
+	name "将学生运送至<planet>"
+	description "该学生需要前往 <destination> ，在那里他们将对 <student research> <planet> 进行实地研究。他们将向您支付 <payment> 。"
+	to offer
+		random < 5
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
+		attributes "education"
+	passengers 1
+	substitutions
+		"<student research>" "biosphere of"
+		"<student research>" "soil quality of"
+			random < 83
+		"<student research>" "tree species of"
+			random < 67
+		"<student research>" "forests of"
+			random < 50
+		"<student research>" "forestry industry of"
+			random < 33
+		"<student research>" "indigenous wildlife of"
+			random < 17
+	destination
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
+		attributes forest
+		distance 2 10
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		dialog phrase "generic passenger dropoff payment"
+		payment
+		payment 4000
+
+mission "Student field research (urban / factory)"
+	job
+	repeat
+	name "将学生运送至<planet>"
+	description "该学生需要前往 <destination> ，在那里他们将对 <student research> <planet> 进行实地研究。他们将向您支付 <payment> 。"
+	to offer
+		random < 5
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
+		attributes "education"
+	passengers 1
+	substitutions
+		"<student research>" "quality of life of the inhabitants of"
+		"<student research>" "cities of"
+			random < 80
+		"<student research>" "manufacturing industry of"
+			random < 60
+		"<student research>" "air quality of"
+			random < 40
+		"<student research>" "working conditions on"
+			random < 20
+	destination
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
+		attributes urban factory
+		not planet "New Sahara"
+		distance 2 10
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		dialog phrase "generic passenger dropoff payment"
+		payment
+		payment 4000
+
+mission "Student field research (fishing)"
+	job
+	repeat
+	name "将学生运送至<planet>"
+	description "该学生需要前往 <destination> ，在那里他们将对 <student research> <planet> 进行实地研究。他们将向您支付 <payment> 。"
+	to offer
+		random < 5
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
+		attributes "education"
+	passengers 1
+	substitutions
+		"<student research>" "biosphere of"
+		"<student research>" "oceans of"
+			random < 83
+		"<student research>" "indigenous fish of"
+			random < 67
+		"<student research>" "water quality of"
+			random < 50
+		"<student research>" "fishing industry of"
+			random < 33
+		"<student research>" "aquacultural industry of"
+			random < 17
+	destination
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
+		attributes fishing
+		distance 2 10
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		dialog phrase "generic passenger dropoff payment"
+		payment
+		payment 4000
+
+mission "Student field research (volcanic)"
+	job
+	repeat
+	name "将学生运送至<planet>"
+	description "该学生需要前往 <destination> ，在那里他们将对 <student research> <planet> 进行实地研究。他们将向您支付 <payment> 。"
+	to offer
+		random < 5
+	source
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
+		attributes "education"
+	passengers 1
+	substitutions
+		"<student research>" "tectonic activity on"
+		"<student research>" "volcanic activity on"
+			random < 75
+		"<student research>" "volcanoes of"
+			random < 50
+		"<student research>" "atmosphere of"
+			random < 25
+	destination
+		government "Republic" "Syndicate" "Free Worlds" "Independent" "Neutral"
+		attributes volcanic
+		distance 2 10
+	on visit
+		dialog phrase "generic passenger on visit"
+	on complete
+		dialog phrase "generic passenger dropoff payment"
+		payment
+		payment 4000

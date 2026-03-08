@@ -1,0 +1,983 @@
+# Copyright (c) 2014-2016 by Michael Zahniser
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program. If not, see <https://www.gnu.org/licenses/>.
+
+outfit "Phantom Pallet"
+	category "Systems"
+	series "Special Systems"
+	index 02020
+	cost 12000
+	thumbnail "outfit/phantom pallet"
+	"mass" 0.2
+	"unplunderable" 1
+	"energy consumption" 0.015
+	"heat generation" 0.03
+	# Replacing 30% of your cargo bay with these triples your cargo scan time.
+	"cargo space" -1
+	"cargo scan opacity" 15
+	description `亥族 全息服装由一组单独的“全息垫”组成，这些“全息垫”共同作用以创建更大的场景。幻影托盘是这些全息垫的不受约束的变体，足够耐用，可以在交火中幸存下来，并且可以轻松隐藏在地板下、墙壁或天花板下，同时保持不被发现。一个有进取心的私掠船可能会用这些东西填充他们的货舱，并将假货投射为传感器幽灵，迷惑扫描仪扫描空旷的空间而不是违禁品；据了解，额外的时间决定了扣押的货物和运送所需物资之间的差异。`
+
+outfit "Holovid Zone"
+	category "Systems"
+	series "Special Systems"
+	index 02030
+	cost 320000
+	thumbnail "outfit/holovid zone"
+	"mass" 20
+	"outfit space" -20
+	"unplunderable" 1
+	"holographic entertainment" 1
+	"energy consumption" 0.5
+	"heat generation" 1.0
+	"cargo scan opacity" 150
+	"outfit scan opacity" 150
+	description "海全息技术远远超过了人类同类技术，这一点在全息区中得到了最好的体现。其全息投影仪和纹理力场呈现逼真的视觉效果，而相控阵扬声器则从房间的任何地方发出声音。"
+	description "对于 亥族 来说，此类技术很常见，用于创建 3D 会议室、全息影院、游戏厅等。过去，海船长过去常常在指挥甲板上安装 Holovid Zones，使他们能够实时生成战斗战术评估。"
+	description "可能性是无穷无尽的……尤其是对于滥用该设备的狡猾船长来说。如果当局寻找违禁品或非法服装，全息区可能会愚弄他们足够长的时间，让走私者逃脱。在一艘有五十吨全息稻草的船上很难找到死亡棍。"
+
+outfit "Pulse Cannon"
+	category "Guns"
+	series "Guns"
+	index 02010
+	cost 130000
+	thumbnail "outfit/pulse cannon"
+	"mass" 13
+	"outfit space" -13
+	"weapon capacity" -13
+	"gun ports" -1
+	weapon
+		sprite "projectile/pulse"
+		sound "pulse"
+		"hit effect" "pulse impact"
+		"inaccuracy" 1
+		"velocity" 15
+		"lifetime" 30
+		"reload" 20
+		"firing energy" 24
+		"firing heat" 70
+		"shield damage" 45
+		"hull damage" 34
+	description "与您所见过的大多数海工程示例一样，脉冲炮并不是一项特别先进或优雅的技术，但它以高效、可靠和平衡而闻名。"
+
+outfit "Pulse Turret"
+	category "Turrets"
+	series "Turrets"
+	index 02010
+	cost 590000
+	thumbnail "outfit/pulse turret"
+	"mass" 34
+	"outfit space" -34
+	"weapon capacity" -34
+	"turret mounts" -1
+	"required crew" 1
+	weapon
+		sprite "projectile/pulse"
+		"hardpoint sprite" "hardpoint/pulse turret"
+		"hardpoint offset" 7.
+		sound "pulse"
+		"hit effect" "pulse impact"
+		"inaccuracy" 1
+		"turret turn" 2.6
+		"velocity" 15
+		"lifetime" 30
+		"reload" 10
+		"firing energy" 24
+		"firing heat" 70
+		"shield damage" 45
+		"hull damage" 34
+	description "脉冲炮是海舰使用的主要进攻武器。该炮塔并排安装两门脉冲炮，使它们能够跟踪移动速度最快的目标。"
+
+outfit "Tripulse Shredder"
+	category "Guns"
+	series "Guns"
+	index 02020
+	cost 520000
+	thumbnail "outfit/tripulse shredder"
+	"mass" 42
+	"outfit space" -42
+	"weapon capacity" -42
+	"gun ports" -1
+	weapon
+		sprite "projectile/pulse"
+		sound "pulse"
+		"hit effect" "pulse impact"
+		"inaccuracy" 5
+		"velocity" 15
+		"lifetime" 30
+		"reload" 6
+		"burst count" 36
+		"burst reload" 4
+		"cluster"
+		"firing energy" 25
+		"firing heat" 60
+		"shield damage" 45
+		"hull damage" 34
+	description "三脉冲粉碎机是开发更好、更快的武器以与流浪者相媲美的早期阶段，它在一个外壳中包含三门脉冲炮。冷却能力的进步减少了每次射击产生的热量，但代价是消耗的功率略有增加。此外，单一的共享外壳导致发射模式不太一致，限制了它的爆发。这些因素使得三脉冲粉碎机成为不受束缚者中流行的打了就跑的武器。"
+
+effect "pulse impact"
+	sprite "effect/pulse impact"
+		"no repeat"
+		"frame rate" 10
+	"lifetime" 20
+	"random angle" 360
+	"random spin" 4
+	"random velocity" .6
+	"velocity scale" -.1
+
+
+outfit "Ion Cannon"
+	category "Guns"
+	series "Guns"
+	index 02030
+	cost 490000
+	thumbnail "outfit/ion cannon"
+	"mass" 47
+	"outfit space" -47
+	"weapon capacity" -47
+	"gun ports" -1
+	weapon
+		sprite "projectile/ion bolt"
+			"frame rate" 5
+		sound "ion"
+		"hit effect" "ion impact" 2
+		"inaccuracy" 1
+		"velocity" 16
+		"lifetime" 50
+		"reload" 60
+		"firing energy" 120
+		"firing force" 15
+		"firing heat" 150
+		"hit force" 180
+		"shield damage" 168
+		"hull damage" 60
+		"ion damage" 6
+		"scrambling damage" 6
+	description "离子炮不会造成像其他武器那么大的伤害，但它们会破坏所击中的任何船只上的电力系统，耗尽其能量并导致其武器卡壳。如果一艘船有相当大的电池储备，这可能影响不大，但对于一艘接近其能量产生能力的船来说，离子打击可以让它在恢复时退出战斗几秒钟，或者以其他方式导致它难以发射武器。"
+
+effect "ion impact"
+	sprite "effect/ion impact"
+		"no repeat"
+		"frame rate" 30
+	sound "ion impact"
+	"lifetime" 9
+	"random angle" 360
+	"random spin" 30
+	"random velocity" 2
+	"velocity scale" -.05
+
+
+outfit "Ionic Blaster Prototype"
+	category "Guns"
+	series "Guns"
+	index 02040
+	cost 530000
+	thumbnail "outfit/hai ionic blaster"
+	"mass" 19
+	"outfit space" -19
+	"weapon capacity" -19
+	"gun ports" -1
+	weapon
+		sprite "projectile/ionic blast"
+			"frame rate" 5
+		sound "ionic blast"
+		"hit effect" "ion impact"
+		"inaccuracy" 4
+		"velocity" 18
+		"lifetime" 30
+		"reload" 30
+		"firing energy" 72
+		"firing force" 18
+		"firing heat" 108
+		"hit force" 108
+		"shield damage" 70
+		"hull damage" 30
+		"ion damage" .5
+		"scrambling damage" 1.45
+	description "尽管资源有限，无拘无束与海族其他人的冲突给他们带来了获得技术优势的压力。离子冲击波就是这种压力的结果。它比古老的离子炮小得多，同时也因其尺寸而造成更多的原始伤害。它仍然能够应用一些相同的能量消耗效果，但无拘无束的科学家已将其推向相对更高的干扰敌方武器的关注点。"
+
+outfit "Ionic Turret Prototype"
+	category "Turrets"
+	series "Turrets"
+	index 02020
+	cost 1260000
+	thumbnail "outfit/hai ionic turret"
+	"mass" 58
+	"outfit space" -58
+	"weapon capacity" -58
+	"turret mounts" -1
+	"required crew" 1
+	weapon
+		sprite "projectile/ionic turret"
+			"frame rate" 20
+		"fade out" 10
+		"hardpoint sprite" "hardpoint/hai ionic turret"
+		"hardpoint offset" 16.
+		sound "ion"
+		"hit effect" "ionic impact" 5
+		"inaccuracy" 2
+		"turret turn" 1.4
+		"velocity" 12
+		"lifetime" 70
+		"reload" 70
+		"firing energy" 371
+		"firing force" 12
+		"firing heat" 259
+		"hit force" 90
+		"shield damage" 100
+		"hull damage" 50
+		"ion damage" 17.5
+		"scrambling damage" 10
+	description "这种武器极大地提高了离子炮的电离能力，同时造成的原始伤害更少，并且几乎没有武器干扰的影响。然而，它也安装在炮塔上，使其能够向任何方向的敌人开火，而不仅仅是正前方的敌人。"
+	description "这种设计还不能大规模生产，但那些已经生产出来的设计被少数有幸拥有它们的人所珍视。"
+
+effect "ionic impact"
+	sprite "effect/ionic impact"
+		"no repeat"
+		"frame rate" 30
+	sound "ion impact"
+	"lifetime" 9
+	"random angle" 360
+	"random spin" 30
+	"random velocity" 2
+	"velocity scale" -.05
+
+outfit "Railgun Slug"
+	"display name" "Skipper Railgun Slug"
+	category "Ammunition"
+	series "Ammunition"
+	index 02020
+	cost 13
+	thumbnail "outfit/railslug"
+	"mass" 0.003
+	"railgun slug capacity" -1
+	description "Skipper Railgun Slugs 包含能量放电电容器，可对目标造成少量离子伤害。虽然破坏性不是很大，但这种离子伤害加上每次射击所产生的巨大后坐力，使跳蚤无人机变成了有效的远程支援舰。"
+
+outfit "Railgun Slug Rack"
+	"display name" "Skipper Slug Rack"
+	category "Ammunition"
+	series "Ammunition"
+	index 02021
+	cost 15000
+	thumbnail "outfit/railslug rack"
+	"mass" 1
+	"outfit space" -3
+	"railgun slug capacity" 500
+	ammo "Railgun Slug"
+	description "该轨道炮弹头架用于存储和装载额外的船长轨道炮弹药。"
+
+outfit "Railgun"
+	"display name" "Skipper Railgun"
+	category "Secondary Weapons"
+	series "Secondary Weapons"
+	index 02020
+	cost 20000
+	thumbnail "outfit/railgun"
+	"mass" 1
+	"outfit space" -4
+	"weapon capacity" -4
+	"gun ports" -1
+	"railgun slug capacity" 1000
+	weapon
+		sprite "projectile/rail slug"
+			"frame rate" 30
+		ammo "Railgun Slug"
+		icon "icon/rail gun"
+		sound "ion impact"
+		"fire effect" "rail sparks"
+		"hit effect" "bullet impact"
+		"inaccuracy" 3
+		"velocity" 44
+		"lifetime" 1
+		"range override" 2100
+		"reload" 12
+		"firing energy" 3.5
+		"firing heat" 7.2
+		"firing force" 105
+		"stream"
+		"submunition" "rslug" 1
+	description "海人设计这种武器是为了最好地补充他们的跳蚤无人机。每个船长轨道炮在发射时都会提供大量的力量，将跳蚤无人机向后推，从而迫使其与目标保持距离。"
+	description "Flea 无人机飞行员开玩笑说，它们比类似尺寸的发动机提供更大的推力，因此 Unfettered 应该在飞船后部使用它们。这个笑话可能有很多人怀念的文化成分，因为它经常被讲到，而海族人每次都会因为它而歇斯底里地大笑。"
+	description "该武器的弹药可以在任何装备商处补充。"
+		to display
+			has "gamerule: universal ammo restocking"
+
+outfit "rslug"
+	weapon
+		sprite "projectile/rail slug"
+			"frame rate" 30
+		"hit effect" "bullet impact"
+		"lifetime" 49
+		"acceleration" 2.2
+		"drag" .05
+		"turn" .6
+		"homing"
+			"blindspot"
+		"optical tracking" .4
+		"shield damage" 4.2
+		"hull damage" 8.4
+		"ion damage" .3
+		"scrambling damage" .3
+		"hit force" 22.5
+
+effect "rail sparks"
+	sprite "effect/railspark"
+		"random start frame"
+		"frame rate" 30
+		"rewind"
+	"lifetime" 6
+	"random angle" 360
+	"random spin" 30
+	"velocity scale" 1.2
+
+outfitter "Railgun Slug Restock"
+	to sell
+		has "gamerule: universal ammo restocking"
+		or
+			has "outfit: Railgun"
+			has "outfit: Railgun Slug Rack"
+	location
+		attributes "outfitter"
+	stock
+		"Railgun Slug"
+
+
+outfit "Hai Tracker"
+	category "Ammunition"
+	series "Ammunition"
+	index 02010
+	cost 1000
+	thumbnail "outfit/hai tracker"
+	"mass" .2
+	"tracker capacity" -1
+	description "这是追踪器的弹药。"
+
+outfit "Tracker Storage Pod"
+	category "Ammunition"
+	series "Ammunition"
+	index 02011
+	cost 28000
+	thumbnail "outfit/hai tracker storage"
+	"mass" 4.4
+	"outfit space" -10
+	"tracker capacity" 28
+	ammo "Hai Tracker"
+	description "跟踪器存储盒用于存储跟踪器盒的额外弹药。"
+
+outfit "Hai Tracker Pod"
+	category "Secondary Weapons"
+	series "Secondary Weapons"
+	index 02010
+	cost 150000
+	thumbnail "outfit/hai tracker pod"
+	"mass" 8
+	"outfit space" -19
+	"weapon capacity" -19
+	"gun ports" -1
+	"tracker capacity" 56
+	weapon
+		sprite "projectile/tracker"
+			"frame rate" 10
+			"random start frame"
+		sound "tracker"
+		ammo "Hai Tracker"
+		icon "icon/tracker"
+		"fire effect" "tracker fire"
+		"hit effect" "tracker impact"
+		"hit effect" "tracker cloud" 3
+		"die effect" "tracker impact"
+		"inaccuracy" 20
+		"velocity" 14
+		"lifetime" 475
+		"reload" 60
+		"firing energy" 45
+		"firing heat" 5
+		"acceleration" .7
+		"drag" .05
+		"turn" 1.2
+		"homing"
+			"leading"
+			"throttle control"
+		"optical tracking" .8
+		"infrared tracking" .4
+		"shield damage" 200
+		"hull damage" 160
+		"hit force" 525
+		"missile strength" 16
+	description "追踪器是快速而准确的寻的武器。虽然追踪器的威力不如大多数人类导弹，但它拥有强大的打击力，有助于防止不幸成为接收端的人逃跑。它们唯一的弱点是转弯半径大：如果追踪器错过目标，则需要很长时间才能掉头。"
+	description "该武器的弹药可以在任何装备商处补充。"
+		to display
+			has "gamerule: universal ammo restocking"
+
+effect "tracker fire"
+	sprite "effect/tracker fire"
+		"no repeat"
+		"frame rate" 8
+	"lifetime" 45
+	"random angle" 5
+	"random spin" 4
+	"random velocity" 10
+
+effect "tracker impact"
+	sprite "effect/tracker impact"
+		"no repeat"
+		"frame rate" 20
+	sound "explosion medium"
+	"lifetime" 16
+	"random angle" 360
+	"random spin" 10
+	"random velocity" .2
+	"velocity scale" -.05
+
+effect "tracker cloud"
+	sprite "effect/tracker cloud"
+		"no repeat"
+		"frame rate" 5
+	"lifetime" 72
+	"random angle" 360
+	"random spin" 8
+	"random velocity" 1
+	"random frame rate" 2
+	"velocity scale" -.1
+
+outfitter "Hai Tracker Restock"
+	to sell
+		has "gamerule: universal ammo restocking"
+		or
+			has "outfit: Hai Tracker Pod"
+			has "outfit: Tracker Storage Pod"
+	location
+		attributes "outfitter"
+	stock
+		"Hai Tracker"
+
+
+outfit "Bullfrog Anti-Missile"
+	category "Turrets"
+	series "Anti-Missile"
+	index 02010
+	cost 55000
+	thumbnail "outfit/anti-missile hai"
+	"mass" 10
+	"outfit space" -10
+	"weapon capacity" -10
+	"turret mounts" -1
+	weapon
+		"hardpoint sprite" "hardpoint/anti-missile hai"
+		"hardpoint offset" 3.
+		"hit effect" "small anti-missile"
+		"anti-missile" 12
+		"velocity" 150
+		"lifetime" 1
+		"reload" 20
+		"firing energy" 12
+		"firing heat" 5
+		"stream"
+	description "几个世纪前，海人使用更初级版本的追踪者进行战斗，这是对抗他们的主要防御手段。尽管设计过时，但它仍然可以有效对抗少量最新的导弹武器。"
+
+
+outfit "Chameleon Anti-Missile"
+	category "Turrets"
+	series "Anti-Missile"
+	index 02020
+	cost 140000
+	thumbnail "outfit/heavy anti-missile hai"
+	"mass" 22
+	"outfit space" -22
+	"weapon capacity" -22
+	"turret mounts" -1
+	weapon
+		"hardpoint sprite" "hardpoint/heavy anti-missile hai"
+		"hardpoint offset" 4.
+		"hit effect" "large anti-missile"
+		"anti-missile" 16
+		"velocity" 200
+		"lifetime" 1
+		"reload" 15
+		"firing energy" 23
+		"firing heat" 6
+		"stream"
+	description "变色龙反导弹炮塔比牛蛙具有更远的射程、更高的威力和更短的装填时间。"
+
+
+
+outfit "Hai Cuttlefish Jammer"
+	category "Systems"
+	series "Jammers"
+	index 02010
+	cost 260000
+	thumbnail "outfit/hai jammer"
+	"mass" 10
+	"outfit space" -7
+	"optical jamming" 1.5
+	"energy consumption" .8
+	description "当海族第一次开始互相争斗时，对抗追踪者的需求很快就变得显而易见。乌贼干扰器可以通过向跟踪器提供一个看似更好但虚幻的目标来明显干扰跟踪器对船舶的锁定。这种干扰机对无法部署足够反导弹以有效对抗来自各个方向的导弹的大型舰艇最为有效。"
+
+outfit "Hai Octopus Jammer"
+	category "Systems"
+	series "Jammers"
+	index 02020
+	cost 350000
+	thumbnail "outfit/hai jammer overclocked"
+	"mass" 10
+	"outfit space" -7
+	"optical jamming" 2
+	"energy consumption" 1.2
+	description "章鱼干扰器是墨鱼干扰器的更具侵略性的改编版，旨在用于无拘无束的短期突袭。由于绕过了多个安全电路，它能够更有效地欺骗传入的跟踪器，但相关的能源成本更高，使得任何携带这种装置的船只更容易受到离子武器的攻击。"
+
+
+outfit "Hai Corundum Regenerator"
+	category "Systems"
+	series "Shields"
+	index 02010
+	cost 300000
+	thumbnail "outfit/small regenerator hai"
+	"mass" 16
+	"outfit space" -16
+	"shield generation" .7
+	"shield energy" .7
+	"energy consumption" .3
+	"shield heat" 3
+	description "亥族 护盾再生器的工作原理是巧妙地修改护盾矩阵的几何形状和谐波，以使护盾更具延展性，从而更容易充电。不幸的是，该系统需要恒定的电源，并且在再生时会产生相当多的热量。"
+
+outfit "Hai Diamond Regenerator"
+	category "Systems"
+	series "Shields"
+	index 02020
+	cost 1150000
+	thumbnail "outfit/large regenerator hai"
+	"mass" 49
+	"outfit space" -49
+	"shield generation" 2.5
+	"shield energy" 2.5
+	"shield heat" 9
+	"energy consumption" .9
+	description "海钻石护盾再生器是一种先进的护盾充电技术。不幸的是，它的电力需求非常高，并且当你的护盾充电时，它对你的护盾矩阵的转变会导致再生器产生强烈的热量。 亥族 人在使用这种蓄热器时通常采用 Williwaw 冷却。"
+
+outfit "Hai Williwaw Cooling"
+	category "Systems"
+	series "Cooling"
+	index 02010
+	cost 15000
+	thumbnail "outfit/hai williwaw"
+	"mass" 8
+	"outfit space" -8
+	"cooling" 11
+	description "虽然 亥族 技术的热效率相当高，但有时他们的船舶装备会偶尔过热并关闭。当这种情况发生时，他们会安装这些。"
+
+outfit "Quantum Keystone"
+	series "Drives"
+	index 50
+	category "Systems"
+	cost 12000
+	thumbnail "outfit/keystone"
+	"mass" 0.1
+	"outfit space" -1
+	"quantum keystone" 1
+	description "这块来自海族家园山上的岩石显然只不过是一种幸运符，但海族自帝国鼎盛时期就用它们装饰他们的船只。更迷信的海族人声称，这些石头可以在某种程度上减少超空间跳跃引起的恶心，让恒星系统之间的旅行变得更容易，许多富有的海族人拒绝预订没有石头的船。"
+	description "这款 Keystone 随附的包装包括证明其起源于 亥族-home 的全息胶片真品证书、装饰性但坚固的框架以及印有 Keystone 徽标和销售编号的小牌匾。包装建议将镶框证书安装在主气闸或公共公共区域附近的显眼位置。"
+
+outfit "Value Detector"
+	category "Systems"
+	series "Scanners"
+	index 02010
+	cost 260000
+	thumbnail "outfit/value detector"
+	"mass" 5
+	"outfit space" -5
+	"cargo scan power" 75
+	"cargo scan efficiency" 10
+	"tactical scan power" 35
+	"heat generation" 2
+	description "无拘无束者开发了这种扫描仪，以便确定哪些船只值得掠夺，或者哪些船只缺乏抵御离子武器的能力。一些海人认为它相当简陋，但足以从远处识别船上的货物并提供有关敌舰战术状况的更详细信息。这种双重功能在部署实验性武器时非常有用。"
+
+outfit "Hai Chasm Batteries"
+	plural "Hai Chasm Batteries"
+	category "Power"
+	series "Batteries"
+	index 02010
+	cost 7000
+	thumbnail "outfit/tiny battery hai"
+	"mass" 5
+	"outfit space" -5
+	"energy capacity" 2164
+	description "亥族 电力存储技术已有数千年历史，但非常简单且强大。这是最小的 亥族 电池组。"
+
+outfit "Hai Fissure Batteries"
+	plural "Hai Fissure Batteries"
+	category "Power"
+	series "Batteries"
+	index 02020
+	cost 11000
+	thumbnail "outfit/small battery hai"
+	"mass" 15
+	"outfit space" -15
+	"energy capacity" 6836
+	description "该电池组的能量容量是海沟电池的三倍以上，使他们的舰艇能够在能量耗尽之前进行更长时间的战斗。"
+
+outfit "Hai Gorge Batteries"
+	plural "Hai Gorge Batteries"
+	category "Power"
+	series "Batteries"
+	index 02030
+	cost 25000
+	thumbnail "outfit/medium battery hai"
+	"mass" 30
+	"outfit space" -30
+	"energy capacity" 15044
+	description "这种中型电池组非常适合大多数海动力需求，可进行中等长度的战斗，但也可用于通过小型发电机和超大发动机来保持舰船的低热足迹。"
+
+outfit "Hai Ravine Batteries"
+	plural "Hai Ravine Batteries"
+	category "Power"
+	series "Batteries"
+	index 02040
+	cost 47000
+	thumbnail "outfit/large battery hai"
+	"mass" 50
+	"outfit space" -50
+	"energy capacity" 27350
+	description "这种大型电池组比小型电池组具有更高的能量密度，并且有助于船舶在承受多次离子炮撞击的情况下保持战斗力。"
+
+outfit "Hai Valley Batteries"
+	plural "Hai Valley Batteries"
+	category "Power"
+	series "Batteries"
+	index 02050
+	cost 74000
+	thumbnail "outfit/huge battery hai"
+	"mass" 70
+	"outfit space" -70
+	"energy capacity" 42222
+	description "虽然大多数海舰并没有采用最大的电池模型，但一些非常强大的战舰偶尔会配备一个，以保持较低的热足迹，并让它们在与携带离子炮的对手的战斗中生存更长时间。"
+
+
+outfit "Boulder Reactor"
+	category "Power"
+	series "Generators"
+	index 02040
+	cost 5750000
+	thumbnail "outfit/hai boulder"
+	"mass" 90
+	"outfit space" -90
+	"energy generation" 17.3
+	"heat generation" 34
+	description "海族在他们的领地被科拉特人袭击时设计了这些小型聚变发生器。在这些相对和平的时期，他们认为没有必要更新设计。"
+
+outfit "Geode Reactor"
+	category "Power"
+	series "Generators"
+	index 02030
+	cost 1750000
+	thumbnail "outfit/hai geode"
+	"mass" 58
+	"outfit space" -58
+	"energy generation" 8.9
+	"heat generation" 21.2
+	description "裂变反应堆被认为是星际物种中的一项基本技术。尽管如此，它仍然是一项经过验证且安全的技术，即使是 亥族 人也经常使用。"
+
+outfit "Pebble Core"
+	category "Power"
+	series "Generators"
+	index 02020
+	cost 1050000
+	thumbnail "outfit/hai pebble core"
+	"mass" 32
+	"outfit space" -32
+	"energy generation" 4.5
+	"heat generation" 11.9
+	description "Pebble Core 是一种小型核反应堆，足够小，可以安装在任何比战斗机还大的舰艇上。 亥族 人为他们的小型船只开发了这种模型。"
+
+outfit "Sand Cell"
+	category "Power"
+	series "Generators"
+	index 02010
+	cost 45000
+	thumbnail "outfit/fuel cell hai"
+	"mass" 24
+	"outfit space" -24
+	"energy generation" 1.65
+	"heat generation" 2.45
+	description "Sand Cell 是最小的 亥族 发生器。它是为不需要或无法携带核反应堆的船舶而设计的，它显然类似于人类燃料电池。"
+
+
+outfit `"Baellie" Atomic Engines`
+	plural `"Baellie" Atomic Engines`
+	category "Engines"
+	series "Engines"
+	index 02010
+	"cost" 230000
+	thumbnail "outfit/tiny atomic engines hai"
+	"mass" 22
+	"outfit space" -22
+	"engine capacity" -22
+	"thrust" 14.7
+	"thrusting energy" .87
+	"thrusting heat" 1.7
+	"turn" 366
+	"turning energy" .64
+	"turning heat" 1.28
+	"flare sprite" "effect/atomic flare/tiny"
+		"frame rate" 14
+		"scale" 0.8
+	"flare sound" "atomic tiny"
+	"steering flare sprite" "effect/atomic flare/tiny"
+		"frame rate" 14
+		"scale" 0.8
+	"steering flare sound" "atomic tiny"
+	description `当 亥族 人设计 Flea 时，很快就发现即使是“Basrem”发动机组也太大了。由此，组合式推进器转向装置诞生了：“Baellie”。`
+
+outfit `"Basrem" Atomic Thruster`
+	category "Engines"
+	series "Engines"
+	index 02021
+	"cost" 150000
+	thumbnail "outfit/tiny atomic thruster hai"
+	"mass" 18
+	"outfit space" -18
+	"engine capacity" -18
+	"thrust" 22.83
+	"thrusting energy" 1.4
+	"thrusting heat" 2.8
+	"flare sprite" "effect/atomic flare/tiny"
+		"frame rate" 14
+		"scale" 0.8
+	"flare sound" "atomic tiny"
+	description "深海科学家们不知道的是，海族已经使用原子发动机技术数千年了。海原子发动机仍然比其他发动机更耗能，但表现出比人类同类发动机更高的效率。"
+
+outfit `"Benga" Atomic Thruster`
+	category "Engines"
+	series "Engines"
+	index 02031
+	"cost" 300000
+	thumbnail "outfit/small atomic thruster hai"
+	"mass" 28
+	"outfit space" -28
+	"engine capacity" -28
+	"thrust" 37.725
+	"thrusting energy" 2.5
+	"thrusting heat" 4.8
+	"flare sprite" "effect/atomic flare/tiny"
+		"frame rate" 14
+	"flare sound" "atomic tiny"
+	description "与人类太空不同的是，原子发动机是一种罕见的景象，也是一种奢侈品，多年来被限制在银河系相对较小的区域中，使得所有海船都配备了原子发动机。"
+
+outfit `"Biroo" Atomic Thruster`
+	category "Engines"
+	series "Engines"
+	index 02041
+	"cost" 610000
+	thumbnail "outfit/medium atomic thruster hai"
+	"mass" 44
+	"outfit space" -44
+	"engine capacity" -44
+	"thrust" 62.475
+	"thrusting energy" 4
+	"thrusting heat" 8.2
+	"flare sprite" "effect/atomic flare/small"
+		"frame rate" 13
+	"flare sound" "atomic small"
+	description "这个推进器是大多数海轻型战舰上的标准推进器，提供足够的推力使它们可以在战斗中使用，但它的大小不足以满足像海盾甲虫这样大的东西。"
+
+outfit `"Bondir" Atomic Thruster`
+	category "Engines"
+	series "Engines"
+	index 02051
+	"cost" 1100000
+	thumbnail "outfit/large atomic thruster hai"
+	"mass" 63
+	"outfit space" -63
+	"engine capacity" -63
+	"thrust" 94.2
+	"thrusting energy" 6.1
+	"thrusting heat" 12.7
+	"flare sprite" "effect/atomic flare/medium"
+		"frame rate" 12
+	"flare sound" "atomic medium"
+	description "当深空公司忙于开发战斗原子发动机时，海人正在努力使他们的发动机变得更好。正因为如此，与人类的变种相比，海原子发动机效率更高，需要更少的能量来点火，并且在此过程中产生的热量更少。"
+
+outfit `"Bufaer" Atomic Thruster`
+	category "Engines"
+	series "Engines"
+	index 02061
+	"cost" 2400000
+	thumbnail "outfit/huge atomic thruster hai"
+	"mass" 104
+	"outfit space" -104
+	"engine capacity" -104
+	"thrust" 163.275
+	"thrusting energy" 10.4
+	"thrusting heat" 22.6
+	"flare sprite" "effect/atomic flare/large"
+		"frame rate" 11
+	"flare sound" "atomic large"
+	description "这些推进器是海原子推进器中最大的，也是已知空间中最强大的推进器之一。这些巨大的发动机只有最大的人类原子推进器才能击败，它们提供的推力足以推动最大的船只，就像它们是战斗机一样。"
+
+outfit `"Basrem" Reverse Thruster`
+	category "Engines"
+	series "Engines"
+	index 02022
+	"cost" 150000
+	thumbnail "outfit/tiny atomic reverse hai"
+	"mass" 18
+	"outfit space" -18
+	"weapon capacity" -18
+	"reverse thrust" 22.83
+	"reverse thrusting energy" 1.4
+	"reverse thrusting heat" 2.8
+	"reverse flare sprite" "effect/atomic flare/tiny"
+		"frame rate" 14
+		"scale" 0.8
+	"reverse flare sound" "atomic tiny"
+	description `微型“Basrem”反向推进器即使是最小的海船也能在正常转向之外提供额外的机动性。许多年轻的海族在第一次独自创业时发现这是一项无价的投资。`
+
+outfit `"Benga" Reverse Thruster`
+	category "Engines"
+	series "Engines"
+	index 02032
+	"cost" 300000
+	thumbnail "outfit/small atomic reverse hai"
+	"mass" 28
+	"outfit space" -28
+	"weapon capacity" -28
+	"reverse thrust" 37.725
+	"reverse thrusting energy" 2.5
+	"reverse thrusting heat" 4.8
+	"reverse flare sprite" "effect/atomic flare/tiny"
+		"frame rate" 14
+	"reverse flare sound" "atomic tiny"
+	description "考虑到它们非常值得高昂的成本，许多 亥族 货轮飞行员安装了此类反向推进器，以补充大型 亥族 船只上经常出现的不良转向问题。"
+
+outfit `"Biroo" Reverse Thruster`
+	category "Engines"
+	series "Engines"
+	index 02042
+	"cost" 610000
+	thumbnail "outfit/medium atomic reverse hai"
+	"mass" 44
+	"outfit space" -44
+	"weapon capacity" -44
+	"reverse thrust" 62.475
+	"reverse thrusting energy" 4
+	"reverse thrusting heat" 8.2
+	"reverse flare sprite" "effect/atomic flare/small"
+		"frame rate" 13
+	"reverse flare sound" "atomic small"
+	description "当需要实际敏捷性时，飞行员通常更喜欢专注于转向，这些是 亥族 提供的最大的反向推进器。就其尺寸而言，它们仍然拥有令人印象深刻的动力，这使得即使是最大的海船也能在需要时快速停下来。"
+
+outfit `"Basrem" Atomic Steering`
+	category "Engines"
+	series "Engines"
+	index 02020
+	"cost" 120000
+	thumbnail "outfit/tiny atomic steering hai"
+	"mass" 12
+	"outfit space" -12
+	"engine capacity" -12
+	"turn" 451.5
+	"turning energy" .7
+	"turning heat" 1.5
+	"steering flare sprite" "effect/atomic flare/tiny"
+		"frame rate" 14
+		"scale" 0.8
+	"steering flare sound" "atomic tiny"
+	description "对于大多数人来说，海原子发动机太贵了，买不起。除了最小的发动机之外，所有发动机的价值都超过了人类太空中飞行的许多最常见的船舶。"
+
+outfit `"Benga" Atomic Steering`
+	category "Engines"
+	series "Engines"
+	index 02030
+	"cost" 250000
+	thumbnail "outfit/small atomic steering hai"
+	"mass" 20
+	"outfit space" -20
+	"engine capacity" -20
+	"turn" 844.5
+	"turning energy" 1.1
+	"turning heat" 2.85
+	"steering flare sprite" "effect/atomic flare/tiny"
+		"frame rate" 14
+	"steering flare sound" "atomic tiny"
+	description "由于其尺寸和效率，海原子发动机可以在已知空间中建造一些最可定制的船舶。少数能够攒够钱购买一套海引擎的人类通常会以其飞船的效率震惊人类太空中的其他人。"
+
+outfit `"Biroo" Atomic Steering`
+	category "Engines"
+	series "Engines"
+	index 02040
+	"cost" 530000
+	thumbnail "outfit/medium atomic steering hai"
+	"mass" 32
+	"outfit space" -32
+	"engine capacity" -32
+	"turn" 1542
+	"turning energy" 2.0
+	"turning heat" 5.1
+	"steering flare sprite" "effect/atomic flare/small"
+		"frame rate" 13
+	"steering flare sound" "atomic small"
+	description "拥有如此强大的引擎对于海来说是一把双刃剑，因为无拘无束的海也拥有这些强大的奇迹。这些发动机使大多数海船能够以惊人的速度转弯，使它们在战斗中极其致命。"
+
+outfit `"Bondir" Atomic Steering`
+	category "Engines"
+	series "Engines"
+	index 02050
+	"cost" 950000
+	thumbnail "outfit/large atomic steering hai"
+	"mass" 49
+	"outfit space" -49
+	"engine capacity" -49
+	"turn" 2571
+	"turning energy" 3.2
+	"turning heat" 8.2
+	"steering flare sprite" "effect/atomic flare/medium"
+		"frame rate" 12
+	"steering flare sound" "atomic medium"
+	description "这些发动机仅在少数海舰上专用，是人们能买到的最昂贵的装备之一。 亥族 原子发动机比任何其他相同尺寸的发动机效率更高，是任何需要高转速的人的首选。"
+
+outfit `"Bufaer" Atomic Steering`
+	category "Engines"
+	series "Engines"
+	index 02060
+	"cost" 2100000
+	thumbnail "outfit/huge atomic steering hai"
+	"mass" 76
+	"outfit space" -76
+	"engine capacity" -76
+	"turn" 4450.5
+	"turning energy" 5.2
+	"turning heat" 13.8
+	"steering flare sprite" "effect/atomic flare/large"
+		"frame rate" 11
+	"steering flare sound" "atomic large"
+	description "在海太空接受采访的人类机长十分之九表示，他们任何一天都会选择海原子发动机，而不是深空的发动机……也就是说，如果他们能买得起如此昂贵的发动机。"
+
+
+outfit "Pulse Rifle"
+	category "Hand to Hand"
+	series "H2H"
+	index 02010
+	cost 11000
+	thumbnail "outfit/hai rifle"
+	"capture attack" .7
+	"capture defense" 1.0
+	"unplunderable" 1
+	description "脉冲步枪最初由海族开发，用于在科拉特袭击期间帮助保护他们的船只免受入侵者的侵害。虽然此后它已被改造为更有效地使其目标丧失能力，但如果几枚闪电快速连续着陆，积累的电荷会对大多数物种的神经系统产生致命影响。"
+
+
+outfit "Shield Beetle Pendant"
+	category "Unique"
+	series "Functional Unique"
+	index 30
+	thumbnail "outfit/crystal pendant"
+	"quantum keystone" 1
+	"unique" 1
+	description "一个吊坠，由与海族母星相同的水晶岩石制成，仿照盾甲虫制成。娜娜奇的礼物。"
+	description "它配备了一个精心制作的照明阴影盒，因此可以自豪地安装和展示。三个安装支架（量子基石s 上使用的安装支架的缩影）提供了牢固的锚点，以确保吊坠的安全。"
